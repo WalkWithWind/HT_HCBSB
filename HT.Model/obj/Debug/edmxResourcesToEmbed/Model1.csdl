@@ -1,0 +1,647 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ht_ad">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="code" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="img_url" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="sort" Type="Int32" />
+    <Property Name="remarks" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ht_ad_category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sort" Type="Int32" />
+    <Property Name="num" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ht_boat">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userid" Type="Int32" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="idcode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="classifid" Type="Int32" />
+    <Property Name="adminid" Type="Int32" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="companyname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="tonnage" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="payload" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="longueur" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="wide" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="draftarea" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="approvestatus" Type="Int32" />
+    <Property Name="addtime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ht_boat_image" Relationship="Self.FK_ht_boat_image_ht_boat" FromRole="ht_boat" ToRole="ht_boat_image" />
+  </EntityType>
+  <EntityType Name="ht_boat_admin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userid" Type="Int32" />
+    <Property Name="username" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="salt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="avatar" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="addtime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ht_boat_classify">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="sort" Type="Int32" />
+    <Property Name="addtime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ht_boat_image">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="bid" Type="Int32" />
+    <Property Name="imgurl" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="sort" Type="Int32" />
+    <Property Name="addtime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ht_boat" Relationship="Self.FK_ht_boat_image_ht_boat" FromRole="ht_boat_image" ToRole="ht_boat" />
+  </EntityType>
+  <EntityType Name="ht_freight_demand">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userid" Type="Int32" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="classid" Type="Int32" />
+    <Property Name="weight" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="price" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="shippingtime" Type="DateTime" Precision="3" />
+    <Property Name="shippingmode" Type="Int32" />
+    <Property Name="loaddays" Type="Int32" />
+    <Property Name="unloaddays" Type="Int32" />
+    <Property Name="draft" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="storage" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="demurrage" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="payid" Type="Int32" />
+    <Property Name="isinvoice" Type="Int32" />
+    <Property Name="invoicetype" Type="Int32" />
+    <Property Name="invoicetitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ht_freight_demand_image" Relationship="Self.FK_ht_freight_demand_image_ht_freight_demand" FromRole="ht_freight_demand" ToRole="ht_freight_demand_image" />
+  </EntityType>
+  <EntityType Name="ht_freight_demand_image">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fid" Type="Int32" />
+    <Property Name="imgurl" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="sort" Type="Int32" />
+    <Property Name="addtime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ht_freight_demand" Relationship="Self.FK_ht_freight_demand_image_ht_freight_demand" FromRole="ht_freight_demand_image" ToRole="ht_freight_demand" />
+  </EntityType>
+  <EntityType Name="ht_harbor">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="sort" Type="Int32" />
+    <Property Name="addtime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ht_quay" Relationship="Self.FK_ht_quay_ht_harbor" FromRole="ht_harbor" ToRole="ht_quay" />
+  </EntityType>
+  <EntityType Name="ht_integral_order">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="orderno" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="userid" Type="Int32" />
+    <Property Name="pid" Type="Int32" />
+    <Property Name="title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="acceptname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="district" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="audittime" Type="DateTime" Precision="3" />
+    <Property Name="addtime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ht_integral_product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="summary" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="redeempoint" Type="Int32" />
+    <Property Name="stock" Type="Int32" />
+    <Property Name="brand" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="size" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="addtime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ht_integral_product_image" Relationship="Self.FK_ht_integral_product_image_ht_integral_product" FromRole="ht_integral_product" ToRole="ht_integral_product_image" />
+    <NavigationProperty Name="ht_integral_product_nature" Relationship="Self.FK_ht_integral_product_nature_ht_integral_product" FromRole="ht_integral_product" ToRole="ht_integral_product_nature" />
+  </EntityType>
+  <EntityType Name="ht_integral_product_image">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pid" Type="Int32" />
+    <Property Name="url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="sort" Type="Int32" />
+    <Property Name="addtime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ht_integral_product" Relationship="Self.FK_ht_integral_product_image_ht_integral_product" FromRole="ht_integral_product_image" ToRole="ht_integral_product" />
+  </EntityType>
+  <EntityType Name="ht_integral_product_nature">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pid" Type="Int32" />
+    <Property Name="xkey" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="xvalue" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="sort" Type="Int32" />
+    <Property Name="addtime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ht_integral_product" Relationship="Self.FK_ht_integral_product_nature_ht_integral_product" FromRole="ht_integral_product_nature" ToRole="ht_integral_product" />
+  </EntityType>
+  <EntityType Name="ht_manager">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="roleid" Type="Int32" />
+    <Property Name="islock" Type="Int32" />
+    <Property Name="roletype" Type="Int32" />
+    <Property Name="salt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sex" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="addtime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ht_manager_role" Relationship="Self.FK_ht_manager_ht_manager_role" FromRole="ht_manager" ToRole="ht_manager_role" />
+  </EntityType>
+  <EntityType Name="ht_manager_log">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userid" Type="Int32" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="actiontype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="remark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="userip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="addtime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ht_manager_role">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="rolename" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="roletype" Type="Int32" />
+    <Property Name="issys" Type="Int32" />
+    <Property Name="addtime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ht_manager" Relationship="Self.FK_ht_manager_ht_manager_role" FromRole="ht_manager_role" ToRole="ht_manager" />
+    <NavigationProperty Name="ht_manager_role_value" Relationship="Self.FK_ht_manager_role_value_ht_manager_role" FromRole="ht_manager_role" ToRole="ht_manager_role_value" />
+  </EntityType>
+  <EntityType Name="ht_manager_role_value">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="roleid" Type="Int32" />
+    <Property Name="navname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="actiontype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="addtime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ht_manager_role" Relationship="Self.FK_ht_manager_role_value_ht_manager_role" FromRole="ht_manager_role_value" ToRole="ht_manager_role" />
+  </EntityType>
+  <EntityType Name="ht_navigation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="parentid" Type="Int32" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="subtitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="iconurl" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="linkurl" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="sortid" Type="Int32" />
+    <Property Name="remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="actiontype" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="addtime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ht_news">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="summary" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="classifyid" Type="Int32" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="keywords" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="clicks" Type="Int32" />
+    <Property Name="addtime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ht_news_classify">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="sort" Type="Int32" />
+    <Property Name="addtime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ht_payment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="remark" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="sort" Type="Int32" />
+    <Property Name="fee" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="addtime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ht_quay">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="hid" Type="Int32" />
+    <Property Name="title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="sort" Type="Int32" />
+    <Property Name="addtime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ht_harbor" Relationship="Self.FK_ht_quay_ht_harbor" FromRole="ht_quay" ToRole="ht_harbor" />
+  </EntityType>
+  <EntityType Name="ht_recruit_classify">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sort" Type="Int32" />
+    <Property Name="addtime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ht_shop_member">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userid" Type="Int32" />
+    <Property Name="username" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="nickname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="salt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="avatar" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="sex" Type="Int32" />
+    <Property Name="age" Type="Int32" />
+    <Property Name="userstatus" Type="Int32" />
+    <Property Name="usercode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="addtime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ht_shop_service">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userid" Type="Int32" />
+    <Property Name="imgurl" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="summary" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="addtime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ht_single_page">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="update_time" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ht_sms_config">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="smsurl" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="smsuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="smspwd" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="addtime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ht_sms_record">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="codetype" Type="Int32" />
+    <Property Name="expirestime" Type="DateTime" Precision="3" />
+    <Property Name="addtime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ht_sms_template">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="contents" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sort" Type="Int32" />
+    <Property Name="addtime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ht_sys_config">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="xkey" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="xvalue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="addtime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ht_transport_demand">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userid" Type="Int32" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="boatid" Type="Int32" />
+    <Property Name="harborid" Type="Int32" />
+    <Property Name="quayid" Type="Int32" />
+    <Property Name="starttime" Type="DateTime" Precision="3" />
+    <Property Name="endtime" Type="DateTime" Precision="3" />
+    <Property Name="berthport" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="terminalharborid" Type="Int32" />
+    <Property Name="mileage" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="shipment" Type="Int32" />
+    <Property Name="remaintonnage" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="addtime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ht_user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="salt" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="qq" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="wechat" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="usertype" Type="Int32" />
+    <Property Name="mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="avatar" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="realname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="company" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="idcard" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="usercode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="charterno" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="charter_img" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="idcard_pros_img" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="idcard_cons_img" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="transport_certificate_img" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="certified_stauts" Type="Int32" />
+    <Property Name="points" Type="Int32" />
+    <Property Name="shopname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="shopaddress" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="shopinfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="audittime" Type="DateTime" Precision="3" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="addtime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ht_user_message">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="msgtype" Type="Int32" />
+    <Property Name="senduid" Type="Int32" />
+    <Property Name="receiveuid" Type="Int32" />
+    <Property Name="title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="readstatus" Type="Int32" />
+    <Property Name="readtime" Type="DateTime" Precision="3" />
+    <Property Name="addtime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ht_user_recruit">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userid" Type="Int32" />
+    <Property Name="title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="classid" Type="Int32" />
+    <Property Name="companyname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="district" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="companynature" Type="Int32" />
+    <Property Name="companyscale" Type="Int32" />
+    <Property Name="companycontact" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="companymobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="companysummary" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="wealtag" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="recruitprovince" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="recruitcity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="recruitdistrict" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="recruitaddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="education" Type="Int32" />
+    <Property Name="experience" Type="Int32" />
+    <Property Name="age" Type="Int32" />
+    <Property Name="salary" Type="Int32" />
+    <Property Name="positionsummary" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="clicks" Type="Int32" />
+    <Property Name="ishot" Type="Int32" />
+    <Property Name="updatetime" Type="DateTime" Precision="3" />
+    <Property Name="addtime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <Association Name="FK_ht_boat_image_ht_boat">
+    <End Role="ht_boat" Type="Self.ht_boat" Multiplicity="0..1" />
+    <End Role="ht_boat_image" Type="Self.ht_boat_image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ht_boat">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ht_boat_image">
+        <PropertyRef Name="bid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ht_freight_demand_image_ht_freight_demand">
+    <End Role="ht_freight_demand" Type="Self.ht_freight_demand" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ht_freight_demand_image" Type="Self.ht_freight_demand_image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ht_freight_demand">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ht_freight_demand_image">
+        <PropertyRef Name="fid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ht_quay_ht_harbor">
+    <End Role="ht_harbor" Type="Self.ht_harbor" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ht_quay" Type="Self.ht_quay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ht_harbor">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ht_quay">
+        <PropertyRef Name="hid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ht_integral_product_image_ht_integral_product">
+    <End Role="ht_integral_product" Type="Self.ht_integral_product" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ht_integral_product_image" Type="Self.ht_integral_product_image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ht_integral_product">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ht_integral_product_image">
+        <PropertyRef Name="pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ht_integral_product_nature_ht_integral_product">
+    <End Role="ht_integral_product" Type="Self.ht_integral_product" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ht_integral_product_nature" Type="Self.ht_integral_product_nature" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ht_integral_product">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ht_integral_product_nature">
+        <PropertyRef Name="pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ht_manager_ht_manager_role">
+    <End Role="ht_manager_role" Type="Self.ht_manager_role" Multiplicity="0..1" />
+    <End Role="ht_manager" Type="Self.ht_manager" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ht_manager_role">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ht_manager">
+        <PropertyRef Name="roleid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ht_manager_role_value_ht_manager_role">
+    <End Role="ht_manager_role" Type="Self.ht_manager_role" Multiplicity="0..1" />
+    <End Role="ht_manager_role_value" Type="Self.ht_manager_role_value" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ht_manager_role">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ht_manager_role_value">
+        <PropertyRef Name="roleid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ht_ad" EntityType="Self.ht_ad" />
+    <EntitySet Name="ht_ad_category" EntityType="Self.ht_ad_category" />
+    <EntitySet Name="ht_boat" EntityType="Self.ht_boat" />
+    <EntitySet Name="ht_boat_admin" EntityType="Self.ht_boat_admin" />
+    <EntitySet Name="ht_boat_classify" EntityType="Self.ht_boat_classify" />
+    <EntitySet Name="ht_boat_image" EntityType="Self.ht_boat_image" />
+    <EntitySet Name="ht_freight_demand" EntityType="Self.ht_freight_demand" />
+    <EntitySet Name="ht_freight_demand_image" EntityType="Self.ht_freight_demand_image" />
+    <EntitySet Name="ht_harbor" EntityType="Self.ht_harbor" />
+    <EntitySet Name="ht_integral_order" EntityType="Self.ht_integral_order" />
+    <EntitySet Name="ht_integral_product" EntityType="Self.ht_integral_product" />
+    <EntitySet Name="ht_integral_product_image" EntityType="Self.ht_integral_product_image" />
+    <EntitySet Name="ht_integral_product_nature" EntityType="Self.ht_integral_product_nature" />
+    <EntitySet Name="ht_manager" EntityType="Self.ht_manager" />
+    <EntitySet Name="ht_manager_log" EntityType="Self.ht_manager_log" />
+    <EntitySet Name="ht_manager_role" EntityType="Self.ht_manager_role" />
+    <EntitySet Name="ht_manager_role_value" EntityType="Self.ht_manager_role_value" />
+    <EntitySet Name="ht_navigation" EntityType="Self.ht_navigation" />
+    <EntitySet Name="ht_news" EntityType="Self.ht_news" />
+    <EntitySet Name="ht_news_classify" EntityType="Self.ht_news_classify" />
+    <EntitySet Name="ht_payment" EntityType="Self.ht_payment" />
+    <EntitySet Name="ht_quay" EntityType="Self.ht_quay" />
+    <EntitySet Name="ht_recruit_classify" EntityType="Self.ht_recruit_classify" />
+    <EntitySet Name="ht_shop_member" EntityType="Self.ht_shop_member" />
+    <EntitySet Name="ht_shop_service" EntityType="Self.ht_shop_service" />
+    <EntitySet Name="ht_single_page" EntityType="Self.ht_single_page" />
+    <EntitySet Name="ht_sms_config" EntityType="Self.ht_sms_config" />
+    <EntitySet Name="ht_sms_record" EntityType="Self.ht_sms_record" />
+    <EntitySet Name="ht_sms_template" EntityType="Self.ht_sms_template" />
+    <EntitySet Name="ht_sys_config" EntityType="Self.ht_sys_config" />
+    <EntitySet Name="ht_transport_demand" EntityType="Self.ht_transport_demand" />
+    <EntitySet Name="ht_user" EntityType="Self.ht_user" />
+    <EntitySet Name="ht_user_message" EntityType="Self.ht_user_message" />
+    <EntitySet Name="ht_user_recruit" EntityType="Self.ht_user_recruit" />
+    <AssociationSet Name="FK_ht_boat_image_ht_boat" Association="Self.FK_ht_boat_image_ht_boat">
+      <End Role="ht_boat" EntitySet="ht_boat" />
+      <End Role="ht_boat_image" EntitySet="ht_boat_image" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ht_freight_demand_image_ht_freight_demand" Association="Self.FK_ht_freight_demand_image_ht_freight_demand">
+      <End Role="ht_freight_demand" EntitySet="ht_freight_demand" />
+      <End Role="ht_freight_demand_image" EntitySet="ht_freight_demand_image" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ht_quay_ht_harbor" Association="Self.FK_ht_quay_ht_harbor">
+      <End Role="ht_harbor" EntitySet="ht_harbor" />
+      <End Role="ht_quay" EntitySet="ht_quay" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ht_integral_product_image_ht_integral_product" Association="Self.FK_ht_integral_product_image_ht_integral_product">
+      <End Role="ht_integral_product" EntitySet="ht_integral_product" />
+      <End Role="ht_integral_product_image" EntitySet="ht_integral_product_image" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ht_integral_product_nature_ht_integral_product" Association="Self.FK_ht_integral_product_nature_ht_integral_product">
+      <End Role="ht_integral_product" EntitySet="ht_integral_product" />
+      <End Role="ht_integral_product_nature" EntitySet="ht_integral_product_nature" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ht_manager_ht_manager_role" Association="Self.FK_ht_manager_ht_manager_role">
+      <End Role="ht_manager_role" EntitySet="ht_manager_role" />
+      <End Role="ht_manager" EntitySet="ht_manager" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ht_manager_role_value_ht_manager_role" Association="Self.FK_ht_manager_role_value_ht_manager_role">
+      <End Role="ht_manager_role" EntitySet="ht_manager_role" />
+      <End Role="ht_manager_role_value" EntitySet="ht_manager_role_value" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

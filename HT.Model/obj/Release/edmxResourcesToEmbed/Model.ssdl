@@ -1,0 +1,1324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ht_account">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userid" Type="int" />
+    <Property Name="usertype" Type="int" />
+    <Property Name="username" Type="nvarchar" MaxLength="50" />
+    <Property Name="mobile" Type="nvarchar" MaxLength="50" />
+    <Property Name="email" Type="nvarchar" MaxLength="50" />
+    <Property Name="uid" Type="nvarchar" MaxLength="100" />
+    <Property Name="isopenpay" Type="int" />
+    <Property Name="opentime" Type="datetime" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_ad">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="code" Type="nvarchar" MaxLength="300" />
+    <Property Name="img_url" Type="nvarchar" MaxLength="200" />
+    <Property Name="url" Type="nvarchar" MaxLength="500" />
+    <Property Name="sort" Type="int" />
+    <Property Name="remarks" Type="nvarchar" MaxLength="200" />
+    <Property Name="status" Type="int" />
+  </EntityType>
+  <EntityType Name="ht_ad_category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="code" Type="nvarchar" MaxLength="50" />
+    <Property Name="sort" Type="int" />
+    <Property Name="num" Type="int" />
+  </EntityType>
+  <EntityType Name="ht_bargain">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="contractno" Type="nvarchar" MaxLength="100" />
+    <Property Name="shipperuid" Type="int" />
+    <Property Name="captainuid" Type="int" />
+    <Property Name="action" Type="int" />
+    <Property Name="bid" Type="int" />
+    <Property Name="sname" Type="nvarchar" MaxLength="100" />
+    <Property Name="smobile" Type="nvarchar" MaxLength="100" />
+    <Property Name="cname" Type="nvarchar" MaxLength="100" />
+    <Property Name="cmobile" Type="nvarchar" MaxLength="100" />
+    <Property Name="goodsname" Type="nvarchar" MaxLength="100" />
+    <Property Name="goodstype" Type="nvarchar" MaxLength="50" />
+    <Property Name="boatname" Type="nvarchar" MaxLength="100" />
+    <Property Name="weight" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="startharborid" Type="int" />
+    <Property Name="startharborname" Type="nvarchar" MaxLength="50" />
+    <Property Name="endharborid" Type="int" />
+    <Property Name="endharborname" Type="nvarchar" MaxLength="50" />
+    <Property Name="loaddate" Type="datetime" />
+    <Property Name="unloaddate" Type="datetime" />
+    <Property Name="storage" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="draft" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="costcalc" Type="nvarchar" MaxLength="50" />
+    <Property Name="isssign" Type="int" />
+    <Property Name="shippersign" Type="nvarchar" MaxLength="50" />
+    <Property Name="shippersigntime" Type="datetime" />
+    <Property Name="iscsign" Type="int" />
+    <Property Name="captainsign" Type="nvarchar" MaxLength="50" />
+    <Property Name="captainsigntime" Type="datetime" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_boat">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userid" Type="int" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="idcode" Type="nvarchar" MaxLength="100" />
+    <Property Name="classifid" Type="int" />
+    <Property Name="adminid" Type="int" />
+    <Property Name="status" Type="int" />
+    <Property Name="companyname" Type="nvarchar" MaxLength="50" />
+    <Property Name="tonnage" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="payload" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="longueur" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="wide" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="draftarea" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="approvestatus" Type="int" />
+    <Property Name="thumbnail" Type="nvarchar" MaxLength="300" />
+    <Property Name="transcertimg" Type="nvarchar" MaxLength="300" />
+    <Property Name="boatcertimg" Type="nvarchar" MaxLength="300" />
+    <Property Name="allotimg" Type="nvarchar" MaxLength="300" />
+    <Property Name="transclassid" Type="int" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_boat_admin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userid" Type="int" />
+    <Property Name="username" Type="nvarchar" MaxLength="100" />
+    <Property Name="password" Type="nvarchar" MaxLength="100" />
+    <Property Name="salt" Type="nvarchar" MaxLength="50" />
+    <Property Name="nickname" Type="nvarchar" MaxLength="50" />
+    <Property Name="avatar" Type="nvarchar" MaxLength="300" />
+    <Property Name="mobile" Type="nvarchar" MaxLength="50" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_boat_bidding">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userid" Type="int" />
+    <Property Name="bid" Type="int" />
+    <Property Name="pid" Type="int" />
+    <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="status" Type="int" />
+    <Property Name="iswin" Type="int" />
+    <Property Name="wintime" Type="datetime" />
+    <Property Name="remark" Type="nvarchar(max)" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_boat_classify">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="status" Type="int" />
+    <Property Name="sort" Type="int" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_boat_image">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="bid" Type="int" />
+    <Property Name="imgurl" Type="nvarchar" MaxLength="300" />
+    <Property Name="sort" Type="int" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_boat_transport_classify">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="status" Type="int" />
+    <Property Name="sort" Type="int" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pid" Type="int" />
+    <Property Name="cid" Type="int" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="sort" Type="int" />
+  </EntityType>
+  <EntityType Name="ht_category_num">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pid" Type="int" />
+    <Property Name="cid" Type="int" />
+    <Property Name="min" Type="int" />
+    <Property Name="max" Type="int" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="sort" Type="int" />
+  </EntityType>
+  <EntityType Name="ht_dissent_classify">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="status" Type="int" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_fittings_demand">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userid" Type="int" />
+    <Property Name="title" Type="nvarchar" MaxLength="100" />
+    <Property Name="summary" Type="nvarchar(max)" />
+    <Property Name="contact" Type="nvarchar" MaxLength="50" />
+    <Property Name="mobile" Type="nvarchar" MaxLength="50" />
+    <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="brand" Type="nvarchar" MaxLength="50" />
+    <Property Name="model" Type="nvarchar" MaxLength="50" />
+    <Property Name="size" Type="nvarchar" MaxLength="50" />
+    <Property Name="details" Type="nvarchar(max)" />
+    <Property Name="addtime" Type="datetime" />
+    <Property Name="status" Type="int" />
+    <Property Name="thumbnail" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="ht_fittings_demand_image">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fid" Type="int" />
+    <Property Name="imgurl" Type="nvarchar" MaxLength="300" />
+    <Property Name="sort" Type="int" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_freight_demand">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tenderno" Type="nvarchar" MaxLength="100" />
+    <Property Name="userid" Type="int" />
+    <Property Name="thumbnail" Type="nvarchar" MaxLength="300" />
+    <Property Name="startharbor" Type="int" />
+    <Property Name="startquay" Type="int" />
+    <Property Name="endharbor" Type="int" />
+    <Property Name="endquay" Type="int" />
+    <Property Name="name" Type="nvarchar" MaxLength="100" />
+    <Property Name="classid" Type="int" />
+    <Property Name="weight" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="shippingtime" Type="datetime" />
+    <Property Name="shippingmode" Type="int" />
+    <Property Name="shipment" Type="nvarchar" MaxLength="100" />
+    <Property Name="loaddays" Type="int" />
+    <Property Name="unloaddays" Type="int" />
+    <Property Name="draft" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="storage" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="demurrage" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="portfee" Type="int" />
+    <Property Name="otherfee" Type="nvarchar(max)" />
+    <Property Name="payid" Type="int" />
+    <Property Name="invoicetype" Type="int" />
+    <Property Name="invoicetitle" Type="nvarchar" MaxLength="100" />
+    <Property Name="remark" Type="nvarchar(max)" />
+    <Property Name="startrate" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="checkrate" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="maxprice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="margin" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="opentime" Type="datetime" />
+    <Property Name="status" Type="int" />
+    <Property Name="wid" Type="int" />
+    <Property Name="wintime" Type="datetime" />
+    <Property Name="isrepeal" Type="int" />
+    <Property Name="repealtime" Type="datetime" />
+    <Property Name="orderno" Type="nvarchar" MaxLength="100" />
+    <Property Name="tradeno" Type="nvarchar" MaxLength="100" />
+    <Property Name="bizno" Type="nvarchar" MaxLength="100" />
+    <Property Name="paytime" Type="datetime" />
+    <Property Name="paystatus" Type="int" />
+    <Property Name="merchorderno" Type="nvarchar" MaxLength="100" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_freight_demand_image">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fid" Type="int" />
+    <Property Name="imgurl" Type="nvarchar" MaxLength="300" />
+    <Property Name="sort" Type="int" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_freight_goods">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="status" Type="int" />
+    <Property Name="sort" Type="int" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_freight_shipment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="status" Type="int" />
+    <Property Name="sort" Type="int" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_friendship_link">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="link_url" Type="nvarchar" MaxLength="300" />
+    <Property Name="sort" Type="int" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_goods_bidding">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="status" Type="int" />
+    <Property Name="userid" Type="int" />
+    <Property Name="mobile" Type="nvarchar" MaxLength="50" />
+    <Property Name="bid" Type="int" />
+    <Property Name="pid" Type="int" />
+    <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="iswin" Type="int" />
+    <Property Name="wintime" Type="datetime" />
+    <Property Name="addtime" Type="datetime" />
+    <Property Name="remark" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="ht_harbor">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="100" />
+    <Property Name="sort" Type="int" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_help">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="contents" Type="nvarchar(max)" />
+    <Property Name="sort" Type="int" />
+    <Property Name="excursion_count" Type="int" />
+    <Property Name="update_time" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_integral_order">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="orderno" Type="nvarchar" MaxLength="100" />
+    <Property Name="userid" Type="int" />
+    <Property Name="pid" Type="int" />
+    <Property Name="title" Type="nvarchar" MaxLength="100" />
+    <Property Name="acceptname" Type="nvarchar" MaxLength="50" />
+    <Property Name="mobile" Type="nvarchar" MaxLength="50" />
+    <Property Name="province" Type="nvarchar" MaxLength="50" />
+    <Property Name="city" Type="nvarchar" MaxLength="50" />
+    <Property Name="district" Type="nvarchar" MaxLength="50" />
+    <Property Name="address" Type="nvarchar" MaxLength="500" />
+    <Property Name="status" Type="int" />
+    <Property Name="audittime" Type="datetime" />
+    <Property Name="addtime" Type="datetime" />
+    <Property Name="spend_integral" Type="int" />
+  </EntityType>
+  <EntityType Name="ht_integral_product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="100" />
+    <Property Name="summary" Type="nvarchar(max)" />
+    <Property Name="details" Type="nvarchar(max)" />
+    <Property Name="redeempoint" Type="int" />
+    <Property Name="stock" Type="int" />
+    <Property Name="brand" Type="nvarchar" MaxLength="50" />
+    <Property Name="model" Type="nvarchar" MaxLength="50" />
+    <Property Name="size" Type="nvarchar" MaxLength="50" />
+    <Property Name="status" Type="int" />
+    <Property Name="thumbnail" Type="nvarchar" MaxLength="300" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_integral_product_image">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pid" Type="int" />
+    <Property Name="url" Type="nvarchar" MaxLength="500" />
+    <Property Name="sort" Type="int" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_integral_product_nature">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pid" Type="int" />
+    <Property Name="xkey" Type="nvarchar" MaxLength="50" />
+    <Property Name="xvalue" Type="nvarchar" MaxLength="100" />
+    <Property Name="sort" Type="int" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_integral_type">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="minimum" Type="int" />
+    <Property Name="highest" Type="int" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_manager">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nvarchar" MaxLength="50" />
+    <Property Name="password" Type="nvarchar" MaxLength="100" />
+    <Property Name="roleid" Type="int" />
+    <Property Name="islock" Type="int" />
+    <Property Name="roletype" Type="int" />
+    <Property Name="salt" Type="nvarchar" MaxLength="50" />
+    <Property Name="nickname" Type="nvarchar" MaxLength="50" />
+    <Property Name="mobile" Type="nvarchar" MaxLength="50" />
+    <Property Name="sex" Type="nvarchar" MaxLength="50" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_manager_log">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userid" Type="int" />
+    <Property Name="username" Type="nvarchar" MaxLength="50" />
+    <Property Name="actiontype" Type="nvarchar" MaxLength="50" />
+    <Property Name="remark" Type="nvarchar" MaxLength="50" />
+    <Property Name="userip" Type="nvarchar" MaxLength="50" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_manager_role">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="rolename" Type="nvarchar" MaxLength="50" />
+    <Property Name="roletype" Type="int" />
+    <Property Name="issys" Type="int" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_manager_role_value">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="roleid" Type="int" />
+    <Property Name="navname" Type="nvarchar" MaxLength="100" />
+    <Property Name="actiontype" Type="nvarchar" MaxLength="50" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_navigation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="parentid" Type="int" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="subtitle" Type="nvarchar" MaxLength="50" />
+    <Property Name="iconurl" Type="nvarchar" MaxLength="100" />
+    <Property Name="linkurl" Type="nvarchar" MaxLength="200" />
+    <Property Name="isshow" Type="int" />
+    <Property Name="sortid" Type="int" />
+    <Property Name="remark" Type="nvarchar" MaxLength="200" />
+    <Property Name="actiontype" Type="nvarchar" MaxLength="200" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_news">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="100" />
+    <Property Name="summary" Type="nvarchar(max)" />
+    <Property Name="classifyid" Type="int" />
+    <Property Name="description" Type="nvarchar(max)" />
+    <Property Name="keywords" Type="nvarchar(max)" />
+    <Property Name="details" Type="nvarchar(max)" />
+    <Property Name="clicks" Type="int" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_news_classify">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="status" Type="int" />
+    <Property Name="sort" Type="int" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_order">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="orderno" Type="nvarchar" MaxLength="100" />
+    <Property Name="forderno" Type="nvarchar" MaxLength="100" />
+    <Property Name="fpaystatus" Type="int" />
+    <Property Name="fpaytime" Type="datetime" />
+    <Property Name="ftradeno" Type="nvarchar" MaxLength="100" />
+    <Property Name="lorderno" Type="nvarchar" MaxLength="100" />
+    <Property Name="lpaystatus" Type="int" />
+    <Property Name="lpaytime" Type="datetime" />
+    <Property Name="ltradeno" Type="nvarchar" MaxLength="100" />
+    <Property Name="bargainid" Type="int" />
+    <Property Name="bargainno" Type="nvarchar" MaxLength="100" />
+    <Property Name="captainuid" Type="int" />
+    <Property Name="shipperuid" Type="int" />
+    <Property Name="carrierid" Type="int" />
+    <Property Name="freightid" Type="int" />
+    <Property Name="orderstatus" Type="int" />
+    <Property Name="appraisestatus" Type="int" />
+    <Property Name="payid" Type="int" />
+    <Property Name="imprestrate" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="finalrate" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="imprestamount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="finalamount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="boatid" Type="int" />
+    <Property Name="boatcode" Type="nvarchar" MaxLength="100" />
+    <Property Name="starttime" Type="datetime" />
+    <Property Name="finishtime" Type="datetime" />
+    <Property Name="weight" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="bid" Type="int" />
+    <Property Name="bidprice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="isarrive" Type="int" />
+    <Property Name="arrivetime" Type="datetime" />
+    <Property Name="checkstatus" Type="int" />
+    <Property Name="checktime" Type="datetime" />
+    <Property Name="checkweight" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="checkremark" Type="nvarchar(max)" />
+    <Property Name="unitprice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="delayamount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="otheramount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="payablefinalamount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="realfinalamount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="issend" Type="int" />
+    <Property Name="isdissent" Type="int" />
+    <Property Name="sendtime" Type="datetime" />
+    <Property Name="isprofit" Type="int" />
+    <Property Name="profittime" Type="datetime" />
+    <Property Name="profittradeno" Type="nvarchar" MaxLength="100" />
+    <Property Name="ismarginrefund" Type="int" />
+    <Property Name="marginrefundno" Type="nvarchar" MaxLength="100" />
+    <Property Name="marginrefundtradeno" Type="nvarchar" MaxLength="100" />
+    <Property Name="marginrefundtime" Type="datetime" />
+    <Property Name="marginrefundamount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_order_appraise">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userid" Type="int" />
+    <Property Name="orderid" Type="int" />
+    <Property Name="captainuid" Type="int" />
+    <Property Name="contents" Type="nvarchar(max)" />
+    <Property Name="deliveryspeed" Type="int" />
+    <Property Name="servicequality" Type="int" />
+    <Property Name="goodsdamage" Type="int" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_order_appraise_image">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pid" Type="int" />
+    <Property Name="userid" Type="int" />
+    <Property Name="imgurl" Type="nvarchar" MaxLength="300" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_order_check_image">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="orderid" Type="int" />
+    <Property Name="userid" Type="int" />
+    <Property Name="imgurl" Type="nvarchar" MaxLength="300" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_order_dissent">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="orderid" Type="int" />
+    <Property Name="userid" Type="int" />
+    <Property Name="captainuid" Type="int" />
+    <Property Name="applyremark" Type="nvarchar(max)" />
+    <Property Name="processremark" Type="nvarchar(max)" />
+    <Property Name="classid" Type="int" />
+    <Property Name="dealremark" Type="nvarchar(max)" />
+    <Property Name="dealamount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="contact" Type="nvarchar" MaxLength="100" />
+    <Property Name="status" Type="int" />
+    <Property Name="isplatform" Type="int" />
+    <Property Name="platformresult" Type="int" />
+    <Property Name="platformstatus" Type="int" />
+    <Property Name="dealtime" Type="datetime" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_order_dissent_image">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pid" Type="int" />
+    <Property Name="userid" Type="int" />
+    <Property Name="imgurl" Type="nvarchar" MaxLength="300" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_parts_product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="100" />
+    <Property Name="type" Type="int" />
+    <Property Name="summary" Type="nvarchar(max)" />
+    <Property Name="details" Type="nvarchar(max)" />
+    <Property Name="price" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="contacts" Type="nvarchar" MaxLength="50" />
+    <Property Name="mobile" Type="nvarchar" MaxLength="50" />
+    <Property Name="brand" Type="nvarchar" MaxLength="50" />
+    <Property Name="model" Type="nvarchar" MaxLength="50" />
+    <Property Name="size" Type="nvarchar" MaxLength="50" />
+    <Property Name="status" Type="int" />
+    <Property Name="thumbnail" Type="nvarchar" MaxLength="300" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_parts_product_image">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pid" Type="int" />
+    <Property Name="url" Type="nvarchar" MaxLength="500" />
+    <Property Name="sort" Type="int" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_parts_product_nature">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pid" Type="int" />
+    <Property Name="xkey" Type="nvarchar" MaxLength="50" />
+    <Property Name="xvalue" Type="nvarchar" MaxLength="100" />
+    <Property Name="sort" Type="int" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_parts_type">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="sort" Type="int" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_payment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="remark" Type="nvarchar" MaxLength="300" />
+    <Property Name="status" Type="int" />
+    <Property Name="sort" Type="int" />
+    <Property Name="fee" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_quay">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="hid" Type="int" />
+    <Property Name="title" Type="nvarchar" MaxLength="100" />
+    <Property Name="longitude" Type="decimal" Precision="18" Scale="6" />
+    <Property Name="latitude" Type="decimal" Precision="18" Scale="6" />
+    <Property Name="sort" Type="int" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_recruit_classify">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="sort" Type="int" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_region">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="pid" Type="int" />
+    <Property Name="cid" Type="int" />
+    <Property Name="sort" Type="int" />
+  </EntityType>
+  <EntityType Name="ht_revocation_record">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="action" Type="int" />
+    <Property Name="pid" Type="int" />
+    <Property Name="userid" Type="int" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_shop_member">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userid" Type="int" />
+    <Property Name="username" Type="nvarchar" MaxLength="100" />
+    <Property Name="nickname" Type="nvarchar" MaxLength="100" />
+    <Property Name="password" Type="nvarchar" MaxLength="100" />
+    <Property Name="salt" Type="nvarchar" MaxLength="50" />
+    <Property Name="avatar" Type="nvarchar" MaxLength="300" />
+    <Property Name="sex" Type="int" />
+    <Property Name="age" Type="int" />
+    <Property Name="userstatus" Type="int" />
+    <Property Name="usercode" Type="nvarchar" MaxLength="100" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_shop_service">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userid" Type="int" />
+    <Property Name="imgurl" Type="nvarchar" MaxLength="300" />
+    <Property Name="title" Type="nvarchar" MaxLength="100" />
+    <Property Name="summary" Type="nvarchar(max)" />
+    <Property Name="details" Type="nvarchar(max)" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_single_page">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="code" Type="nvarchar" MaxLength="50" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="content" Type="nvarchar(max)" />
+    <Property Name="update_time" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_sms_config">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="smsurl" Type="nvarchar" MaxLength="100" />
+    <Property Name="smsuser" Type="nvarchar" MaxLength="50" />
+    <Property Name="smspwd" Type="nvarchar" MaxLength="100" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_sms_email">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="contents" Type="nvarchar" MaxLength="500" />
+    <Property Name="code" Type="nvarchar" MaxLength="50" />
+    <Property Name="sort" Type="int" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_sms_record">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="mobile" Type="nvarchar" MaxLength="50" />
+    <Property Name="code" Type="nvarchar" MaxLength="50" />
+    <Property Name="codetype" Type="int" />
+    <Property Name="expirestime" Type="datetime" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_sms_template">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="contents" Type="nvarchar" MaxLength="500" />
+    <Property Name="code" Type="nvarchar" MaxLength="50" />
+    <Property Name="sort" Type="int" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_sys_config">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="xkey" Type="nvarchar(max)" />
+    <Property Name="xvalue" Type="nvarchar(max)" />
+    <Property Name="remark" Type="nvarchar(max)" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_transport_demand">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tenderno" Type="nvarchar" MaxLength="100" />
+    <Property Name="userid" Type="int" />
+    <Property Name="status" Type="int" />
+    <Property Name="boatid" Type="int" />
+    <Property Name="harborid" Type="int" />
+    <Property Name="quayid" Type="int" />
+    <Property Name="starttime" Type="datetime" />
+    <Property Name="endtime" Type="datetime" />
+    <Property Name="berthport" Type="nvarchar(max)" />
+    <Property Name="terminalharborid" Type="int" />
+    <Property Name="terminalquayid" Type="int" />
+    <Property Name="isback" Type="int" />
+    <Property Name="mileage" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="shipment" Type="int" />
+    <Property Name="remaintonnage" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="remark" Type="nvarchar(max)" />
+    <Property Name="margin" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="paystatus" Type="int" />
+    <Property Name="paytime" Type="datetime" />
+    <Property Name="orderno" Type="nvarchar" MaxLength="100" />
+    <Property Name="tradeno" Type="nvarchar" MaxLength="100" />
+    <Property Name="bizno" Type="nvarchar" MaxLength="100" />
+    <Property Name="merchorderno" Type="nvarchar" MaxLength="100" />
+    <Property Name="isrepeal" Type="int" />
+    <Property Name="repealtime" Type="datetime" />
+    <Property Name="wid" Type="int" />
+    <Property Name="wintime" Type="datetime" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="nvarchar" MaxLength="200" />
+    <Property Name="password" Type="nvarchar" MaxLength="100" />
+    <Property Name="salt" Type="nvarchar" MaxLength="100" />
+    <Property Name="email" Type="nvarchar" MaxLength="50" />
+    <Property Name="qq" Type="nvarchar" MaxLength="50" />
+    <Property Name="wechat" Type="nvarchar" MaxLength="100" />
+    <Property Name="address" Type="nvarchar" MaxLength="300" />
+    <Property Name="usertype" Type="int" />
+    <Property Name="mobile" Type="nvarchar" MaxLength="50" />
+    <Property Name="avatar" Type="nvarchar" MaxLength="300" />
+    <Property Name="nickname" Type="nvarchar" MaxLength="50" />
+    <Property Name="realname" Type="nvarchar" MaxLength="50" />
+    <Property Name="company" Type="nvarchar" MaxLength="50" />
+    <Property Name="company_introduction" Type="nvarchar(max)" />
+    <Property Name="idcard" Type="nvarchar" MaxLength="50" />
+    <Property Name="usercode" Type="nvarchar" MaxLength="100" />
+    <Property Name="charterno" Type="nvarchar" MaxLength="100" />
+    <Property Name="charter_img" Type="nvarchar" MaxLength="300" />
+    <Property Name="idcard_pros_img" Type="nvarchar" MaxLength="300" />
+    <Property Name="idcard_cons_img" Type="nvarchar" MaxLength="300" />
+    <Property Name="transport_certificate_img" Type="nvarchar" MaxLength="300" />
+    <Property Name="certified_stauts" Type="int" />
+    <Property Name="points" Type="int" />
+    <Property Name="isshop" Type="int" />
+    <Property Name="shopstatus" Type="int" />
+    <Property Name="shopname" Type="nvarchar" MaxLength="100" />
+    <Property Name="shopaddress" Type="nvarchar" MaxLength="300" />
+    <Property Name="shopinfo" Type="nvarchar(max)" />
+    <Property Name="shopcharteimg" Type="nvarchar" MaxLength="300" />
+    <Property Name="shopcharteno" Type="nvarchar" MaxLength="50" />
+    <Property Name="reputation" Type="int" />
+    <Property Name="audittime" Type="datetime" />
+    <Property Name="status" Type="int" />
+    <Property Name="firstlevel" Type="int" />
+    <Property Name="secondlevel" Type="int" />
+    <Property Name="thirdlevel" Type="int" />
+    <Property Name="distributionamount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_user_message">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="msgtype" Type="int" />
+    <Property Name="senduid" Type="int" />
+    <Property Name="receiveuid" Type="int" />
+    <Property Name="title" Type="nvarchar" MaxLength="100" />
+    <Property Name="details" Type="nvarchar(max)" />
+    <Property Name="readstatus" Type="int" />
+    <Property Name="readtime" Type="datetime" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_user_point_log">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userid" Type="int" />
+    <Property Name="point" Type="int" />
+    <Property Name="remark" Type="varchar" MaxLength="50" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_user_recruit">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userid" Type="int" />
+    <Property Name="title" Type="nvarchar" MaxLength="100" />
+    <Property Name="classid" Type="int" />
+    <Property Name="companyname" Type="nvarchar" MaxLength="100" />
+    <Property Name="province" Type="nvarchar" MaxLength="50" />
+    <Property Name="city" Type="nvarchar" MaxLength="50" />
+    <Property Name="district" Type="nvarchar" MaxLength="50" />
+    <Property Name="address" Type="nvarchar" MaxLength="100" />
+    <Property Name="companynature" Type="int" />
+    <Property Name="companyscale" Type="int" />
+    <Property Name="companycontact" Type="nvarchar" MaxLength="50" />
+    <Property Name="companymobile" Type="nvarchar" MaxLength="50" />
+    <Property Name="companysummary" Type="nvarchar(max)" />
+    <Property Name="wealtag" Type="nvarchar" MaxLength="200" />
+    <Property Name="recruitprovince" Type="nvarchar" MaxLength="50" />
+    <Property Name="recruitcity" Type="nvarchar" MaxLength="50" />
+    <Property Name="recruitdistrict" Type="nvarchar" MaxLength="50" />
+    <Property Name="recruitaddress" Type="nvarchar" MaxLength="100" />
+    <Property Name="education" Type="int" />
+    <Property Name="experience" Type="int" />
+    <Property Name="age" Type="int" />
+    <Property Name="salary" Type="int" />
+    <Property Name="positionsummary" Type="nvarchar(max)" />
+    <Property Name="clicks" Type="int" />
+    <Property Name="ishot" Type="int" />
+    <Property Name="updatetime" Type="datetime" />
+    <Property Name="status" Type="int" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_user_resume">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userid" Type="int" />
+    <Property Name="title" Type="nvarchar" MaxLength="200" />
+    <Property Name="classid" Type="int" />
+    <Property Name="province" Type="nvarchar" MaxLength="50" />
+    <Property Name="city" Type="nvarchar" MaxLength="50" />
+    <Property Name="district" Type="nvarchar" MaxLength="50" />
+    <Property Name="liveprovince" Type="nvarchar" MaxLength="50" />
+    <Property Name="livecity" Type="nvarchar" MaxLength="50" />
+    <Property Name="livedistrict" Type="nvarchar" MaxLength="50" />
+    <Property Name="liveaddress" Type="nchar" MaxLength="100" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+    <Property Name="sex" Type="int" />
+    <Property Name="age" Type="int" />
+    <Property Name="mobile" Type="nvarchar" MaxLength="50" />
+    <Property Name="tags" Type="nvarchar" MaxLength="100" />
+    <Property Name="workyear" Type="int" />
+    <Property Name="salary" Type="int" />
+    <Property Name="school" Type="nvarchar" MaxLength="100" />
+    <Property Name="education" Type="int" />
+    <Property Name="admissiontime" Type="date" />
+    <Property Name="graduationdate" Type="date" />
+    <Property Name="major" Type="nvarchar" MaxLength="50" />
+    <Property Name="status" Type="int" />
+    <Property Name="addtime" Type="datetime" />
+    <Property Name="updatetime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_user_resume_classify">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="sort" Type="int" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_user_resume_exprience">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pid" Type="int" />
+    <Property Name="startdate" Type="date" />
+    <Property Name="enddate" Type="date" />
+    <Property Name="industry" Type="nvarchar" MaxLength="50" />
+    <Property Name="position" Type="nvarchar" MaxLength="50" />
+    <Property Name="salary" Type="int" />
+    <Property Name="details" Type="nvarchar(max)" />
+    <Property Name="addtime" Type="datetime" />
+  </EntityType>
+  <Association Name="FK__ht_boat_ima__bid__36470DEF">
+    <End Role="ht_boat" Type="Self.ht_boat" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ht_boat_image" Type="Self.ht_boat_image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ht_boat">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ht_boat_image">
+        <PropertyRef Name="bid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ht_fittings__fid__373B3228">
+    <End Role="ht_fittings_demand" Type="Self.ht_fittings_demand" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ht_fittings_demand_image" Type="Self.ht_fittings_demand_image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ht_fittings_demand">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ht_fittings_demand_image">
+        <PropertyRef Name="fid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ht_freight___fid__382F5661">
+    <End Role="ht_freight_demand" Type="Self.ht_freight_demand" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ht_freight_demand_image" Type="Self.ht_freight_demand_image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ht_freight_demand">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ht_freight_demand_image">
+        <PropertyRef Name="fid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ht_integral__pid__39237A9A">
+    <End Role="ht_integral_product" Type="Self.ht_integral_product" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ht_integral_product_image" Type="Self.ht_integral_product_image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ht_integral_product">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ht_integral_product_image">
+        <PropertyRef Name="pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ht_integral__pid__3A179ED3">
+    <End Role="ht_integral_product" Type="Self.ht_integral_product" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ht_integral_product_nature" Type="Self.ht_integral_product_nature" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ht_integral_product">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ht_integral_product_nature">
+        <PropertyRef Name="pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ht_manage__rolei__3B0BC30C">
+    <End Role="ht_manager_role" Type="Self.ht_manager_role" Multiplicity="0..1" />
+    <End Role="ht_manager" Type="Self.ht_manager" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ht_manager_role">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ht_manager">
+        <PropertyRef Name="roleid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ht_manage__rolei__3BFFE745">
+    <End Role="ht_manager_role" Type="Self.ht_manager_role" Multiplicity="0..1" />
+    <End Role="ht_manager_role_value" Type="Self.ht_manager_role_value" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ht_manager_role">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ht_manager_role_value">
+        <PropertyRef Name="roleid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ht_order___order__3DE82FB7">
+    <End Role="ht_order" Type="Self.ht_order" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ht_order_check_image" Type="Self.ht_order_check_image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ht_order">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ht_order_check_image">
+        <PropertyRef Name="orderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ht_order_ap__pid__3CF40B7E">
+    <End Role="ht_order_appraise" Type="Self.ht_order_appraise" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ht_order_appraise_image" Type="Self.ht_order_appraise_image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ht_order_appraise">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ht_order_appraise_image">
+        <PropertyRef Name="pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ht_order_di__pid__3EDC53F0">
+    <End Role="ht_order_dissent" Type="Self.ht_order_dissent" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ht_order_dissent_image" Type="Self.ht_order_dissent_image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ht_order_dissent">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ht_order_dissent_image">
+        <PropertyRef Name="pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ht_parts_pr__pid__3FD07829">
+    <End Role="ht_parts_product" Type="Self.ht_parts_product" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ht_parts_product_image" Type="Self.ht_parts_product_image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ht_parts_product">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ht_parts_product_image">
+        <PropertyRef Name="pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ht_parts_pr__pid__40C49C62">
+    <End Role="ht_parts_product" Type="Self.ht_parts_product" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ht_parts_product_nature" Type="Self.ht_parts_product_nature" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ht_parts_product">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ht_parts_product_nature">
+        <PropertyRef Name="pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ht_quay__hid__41B8C09B">
+    <End Role="ht_harbor" Type="Self.ht_harbor" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ht_quay" Type="Self.ht_quay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ht_harbor">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ht_quay">
+        <PropertyRef Name="hid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ht_user_res__pid__43A1090D">
+    <End Role="ht_user_resume" Type="Self.ht_user_resume" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ht_user_resume_exprience" Type="Self.ht_user_resume_exprience" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ht_user_resume">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ht_user_resume_exprience">
+        <PropertyRef Name="pid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="ht_account" EntityType="Self.ht_account" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_ad" EntityType="Self.ht_ad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_ad_category" EntityType="Self.ht_ad_category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_bargain" EntityType="Self.ht_bargain" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_boat" EntityType="Self.ht_boat" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_boat_admin" EntityType="Self.ht_boat_admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_boat_bidding" EntityType="Self.ht_boat_bidding" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_boat_classify" EntityType="Self.ht_boat_classify" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_boat_image" EntityType="Self.ht_boat_image" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_boat_transport_classify" EntityType="Self.ht_boat_transport_classify" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_category" EntityType="Self.ht_category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_category_num" EntityType="Self.ht_category_num" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_dissent_classify" EntityType="Self.ht_dissent_classify" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_fittings_demand" EntityType="Self.ht_fittings_demand" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_fittings_demand_image" EntityType="Self.ht_fittings_demand_image" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_freight_demand" EntityType="Self.ht_freight_demand" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_freight_demand_image" EntityType="Self.ht_freight_demand_image" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_freight_goods" EntityType="Self.ht_freight_goods" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_freight_shipment" EntityType="Self.ht_freight_shipment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_friendship_link" EntityType="Self.ht_friendship_link" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_goods_bidding" EntityType="Self.ht_goods_bidding" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_harbor" EntityType="Self.ht_harbor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_help" EntityType="Self.ht_help" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_integral_order" EntityType="Self.ht_integral_order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_integral_product" EntityType="Self.ht_integral_product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_integral_product_image" EntityType="Self.ht_integral_product_image" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_integral_product_nature" EntityType="Self.ht_integral_product_nature" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_integral_type" EntityType="Self.ht_integral_type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_manager" EntityType="Self.ht_manager" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_manager_log" EntityType="Self.ht_manager_log" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_manager_role" EntityType="Self.ht_manager_role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_manager_role_value" EntityType="Self.ht_manager_role_value" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_navigation" EntityType="Self.ht_navigation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_news" EntityType="Self.ht_news" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_news_classify" EntityType="Self.ht_news_classify" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_order" EntityType="Self.ht_order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_order_appraise" EntityType="Self.ht_order_appraise" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_order_appraise_image" EntityType="Self.ht_order_appraise_image" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_order_check_image" EntityType="Self.ht_order_check_image" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_order_dissent" EntityType="Self.ht_order_dissent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_order_dissent_image" EntityType="Self.ht_order_dissent_image" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_parts_product" EntityType="Self.ht_parts_product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_parts_product_image" EntityType="Self.ht_parts_product_image" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_parts_product_nature" EntityType="Self.ht_parts_product_nature" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_parts_type" EntityType="Self.ht_parts_type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_payment" EntityType="Self.ht_payment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_quay" EntityType="Self.ht_quay" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_recruit_classify" EntityType="Self.ht_recruit_classify" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_region" EntityType="Self.ht_region" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_revocation_record" EntityType="Self.ht_revocation_record" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_shop_member" EntityType="Self.ht_shop_member" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_shop_service" EntityType="Self.ht_shop_service" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_single_page" EntityType="Self.ht_single_page" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_sms_config" EntityType="Self.ht_sms_config" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_sms_email" EntityType="Self.ht_sms_email" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_sms_record" EntityType="Self.ht_sms_record" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_sms_template" EntityType="Self.ht_sms_template" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_sys_config" EntityType="Self.ht_sys_config" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_transport_demand" EntityType="Self.ht_transport_demand" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_user" EntityType="Self.ht_user" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_user_message" EntityType="Self.ht_user_message" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_user_point_log" EntityType="Self.ht_user_point_log" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_user_recruit" EntityType="Self.ht_user_recruit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_user_resume" EntityType="Self.ht_user_resume" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_user_resume_classify" EntityType="Self.ht_user_resume_classify" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_user_resume_exprience" EntityType="Self.ht_user_resume_exprience" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ht_boat_ima__bid__36470DEF" Association="Self.FK__ht_boat_ima__bid__36470DEF">
+      <End Role="ht_boat" EntitySet="ht_boat" />
+      <End Role="ht_boat_image" EntitySet="ht_boat_image" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ht_fittings__fid__373B3228" Association="Self.FK__ht_fittings__fid__373B3228">
+      <End Role="ht_fittings_demand" EntitySet="ht_fittings_demand" />
+      <End Role="ht_fittings_demand_image" EntitySet="ht_fittings_demand_image" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ht_freight___fid__382F5661" Association="Self.FK__ht_freight___fid__382F5661">
+      <End Role="ht_freight_demand" EntitySet="ht_freight_demand" />
+      <End Role="ht_freight_demand_image" EntitySet="ht_freight_demand_image" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ht_integral__pid__39237A9A" Association="Self.FK__ht_integral__pid__39237A9A">
+      <End Role="ht_integral_product" EntitySet="ht_integral_product" />
+      <End Role="ht_integral_product_image" EntitySet="ht_integral_product_image" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ht_integral__pid__3A179ED3" Association="Self.FK__ht_integral__pid__3A179ED3">
+      <End Role="ht_integral_product" EntitySet="ht_integral_product" />
+      <End Role="ht_integral_product_nature" EntitySet="ht_integral_product_nature" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ht_manage__rolei__3B0BC30C" Association="Self.FK__ht_manage__rolei__3B0BC30C">
+      <End Role="ht_manager_role" EntitySet="ht_manager_role" />
+      <End Role="ht_manager" EntitySet="ht_manager" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ht_manage__rolei__3BFFE745" Association="Self.FK__ht_manage__rolei__3BFFE745">
+      <End Role="ht_manager_role" EntitySet="ht_manager_role" />
+      <End Role="ht_manager_role_value" EntitySet="ht_manager_role_value" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ht_order___order__3DE82FB7" Association="Self.FK__ht_order___order__3DE82FB7">
+      <End Role="ht_order" EntitySet="ht_order" />
+      <End Role="ht_order_check_image" EntitySet="ht_order_check_image" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ht_order_ap__pid__3CF40B7E" Association="Self.FK__ht_order_ap__pid__3CF40B7E">
+      <End Role="ht_order_appraise" EntitySet="ht_order_appraise" />
+      <End Role="ht_order_appraise_image" EntitySet="ht_order_appraise_image" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ht_order_di__pid__3EDC53F0" Association="Self.FK__ht_order_di__pid__3EDC53F0">
+      <End Role="ht_order_dissent" EntitySet="ht_order_dissent" />
+      <End Role="ht_order_dissent_image" EntitySet="ht_order_dissent_image" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ht_parts_pr__pid__3FD07829" Association="Self.FK__ht_parts_pr__pid__3FD07829">
+      <End Role="ht_parts_product" EntitySet="ht_parts_product" />
+      <End Role="ht_parts_product_image" EntitySet="ht_parts_product_image" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ht_parts_pr__pid__40C49C62" Association="Self.FK__ht_parts_pr__pid__40C49C62">
+      <End Role="ht_parts_product" EntitySet="ht_parts_product" />
+      <End Role="ht_parts_product_nature" EntitySet="ht_parts_product_nature" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ht_quay__hid__41B8C09B" Association="Self.FK__ht_quay__hid__41B8C09B">
+      <End Role="ht_harbor" EntitySet="ht_harbor" />
+      <End Role="ht_quay" EntitySet="ht_quay" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ht_user_res__pid__43A1090D" Association="Self.FK__ht_user_res__pid__43A1090D">
+      <End Role="ht_user_resume" EntitySet="ht_user_resume" />
+      <End Role="ht_user_resume_exprience" EntitySet="ht_user_resume_exprience" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
