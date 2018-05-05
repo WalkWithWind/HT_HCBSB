@@ -1,2 +1,10 @@
 *.dll
 *.exe
+[Bb]in
+[Dd]ebug*/
+obj/
+[Rr]elease*/
+*.cache
+*.suo
+*.obj
+*.bak
