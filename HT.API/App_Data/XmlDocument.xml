@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HT.API</name>
+    </assembly>
+    <members>
+        <member name="T:HT.API.Base.BaseController">
+            <summary>
+            API控制器基类
+            </summary>
+        </member>
+        <member name="P:HT.API.Base.BaseController.db">
+            <summary>
+            DB Entity
+            </summary>
+        </member>
+        <member name="P:HT.API.Base.BaseController.sysconfig">
+            <summary>
+            系统配置
+            </summary>
+        </member>
+        <member name="M:HT.API.Base.BaseController.#ctor">
+            <summary>
+            初始化构造函数
+            </summary>
+        </member>
+        <member name="T:HT.API.Base.PageBaseController">
+            <summary>
+            普通控制器基类
+            </summary>
+        </member>
+        <member name="P:HT.API.Base.PageBaseController.db">
+            <summary>
+            DB Entity
+            </summary>
+        </member>
+        <member name="P:HT.API.Base.PageBaseController.sysconfig">
+            <summary>
+            系统配置
+            </summary>
+        </member>
+        <member name="P:HT.API.Base.PageBaseController.Context">
+            <summary>
+            请求筛选上下文
+            </summary>
+        </member>
+        <member name="M:HT.API.Base.PageBaseController.#ctor">
+            <summary>
+            初始化构造函数
+            </summary>
+        </member>
+        <member name="T:HT.API.Controllers.HomeController">
+            <summary>
+            首页
+            </summary>
+        </member>
+        <member name="T:HT.API.Models.ApiResult`1">
+            <summary>
+            APP接口统一标准模型
+            </summary>
+        </member>
+        <member name="P:HT.API.Models.ApiResult`1.Status">
+            <summary>
+            接口状态: 0.成功 1.失败
+            </summary>
+        </member>
+        <member name="P:HT.API.Models.ApiResult`1.Message">
+            <summary>
+            错误提示消息
+            </summary>
+        </member>
+        <member name="P:HT.API.Models.ApiResult`1.Result">
+            <summary>
+            实体模型
+            </summary>
+        </member>
+        <member name="M:HT.API.Models.ApiResult`1.#ctor">
+            <summary>
+            初始化构造函数
+            </summary>
+        </member>
+        <member name="T:HT.API.Models.XUtil">
+            <summary>
+            公共处理
+            </summary>
+        </member>
+        <member name="M:HT.API.Models.XUtil.ShowName(HT.Model.ht_user)">
+            <summary>
+            获取显示的名称
+            </summary>
+            <param name="user">用户信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:HT.API.Models.XUtil.ShowAvatar(System.String)">
+            <summary>
+            显示头像处理
+            </summary>
+            <param name="Avatar"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HT.API.Models.XUtil.ShowCertifiedStauts(System.Int32)">
+            <summary>
+            显示认证状态
+            </summary>
+            <param name="stauts"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

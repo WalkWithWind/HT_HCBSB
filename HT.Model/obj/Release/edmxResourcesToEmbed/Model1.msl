@@ -1,0 +1,513 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="ht_ad">
+      <EntityTypeMapping TypeName="Model.ht_ad">
+        <MappingFragment StoreEntitySet="ht_ad">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="img_url" ColumnName="img_url" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="sort" ColumnName="sort" />
+          <ScalarProperty Name="remarks" ColumnName="remarks" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_ad_category">
+      <EntityTypeMapping TypeName="Model.ht_ad_category">
+        <MappingFragment StoreEntitySet="ht_ad_category">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="sort" ColumnName="sort" />
+          <ScalarProperty Name="num" ColumnName="num" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_boat">
+      <EntityTypeMapping TypeName="Model.ht_boat">
+        <MappingFragment StoreEntitySet="ht_boat">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="idcode" ColumnName="idcode" />
+          <ScalarProperty Name="classifid" ColumnName="classifid" />
+          <ScalarProperty Name="adminid" ColumnName="adminid" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="companyname" ColumnName="companyname" />
+          <ScalarProperty Name="tonnage" ColumnName="tonnage" />
+          <ScalarProperty Name="payload" ColumnName="payload" />
+          <ScalarProperty Name="longueur" ColumnName="longueur" />
+          <ScalarProperty Name="wide" ColumnName="wide" />
+          <ScalarProperty Name="draftarea" ColumnName="draftarea" />
+          <ScalarProperty Name="approvestatus" ColumnName="approvestatus" />
+          <ScalarProperty Name="addtime" ColumnName="addtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_boat_admin">
+      <EntityTypeMapping TypeName="Model.ht_boat_admin">
+        <MappingFragment StoreEntitySet="ht_boat_admin">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="salt" ColumnName="salt" />
+          <ScalarProperty Name="nickname" ColumnName="nickname" />
+          <ScalarProperty Name="avatar" ColumnName="avatar" />
+          <ScalarProperty Name="mobile" ColumnName="mobile" />
+          <ScalarProperty Name="addtime" ColumnName="addtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_boat_classify">
+      <EntityTypeMapping TypeName="Model.ht_boat_classify">
+        <MappingFragment StoreEntitySet="ht_boat_classify">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="sort" ColumnName="sort" />
+          <ScalarProperty Name="addtime" ColumnName="addtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_boat_image">
+      <EntityTypeMapping TypeName="Model.ht_boat_image">
+        <MappingFragment StoreEntitySet="ht_boat_image">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="bid" ColumnName="bid" />
+          <ScalarProperty Name="imgurl" ColumnName="imgurl" />
+          <ScalarProperty Name="sort" ColumnName="sort" />
+          <ScalarProperty Name="addtime" ColumnName="addtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_freight_demand">
+      <EntityTypeMapping TypeName="Model.ht_freight_demand">
+        <MappingFragment StoreEntitySet="ht_freight_demand">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="classid" ColumnName="classid" />
+          <ScalarProperty Name="weight" ColumnName="weight" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="shippingtime" ColumnName="shippingtime" />
+          <ScalarProperty Name="shippingmode" ColumnName="shippingmode" />
+          <ScalarProperty Name="loaddays" ColumnName="loaddays" />
+          <ScalarProperty Name="unloaddays" ColumnName="unloaddays" />
+          <ScalarProperty Name="draft" ColumnName="draft" />
+          <ScalarProperty Name="storage" ColumnName="storage" />
+          <ScalarProperty Name="demurrage" ColumnName="demurrage" />
+          <ScalarProperty Name="payid" ColumnName="payid" />
+          <ScalarProperty Name="isinvoice" ColumnName="isinvoice" />
+          <ScalarProperty Name="invoicetype" ColumnName="invoicetype" />
+          <ScalarProperty Name="invoicetitle" ColumnName="invoicetitle" />
+          <ScalarProperty Name="remark" ColumnName="remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_freight_demand_image">
+      <EntityTypeMapping TypeName="Model.ht_freight_demand_image">
+        <MappingFragment StoreEntitySet="ht_freight_demand_image">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="fid" ColumnName="fid" />
+          <ScalarProperty Name="imgurl" ColumnName="imgurl" />
+          <ScalarProperty Name="sort" ColumnName="sort" />
+          <ScalarProperty Name="addtime" ColumnName="addtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_harbor">
+      <EntityTypeMapping TypeName="Model.ht_harbor">
+        <MappingFragment StoreEntitySet="ht_harbor">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="sort" ColumnName="sort" />
+          <ScalarProperty Name="addtime" ColumnName="addtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_integral_order">
+      <EntityTypeMapping TypeName="Model.ht_integral_order">
+        <MappingFragment StoreEntitySet="ht_integral_order">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="orderno" ColumnName="orderno" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="pid" ColumnName="pid" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="acceptname" ColumnName="acceptname" />
+          <ScalarProperty Name="mobile" ColumnName="mobile" />
+          <ScalarProperty Name="province" ColumnName="province" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="district" ColumnName="district" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="audittime" ColumnName="audittime" />
+          <ScalarProperty Name="addtime" ColumnName="addtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_integral_product">
+      <EntityTypeMapping TypeName="Model.ht_integral_product">
+        <MappingFragment StoreEntitySet="ht_integral_product">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="summary" ColumnName="summary" />
+          <ScalarProperty Name="details" ColumnName="details" />
+          <ScalarProperty Name="redeempoint" ColumnName="redeempoint" />
+          <ScalarProperty Name="stock" ColumnName="stock" />
+          <ScalarProperty Name="brand" ColumnName="brand" />
+          <ScalarProperty Name="model" ColumnName="model" />
+          <ScalarProperty Name="size" ColumnName="size" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="addtime" ColumnName="addtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_integral_product_image">
+      <EntityTypeMapping TypeName="Model.ht_integral_product_image">
+        <MappingFragment StoreEntitySet="ht_integral_product_image">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="pid" ColumnName="pid" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="sort" ColumnName="sort" />
+          <ScalarProperty Name="addtime" ColumnName="addtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_integral_product_nature">
+      <EntityTypeMapping TypeName="Model.ht_integral_product_nature">
+        <MappingFragment StoreEntitySet="ht_integral_product_nature">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="pid" ColumnName="pid" />
+          <ScalarProperty Name="xkey" ColumnName="xkey" />
+          <ScalarProperty Name="xvalue" ColumnName="xvalue" />
+          <ScalarProperty Name="sort" ColumnName="sort" />
+          <ScalarProperty Name="addtime" ColumnName="addtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_manager">
+      <EntityTypeMapping TypeName="Model.ht_manager">
+        <MappingFragment StoreEntitySet="ht_manager">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="roleid" ColumnName="roleid" />
+          <ScalarProperty Name="islock" ColumnName="islock" />
+          <ScalarProperty Name="roletype" ColumnName="roletype" />
+          <ScalarProperty Name="salt" ColumnName="salt" />
+          <ScalarProperty Name="nickname" ColumnName="nickname" />
+          <ScalarProperty Name="mobile" ColumnName="mobile" />
+          <ScalarProperty Name="sex" ColumnName="sex" />
+          <ScalarProperty Name="addtime" ColumnName="addtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_manager_log">
+      <EntityTypeMapping TypeName="Model.ht_manager_log">
+        <MappingFragment StoreEntitySet="ht_manager_log">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="actiontype" ColumnName="actiontype" />
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="userip" ColumnName="userip" />
+          <ScalarProperty Name="addtime" ColumnName="addtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_manager_role">
+      <EntityTypeMapping TypeName="Model.ht_manager_role">
+        <MappingFragment StoreEntitySet="ht_manager_role">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="rolename" ColumnName="rolename" />
+          <ScalarProperty Name="roletype" ColumnName="roletype" />
+          <ScalarProperty Name="issys" ColumnName="issys" />
+          <ScalarProperty Name="addtime" ColumnName="addtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_manager_role_value">
+      <EntityTypeMapping TypeName="Model.ht_manager_role_value">
+        <MappingFragment StoreEntitySet="ht_manager_role_value">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="roleid" ColumnName="roleid" />
+          <ScalarProperty Name="navname" ColumnName="navname" />
+          <ScalarProperty Name="actiontype" ColumnName="actiontype" />
+          <ScalarProperty Name="addtime" ColumnName="addtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_navigation">
+      <EntityTypeMapping TypeName="Model.ht_navigation">
+        <MappingFragment StoreEntitySet="ht_navigation">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="parentid" ColumnName="parentid" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="subtitle" ColumnName="subtitle" />
+          <ScalarProperty Name="iconurl" ColumnName="iconurl" />
+          <ScalarProperty Name="linkurl" ColumnName="linkurl" />
+          <ScalarProperty Name="sortid" ColumnName="sortid" />
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="actiontype" ColumnName="actiontype" />
+          <ScalarProperty Name="addtime" ColumnName="addtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_news">
+      <EntityTypeMapping TypeName="Model.ht_news">
+        <MappingFragment StoreEntitySet="ht_news">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="summary" ColumnName="summary" />
+          <ScalarProperty Name="classifyid" ColumnName="classifyid" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="keywords" ColumnName="keywords" />
+          <ScalarProperty Name="details" ColumnName="details" />
+          <ScalarProperty Name="clicks" ColumnName="clicks" />
+          <ScalarProperty Name="addtime" ColumnName="addtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_news_classify">
+      <EntityTypeMapping TypeName="Model.ht_news_classify">
+        <MappingFragment StoreEntitySet="ht_news_classify">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="sort" ColumnName="sort" />
+          <ScalarProperty Name="addtime" ColumnName="addtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_payment">
+      <EntityTypeMapping TypeName="Model.ht_payment">
+        <MappingFragment StoreEntitySet="ht_payment">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="sort" ColumnName="sort" />
+          <ScalarProperty Name="fee" ColumnName="fee" />
+          <ScalarProperty Name="addtime" ColumnName="addtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_quay">
+      <EntityTypeMapping TypeName="Model.ht_quay">
+        <MappingFragment StoreEntitySet="ht_quay">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="hid" ColumnName="hid" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="sort" ColumnName="sort" />
+          <ScalarProperty Name="addtime" ColumnName="addtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_recruit_classify">
+      <EntityTypeMapping TypeName="Model.ht_recruit_classify">
+        <MappingFragment StoreEntitySet="ht_recruit_classify">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="sort" ColumnName="sort" />
+          <ScalarProperty Name="addtime" ColumnName="addtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_shop_member">
+      <EntityTypeMapping TypeName="Model.ht_shop_member">
+        <MappingFragment StoreEntitySet="ht_shop_member">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="nickname" ColumnName="nickname" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="salt" ColumnName="salt" />
+          <ScalarProperty Name="avatar" ColumnName="avatar" />
+          <ScalarProperty Name="sex" ColumnName="sex" />
+          <ScalarProperty Name="age" ColumnName="age" />
+          <ScalarProperty Name="userstatus" ColumnName="userstatus" />
+          <ScalarProperty Name="usercode" ColumnName="usercode" />
+          <ScalarProperty Name="addtime" ColumnName="addtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_shop_service">
+      <EntityTypeMapping TypeName="Model.ht_shop_service">
+        <MappingFragment StoreEntitySet="ht_shop_service">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="imgurl" ColumnName="imgurl" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="summary" ColumnName="summary" />
+          <ScalarProperty Name="details" ColumnName="details" />
+          <ScalarProperty Name="addtime" ColumnName="addtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_single_page">
+      <EntityTypeMapping TypeName="Model.ht_single_page">
+        <MappingFragment StoreEntitySet="ht_single_page">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_sms_config">
+      <EntityTypeMapping TypeName="Model.ht_sms_config">
+        <MappingFragment StoreEntitySet="ht_sms_config">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="smsurl" ColumnName="smsurl" />
+          <ScalarProperty Name="smsuser" ColumnName="smsuser" />
+          <ScalarProperty Name="smspwd" ColumnName="smspwd" />
+          <ScalarProperty Name="addtime" ColumnName="addtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_sms_record">
+      <EntityTypeMapping TypeName="Model.ht_sms_record">
+        <MappingFragment StoreEntitySet="ht_sms_record">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="mobile" ColumnName="mobile" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="codetype" ColumnName="codetype" />
+          <ScalarProperty Name="expirestime" ColumnName="expirestime" />
+          <ScalarProperty Name="addtime" ColumnName="addtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_sms_template">
+      <EntityTypeMapping TypeName="Model.ht_sms_template">
+        <MappingFragment StoreEntitySet="ht_sms_template">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="contents" ColumnName="contents" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="sort" ColumnName="sort" />
+          <ScalarProperty Name="addtime" ColumnName="addtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_sys_config">
+      <EntityTypeMapping TypeName="Model.ht_sys_config">
+        <MappingFragment StoreEntitySet="ht_sys_config">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="xkey" ColumnName="xkey" />
+          <ScalarProperty Name="xvalue" ColumnName="xvalue" />
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="addtime" ColumnName="addtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_transport_demand">
+      <EntityTypeMapping TypeName="Model.ht_transport_demand">
+        <MappingFragment StoreEntitySet="ht_transport_demand">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="boatid" ColumnName="boatid" />
+          <ScalarProperty Name="harborid" ColumnName="harborid" />
+          <ScalarProperty Name="quayid" ColumnName="quayid" />
+          <ScalarProperty Name="starttime" ColumnName="starttime" />
+          <ScalarProperty Name="endtime" ColumnName="endtime" />
+          <ScalarProperty Name="berthport" ColumnName="berthport" />
+          <ScalarProperty Name="terminalharborid" ColumnName="terminalharborid" />
+          <ScalarProperty Name="mileage" ColumnName="mileage" />
+          <ScalarProperty Name="shipment" ColumnName="shipment" />
+          <ScalarProperty Name="remaintonnage" ColumnName="remaintonnage" />
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="addtime" ColumnName="addtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_user">
+      <EntityTypeMapping TypeName="Model.ht_user">
+        <MappingFragment StoreEntitySet="ht_user">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="salt" ColumnName="salt" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="qq" ColumnName="qq" />
+          <ScalarProperty Name="wechat" ColumnName="wechat" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="usertype" ColumnName="usertype" />
+          <ScalarProperty Name="mobile" ColumnName="mobile" />
+          <ScalarProperty Name="avatar" ColumnName="avatar" />
+          <ScalarProperty Name="realname" ColumnName="realname" />
+          <ScalarProperty Name="company" ColumnName="company" />
+          <ScalarProperty Name="idcard" ColumnName="idcard" />
+          <ScalarProperty Name="usercode" ColumnName="usercode" />
+          <ScalarProperty Name="charterno" ColumnName="charterno" />
+          <ScalarProperty Name="charter_img" ColumnName="charter_img" />
+          <ScalarProperty Name="idcard_pros_img" ColumnName="idcard_pros_img" />
+          <ScalarProperty Name="idcard_cons_img" ColumnName="idcard_cons_img" />
+          <ScalarProperty Name="transport_certificate_img" ColumnName="transport_certificate_img" />
+          <ScalarProperty Name="certified_stauts" ColumnName="certified_stauts" />
+          <ScalarProperty Name="points" ColumnName="points" />
+          <ScalarProperty Name="shopname" ColumnName="shopname" />
+          <ScalarProperty Name="shopaddress" ColumnName="shopaddress" />
+          <ScalarProperty Name="shopinfo" ColumnName="shopinfo" />
+          <ScalarProperty Name="audittime" ColumnName="audittime" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="addtime" ColumnName="addtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_user_message">
+      <EntityTypeMapping TypeName="Model.ht_user_message">
+        <MappingFragment StoreEntitySet="ht_user_message">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="msgtype" ColumnName="msgtype" />
+          <ScalarProperty Name="senduid" ColumnName="senduid" />
+          <ScalarProperty Name="receiveuid" ColumnName="receiveuid" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="details" ColumnName="details" />
+          <ScalarProperty Name="readstatus" ColumnName="readstatus" />
+          <ScalarProperty Name="readtime" ColumnName="readtime" />
+          <ScalarProperty Name="addtime" ColumnName="addtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_user_recruit">
+      <EntityTypeMapping TypeName="Model.ht_user_recruit">
+        <MappingFragment StoreEntitySet="ht_user_recruit">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="classid" ColumnName="classid" />
+          <ScalarProperty Name="companyname" ColumnName="companyname" />
+          <ScalarProperty Name="province" ColumnName="province" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="district" ColumnName="district" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="companynature" ColumnName="companynature" />
+          <ScalarProperty Name="companyscale" ColumnName="companyscale" />
+          <ScalarProperty Name="companycontact" ColumnName="companycontact" />
+          <ScalarProperty Name="companymobile" ColumnName="companymobile" />
+          <ScalarProperty Name="companysummary" ColumnName="companysummary" />
+          <ScalarProperty Name="wealtag" ColumnName="wealtag" />
+          <ScalarProperty Name="recruitprovince" ColumnName="recruitprovince" />
+          <ScalarProperty Name="recruitcity" ColumnName="recruitcity" />
+          <ScalarProperty Name="recruitdistrict" ColumnName="recruitdistrict" />
+          <ScalarProperty Name="recruitaddress" ColumnName="recruitaddress" />
+          <ScalarProperty Name="education" ColumnName="education" />
+          <ScalarProperty Name="experience" ColumnName="experience" />
+          <ScalarProperty Name="age" ColumnName="age" />
+          <ScalarProperty Name="salary" ColumnName="salary" />
+          <ScalarProperty Name="positionsummary" ColumnName="positionsummary" />
+          <ScalarProperty Name="clicks" ColumnName="clicks" />
+          <ScalarProperty Name="ishot" ColumnName="ishot" />
+          <ScalarProperty Name="updatetime" ColumnName="updatetime" />
+          <ScalarProperty Name="addtime" ColumnName="addtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

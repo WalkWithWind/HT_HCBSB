@@ -1,0 +1,22 @@
+﻿@charset "utf-8";
+/* CSS Document */
+/*================管理首页布局.开始===================*/
+.main-top{ position:absolute; top:0; right:0; left:180px; height:42px; z-index:11; }
+.main-left{ position:absolute; top:0; bottom:0; left:0; width:180px; z-index:10; }
+.main-container{ position:absolute; top:43px; right:0; bottom:0; left:180px; overflow:hidden; }
+	.main-container iframe{ position:absolute; top:0; right:0; bottom:0; left:0; width:100%; height:100%; }
+/*================管理首页布局.结束===================*/
+.PopBox.hide { display: none; }
+.Pop_upBox { position: fixed; left: 50%; top: 50%; margin-left: -297px; margin-top: -218px; width: 494px; height: 436px;
+              z-index: 9999; border: #16a0d3 solid 3px; }
+.Pop_upBox_bg { position: fixed; top: 0; left: 0; background-color: #000; opacity: 0.3; filter: alpha(opacity=30); width: 100%; height: 100%; z-index: 9990; }
+.Pop_upBox .pop_content { width: 100%; height: 100%; background: #fff; }
+.Pop_upBox .pop_content .close { position: absolute; top: 6px; right: 6px; cursor: pointer; }
+.Pop_upBox .pop_content h1 { font-size: 16px; color: #666; text-align: left; font-size: 16px; height:40px; line-height:40px; font-weight: bold; padding-left:20px; background:#eeeeee }
+.Pop_upBox .pop_content .content { padding: 0 20px; }
+.Pop_upBox .pop_content .content .btns {  text-align:center}
+
+#J_CityList .dcity { position:relative; padding-left:80px;line-height:32px; margin-bottom:7px; }
+#J_CityList .gcity{  position:absolute; top:0; left:0;  line-height:32px;}
+.province-list { font-size: 0px; letter-spacing: -5px;  }
+.province-list .ecity{ vertical-align: top;display: inline-block;  letter-spacing: normal; *display: inline;*zoom:1; font-size:14px; margin-right:10px;}
