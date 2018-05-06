@@ -6,12 +6,9 @@ using System.Web.Mvc;
 
 namespace HT.Mobile.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-
         //首页
-        [AllowAnonymous]
-        [Authorize]
         public ActionResult Index()
         {
             return View();

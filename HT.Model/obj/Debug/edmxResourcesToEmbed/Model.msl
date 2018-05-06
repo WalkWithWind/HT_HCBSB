@@ -376,41 +376,16 @@
       <EntityTypeMapping TypeName="Model.ht_user">
         <MappingFragment StoreEntitySet="ht_user">
           <ScalarProperty Name="addtime" ColumnName="addtime" />
-          <ScalarProperty Name="distributionamount" ColumnName="distributionamount" />
-          <ScalarProperty Name="thirdlevel" ColumnName="thirdlevel" />
-          <ScalarProperty Name="secondlevel" ColumnName="secondlevel" />
-          <ScalarProperty Name="firstlevel" ColumnName="firstlevel" />
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="audittime" ColumnName="audittime" />
-          <ScalarProperty Name="reputation" ColumnName="reputation" />
-          <ScalarProperty Name="shopcharteno" ColumnName="shopcharteno" />
-          <ScalarProperty Name="shopcharteimg" ColumnName="shopcharteimg" />
-          <ScalarProperty Name="shopinfo" ColumnName="shopinfo" />
-          <ScalarProperty Name="shopaddress" ColumnName="shopaddress" />
-          <ScalarProperty Name="shopname" ColumnName="shopname" />
-          <ScalarProperty Name="shopstatus" ColumnName="shopstatus" />
-          <ScalarProperty Name="isshop" ColumnName="isshop" />
+          <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+          <ScalarProperty Name="issubscribe" ColumnName="issubscribe" />
+          <ScalarProperty Name="openid" ColumnName="openid" />
           <ScalarProperty Name="points" ColumnName="points" />
           <ScalarProperty Name="money" ColumnName="money" />
-          <ScalarProperty Name="certified_stauts" ColumnName="certified_stauts" />
-          <ScalarProperty Name="transport_certificate_img" ColumnName="transport_certificate_img" />
-          <ScalarProperty Name="idcard_cons_img" ColumnName="idcard_cons_img" />
-          <ScalarProperty Name="idcard_pros_img" ColumnName="idcard_pros_img" />
-          <ScalarProperty Name="charter_img" ColumnName="charter_img" />
-          <ScalarProperty Name="charterno" ColumnName="charterno" />
-          <ScalarProperty Name="usercode" ColumnName="usercode" />
           <ScalarProperty Name="idcard" ColumnName="idcard" />
-          <ScalarProperty Name="company_introduction" ColumnName="company_introduction" />
-          <ScalarProperty Name="company" ColumnName="company" />
-          <ScalarProperty Name="realname" ColumnName="realname" />
           <ScalarProperty Name="nickname" ColumnName="nickname" />
           <ScalarProperty Name="avatar" ColumnName="avatar" />
+          <ScalarProperty Name="realname" ColumnName="realname" />
           <ScalarProperty Name="mobile" ColumnName="mobile" />
-          <ScalarProperty Name="usertype" ColumnName="usertype" />
-          <ScalarProperty Name="address" ColumnName="address" />
-          <ScalarProperty Name="wechat" ColumnName="wechat" />
-          <ScalarProperty Name="qq" ColumnName="qq" />
-          <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="salt" ColumnName="salt" />
           <ScalarProperty Name="password" ColumnName="password" />
           <ScalarProperty Name="username" ColumnName="username" />

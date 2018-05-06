@@ -357,41 +357,16 @@
     <Property Name="username" Type="nvarchar" MaxLength="200" />
     <Property Name="password" Type="nvarchar" MaxLength="100" />
     <Property Name="salt" Type="nvarchar" MaxLength="100" />
-    <Property Name="email" Type="nvarchar" MaxLength="50" />
-    <Property Name="qq" Type="nvarchar" MaxLength="50" />
-    <Property Name="wechat" Type="nvarchar" MaxLength="100" />
-    <Property Name="address" Type="nvarchar" MaxLength="300" />
-    <Property Name="usertype" Type="int" />
     <Property Name="mobile" Type="nvarchar" MaxLength="50" />
+    <Property Name="realname" Type="nvarchar" MaxLength="50" />
     <Property Name="avatar" Type="nvarchar" MaxLength="300" />
     <Property Name="nickname" Type="nvarchar" MaxLength="50" />
-    <Property Name="realname" Type="nvarchar" MaxLength="50" />
-    <Property Name="company" Type="nvarchar" MaxLength="50" />
-    <Property Name="company_introduction" Type="nvarchar(max)" />
     <Property Name="idcard" Type="nvarchar" MaxLength="50" />
-    <Property Name="usercode" Type="nvarchar" MaxLength="100" />
-    <Property Name="charterno" Type="nvarchar" MaxLength="100" />
-    <Property Name="charter_img" Type="nvarchar" MaxLength="300" />
-    <Property Name="idcard_pros_img" Type="nvarchar" MaxLength="300" />
-    <Property Name="idcard_cons_img" Type="nvarchar" MaxLength="300" />
-    <Property Name="transport_certificate_img" Type="nvarchar" MaxLength="300" />
-    <Property Name="certified_stauts" Type="int" />
     <Property Name="money" Type="decimal" Precision="18" Scale="2" />
     <Property Name="points" Type="int" />
-    <Property Name="isshop" Type="int" />
-    <Property Name="shopstatus" Type="int" />
-    <Property Name="shopname" Type="nvarchar" MaxLength="100" />
-    <Property Name="shopaddress" Type="nvarchar" MaxLength="300" />
-    <Property Name="shopinfo" Type="nvarchar(max)" />
-    <Property Name="shopcharteimg" Type="nvarchar" MaxLength="300" />
-    <Property Name="shopcharteno" Type="nvarchar" MaxLength="50" />
-    <Property Name="reputation" Type="int" />
-    <Property Name="audittime" Type="datetime" />
-    <Property Name="status" Type="int" />
-    <Property Name="firstlevel" Type="int" />
-    <Property Name="secondlevel" Type="int" />
-    <Property Name="thirdlevel" Type="int" />
-    <Property Name="distributionamount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="openid" Type="nvarchar" MaxLength="50" />
+    <Property Name="issubscribe" Type="int" Nullable="false" />
+    <Property Name="parent_id" Type="int" />
     <Property Name="addtime" Type="datetime" />
   </EntityType>
   <EntityType Name="ht_user_message">
