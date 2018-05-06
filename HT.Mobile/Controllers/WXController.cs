@@ -63,7 +63,6 @@ namespace HT.Mobile.Controllers
 				BLLAuthentication.LoginAuthenticationTicket(user);
 
 			}
-			
             return Redirect(pageUrl);
         }
     }
