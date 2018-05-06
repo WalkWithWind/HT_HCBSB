@@ -45,3 +45,16 @@ G:\工作\文档\货车百事帮\HT_Search_Boat\HT.Model\bin\Debug\zh-Hans\Entit
 G:\工作\文档\货车百事帮\HT_Search_Boat\HT.Model\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
 G:\工作\文档\货车百事帮\HT_Search_Boat\HT.Model\obj\Debug\HT.Model.dll
 G:\工作\文档\货车百事帮\HT_Search_Boat\HT.Model\obj\Debug\HT.Model.pdb
+G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\bin\Debug\HT.Model.dll.config
+G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\bin\Debug\HT.Model.dll
+G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\bin\Debug\HT.Model.pdb
+G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\bin\Debug\EntityFramework.dll
+G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\bin\Debug\EntityFramework.SqlServer.dll
+G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\bin\Debug\EntityFramework.xml
+G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\bin\Debug\EntityFramework.SqlServer.xml
+G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\bin\Debug\zh-Hans\EntityFramework.resources.dll
+G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\obj\Debug\HT.Model.csproj.CoreCompileInputs.cache
+G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\obj\Debug\HT.Model.csproj.CopyComplete
+G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\obj\Debug\HT.Model.dll
+G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\obj\Debug\HT.Model.pdb
