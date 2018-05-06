@@ -362,41 +362,16 @@
           <Property Name="username" Type="nvarchar" MaxLength="200" />
           <Property Name="password" Type="nvarchar" MaxLength="100" />
           <Property Name="salt" Type="nvarchar" MaxLength="100" />
-          <Property Name="email" Type="nvarchar" MaxLength="50" />
-          <Property Name="qq" Type="nvarchar" MaxLength="50" />
-          <Property Name="wechat" Type="nvarchar" MaxLength="100" />
-          <Property Name="address" Type="nvarchar" MaxLength="300" />
-          <Property Name="usertype" Type="int" />
           <Property Name="mobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="realname" Type="nvarchar" MaxLength="50" />
           <Property Name="avatar" Type="nvarchar" MaxLength="300" />
           <Property Name="nickname" Type="nvarchar" MaxLength="50" />
-          <Property Name="realname" Type="nvarchar" MaxLength="50" />
-          <Property Name="company" Type="nvarchar" MaxLength="50" />
-          <Property Name="company_introduction" Type="nvarchar(max)" />
           <Property Name="idcard" Type="nvarchar" MaxLength="50" />
-          <Property Name="usercode" Type="nvarchar" MaxLength="100" />
-          <Property Name="charterno" Type="nvarchar" MaxLength="100" />
-          <Property Name="charter_img" Type="nvarchar" MaxLength="300" />
-          <Property Name="idcard_pros_img" Type="nvarchar" MaxLength="300" />
-          <Property Name="idcard_cons_img" Type="nvarchar" MaxLength="300" />
-          <Property Name="transport_certificate_img" Type="nvarchar" MaxLength="300" />
-          <Property Name="certified_stauts" Type="int" />
           <Property Name="money" Type="decimal" Precision="18" Scale="2" />
           <Property Name="points" Type="int" />
-          <Property Name="isshop" Type="int" />
-          <Property Name="shopstatus" Type="int" />
-          <Property Name="shopname" Type="nvarchar" MaxLength="100" />
-          <Property Name="shopaddress" Type="nvarchar" MaxLength="300" />
-          <Property Name="shopinfo" Type="nvarchar(max)" />
-          <Property Name="shopcharteimg" Type="nvarchar" MaxLength="300" />
-          <Property Name="shopcharteno" Type="nvarchar" MaxLength="50" />
-          <Property Name="reputation" Type="int" />
-          <Property Name="audittime" Type="datetime" />
-          <Property Name="status" Type="int" />
-          <Property Name="firstlevel" Type="int" />
-          <Property Name="secondlevel" Type="int" />
-          <Property Name="thirdlevel" Type="int" />
-          <Property Name="distributionamount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="openid" Type="nvarchar" MaxLength="50" />
+          <Property Name="issubscribe" Type="int" Nullable="false" />
+          <Property Name="parent_id" Type="int" />
           <Property Name="addtime" Type="datetime" />
         </EntityType>
         <EntityType Name="ht_user_message">
@@ -929,41 +904,16 @@
           <Property Name="username" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="salt" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="qq" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="wechat" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="usertype" Type="Int32" />
           <Property Name="mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="realname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="avatar" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="realname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="company" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="company_introduction" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="idcard" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="usercode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="charterno" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="charter_img" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="idcard_pros_img" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="idcard_cons_img" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="transport_certificate_img" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="certified_stauts" Type="Int32" />
           <Property Name="money" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="points" Type="Int32" />
-          <Property Name="isshop" Type="Int32" />
-          <Property Name="shopstatus" Type="Int32" />
-          <Property Name="shopname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="shopaddress" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="shopinfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="shopcharteimg" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="shopcharteno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="reputation" Type="Int32" />
-          <Property Name="audittime" Type="DateTime" Precision="3" />
-          <Property Name="status" Type="Int32" />
-          <Property Name="firstlevel" Type="Int32" />
-          <Property Name="secondlevel" Type="Int32" />
-          <Property Name="thirdlevel" Type="Int32" />
-          <Property Name="distributionamount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="openid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="issubscribe" Type="Int32" Nullable="false" />
+          <Property Name="parent_id" Type="Int32" />
           <Property Name="addtime" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="ht_user_message">
@@ -1047,7 +997,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1428,41 +1378,16 @@
             <EntityTypeMapping TypeName="Model.ht_user">
               <MappingFragment StoreEntitySet="ht_user">
                 <ScalarProperty Name="addtime" ColumnName="addtime" />
-                <ScalarProperty Name="distributionamount" ColumnName="distributionamount" />
-                <ScalarProperty Name="thirdlevel" ColumnName="thirdlevel" />
-                <ScalarProperty Name="secondlevel" ColumnName="secondlevel" />
-                <ScalarProperty Name="firstlevel" ColumnName="firstlevel" />
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="audittime" ColumnName="audittime" />
-                <ScalarProperty Name="reputation" ColumnName="reputation" />
-                <ScalarProperty Name="shopcharteno" ColumnName="shopcharteno" />
-                <ScalarProperty Name="shopcharteimg" ColumnName="shopcharteimg" />
-                <ScalarProperty Name="shopinfo" ColumnName="shopinfo" />
-                <ScalarProperty Name="shopaddress" ColumnName="shopaddress" />
-                <ScalarProperty Name="shopname" ColumnName="shopname" />
-                <ScalarProperty Name="shopstatus" ColumnName="shopstatus" />
-                <ScalarProperty Name="isshop" ColumnName="isshop" />
+                <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+                <ScalarProperty Name="issubscribe" ColumnName="issubscribe" />
+                <ScalarProperty Name="openid" ColumnName="openid" />
                 <ScalarProperty Name="points" ColumnName="points" />
                 <ScalarProperty Name="money" ColumnName="money" />
-                <ScalarProperty Name="certified_stauts" ColumnName="certified_stauts" />
-                <ScalarProperty Name="transport_certificate_img" ColumnName="transport_certificate_img" />
-                <ScalarProperty Name="idcard_cons_img" ColumnName="idcard_cons_img" />
-                <ScalarProperty Name="idcard_pros_img" ColumnName="idcard_pros_img" />
-                <ScalarProperty Name="charter_img" ColumnName="charter_img" />
-                <ScalarProperty Name="charterno" ColumnName="charterno" />
-                <ScalarProperty Name="usercode" ColumnName="usercode" />
                 <ScalarProperty Name="idcard" ColumnName="idcard" />
-                <ScalarProperty Name="company_introduction" ColumnName="company_introduction" />
-                <ScalarProperty Name="company" ColumnName="company" />
-                <ScalarProperty Name="realname" ColumnName="realname" />
                 <ScalarProperty Name="nickname" ColumnName="nickname" />
                 <ScalarProperty Name="avatar" ColumnName="avatar" />
+                <ScalarProperty Name="realname" ColumnName="realname" />
                 <ScalarProperty Name="mobile" ColumnName="mobile" />
-                <ScalarProperty Name="usertype" ColumnName="usertype" />
-                <ScalarProperty Name="address" ColumnName="address" />
-                <ScalarProperty Name="wechat" ColumnName="wechat" />
-                <ScalarProperty Name="qq" ColumnName="qq" />
-                <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="salt" ColumnName="salt" />
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="username" ColumnName="username" />

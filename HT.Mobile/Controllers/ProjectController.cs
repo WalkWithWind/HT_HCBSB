@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace HT.Mobile.Controllers
 {
-    public class ProjectController : Controller
+    public class ProjectController : BaseController
     {
         // GET: Project
         public ActionResult Index()
