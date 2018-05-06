@@ -16,3 +16,4 @@ packages*/
 *.bak
 packages*/
 .vs*/
+*.pdb
