@@ -1,4 +1,4 @@
-*.dll
+﻿*.dll
 *.exe
 *.config
 *.cache
@@ -6,3 +6,11 @@
 *.ide
 *.ide-shm
 *.ide-wal
+[Bb]in
+[Dd]ebug*/
+obj/
+[Rr]elease*/
+*.cache
+*.suo
+*.obj
+*.bak
