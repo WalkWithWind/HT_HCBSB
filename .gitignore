@@ -1,9 +1,16 @@
-*.dll
+﻿*.dll
 *.exe
+*.config
+*.cache
+*.lock
+*.ide
+*.ide-shm
+*.ide-wal
 [Bb]in
 [Dd]ebug*/
 obj/
 [Rr]elease*/
+packages*/
 *.cache
 *.suo
 *.obj
