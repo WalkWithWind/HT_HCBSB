@@ -404,41 +404,16 @@
     <Property Name="username" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="salt" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="qq" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="wechat" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-    <Property Name="usertype" Type="Int32" />
     <Property Name="mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="realname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="avatar" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
     <Property Name="nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="realname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="company" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="company_introduction" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="idcard" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="usercode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="charterno" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="charter_img" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-    <Property Name="idcard_pros_img" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-    <Property Name="idcard_cons_img" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-    <Property Name="transport_certificate_img" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-    <Property Name="certified_stauts" Type="Int32" />
     <Property Name="money" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="points" Type="Int32" />
-    <Property Name="isshop" Type="Int32" />
-    <Property Name="shopstatus" Type="Int32" />
-    <Property Name="shopname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="shopaddress" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-    <Property Name="shopinfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="shopcharteimg" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-    <Property Name="shopcharteno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="reputation" Type="Int32" />
-    <Property Name="audittime" Type="DateTime" Precision="3" />
-    <Property Name="status" Type="Int32" />
-    <Property Name="firstlevel" Type="Int32" />
-    <Property Name="secondlevel" Type="Int32" />
-    <Property Name="thirdlevel" Type="Int32" />
-    <Property Name="distributionamount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="openid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="issubscribe" Type="Int32" Nullable="false" />
+    <Property Name="parent_id" Type="Int32" />
     <Property Name="addtime" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="ht_user_message">
