@@ -23,4 +23,5 @@ _ReSharper*/
 packages*/
 .vs*/
 bin/
-Debug
+Debug/
+
