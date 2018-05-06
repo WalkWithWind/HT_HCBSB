@@ -53,12 +53,11 @@ namespace HT.BLL.Admin
         /// <returns></returns>
         public static ht_news GetNew(int id)
         {
-
             using (Entities db = new Entities())
             {
+                db.Configuration.ProxyCreationEnabled = false;
                 return db.ht_news.FirstOrDefault(p => p.id == id);
             }
-
         }
 
     }

@@ -10,12 +10,7 @@
     <title>广告管理</title>
     <link href="/scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
     <link href="/admin/skin/default/style.css" rel="stylesheet" type="text/css" />
-    <link href="/css/pagination.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="/scripts/jquery/jquery-1.11.2.min.js"></script>
-    <script type="text/javascript" src="/scripts/artdialog/dialog-plus-min.js"></script>
-    <script type="text/javascript" charset="utf-8" src="/admin/js/laymain.js"></script>
-    <script type="text/javascript" charset="utf-8" src="/admin/js/common.js"></script>
-    <script type="text/javascript"  charset="utf-8" src="/scripts/vue/vue.min.js"></script>
+    <link href="/scripts/laypage1.2/skin/laypage.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body class="mainbody">
@@ -107,8 +102,7 @@
                         <td align="center">{{item.status}}</td>
 
                         <td align="center">
-                            {{item.id}}
-                            <a href="detail.aspx?id={{item.id}}">详情</a>
+                            <a :href="'detail.aspx?id=' + item.id " >详情</a>
                         </td>
                     </tr>
 
@@ -122,15 +116,19 @@
 
             <!--内容底部-->
               <div class="line20"></div>
-              <div class="pagelist">
-                <div class="l-btns">
-                    <span>显示</span><input name="txtPageNum" type="text" v-model="pagesize" v-on:change="changePage()" onkeypress="if (WebForm_TextBoxKeyHandler(event) == false) return false;" id="txtPageNum" class="pagenum" onkeydown="return checkNumber(event);" /><span>条/页</span>
-                </div>
-                <div id="PageContent" class="default"></div>              </div>            <!--/内容底部-->        </div>
+
+              <div id="pagelist">
+                            </div>            <!--/内容底部-->        </div>
 </body>
 </html>
 
 
+<script type="text/javascript" src="/scripts/jquery/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="/scripts/artdialog/dialog-plus-min.js"></script>
+<script type="text/javascript" charset="utf-8" src="/admin/js/laymain.js"></script>
+<script type="text/javascript" charset="utf-8" src="/admin/js/common.js"></script>
+<script type="text/javascript"  charset="utf-8" src="/scripts/vue/vue.min.js"></script>
+<script type="text/javascript"  charset="utf-8" src="/scripts/laypage1.2/laypage.js"></script>
 
 
 
@@ -145,19 +143,28 @@
             dataList: [],
             total:0,
             pageindex: 1,
-            pagesize: 20,
+            pagesize: 1,
             keyword: '',
             cateId: 1,
-            totalPage:0
+            totalpage:0
         },
         methods: {
             init: function () {
-                this.loadData();
+
+                var _this = this;
+
+                _this.loadData();
+
+
+               
+               
+
+                
+
             },
       
             loadData: function () {
                 var _this = this;
-
 
                 var reqData = {
                     pageindex: _this.pageindex,
@@ -175,11 +182,26 @@
                         if (resp.status) {
                             _this.total = resp.result.total;
                             _this.dataList = resp.result.list
-                            _this.totalPage = resp.result.totalpage;
-                            console.log('_this.dataLis',_this.dataList);
+                            _this.totalpage = resp.result.totalpage;
+                            console.log('_this.dataLis', _this.dataList);
+
+                            laypage({
+                                cont: document.getElementById('pagelist'), //容器。值支持id名、原生dom对象，jquery对象。【如该容器为】：<div id="page1"></div>
+                                pages: _this.totalpage, //通过后台拿到的总页数
+                                curr: _this.pageindex, //当前页
+                                jump: function (obj, first) { //触发分页后的回调
+                                    if (!first) { //点击跳页触发函数自身，并传递当前页：obj.curr
+                                        _this.pageindex = obj.curr;
+                                        _this.loadData();
+                                    }
+                                },
+                                first: '首页', //若不显示，设置false即可
+                                last: '尾页', //若不显示，设置false即可
+                            });
+
                         }
                         else {
-
+                            console.log('获取数据出错');
                         }
                     }
                 });
@@ -205,6 +227,9 @@
 
     $(function () {
         commVm.init();
+
+
+
     });
 
 </script>
