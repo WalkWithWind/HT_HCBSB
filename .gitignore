@@ -1,2 +1,8 @@
 *.dll
 *.exe
+*.config
+*.cache
+*.lock
+*.ide
+*.ide-shm
+*.ide-wal
