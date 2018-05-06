@@ -1,6 +1,5 @@
-﻿*.dll
+*.dll
 *.exe
-*.config
 *.cache
 *.lock
 *.ide
@@ -15,3 +14,5 @@ packages*/
 *.suo
 *.obj
 *.bak
+packages*/
+.vs*/
