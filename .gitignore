@@ -1,6 +1,5 @@
-﻿*.dll
+*.dll
 *.exe
-*.config
 *.cache
 *.lock
 *.ide
