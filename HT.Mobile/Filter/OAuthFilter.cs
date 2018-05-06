@@ -29,6 +29,6 @@ namespace HT.Mobile.Filter
                 //访问授权链接
                 filterContext.HttpContext.Response.Redirect(oauthUrl);
             }
-        //}
+        }
     }
 }
