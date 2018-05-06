@@ -45,3 +45,16 @@ G:\工作\文档\货车百事帮\HT_Search_Boat\HT.Model\bin\Debug\zh-Hans\Entit
 G:\工作\文档\货车百事帮\HT_Search_Boat\HT.Model\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
 G:\工作\文档\货车百事帮\HT_Search_Boat\HT.Model\obj\Debug\HT.Model.dll
 G:\工作\文档\货车百事帮\HT_Search_Boat\HT.Model\obj\Debug\HT.Model.pdb
+C:\我走路带风\Project\HT_HCBSB\HT.Model\bin\Debug\HT.Model.dll.config
+C:\我走路带风\Project\HT_HCBSB\HT.Model\bin\Debug\HT.Model.dll
+C:\我走路带风\Project\HT_HCBSB\HT.Model\bin\Debug\HT.Model.pdb
+C:\我走路带风\Project\HT_HCBSB\HT.Model\bin\Debug\EntityFramework.dll
+C:\我走路带风\Project\HT_HCBSB\HT.Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\我走路带风\Project\HT_HCBSB\HT.Model\bin\Debug\EntityFramework.xml
+C:\我走路带风\Project\HT_HCBSB\HT.Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\我走路带风\Project\HT_HCBSB\HT.Model\bin\Debug\zh-Hans\EntityFramework.resources.dll
+C:\我走路带风\Project\HT_HCBSB\HT.Model\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+C:\我走路带风\Project\HT_HCBSB\HT.Model\obj\Debug\HT.Model.csproj.CoreCompileInputs.cache
+C:\我走路带风\Project\HT_HCBSB\HT.Model\obj\Debug\HT.Model.dll
+C:\我走路带风\Project\HT_HCBSB\HT.Model\obj\Debug\HT.Model.pdb
+C:\我走路带风\Project\HT_HCBSB\HT.Model\obj\Debug\HT.Model.csprojResolveAssemblyReference.cache
