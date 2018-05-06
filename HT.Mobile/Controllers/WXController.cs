@@ -58,8 +58,12 @@ namespace HT.Mobile.Controllers
             user.openid = wxUserInfo.openid;
             user.nickname = wxUserInfo.nickname;
             user.avatar = wxUserInfo.headimgurl;
-            BLLAuthentication.LoginAuthenticationTicket(user);
+			if (BLLUser.AddUser(user)>0)
+			{
+				BLLAuthentication.LoginAuthenticationTicket(user);
 
+			}
+			
             return Redirect(pageUrl);
         }
     }
