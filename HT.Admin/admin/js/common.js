@@ -519,3 +519,27 @@ $.fn.ruleDateInput = function() {
 		dateInput($(this));						 
 	});
 }
+
+
+
+//----------------------------------------------------------------------------------
+
+//获取Get参数
+function GetParm(parm) {
+    //获取当前URL
+    var local_url = window.location.href;
+
+    //获取要取得的get参数位置
+    var get = local_url.indexOf(parm + "=");
+    if (get == -1) {
+        return "";
+    }
+    //截取字符串
+    var get_par = local_url.slice(parm.length + get + 1);
+    //判断截取后的字符串是否还有其他get参数
+    var nextPar = get_par.indexOf("&");
+    if (nextPar != -1) {
+        get_par = get_par.slice(0, nextPar);
+    }
+    return get_par;
+}

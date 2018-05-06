@@ -88,6 +88,8 @@
     <Content Include="admin\manager\manager_log.aspx" />
     <Content Include="admin\manager\role_edit.aspx" />
     <Content Include="admin\manager\role_list.aspx" />
+    <Content Include="admin\project\goods\detail.aspx" />
+    <Content Include="admin\project\goods\list.aspx" />
     <Content Include="admin\region\region_list.aspx" />
     <Content Include="admin\settings\nav_edit.aspx" />
     <Content Include="admin\settings\nav_list.aspx" />
@@ -497,11 +499,21 @@
     <Content Include="scripts\layer_m\need\layer.css" />
     <Content Include="scripts\tooles.js" />
     <Content Include="scripts\uploader.js" />
+    <Content Include="scripts\vue\vue.min.js" />
     <Content Include="scripts\webuploader\uploader.swf" />
     <Content Include="scripts\webuploader\webuploader.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="admin\api\BaseHandler.ashx.cs">
+      <DependentUpon>BaseHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\api\project\detail.ashx.cs">
+      <DependentUpon>detail.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\api\project\list.ashx.cs">
+      <DependentUpon>list.ashx</DependentUpon>
+    </Compile>
     <Compile Include="admin\cate\cate_list.aspx.cs">
       <DependentUpon>cate_list.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -607,6 +619,20 @@
     <Compile Include="admin\manager\role_list.aspx.designer.cs">
       <DependentUpon>role_list.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\project\goods\detail.aspx.cs">
+      <DependentUpon>detail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\project\goods\detail.aspx.designer.cs">
+      <DependentUpon>detail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\project\goods\list.aspx.cs">
+      <DependentUpon>list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\project\goods\list.aspx.designer.cs">
+      <DependentUpon>list.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\region\region_list.aspx.cs">
       <DependentUpon>region_list.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -677,6 +703,7 @@
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Models\BaseResponse.cs" />
     <Compile Include="Models\XHelp.cs" />
     <Compile Include="Models\ManageBase.cs">
       <SubType>ASPXCodeBehind</SubType>
@@ -698,6 +725,9 @@
     <Content Include="packages.config" />
     <Content Include="tools\admin_ajax.ashx" />
     <Content Include="tools\upload_ajax.ashx" />
+    <Content Include="admin\api\BaseHandler.ashx" />
+    <Content Include="admin\api\project\list.ashx" />
+    <Content Include="admin\api\project\detail.ashx" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -707,6 +737,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HT.BLL\HT.BLL.csproj">
+      <Project>{e019b9be-e447-47e7-841b-f0941ade88b0}</Project>
+      <Name>HT.BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HT.Model\HT.Model.csproj">
       <Project>{baa59196-19b0-4bc5-8b86-dad4d07771b7}</Project>
       <Name>HT.Model</Name>
@@ -717,6 +751,18 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="admin\api\project\carbuy\" />
+    <Folder Include="admin\api\project\carsale\" />
+    <Folder Include="admin\api\project\carsource\" />
+    <Folder Include="admin\api\project\common\" />
+    <Folder Include="admin\api\project\driverjob\" />
+    <Folder Include="admin\api\project\goods\" />
+    <Folder Include="admin\api\project\recruitdriver\" />
+    <Folder Include="admin\project\carbuy\" />
+    <Folder Include="admin\project\carsale\" />
+    <Folder Include="admin\project\carsource\" />
+    <Folder Include="admin\project\common\" />
+    <Folder Include="admin\project\driverjob\" />
     <Folder Include="admin\users\" />
   </ItemGroup>
   <PropertyGroup>

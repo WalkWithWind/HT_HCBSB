@@ -46,6 +46,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,6 +62,7 @@
     <Compile Include="HTKeys.cs" />
     <Compile Include="HTRequest.cs" />
     <Compile Include="ICache.cs" />
+    <Compile Include="JsonHelper.cs" />
     <Compile Include="LogUtils.cs" />
     <Compile Include="MessageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
