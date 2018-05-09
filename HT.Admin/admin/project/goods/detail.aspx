@@ -44,55 +44,192 @@
         </div>
         <div class="tab-content">
             <dl>
-                <dt>是否启用</dt>
+                <dt>有效期类型</dt>
                 <dd>
-                    <div class="rule-multi-radio">
+                    <%--<div class="rule-multi-radio">
                         <table id="rblState">
 	                        <tr>
 		                        <td><input id="rblState_0" type="radio" name="rblState" value="2" checked="checked" /><label for="rblState_0">是</label></td><td><input id="rblState_1" type="radio" name="rblState" value="1" /><label for="rblState_1">否</label></td>
 	                        </tr>
                         </table>
                     </div>
-                    <span class="Validform_checktip">*</span>
+                    <span class="Validform_checktip">*</span>--%>
+                    <input id="rblState_0" type="radio" name="rblState" value="2" checked="checked" /><label for="rblState_0">天</label>
+                    <input id="rblState_1" type="radio" name="rblState" value="1" /><label for="rblState_1">月</label>
+
                 </dd>
             </dl>
             <dl>
-                <dt>广告位</dt>
+                <dt>有效期</dt>
                 <dd>
-                    <div class="rule-single-select">
+                   <%-- <div class="rule-single-select">
                         <select name="ddlcode" id="ddlcode" datatype="*" errormsg="请选择广告位" sucmsg=" ">
 	                        <option value="">请选择广告位...</option>
 	                        <option selected="selected" value="pc_index_banner">PC-首页banner</option>
 
                         </select>
-                    </div>
+                    </div>--%>
+                    <input type="number"  class="input normal"/>
                 </dd>
             </dl>
             <dl>
-                <dt>标题</dt>
+                <dt>出发地</dt>
                 <dd>
-                    <input name="txtTitle" type="text" value="PC首页banner" id="txtTitle" class="input normal" datatype="*0-100" sucmsg=" " />
+                    <%--<input name="txtTitle" type="text" value="PC首页banner" id="txtTitle" class="input normal" datatype="*0-100" sucmsg=" " />--%>
+                    <input type="text"  class="input normal"/>
                 </dd>
             </dl>
             <dl>
-                <dt>图片</dt>
+                <dt>到达地</dt>
                 <dd>
-                    <input name="txtImg_url" type="text" value="/upload/201711/02/153203f049044ea8ae8bfd9d14682c82.jpg" id="txtImg_url" class="input normal upload-path" datatype="*" />
-                    <div class="upload-box upload-img"></div>
+                    <%--<input name="txtImg_url" type="text" value="/upload/201711/02/153203f049044ea8ae8bfd9d14682c82.jpg" id="txtImg_url" class="input normal upload-path" datatype="*" />
+                    <div class="upload-box upload-img"></div>--%>
+                     <input type="text"  class="input normal"/>
                 </dd>
             </dl>
             <dl>
-                <dt>链接</dt>
+                <dt>用车类型</dt>
                 <dd>
-                    <input name="txtLink_url" type="text" value="#" id="txtLink_url" class="input normal" datatype="*" sucmsg=" " />
-                    <span class="Validform_checktip">必须以http://开头</span></dd>
+                    
+                     <input type="text"  class="input normal"/>
+               <%--     <input name="txtLink_url" type="text" value="#" id="txtLink_url" class="input normal" datatype="*" sucmsg=" " />
+                    <span class="Validform_checktip">必须以http://开头</span></dd>--%>
+                </dd>
             </dl>
             <dl>
-                <dt>排序数字</dt>
+                <dt>车长</dt>
                 <dd>
-                    <input name="txtSortId" type="text" value="97" id="txtSortId" class="input small" datatype="n" sucmsg=" " />
-                    <span class="Validform_checktip">*数字，越小越向前</span></dd>
+                     <input type="text"  class="input normal"/>
+                <%--    <input name="txtSortId" type="text" value="97" id="txtSortId" class="input small" datatype="n" sucmsg=" " />
+                    <span class="Validform_checktip">*数字，越小越向前</span></dd>--%>
+                 </dd>
             </dl>
+
+             <dl>
+                <dt>车型</dt>
+                <dd>
+                     <input type="text"  class="input normal"/>
+                <%--    <input name="txtSortId" type="text" value="97" id="txtSortId" class="input small" datatype="n" sucmsg=" " />
+                    <span class="Validform_checktip">*数字，越小越向前</span></dd>--%>
+                 </dd>
+            </dl>
+
+             <dl>
+                <dt>货物类型</dt>
+                <dd>
+                     <input type="text"  class="input normal"/>
+                <%--    <input name="txtSortId" type="text" value="97" id="txtSortId" class="input small" datatype="n" sucmsg=" " />
+                    <span class="Validform_checktip">*数字，越小越向前</span></dd>--%>
+                 </dd>
+            </dl>
+
+             <dl>
+                <dt>货物重量体积单位</dt>
+                <dd>
+                     
+                    <input id="weightunit1" type="radio" name="rblState" value="2" checked="checked" /><label for="rblState_0">吨</label>
+                    <input id="weightunit2" type="radio" name="rblState" value="1" /><label for="rblState_1">方</label>
+                 </dd>
+            </dl>
+
+             <dl>
+                <dt>货物重量体积</dt>
+                <dd>
+                     <input type="text"  class="input normal"/>
+                 </dd>
+            </dl>
+
+             <dl>
+                <dt>运费金额</dt>
+                <dd>
+                     <input type="number"  class="input normal"/>
+                 </dd>
+            </dl>
+
+            <dl>
+                <dt>装车时间</dt>
+                <dd>
+                     <input type="text"  class="input normal"/>
+                 </dd>
+            </dl>
+
+             <dl>
+                <dt>装卸方式</dt>
+                <dd>
+                     <input type="text"  class="input normal"/>
+                 </dd>
+            </dl>
+
+              <dl>
+                <dt>付款方式</dt>
+                <dd>
+                     <input type="text"  class="input normal"/>
+                 </dd>
+            </dl>
+
+             <dl>
+                <dt>其他补充</dt>
+                <dd>
+                     <input type="text"  class="input normal"/>
+                 </dd>
+            </dl>
+
+             <dl>
+                <dt>联系人</dt>
+                <dd>
+                     <input type="text"  class="input normal"/>
+                 </dd>
+            </dl>
+
+             <dl>
+                <dt>联系电话</dt>
+                <dd>
+                     <input type="text"  class="input normal"/>
+                 </dd>
+            </dl>
+
+            <dl>
+                <dt>置顶类型</dt>
+                <dd>
+                     <input type="text"  class="input normal"/>
+                 </dd>
+            </dl>
+
+             <dl>
+                <dt>置顶金额</dt>
+                <dd>
+                     <input type="number"  class="input normal"/>
+                 </dd>
+            </dl>
+
+            <dl>
+                <dt>打赏金额</dt>
+                <dd>
+                     <input type="number"  class="input normal"/>
+                 </dd>
+            </dl>
+
+             <dl>
+                <dt>发布人</dt>
+                <dd>
+                     <input type="text"  class="input normal"/>
+                 </dd>
+            </dl>
+
+             <dl>
+                <dt>发布时间</dt>
+                <dd>
+                     <input type="text"  class="input normal"/>
+                 </dd>
+            </dl>
+
+
+
+
+
+
+
+
         </div>
         <!--/内容-->
 
