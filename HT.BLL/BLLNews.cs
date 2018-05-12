@@ -100,7 +100,7 @@ namespace HT.BLL
             {
                 var data = db.ht_news.Where(p => true);
                 //排除id
-                if (searchKey.id != 0) data = db.ht_news.Where(p => p.id!= searchKey.id);
+                if (searchKey.id != 0) data = data.Where(p => p.id!= searchKey.id);
                 //分类一致
                 if (searchKey.cateid != 0) data = data.Where(p => p.cateid == searchKey.cateid);
                 if (!string.IsNullOrWhiteSpace(searchKey.use_type)) {

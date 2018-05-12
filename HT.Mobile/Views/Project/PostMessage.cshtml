@@ -1,28 +1,28 @@
 ﻿
 @{
-    ViewBag.Title = "PostMessage";
+    ViewBag.Title = "发布中心";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="top">
     <div class="wrapper">
         <a href="javascript:history.go(-1);" class="back_btn">返回</a>
-        <a href="###" class="wdd">发布须知</a>
+        <a href="javascript:void(0);" class="wdd">发布须知</a>
     </div>
 </div>
 <div class="banner">
     <div class="swiper-container">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
-                <img src="images/img/img00.jpg">
+                <img src="/images/img/img00.jpg">
             </div>
             <div class="swiper-slide">
-                <img src="images/img/img00.jpg">
+                <img src="/images/img/img00.jpg">
             </div>
             <div class="swiper-slide">
-                <img src="images/img/img00.jpg">
+                <img src="/images/img/img00.jpg">
             </div>
             <div class="swiper-slide">
-                <img src="images/img/img00.jpg">
+                <img src="/images/img/img00.jpg">
             </div>
         </div>
         <div class="swiper-pagination"></div>
@@ -38,44 +38,44 @@
         <p class="pm_sec2_tt">请选择您要发布的栏目</p>
         <ul class="ind_nav_ul">
             <li>
-                <a href="post-goods.asp">
-                    <img src="images/icon/icon01_1.png">
+                <a href="@Url.Action("PostGoods","Project")">
+                    <img src="/images/icon/icon01_1.png">
                     <span>货源信息</span>
                 </a>
             </li>
             <li>
-                <a href="post-cars.asp">
-                    <img src="images/icon/icon01_2.png">
+                <a href="@Url.Action("PostCars","Project")">
+                    <img src="/images/icon/icon01_2.png">
                     <span>车源信息</span>
                 </a>
             </li>
             <li>
-                <a href="post-recruit.asp">
-                    <img src="images/icon/icon01_3.png">
+                <a href="@Url.Action("PostRecruit","Project")">
+                    <img src="/images/icon/icon01_3.png">
                     <span>招聘司机</span>
                 </a>
             </li>
             <li>
-                <a href="post-job.asp">
-                    <img src="images/icon/icon01_4.png">
+                <a href="@Url.Action("PostJob","Project")">
+                    <img src="/images/icon/icon01_4.png">
                     <span>司机求职</span>
                 </a>
             </li>
             <li>
-                <a href="post-car-sell.asp">
-                    <img src="images/icon/icon01_5.png">
+                <a href="@Url.Action("PostCarSell","Project")">
+                    <img src="/images/icon/icon01_5.png">
                     <span>车辆出售</span>
                 </a>
             </li>
             <li>
-                <a href="post-car-buy.asp">
-                    <img src="images/icon/icon01_6.png">
+                <a href="@Url.Action("PostCarBuy","Project")">
+                    <img src="/images/icon/icon01_6.png">
                     <span>车辆求购</span>
                 </a>
             </li>
             <li>
-                <a href="post-template.asp">
-                    <img src="images/icon/icon01_7.png">
+                <a href="@Url.Action("PostTemplate","Project")">
+                    <img src="/images/icon/icon01_7.png">
                     <span>通用模板</span>
                 </a>
             </li>
@@ -84,7 +84,7 @@
 </div>
 <script type="text/javascript">
     var mySwiper = new Swiper('.banner .swiper-container', {
-        // autoplay: 5000,
+        autoplay: 5000,
         pagination: '.swiper-pagination',
         loop: true,
     })
