@@ -20,17 +20,5 @@ namespace HT.Model.Model
         /// 数据
         /// </summary>
         public List<T> list { get; set; }
-        /// <summary>
-        /// 状态
-        /// </summary>
-        public int status { get; set; }
-        /// <summary>
-        /// 消息
-        /// </summary>
-        public string msg { get; set; }
-        /// <summary>
-        /// 跳转链接
-        /// </summary>
-        public string url { get; set; }
     }
 }

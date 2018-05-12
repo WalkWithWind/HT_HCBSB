@@ -705,7 +705,6 @@
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Models\BaseResponse.cs" />
     <Compile Include="Models\XHelp.cs" />
     <Compile Include="Models\ManageBase.cs">
       <SubType>ASPXCodeBehind</SubType>
