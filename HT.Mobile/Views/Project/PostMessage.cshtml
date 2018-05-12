@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "PostMessage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="top">
+    <div class="wrapper">
+        <a href="javascript:history.go(-1);" class="back_btn">返回</a>
+        <a href="###" class="wdd">发布须知</a>
+    </div>
+</div>
+<div class="banner">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="images/img/img00.jpg">
+            </div>
+            <div class="swiper-slide">
+                <img src="images/img/img00.jpg">
+            </div>
+            <div class="swiper-slide">
+                <img src="images/img/img00.jpg">
+            </div>
+            <div class="swiper-slide">
+                <img src="images/img/img00.jpg">
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+
+<div class="pm_sec1">
+    <p>免责声明：平台发布的所有信息（收费、免费）；平台只负责发布、展示，与平台本身无关，平台不负任何责任。为防止广告/微商发垃圾信息、小广告，部分板块收费！付费信息会在官方平台推送，几十万司机可见！</p>
+</div>
+
+<div class="ind_nav pm_sec2">
+    <div class="wrapper">
+        <p class="pm_sec2_tt">请选择您要发布的栏目</p>
+        <ul class="ind_nav_ul">
+            <li>
+                <a href="post-goods.asp">
+                    <img src="images/icon/icon01_1.png">
+                    <span>货源信息</span>
+                </a>
+            </li>
+            <li>
+                <a href="post-cars.asp">
+                    <img src="images/icon/icon01_2.png">
+                    <span>车源信息</span>
+                </a>
+            </li>
+            <li>
+                <a href="post-recruit.asp">
+                    <img src="images/icon/icon01_3.png">
+                    <span>招聘司机</span>
+                </a>
+            </li>
+            <li>
+                <a href="post-job.asp">
+                    <img src="images/icon/icon01_4.png">
+                    <span>司机求职</span>
+                </a>
+            </li>
+            <li>
+                <a href="post-car-sell.asp">
+                    <img src="images/icon/icon01_5.png">
+                    <span>车辆出售</span>
+                </a>
+            </li>
+            <li>
+                <a href="post-car-buy.asp">
+                    <img src="images/icon/icon01_6.png">
+                    <span>车辆求购</span>
+                </a>
+            </li>
+            <li>
+                <a href="post-template.asp">
+                    <img src="images/icon/icon01_7.png">
+                    <span>通用模板</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<script type="text/javascript">
+    var mySwiper = new Swiper('.banner .swiper-container', {
+        // autoplay: 5000,
+        pagination: '.swiper-pagination',
+        loop: true,
+    })
+</script>

@@ -70,3 +70,4 @@ C:\我走路带风\Project\HT_HCBSB\HT.Model\bin\Debug\zh-Hans\EntityFramework.S
 C:\我走路带风\Project\HT_HCBSB\HT.Model\obj\Debug\HT.Model.csproj.CoreCompileInputs.cache
 C:\我走路带风\Project\HT_HCBSB\HT.Model\obj\Debug\HT.Model.dll
 C:\我走路带风\Project\HT_HCBSB\HT.Model\obj\Debug\HT.Model.pdb
+G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\obj\Debug\HT.Model.csprojResolveAssemblyReference.cache

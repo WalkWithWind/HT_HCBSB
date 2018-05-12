@@ -1,6 +1,7 @@
 ﻿@{
     ViewBag.Title = "货车百事帮";
 }
+@Html.Partial("_Header")
 <div class="banner">
     <div class="swiper-container">
         <div class="swiper-wrapper">
@@ -24,7 +25,7 @@
     <div class="wrapper">
         <ul class="ind_nav_ul">
             <li>
-                <a href="@Url.Action("goods-source","Project")">
+                <a href="@Url.Action("GoodsSource","Project")">
                     <img src="/images/icon/icon01_1.png">
                     <span>货源信息</span>
                 </a>
@@ -181,7 +182,8 @@
         </li>
     </ul>
 </div>
-<script>
+@Html.Partial("_Footer")
+<script type="text/javascript">
     var mySwiper = new Swiper('.banner .swiper-container', {
         // autoplay: 5000,
         pagination: '.swiper-pagination',

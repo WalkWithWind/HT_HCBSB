@@ -58,6 +58,7 @@
     <Compile Include="Admin\BLLProject.cs" />
     <Compile Include="Admin\BLLUser.cs" />
     <Compile Include="BLLAuthentication.cs" />
+    <Compile Include="BLLNews.cs" />
     <Compile Include="BLLUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

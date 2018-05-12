@@ -19,9 +19,9 @@ namespace HT.BLL.Admin
         /// <param name="keyword"></param>
         /// <returns></returns>
 
-        public static HT.Model.Model.PageResult GetNewsList(int pageIndex,int pageSize,int cateId,string keyword)
+        public static HT.Model.Model.PageResult<ht_news> GetNewsList(int pageIndex,int pageSize,int cateId,string keyword)
         {
-            HT.Model.Model.PageResult pageModel = new HT.Model.Model.PageResult();
+            HT.Model.Model.PageResult<ht_news> pageModel = new HT.Model.Model.PageResult<ht_news>();
 
             using (Entities db = new Entities())
             {

@@ -2,21 +2,21 @@
 <footer>
     <ul class="footer_ul">
         <li class="item active">
-            <a href="../index.asp">
+            <a href="@Url.Action("Index","Home")">
                 <img src="/images/icon/icon04_1.png" alt="">
                 <img src="/images/icon/icon04_5.png" alt="">
                 <p>首页</p>
             </a>
         </li>
         <li class="item">
-            <a href="../goods-source.asp">
+            <a href="@Url.Action("GoodsSource","Project")">
                 <img src="/images/icon/icon04_2.png" alt="">
                 <img src="/images/icon/icon04_6.png" alt="">
                 <p>货源信息</p>
             </a>
         </li>
         <li class="item item_s">
-            <a href="../post-message.asp">
+            <a href="@Url.Action("PostMessage","Project")">
                 <div class="img">
                     <img src="/images/icon/icon05.png" alt="">
                 </div>
@@ -24,14 +24,14 @@
             </a>
         </li>
         <li class="item">
-            <a href="../car-sell.asp">
+            <a href="@Url.Action("CarSell","Project")">
                 <img src="/images/icon/icon04_3.png" alt="">
                 <img src="/images/icon/icon04_7.png" alt="">
                 <p>车辆买卖</p>
             </a>
         </li>
         <li class="item">
-            <a href="../member/personal.asp">
+            <a href="@Url.Action("Index","User")">
                 <img src="/images/icon/icon04_4.png" alt="">
                 <img src="/images/icon/icon04_8.png" alt="">
                 <p>我的</p>
@@ -56,7 +56,7 @@
     <img src="/images/icon/icon08.png">
 </div>
 
-<script>
+<script type="text/javascript">
 
     $(".zhx_div .btn").click(function(){
         layer.open({
