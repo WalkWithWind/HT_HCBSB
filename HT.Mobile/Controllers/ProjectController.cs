@@ -34,6 +34,7 @@ namespace HT.Mobile.Controllers
                 apiResp.result = pageModel;
                 return Json(apiResp);
             }
+
             return View(pageModel);
         }
         /// <summary>
@@ -125,27 +126,18 @@ namespace HT.Mobile.Controllers
         /// <summary>
         /// 货源列表
         /// </summary>
-        /// <param name="searchKey"></param>
-        /// <param name="page"></param>
-        /// <param name="rows"></param>
         /// <returns></returns>
-        public ActionResult GoodsSource(ht_news searchKey,int page=1,int rows=5)
+        public ActionResult GoodsSource()
         {
-            if(searchKey.cateid==0) searchKey.cateid = 1;
-            return BaseNewsList(searchKey, page, rows);
+            return View();
         }
         /// <summary>
         /// 货源详情
         /// </summary>
-        /// <param name="id"></param>
         /// <returns></returns>
-        public ActionResult GoodsSourceDetails(int id)
+        public ActionResult GoodsSourceDetails()
         {
-            HT.Model.ht_news model = BLLNews.GetNewsDetails(id);
-            if(model!=null)
-                ViewBag.YouLikes = BLLNews.GetYouLikeNewsList(1, 3, model, 1);
-
-            return View(model);
+            return View();
         }
         #endregion 货源信息
 
@@ -153,23 +145,18 @@ namespace HT.Mobile.Controllers
         /// <summary>
         /// 车源列表
         /// </summary>
-        /// <param name="searchKey"></param>
-        /// <param name="page"></param>
-        /// <param name="rows"></param>
         /// <returns></returns>
-        public ActionResult CarSource(ht_news searchKey, int page = 1, int rows = 5)
+        public ActionResult CarSource()
         {
-            if (searchKey.cateid == 0) searchKey.cateid = 2;
-            return BaseNewsList(searchKey, page, rows);
+            return View();
         }
         /// <summary>
         /// 车源详情
         /// </summary>
-        /// <param name="id"></param>
         /// <returns></returns>
-        public ActionResult CarSourceDetails(int id)
+        public ActionResult CarSourceDetails()
         {
-            return GoodsSourceDetails(id);
+            return View();
         }
         #endregion 车源信息
 
@@ -177,23 +164,18 @@ namespace HT.Mobile.Controllers
         /// <summary>
         /// 招聘列表
         /// </summary>
-        /// <param name="searchKey"></param>
-        /// <param name="page"></param>
-        /// <param name="rows"></param>
         /// <returns></returns>
-        public ActionResult Recruit(ht_news searchKey, int page = 1, int rows = 5)
+        public ActionResult Recruit()
         {
-            if (searchKey.cateid == 0) searchKey.cateid = 3;
-            return BaseNewsList(searchKey, page, rows);
+            return View();
         }
         /// <summary>
         /// 招聘详情
         /// </summary>
-        /// <param name="id"></param>
         /// <returns></returns>
-        public ActionResult RecruitDetails(int id)
+        public ActionResult RecruitDetails()
         {
-            return GoodsSourceDetails(id);
+            return View();
         }
         #endregion 招聘信息
 
@@ -201,23 +183,18 @@ namespace HT.Mobile.Controllers
         /// <summary>
         /// 求职列表
         /// </summary>
-        /// <param name="searchKey"></param>
-        /// <param name="page"></param>
-        /// <param name="rows"></param>
         /// <returns></returns>
-        public ActionResult Job(ht_news searchKey, int page = 1, int rows = 5)
+        public ActionResult Job()
         {
-            if (searchKey.cateid == 0) searchKey.cateid = 4;
-            return BaseNewsList(searchKey, page, rows);
+            return View();
         }
         /// <summary>
         /// 求职详情
         /// </summary>
-        /// <param name="id"></param>
         /// <returns></returns>
-        public ActionResult JobDetails(int id)
+        public ActionResult JobDetails()
         {
-            return GoodsSourceDetails(id);
+            return View();
         }
         #endregion 求职信息
 
@@ -225,23 +202,18 @@ namespace HT.Mobile.Controllers
         /// <summary>
         /// 出售列表
         /// </summary>
-        /// <param name="searchKey"></param>
-        /// <param name="page"></param>
-        /// <param name="rows"></param>
         /// <returns></returns>
-        public ActionResult CarSell(ht_news searchKey, int page = 1, int rows = 5)
+        public ActionResult CarSell()
         {
-            if (searchKey.cateid == 0) searchKey.cateid = 5;
-            return BaseNewsList(searchKey, page, rows);
+            return View();
         }
         /// <summary>
         /// 出售详情
         /// </summary>
-        /// <param name="id"></param>
         /// <returns></returns>
-        public ActionResult CarSellDetails(int id)
+        public ActionResult CarSellDetails()
         {
-            return GoodsSourceDetails(id);
+            return View();
         }
         #endregion 出售信息
 
@@ -249,23 +221,18 @@ namespace HT.Mobile.Controllers
         /// <summary>
         /// 求购列表
         /// </summary>
-        /// <param name="searchKey"></param>
-        /// <param name="page"></param>
-        /// <param name="rows"></param>
         /// <returns></returns>
-        public ActionResult CarBuy(ht_news searchKey, int page = 1, int rows = 5)
+        public ActionResult CarBuy()
         {
-            if (searchKey.cateid == 0) searchKey.cateid = 6;
-            return BaseNewsList(searchKey, page, rows);
+            return View();
         }
         /// <summary>
         /// 求购详情
         /// </summary>
-        /// <param name="id"></param>
         /// <returns></returns>
-        public ActionResult CarBuyDetails(int id)
+        public ActionResult CarBuyDetails()
         {
-            return GoodsSourceDetails(id);
+            return View();
         }
         #endregion 求购信息
 
@@ -273,23 +240,18 @@ namespace HT.Mobile.Controllers
         /// <summary>
         /// 通用模板列表
         /// </summary>
-        /// <param name="searchKey"></param>
-        /// <param name="page"></param>
-        /// <param name="rows"></param>
         /// <returns></returns>
-        public ActionResult Template(ht_news searchKey, int page = 1, int rows = 5)
+        public ActionResult Template()
         {
-            if (searchKey.cateid == 0) searchKey.cateid = 7;
-            return BaseNewsList(searchKey, page, rows);
+            return View();
         }
         /// <summary>
         /// 通用模板详情
         /// </summary>
-        /// <param name="id"></param>
         /// <returns></returns>
-        public ActionResult TemplateDetails(int id)
+        public ActionResult TemplateDetails()
         {
-            return GoodsSourceDetails(id);
+            return View();
         }
         #endregion 通用模板
     }

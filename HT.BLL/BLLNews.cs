@@ -25,6 +25,9 @@ namespace HT.BLL
             if (!string.IsNullOrWhiteSpace(searchKey.stop_province)) data = data.Where(p => p.stop_province == searchKey.stop_province);
             if (!string.IsNullOrWhiteSpace(searchKey.stop_city)) data = data.Where(p => p.stop_city == searchKey.stop_city);
             if (!string.IsNullOrWhiteSpace(searchKey.stop_district)) data = data.Where(p => p.stop_district == searchKey.stop_district);
+            if (!string.IsNullOrWhiteSpace(searchKey.use_type)) data = data.Where(p => p.use_type == searchKey.use_type);
+            if (!string.IsNullOrWhiteSpace(searchKey.car_length)) data = data.Where(p => p.car_length == searchKey.car_length);
+            if (!string.IsNullOrWhiteSpace(searchKey.car_style)) data = data.Where(p => p.car_style == searchKey.car_style);
             if (isOrder == false) return data;
             return data.OrderByDescending(p => p.set_top).ThenByDescending(p => p.update_time);
         }
@@ -39,6 +42,7 @@ namespace HT.BLL
         {
             using (Entities db = new Entities())
             {
+                db.Configuration.ProxyCreationEnabled = false;
                 return GetNewsData(db,searchKey,true).Skip((page - 1) * rows).Take(rows).ToList();
             }
         }
@@ -51,6 +55,7 @@ namespace HT.BLL
         {
             using (Entities db = new Entities())
             {
+                db.Configuration.ProxyCreationEnabled = false;
                 return GetNewsData(db,searchKey).Count();
             }
         }
@@ -63,6 +68,7 @@ namespace HT.BLL
         {
             using (Entities db = new Entities())
             {
+                db.Configuration.ProxyCreationEnabled = false;
                 return db.ht_news.FirstOrDefault(p => p.id== id);
             }
         }
@@ -75,6 +81,7 @@ namespace HT.BLL
             Model.Model.PageResult<ht_news> pageModel = new Model.Model.PageResult<ht_news>();
             using (Entities db = new Entities())
             {
+                db.Configuration.ProxyCreationEnabled = false;
                 pageModel.total = GetNewsData(db, searchKey).Count();
                 pageModel.list = GetNewsData(db, searchKey, true).Skip((page - 1) * rows).Take(rows).ToList();
             }
@@ -98,6 +105,7 @@ namespace HT.BLL
         {
             using (Entities db = new Entities())
             {
+                db.Configuration.ProxyCreationEnabled = false;
                 var data = db.ht_news.Where(p => true);
                 //排除id
                 if (searchKey.id != 0) data = data.Where(p => p.id!= searchKey.id);

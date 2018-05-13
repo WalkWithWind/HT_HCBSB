@@ -2175,7 +2175,7 @@ footer {
 .zhx_box_title {}
 .zhx_box_title li {
 	float: left;
-	width: 33.333%;
+	width: 50%;
 	line-height: .8rem;
 }
 .zhx_box_title li a {
@@ -2193,27 +2193,30 @@ footer {
 } 
 .zhx_box_title li.active:after {
 	background: #ffb400;
-} 
-.province {
-	margin-bottom: .2rem;
-	
 }
-.province a {
-	float: left;
-	width: 25%;
-	height: .8rem;
-	border: .02rem solid #eaeaea;
-
-	font-size: .28rem;
-	color: #777;
-
-	text-align: center;
-	line-height: .78rem;
-	margin-bottom: -.02rem;
-	margin-left: -.02rem;
-	
+.zhx_box .province, .city {
+    margin-bottom: .2rem;
 }
-
-
+.zhx_box .province a, .city a {
+    float: left;
+    height: .8rem;
+    border: .02rem solid #eaeaea;
+    font-size: .28rem;
+    color: #777;
+    text-align: center;
+    line-height: .78rem;
+    margin-bottom: -.02rem;
+    margin-left: -.02rem;
+}
+.zhx_box .province .active,.zhx_box .city .active {
+    background-color: #5EB9F2;
+    color: #ffffff;
+}
+.zhx_box .province a {
+    width: 25%;
+}
+.zhx_box .city a {
+    width: 33.333%;
+}
 /* s-地区选择*/
 

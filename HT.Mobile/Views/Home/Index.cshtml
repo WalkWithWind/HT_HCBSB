@@ -3,23 +3,7 @@
 }
 @Html.Partial("_Header")
 <div class="banner">
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <img src="/images/img/img00.jpg">
-            </div>
-            <div class="swiper-slide">
-                <img src="/images/img/img00.jpg">
-            </div>
-            <div class="swiper-slide">
-                <img src="/images/img/img00.jpg">
-            </div>
-            <div class="swiper-slide">
-                <img src="/images/img/img00.jpg">
-            </div>
-        </div>
-        <div class="swiper-pagination"></div>
-    </div>
+    @Html.Action("AdList", "Partial",new {code= "index_banner" })
 </div>
 <div class="ind_nav">
     <div class="wrapper">
@@ -183,10 +167,3 @@
     </ul>
 </div>
 @Html.Partial("_Footer")
-<script type="text/javascript">
-    var mySwiper = new Swiper('.banner .swiper-container', {
-        // autoplay: 5000,
-        pagination: '.swiper-pagination',
-        loop: true,
-    })
-</script>

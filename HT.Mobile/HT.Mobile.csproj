@@ -150,6 +150,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PartialController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\WXController.cs" />
     <Compile Include="Filter\OAuthFilter.cs" />
@@ -235,6 +236,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\geo.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -254,10 +256,13 @@
     <Content Include="Scripts\layer\theme\default\loading-1.gif" />
     <Content Include="Scripts\layer\theme\default\loading-2.gif" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Project\GoodsSource.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\swiper\swiper.min.css" />
     <Content Include="Scripts\swiper\swiper.min.js" />
+    <Content Include="Scripts\vueFilter.js" />
+    <Content Include="Scripts\vue\vue.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -297,6 +302,9 @@
     <Content Include="Views\Project\CarBuyDetails.cshtml" />
     <Content Include="Views\Project\Template.cshtml" />
     <Content Include="Views\Project\TemplateDetails.cshtml" />
+    <Content Include="Views\Partial\AdList.cshtml" />
+    <Content Include="Views\Shared\_CityJs.cshtml" />
+    <Content Include="Views\Shared\_FootLink.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

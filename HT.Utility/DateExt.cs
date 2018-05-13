@@ -51,15 +51,15 @@ namespace HT.Utility
             }
             else if (minutes >= 60 && minutes < 60 * 24)
             {
-                return (minutes / 60).ToString() + "小时前";
+                return Math.Floor((decimal)minutes / 60).ToString() + "小时前";
             }
             else if (minutes >= 60 * 24 && minutes < 60 * 24 * 30)
             {
-                return (minutes / 60 / 24).ToString() + "天前";
+                return Math.Floor((decimal)minutes / 60 / 24).ToString() + "天前";
             }
             else if (minutes > 60 * 24 * 30 && minutes < 60 * 24 * 30 * 12)
             {
-                return (minutes / 60 / 24 / 30).ToString() + "月前";
+                return Math.Floor((decimal)minutes / 60 / 24 / 30).ToString() + "月前";
             }
             else
                 return date.Year.ToString() + "年";
