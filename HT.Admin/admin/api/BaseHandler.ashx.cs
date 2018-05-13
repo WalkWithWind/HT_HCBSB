@@ -1,4 +1,4 @@
-﻿using HT.Admin.Models;
+﻿using HT.Model.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ namespace HT.Admin.admin.api
     public class BaseHandler : IHttpHandler, IRequiresSessionState
     {
 
-        public BaseResponse apiResp = new BaseResponse();
+        public ApiResponse apiResp = new ApiResponse();
 
         public void ProcessRequest(HttpContext context)
         {

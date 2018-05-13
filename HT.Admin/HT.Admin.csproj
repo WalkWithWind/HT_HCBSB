@@ -499,6 +499,8 @@
     <Content Include="scripts\layer\skin\layer.ext.css" />
     <Content Include="scripts\layer_m\layer.js" />
     <Content Include="scripts\layer_m\need\layer.css" />
+    <Content Include="scripts\laypage1.2\laypage.js" />
+    <Content Include="scripts\laypage1.2\skin\laypage.css" />
     <Content Include="scripts\tooles.js" />
     <Content Include="scripts\uploader.js" />
     <Content Include="scripts\vue\vue.min.js" />
@@ -711,7 +713,6 @@
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Models\BaseResponse.cs" />
     <Compile Include="Models\XHelp.cs" />
     <Compile Include="Models\ManageBase.cs">
       <SubType>ASPXCodeBehind</SubType>

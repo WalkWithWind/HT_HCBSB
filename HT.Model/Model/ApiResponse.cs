@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace HT.Admin.Models
+namespace HT.Model.Model
 {
-    /// <summary>
-    /// API返回
-    /// </summary>
-    public class BaseResponse
+    public class ApiResponse
     {
         /// <summary>
         /// 是否成功
@@ -22,6 +20,10 @@ namespace HT.Admin.Models
         /// 系统信息
         /// </summary>
         public string msg { get; set; }
+        /// <summary>
+        /// 跳转链接
+        /// </summary>
+        public string url { get; set; }
         /// <summary>
         /// 业务层结果
         /// </summary>

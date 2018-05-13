@@ -276,6 +276,27 @@
     <Content Include="Views\Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Views\Project\GoodsSourceDetails.cshtml" />
+    <Content Include="Views\Project\PostMessage.cshtml" />
+    <Content Include="Views\Project\PostGoods.cshtml" />
+    <Content Include="Views\Project\PostCars.cshtml" />
+    <Content Include="Views\Project\PostRecruit.cshtml" />
+    <Content Include="Views\Project\PostJob.cshtml" />
+    <Content Include="Views\Project\PostCarSell.cshtml" />
+    <Content Include="Views\Project\PostCarBuy.cshtml" />
+    <Content Include="Views\Project\PostTemplate.cshtml" />
+    <Content Include="Views\Project\CarSource.cshtml" />
+    <Content Include="Views\Project\CarSourceDetails.cshtml" />
+    <Content Include="Views\Project\Recruit.cshtml" />
+    <Content Include="Views\Project\RecruitDetails.cshtml" />
+    <Content Include="Views\Project\Job.cshtml" />
+    <Content Include="Views\Project\JobDetails.cshtml" />
+    <Content Include="Views\Project\CarSell.cshtml" />
+    <Content Include="Views\Project\CarSellDetails.cshtml" />
+    <Content Include="Views\Project\CarBuy.cshtml" />
+    <Content Include="Views\Project\CarBuyDetails.cshtml" />
+    <Content Include="Views\Project\Template.cshtml" />
+    <Content Include="Views\Project\TemplateDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

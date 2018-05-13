@@ -1,0 +1,213 @@
+﻿
+@{
+    ViewBag.Title = "发布通用模板";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="top">
+    <div class="wrapper">
+        <a href="javascript:history.go(-1);" class="back_btn">返回</a>
+        <a href="javascript:void(0);" class="wdd">发布须知</a>
+    </div>
+</div>
+<div class="banner">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="/images/img/img00.jpg">
+            </div>
+            <div class="swiper-slide">
+                <img src="/images/img/img00.jpg">
+            </div>
+            <div class="swiper-slide">
+                <img src="/images/img/img00.jpg">
+            </div>
+            <div class="swiper-slide">
+                <img src="/images/img/img00.jpg">
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+<div class="pg_sec1">
+    <ul class="">
+        <li class="li1">
+            <span>有限期</span>
+            <input type="text" placeholder="请输入有效期">
+            <div class="ro_box">
+                <input type="radio" name="name1" id="day" checked>
+                <label for="day">天</label>
+                <input type="radio" name="name1" id="mounth">
+                <label for="mounth">月</label>
+            </div>
+        </li>
+        <li>
+            <p>本类信息支付费用说明：10元/天，200元/月</p>
+        </li>
+    </ul>
+</div>
+
+
+<div class="pg_sec3 MB10">
+    <dl>
+        <dt>标签选择</dt>
+        <dd>
+            <a class="cur" href="javascript:;">排放标准</a>
+            <a href="javascript:;">国三</a>
+            <a href="javascript:;">国四</a>
+            <a href="javascript:;">国五</a>
+            <a href="javascript:;">国六</a>
+            <a href="javascript:;">其他</a>
+            <a href="javascript:;">A1</a>
+            <a href="javascript:;">A2</a>
+            <a href="javascript:;">A3</a>
+            <a href="javascript:;">B1</a>
+            <a href="javascript:;">B2</a>
+            <a href="javascript:;">C1</a>
+            <a href="javascript:;">C2</a>
+            <a href="javascript:;">C3</a>
+            <a href="javascript:;">C4</a>
+            <a href="javascript:;">M</a>
+            <a href="javascript:;">工资待遇</a>
+            <a href="javascript:;">3千-5千</a>
+            <a href="javascript:;">5千-8千</a>
+            <a href="javascript:;">8千-1万</a>
+            <a href="javascript:;">1万+</a>
+        </dd>
+    </dl>
+</div>
+
+<div class="pcs_sec3">
+    <span>图片上传</span>
+    <a href="javascript:void(0);">
+        <img src="/images/icon/icon30.png" class="upimg">
+    </a>
+    <em>做多上传5张</em>
+</div>
+
+<div class="pg_sec3 pg_sec6">
+    <dl>
+        <dt>其他补充</dt>
+        <dd>
+            <textarea placeholder="请填写其他补充信息"></textarea>
+        </dd>
+    </dl>
+</div>
+<div class="pg_sec2 pg_sec7">
+    <dl>
+        <dt>联系信息</dt>
+        <dd>
+            <span>联系人</span>
+            <input type="text" value="笑笑" readonly>
+        </dd>
+        <dd>
+            <span>联系电话</span>
+            <input type="text" value="18812345678" readonly>
+        </dd>
+    </dl>
+</div>
+<div class="pg_sec8 pg_sec9">
+    <dl>
+        <dt>增值服务</dt>
+        <dd class="active">
+            <div class="pt1">
+                <img src="/images/icon/icon27_1.png">
+            </div>
+            <div class="pt2">
+                <span>分类置顶</span>
+                <p>将在此分类也置顶显示，更能多人看到</p>
+            </div>
+            <div class="pt3">
+                <span>10元</span>
+                <i></i>
+            </div>
+        </dd>
+        <dd>
+            <div class="pt1">
+                <img src="/images/icon/icon27_2.png">
+            </div>
+            <div class="pt2">
+                <span>全站置顶</span>
+                <p>全站所有分类置顶显示，效果更好</p>
+            </div>
+            <div class="pt3">
+                <span>20元</span>
+                <i></i>
+            </div>
+        </dd>
+    </dl>
+</div>
+<div class="pg_sec8 pg_sec10">
+    <dl>
+        <dd>
+            <div class="pt1">
+                <img src="/images/icon/icon27_3.png">
+            </div>
+            <div class="pt2">
+                <span>打赏福利</span>
+                <p>客服将优先多渠道推送</p>
+            </div>
+            <div class="pt3">
+                <span>20元</span>
+                <i></i>
+            </div>
+            <div class="clear"></div>
+            <div class="pt4">
+                <div class="txt_n">
+                    <a href="javascript:;">6.66</a>
+                    <a class="cur" href="javascript:;">8.88</a>
+                    <a href="javascript:;">9.99</a>
+                    <a href="javascript:;">66.6</a>
+                    <a href="javascript:;">88.8</a>
+                    <a href="javascript:;">99.9</a>
+                </div>
+                <p>
+                    <span>手动输入打赏金额</span>
+                    <input type="text" placeholder="请输入打赏金额">
+                </p>
+            </div>
+        </dd>
+    </dl>
+    <a href="javascript:void(0);" class="btn">确认发布（共支付10元）</a>
+</div>
+<script type="text/javascript">
+    var mySwiper = new Swiper('.banner .swiper-container', {
+        // autoplay: 5000,
+        pagination: '.swiper-pagination',
+        loop: true,
+    })
+
+    $(function() {
+        var $dd = $(".pg_sec3 dd");
+        $dd.each(function() {
+            $(this).find("a:not('.m_btn')").click(function() {
+                $(this).addClass("cur").siblings("a:not('.m_btn')").removeClass("cur");
+            })
+        })
+    })
+
+    $(function() {
+        var $a = $(".pg_sec8 .pt4 .txt_n a");
+
+        $a.click(function() {
+            $(this).addClass("cur").siblings().removeClass("cur");
+        })
+
+    })
+
+    $(function() {
+        var $dd = $(".pg_sec8 dl dd");
+        var $dd_t = $(".pg_sec10 dl dd")
+        $dd.each(function() {
+            $(this).find("i").click(function() {
+                $(this).parents("dd").toggleClass("active").siblings().removeClass("active");
+                (function() {
+                    if ($dd_t.hasClass("active")) {
+                        $(".pg_sec10 dl dd .pt4").show();
+                    } else {
+                        $(".pg_sec10 dl dd .pt4").hide();
+                    }
+                }())
+            })
+        })
+    })
+</script>

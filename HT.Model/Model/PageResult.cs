@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HT.Model.Model
 {
-    public class PageResult
+    public class PageResult<T>
     {
         /// <summary>
         /// 总数量
@@ -16,11 +16,9 @@ namespace HT.Model.Model
         /// 分页数
         /// </summary>
         public int totalpage { get; set; }
-
         /// <summary>
         /// 数据
         /// </summary>
-        public dynamic list { get; set; }
-
+        public List<T> list { get; set; }
     }
 }
