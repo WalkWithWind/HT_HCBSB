@@ -67,6 +67,7 @@ namespace HT.Model
         public int view_num { get; set; }
         public int praise_num { get; set; }
         public int share_num { get; set; }
+        public Nullable<int> is_delete { get; set; }
     
         public virtual ht_news_cate ht_news_cate { get; set; }
     }

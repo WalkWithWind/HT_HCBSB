@@ -1,126 +1,160 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="detail.aspx.cs" Inherits="HT.Admin.admin.project.goods.detail" %>
 
 <!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>货源详情</title>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>详情</title>
     <link href="/scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
-    <link href="/admin/skin/default/style.css" rel="stylesheet" type="text/css" />
+	<link href="../../skin/default/style.css" rel="stylesheet" />
     <script type="text/javascript" charset="utf-8" src="/scripts/jquery/jquery-1.11.2.min.js"></script>
-    <script type="text/javascript" charset="utf-8" src="/scripts/jquery/Validform_v5.3.2_min.js"></script>
     <script type="text/javascript" charset="utf-8" src="/scripts/artdialog/dialog-plus-min.js"></script>
-    <script type="text/javascript" src="/scripts/webuploader/webuploader.min.js"></script>
-    <script type="text/javascript" charset="utf-8" src="/admin/js/uploader.js"></script>
-    <script type="text/javascript" charset="utf-8" src="/admin/js/laymain.js"></script>
-    <script type="text/javascript" charset="utf-8" src="/admin/js/common.js?v=1.0"></script>
-    <script type="text/javascript" charset="utf-8" src="/scripts/vue/vue.min.js"></script>
+	<script src="../../js/laymain.js"></script>
+	<script src="../../js/common.js"></script>
+
 </head>
-<body  class="mainbody">
 
-    <div class=".detaildiv">
-        <!--导航栏-->
+<body class="mainbody">
+
+	<div class="maindiv">
+
+		 <!--导航栏-->
         <div class="location">
-
+            <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
             <a href="../center.aspx" class="home"><i></i><span>首页</span></a>
             <i class="arrow"></i>
-            <span>货源管理</span>
-            <i class="arrow"></i>
-            <span>货源详情</span>
+            <span>项目详情</span>
         </div>
         <div class="line10"></div>
         <!--/导航栏-->
 
         <!--内容-->
-        <div class="content-tab-wrap">
-            <div id="floatHead" class="content-tab">
+        <div id="floatHead" class="content-tab-wrap">
+            <div class="content-tab">
                 <div class="content-tab-ul-wrap">
                     <ul>
-                        <li><a href="javascript:;" onclick="tabs(this);" class="selected">货源详情</a></li>
+                        <li><a class="selected" href="javascript:;">详情</a></li>
+                        
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="tab-content">
-            <dl>
-                <dt>是否启用</dt>
-                <dd>
-                    <div class="rule-multi-radio">
-                        <table id="rblState">
-	                        <tr>
-		                        <td><input id="rblState_0" type="radio" name="rblState" value="2" checked="checked" /><label for="rblState_0">是</label></td><td><input id="rblState_1" type="radio" name="rblState" value="1" /><label for="rblState_1">否</label></td>
-	                        </tr>
-                        </table>
-                    </div>
-                    <span class="Validform_checktip">*</span>
-                </dd>
-            </dl>
-            <dl>
-                <dt>广告位</dt>
-                <dd>
-                    <div class="rule-single-select">
-                        <select name="ddlcode" id="ddlcode" datatype="*" errormsg="请选择广告位" sucmsg=" ">
-	                        <option value="">请选择广告位...</option>
-	                        <option selected="selected" value="pc_index_banner">PC-首页banner</option>
 
-                        </select>
-                    </div>
-                </dd>
-            </dl>
+        <div class="tab-content">
             <dl>
                 <dt>标题</dt>
                 <dd>
-                    <input name="txtTitle" type="text" value="PC首页banner" id="txtTitle" class="input normal" datatype="*0-100" sucmsg=" " />
+                   {{newsData.title}}
                 </dd>
             </dl>
-            <dl>
-                <dt>图片</dt>
+			 <dl>
+                <dt>发布时间</dt>
                 <dd>
-                    <input name="txtImg_url" type="text" value="/upload/201711/02/153203f049044ea8ae8bfd9d14682c82.jpg" id="txtImg_url" class="input normal upload-path" datatype="*" />
-                    <div class="upload-box upload-img"></div>
+                   {{newsData.add_time}}
                 </dd>
             </dl>
-            <dl>
-                <dt>链接</dt>
+			<dl>
+                <dt>出发地</dt>
                 <dd>
-                    <input name="txtLink_url" type="text" value="#" id="txtLink_url" class="input normal" datatype="*" sucmsg=" " />
-                    <span class="Validform_checktip">必须以http://开头</span></dd>
+                   {{newsData.start_province}}-
+                            {{newsData.start_city}}-
+                            {{newsData.start_district}}
+                </dd>
             </dl>
-            <dl>
-                <dt>排序数字</dt>
+		    <dl>
+                <dt>目的地</dt>
                 <dd>
-                    <input name="txtSortId" type="text" value="97" id="txtSortId" class="input small" datatype="n" sucmsg=" " />
-                    <span class="Validform_checktip">*数字，越小越向前</span></dd>
+                  {{newsData.stop_province}}-
+                            {{newsData.stop_city}}-
+                            {{newsData.stop_district}}
+                </dd>
+            </dl>
+			<dl>
+                <dt>装车时间</dt>
+                <dd>
+                  {{newsData.use_time}}
+                          
+                </dd>
+            </dl>
+			<dl>
+                <dt>运费金额</dt>
+                <dd>
+                  {{newsData.use_time}}
+                          
+                </dd>
+            </dl>
+				<dl>
+                <dt>联系人</dt>
+                <dd>
+                  {{newsData.contact_name}}
+                          
+                </dd>
+            </dl>
+			<dl>
+                <dt>联系电话</dt>
+                <dd>
+                  {{newsData.contact_phone}}
+                </dd>
+            </dl>
+			<dl>
+                <dt>审核状态</dt>
+                <dd>
+                  {{newsData.status|convertStatus}}
+                </dd>
             </dl>
         </div>
-        <!--/内容-->
+      
+     
+
+
+	
+        <!--内容-->
 
         <!--工具栏-->
         <div class="page-footer">
-            <div class="btn-list">
-                <input type="submit" name="btnSubmit" value="提交保存" id="btnSubmit" class="btn" />
+            <div class="btn-wrap">
+				<input type="button" class="btn" value="审核通过" v-show="newsData.status==0" v-on:click="updateStatus(1)"/>
+				<input type="button" class="btn yellow" value="审核不通过" v-show="newsData.status==0" v-on:click="updateStatus(2)"/>
                 <input name="btnReturn" type="button" value="返回上一页" class="btn yellow" onclick="javascript: history.back(-1);" />
             </div>
-            <div class="clear"></div>
         </div>
         <!--/工具栏-->
-    </div>
-     
+
+
+
+	</div>
+   
+       
+   
 </body>
 </html>
 
-
+<script type="text/javascript" charset="utf-8" src="/scripts/vue/vue.min.js"></script>
 <script type="text/javascript">
 
-
+  Vue.filter("convertStatus", function(value) {  
+	  switch (value) {
+		  case 0:
+			  return "待审核";
+			  break;
+			  case 1:
+			  return "审核通过";
+			  break;
+			  case 2:
+			  return "审核不通过";
+			  break;
+		  default:
+	  }
+            });
     var url = '/admin/api/project/detail.ashx';
-
+	 var updateUrl = '/admin/api/project/updatestatus.ashx';
     var commVm = new Vue({
-        el: '.detaildiv',
+        el: '.maindiv',
         data: {
             id: GetParm('id'),
-            newsData: null,
+			newsData: {},
         },
         methods: {
             init: function () {
@@ -129,7 +163,8 @@
             loadDetail: function (){
                 var reqData = {
                     id  : this.id
-                };
+				};
+				var _this = this;
                 $.ajax({
                     type: 'post',
                     url: url,
@@ -137,7 +172,7 @@
                     dataType: 'json',
                     success: function (resp) {
                         if (resp.status) {
-                            this.newsData = resp.result;
+                            _this.newsData = resp.result;
                             console.log('_this.data', this.newsData);
                         }
                         else {
@@ -145,7 +180,52 @@
                         }
                     }
                 });
-            }
+			},
+			updateStatus: function (status) {
+				var _this = this;
+
+				    parent.dialog({
+					title: '提示',
+					content: "确认更改状态?",
+					okValue: '确定',
+					ok: function () {
+						
+						$.ajax({
+						type: 'post',
+							url: updateUrl,
+							data: { id: _this.id, status: status },
+							dataType: 'json',
+							success: function (resp) {
+							if (resp.status) {
+								_this.showMsg("操作成功");
+								
+								_this.loadDetail();
+
+							}
+						else {
+							_this.showMsg(resp.msg);
+						}
+					}
+				});
+						
+					},
+					cancelValue: '取消',
+					cancel: function () { }
+					}).showModal();
+
+
+
+			},
+			showMsg: function (msg) {
+
+				    parent.dialog({
+						title: '提示',
+						content: msg,
+						okValue: '确定',
+						ok: function () { }
+					}).showModal();
+
+			},
 
 
         }

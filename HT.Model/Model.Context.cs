@@ -35,14 +35,12 @@ namespace HT.Model
         public virtual DbSet<ht_manager_role> ht_manager_role { get; set; }
         public virtual DbSet<ht_manager_role_value> ht_manager_role_value { get; set; }
         public virtual DbSet<ht_navigation> ht_navigation { get; set; }
-        public virtual DbSet<ht_news> ht_news { get; set; }
         public virtual DbSet<ht_news_cate> ht_news_cate { get; set; }
         public virtual DbSet<ht_order> ht_order { get; set; }
         public virtual DbSet<ht_order_appraise> ht_order_appraise { get; set; }
         public virtual DbSet<ht_payment> ht_payment { get; set; }
         public virtual DbSet<ht_region> ht_region { get; set; }
         public virtual DbSet<ht_single_page> ht_single_page { get; set; }
-        public virtual DbSet<ht_sms_config> ht_sms_config { get; set; }
         public virtual DbSet<ht_sms_email> ht_sms_email { get; set; }
         public virtual DbSet<ht_sms_record> ht_sms_record { get; set; }
         public virtual DbSet<ht_sms_template> ht_sms_template { get; set; }
@@ -52,5 +50,7 @@ namespace HT.Model
         public virtual DbSet<ht_user_money_log> ht_user_money_log { get; set; }
         public virtual DbSet<ht_user_point_log> ht_user_point_log { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<ht_sms_config> ht_sms_config { get; set; }
+        public virtual DbSet<ht_news> ht_news { get; set; }
     }
 }

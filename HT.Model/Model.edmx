@@ -186,6 +186,7 @@
           <Property Name="view_num" Type="int" Nullable="false" />
           <Property Name="praise_num" Type="int" Nullable="false" />
           <Property Name="share_num" Type="int" Nullable="false" />
+          <Property Name="is_delete" Type="int" />
         </EntityType>
         <EntityType Name="ht_news_cate">
           <Key>
@@ -511,14 +512,12 @@
           <EntitySet Name="ht_manager_role" EntityType="Model.ht_manager_role" />
           <EntitySet Name="ht_manager_role_value" EntityType="Model.ht_manager_role_value" />
           <EntitySet Name="ht_navigation" EntityType="Model.ht_navigation" />
-          <EntitySet Name="ht_news" EntityType="Model.ht_news" />
           <EntitySet Name="ht_news_cate" EntityType="Model.ht_news_cate" />
           <EntitySet Name="ht_order" EntityType="Model.ht_order" />
           <EntitySet Name="ht_order_appraise" EntityType="Model.ht_order_appraise" />
           <EntitySet Name="ht_payment" EntityType="Model.ht_payment" />
           <EntitySet Name="ht_region" EntityType="Model.ht_region" />
           <EntitySet Name="ht_single_page" EntityType="Model.ht_single_page" />
-          <EntitySet Name="ht_sms_config" EntityType="Model.ht_sms_config" />
           <EntitySet Name="ht_sms_email" EntityType="Model.ht_sms_email" />
           <EntitySet Name="ht_sms_record" EntityType="Model.ht_sms_record" />
           <EntitySet Name="ht_sms_template" EntityType="Model.ht_sms_template" />
@@ -536,6 +535,8 @@
             <End Role="ht_manager_role" EntitySet="ht_manager_role" />
             <End Role="ht_manager_role_value" EntitySet="ht_manager_role_value" />
           </AssociationSet>
+          <EntitySet Name="ht_sms_config" EntityType="Model.ht_sms_config" />
+          <EntitySet Name="ht_news" EntityType="Model.ht_news" />
           <AssociationSet Name="FK_ht_news_ht_news_cate" Association="Model.FK_ht_news_ht_news_cate">
             <End Role="ht_news_cate" EntitySet="ht_news_cate" />
             <End Role="ht_news" EntitySet="ht_news" />
@@ -669,65 +670,6 @@
           <Property Name="actiontype" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="addtime" Type="DateTime" Precision="3" />
         </EntityType>
-        <EntityType Name="ht_news">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="cateid" Type="Int32" Nullable="false" />
-          <Property Name="cate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="contact_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="contact_phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="validity_num" Type="Int32" />
-          <Property Name="validity_unit" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
-          <Property Name="start_province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="start_city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="start_district" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="start_address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="stop_province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="stop_city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="stop_district" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="stop_address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="tags" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="use_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="use_img" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="car_length" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="car_style" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="goods_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="goods_weight" Type="Int32" />
-          <Property Name="goods_weight_unit" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
-          <Property Name="freight" Type="Decimal" Precision="10" Scale="2" />
-          <Property Name="use_time" Type="DateTime" Precision="3" />
-          <Property Name="use_mode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="pay_method" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="other_remark" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
-          <Property Name="set_top" Type="Int32" />
-          <Property Name="set_top_money" Type="Decimal" Precision="10" Scale="2" />
-          <Property Name="reward_money" Type="Decimal" Precision="10" Scale="2" />
-          <Property Name="recruit_num" Type="Int32" />
-          <Property Name="imgs" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="add_userid" Type="Int32" Nullable="false" />
-          <Property Name="add_nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="add_avatar" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="add_time" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="update_userid" Type="Int32" />
-          <Property Name="update_nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="update_time" Type="DateTime" Precision="3" />
-          <Property Name="audit_userid" Type="Int32" />
-          <Property Name="audit_nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="audit_time" Type="DateTime" Precision="3" />
-          <Property Name="status" Type="Int32" Nullable="false" />
-          <Property Name="pay_status" Type="Int32" Nullable="false" />
-          <Property Name="pay_time" Type="DateTime" Precision="3" />
-          <Property Name="pay_trade_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="order_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="view_num" Type="Int32" Nullable="false" />
-          <Property Name="praise_num" Type="Int32" Nullable="false" />
-          <Property Name="share_num" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ht_news_cate" Relationship="Model.FK_ht_news_ht_news_cate" FromRole="ht_news" ToRole="ht_news_cate" />
-        </EntityType>
         <EntityType Name="ht_news_cate">
           <Key>
             <PropertyRef Name="id" />
@@ -842,16 +784,6 @@
           <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="update_time" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="ht_sms_config">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="smsurl" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="smsuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="smspwd" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="addtime" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="ht_sms_email">
           <Key>
@@ -985,6 +917,76 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ht_sms_config">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="smsurl" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="smsuser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="smspwd" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="addtime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ht_news">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cateid" Type="Int32" Nullable="false" />
+          <Property Name="cate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="contact_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="contact_phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="validity_num" Type="Int32" />
+          <Property Name="validity_unit" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="start_province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="start_city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="start_district" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="start_address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="stop_province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="stop_city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="stop_district" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="stop_address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tags" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="use_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="use_img" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="car_length" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="car_style" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="goods_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="goods_weight" Type="Int32" />
+          <Property Name="goods_weight_unit" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="freight" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="use_time" Type="DateTime" Precision="3" />
+          <Property Name="use_mode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="pay_method" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="other_remark" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="set_top" Type="Int32" />
+          <Property Name="set_top_money" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="reward_money" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="recruit_num" Type="Int32" />
+          <Property Name="imgs" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="add_userid" Type="Int32" Nullable="false" />
+          <Property Name="add_nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="add_avatar" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="add_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="update_userid" Type="Int32" />
+          <Property Name="update_nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="update_time" Type="DateTime" Precision="3" />
+          <Property Name="audit_userid" Type="Int32" />
+          <Property Name="audit_nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="audit_time" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <Property Name="pay_status" Type="Int32" Nullable="false" />
+          <Property Name="pay_time" Type="DateTime" Precision="3" />
+          <Property Name="pay_trade_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="order_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="view_num" Type="Int32" Nullable="false" />
+          <Property Name="praise_num" Type="Int32" Nullable="false" />
+          <Property Name="share_num" Type="Int32" Nullable="false" />
+          <Property Name="is_delete" Type="Int32" />
+          <NavigationProperty Name="ht_news_cate" Relationship="Model.FK_ht_news_ht_news_cate" FromRole="ht_news" ToRole="ht_news_cate" />
+        </EntityType>
         <Association Name="FK_ht_news_ht_news_cate">
           <End Type="Model.ht_news_cate" Role="ht_news_cate" Multiplicity="1" />
           <End Type="Model.ht_news" Role="ht_news" Multiplicity="*" />
@@ -1137,65 +1139,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ht_news">
-            <EntityTypeMapping TypeName="Model.ht_news">
-              <MappingFragment StoreEntitySet="ht_news">
-                <ScalarProperty Name="share_num" ColumnName="share_num" />
-                <ScalarProperty Name="praise_num" ColumnName="praise_num" />
-                <ScalarProperty Name="view_num" ColumnName="view_num" />
-                <ScalarProperty Name="order_no" ColumnName="order_no" />
-                <ScalarProperty Name="pay_trade_no" ColumnName="pay_trade_no" />
-                <ScalarProperty Name="pay_time" ColumnName="pay_time" />
-                <ScalarProperty Name="pay_status" ColumnName="pay_status" />
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="audit_time" ColumnName="audit_time" />
-                <ScalarProperty Name="audit_nickname" ColumnName="audit_nickname" />
-                <ScalarProperty Name="audit_userid" ColumnName="audit_userid" />
-                <ScalarProperty Name="update_time" ColumnName="update_time" />
-                <ScalarProperty Name="update_nickname" ColumnName="update_nickname" />
-                <ScalarProperty Name="update_userid" ColumnName="update_userid" />
-                <ScalarProperty Name="add_time" ColumnName="add_time" />
-                <ScalarProperty Name="add_avatar" ColumnName="add_avatar" />
-                <ScalarProperty Name="add_nickname" ColumnName="add_nickname" />
-                <ScalarProperty Name="add_userid" ColumnName="add_userid" />
-                <ScalarProperty Name="imgs" ColumnName="imgs" />
-                <ScalarProperty Name="recruit_num" ColumnName="recruit_num" />
-                <ScalarProperty Name="reward_money" ColumnName="reward_money" />
-                <ScalarProperty Name="set_top_money" ColumnName="set_top_money" />
-                <ScalarProperty Name="set_top" ColumnName="set_top" />
-                <ScalarProperty Name="other_remark" ColumnName="other_remark" />
-                <ScalarProperty Name="pay_method" ColumnName="pay_method" />
-                <ScalarProperty Name="use_mode" ColumnName="use_mode" />
-                <ScalarProperty Name="use_time" ColumnName="use_time" />
-                <ScalarProperty Name="freight" ColumnName="freight" />
-                <ScalarProperty Name="goods_weight_unit" ColumnName="goods_weight_unit" />
-                <ScalarProperty Name="goods_weight" ColumnName="goods_weight" />
-                <ScalarProperty Name="goods_type" ColumnName="goods_type" />
-                <ScalarProperty Name="car_style" ColumnName="car_style" />
-                <ScalarProperty Name="car_length" ColumnName="car_length" />
-                <ScalarProperty Name="use_img" ColumnName="use_img" />
-                <ScalarProperty Name="use_type" ColumnName="use_type" />
-                <ScalarProperty Name="tags" ColumnName="tags" />
-                <ScalarProperty Name="stop_address" ColumnName="stop_address" />
-                <ScalarProperty Name="stop_district" ColumnName="stop_district" />
-                <ScalarProperty Name="stop_city" ColumnName="stop_city" />
-                <ScalarProperty Name="stop_province" ColumnName="stop_province" />
-                <ScalarProperty Name="start_address" ColumnName="start_address" />
-                <ScalarProperty Name="start_district" ColumnName="start_district" />
-                <ScalarProperty Name="start_city" ColumnName="start_city" />
-                <ScalarProperty Name="start_province" ColumnName="start_province" />
-                <ScalarProperty Name="validity_unit" ColumnName="validity_unit" />
-                <ScalarProperty Name="validity_num" ColumnName="validity_num" />
-                <ScalarProperty Name="contact_phone" ColumnName="contact_phone" />
-                <ScalarProperty Name="contact_name" ColumnName="contact_name" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="cate" ColumnName="cate" />
-                <ScalarProperty Name="cateid" ColumnName="cateid" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ht_news_cate">
             <EntityTypeMapping TypeName="Model.ht_news_cate">
               <MappingFragment StoreEntitySet="ht_news_cate">
@@ -1316,17 +1259,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ht_sms_config">
-            <EntityTypeMapping TypeName="Model.ht_sms_config">
-              <MappingFragment StoreEntitySet="ht_sms_config">
-                <ScalarProperty Name="addtime" ColumnName="addtime" />
-                <ScalarProperty Name="smspwd" ColumnName="smspwd" />
-                <ScalarProperty Name="smsuser" ColumnName="smsuser" />
-                <ScalarProperty Name="smsurl" ColumnName="smsurl" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ht_sms_email">
             <EntityTypeMapping TypeName="Model.ht_sms_email">
               <MappingFragment StoreEntitySet="ht_sms_email">
@@ -1441,6 +1373,77 @@
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ht_sms_config">
+            <EntityTypeMapping TypeName="Model.ht_sms_config">
+              <MappingFragment StoreEntitySet="ht_sms_config">
+                <ScalarProperty Name="addtime" ColumnName="addtime" />
+                <ScalarProperty Name="smspwd" ColumnName="smspwd" />
+                <ScalarProperty Name="smsuser" ColumnName="smsuser" />
+                <ScalarProperty Name="smsurl" ColumnName="smsurl" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ht_news">
+            <EntityTypeMapping TypeName="Model.ht_news">
+              <MappingFragment StoreEntitySet="ht_news">
+                <ScalarProperty Name="is_delete" ColumnName="is_delete" />
+                <ScalarProperty Name="share_num" ColumnName="share_num" />
+                <ScalarProperty Name="praise_num" ColumnName="praise_num" />
+                <ScalarProperty Name="view_num" ColumnName="view_num" />
+                <ScalarProperty Name="order_no" ColumnName="order_no" />
+                <ScalarProperty Name="pay_trade_no" ColumnName="pay_trade_no" />
+                <ScalarProperty Name="pay_time" ColumnName="pay_time" />
+                <ScalarProperty Name="pay_status" ColumnName="pay_status" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="audit_time" ColumnName="audit_time" />
+                <ScalarProperty Name="audit_nickname" ColumnName="audit_nickname" />
+                <ScalarProperty Name="audit_userid" ColumnName="audit_userid" />
+                <ScalarProperty Name="update_time" ColumnName="update_time" />
+                <ScalarProperty Name="update_nickname" ColumnName="update_nickname" />
+                <ScalarProperty Name="update_userid" ColumnName="update_userid" />
+                <ScalarProperty Name="add_time" ColumnName="add_time" />
+                <ScalarProperty Name="add_avatar" ColumnName="add_avatar" />
+                <ScalarProperty Name="add_nickname" ColumnName="add_nickname" />
+                <ScalarProperty Name="add_userid" ColumnName="add_userid" />
+                <ScalarProperty Name="imgs" ColumnName="imgs" />
+                <ScalarProperty Name="recruit_num" ColumnName="recruit_num" />
+                <ScalarProperty Name="reward_money" ColumnName="reward_money" />
+                <ScalarProperty Name="set_top_money" ColumnName="set_top_money" />
+                <ScalarProperty Name="set_top" ColumnName="set_top" />
+                <ScalarProperty Name="other_remark" ColumnName="other_remark" />
+                <ScalarProperty Name="pay_method" ColumnName="pay_method" />
+                <ScalarProperty Name="use_mode" ColumnName="use_mode" />
+                <ScalarProperty Name="use_time" ColumnName="use_time" />
+                <ScalarProperty Name="freight" ColumnName="freight" />
+                <ScalarProperty Name="goods_weight_unit" ColumnName="goods_weight_unit" />
+                <ScalarProperty Name="goods_weight" ColumnName="goods_weight" />
+                <ScalarProperty Name="goods_type" ColumnName="goods_type" />
+                <ScalarProperty Name="car_style" ColumnName="car_style" />
+                <ScalarProperty Name="car_length" ColumnName="car_length" />
+                <ScalarProperty Name="use_img" ColumnName="use_img" />
+                <ScalarProperty Name="use_type" ColumnName="use_type" />
+                <ScalarProperty Name="tags" ColumnName="tags" />
+                <ScalarProperty Name="stop_address" ColumnName="stop_address" />
+                <ScalarProperty Name="stop_district" ColumnName="stop_district" />
+                <ScalarProperty Name="stop_city" ColumnName="stop_city" />
+                <ScalarProperty Name="stop_province" ColumnName="stop_province" />
+                <ScalarProperty Name="start_address" ColumnName="start_address" />
+                <ScalarProperty Name="start_district" ColumnName="start_district" />
+                <ScalarProperty Name="start_city" ColumnName="start_city" />
+                <ScalarProperty Name="start_province" ColumnName="start_province" />
+                <ScalarProperty Name="validity_unit" ColumnName="validity_unit" />
+                <ScalarProperty Name="validity_num" ColumnName="validity_num" />
+                <ScalarProperty Name="contact_phone" ColumnName="contact_phone" />
+                <ScalarProperty Name="contact_name" ColumnName="contact_name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="cate" ColumnName="cate" />
+                <ScalarProperty Name="cateid" ColumnName="cateid" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
