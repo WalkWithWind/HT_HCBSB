@@ -43,6 +43,7 @@
                         <li><a class="selected" href="javascript:;">基本参数设置</a></li>
                         <li><a href="javascript:;">文件上传设置</a></li>
                         <li><a href="javascript:;">规则设置</a></li>
+						 <li><a href="javascript:;">微信配置</a></li>
                     </ul>
                 </div>
             </div>
@@ -176,6 +177,59 @@
                 <dd>
                     <asp:TextBox ID="shareprofitrate" runat="server" CssClass="input txt" datatype="/^[0-9]+(\.[0-9]{1,2})?$/" sucmsg=" " />
                     <span class="Validform_checktip">*每吨货所分润的金额 , 元/吨</span>
+                </dd>
+            </dl>
+			    <dl>
+                <dt>分佣一级比例(百分比)</dt>
+                <dd>
+                    <asp:TextBox ID="txtDistributionLevel1" runat="server" CssClass="input txt" datatype="/^[0-9]+(\.[0-9]{1,2})?$/" sucmsg=" " />
+                    <span class="Validform_checktip">*返给上一级的用户比例百分比(0-100)</span>
+                </dd>
+            </dl>
+			   <dl>
+                <dt>分佣二级比例(百分比)</dt>
+                <dd>
+                    <asp:TextBox ID="txtDistributionLevel2" runat="server" CssClass="input txt" datatype="/^[0-9]+(\.[0-9]{1,2})?$/" sucmsg=" " />
+                    <span class="Validform_checktip">*返给上二级的用户比例百分比(0-100)</span>
+                </dd>
+            </dl>
+        </div>
+
+
+	 <div class="tab-content" style="display: none">
+            <dl>
+                <dt>AppId</dt>
+                <dd>
+                    <asp:TextBox ID="txtAppId" runat="server" CssClass="input txt"  sucmsg=" " />
+                    <span class="Validform_checktip">AppId</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>AppSecret</dt>
+                <dd>
+                   <asp:TextBox ID="txtAppSecret" runat="server" CssClass="input txt"  sucmsg=" " />
+                    <span class="Validform_checktip">AppSecret</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>商户号(MCHID)</dt>
+                <dd>
+                    <asp:TextBox ID="txtMchId" runat="server" CssClass="input txt"  sucmsg=" " />
+                    <span class="Validform_checktip">微信支付商户号</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>支付密钥</dt>
+                <dd>
+                    <asp:TextBox ID="txtMchSecret" runat="server" CssClass="input txt" MaxLength="32" />
+                    <span class="Validform_checktip">支付密钥</span>
+                </dd>
+            </dl>
+			   <dl>
+                <dt>证书路径</dt>
+                <dd>
+                    <asp:TextBox ID="txtCerPath" runat="server" CssClass="input txt" />
+                    <span class="Validform_checktip">证书路径</span>
                 </dd>
             </dl>
         </div>

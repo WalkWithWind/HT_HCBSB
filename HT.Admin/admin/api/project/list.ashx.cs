@@ -18,8 +18,10 @@ namespace HT.Admin.admin.api.project
             int pageSize = !string.IsNullOrEmpty(context.Request["pagesize"]) ? int.Parse(context.Request["pagesize"]) : 10;
             string keyword = context.Request["keyword"];
             string cateId = context.Request["cate_id"];
-
-            var pageResult = HT.BLL.Admin.BLLProject.GetNewsList(pageIndex, pageSize, int.Parse(cateId), keyword);
+			string status = context.Request["status"];
+			string fromDate = context.Request["fromdate"];
+			string toDate = context.Request["todate"];
+			var pageResult = HT.BLL.Admin.BLLProject.GetNewsList(pageIndex, pageSize, int.Parse(cateId),status, keyword,fromDate,toDate);
 
             apiResp.status = true;
             apiResp.result = pageResult;

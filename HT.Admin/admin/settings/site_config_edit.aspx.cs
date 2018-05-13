@@ -42,7 +42,16 @@ namespace HT.Admin.admin.settings
             freightmarginrate.Text = SiteConfig["freightmarginrate"];
             shareprofitrate.Text = SiteConfig["shareprofitrate"];
             webcopyright.Text = SiteConfig["webcopyright"];
-        }
+			txtDistributionLevel1.Text= SiteConfig["distribution_level1"];
+			txtDistributionLevel2.Text = SiteConfig["distribution_level2"];
+			txtAppId.Text = SiteConfig["wx_appid"];
+			txtAppSecret.Text = SiteConfig["wx_appsecret"];
+			txtMchId.Text = SiteConfig["wx_mchid"];
+			txtMchSecret.Text = SiteConfig["wx_mchsecret"];
+			txtCerPath.Text = SiteConfig["wx_cerpath"];
+
+
+		}
 
         protected void btnSubmit_Click(object sender , EventArgs e)
         {
@@ -67,7 +76,14 @@ namespace HT.Admin.admin.settings
             list.Find(x => x.xkey == "freightmarginrate").xvalue = freightmarginrate.Text;
             list.Find(x => x.xkey == "webcopyright").xvalue = webcopyright.Text;
             list.Find(x => x.xkey == "shareprofitrate").xvalue = shareprofitrate.Text;
-            db.SaveChanges();
+			list.Find(x => x.xkey == "distribution_level1").xvalue = txtDistributionLevel1.Text;
+			list.Find(x => x.xkey == "distribution_level2").xvalue = txtDistributionLevel2.Text;
+			list.Find(x => x.xkey == "wx_appid").xvalue = txtAppId.Text;
+			list.Find(x => x.xkey == "wx_appsecret").xvalue = txtAppSecret.Text;
+			list.Find(x => x.xkey == "wx_mchid").xvalue = txtMchId.Text;
+			list.Find(x => x.xkey == "wx_mchsecret").xvalue = txtMchSecret.Text;
+			list.Find(x => x.xkey == "wx_cerpath").xvalue = txtCerPath.Text;
+			db.SaveChanges();
             JscriptMsg("修改系统配置成功！" , "site_config_edit.aspx");
         }
     }

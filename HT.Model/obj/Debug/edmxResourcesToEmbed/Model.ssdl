@@ -181,6 +181,7 @@
     <Property Name="view_num" Type="int" Nullable="false" />
     <Property Name="praise_num" Type="int" Nullable="false" />
     <Property Name="share_num" Type="int" Nullable="false" />
+    <Property Name="is_delete" Type="int" />
   </EntityType>
   <EntityType Name="ht_news_cate">
     <Key>

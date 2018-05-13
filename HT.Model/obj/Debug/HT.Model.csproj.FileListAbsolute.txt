@@ -1,4 +1,4 @@
-F:\Project\汪汪找船\website\HT_Search_Boat\HT.Model\bin\Debug\HT.Model.dll.config
+﻿F:\Project\汪汪找船\website\HT_Search_Boat\HT.Model\bin\Debug\HT.Model.dll.config
 F:\Project\汪汪找船\website\HT_Search_Boat\HT.Model\bin\Debug\HT.Model.dll
 F:\Project\汪汪找船\website\HT_Search_Boat\HT.Model\bin\Debug\HT.Model.pdb
 F:\Project\汪汪找船\website\HT_Search_Boat\HT.Model\bin\Debug\EntityFramework.dll
@@ -70,4 +70,17 @@ G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\obj\Debug\HT.Model.csproj.Cor
 G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\obj\Debug\HT.Model.csproj.CopyComplete
 G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\obj\Debug\HT.Model.dll
 G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\obj\Debug\HT.Model.pdb
-G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\obj\Debug\HT.Model.csprojResolveAssemblyReference.cache
+D:\Work\HCBSB\HT.Model\bin\Debug\HT.Model.dll.config
+D:\Work\HCBSB\HT.Model\bin\Debug\HT.Model.dll
+D:\Work\HCBSB\HT.Model\bin\Debug\HT.Model.pdb
+D:\Work\HCBSB\HT.Model\bin\Debug\EntityFramework.dll
+D:\Work\HCBSB\HT.Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\Work\HCBSB\HT.Model\bin\Debug\EntityFramework.xml
+D:\Work\HCBSB\HT.Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\Work\HCBSB\HT.Model\bin\Debug\zh-Hans\EntityFramework.resources.dll
+D:\Work\HCBSB\HT.Model\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+D:\Work\HCBSB\HT.Model\obj\Debug\HT.Model.csprojResolveAssemblyReference.cache
+D:\Work\HCBSB\HT.Model\obj\Debug\HT.Model.csproj.CoreCompileInputs.cache
+D:\Work\HCBSB\HT.Model\obj\Debug\HT.Model.csproj.CopyComplete
+D:\Work\HCBSB\HT.Model\obj\Debug\HT.Model.dll
+D:\Work\HCBSB\HT.Model\obj\Debug\HT.Model.pdb

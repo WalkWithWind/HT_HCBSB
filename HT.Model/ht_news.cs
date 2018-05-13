@@ -14,223 +14,60 @@ namespace HT.Model
     
     public partial class ht_news
     {
-        /// <summary>
-        /// 编号
-        /// </summary>
         public int id { get; set; }
-        /// <summary>
-        /// 分类id
-        /// </summary>
         public int cateid { get; set; }
-        /// <summary>
-        /// 分类名称
-        /// </summary>
         public string cate { get; set; }
-        /// <summary>
-        /// 标题
-        /// </summary>
         public string title { get; set; }
-        /// <summary>
-        /// 描述
-        /// </summary>
         public string description { get; set; }
-        /// <summary>
-        /// 联系人
-        /// </summary>
         public string contact_name { get; set; }
-        /// <summary>
-        /// 联系人电话
-        /// </summary>
         public string contact_phone { get; set; }
-        /// <summary>
-        /// 有效期
-        /// </summary>
         public Nullable<int> validity_num { get; set; }
-        /// <summary>
-        /// 有效期单位（天、月）
-        /// </summary>
         public string validity_unit { get; set; }
-        /// <summary>
-        /// （出发地省）
-        /// </summary>
         public string start_province { get; set; }
-        /// <summary>
-        /// （出发地市）
-        /// </summary>
         public string start_city { get; set; }
-        /// <summary>
-        /// （出发地区）
-        /// </summary>
         public string start_district { get; set; }
-        /// <summary>
-        /// (出发地地址)
-        /// </summary>
         public string start_address { get; set; }
-        /// <summary>
-        /// （目的地省）
-        /// </summary>
         public string stop_province { get; set; }
-        /// <summary>
-        /// (目的地市)
-        /// </summary>
         public string stop_city { get; set; }
-        /// <summary>
-        /// （目的地区）
-        /// </summary>
         public string stop_district { get; set; }
-        /// <summary>
-        /// （到达地地址）
-        /// </summary>
         public string stop_address { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
         public string tags { get; set; }
-        /// <summary>
-        /// 用车类型
-        /// </summary>
         public string use_type { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
         public string use_img { get; set; }
-        /// <summary>
-        /// 车长
-        /// </summary>
         public string car_length { get; set; }
-        /// <summary>
-        /// 车型
-        /// </summary>
         public string car_style { get; set; }
-        /// <summary>
-        /// 货物类型
-        /// </summary>
         public string goods_type { get; set; }
-        /// <summary>
-        /// 货物重量体积
-        /// </summary>
         public Nullable<int> goods_weight { get; set; }
-        /// <summary>
-        /// 货物重量体积单位
-        /// </summary>
         public string goods_weight_unit { get; set; }
-        /// <summary>
-        /// 运费金额
-        /// </summary>
         public Nullable<decimal> freight { get; set; }
-        /// <summary>
-        /// 装车时间
-        /// </summary>
         public Nullable<System.DateTime> use_time { get; set; }
-        /// <summary>
-        /// 装卸方式
-        /// </summary>
         public string use_mode { get; set; }
-        /// <summary>
-        /// 付款方式
-        /// </summary>
         public string pay_method { get; set; }
-        /// <summary>
-        /// 其他补充
-        /// </summary>
         public string other_remark { get; set; }
-        /// <summary>
-        /// 置顶类型
-        /// </summary>
         public Nullable<int> set_top { get; set; }
-        /// <summary>
-        /// 置顶金额
-        /// </summary>
         public Nullable<decimal> set_top_money { get; set; }
-        /// <summary>
-        /// 打赏金额
-        /// </summary>
         public Nullable<decimal> reward_money { get; set; }
-        /// <summary>
-        /// 招聘人数
-        /// </summary>
         public Nullable<int> recruit_num { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
         public string imgs { get; set; }
-        /// <summary>
-        /// 添加用户id
-        /// </summary>
         public int add_userid { get; set; }
-        /// <summary>
-        /// 添加用户昵称
-        /// </summary>
         public string add_nickname { get; set; }
-        /// <summary>
-        /// 用户头像
-        /// </summary>
         public string add_avatar { get; set; }
-        /// <summary>
-        /// 添加时间
-        /// </summary>
         public System.DateTime add_time { get; set; }
-        /// <summary>
-        /// 修改用户id
-        /// </summary>
         public Nullable<int> update_userid { get; set; }
-        /// <summary>
-        /// 用户修改昵称
-        /// </summary>
         public string update_nickname { get; set; }
-        /// <summary>
-        /// 用户修改时间
-        /// </summary>
         public Nullable<System.DateTime> update_time { get; set; }
-        /// <summary>
-        /// 审核用户id
-        /// </summary>
         public Nullable<int> audit_userid { get; set; }
-        /// <summary>
-        /// 审核用户昵称
-        /// </summary>
         public string audit_nickname { get; set; }
-        /// <summary>
-        /// 审核时间
-        /// </summary>
         public Nullable<System.DateTime> audit_time { get; set; }
-        /// <summary>
-        /// 状态
-        /// </summary>
         public int status { get; set; }
-        /// <summary>
-        /// 支付状态
-        /// </summary>
         public int pay_status { get; set; }
-        /// <summary>
-        /// 支付时间
-        /// </summary>
         public Nullable<System.DateTime> pay_time { get; set; }
-        /// <summary>
-        /// 交易号
-        /// </summary>
         public string pay_trade_no { get; set; }
-        /// <summary>
-        /// 订单号
-        /// </summary>
         public string order_no { get; set; }
-        /// <summary>
-        /// 浏览数
-        /// </summary>
         public int view_num { get; set; }
-        /// <summary>
-        /// 点赞书
-        /// </summary>
         public int praise_num { get; set; }
-        /// <summary>
-        /// 分享数
-        /// </summary>
         public int share_num { get; set; }
-
-
-        /// <summary>
-        /// 分类表
-        /// </summary>
+        public Nullable<int> is_delete { get; set; }
     
         public virtual ht_news_cate ht_news_cate { get; set; }
     }

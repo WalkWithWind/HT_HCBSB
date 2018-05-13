@@ -82,6 +82,8 @@
     <Content Include="admin\js\layindex.js" />
     <Content Include="admin\js\laymain.js" />
     <Content Include="admin\js\uploader.js" />
+    <Content Include="scripts\laypage\1.2\laypage.js" />
+    <Content Include="scripts\laypage\1.2\skin\laypage.css" />
     <Content Include="admin\login.aspx" />
     <Content Include="admin\manager\manager_edit.aspx" />
     <Content Include="admin\manager\manager_list.aspx" />
@@ -575,11 +577,17 @@
     <Compile Include="admin\api\BaseHandler.ashx.cs">
       <DependentUpon>BaseHandler.ashx</DependentUpon>
     </Compile>
+    <Compile Include="admin\api\project\delete.ashx.cs">
+      <DependentUpon>delete.ashx</DependentUpon>
+    </Compile>
     <Compile Include="admin\api\project\detail.ashx.cs">
       <DependentUpon>detail.ashx</DependentUpon>
     </Compile>
     <Compile Include="admin\api\project\list.ashx.cs">
       <DependentUpon>list.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\api\project\updatestatus.ashx.cs">
+      <DependentUpon>updatestatus.ashx</DependentUpon>
     </Compile>
     <Compile Include="admin\cate\cate_list.aspx.cs">
       <DependentUpon>cate_list.aspx</DependentUpon>
@@ -794,6 +802,8 @@
     <Content Include="admin\api\BaseHandler.ashx" />
     <Content Include="admin\api\project\list.ashx" />
     <Content Include="admin\api\project\detail.ashx" />
+    <Content Include="admin\api\project\delete.ashx" />
+    <Content Include="admin\api\project\updatestatus.ashx" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -824,6 +834,7 @@
     <Folder Include="admin\api\project\driverjob\" />
     <Folder Include="admin\api\project\goods\" />
     <Folder Include="admin\api\project\recruitdriver\" />
+    <Folder Include="admin\lib\" />
     <Folder Include="admin\project\carbuy\" />
     <Folder Include="admin\project\carsale\" />
     <Folder Include="admin\project\carsource\" />
