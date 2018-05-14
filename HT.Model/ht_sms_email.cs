@@ -12,13 +12,34 @@ namespace HT.Model
     using System;
     using System.Collections.Generic;
     
+    ///<summary>
+    ///邮件模板
+    ///</summary>
     public partial class ht_sms_email
     {
+    ///<summary>
+    ///
+    ///</summary>
         public int id { get; set; }
+    ///<summary>
+    ///模版标题
+    ///</summary>
         public string title { get; set; }
+    ///<summary>
+    ///模版内容
+    ///</summary>
         public string contents { get; set; }
+    ///<summary>
+    ///调用代码
+    ///</summary>
         public string code { get; set; }
+    ///<summary>
+    ///排序
+    ///</summary>
         public Nullable<int> sort { get; set; }
+    ///<summary>
+    ///添加时间
+    ///</summary>
         public Nullable<System.DateTime> addtime { get; set; }
     }
 }

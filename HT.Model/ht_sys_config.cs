@@ -12,12 +12,30 @@ namespace HT.Model
     using System;
     using System.Collections.Generic;
     
+    ///<summary>
+    ///系统配置
+    ///</summary>
     public partial class ht_sys_config
     {
+    ///<summary>
+    ///
+    ///</summary>
         public int id { get; set; }
+    ///<summary>
+    ///键
+    ///</summary>
         public string xkey { get; set; }
+    ///<summary>
+    ///值
+    ///</summary>
         public string xvalue { get; set; }
+    ///<summary>
+    ///说明
+    ///</summary>
         public string remark { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public Nullable<System.DateTime> addtime { get; set; }
     }
 }

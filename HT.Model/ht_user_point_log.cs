@@ -12,12 +12,30 @@ namespace HT.Model
     using System;
     using System.Collections.Generic;
     
+    ///<summary>
+    ///
+    ///</summary>
     public partial class ht_user_point_log
     {
+    ///<summary>
+    ///
+    ///</summary>
         public int id { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public Nullable<int> userid { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public Nullable<int> point { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public string remark { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public Nullable<System.DateTime> addtime { get; set; }
     }
 }

@@ -12,12 +12,30 @@ namespace HT.Model
     using System;
     using System.Collections.Generic;
     
+    ///<summary>
+    ///
+    ///</summary>
     public partial class ht_region
     {
+    ///<summary>
+    ///
+    ///</summary>
         public int id { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public string title { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public Nullable<int> pid { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public Nullable<int> cid { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public Nullable<int> sort { get; set; }
     }
 }

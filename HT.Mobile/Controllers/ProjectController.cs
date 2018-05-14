@@ -24,9 +24,9 @@ namespace HT.Mobile.Controllers
         /// <param name="page"></param>
         /// <param name="rows"></param>
         /// <returns></returns>
-        public ActionResult BaseNewsList(ht_news searchKey, int page = 1, int rows = 5)
+        public ActionResult BaseNewsList(ht_news searchKey, int page = 1, int rows = 5, bool recommend =false)
         {
-            Model.Model.PageResult<ht_news> pageModel = BLLNews.GetNewsListPageResult(page, rows, searchKey);
+            Model.Model.PageResult<ht_news> pageModel = BLLNews.GetNewsListPageResult(page, rows, searchKey, recommend);
 
             if (Request.IsAjaxRequest())
             {
@@ -52,6 +52,26 @@ namespace HT.Mobile.Controllers
                 return Json(apiResp);
             }
             return View(model);
+        }
+        /// <summary>
+        /// 猜你喜欢
+        /// </summary>
+        /// <param name="searchKey"></param>
+        /// <param name="page"></param>
+        /// <param name="rows"></param>
+        /// <returns></returns>
+        public ActionResult BaseLikeNewsList(int page = 1, int rows = 5, int id=0, int min=1)
+        {
+            List<ht_news> list = BLLNews.GetLikeNewsList(page, rows, id, min);
+
+            if (Request.IsAjaxRequest())
+            {
+                apiResp.status = true;
+                apiResp.result = list;
+                return Json(apiResp);
+            }
+
+            return View(list);
         }
         #endregion 信息基础接口 Api
 

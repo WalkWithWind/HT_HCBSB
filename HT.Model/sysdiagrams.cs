@@ -12,12 +12,30 @@ namespace HT.Model
     using System;
     using System.Collections.Generic;
     
+    ///<summary>
+    ///
+    ///</summary>
     public partial class sysdiagrams
     {
+    ///<summary>
+    ///
+    ///</summary>
         public string name { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public int principal_id { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public int diagram_id { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public Nullable<int> version { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public byte[] definition { get; set; }
     }
 }

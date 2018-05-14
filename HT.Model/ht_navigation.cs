@@ -12,19 +12,58 @@ namespace HT.Model
     using System;
     using System.Collections.Generic;
     
+    ///<summary>
+    ///后台导航菜单
+    ///</summary>
     public partial class ht_navigation
     {
+    ///<summary>
+    ///
+    ///</summary>
         public int id { get; set; }
+    ///<summary>
+    ///父节点
+    ///</summary>
         public Nullable<int> parentid { get; set; }
+    ///<summary>
+    ///菜单代码
+    ///</summary>
         public string name { get; set; }
+    ///<summary>
+    ///菜单名称
+    ///</summary>
         public string title { get; set; }
+    ///<summary>
+    ///子标题
+    ///</summary>
         public string subtitle { get; set; }
+    ///<summary>
+    ///图标地址
+    ///</summary>
         public string iconurl { get; set; }
+    ///<summary>
+    ///链接地址
+    ///</summary>
         public string linkurl { get; set; }
+    ///<summary>
+    ///是否显示菜单: 1.是 2.否
+    ///</summary>
         public Nullable<int> isshow { get; set; }
+    ///<summary>
+    ///菜单排序
+    ///</summary>
         public Nullable<int> sortid { get; set; }
+    ///<summary>
+    ///备注
+    ///</summary>
         public string remark { get; set; }
+    ///<summary>
+    ///权限字符串,用逗号隔开
+    ///</summary>
         public string actiontype { get; set; }
+    ///<summary>
+    ///添加时间
+    ///</summary>
         public Nullable<System.DateTime> addtime { get; set; }
     }
 }

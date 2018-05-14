@@ -12,18 +12,54 @@ namespace HT.Model
     using System;
     using System.Collections.Generic;
     
+    ///<summary>
+    ///管理员信息表
+    ///</summary>
     public partial class ht_manager
     {
+    ///<summary>
+    ///
+    ///</summary>
         public int id { get; set; }
+    ///<summary>
+    ///名称
+    ///</summary>
         public string username { get; set; }
+    ///<summary>
+    ///密码
+    ///</summary>
         public string password { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public Nullable<int> roleid { get; set; }
+    ///<summary>
+    ///是否锁定: 0.否 1.是
+    ///</summary>
         public Nullable<int> islock { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public Nullable<int> roletype { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public string salt { get; set; }
+    ///<summary>
+    ///昵称
+    ///</summary>
         public string nickname { get; set; }
+    ///<summary>
+    ///手机号码
+    ///</summary>
         public string mobile { get; set; }
+    ///<summary>
+    ///性别
+    ///</summary>
         public string sex { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public Nullable<System.DateTime> addtime { get; set; }
     
         public virtual ht_manager_role ht_manager_role { get; set; }

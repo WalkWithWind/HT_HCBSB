@@ -12,60 +12,222 @@ namespace HT.Model
     using System;
     using System.Collections.Generic;
     
+    ///<summary>
+    ///订单表
+    ///</summary>
     public partial class ht_order
     {
+    ///<summary>
+    ///
+    ///</summary>
         public int id { get; set; }
+    ///<summary>
+    ///订单编号
+    ///</summary>
         public string orderno { get; set; }
+    ///<summary>
+    ///首款订单编号
+    ///</summary>
         public string forderno { get; set; }
+    ///<summary>
+    ///预付款支付状态: 1.待支付 2.已支付
+    ///</summary>
         public Nullable<int> fpaystatus { get; set; }
+    ///<summary>
+    ///首款支付时间
+    ///</summary>
         public Nullable<System.DateTime> fpaytime { get; set; }
+    ///<summary>
+    ///首款交易单号
+    ///</summary>
         public string ftradeno { get; set; }
+    ///<summary>
+    ///尾款订单编号
+    ///</summary>
         public string lorderno { get; set; }
+    ///<summary>
+    ///尾款支付状态: 1.待支付 2.已支付
+    ///</summary>
         public Nullable<int> lpaystatus { get; set; }
+    ///<summary>
+    ///尾款支付时间
+    ///</summary>
         public Nullable<System.DateTime> lpaytime { get; set; }
+    ///<summary>
+    ///尾款交易单号
+    ///</summary>
         public string ltradeno { get; set; }
+    ///<summary>
+    ///合同id
+    ///</summary>
         public Nullable<int> bargainid { get; set; }
+    ///<summary>
+    ///合同编号
+    ///</summary>
         public string bargainno { get; set; }
+    ///<summary>
+    ///船主用户id
+    ///</summary>
         public Nullable<int> captainuid { get; set; }
+    ///<summary>
+    ///货主用户id
+    ///</summary>
         public Nullable<int> shipperuid { get; set; }
+    ///<summary>
+    ///承运需求id
+    ///</summary>
         public Nullable<int> carrierid { get; set; }
+    ///<summary>
+    ///货运需求id
+    ///</summary>
         public Nullable<int> freightid { get; set; }
+    ///<summary>
+    ///订单状态: 1.已下单 2.托运中 3. 已完成 4.已取消
+    ///</summary>
         public Nullable<int> orderstatus { get; set; }
+    ///<summary>
+    ///货主评价状态: 1.待评价 2.已评价
+    ///</summary>
         public Nullable<int> appraisestatus { get; set; }
+    ///<summary>
+    ///支付方式id
+    ///</summary>
         public Nullable<int> payid { get; set; }
+    ///<summary>
+    ///预付款比例
+    ///</summary>
         public Nullable<decimal> imprestrate { get; set; }
+    ///<summary>
+    ///尾款比例
+    ///</summary>
         public Nullable<decimal> finalrate { get; set; }
+    ///<summary>
+    ///预付款金额
+    ///</summary>
         public Nullable<decimal> imprestamount { get; set; }
+    ///<summary>
+    ///尾款金额
+    ///</summary>
         public Nullable<decimal> finalamount { get; set; }
+    ///<summary>
+    ///船主的承运船舶id
+    ///</summary>
         public Nullable<int> boatid { get; set; }
+    ///<summary>
+    ///船主的承运船舶识别码
+    ///</summary>
         public string boatcode { get; set; }
+    ///<summary>
+    ///货物开始托运时间
+    ///</summary>
         public Nullable<System.DateTime> starttime { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public Nullable<System.DateTime> finishtime { get; set; }
+    ///<summary>
+    ///货运需求货量
+    ///</summary>
         public Nullable<decimal> weight { get; set; }
+    ///<summary>
+    ///中标id
+    ///</summary>
         public Nullable<int> bid { get; set; }
+    ///<summary>
+    ///船主竞标价格,也是货主成交价格
+    ///</summary>
         public Nullable<decimal> bidprice { get; set; }
+    ///<summary>
+    ///到港状态: 1.未到港 2.已到港
+    ///</summary>
         public Nullable<int> isarrive { get; set; }
+    ///<summary>
+    ///船主确认到港时间
+    ///</summary>
         public Nullable<System.DateTime> arrivetime { get; set; }
+    ///<summary>
+    ///验港状态: 1.未验证 2.已验证
+    ///</summary>
         public Nullable<int> checkstatus { get; set; }
+    ///<summary>
+    ///验港时间
+    ///</summary>
         public Nullable<System.DateTime> checktime { get; set; }
+    ///<summary>
+    ///船主验港货量
+    ///</summary>
         public Nullable<decimal> checkweight { get; set; }
+    ///<summary>
+    ///验港备注
+    ///</summary>
         public string checkremark { get; set; }
+    ///<summary>
+    ///货物单价
+    ///</summary>
         public Nullable<decimal> unitprice { get; set; }
+    ///<summary>
+    ///滞期费用
+    ///</summary>
         public Nullable<decimal> delayamount { get; set; }
+    ///<summary>
+    ///其他费用
+    ///</summary>
         public Nullable<decimal> otheramount { get; set; }
+    ///<summary>
+    ///货主应付的尾款
+    ///</summary>
         public Nullable<decimal> payablefinalamount { get; set; }
+    ///<summary>
+    ///货主实际需支付的尾款
+    ///</summary>
         public Nullable<decimal> realfinalamount { get; set; }
+    ///<summary>
+    ///尾款账单状态: 1.待发送 2.已发送
+    ///</summary>
         public Nullable<int> issend { get; set; }
+    ///<summary>
+    ///是否提交异议: 1.否 2.是
+    ///</summary>
         public Nullable<int> isdissent { get; set; }
+    ///<summary>
+    ///尾款账单发送时间
+    ///</summary>
         public Nullable<System.DateTime> sendtime { get; set; }
+    ///<summary>
+    ///是否分润: 1.否 2.是
+    ///</summary>
         public Nullable<int> isprofit { get; set; }
+    ///<summary>
+    ///分润时间
+    ///</summary>
         public Nullable<System.DateTime> profittime { get; set; }
+    ///<summary>
+    ///分润交易号
+    ///</summary>
         public string profittradeno { get; set; }
+    ///<summary>
+    ///保证金是否退款: 1.否 2.是
+    ///</summary>
         public Nullable<int> ismarginrefund { get; set; }
+    ///<summary>
+    ///保证金退款订单号
+    ///</summary>
         public string marginrefundno { get; set; }
+    ///<summary>
+    ///保证金退款交易单号
+    ///</summary>
         public string marginrefundtradeno { get; set; }
+    ///<summary>
+    ///保证金退款时间
+    ///</summary>
         public Nullable<System.DateTime> marginrefundtime { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public Nullable<decimal> marginrefundamount { get; set; }
+    ///<summary>
+    ///订单生成时间
+    ///</summary>
         public Nullable<System.DateTime> addtime { get; set; }
     }
 }

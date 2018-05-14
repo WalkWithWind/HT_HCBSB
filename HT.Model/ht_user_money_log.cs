@@ -12,13 +12,34 @@ namespace HT.Model
     using System;
     using System.Collections.Generic;
     
+    ///<summary>
+    ///
+    ///</summary>
     public partial class ht_user_money_log
     {
+    ///<summary>
+    ///
+    ///</summary>
         public int id { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public Nullable<int> userid { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public Nullable<int> type { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public Nullable<decimal> money { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public string remark { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public Nullable<System.DateTime> addtime { get; set; }
     }
 }

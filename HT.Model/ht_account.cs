@@ -12,17 +12,50 @@ namespace HT.Model
     using System;
     using System.Collections.Generic;
     
+    ///<summary>
+    ///易极付账户
+    ///</summary>
     public partial class ht_account
     {
+    ///<summary>
+    ///
+    ///</summary>
         public int id { get; set; }
+    ///<summary>
+    ///平台用户id
+    ///</summary>
         public Nullable<int> userid { get; set; }
+    ///<summary>
+    ///易极付用户类型: 1.个人用户 2.企业用户 3.个体户用户
+    ///</summary>
         public Nullable<int> usertype { get; set; }
+    ///<summary>
+    ///易极付用户名
+    ///</summary>
         public string username { get; set; }
+    ///<summary>
+    ///易极付手机号
+    ///</summary>
         public string mobile { get; set; }
+    ///<summary>
+    ///易极付邮箱
+    ///</summary>
         public string email { get; set; }
+    ///<summary>
+    ///易极付用户id
+    ///</summary>
         public string uid { get; set; }
+    ///<summary>
+    ///是否开通支付账户: 1.否 2.是
+    ///</summary>
         public Nullable<int> isopenpay { get; set; }
+    ///<summary>
+    ///开通时间
+    ///</summary>
         public Nullable<System.DateTime> opentime { get; set; }
+    ///<summary>
+    ///添加时间
+    ///</summary>
         public Nullable<System.DateTime> addtime { get; set; }
     }
 }

@@ -12,61 +12,226 @@ namespace HT.Model
     using System;
     using System.Collections.Generic;
     
+    ///<summary>
+    ///资讯百宝箱
+    ///</summary>
     public partial class ht_news
     {
+    ///<summary>
+    ///
+    ///</summary>
         public int id { get; set; }
+    ///<summary>
+    ///分类id
+    ///</summary>
         public int cateid { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public string cate { get; set; }
+    ///<summary>
+    ///标题
+    ///</summary>
         public string title { get; set; }
+    ///<summary>
+    ///SEO描述
+    ///</summary>
         public string description { get; set; }
+    ///<summary>
+    ///SEO关键词
+    ///</summary>
         public string contact_name { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public string contact_phone { get; set; }
+    ///<summary>
+    ///详情
+    ///</summary>
         public Nullable<int> validity_num { get; set; }
+    ///<summary>
+    ///点击量
+    ///</summary>
         public string validity_unit { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public string start_province { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public string start_city { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public string start_district { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public string start_address { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public string stop_province { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public string stop_city { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public string stop_district { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public string stop_address { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public string tags { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public string use_type { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public string use_img { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public string car_length { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public string car_style { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public string goods_type { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public Nullable<int> goods_weight { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public string goods_weight_unit { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public Nullable<decimal> freight { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public Nullable<System.DateTime> use_time { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public string use_mode { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public string pay_method { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public string other_remark { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public Nullable<int> set_top { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public Nullable<decimal> set_top_money { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public Nullable<decimal> reward_money { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public Nullable<int> recruit_num { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public string imgs { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public int add_userid { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public string add_nickname { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public string add_avatar { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public System.DateTime add_time { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public Nullable<int> update_userid { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public string update_nickname { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public Nullable<System.DateTime> update_time { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public Nullable<int> audit_userid { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public string audit_nickname { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public Nullable<System.DateTime> audit_time { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public int status { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public int pay_status { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public Nullable<System.DateTime> pay_time { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public string pay_trade_no { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public string order_no { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public int view_num { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public int praise_num { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public int share_num { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public Nullable<int> is_delete { get; set; }
     
         public virtual ht_news_cate ht_news_cate { get; set; }

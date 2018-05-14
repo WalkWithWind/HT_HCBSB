@@ -12,13 +12,34 @@ namespace HT.Model
     using System;
     using System.Collections.Generic;
     
+    ///<summary>
+    ///帮助中心
+    ///</summary>
     public partial class ht_help
     {
+    ///<summary>
+    ///
+    ///</summary>
         public int id { get; set; }
+    ///<summary>
+    ///标题
+    ///</summary>
         public string title { get; set; }
+    ///<summary>
+    ///内容
+    ///</summary>
         public string contents { get; set; }
+    ///<summary>
+    ///排序
+    ///</summary>
         public Nullable<int> sort { get; set; }
+    ///<summary>
+    ///游览量
+    ///</summary>
         public Nullable<int> excursion_count { get; set; }
+    ///<summary>
+    ///更新时间
+    ///</summary>
         public Nullable<System.DateTime> update_time { get; set; }
     }
 }
