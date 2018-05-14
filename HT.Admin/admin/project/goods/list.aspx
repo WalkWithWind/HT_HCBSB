@@ -15,21 +15,21 @@
 	<style>
 
 	.input-date {
-	display: block;
-	float: left;
-	margin: 0;
-	padding: 0 5px;
-	width: 110px;
-	height: 30px;
-	line-height: 28px;
-	font-size: 12px;
-	border: 1px solid #eee;
-	color: #444;
-}
-		.float-right {
-			float:left;
-			margin-top:10px;
-		}
+	    display: block;
+	    float: left;
+	    margin: 0;
+	    padding: 0 5px;
+	    width: 110px;
+	    height: 30px;
+	    line-height: 28px;
+	    font-size: 12px;
+	    border: 1px solid #eee;
+	    color: #444;
+    }
+	.float-right {
+		float:left;
+		margin-top:10px;
+	}
 	</style>
 </head>
 <body class="mainbody">
@@ -47,27 +47,30 @@
 		<div class="toolbar-wrap">
 			<div id="floatHead" class="toolbar">
 				<div class="box-wrap">
+
 					<div class="l-list">
+                         
+
 						<ul class="icon-list">
 							<li><a class="all" v-on:click="selectAllChange()" ><i></i><span>{{selectAllText}}</span></a></li>
 							<li><a class="del" v-on:click="del()" ><i></i><span>删除</span></a></li>
+							<li><a class="del" v-on:click="del()" ><i></i><span>编辑</span></a></li>
 							
 						</ul>
 
-						    <div class="menu-list ">
-                                <div class="rule-single-select">
-                                    <select name="ddlStatus" id="ddlStatus">
-	                                    <option selected="selected" value="">请选择审核状态</option>
-	                                    <option value="0">待审核</option>
-										<option value="1">审核通过</option>
-										<option value="2">审核不通过</option>
-                                    </select>									
-                                </div>
-
-								
-								<input id="txtFromDate" class="input-date" onclick="WdatePicker()" /><span class="float-right">&nbsp;至&nbsp;</span><input id="txtToDate" class="input-date" onclick="WdatePicker()"  />
-
+                        <div class="menu-list">
+                            <div class="rule-single-select">
+                                <select name="ddlStatus" id="ddlStatus">
+	                                <option selected="selected" value="">请选择审核状态</option>
+	                                <option value="0">待审核</option>
+									<option value="1">审核通过</option>
+									<option value="2">审核不通过</option>
+                                </select>									
                             </div>
+							<input id="txtFromDate" class="input-date" onclick="WdatePicker()" /><span class="float-right">&nbsp;至&nbsp;</span><input id="txtToDate" class="input-date" onclick="WdatePicker()"  />
+                        </div>
+
+						   
 					</div>
 					<div class="r-list">
 						<input name="txtKeywords" type="text" v-model="keyword" id="txtKeywords" class="keyword" />
@@ -85,16 +88,17 @@
 
 			<tr>
 				<th align="center" width="3%">选择</th>
-				<th align="center" width="12%">标题</th>
-				<th align="center" width="10%">发布时间</th>
-				<th align="center" width="10%">出发地</th>
-				<th align="center" width="10%">目的地</th>
-				<th align="center" width="10%">装车时间</th>
-				<th align="center" width="10%">运费金额</th>
+				<%--<th align="center" width="12%">标题</th>--%>
+                
 				<th align="center" width="10%">联系人</th>
 				<th align="center" width="10%">联系电话</th>
+				<th align="center" width="10%">发布时间</th>
+				<th align="center" width="15%">出发地</th>
+				<th align="center" width="15%">目的地</th>
+				<th align="center" width="10%">装车时间</th>
+				<th align="center" width="10%">运费金额</th>
 				<th align="center" width="10%">状态</th>
-				<th align="center" width="5%">操作</th>
+				<th align="center" width="7%">操作</th>
 			</tr>
 
 			<tr v-for="item in dataList">
@@ -102,10 +106,12 @@
 				<td align="center">
 					<span class="checkall" style="vertical-align: middle;">
 						<input id="rptList_chkId_0" type="checkbox" v-model="item.checked" /></span>
-					
 				</td>
 
-				<td align="center" v-text="item.title"></td>
+				<%--<td align="center" v-text="item.title"></td>--%>
+                
+				<td align="center">{{item.contact_name}}</td>
+				<td align="center">{{item.contact_phone}}</td>
 				<td align="center">{{item.add_time}}</td>
 				<td align="center">{{item.start_province}}-
                             {{item.start_city}}-
@@ -118,12 +124,13 @@
 				</td>
 				<td align="center">{{item.use_time}}</td>
 				<td align="center">{{item.freight}}</td>
-				<td align="center">{{item.contact_name}}</td>
-				<td align="center">{{item.contact_phone}}</td>
-				<td align="center">{{item.status|convertStatus}}</td>
-
 				<td align="center">
-					<a :href="'detail.aspx?id='+ item.id">详情</a>
+                    <span v-if="item.status==0">待审核</span>
+                    <span v-if="item.status==1">审核通过</span> 
+                    <span v-if="item.status==2">审核不通过</span>
+				</td>
+				<td align="center">
+					<a v-bind:href="'detail.aspx?id='+ item.id">详情</a>
 				</td>
 			</tr>
 
@@ -158,22 +165,9 @@
 	<script src="/scripts/datepicker/WdatePicker.js"></script>
 	<script type="text/javascript">
 
-		var url = "/admin/api/project/list.ashx";
-		var delUrl = "/admin/api/project/delete.ashx";
-		  Vue.filter("convertStatus", function(value) {  
-	  switch (value) {
-		  case 0:
-			  return "待审核";
-			  break;
-			  case 1:
-			  return "审核通过";
-			  break;
-			  case 2:
-			  return "审核不通过";
-			  break;
-		  default:
-	  }
-            });
+	var url = "/admin/api/project/list.ashx";
+	var delUrl = "/admin/api/project/delete.ashx";
+
 	var commVm = new Vue({
 		el: '.maindiv',
 		data: {
@@ -189,8 +183,6 @@
 			toDate:"",
 			cateId: 1,
 			totalPage: 0
-
-			
 		},
 		methods: {
 			init: function () {

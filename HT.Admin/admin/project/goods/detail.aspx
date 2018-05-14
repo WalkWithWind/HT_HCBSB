@@ -43,10 +43,24 @@
         </div>
 
         <div class="tab-content">
-            <dl>
+          <%--  <dl>
                 <dt>标题</dt>
                 <dd>
                    {{newsData.title}}
+                </dd>
+            </dl>--%>
+
+            <dl>
+                <dt>联系人</dt>
+                <dd>
+                  {{newsData.contact_name}}
+                          
+                </dd>
+            </dl>
+			<dl>
+                <dt>联系电话</dt>
+                <dd>
+                  {{newsData.contact_phone}}
                 </dd>
             </dl>
 			 <dl>
@@ -71,37 +85,108 @@
                             {{newsData.stop_district}}
                 </dd>
             </dl>
-			<dl>
-                <dt>装车时间</dt>
+
+            <dl>
+                <dt>有效期</dt>
                 <dd>
-                  {{newsData.use_time}}
+                    {{newsData.validity_num}}{{newsData.validity_unit}}
+                </dd>
+            </dl>
+
+            <dl>
+                <dt>用车类型</dt>
+                <dd>
+                    {{newsData.use_type}}
+                </dd>
+            </dl>
+
+             <dl>
+                <dt>车长</dt>
+                <dd>
+                    {{newsData.car_length}}（米）
+                </dd>
+            </dl>
+
+            <dl>
+                <dt>车型</dt>
+                <dd>
+                    {{newsData.car_style}}
+                </dd>
+            </dl>
+
+             <dl>
+                <dt>货物类型</dt>
+                <dd>
+                    {{newsData.goods_type}}
+                </dd>
+            </dl>
+
+             <dl>
+                <dt>货物重量体积</dt>
+                <dd>
+                    {{newsData.goods_weight}}{{newsData.goods_weight_unit}}
+                </dd>
+            </dl>
+
+            <dl>
+                <dt>运费金额</dt>
+                <dd>
+                    {{newsData.freight}}（元）
+                </dd>
+            </dl>
+			<dl>
+                <dt>装卸方式</dt>
+                <dd>
+                  {{newsData.use_mode}}
                           
                 </dd>
             </dl>
+
+            <dl>
+                <dt>付款方式</dt>
+                <dd>
+                  {{newsData.pay_method}}
+                </dd>
+            </dl>
+
+            <dl>
+                <dt>其他补充</dt>
+                <dd>
+                  {{newsData.other_remark}}
+                </dd>
+            </dl>
+
+            
+
+             <dl>
+                <dt>置顶金额</dt>
+                <dd>
+                  {{newsData.reward_money}}  {{newsData.set_top_money}}
+                </dd>
+            </dl>
+
+            
+
+            <dl>
+                <dt>打赏金额</dt>
+                <dd>
+                  {{newsData.reward_money}} （元）
+                </dd>
+            </dl>
+
 			<dl>
                 <dt>运费金额</dt>
                 <dd>
-                  {{newsData.use_time}}
-                          
+                  {{newsData.freight}}
                 </dd>
             </dl>
-				<dl>
-                <dt>联系人</dt>
-                <dd>
-                  {{newsData.contact_name}}
-                          
-                </dd>
-            </dl>
-			<dl>
-                <dt>联系电话</dt>
-                <dd>
-                  {{newsData.contact_phone}}
-                </dd>
-            </dl>
+			
 			<dl>
                 <dt>审核状态</dt>
                 <dd>
-                  {{newsData.status|convertStatus}}
+                   <span v-if="newsData.status==0">待审核</span>
+                   <span v-if="newsData.status==1">审核通过</span>
+                   <span v-if="newsData.status==2">审核不通过</span>
                 </dd>
             </dl>
         </div>
@@ -133,21 +218,7 @@
 
 <script type="text/javascript" charset="utf-8" src="/scripts/vue/vue.min.js"></script>
 <script type="text/javascript">
-
-  Vue.filter("convertStatus", function(value) {  
-	  switch (value) {
-		  case 0:
-			  return "待审核";
-			  break;
-			  case 1:
-			  return "审核通过";
-			  break;
-			  case 2:
-			  return "审核不通过";
-			  break;
-		  default:
-	  }
-            });
+    
     var url = '/admin/api/project/detail.ashx';
 	 var updateUrl = '/admin/api/project/updatestatus.ashx';
     var commVm = new Vue({
