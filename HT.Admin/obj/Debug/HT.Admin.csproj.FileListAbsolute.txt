@@ -189,3 +189,6 @@ D:\Work\HCBSB\HT.Admin\obj\Debug\HT.Admin.csproj.CoreCompileInputs.cache
 D:\Work\HCBSB\HT.Admin\obj\Debug\HT.Admin.csproj.CopyComplete
 D:\Work\HCBSB\HT.Admin\obj\Debug\HT.Admin.dll
 D:\Work\HCBSB\HT.Admin\obj\Debug\HT.Admin.pdb
+G:\工作\文档\货车百事帮\HT_HCBSB\HT.Admin\bin\HT.BLL.dll
+G:\工作\文档\货车百事帮\HT_HCBSB\HT.Admin\bin\HT.BLL.pdb
+G:\工作\文档\货车百事帮\HT_HCBSB\HT.Admin\bin\HT.BLL.dll.config

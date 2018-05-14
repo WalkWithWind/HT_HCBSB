@@ -20,46 +20,41 @@ namespace HT.BLL.Admin
         /// <param name="keyword"></param>
         /// <returns></returns>
 
-        public static HT.Model.Model.PageResult GetNewsList(int pageIndex,int pageSize,int cateId,string status,string keyword,string fromDate="",string toDate="")
+        public static HT.Model.Model.PageResult<ht_news> GetNewsList(int pageIndex,int pageSize,int cateId,string status,string keyword,string fromDate="",string toDate="")
         {
-            HT.Model.Model.PageResult pageModel = new HT.Model.Model.PageResult();
+            HT.Model.Model.PageResult<ht_news> pageModel = new HT.Model.Model.PageResult<ht_news>();
             using (Entities db = new Entities())
             {
                 db.Configuration.ProxyCreationEnabled = false;
-				var all = db.ht_news.AsEnumerable();
 				var unDelList = db.ht_news.Where(r => r.is_delete == 0);
-				all = all.Intersect(unDelList);
 				if (cateId > 0)
 				{
-					var cateList = db.ht_news.Where(r => r.cateid == cateId);
-					all = all.Intersect(cateList);
+                    unDelList = unDelList.Where(r => r.cateid == cateId);
 				}
 				if (!string.IsNullOrWhiteSpace(keyword))
 				{
-					var keywordList = db.ht_news.Where(r => r.title.Contains(keyword.Trim()));
-					all = all.Intersect(keywordList);
+                    unDelList = unDelList.Where(r => r.title.Contains(keyword.Trim()));
 				}
 				if (!string.IsNullOrWhiteSpace(status))
 				{
 					int statusInt = int.Parse(status);
-					var statusList = db.ht_news.Where(r => r.status == statusInt);
-					all = all.Intersect(statusList);
+                    unDelList = unDelList.Where(r => r.status == statusInt);
 				}
 				if (!string.IsNullOrWhiteSpace(fromDate))
 				{
 					DateTime dtFrom = DateTime.Parse(fromDate);
-					var fromDateList = db.ht_news.Where(r => r.add_time >= dtFrom);
-					all = all.Intersect(fromDateList);
+                    unDelList = unDelList.Where(r => r.add_time >= dtFrom);
 				}
 				if (!string.IsNullOrWhiteSpace(toDate))
 				{
 					DateTime dtTo = DateTime.Parse(toDate).AddDays(1).AddSeconds(-1);
-					var toDateList = db.ht_news.Where(r => r.add_time <=dtTo);
-					all = all.Intersect(toDateList);
+                    unDelList = unDelList.Where(r => r.add_time <=dtTo);
 				}
-				pageModel.totalpage =(int)Math.Ceiling((decimal)all.Count() / (decimal)pageSize);//总页数
-                pageModel.total = all.Count();
-                pageModel.list = all.OrderByDescending(p=>p.id).Skip(pageSize * (pageIndex - 1)).Take(pageSize).ToList();
+                int total = unDelList.Count();
+
+                pageModel.totalpage =(int)Math.Ceiling((decimal)total / (decimal)pageSize);//总页数
+                pageModel.total = total;
+                pageModel.list = unDelList.OrderByDescending(p=>p.id).Skip(pageSize * (pageIndex - 1)).Take(pageSize).ToList();
                 return pageModel;
             }
 
