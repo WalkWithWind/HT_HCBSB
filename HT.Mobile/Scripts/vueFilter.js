@@ -22,3 +22,12 @@
     else
         return value.getFullYear() + "年" + end;
 });
+Vue.filter('moneyFormart', function (value) {
+    if (value == '') return '';
+    var result = Math.floor(value /10000);
+    if (result > 10) {
+        return result + "万";
+    }
+    else
+        return value + "元";
+});

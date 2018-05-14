@@ -10,14 +10,13 @@ var listVm = new Vue({
         //isLoadingLayer: -1,
         isLoadAll: false,
         searchKey: {
-            cateid: 1,
+            cateid: 3,
             start_province: '',
             start_city: '',
-            stop_province: '',
-            stop_city: '',
             use_type: '',
             car_length: '',
             car_style: '',
+            goods_type: '',
             page: 1,
             rows: 5
         },
@@ -28,15 +27,17 @@ var listVm = new Vue({
         cityData: dsy,
         useTypeData: [],
         carLengthData: [],
-        carStyleData: []
+        carStyleData: [],
+        goodsTypeData: []
     },
     methods: {
         init: function () {
             this.bindScroll();
             this.loadData();
-            this.loadCateData('use_type', 1);
-            this.loadCateData('car_length', 4);
-            this.loadCateData('car_style', 16);
+            this.loadCateData('use_type', 60);
+            this.loadCateData('car_length', 101);
+            this.loadCateData('car_style', 72);
+            this.loadCateData('goods_type', 78);
         },
         loadData: function () {
             var _this = this;
@@ -98,16 +99,16 @@ var listVm = new Vue({
                         if (code == 'use_type') _this.useTypeData = resp.result;
                         if (code == 'car_length') _this.carLengthData = resp.result;
                         if (code == 'car_style') _this.carStyleData = resp.result;
+                        if (code == 'goods_type') _this.goodsTypeData = resp.result;
                     }
                 }
             });
         },
-        showCity: function (code) {
-            var _title = code == 'start' ? '出发地' : '目的地';
+        showCity: function () {
             layer.open({
                 type: 1,
-                title: _title,
-                content: $('.' + code + '_box'),
+                title: '工作地',
+                content: $('.start_box'),
                 offset: 'lb',
                 area: ['100%', '500px'],
                 shade: 0.5,
@@ -118,7 +119,7 @@ var listVm = new Vue({
         showUseType: function () {
             layer.open({
                 type: 1,
-                title: '用车类型',
+                title: '驾照',
                 content: $('.use_type_box'),
                 offset: 'lb',
                 area: ['100%', 'auto'],
@@ -130,8 +131,20 @@ var listVm = new Vue({
         showCarLength: function () {
             layer.open({
                 type: 1,
-                title: '货源筛选',
+                title: '工资待遇',
                 content: $('.car_length_box'),
+                offset: 'lb',
+                area: ['100%', 'auto'],
+                shade: 0.5,
+                scrollbar: false,
+                anim: 2
+            });
+        },
+        showCarStyle: function () {
+            layer.open({
+                type: 1,
+                title: '招聘筛选',
+                content: $('.car_style_box'),
                 offset: 'lb',
                 area: ['100%', 'auto'],
                 shade: 0.5,
@@ -141,55 +154,28 @@ var listVm = new Vue({
         },
         selectProvince: function (code, item) {
             var _this = this;
-            if (code == 'start') {
-                if (_this.searchKey.start_province != item) _this.searchKey.start_city = '';
-                _this.searchKey.start_province = item;
-                _this.select.startProvinceTab = false;
-
-            } else {
-                if (_this.searchKey.stop_province != item) _this.searchKey.stop_city = '';
-                _this.searchKey.stop_province = item;
-                _this.select.stopProvinceTab = false;
-
-            }
+            if (_this.searchKey.start_province != item) _this.searchKey.start_city = '';
+            _this.searchKey.start_province = item;
+            _this.select.startProvinceTab = false;
         },
         selectCity: function (code, item) {
             var _this = this;
-            if (code == 'start') {
-                _this.searchKey.start_city = item;
-            } else {
-                _this.searchKey.stop_city = item;
-            }
+            _this.searchKey.start_city = item;
         },
         selectTabProvince: function (code) {
             var _this = this;
-            if (code == 'start') {
-                _this.select.startProvinceTab = true;
-            } else {
-                _this.select.stopProvinceTab = true;
-            }
+            _this.select.startProvinceTab = true;
         },
         selectTabCity: function (code) {
             var _this = this;
-            if (code == 'start') {
-                if (_this.searchKey.start_province == '') return;
-                _this.select.startProvinceTab = false;
-            } else {
-                if (_this.searchKey.stop_province == '') return;
-                _this.select.stopProvinceTab = false;
-            }
+            if (_this.searchKey.start_province == '') return;
+            _this.select.startProvinceTab = false;
         },
         resetCity: function (code) {
             var _this = this;
-            if (code == 'start') {
-                _this.select.startProvinceTab = true;
-                _this.searchKey.start_province = '';
-                _this.searchKey.start_city = '';
-            } else {
-                _this.select.stopProvinceTab = true;
-                _this.searchKey.stop_province = '';
-                _this.searchKey.stop_city = '';
-            }
+            _this.select.startProvinceTab = true;
+            _this.searchKey.start_province = '';
+            _this.searchKey.start_city = '';
         },
         confirm: function (code) {
             var _this = this;

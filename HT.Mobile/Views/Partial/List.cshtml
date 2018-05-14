@@ -1,0 +1,421 @@
+﻿<script type="text/template" id="list-component-template">
+    <div class="li">
+        <!--货源信息 -->
+        <div class="el_item" v-if="item.cateid==1">
+            <div class="wrapper">
+                <div class="infor">
+                    <a v-bind:href="'/Project/GoodsSourceDetails/'+item.id">
+                        <div class="infor_p1">
+                            <span v-text="item.start_city"></span>
+                            <i></i><!-- 中间的箭头符号 -->
+                            <span v-text="item.stop_city"></span>
+                            <em v-if="item.set_top>0">置顶</em>
+                        </div>
+                        <div class="infor_p2">
+                            <i class="lab1" v-text="item.use_type"></i>
+                            <i class="lab2" v-text="item.car_style"></i>
+                            <i class="lab3" v-text="item.car_length+'米'"></i>
+                            <i class="lab4" v-text="item.goods_type"></i>
+                        </div>
+                        <div class="infor_p3">
+                            <div class="img">
+                                <img v-bind:src="item.add_avatar" />
+                            </div>
+                            <div class="txt" v-text="item.add_nickname">
+                            </div>
+                            <div class="date">
+                                {{item.update_time|dateFormart('更新')}}
+                            </div>
+                        </div>
+                    </a>
+                    <div class="infor_p4">
+                        <a v-bind:href="'tel://'+item.contact_phone">
+                            <img src="/images/icon/icon02.png">
+                            <span>打电话</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="flo">
+                    <ol class="clearfix">
+                        <li>
+                            <img src="/images/icon/icon03_1.png">
+                            <span v-text="item.view_num"></span>
+                        </li>
+                        <li>
+                            <img src="/images/icon/icon03_2.png">
+                            <span v-text="item.praise_num"></span>
+                        </li>
+                        <li>
+                            <img src="/images/icon/icon03_3.png">
+                            <span v-text="item.share_num"></span>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <!--车源信息 -->
+        <div class="wrapper" v-if="item.cateid==2">
+            <div class="ind_main_t">
+                <div class="use">
+                    <a v-bind:href="'/Project/CarSourceDetails/'+item.id">
+                        <div class="img">
+                            <img v-bind:src="item.add_avatar" />
+                        </div>
+                        <div class="txt">
+                            <span v-text="item.add_nickname"></span>
+                            <p>
+                                <i class="lab1" v-if="item.set_top>0">置顶</i>
+                                <i class="lab2" v-text="item.cate"></i>
+                            </p>
+                        </div>
+                    </a>
+                </div>
+                <div class="call">
+                    <a v-bind:href="'tel://'+item.contact_phone">
+                        <img src="/images/icon/icon02.png">
+                        <span>打电话</span>
+                    </a>
+                </div>
+            </div>
+            <div class="ind_main_m">
+                <p v-text="item.other_remark"></p>
+            </div>
+            <div class="ind_lab">
+                <i class="lab1" v-text="item.use_type"></i>
+                <i class="lab2" v-text="item.car_style"></i>
+                <i class="lab3" v-text="item.car_length+'米'"></i>
+                <i class="lab4" v-text="item.goods_type"></i>
+            </div>
+            <div class="ind_time">
+                {{item.update_time|dateFormart('更新')}}
+            </div>
+            <div class="ind_flo">
+                <ol class="clearfix">
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/images/icon/icon03_1.png">
+                            <span v-text="item.view_num"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/images/icon/icon03_2.png">
+                            <span v-text="item.praise_num"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/images/icon/icon03_3.png">
+                            <span v-text="item.share_num"></span>
+                        </a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <!--招聘司机 -->
+        <div class="wrapper" v-if="item.cateid==3">
+            <div class="ind_main_t">
+                <div class="use">
+                    <a v-bind:href="'/Project/RecruitDetails/'+item.id">
+                        <div class="img">
+                            <img v-bind:src="item.add_avatar" />
+                        </div>
+                        <div class="txt">
+                            <span v-text="item.add_nickname"></span>
+                            <p>
+                                <i class="lab1" v-if="item.set_top>0">置顶</i>
+                                <i class="lab2" v-text="item.cate"></i>
+                            </p>
+                        </div>
+                    </a>
+                </div>
+                <div class="call">
+                    <a v-bind:href="'tel://'+item.contact_phone">
+                        <img src="/images/icon/icon02.png">
+                        <span>打电话</span>
+                    </a>
+                </div>
+            </div>
+            <div class="ind_main_m">
+                <p v-text="item.other_remark"></p>
+            </div>
+            <div class="ind_lab">
+                <i class="lab1" v-text="item.use_type"></i>
+                <i class="lab2" v-text="item.start_city"></i>
+                <i class="lab3" v-text="item.goods_type"></i>
+                <i class="lab4" v-text="item.car_style"></i>
+                <i class="lab3" v-text="item.car_length"></i>
+            </div>
+            <div class="ind_time">
+                {{item.update_time|dateFormart('更新')}}
+            </div>
+            <div class="ind_flo">
+                <ol class="clearfix">
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/images/icon/icon03_1.png">
+                            <span v-text="item.view_num"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/images/icon/icon03_2.png">
+                            <span v-text="item.praise_num"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/images/icon/icon03_3.png">
+                            <span v-text="item.share_num"></span>
+                        </a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <!--司机求职 -->
+        <div class="wrapper" v-if="item.cateid==4">
+            <div class="ind_main_t">
+                <div class="use">
+                    <a v-bind:href="'/Project/JobDetails/'+item.id">
+                        <div class="img">
+                            <img v-bind:src="item.add_avatar" />
+                        </div>
+                        <div class="txt">
+                            <span v-text="item.add_nickname"></span>
+                            <p>
+                                <i class="lab1" v-if="item.set_top>0">置顶</i>
+                                <i class="lab2" v-text="item.cate"></i>
+                            </p>
+                        </div>
+                    </a>
+                </div>
+                <div class="call">
+                    <a v-bind:href="'tel://'+item.contact_phone">
+                        <img src="/images/icon/icon02.png">
+                        <span>打电话</span>
+                    </a>
+                </div>
+            </div>
+            <div class="ind_main_m">
+                <p v-text="item.other_remark"></p>
+            </div>
+            <div class="ind_lab">
+                <i class="lab1" v-text="item.use_type"></i>
+                <i class="lab2" v-text="item.start_city"></i>
+                <i class="lab3" v-text="item.car_length"></i>
+                <i class="lab4" v-text="item.car_style"></i>
+            </div>
+            {{item.update_time|dateFormart('更新')}}
+            <div class="ind_flo">
+                <ol class="clearfix">
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/images/icon/icon03_1.png">
+                            <span v-text="item.view_num"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/images/icon/icon03_2.png">
+                            <span v-text="item.praise_num"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/images/icon/icon03_3.png">
+                            <span v-text="item.share_num"></span>
+                        </a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <!--车辆出售 -->
+        <div class="wrapper" v-if="item.cateid==5">
+            <div class="ind_main_t">
+                <div class="use">
+                    <a v-bind:href="'/Project/CarSellDetails/'+item.id">
+                        <div class="img">
+                            <img v-bind:src="item.add_avatar" />
+                        </div>
+                        <div class="txt">
+                            <span v-text="item.add_nickname"></span>
+                            <p>
+                                <i class="lab1" v-if="item.set_top>0">置顶</i>
+                                <i class="lab2" v-text="item.cate"></i>
+                            </p>
+                        </div>
+                    </a>
+                </div>
+                <div class="call">
+                    <a v-bind:href="'tel://'+item.contact_phone">
+                        <img src="/images/icon/icon02.png">
+                        <span>打电话</span>
+                    </a>
+                </div>
+            </div>
+            <div class="ind_main_m">
+                <p v-text="item.other_remark"></p>
+            </div>
+            <div class="ind_lab">
+                <i class="lab1">{{item.freight|moneyFormart}}</i>
+                <i class="lab2" v-text="item.start_city"></i>
+                <i class="lab3" v-text="item.use_type"></i>
+                <i class="lab4" v-text="item.car_style"></i>
+            </div>
+            <div class="ind_img">
+                <img v-bind:src="img" v-for="img in item.imgs.split(',')">
+            </div>
+            <div class="ind_time">
+                {{item.update_time|dateFormart('更新')}}
+            </div>
+            <div class="ind_flo">
+                <ol class="clearfix">
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/images/icon/icon03_1.png">
+                            <span v-text="item.view_num"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/images/icon/icon03_2.png">
+                            <span v-text="item.praise_num"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/images/icon/icon03_3.png">
+                            <span v-text="item.share_num"></span>
+                        </a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <!--车辆求购 -->
+        <div class="wrapper" v-if="item.cateid==6">
+            <div class="ind_main_t">
+                <div class="use">
+                    <a v-bind:href="'/Project/CarBuyDetails/'+item.id">
+                        <div class="img">
+                            <img v-bind:src="item.add_avatar" />
+                        </div>
+                        <div class="txt">
+                            <span v-text="item.add_nickname"></span>
+                            <p>
+                                <i class="lab1" v-if="item.set_top>0">置顶</i>
+                                <i class="lab2" v-text="item.cate"></i>
+                            </p>
+                        </div>
+                    </a>
+                </div>
+                <div class="call">
+                    <a v-bind:href="'tel://'+item.contact_phone">
+                        <img src="/images/icon/icon02.png">
+                        <span>打电话</span>
+                    </a>
+                </div>
+            </div>
+            <div class="ind_main_m">
+                <p v-text="item.other_remark"></p>
+            </div>
+            <div class="ind_lab">
+                <i class="lab1" v-text="item.recruit_num+'年'"></i>
+                <i class="lab2" v-text="item.start_city"></i>
+                <i class="lab3" v-text="item.use_type"></i>
+                <i class="lab4" v-text="item.car_style"></i>
+            </div>
+            <div class="ind_time">
+                {{item.update_time|dateFormart('更新')}}
+            </div>
+            <div class="ind_flo">
+                <ol class="clearfix">
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/images/icon/icon03_1.png">
+                            <span v-text="item.view_num"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/images/icon/icon03_2.png">
+                            <span v-text="item.praise_num"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/images/icon/icon03_3.png">
+                            <span v-text="item.share_num"></span>
+                        </a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <!--通用模板 -->
+        <div class="wrapper" v-if="item.cateid==7">
+            <div class="ind_main_t">
+                <div class="use">
+                    <a v-bind:href="'/Project/TemplateDetails/'+item.id">
+                        <div class="img">
+                            <img v-bind:src="item.add_avatar" />
+                        </div>
+                        <div class="txt">
+                            <span v-text="item.add_nickname"></span>
+                            <p>
+                                <i class="lab1" v-if="item.set_top>0">置顶</i>
+                                <i class="lab2" v-text="item.cate"></i>
+                            </p>
+                        </div>
+                    </a>
+                </div>
+                <div class="call">
+                    <a v-bind:href="'tel://'+item.contact_phone">
+                        <img src="/images/icon/icon02.png">
+                        <span>打电话</span>
+                    </a>
+                </div>
+            </div>
+            <div class="ind_main_m">
+                <p v-text="item.other_remark"></p>
+            </div>
+            <div class="ind_lab">
+                <i class="lab1" v-text="item.use_type"></i>
+                <i class="lab2" v-text="item.car_style"></i>
+                <i class="lab3" v-text="item.car_length+'米'"></i>
+                <i class="lab4" v-text="item.goods_type"></i>
+            </div>
+            <div class="ind_time">
+                {{item.update_time|dateFormart('更新')}}
+            </div>
+            <div class="ind_flo">
+                <ol class="clearfix">
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/images/icon/icon03_1.png">
+                            <span v-text="item.view_num"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/images/icon/icon03_2.png">
+                            <span v-text="item.praise_num"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <img src="/images/icon/icon03_3.png">
+                            <span v-text="item.share_num"></span>
+                        </a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+        </div>
+</script>
+<script>
+    Vue.component('list-component', {
+        template: '#list-component-template',
+        props: {
+            item: {}
+        }
+    })
+</script>

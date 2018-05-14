@@ -10,12 +10,11 @@ var listVm = new Vue({
         //isLoadingLayer: -1,
         isLoadAll: false,
         searchKey: {
-            cateid: 1,
+            cateid: 2,
             start_province: '',
             start_city: '',
             stop_province: '',
             stop_city: '',
-            use_type: '',
             car_length: '',
             car_style: '',
             page: 1,
@@ -26,7 +25,6 @@ var listVm = new Vue({
             stopProvinceTab: true
         },
         cityData: dsy,
-        useTypeData: [],
         carLengthData: [],
         carStyleData: []
     },
@@ -34,7 +32,6 @@ var listVm = new Vue({
         init: function () {
             this.bindScroll();
             this.loadData();
-            this.loadCateData('use_type', 1);
             this.loadCateData('car_length', 4);
             this.loadCateData('car_style', 16);
         },
@@ -95,7 +92,6 @@ var listVm = new Vue({
                 dataType: 'json',
                 success: function (resp) {
                     if (resp.status) {
-                        if (code == 'use_type') _this.useTypeData = resp.result;
                         if (code == 'car_length') _this.carLengthData = resp.result;
                         if (code == 'car_style') _this.carStyleData = resp.result;
                     }
@@ -115,11 +111,11 @@ var listVm = new Vue({
                 anim: 2
             });
         },
-        showUseType: function () {
+        showCarStyle: function () {
             layer.open({
                 type: 1,
-                title: '用车类型',
-                content: $('.use_type_box'),
+                title: '车型',
+                content: $('.car_style_box'),
                 offset: 'lb',
                 area: ['100%', 'auto'],
                 shade: 0.5,
