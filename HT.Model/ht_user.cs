@@ -12,22 +12,70 @@ namespace HT.Model
     using System;
     using System.Collections.Generic;
     
+    ///<summary>
+    ///
+    ///</summary>
     public partial class ht_user
     {
+    ///<summary>
+    ///
+    ///</summary>
         public int id { get; set; }
+    ///<summary>
+    ///用户名
+    ///</summary>
         public string username { get; set; }
+    ///<summary>
+    ///密码
+    ///</summary>
         public string password { get; set; }
+    ///<summary>
+    ///随机密钥
+    ///</summary>
         public string salt { get; set; }
+    ///<summary>
+    ///手机号
+    ///</summary>
         public string mobile { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public string realname { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public string avatar { get; set; }
+    ///<summary>
+    ///昵称
+    ///</summary>
         public string nickname { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public string idcard { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public Nullable<decimal> money { get; set; }
+    ///<summary>
+    ///积分
+    ///</summary>
         public Nullable<int> points { get; set; }
+    ///<summary>
+    ///一级上级
+    ///</summary>
         public string openid { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public int issubscribe { get; set; }
+    ///<summary>
+    ///二级上级
+    ///</summary>
         public Nullable<int> parent_id { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public Nullable<System.DateTime> addtime { get; set; }
     }
 }

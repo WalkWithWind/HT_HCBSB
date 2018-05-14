@@ -12,12 +12,30 @@ namespace HT.Model
     using System;
     using System.Collections.Generic;
     
+    ///<summary>
+    ///广告分类
+    ///</summary>
     public partial class ht_ad_category
     {
+    ///<summary>
+    ///
+    ///</summary>
         public int id { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public string title { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public string code { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public Nullable<int> sort { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public Nullable<int> num { get; set; }
     }
 }

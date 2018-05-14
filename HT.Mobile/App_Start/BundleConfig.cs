@@ -36,8 +36,8 @@ namespace HT.Mobile
             bundles.Add(new ScriptBundle("~/baseJs").Include(
                       "~/Scripts/jquery-2.1.4.min.js",
                       "~/Scripts/vue/vue.min.js",
-                      "~/Scripts/layer/layer.js",
                       "~/Scripts/vueFilter.js",
+                      "~/Scripts/swiper/swiper.min.js",
                       "~/Scripts/layer/layer.js",
                       "~/Scripts/common.js"));
         }

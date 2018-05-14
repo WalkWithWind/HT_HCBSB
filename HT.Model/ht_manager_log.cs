@@ -12,14 +12,38 @@ namespace HT.Model
     using System;
     using System.Collections.Generic;
     
+    ///<summary>
+    ///管理员操作日志
+    ///</summary>
     public partial class ht_manager_log
     {
+    ///<summary>
+    ///
+    ///</summary>
         public int id { get; set; }
+    ///<summary>
+    ///用户id
+    ///</summary>
         public Nullable<int> userid { get; set; }
+    ///<summary>
+    ///用户名称
+    ///</summary>
         public string username { get; set; }
+    ///<summary>
+    ///操作类型
+    ///</summary>
         public string actiontype { get; set; }
+    ///<summary>
+    ///备注
+    ///</summary>
         public string remark { get; set; }
+    ///<summary>
+    ///用户ip
+    ///</summary>
         public string userip { get; set; }
+    ///<summary>
+    ///添加时间
+    ///</summary>
         public Nullable<System.DateTime> addtime { get; set; }
     }
 }

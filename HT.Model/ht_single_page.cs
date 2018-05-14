@@ -12,12 +12,30 @@ namespace HT.Model
     using System;
     using System.Collections.Generic;
     
+    ///<summary>
+    ///ht_single_page
+    ///</summary>
     public partial class ht_single_page
     {
+    ///<summary>
+    ///
+    ///</summary>
         public int id { get; set; }
+    ///<summary>
+    ///标识
+    ///</summary>
         public string code { get; set; }
+    ///<summary>
+    ///标题
+    ///</summary>
         public string title { get; set; }
+    ///<summary>
+    ///内容
+    ///</summary>
         public string content { get; set; }
+    ///<summary>
+    ///更新时间
+    ///</summary>
         public Nullable<System.DateTime> update_time { get; set; }
     }
 }

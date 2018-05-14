@@ -12,6 +12,9 @@ namespace HT.Model
     using System;
     using System.Collections.Generic;
     
+    ///<summary>
+    ///资讯分类
+    ///</summary>
     public partial class ht_news_cate
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,10 +23,25 @@ namespace HT.Model
             this.ht_news = new HashSet<ht_news>();
         }
     
+    ///<summary>
+    ///
+    ///</summary>
         public int id { get; set; }
+    ///<summary>
+    ///分类标题
+    ///</summary>
         public string title { get; set; }
+    ///<summary>
+    ///1.启用 2.禁用
+    ///</summary>
         public Nullable<int> status { get; set; }
+    ///<summary>
+    ///排序
+    ///</summary>
         public Nullable<int> sort { get; set; }
+    ///<summary>
+    ///添加时间
+    ///</summary>
         public Nullable<System.DateTime> addtime { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

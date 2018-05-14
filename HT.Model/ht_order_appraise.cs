@@ -12,16 +12,46 @@ namespace HT.Model
     using System;
     using System.Collections.Generic;
     
+    ///<summary>
+    ///订单评价
+    ///</summary>
     public partial class ht_order_appraise
     {
+    ///<summary>
+    ///
+    ///</summary>
         public int id { get; set; }
+    ///<summary>
+    ///货主用户id
+    ///</summary>
         public Nullable<int> userid { get; set; }
+    ///<summary>
+    ///订单id
+    ///</summary>
         public Nullable<int> orderid { get; set; }
+    ///<summary>
+    ///船主用户id
+    ///</summary>
         public Nullable<int> captainuid { get; set; }
+    ///<summary>
+    ///评价内容
+    ///</summary>
         public string contents { get; set; }
+    ///<summary>
+    ///发货速度评分
+    ///</summary>
         public Nullable<int> deliveryspeed { get; set; }
+    ///<summary>
+    ///服务质量评分
+    ///</summary>
         public Nullable<int> servicequality { get; set; }
+    ///<summary>
+    ///货物损坏情况评分
+    ///</summary>
         public Nullable<int> goodsdamage { get; set; }
+    ///<summary>
+    ///添加时间
+    ///</summary>
         public Nullable<System.DateTime> addtime { get; set; }
     }
 }

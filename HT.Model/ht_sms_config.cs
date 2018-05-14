@@ -12,12 +12,30 @@ namespace HT.Model
     using System;
     using System.Collections.Generic;
     
+    ///<summary>
+    ///
+    ///</summary>
     public partial class ht_sms_config
     {
+    ///<summary>
+    ///
+    ///</summary>
         public int id { get; set; }
+    ///<summary>
+    ///短信接口地址
+    ///</summary>
         public string smsurl { get; set; }
+    ///<summary>
+    ///用户名
+    ///</summary>
         public string smsuser { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public string smspwd { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public Nullable<System.DateTime> addtime { get; set; }
     }
 }

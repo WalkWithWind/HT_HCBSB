@@ -12,12 +12,30 @@ namespace HT.Model
     using System;
     using System.Collections.Generic;
     
+    ///<summary>
+    ///权限管理表
+    ///</summary>
     public partial class ht_manager_role_value
     {
+    ///<summary>
+    ///
+    ///</summary>
         public int id { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public Nullable<int> roleid { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public string navname { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public string actiontype { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public Nullable<System.DateTime> addtime { get; set; }
     
         public virtual ht_manager_role ht_manager_role { get; set; }

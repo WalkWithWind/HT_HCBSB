@@ -12,16 +12,46 @@ namespace HT.Model
     using System;
     using System.Collections.Generic;
     
+    ///<summary>
+    ///用户消息
+    ///</summary>
     public partial class ht_user_message
     {
+    ///<summary>
+    ///
+    ///</summary>
         public int id { get; set; }
+    ///<summary>
+    ///消息类型: 1.系统消息 2. 用户消息
+    ///</summary>
         public Nullable<int> msgtype { get; set; }
+    ///<summary>
+    ///发件人,系统为0
+    ///</summary>
         public Nullable<int> senduid { get; set; }
+    ///<summary>
+    ///收件人用户id
+    ///</summary>
         public Nullable<int> receiveuid { get; set; }
+    ///<summary>
+    ///消息标题
+    ///</summary>
         public string title { get; set; }
+    ///<summary>
+    ///消息详情
+    ///</summary>
         public string details { get; set; }
+    ///<summary>
+    ///1.未读 2.已读
+    ///</summary>
         public Nullable<int> readstatus { get; set; }
+    ///<summary>
+    ///阅读时间
+    ///</summary>
         public Nullable<System.DateTime> readtime { get; set; }
+    ///<summary>
+    ///推送时间
+    ///</summary>
         public Nullable<System.DateTime> addtime { get; set; }
     }
 }

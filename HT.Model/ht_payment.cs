@@ -12,14 +12,38 @@ namespace HT.Model
     using System;
     using System.Collections.Generic;
     
+    ///<summary>
+    ///支付方式
+    ///</summary>
     public partial class ht_payment
     {
+    ///<summary>
+    ///
+    ///</summary>
         public int id { get; set; }
+    ///<summary>
+    ///支付方式标题
+    ///</summary>
         public string title { get; set; }
+    ///<summary>
+    ///支付方式说明
+    ///</summary>
         public string remark { get; set; }
+    ///<summary>
+    ///状态: 1.正常 2.禁用
+    ///</summary>
         public Nullable<int> status { get; set; }
+    ///<summary>
+    ///排序
+    ///</summary>
         public Nullable<int> sort { get; set; }
+    ///<summary>
+    ///支付方式手续费
+    ///</summary>
         public Nullable<decimal> fee { get; set; }
+    ///<summary>
+    ///添加时间
+    ///</summary>
         public Nullable<System.DateTime> addtime { get; set; }
     }
 }
