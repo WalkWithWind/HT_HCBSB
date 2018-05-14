@@ -31,6 +31,15 @@ namespace HT.Mobile.Controllers
             }
             return View(model);
         }
+        /// <summary>
+        /// 对应模板展示
+        /// </summary>
+        /// <param name="view"></param>
+        /// <returns></returns>
+        public ActionResult Template(string id)
+        {
+            return PartialView(id);
+        }
         #endregion 广告
     }
 }

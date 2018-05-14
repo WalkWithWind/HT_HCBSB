@@ -33,7 +33,6 @@ namespace HT.BLL
             if (!string.IsNullOrWhiteSpace(searchKey.car_length)) data = data.Where(p => p.car_length == searchKey.car_length);
             if (!string.IsNullOrWhiteSpace(searchKey.car_style)) data = data.Where(p => p.car_style == searchKey.car_style);
             if (isOrder == false) return data;
-
             var orderData = data.OrderByDescending(p => p.set_top);
             if(isRecommend) orderData = orderData.ThenByDescending(p => p.praise_num);
             orderData = orderData.ThenByDescending(p => p.update_time);

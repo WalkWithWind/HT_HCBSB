@@ -305,6 +305,7 @@
     <Content Include="Views\Partial\AdList.cshtml" />
     <Content Include="Views\Shared\_CityJs.cshtml" />
     <Content Include="Views\Shared\_FootLink.cshtml" />
+    <Content Include="Views\Partial\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
