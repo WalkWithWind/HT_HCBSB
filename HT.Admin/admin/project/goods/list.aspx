@@ -12,25 +12,6 @@
 	<link href="/admin/skin/default/style.css" rel="stylesheet" type="text/css" />
     <link href="/css/pagination.css" rel="stylesheet" type="text/css" />
 	<link href="/scripts/datepicker/skin/whyGreen/datepicker.css" rel="stylesheet" />
-	<style>
-
-	.input-date {
-	    display: block;
-	    float: left;
-	    margin: 0;
-	    padding: 0 5px;
-	    width: 110px;
-	    height: 30px;
-	    line-height: 28px;
-	    font-size: 12px;
-	    border: 1px solid #eee;
-	    color: #444;
-    }
-	.float-right {
-		float:left;
-		margin-top:10px;
-	}
-	</style>
 </head>
 <body class="mainbody">
 	<div class="maindiv">
@@ -49,23 +30,22 @@
 				<div class="box-wrap">
 
 					<div class="l-list">
-                         
 
 						<ul class="icon-list">
 							<li><a class="all" v-on:click="selectAllChange()" ><i></i><span>{{selectAllText}}</span></a></li>
 							<li><a class="del" v-on:click="del()" ><i></i><span>删除</span></a></li>
-							<li><a class="del" v-on:click="del()" ><i></i><span>编辑</span></a></li>
+							<li><a class="del" v-on:click="updateStatus()" ><i></i><span>审核</span></a></li>
 							
 						</ul>
 
                         <div class="menu-list">
                             <div class="rule-single-select">
-                                <select name="ddlStatus" id="ddlStatus">
-	                                <option selected="selected" value="">请选择审核状态</option>
-	                                <option value="0">待审核</option>
-									<option value="1">审核通过</option>
-									<option value="2">审核不通过</option>
-                                </select>									
+                                 <select onchange="onSelectVal(this)">
+                                     <option value="">请选择审核状态</option>
+                                     <option value="0">待审核</option>
+                                     <option value="1">审核通过</option>
+                                     <option value="2">审核不通过</option>
+                                </select>						
                             </div>
 							<input id="txtFromDate" class="input-date" onclick="WdatePicker()" /><span class="float-right">&nbsp;至&nbsp;</span><input id="txtToDate" class="input-date" onclick="WdatePicker()"  />
                         </div>
@@ -73,7 +53,7 @@
 						   
 					</div>
 					<div class="r-list">
-						<input name="txtKeywords" type="text" v-model="keyword" id="txtKeywords" class="keyword" />
+						<input name="txtKeywords" type="text" v-model="keyword" v-on:keyup.13="search()" id="txtKeywords" class="keyword" />
 						<a id="lbtnSearch" class="btn-search" v-on:click="search()">查询</a>
 					</div>
 				</div>
@@ -87,18 +67,18 @@
 		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
 
 			<tr>
-				<th align="center" width="3%">选择</th>
+				<th align="center" width="5%">选择</th>
 				<%--<th align="center" width="12%">标题</th>--%>
                 
 				<th align="center" width="10%">联系人</th>
 				<th align="center" width="10%">联系电话</th>
 				<th align="center" width="10%">发布时间</th>
 				<th align="center" width="15%">出发地</th>
-				<th align="center" width="15%">目的地</th>
+				<th align="center" width="15%">到达地</th>
 				<th align="center" width="10%">装车时间</th>
 				<th align="center" width="10%">运费金额</th>
 				<th align="center" width="10%">状态</th>
-				<th align="center" width="7%">操作</th>
+				<th align="center" width="5%">操作</th>
 			</tr>
 
 			<tr v-for="item in dataList">
@@ -112,17 +92,15 @@
                 
 				<td align="center">{{item.contact_name}}</td>
 				<td align="center">{{item.contact_phone}}</td>
-				<td align="center">{{item.add_time}}</td>
+				<td align="center">{{item.add_time.replace(/T/g,' ')}}</td>
 				<td align="center">{{item.start_province}}-
-                            {{item.start_city}}-
-                            {{item.start_district}}
+                            {{item.start_city}}
 				</td>
 
 				<td align="center">{{item.stop_province}}-
-                            {{item.stop_city}}-
-                            {{item.stop_district}}
+                            {{item.stop_city}}
 				</td>
-				<td align="center">{{item.use_time}}</td>
+				<td align="center">{{item.use_time.replace(/T/g,' ')}}</td>
 				<td align="center">{{item.freight}}</td>
 				<td align="center">
                     <span v-if="item.status==0">待审核</span>
@@ -149,24 +127,29 @@
 			<div class="l-btns">
 				<span>显示</span><input name="txtPageNum" type="text" v-model="pagesize" v-on:change="changePage()" onkeypress="if (WebForm_TextBoxKeyHandler(event) == false) return false;" id="txtPageNum" class="pagenum" onkeydown="return checkNumber(event);" /><span>条/页</span>
 			</div>
-			<div class="default"><span>共{{total}}记录</span><div id="pageDiv" class="default"></div></div>
+			<div class="default"><span>共{{total}}记录</span><span style=" padding: 0px;border: 0px;margin:0px;" id="pageDiv"></span></div>
 			
 		</div>
-		
 		<!--/内容底部-->
-	</div>
+    </div>
 </body>
     <script type="text/javascript" src="/scripts/jquery/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="/scripts/vue/vue.min.js"></script>
 	<script type="text/javascript" src="/scripts/artdialog/dialog-plus-min.js"></script>
 	<script type="text/javascript" charset="utf-8" src="/admin/js/laymain.js"></script>
-	<script type="text/javascript" charset="utf-8" src="/scripts/vue/vue.min.js"></script>
-	<script src="/scripts/laypage/1.2/laypage.js"></script>
+	<script type="text/javascript" src="/scripts/laypage/1.2/laypage.js?v=1012"></script>
 	<script type="text/javascript" charset="utf-8" src="/admin/js/common.js"></script>
 	<script src="/scripts/datepicker/WdatePicker.js"></script>
 	<script type="text/javascript">
 
 	var url = "/admin/api/project/list.ashx";
-	var delUrl = "/admin/api/project/delete.ashx";
+        var delUrl = "/admin/api/project/delete.ashx";
+        function onSelectVal(obj) {
+            commVm._data.status = $(obj).val();
+            commVm.selectVal();
+        }
+
+
 
 	var commVm = new Vue({
 		el: '.maindiv',
@@ -181,12 +164,13 @@
 			status: "",
 			fromDate: "",
 			toDate:"",
-			cateId: 1,
-			totalPage: 0
+            cateId: GetParm('id'),
+            totalPage: 0
 		},
 		methods: {
-			init: function () {
-				this.loadData();
+            init: function () {
+                var _this = this;
+                _this.loadData();
 			},
 
 			loadData: function () {
@@ -196,10 +180,11 @@
 					pagesize: _this.pagesize,
 					keyword: _this.keyword,
 					cate_id: _this.cateId,
-					status: $("#ddlStatus").val(),
+					status: _this.status,
 					fromdate: $("#txtFromDate").val(),
 					todate: $("#txtToDate").val()
-				};
+                };
+                //console.log('reqData', reqData);
 				$.ajax({
 					type: 'post',
 					url: url,
@@ -218,13 +203,15 @@
 							curr: _this.pageindex, //当前页
 							layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip'],
 							jump: function (obj, first) { //触发分页后的回调
-							if (!first) { //点击跳页触发函数自身，并传递当前页：obj.curr
-								_this.pageindex = obj.curr;
-								_this.loadData();
+							    if (!first) { //点击跳页触发函数自身，并传递当前页：obj.curr
+								    _this.pageindex = obj.curr;
+								    _this.loadData();
 								 }
-								},
-								 first: '首页', //若不显示，设置false即可
-								last: '尾页', //若不显示，设置false即可
+							},
+							first: '首页', //若不显示，设置false即可
+                            last: '尾页', //若不显示，设置false即可
+                            prev: '<', //若不显示，设置false即可
+                            next: '>' //若不显示，设置false即可
 							});
 
 
@@ -261,7 +248,12 @@
 						this.dataList[i].checked = this.selectAll;
 					}
 
-			},
+            },
+            selectVal: function () {
+                var _this = this;
+                //console.log('this.status', this.status);
+                _this.loadData();
+            },
 			del: function () {
 				var _this = this;
 				if (_this.getSelectIds() == "") {
@@ -313,15 +305,55 @@
 			},
 			getSelectIds: function () {
 				var arry = [];
-						for (var i = 0; i < this.dataList.length; i++) {
-
-							if (this.dataList[i].checked) {
-								arry.push(this.dataList[i].id);
-								
-							}
+				for (var i = 0; i < this.dataList.length; i++) {
+					if (this.dataList[i].checked) {
+						arry.push(this.dataList[i].id);
+					}
 				}
 				return arry.join(',');
-			}
+            },
+            updateStatus: function () {
+                var _this = this;
+
+                var ids = _this.getSelectIds();
+
+                if (!ids) {
+                    this.showMsg("请选择需要审核的记录");
+                    return false;
+                }
+
+                var html = "<div class=\"menu-list\"><div class=\"rule-single-select\" style=\"text-align:center;\"><select style=\"padding: 5px; \" class=\"ddstatus\" id=\"ddstatus\"><option value=\"1\">审核通过</option><option value=\"2\">审核不通过</option></select></div></div >";
+
+                parent.dialog({
+                    title: '提示',
+                    content: html,
+                    width: 200,
+                    height: 150,
+                    okValue: '确定',
+                    ok: function () {
+                        var ddsttaus = $(this.node).find('.ddstatus').val()
+                        $.ajax({
+                            type: 'post',
+                            url: '/admin/api/project/updatestatus.ashx',
+                            data: { ids: ids, status: ddsttaus },
+                            dataType: 'json',
+                            success: function (resp) {
+                                if (resp.status) {
+                                    _this.showMsg("操作成功");
+                                }
+                                else {
+                                    _this.showMsg(resp.msg);
+                                    _this.loadData();
+                                }
+                            }
+                        });
+                    },
+                    cancelValue: '取消',
+                    cancel: function () {
+
+                    }
+                }).showModal();
+            }
 
 		}
 	});

@@ -13,12 +13,14 @@ namespace HT.Admin.admin.api.project
 
 		public void ProcessRequest(HttpContext context)
 		{
-			int id = int.Parse(context.Request["id"]);
+			string ids = context.Request["ids"];
 			int status = int.Parse(context.Request["status"]);
-			apiResp.status = HT.BLL.Admin.BLLProject.UpdateStatus(id,status);
+            List<int> intArray = ids.Split(',').Select(p => Convert.ToInt32(p)).ToList();
+            apiResp.status = HT.BLL.Admin.BLLProject.UpdateStatus(intArray, status);
 			if (apiResp.status)
 			{
 				apiResp.msg = "ok";
+                apiResp.status = true;
 			}
 			else
 			{

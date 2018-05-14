@@ -96,18 +96,17 @@ namespace HT.BLL.Admin
 
 		}
 		/// <summary>
-		/// 更新审核状态
+		/// 批量更新审核状态
 		/// </summary>
 		/// <param name="id">id</param>
 		/// <param name="status">0待审核1审核通过2审核不通过</param>
 		/// <returns></returns>
-		public static bool UpdateStatus(int id,int status)
+		public static bool UpdateStatus(List<int> ids,int status)
 		{
 
 			using (Entities db = new Entities())
 			{
-
-				 db.ht_news.Single(p => p.id == id).status = status;
+				 db.ht_news.Where(p => ids.Contains(p.id)).ToList().ForEach(p=>p.status=status);
 				if (db.SaveChanges()>0)
 				{
 					return true;

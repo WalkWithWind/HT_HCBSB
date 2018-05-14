@@ -13,7 +13,6 @@
     <script type="text/javascript" charset="utf-8" src="/scripts/artdialog/dialog-plus-min.js"></script>
 	<script src="../../js/laymain.js"></script>
 	<script src="../../js/common.js"></script>
-
 </head>
 
 <body class="mainbody">
@@ -66,23 +65,21 @@
 			 <dl>
                 <dt>发布时间</dt>
                 <dd>
-                   {{newsData.add_time}}
+                   {{newsData.add_time.replace(/T/g,' ')}}
                 </dd>
             </dl>
 			<dl>
                 <dt>出发地</dt>
                 <dd>
                    {{newsData.start_province}}-
-                            {{newsData.start_city}}-
-                            {{newsData.start_district}}
+                            {{newsData.start_city}}
                 </dd>
             </dl>
 		    <dl>
-                <dt>目的地</dt>
+                <dt>到达地</dt>
                 <dd>
                   {{newsData.stop_province}}-
-                            {{newsData.stop_city}}-
-                            {{newsData.stop_district}}
+                            {{newsData.stop_city}}
                 </dd>
             </dl>
 
@@ -156,28 +153,18 @@
                 </dd>
             </dl>
 
-            
-
              <dl>
                 <dt>置顶金额</dt>
                 <dd>
                   {{newsData.reward_money}}  {{newsData.set_top_money}}
                 </dd>
             </dl>
-
             
 
             <dl>
                 <dt>打赏金额</dt>
                 <dd>
                   {{newsData.reward_money}} （元）
-                </dd>
-            </dl>
-
-			<dl>
-                <dt>运费金额</dt>
-                <dd>
-                  {{newsData.freight}}
                 </dd>
             </dl>
 			
@@ -244,7 +231,7 @@
                     success: function (resp) {
                         if (resp.status) {
                             _this.newsData = resp.result;
-                            console.log('_this.data', this.newsData);
+                            //console.log('_this.data', this.newsData);
                         }
                         else {
 
@@ -255,37 +242,35 @@
 			updateStatus: function (status) {
 				var _this = this;
 
-				    parent.dialog({
-					title: '提示',
-					content: "确认更改状态?",
-					okValue: '确定',
-					ok: function () {
+				parent.dialog({
+				title: '提示',
+				content: "确认更改状态?",
+				okValue: '确定',
+				ok: function () {
 						
-						$.ajax({
-						type: 'post',
-							url: updateUrl,
-							data: { id: _this.id, status: status },
-							dataType: 'json',
-							success: function (resp) {
+					$.ajax({
+					type: 'post',
+						url: updateUrl,
+						data: { ids: _this.id, status: status },
+						dataType: 'json',
+						success: function (resp) {
 							if (resp.status) {
 								_this.showMsg("操作成功");
 								
 								_this.loadDetail();
 
 							}
-						else {
-							_this.showMsg(resp.msg);
-						}
-					}
-				});
-						
-					},
-					cancelValue: '取消',
-					cancel: function () { }
-					}).showModal();
+						    else {
+							    _this.showMsg(resp.msg);
+						    }
+					    }
+				    });
+				},
+				cancelValue: '取消',
+                cancel: function () {
 
-
-
+                }
+				}).showModal();
 			},
 			showMsg: function (msg) {
 
