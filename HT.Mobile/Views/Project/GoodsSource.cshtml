@@ -17,58 +17,11 @@
             </ul>
         </div>
     </div>
-    <div class="el_item" v-for="item in listData.list">
-        <div class="wrapper">
-            <div class="infor">
-                <a v-bind:href="'/Project/GoodsSourceDetails/'+item.id">
-                    <div class="infor_p1">
-                        <span v-text="item.start_city"></span>
-                        <i></i><!-- 中间的箭头符号 -->
-                        <span v-text="item.stop_city"></span>
-                        <em v-if="item.set_top>0">置顶</em>
-                    </div>
-                    <div class="infor_p2">
-                        <i class="lab1" v-text="item.use_type"></i>
-                        <i class="lab2" v-text="item.car_style"></i>
-                        <i class="lab3" v-text="item.car_length+'米'"></i>
-                        <i class="lab4" v-text="item.goods_type"></i>
-                    </div>
-                    <div class="infor_p3">
-                        <div class="img">
-                            <img v-bind:src="item.add_avatar" />
-                        </div>
-                        <div class="txt" v-text="item.contact_name">
-                        </div>
-                        <div class="date">
-                            {{item.update_time|dateFormart('更新')}}
-                        </div>
-                    </div>
-                </a>
-                <div class="infor_p4">
-                    <a v-bind:href="'tel://'+item.contact_phone">
-                        <img src="/images/icon/icon02.png">
-                        <span>打电话</span>
-                    </a>
-                </div>
-            </div>
-            <div class="flo">
-                <ol class="clearfix">
-                    <li>
-                        <img src="/images/icon/icon03_1.png">
-                        <span v-text="item.view_num"></span>
-                    </li>
-                    <li>
-                        <img src="/images/icon/icon03_2.png">
-                        <span v-text="item.praise_num"></span>
-                    </li>
-                    <li>
-                        <img src="/images/icon/icon03_3.png">
-                        <span v-text="item.share_num"></span>
-                    </li>
-                </ol>
-            </div>
-        </div>
-    </div>
+    <ul class="ind_sec1_ul">
+        <li v-for="item in listData.list">
+            <list-component v-bind:item="item" v-if="item"></list-component>
+        </li>
+    </ul>
     <div class="clearfix"></div>
     <div class="use_type_box zhp_box hide">
         <div class="cty_box">

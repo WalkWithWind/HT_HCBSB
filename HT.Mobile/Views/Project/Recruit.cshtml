@@ -10,188 +10,95 @@
             <ul class="el_top_ul">
                 <li><a class="start_city" v-on:click="showCity()"><span v-text="(searchKey.start_city==''?'工作地区':searchKey.start_city)">工作地区</span><i></i></a></li>
                 <li><a class="use_type" v-on:click="showUseType()"><span v-text="(searchKey.use_type==''?'驾照':searchKey.use_type)">驾照</span><i></i></a></li>
-                <li><a class="car_length" v-on:click="showCarLength()"><span v-text="(searchKey.car_length==''?'待遇':searchKey.car_length)">待遇</span><i></i></a></li>
+                <li><a class="car_length" v-on:click="showCarLength()"><span v-text="(searchKey.car_length==''?'工资待遇':searchKey.car_length)">工资待遇</span><i></i></a></li>
                 <li><a class="more" v-on:click="showCarStyle()"><span>更多</span><i></i></a></li>
             </ul>
         </div>
     </div>
     <ul class="ind_sec1_ul">
-        <li>
-            <div class="wrapper">
-                <div class="ind_main_t">
-                    <div class="use">
-                        <a href="@Url.Action("RecruitDetails","Project",new { id=0})">
-                            <div class="img">
-                                <img src="/images/icon/icon06.png">
-                            </div>
-                            <div class="txt">
-                                <p>
-                                    <span>美好的未来</span>
-                                </p>
-                                <p>
-                                    <i class="lab1">置顶</i>
-                                    <i class="lab2">招聘司机</i>
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="call">
-                        <a href="javascript:void(0);">
-                            <img src="/images/icon/icon02.png">
-                            <span>打电话</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="ind_main_m">
-                    <p>业务方向定位为同城即时整车货运，意在整合社会运力资源，搭建快速、平价、安心、专业的同城货运交易平台。货主通过货拉拉平台，可以快速匹配附近的货车资源，并以低价获得优质的货运服务；广大货车司机亦可借助货拉拉迅速对接到客户需求，大大提升货车利用效率，进而获得更为丰厚的收入回报</p>
-                </div>
-                <div class="ind_lab">
-                    <i class="lab1">B2</i>
-                    <i class="lab2">上海</i>
-                    <i class="lab3">县市短途</i>
-                    <i class="lab4">载货车</i>
-                    <i class="lab3">8千-1万</i>
-                </div>
-                <div class="ind_time">2分钟前更新</div>
-                <div class="ind_flo">
-                    <ol class="clearfix">
-                        <li>
-                            <a href="javascript:;">
-                                <img src="/images/icon/icon03_1.png">
-                                <span>2132</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <img src="/images/icon/icon03_2.png">
-                                <span>2132</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <img src="/images/icon/icon03_3.png">
-                                <span>2132</span>
-                            </a>
-                        </li>
-                    </ol>
-                </div>
-            </div>
-        </li>
-        <li>
-            <div class="wrapper">
-                <div class="ind_main_t">
-                    <div class="use">
-                        <a href="recruit-details.asp">
-                            <div class="img">
-                                <img src="/images/icon/icon06.png">
-                            </div>
-                            <div class="txt">
-                                <span>美好的未来</span>
-                                <p>
-                                    <i class="lab1">置顶</i><i class="lab2">招聘司机</i>
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="call">
-                        <a href="javascript:void(0);">
-                            <img src="/images/icon/icon02.png">
-                            <span>打电话</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="ind_main_m">
-                    <p>业务方向定位为同城即时整车货运，意在整合社会运力资源，搭建快速、平价、安心、专业的同城货运交易平台。货主通过货拉拉平台，可以快速匹配附近的货车资源，并以低价获得优质的货运服务；广大货车司机亦可借助货拉拉迅速对接到客户需求，大大提升货车利用效率，进而获得更为丰厚的收入回报</p>
-                </div>
-                <div class="ind_lab">
-                    <i class="lab1">B2</i>
-                    <i class="lab2">上海</i>
-                    <i class="lab3">县市短途</i>
-                    <i class="lab4">载货车</i>
-                </div>
-                <div class="ind_time">2分钟前更新</div>
-                <div class="ind_flo">
-                    <ol class="clearfix">
-                        <li>
-                            <a href="javascript:;">
-                                <img src="/images/icon/icon03_1.png">
-                                <span>2132</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <img src="/images/icon/icon03_2.png">
-                                <span>2132</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <img src="/images/icon/icon03_3.png">
-                                <span>2132</span>
-                            </a>
-                        </li>
-                    </ol>
-                </div>
-            </div>
-        </li>
-        <li>
-            <div class="wrapper">
-                <div class="ind_main_t">
-                    <div class="use">
-                        <a href="recruit-details.asp">
-                            <div class="img">
-                                <img src="/images/icon/icon06.png">
-                            </div>
-                            <div class="txt">
-                                <span>美好的未来</span>
-                                <p>
-                                    <i class="lab1">置顶</i><i class="lab2">招聘司机</i>
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="call">
-                        <a href="javascript:void(0);">
-                            <img src="/images/icon/icon02.png">
-                            <span>打电话</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="ind_main_m">
-                    <p>业务方向定位为同城即时整车货运，意在整合社会运力资源，搭建快速、平价、安心、专业的同城货运交易平台。货主通过货拉拉平台，可以快速匹配附近的货车资源，并以低价获得优质的货运服务；广大货车司机亦可借助货拉拉迅速对接到客户需求，大大提升货车利用效率，进而获得更为丰厚的收入回报</p>
-                </div>
-                <div class="ind_lab">
-                    <i class="lab1">B2</i>
-                    <i class="lab2">上海</i>
-                    <i class="lab3">县市短途</i>
-                    <i class="lab4">载货车</i>
-                </div>
-                <div class="ind_time">2分钟前更新</div>
-                <div class="ind_flo">
-                    <ol class="clearfix">
-                        <li>
-                            <a href="javascript:;">
-                                <img src="/images/icon/icon03_1.png">
-                                <span>2132</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <img src="/images/icon/icon03_2.png">
-                                <span>2132</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <img src="/images/icon/icon03_3.png">
-                                <span>2132</span>
-                            </a>
-                        </li>
-                    </ol>
-                </div>
-            </div>
+        <li v-for="item in listData.list">
+            <list-component v-bind:item="item" v-if="item"></list-component>
         </li>
     </ul>
+
+    <div class="clearfix"></div>
+    <div class="start_box zhx_box tab-box hide">
+        <ul class="zhx_box_title tab-title">
+            <li v-bind:class="[{'active':select.startProvinceTab}]"
+                v-on:click="selectTabProvince('start')">
+                <a href="javascript:;">省</a>
+            </li>
+            <li v-bind:class="[{'active':!select.startProvinceTab}]"
+                v-on:click="selectTabCity('start')">
+                <a href="javascript:;">市</a>
+            </li>
+        </ul>
+        <div v-bind:class="['province','clearfix','tab-content',{'hide':!select.startProvinceTab}]">
+            <a href="javascript:;" v-for="item in cityData.get(0)"
+               v-bind:class="[{ 'active': item==searchKey.start_province }]"
+               v-text="item" v-on:click="selectProvince('start',item)">
+            </a>
+        </div>
+        <div v-bind:class="['city','clearfix','tab-content',{'hide':select.startProvinceTab}]">
+            <a href="javascript:;" v-for="item in cityData.getCitysByProvince(searchKey.start_province)"
+               v-bind:class="[{ 'active':item==searchKey.start_city }]"
+               v-text="item" v-on:click="selectCity('start',item)">
+            </a>
+        </div>
+        <div class="sub_btn_box">
+            <a href="javascript:void(0);" class="cancle" v-on:click="resetCity('start')">重置</a>
+            <a href="javascript:void(0);" class="confirm" v-on:click="confirm()">确定</a>
+        </div>
+    </div>
+    <div class="use_type_box zhp_box hide">
+        <div class="cty_box">
+            <a href="javascript:;" v-bind:class="[{ 'cur':searchKey.use_type=='' }]"
+               v-on:click="searchKey.use_type=''">不限</a>
+            <a href="javascript:;" v-for="item in useTypeData"
+               v-bind:class="[{ 'cur': item.title==searchKey.use_type }]"
+               v-text="item.title" v-on:click="searchKey.use_type=item.title"></a>
+        </div>
+        <div class="sub_btn_box">
+            <a href="javascript:void(0);" class="cancle" v-on:click="searchKey.use_type=''">重置</a>
+            <a href="javascript:void(0);" class="confirm" v-on:click="confirm()">确定</a>
+        </div>
+    </div>
+    <div class="car_length_box zhj_box hide">
+        <div class="cty_box">
+            <a href="javascript:;" v-bind:class="[{ 'cur':searchKey.car_length=='' }]"
+               v-on:click="searchKey.car_length=''">不限</a>
+            <a href="javascript:;" v-for="item in carLengthData"
+               v-bind:class="[{ 'cur': item.title==searchKey.car_length }]"
+               v-text="item.title" v-on:click="searchKey.car_length=item.title"></a>
+        </div>
+        <div class="sub_btn_box">
+            <a href="javascript:void(0);" class="cancle"
+               v-on:click="searchKey.car_length='';">重置</a>
+            <a href="javascript:void(0);" class="confirm" v-on:click="confirm()">确定</a>
+        </div>
+    </div>
+    <div class="car_style_box zhp_box hide">
+        <div class="cty_box">
+            <p>驾驶类型</p>
+            <a href="javascript:;" v-bind:class="[{ 'cur':searchKey.car_style=='' }]"
+               v-on:click="searchKey.car_style=''">不限</a>
+            <a href="javascript:;" v-for="item in carStyleData"
+               v-bind:class="[{ 'cur': item.title==searchKey.car_style }]"
+               v-text="item.title" v-on:click="searchKey.car_style=item.title"></a>
+        </div>
+        <div class="cty_box">
+            <p>驾驶路线</p>
+            <a href="javascript:;" v-bind:class="[{ 'cur':searchKey.goods_type=='' }]"
+               v-on:click="searchKey.goods_type=''">不限</a>
+            <a href="javascript:;" v-for="item in goodsTypeData"
+               v-bind:class="[{ 'cur': item.title==searchKey.goods_type }]"
+               v-text="item.title" v-on:click="searchKey.goods_type=item.title"></a>
+        </div>
+        <div class="sub_btn_box">
+            <a href="javascript:void(0);" class="cancle" v-on:click="searchKey.car_style='';searchKey.goods_type='';">重置</a>
+            <a href="javascript:void(0);" class="confirm" v-on:click="confirm()">确定</a>
+        </div>
+    </div>
 </div>
 @Html.Partial("_Footer")
 @Html.Action("Template", "Partial", new { id = "List" })

@@ -10,14 +10,13 @@ var listVm = new Vue({
         //isLoadingLayer: -1,
         isLoadAll: false,
         searchKey: {
-            cateid: 1,
+            cateid: 3,
             start_province: '',
             start_city: '',
-            stop_province: '',
-            stop_city: '',
             use_type: '',
             car_length: '',
             car_style: '',
+            goods_type: '',
             page: 1,
             rows: 5
         },
@@ -28,15 +27,17 @@ var listVm = new Vue({
         cityData: dsy,
         useTypeData: [],
         carLengthData: [],
-        carStyleData: []
+        carStyleData: [],
+        goodsTypeData: []
     },
     methods: {
         init: function () {
             this.bindScroll();
             this.loadData();
-            this.loadCateData('use_type', 1);
-            this.loadCateData('car_length', 4);
-            this.loadCateData('car_style', 16);
+            this.loadCateData('use_type', 60);
+            this.loadCateData('car_length', 101);
+            this.loadCateData('car_style', 72);
+            this.loadCateData('goods_type', 78);
         },
         loadData: function () {
             var _this = this;
@@ -98,6 +99,7 @@ var listVm = new Vue({
                         if (code == 'use_type') _this.useTypeData = resp.result;
                         if (code == 'car_length') _this.carLengthData = resp.result;
                         if (code == 'car_style') _this.carStyleData = resp.result;
+                        if (code == 'goods_type') _this.goodsTypeData = resp.result;
                     }
                 }
             });
@@ -142,7 +144,7 @@ var listVm = new Vue({
             layer.open({
                 type: 1,
                 title: '招聘筛选',
-                content: $('.car_stype_box'),
+                content: $('.car_style_box'),
                 offset: 'lb',
                 area: ['100%', 'auto'],
                 shade: 0.5,

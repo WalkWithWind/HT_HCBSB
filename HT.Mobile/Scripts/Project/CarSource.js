@@ -15,7 +15,6 @@ var listVm = new Vue({
             start_city: '',
             stop_province: '',
             stop_city: '',
-            use_type: '',
             car_length: '',
             car_style: '',
             page: 1,
@@ -93,7 +92,6 @@ var listVm = new Vue({
                 dataType: 'json',
                 success: function (resp) {
                     if (resp.status) {
-                        if (code == 'use_type') _this.useTypeData = resp.result;
                         if (code == 'car_length') _this.carLengthData = resp.result;
                         if (code == 'car_style') _this.carStyleData = resp.result;
                     }
