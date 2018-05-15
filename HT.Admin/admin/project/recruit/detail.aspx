@@ -1,10 +1,12 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="detail.aspx.cs" Inherits="HT.Admin.admin.project.carsource.detail" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="detail.aspx.cs" Inherits="HT.Admin.admin.project.recruit.detail" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <title>详情</title>
     <link href="/scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
 	<link href="../../skin/default/style.css" rel="stylesheet" />
@@ -13,19 +15,15 @@
 	<script src="../../js/laymain.js"></script>
 	<script src="../../js/common.js"></script>
 </head>
-
-
-    
-<body class="mainbody">
-
-	<div class="maindiv">
+<body  class="mainbody">
+   <div class="maindiv">
 
 		 <!--导航栏-->
         <div class="location">
             <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
             <a href="/admin/center.aspx" class="home"><i></i><span>首页</span></a>
             <i class="arrow"></i>
-            <span>车源详情</span>
+            <span>招聘司机详情</span>
         </div>
         <div class="line10"></div>
         <!--/导航栏-->
@@ -69,20 +67,6 @@
                    {{newsData.add_time.replace(/T/g,' ')}}
                 </dd>
             </dl>
-			<dl>
-                <dt>出发地</dt>
-                <dd>
-                   {{newsData.start_province}}-
-                            {{newsData.start_city}}
-                </dd>
-            </dl>
-		    <dl>
-                <dt>到达地</dt>
-                <dd>
-                  {{newsData.stop_province}}-
-                            {{newsData.stop_city}}
-                </dd>
-            </dl>
 
             <dl>
                 <dt>有效期</dt>
@@ -91,21 +75,51 @@
                 </dd>
             </dl>
 
-
-             <dl>
-                <dt>车长</dt>
+			<dl>
+                <dt>工作地区</dt>
                 <dd>
-                    {{newsData.car_length}}（米）
+                   {{newsData.start_province}}-
+                            {{newsData.start_city}}
+                </dd>
+            </dl>
+            
+            <dl>
+                <dt>招聘人数</dt>
+                <dd>
+                    {{newsData.recruit_num}}（人）
                 </dd>
             </dl>
 
+            
             <dl>
-                <dt>车型</dt>
+                <dt>驾照等级</dt>
+                <dd>
+                    {{newsData.use_type}}
+                </dd>
+            </dl>
+
+             <dl>
+                <dt>工资待遇</dt>
+                <dd>
+                    {{newsData.car_length}}
+                </dd>
+            </dl>
+
+            
+            <dl>
+                <dt>驾驶类型</dt>
                 <dd>
                     {{newsData.car_style}}
                 </dd>
             </dl>
 
+            
+             <dl>
+                <dt>驾驶路线</dt>
+                <dd>
+                    {{newsData.goods_type}}
+                </dd>
+            </dl>
 
             <dl>
                 <dt>其他补充</dt>
@@ -114,7 +128,6 @@
                 </dd>
             </dl>
 
-            
 
              <dl>
                 <dt>置顶金额</dt>
@@ -122,7 +135,6 @@
                   {{newsData.reward_money}}  {{newsData.set_top_money}}
                 </dd>
             </dl>
-
             
 
             <dl>
@@ -161,32 +173,29 @@
 
 
 	</div>
-   
-       
-   
 </body>
-</html>
 
+    
 <script type="text/javascript" charset="utf-8" src="/scripts/vue/vue.min.js"></script>
 <script type="text/javascript">
-    
+
     var url = '/admin/api/project/detail.ashx';
-	 var updateUrl = '/admin/api/project/updatestatus.ashx';
+    var updateUrl = '/admin/api/project/updatestatus.ashx';
     var commVm = new Vue({
         el: '.maindiv',
         data: {
             id: GetParm('id'),
-			newsData: {},
+            newsData: {},
         },
         methods: {
             init: function () {
                 this.loadDetail();
             },
-            loadDetail: function (){
+            loadDetail: function () {
                 var reqData = {
-                    id  : this.id
-				};
-				var _this = this;
+                    id: this.id
+                };
+                var _this = this;
                 $.ajax({
                     type: 'post',
                     url: url,
@@ -195,57 +204,57 @@
                     success: function (resp) {
                         if (resp.status) {
                             _this.newsData = resp.result;
-                            console.log('_this.data', this.newsData);
+                            //console.log('_this.data', this.newsData);
                         }
                         else {
 
                         }
                     }
                 });
-			},
-			updateStatus: function (status) {
-				var _this = this;
+            },
+            updateStatus: function (status) {
+                var _this = this;
 
-				parent.dialog({
-				title: '提示',
-				content: "确认更改状态?",
-				okValue: '确定',
-				ok: function () {
-						
-					$.ajax({
-					type: 'post',
-						url: updateUrl,
-						data: { ids: _this.id, status: status },
-						dataType: 'json',
-						success: function (resp) {
-							if (resp.status) {
-								_this.showMsg("操作成功");
-								
-								_this.loadDetail();
+                parent.dialog({
+                    title: '提示',
+                    content: "确认更改状态?",
+                    okValue: '确定',
+                    ok: function () {
 
-							}
-						    else {
-							    _this.showMsg(resp.msg);
-						    }
-					    }
-				    });
-				},
-				cancelValue: '取消',
-                cancel: function () {
+                        $.ajax({
+                            type: 'post',
+                            url: updateUrl,
+                            data: { ids: _this.id, status: status },
+                            dataType: 'json',
+                            success: function (resp) {
+                                if (resp.status) {
+                                    _this.showMsg("操作成功");
 
-                }
-				}).showModal();
-			},
-			showMsg: function (msg) {
+                                    _this.loadDetail();
 
-				    parent.dialog({
-						title: '提示',
-						content: msg,
-						okValue: '确定',
-						ok: function () { }
-					}).showModal();
+                                }
+                                else {
+                                    _this.showMsg(resp.msg);
+                                }
+                            }
+                        });
+                    },
+                    cancelValue: '取消',
+                    cancel: function () {
 
-			},
+                    }
+                }).showModal();
+            },
+            showMsg: function (msg) {
+
+                parent.dialog({
+                    title: '提示',
+                    content: msg,
+                    okValue: '确定',
+                    ok: function () { }
+                }).showModal();
+
+            },
 
 
         }
@@ -258,3 +267,5 @@
 
 
 </script>
+
+</html>

@@ -1,10 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="detail.aspx.cs" Inherits="HT.Admin.admin.project.carsource.detail" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="detail.aspx.cs" Inherits="HT.Admin.admin.project.carsale.detail" %>
 
 <!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <title>详情</title>
     <link href="/scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
 	<link href="../../skin/default/style.css" rel="stylesheet" />
@@ -14,8 +15,6 @@
 	<script src="../../js/common.js"></script>
 </head>
 
-
-    
 <body class="mainbody">
 
 	<div class="maindiv">
@@ -25,7 +24,7 @@
             <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
             <a href="/admin/center.aspx" class="home"><i></i><span>首页</span></a>
             <i class="arrow"></i>
-            <span>车源详情</span>
+            <span>招聘司机详情</span>
         </div>
         <div class="line10"></div>
         <!--/导航栏-->
@@ -91,6 +90,12 @@
                 </dd>
             </dl>
 
+            <dl>
+                <dt>用车类型</dt>
+                <dd>
+                    {{newsData.use_type}}
+                </dd>
+            </dl>
 
              <dl>
                 <dt>车长</dt>
@@ -106,6 +111,40 @@
                 </dd>
             </dl>
 
+             <dl>
+                <dt>货物类型</dt>
+                <dd>
+                    {{newsData.goods_type}}
+                </dd>
+            </dl>
+
+             <dl>
+                <dt>货物重量体积</dt>
+                <dd>
+                    {{newsData.goods_weight}}{{newsData.goods_weight_unit}}
+                </dd>
+            </dl>
+
+            <dl>
+                <dt>运费金额</dt>
+                <dd>
+                    {{newsData.freight}}（元）
+                </dd>
+            </dl>
+			<dl>
+                <dt>装卸方式</dt>
+                <dd>
+                  {{newsData.use_mode}}
+                          
+                </dd>
+            </dl>
+
+            <dl>
+                <dt>付款方式</dt>
+                <dd>
+                  {{newsData.pay_method}}
+                </dd>
+            </dl>
 
             <dl>
                 <dt>其他补充</dt>
@@ -114,15 +153,12 @@
                 </dd>
             </dl>
 
-            
-
              <dl>
                 <dt>置顶金额</dt>
                 <dd>
                   {{newsData.reward_money}}  {{newsData.set_top_money}}
                 </dd>
             </dl>
-
             
 
             <dl>
@@ -195,7 +231,7 @@
                     success: function (resp) {
                         if (resp.status) {
                             _this.newsData = resp.result;
-                            console.log('_this.data', this.newsData);
+                            //console.log('_this.data', this.newsData);
                         }
                         else {
 

@@ -343,8 +343,8 @@
                                 }
                                 else {
                                     _this.showMsg(resp.msg);
-                                    _this.loadData();
                                 }
+                                _this.loadData();
                             }
                         });
                     },

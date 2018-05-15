@@ -1,14 +1,13 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="list.aspx.cs" Inherits="HT.Admin.admin.project.carsource.list" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="list.aspx.cs" Inherits="HT.Admin.admin.project.recruit.list" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<title>车源管理</title>
+	<title>招聘司机管理</title>
 	<link href="/scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
 	<link href="/admin/skin/default/style.css" rel="stylesheet" type="text/css" />
     <link href="/css/pagination.css" rel="stylesheet" type="text/css" />
@@ -21,7 +20,7 @@
 			<a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
 			<a href="/admin/center.aspx" class="home"><i></i><span>首页</span></a>
 			<i class="arrow"></i>
-			<span>车源管理</span>
+			<span>招聘司机管理</span>
 		</div>
 		<!--/导航栏-->
 
@@ -69,13 +68,15 @@
 
 			<tr>
 				<th align="center" width="5%">选择</th>
+				<%--<th align="center" width="12%">标题</th>--%>
+                
 				<th align="center" width="10%">联系人</th>
 				<th align="center" width="10%">联系电话</th>
-				<th align="center" width="15%">发布时间</th>
-				<th align="center" width="15%">出发地</th>
-				<th align="center" width="15%">目的地</th>
+				<th align="center" width="20%">发布时间</th>
+				<th align="center" width="20%">工作地区</th>
+				<th align="center" width="10%">招聘人数</th>
 				<th align="center" width="15%">状态</th>
-				<th align="center" width="15%">操作</th>
+				<th align="center" width="10%">操作</th>
 			</tr>
 
 			<tr v-for="item in dataList">
@@ -94,8 +95,7 @@
                             {{item.start_city}}
 				</td>
 
-				<td align="center">{{item.stop_province}}-
-                            {{item.stop_city}}
+				<td align="center">{{item.recruit_num}}
 				</td>
 				<td align="center">
                     <span v-if="item.status==0">待审核</span>
@@ -128,17 +128,14 @@
 		<!--/内容底部-->
     </div>
 </body>
-
-    <script type="text/javascript" src="/scripts/jquery/jquery-1.11.2.min.js"></script>
+     <script type="text/javascript" src="/scripts/jquery/jquery-1.11.2.min.js"></script>
 	<script type="text/javascript" charset="utf-8" src="/scripts/vue/vue.min.js"></script>
 	<script type="text/javascript" src="/scripts/artdialog/dialog-plus-min.js"></script>
 	<script type="text/javascript" charset="utf-8" src="/admin/js/laymain.js"></script>
-	<script src="/scripts/laypage/1.2/laypage.js"></script>
+	<script type="text/javascript" src="/scripts/laypage/1.2/laypage.js?v=1012"></script>
 	<script type="text/javascript" charset="utf-8" src="/admin/js/common.js"></script>
 	<script src="/scripts/datepicker/WdatePicker.js"></script>
-
-
-    <script type="text/javascript">
+	<script type="text/javascript">
 
         var url = "/admin/api/project/list.ashx";
         var delUrl = "/admin/api/project/delete.ashx";
@@ -208,6 +205,8 @@
                                     },
                                     first: '首页', //若不显示，设置false即可
                                     last: '尾页', //若不显示，设置false即可
+                                    prev: '<', //若不显示，设置false即可
+                                    next: '>' //若不显示，设置false即可
                                 });
 
 
@@ -361,7 +360,4 @@
         });
 
 </script>
-
-
-
 </html>
