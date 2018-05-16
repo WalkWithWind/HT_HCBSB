@@ -13,6 +13,16 @@
     <script type="text/javascript" charset="utf-8" src="/scripts/artdialog/dialog-plus-min.js"></script>
 	<script src="../../js/laymain.js"></script>
 	<script src="../../js/common.js"></script>
+    <style>
+        .imgs{
+            width:100px;
+            height:100px;
+        }
+        .divimg{
+            float:left;
+            margin-left:10px;
+        }
+    </style>
 </head>
 
 <body class="mainbody">
@@ -24,7 +34,7 @@
             <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
             <a href="/admin/center.aspx" class="home"><i></i><span>首页</span></a>
             <i class="arrow"></i>
-            <span>招聘司机详情</span>
+            <span>车辆出售详情</span>
         </div>
         <div class="line10"></div>
         <!--/导航栏-->
@@ -69,17 +79,10 @@
                 </dd>
             </dl>
 			<dl>
-                <dt>出发地</dt>
+                <dt>车辆所在地</dt>
                 <dd>
                    {{newsData.start_province}}-
                             {{newsData.start_city}}
-                </dd>
-            </dl>
-		    <dl>
-                <dt>到达地</dt>
-                <dd>
-                  {{newsData.stop_province}}-
-                            {{newsData.stop_city}}
                 </dd>
             </dl>
 
@@ -90,24 +93,62 @@
                 </dd>
             </dl>
 
+             <dl>
+                <dt>品牌</dt>
+                <dd>
+                   
+                </dd>
+            </dl>
+
+
             <dl>
-                <dt>用车类型</dt>
+                <dt>车型</dt>
                 <dd>
                     {{newsData.use_type}}
                 </dd>
             </dl>
 
+            
              <dl>
-                <dt>车长</dt>
+                <dt>马力</dt>
                 <dd>
-                    {{newsData.car_length}}（米）
+                    {{newsData.goods_weight}}
                 </dd>
             </dl>
 
             <dl>
-                <dt>车型</dt>
+                <dt>出售价格</dt>
                 <dd>
-                    {{newsData.car_style}}
+                    {{newsData.freight}}（元）
+                </dd>
+            </dl>
+
+            
+             <dl>
+                <dt>行驶证登记时间</dt>
+                <dd>
+                    {{newsData.use_time.replace(/T/g,' ')}}
+                </dd>
+            </dl>
+
+
+             <dl>
+                <dt>标准排放</dt>
+                <dd>
+                    {{newsData.car_length}}
+                </dd>
+            </dl>
+
+            
+            <dl>
+                <dt>车辆户型</dt>
+                <dd>
+                </dd>
+            </dl>
+
+            <dl>
+                <dt>能否提档</dt>
+                <dd>
                 </dd>
             </dl>
 
@@ -118,31 +159,12 @@
                 </dd>
             </dl>
 
-             <dl>
-                <dt>货物重量体积</dt>
-                <dd>
-                    {{newsData.goods_weight}}{{newsData.goods_weight_unit}}
-                </dd>
-            </dl>
-
-            <dl>
-                <dt>运费金额</dt>
-                <dd>
-                    {{newsData.freight}}（元）
-                </dd>
-            </dl>
 			<dl>
-                <dt>装卸方式</dt>
+                <dt>图片</dt>
                 <dd>
-                  {{newsData.use_mode}}
-                          
-                </dd>
-            </dl>
-
-            <dl>
-                <dt>付款方式</dt>
-                <dd>
-                  {{newsData.pay_method}}
+                    <div class="divimg" v-for="img in imgs">
+                        <img class="imgs" v-bind:src="img"/>
+                    </div>
                 </dd>
             </dl>
 
@@ -212,7 +234,8 @@
         el: '.maindiv',
         data: {
             id: GetParm('id'),
-			newsData: {},
+            newsData: {},
+            imgs:[]
         },
         methods: {
             init: function () {
@@ -231,7 +254,11 @@
                     success: function (resp) {
                         if (resp.status) {
                             _this.newsData = resp.result;
-                            //console.log('_this.data', this.newsData);
+
+                            if (_this.newsData.imgs) {
+                                _this.imgs = _this.newsData.imgs.split(',');
+                            }
+
                         }
                         else {
 

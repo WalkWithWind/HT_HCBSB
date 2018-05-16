@@ -24,7 +24,7 @@
             <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
             <a href="/admin/center.aspx" class="home"><i></i><span>首页</span></a>
             <i class="arrow"></i>
-            <span>招聘司机详情</span>
+            <span>车辆求购管理</span>
         </div>
         <div class="line10"></div>
         <!--/导航栏-->
@@ -42,12 +42,6 @@
         </div>
 
         <div class="tab-content">
-          <%--  <dl>
-                <dt>标题</dt>
-                <dd>
-                   {{newsData.title}}
-                </dd>
-            </dl>--%>
 
             <dl>
                 <dt>联系人</dt>
@@ -69,17 +63,10 @@
                 </dd>
             </dl>
 			<dl>
-                <dt>出发地</dt>
+                <dt>车辆所在地</dt>
                 <dd>
                    {{newsData.start_province}}-
                             {{newsData.start_city}}
-                </dd>
-            </dl>
-		    <dl>
-                <dt>到达地</dt>
-                <dd>
-                  {{newsData.stop_province}}-
-                            {{newsData.stop_city}}
                 </dd>
             </dl>
 
@@ -89,62 +76,36 @@
                     {{newsData.validity_num}}{{newsData.validity_unit}}
                 </dd>
             </dl>
-
+            
             <dl>
-                <dt>用车类型</dt>
+                <dt>品牌</dt>
                 <dd>
-                    {{newsData.use_type}}
-                </dd>
-            </dl>
-
-             <dl>
-                <dt>车长</dt>
-                <dd>
-                    {{newsData.car_length}}（米）
                 </dd>
             </dl>
 
             <dl>
                 <dt>车型</dt>
                 <dd>
-                    {{newsData.car_style}}
+                    {{newsData.use_type}}
                 </dd>
             </dl>
 
+             
              <dl>
-                <dt>货物类型</dt>
+                <dt>马力</dt>
                 <dd>
-                    {{newsData.goods_type}}
+                    {{newsData.goods_weight}}
                 </dd>
             </dl>
 
+                
              <dl>
-                <dt>货物重量体积</dt>
+                <dt>车龄</dt>
                 <dd>
-                    {{newsData.goods_weight}}{{newsData.goods_weight_unit}}
+                    {{newsData.recruit_num}}（年）
                 </dd>
             </dl>
 
-            <dl>
-                <dt>运费金额</dt>
-                <dd>
-                    {{newsData.freight}}（元）
-                </dd>
-            </dl>
-			<dl>
-                <dt>装卸方式</dt>
-                <dd>
-                  {{newsData.use_mode}}
-                          
-                </dd>
-            </dl>
-
-            <dl>
-                <dt>付款方式</dt>
-                <dd>
-                  {{newsData.pay_method}}
-                </dd>
-            </dl>
 
             <dl>
                 <dt>其他补充</dt>
