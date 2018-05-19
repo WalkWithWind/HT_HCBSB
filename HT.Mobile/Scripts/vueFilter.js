@@ -1,5 +1,5 @@
 ﻿Vue.filter('dateFormart', function (value, end) {
-    if (value == '') return '';
+    if (value == '' || value == undefined) return '';
     value = parseInt(value.replace(/\/Date\((\d+)\)\//gi, "$1"));
     value = new Date(value)
     var date = new Date().getTime() - value.getTime();
@@ -31,3 +31,11 @@ Vue.filter('moneyFormart', function (value) {
     else
         return value + "元";
 });
+
+Vue.filter('jsonFormart', function (jsonDate) {
+    if (jsonDate == undefined || !jsonDate) return;
+    var date = new Date(parseInt(jsonDate.replace("/Date(", "").replace(")/", ""), 10));
+    var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+    var day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+    return date.getFullYear() + "-" + month + "-" + day;
+})

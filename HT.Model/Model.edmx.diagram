@@ -35,6 +35,7 @@
         <AssociationConnector Association="Model.FK__ht_manage__rolei__3B0BC30C" />
         <AssociationConnector Association="Model.FK__ht_manage__rolei__3BFFE745" />
         <AssociationConnector Association="Model.FK_ht_news_ht_news_cate" />
+        <EntityTypeShape EntityType="Model.ht_review" Width="1.5" PointX="3.375" PointY="16.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
