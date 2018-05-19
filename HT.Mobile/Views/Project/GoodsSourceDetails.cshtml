@@ -5,7 +5,7 @@
 }
 @Html.Partial("_Header")
 
-<div class="main">
+<div class="mainDetails">
 
     <div class="el_item eld_item">
         <div class="wrapper">
@@ -140,7 +140,7 @@
                     <p class="p3">业务方向定位为同城即时整车货运，意在整合社会运力资源，搭建快速、平价、安心、专业的同城货运交易平台。货主通过货拉拉平台，可以快</p>
                     <i class="txt_box_btn">全文</i>
 
-                    <a href="javascript:void(0);" class="reply_btn">回复</a>
+                    <a href="javascript:void(0);"  v-on:click="addReview('reply')" class="reply_btn">回复</a>
                 </div>
                 <div class="reply_box">
                     <dl>
@@ -149,7 +149,7 @@
                     </dl>
                 </div>
             </li>
-            <li>
+            @*<li>
                 <div class="img_box">
                     <img src="/images/icon/icon06.png">
                 </div>
@@ -167,7 +167,7 @@
                         <dd>业务方向定位为同城即时整车货运，意在整合社会运力资源，搭建快速、平价、安心、专业的同城货运交易平台。</dd>
                     </dl>
                 </div>
-            </li>
+            </li>*@
         </ul>
         <a href="javascript:void(0);" class="more_btn">加载更多</a>
     </div>
@@ -336,8 +336,8 @@
     </div>
 
     <div class="zhp_message_box hide">
-        <textarea placeholder="请输入留言内容"></textarea>
-        <a href="pay.asp" class="btn">提交</a>
+        <textarea v-model="reviewInfo.content" placeholder="请输入留言内容"></textarea>
+        <a href="javascript:;"  v-on:click="addReview('comment')" class="btn">提交</a>
     </div>
 </div>
 

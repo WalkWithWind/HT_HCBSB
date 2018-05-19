@@ -1,14 +1,19 @@
 ﻿using HT.Model;
+using HT.Model.Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Security;
 
 namespace HT.BLL
 {
     public class BLLUser
     {
+        public static object SerializerToJson { get; private set; }
+
         /// <summary>
         /// 根据openid获取用户信息
         /// </summary>
@@ -66,6 +71,23 @@ namespace HT.BLL
                 return db.SaveChanges()>0;
             }
         }
+
+
+        /// <summary>
+        /// 获取当前登录用户的信息,从Form票证中获得
+        /// </summary>
+        /// <returns></returns>
+        public static AuthenticationUser GetLoginUserInfo()
+        {
+            if (!System.Web.HttpContext.Current.Request.IsAuthenticated)
+            {
+                return null;
+            }
+            var cookieValue = System.Web.HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName].Value;//加密的cookie票据
+            var userDataSource = FormsAuthentication.Decrypt(cookieValue).UserData;
+            return JsonConvert.DeserializeObject<AuthenticationUser>(userDataSource);
+        }
+
 
     }
 }
