@@ -258,6 +258,7 @@
     <Content Include="Scripts\layer\theme\default\loading-2.gif" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\Project\CarSource.js" />
+    <Content Include="Scripts\Project\PostGoods.js" />
     <Content Include="Scripts\Project\GoodsSource.js" />
     <Content Include="Scripts\Project\Recruit.js" />
     <Content Include="Scripts\respond.js" />
