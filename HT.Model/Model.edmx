@@ -292,6 +292,20 @@
           <Property Name="cid" Type="int" />
           <Property Name="sort" Type="int" />
         </EntityType>
+        <EntityType Name="ht_review">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userid" Type="int" Nullable="false" />
+          <Property Name="nickname" Type="nvarchar" MaxLength="50" />
+          <Property Name="avatar" Type="nvarchar" MaxLength="200" />
+          <Property Name="review_type" Type="nvarchar" MaxLength="50" />
+          <Property Name="review_content" Type="nvarchar" MaxLength="500" />
+          <Property Name="add_time" Type="datetime" />
+          <Property Name="news_id" Type="int" />
+          <Property Name="status" Type="int" />
+        </EntityType>
         <EntityType Name="ht_single_page">
           <Key>
             <PropertyRef Name="id" />
@@ -473,6 +487,7 @@
           <EntitySet Name="ht_order_appraise" EntityType="Self.ht_order_appraise" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ht_payment" EntityType="Self.ht_payment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ht_region" EntityType="Self.ht_region" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ht_review" EntityType="Self.ht_review" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ht_single_page" EntityType="Self.ht_single_page" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ht_sms_config" EntityType="Self.ht_sms_config" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ht_sms_email" EntityType="Self.ht_sms_email" Schema="dbo" store:Type="Tables" />
@@ -541,6 +556,7 @@
             <End Role="ht_news_cate" EntitySet="ht_news_cate" />
             <End Role="ht_news" EntitySet="ht_news" />
           </AssociationSet>
+          <EntitySet Name="ht_review" EntityType="Model.ht_review" />
         </EntityContainer>
         <EntityType Name="ht_account">
           <Key>
@@ -999,6 +1015,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ht_review">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="userid" Type="Int32" Nullable="false" />
+          <Property Name="nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="avatar" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="review_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="review_content" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="add_time" Type="DateTime" Precision="3" />
+          <Property Name="news_id" Type="Int32" />
+          <Property Name="status" Type="Int32" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1447,6 +1477,21 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ht_review">
+            <EntityTypeMapping TypeName="Model.ht_review">
+              <MappingFragment StoreEntitySet="ht_review">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="news_id" ColumnName="news_id" />
+                <ScalarProperty Name="add_time" ColumnName="add_time" />
+                <ScalarProperty Name="review_content" ColumnName="review_content" />
+                <ScalarProperty Name="review_type" ColumnName="review_type" />
+                <ScalarProperty Name="avatar" ColumnName="avatar" />
+                <ScalarProperty Name="nickname" ColumnName="nickname" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1461,7 +1506,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="无" />

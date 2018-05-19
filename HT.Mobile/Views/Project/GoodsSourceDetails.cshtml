@@ -4,336 +4,347 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @Html.Partial("_Header")
-<div class="el_item eld_item">
-    <div class="wrapper">
-        <div class="infor">
-            <div class="infor_p1">
-                <span>四川成都</span>
-                <i></i><!-- 中间的箭头符号 -->
-                <span>四川宜宾</span>
-                <em>置顶</em>
+
+<div class="main">
+
+    <div class="el_item eld_item">
+        <div class="wrapper">
+            <div class="infor">
+                <div class="infor_p1">
+                    <span v-text="goodsData.start_province+goodsData.start_city"></span>
+                    <i></i><!-- 中间的箭头符号 -->
+                    <span v-text="goodsData.stop_province+goodsData.stop_city"></span>
+                    <em>置顶</em>
+                </div>
+                <div class="infor_p2">
+
+                    <i class="lab1" v-show="goodsData.use_type" v-text="goodsData.use_type"></i>
+                    <i class="lab2" v-show="goodsData.car_style" v-text="goodsData.car_style"></i>
+                    <i class="lab3" v-show="goodsData.car_length" v-text="goodsData.car_length+'米'"></i>
+                    <i class="lab4" v-show="goodsData.goods_type" v-text="goodsData.goods_type"></i>
+                </div>
+                <div class="infor_p3">
+                    <div class="img">
+                        <img v-bind:src="goodsData.add_avatar">
+                    </div>
+                    <div class="txt" v-text="goodsData.add_nickname">
+                    </div>
+                    <div class="date">
+                        {{goodsData.update_time|dateFormart('更新')}}
+                    </div>
+                </div>
             </div>
-            <div class="infor_p2">
-                <i class="lab1">整车</i>
-                <i class="lab2">平板</i>
-                <i class="lab3">17.5米</i>
-                <i class="lab4">高栏</i>
+            <div class="details_main">
+                <dl>
+                    <dt>行驶路线：</dt>
+                    <dd v-text="goodsData.start_province+'—'+goodsData.stop_province"></dd>
+                </dl>
+                <dl>
+                    <dt>用车类型：</dt>
+                    <dd v-text="goodsData.use_type"></dd>
+                </dl>
+                <dl>
+                    <dt>车型：</dt>
+                    <dd v-text="goodsData.car_style"></dd>
+                </dl>
+                <dl>
+                    <dt>车长：</dt>
+                    <dd v-text="goodsData.car_length+'米'"></dd>
+                </dl>
+                <dl>
+                    <dt>货物类型：</dt>
+                    <dd v-text="goodsData.goods_type"></dd>
+                </dl>
+                <dl>
+                    <dt>货物重量：</dt>
+                    <dd v-text="goodsData.goods_weight+goodsData.goods_weight_unit"></dd>
+                </dl>
+                <dl>
+                    <dt>运费金额：</dt>
+                    <dd v-text="goodsData.freight+'元'"></dd>
+                </dl>
+                <dl>
+                    <dt>装车时间：</dt>
+                    <dd>
+                        {{goodsData.use_time|jsonFormart}}
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>装卸方式：</dt>
+                    <dd v-text="goodsData.use_mode"></dd>
+                </dl>
+                <dl>
+                    <dt>付款方式：</dt>
+                    <dd v-text="goodsData.pay_method"></dd>
+                </dl>
+                <dl>
+                    <dt>其他：</dt>
+                    <dd v-text="goodsData.other_remark">
+                    </dd>
+                </dl>
             </div>
-            <div class="infor_p3">
-                <div class="img">
+            <div class="flo">
+                <ol class="clearfix">
+                    <li>
+                        <img src="/images/icon/icon03_1.png">
+                        <span v-text="goodsData.view_num"></span>
+                    </li>
+                    <li>
+                        <img src="/images/icon/icon03_2.png">
+                        <span v-text="goodsData.praise_num"></span>
+                    </li>
+                    <li>
+                        <img src="/images/icon/icon03_3.png">
+                        <span  v-text="goodsData.share_num"></span>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <div class="eld_item2">
+        <div class="wrapper">
+            <dl>
+                <dt>联系电话</dt>
+                <dd>
+                    <span v-text="goodsData.contact_phone"></span>
+                    <a class="btn" v-bind:href="'tel://'+goodsData.contact_phone"><img src="/images/icon/icon12.png">打电话</a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>联系人</dt>
+                <dd>
+                    <span v-text="goodsData.contact_name"></span>
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+    <!-- 广告 -->
+    <img src="/images/img/img01.jpg">
+
+    <!-- 留言 -->
+    <div class="eld_item3">
+        <p class="p_tt">
+            <span>留言</span>
+            <a href="javascript:void(0);" class="btn"><img src="/images/icon/icon13.png">我要留言</a>
+        </p>
+        <ul class="eld_item3_ul">
+            <li>
+                <div class="img_box">
                     <img src="/images/icon/icon06.png">
                 </div>
-                <div class="txt">
-                    美好的未来
+                <div class="txt_box">
+                    <p class="p1">美好的未来</p>
+                    <p class="p2">2分钟前更新</p>
+                    <p class="p3">业务方向定位为同城即时整车货运，意在整合社会运力资源，搭建快速、平价、安心、专业的同城货运交易平台。货主通过货拉拉平台，可以快</p>
+                    <i class="txt_box_btn">全文</i>
+
+                    <a href="javascript:void(0);" class="reply_btn">回复</a>
                 </div>
-                <div class="date">
-                    2分钟前更新
+                <div class="reply_box">
+                    <dl>
+                        <dt>沉默嬉皮士：</dt>
+                        <dd>业务方向定位为同城即时整车货运，意在整合社会运力资源，搭建快速、平价、安心、专业的同城货运交易平台。</dd>
+                    </dl>
                 </div>
-            </div>
-        </div>
-        <div class="details_main">
-            <dl>
-                <dt>行驶路线：</dt>
-                <dd>上海—广东</dd>
-            </dl>
-            <dl>
-                <dt>用车类型：</dt>
-                <dd>上海—广东</dd>
-            </dl>
-            <dl>
-                <dt>车型：</dt>
-                <dd>不限</dd>
-            </dl>
-            <dl>
-                <dt>车长：</dt>
-                <dd>4.2米</dd>
-            </dl>
-            <dl>
-                <dt>货物类型：</dt>
-                <dd>普货</dd>
-            </dl>
-            <dl>
-                <dt>货物重量：</dt>
-                <dd>2吨</dd>
-            </dl>
-            <dl>
-                <dt>运费金额：</dt>
-                <dd>3213元</dd>
-            </dl>
-            <dl>
-                <dt>装车时间：</dt>
-                <dd>2018-03-28</dd>
-            </dl>
-            <dl>
-                <dt>装卸方式：</dt>
-                <dd>一装一卸</dd>
-            </dl>
-            <dl>
-                <dt>付款方式：</dt>
-                <dd>全现金</dd>
-            </dl>
-            <dl>
-                <dt>其他：</dt>
-                <dd>大家帮忙介绍</dd>
-            </dl>
-        </div>
-        <div class="flo">
-            <ol class="clearfix">
-                <li>
-                    <img src="/images/icon/icon03_1.png">
-                    <span>2132</span>
-                </li>
-                <li>
-                    <img src="/images/icon/icon03_2.png">
-                    <span>2132</span>
-                </li>
-                <li>
-                    <img src="/images/icon/icon03_3.png">
-                    <span>2132</span>
-                </li>
-            </ol>
-        </div>
+            </li>
+            <li>
+                <div class="img_box">
+                    <img src="/images/icon/icon06.png">
+                </div>
+                <div class="txt_box">
+                    <p class="p1">美好的未来</p>
+                    <p class="p2">2分钟前更新</p>
+                    <p class="p3">业务方向定位为同城即时整车货运，意在整合社会运力资源，搭建快速、平价、安心、专业的同城货运交易平台。货主通过货拉拉平台，可以快</p>
+                    <i class="txt_box_btn">全文</i>
+
+                    <a href="javascript:void(0);" class="reply_btn">回复</a>
+                </div>
+                <div class="reply_box">
+                    <dl>
+                        <dt>沉默嬉皮士：</dt>
+                        <dd>业务方向定位为同城即时整车货运，意在整合社会运力资源，搭建快速、平价、安心、专业的同城货运交易平台。</dd>
+                    </dl>
+                </div>
+            </li>
+        </ul>
+        <a href="javascript:void(0);" class="more_btn">加载更多</a>
+    </div>
+
+    <!-- 打电话 -->
+    <div class="eld_item4">
+        <a href="javascript:void(0);" class="call_btn">打电话</a>
+    </div>
+
+    <!-- 猜你喜欢 -->
+    <div class="ind_sec1">
+        <p class="p_tt"><span>猜你喜欢</span></p>
+        <ul class="ind_sec1_ul">
+            <li>
+                <div class="wrapper">
+                    <div class="ind_main_t">
+                        <div class="use">
+                            <div class="img">
+                                <img src="/images/icon/icon06.png">
+                            </div>
+                            <div class="txt">
+                                <span>美好的未来</span>
+                                <p>
+                                    <i class="lab1">置顶</i><i class="lab2">有货找车</i>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="call">
+                            <a href="javascript:void(0);">
+                                <img src="/images/icon/icon02.png">
+                                <span>打电话</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ind_main_m">
+                        <p>业务方向定位为同城即时整车货运，意在整合社会运力资源，搭建快速、平价、安心、专业的同城货运交易平台。货主通过货拉拉平台，可以快速匹配附近的货车资源，并以低价获得优质的货运服务；广大货车司机亦可借助货拉拉迅速对接到客户需求，大大提升货车利用效率，进而获得更为丰厚的收入回报</p>
+                    </div>
+                    <div class="ind_lab">
+                        <i class="lab1">整车</i>
+                        <i class="lab2">平板</i>
+                        <i class="lab3">17.5米</i>
+                        <i class="lab4">高栏</i>
+                    </div>
+                    <div class="ind_time">2分钟前更新</div>
+                    <div class="ind_flo">
+                        <ol class="clearfix">
+                            <li>
+                                <img src="/images/icon/icon03_1.png">
+                                <span>2132</span>
+                            </li>
+                            <li>
+                                <img src="/images/icon/icon03_2.png">
+                                <span>2132</span>
+                            </li>
+                            <li>
+                                <img src="/images/icon/icon03_3.png">
+                                <span>2132</span>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="wrapper">
+                    <div class="ind_main_t">
+                        <div class="use">
+                            <div class="img">
+                                <img src="/images/icon/icon06.png">
+                            </div>
+                            <div class="txt">
+                                <span>美好的未来</span>
+                                <p>
+                                    <i class="lab1">置顶</i><i class="lab2">二手车出售</i>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="call">
+                            <a href="javascript:void(0);">
+                                <img src="/images/icon/icon02.png">
+                                <span>打电话</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ind_main_m">
+                        <p>业务方向定位为同城即时整车货运，意在整合社会运力资源，搭建快速、平价、安心、专业的同城货运交易平台。货主通过货拉拉平台，可以快速匹配附近的货车资源，并以低价获得优质的货运服务；广大货车司机亦可借助货拉拉迅速对接到客户需求，大大提升货车利用效率，进而获得更为丰厚的收入回报</p>
+                    </div>
+                    <div class="ind_lab">
+                        <i class="lab1">36万</i>
+                        <i class="lab2">解放</i>
+                        <i class="lab4">牵引车</i>
+                    </div>
+                    <div class="ind_img">
+                        <img src="/images/img/img02.jpg">
+                        <img src="/images/img/img02.jpg">
+                        <img src="/images/img/img02.jpg">
+                        <img src="/images/img/img02.jpg">
+                    </div>
+                    <div class="ind_time">2分钟前更新</div>
+                    <div class="ind_flo">
+                        <ol class="clearfix">
+                            <li>
+                                <img src="/images/icon/icon03_1.png">
+                                <span>2132</span>
+                            </li>
+                            <li>
+                                <img src="/images/icon/icon03_2.png">
+                                <span>2132</span>
+                            </li>
+                            <li>
+                                <img src="/images/icon/icon03_3.png">
+                                <span>2132</span>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="wrapper">
+                    <div class="ind_main_t">
+                        <div class="use">
+                            <div class="img">
+                                <img src="/images/icon/icon06.png">
+                            </div>
+                            <div class="txt">
+                                <span>美好的未来</span>
+                                <p>
+                                    <i class="lab1">置顶</i><i class="lab2">司机求职</i>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="call">
+                            <a href="javascript:void(0);">
+                                <img src="/images/icon/icon02.png">
+                                <span>打电话</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ind_main_m">
+                        <p>业务方向定位为同城即时整车货运，意在整合社会运力资源，搭建快速、平价、安心、专业的同城货运交易平台。货主通过货拉拉平台，可以快速匹配附近的货车资源，并以低价获得优质的货运服务；广大货车司机亦可借助货拉拉迅速对接到客户需求，大大提升货车利用效率，进而获得更为丰厚的收入回报</p>
+                    </div>
+                    <div class="ind_lab">
+                        <i class="lab1">B2</i>
+                        <i class="lab2">上海</i>
+                        <i class="lab4">载货车</i>
+                    </div>
+                    <div class="ind_time">2分钟前更新</div>
+                    <div class="ind_flo">
+                        <ol class="clearfix">
+                            <li>
+                                <img src="/images/icon/icon03_1.png">
+                                <span>2132</span>
+                            </li>
+                            <li>
+                                <img src="/images/icon/icon03_2.png">
+                                <span>2132</span>
+                            </li>
+                            <li>
+                                <img src="/images/icon/icon03_3.png">
+                                <span>2132</span>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="zhp_message_box hide">
+        <textarea placeholder="请输入留言内容"></textarea>
+        <a href="pay.asp" class="btn">提交</a>
     </div>
 </div>
 
-<div class="eld_item2">
-    <div class="wrapper">
-        <dl>
-            <dt>联系电话</dt>
-            <dd>
-                <span>18812345678</span>
-                <a class="btn" href="javascript:void(0);"><img src="/images/icon/icon12.png">打电话</a>
-            </dd>
-        </dl>
-        <dl>
-            <dt>联系人</dt>
-            <dd>
-                <span>王先生</span>
-            </dd>
-        </dl>
-    </div>
-</div>
 
-<!-- 广告 -->
-<img src="/images/img/img01.jpg">
 
-<!-- 留言 -->
-<div class="eld_item3">
-    <p class="p_tt">
-        <span>留言</span>
-        <a href="javascript:void(0);" class="btn"><img src="/images/icon/icon13.png">我要留言</a>
-    </p>
-    <ul class="eld_item3_ul">
-        <li>
-            <div class="img_box">
-                <img src="/images/icon/icon06.png">
-            </div>
-            <div class="txt_box">
-                <p class="p1">美好的未来</p>
-                <p class="p2">2分钟前更新</p>
-                <p class="p3">业务方向定位为同城即时整车货运，意在整合社会运力资源，搭建快速、平价、安心、专业的同城货运交易平台。货主通过货拉拉平台，可以快</p>
-                <i class="txt_box_btn">全文</i>
-
-                <a href="javascript:void(0);" class="reply_btn">回复</a>
-            </div>
-            <div class="reply_box">
-                <dl>
-                    <dt>沉默嬉皮士：</dt>
-                    <dd>业务方向定位为同城即时整车货运，意在整合社会运力资源，搭建快速、平价、安心、专业的同城货运交易平台。</dd>
-                </dl>
-            </div>
-        </li>
-        <li>
-            <div class="img_box">
-                <img src="/images/icon/icon06.png">
-            </div>
-            <div class="txt_box">
-                <p class="p1">美好的未来</p>
-                <p class="p2">2分钟前更新</p>
-                <p class="p3">业务方向定位为同城即时整车货运，意在整合社会运力资源，搭建快速、平价、安心、专业的同城货运交易平台。货主通过货拉拉平台，可以快</p>
-                <i class="txt_box_btn">全文</i>
-
-                <a href="javascript:void(0);" class="reply_btn">回复</a>
-            </div>
-            <div class="reply_box">
-                <dl>
-                    <dt>沉默嬉皮士：</dt>
-                    <dd>业务方向定位为同城即时整车货运，意在整合社会运力资源，搭建快速、平价、安心、专业的同城货运交易平台。</dd>
-                </dl>
-            </div>
-        </li>
-    </ul>
-    <a href="javascript:void(0);" class="more_btn">加载更多</a>
-</div>
-
-<!-- 打电话 -->
-<div class="eld_item4">
-    <a href="javascript:void(0);" class="call_btn">打电话</a>
-</div>
-
-<!-- 猜你喜欢 -->
-<div class="ind_sec1">
-    <p class="p_tt"><span>猜你喜欢</span></p>
-    <ul class="ind_sec1_ul">
-        <li>
-            <div class="wrapper">
-                <div class="ind_main_t">
-                    <div class="use">
-                        <div class="img">
-                            <img src="/images/icon/icon06.png">
-                        </div>
-                        <div class="txt">
-                            <span>美好的未来</span>
-                            <p>
-                                <i class="lab1">置顶</i><i class="lab2">有货找车</i>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="call">
-                        <a href="javascript:void(0);">
-                            <img src="/images/icon/icon02.png">
-                            <span>打电话</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="ind_main_m">
-                    <p>业务方向定位为同城即时整车货运，意在整合社会运力资源，搭建快速、平价、安心、专业的同城货运交易平台。货主通过货拉拉平台，可以快速匹配附近的货车资源，并以低价获得优质的货运服务；广大货车司机亦可借助货拉拉迅速对接到客户需求，大大提升货车利用效率，进而获得更为丰厚的收入回报</p>
-                </div>
-                <div class="ind_lab">
-                    <i class="lab1">整车</i>
-                    <i class="lab2">平板</i>
-                    <i class="lab3">17.5米</i>
-                    <i class="lab4">高栏</i>
-                </div>
-                <div class="ind_time">2分钟前更新</div>
-                <div class="ind_flo">
-                    <ol class="clearfix">
-                        <li>
-                            <img src="/images/icon/icon03_1.png">
-                            <span>2132</span>
-                        </li>
-                        <li>
-                            <img src="/images/icon/icon03_2.png">
-                            <span>2132</span>
-                        </li>
-                        <li>
-                            <img src="/images/icon/icon03_3.png">
-                            <span>2132</span>
-                        </li>
-                    </ol>
-                </div>
-            </div>
-        </li>
-        <li>
-            <div class="wrapper">
-                <div class="ind_main_t">
-                    <div class="use">
-                        <div class="img">
-                            <img src="/images/icon/icon06.png">
-                        </div>
-                        <div class="txt">
-                            <span>美好的未来</span>
-                            <p>
-                                <i class="lab1">置顶</i><i class="lab2">二手车出售</i>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="call">
-                        <a href="javascript:void(0);">
-                            <img src="/images/icon/icon02.png">
-                            <span>打电话</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="ind_main_m">
-                    <p>业务方向定位为同城即时整车货运，意在整合社会运力资源，搭建快速、平价、安心、专业的同城货运交易平台。货主通过货拉拉平台，可以快速匹配附近的货车资源，并以低价获得优质的货运服务；广大货车司机亦可借助货拉拉迅速对接到客户需求，大大提升货车利用效率，进而获得更为丰厚的收入回报</p>
-                </div>
-                <div class="ind_lab">
-                    <i class="lab1">36万</i>
-                    <i class="lab2">解放</i>
-                    <i class="lab4">牵引车</i>
-                </div>
-                <div class="ind_img">
-                    <img src="/images/img/img02.jpg">
-                    <img src="/images/img/img02.jpg">
-                    <img src="/images/img/img02.jpg">
-                    <img src="/images/img/img02.jpg">
-                </div>
-                <div class="ind_time">2分钟前更新</div>
-                <div class="ind_flo">
-                    <ol class="clearfix">
-                        <li>
-                            <img src="/images/icon/icon03_1.png">
-                            <span>2132</span>
-                        </li>
-                        <li>
-                            <img src="/images/icon/icon03_2.png">
-                            <span>2132</span>
-                        </li>
-                        <li>
-                            <img src="/images/icon/icon03_3.png">
-                            <span>2132</span>
-                        </li>
-                    </ol>
-                </div>
-            </div>
-        </li>
-        <li>
-            <div class="wrapper">
-                <div class="ind_main_t">
-                    <div class="use">
-                        <div class="img">
-                            <img src="/images/icon/icon06.png">
-                        </div>
-                        <div class="txt">
-                            <span>美好的未来</span>
-                            <p>
-                                <i class="lab1">置顶</i><i class="lab2">司机求职</i>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="call">
-                        <a href="javascript:void(0);">
-                            <img src="/images/icon/icon02.png">
-                            <span>打电话</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="ind_main_m">
-                    <p>业务方向定位为同城即时整车货运，意在整合社会运力资源，搭建快速、平价、安心、专业的同城货运交易平台。货主通过货拉拉平台，可以快速匹配附近的货车资源，并以低价获得优质的货运服务；广大货车司机亦可借助货拉拉迅速对接到客户需求，大大提升货车利用效率，进而获得更为丰厚的收入回报</p>
-                </div>
-                <div class="ind_lab">
-                    <i class="lab1">B2</i>
-                    <i class="lab2">上海</i>
-                    <i class="lab4">载货车</i>
-                </div>
-                <div class="ind_time">2分钟前更新</div>
-                <div class="ind_flo">
-                    <ol class="clearfix">
-                        <li>
-                            <img src="/images/icon/icon03_1.png">
-                            <span>2132</span>
-                        </li>
-                        <li>
-                            <img src="/images/icon/icon03_2.png">
-                            <span>2132</span>
-                        </li>
-                        <li>
-                            <img src="/images/icon/icon03_3.png">
-                            <span>2132</span>
-                        </li>
-                    </ol>
-                </div>
-            </div>
-        </li>
-    </ul>
-</div>
-
-<div class="zhp_message_box hide">
-    <textarea placeholder="请输入留言内容"></textarea>
-    <a href="pay.asp" class="btn">提交</a>
-</div>
 @Html.Partial("_Footer")
+@Scripts.Render("/Scripts/Project/GoodsSourceDetails.js")
 <script>
     $(function () {
         var $txt_box = $(".txt_box");

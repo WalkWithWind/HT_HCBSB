@@ -92,7 +92,7 @@
              <dl>
                 <dt>标签</dt>
                 <dd>
-                    {{newsData.tags}}（米）
+                    {{newsData.tags}}
                 </dd>
             </dl>
 

@@ -98,6 +98,9 @@
     <Compile Include="ht_region.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="ht_review.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="ht_single_page.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

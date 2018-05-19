@@ -126,11 +126,19 @@
             </dl>
 
             <dl>
+                <dt>装车时间</dt>
+                <dd>
+                    {{newsData.use_time}}（元）
+                </dd>
+            </dl>
+            
+            <dl>
                 <dt>运费金额</dt>
                 <dd>
                     {{newsData.freight}}（元）
                 </dd>
             </dl>
+
 			<dl>
                 <dt>装卸方式</dt>
                 <dd>

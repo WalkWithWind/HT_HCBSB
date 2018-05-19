@@ -152,6 +152,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PartialController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
+    <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="Controllers\WXController.cs" />
     <Compile Include="Filter\OAuthFilter.cs" />
     <Compile Include="Global.asax.cs">
@@ -315,6 +316,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\Review\" />
     <Folder Include="Views\User\" />
     <Folder Include="Views\WX\" />
   </ItemGroup>
