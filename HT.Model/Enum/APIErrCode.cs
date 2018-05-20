@@ -11,7 +11,7 @@ namespace HT.Model.Enum
         /// <summary>
         /// 成功
         /// </summary>
-        IsSuccess = 0,
+        Success = 0,
         /// <summary>
         /// 用户未登录
         /// </summary>

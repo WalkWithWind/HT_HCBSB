@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using HT.Model.Enum;
 
 namespace HT.Mobile.Controllers
 {
@@ -103,18 +104,14 @@ namespace HT.Mobile.Controllers
 		{
 			string msg = "";
 			string orderId = "";
-			if (BLL.BLLNews.Add(model, out msg, out orderId))
+			if (BLLNews.Add(model, out msg, out orderId))
 			{
-				apiResp.status = true;
-				apiResp.msg = "OK";
-				apiResp.result = new { order_id=orderId};
+				return JsonResult(APIErrCode.Success, "OK", new { order_id = orderId });
 			}
 			else
 			{
-				apiResp.msg =msg;
-				
+				return JsonResult(APIErrCode.OperateFail,msg);
 			}
-			return Json(apiResp);
 
 		}
 		/// <summary>
