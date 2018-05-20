@@ -305,6 +305,7 @@
           <Property Name="add_time" Type="datetime" />
           <Property Name="news_id" Type="int" />
           <Property Name="status" Type="int" />
+          <Property Name="review_id" Type="int" />
         </EntityType>
         <EntityType Name="ht_single_page">
           <Key>
@@ -1019,7 +1020,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="userid" Type="Int32" Nullable="false" />
           <Property Name="nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="avatar" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
@@ -1028,6 +1029,7 @@
           <Property Name="add_time" Type="DateTime" Precision="3" />
           <Property Name="news_id" Type="Int32" />
           <Property Name="status" Type="Int32" />
+          <Property Name="review_id" Type="Int32" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1480,6 +1482,7 @@
           <EntitySetMapping Name="ht_review">
             <EntityTypeMapping TypeName="Model.ht_review">
               <MappingFragment StoreEntitySet="ht_review">
+                <ScalarProperty Name="review_id" ColumnName="review_id" />
                 <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="news_id" ColumnName="news_id" />
                 <ScalarProperty Name="add_time" ColumnName="add_time" />
