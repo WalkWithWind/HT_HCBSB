@@ -45,7 +45,7 @@ var vue = new Vue({
 	},
 		watch: {
 		'model.validity_num': function (val, oldval) {
-			this.calcTotal();
+			    this.calcTotal();
 			},
 		'model.freight': function (val, oldval) {
 				this.calcTotal();
