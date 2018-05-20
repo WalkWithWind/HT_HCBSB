@@ -19,6 +19,14 @@ $(function() {
 });
 
 
+
+
+
+
+Array.prototype.insert = function (index, item) {
+    this.splice(index, 0, item);
+};  
+
 //layer提示
 window.alert = function (msg, icon, time, fn) {
     if (!time) time = 2;
@@ -52,4 +60,11 @@ window.confirm = function (title, msg, yesText, cancelText, yesFn, cancelFn) {
         if (!!cancelFn) cancelFn(index);
     });
 };
+
+
+function GetUrlParam(_k, _i) {
+    var _h = window.location.href;
+    _h = _h.substr(_h.lastIndexOf(_k) + _k.length+1);
+    return _h.split('/')[_i];
+}
 

@@ -53,5 +53,9 @@ namespace HT.Model
     ///状态（0待审核 1审核通过 2审核不通过）
     ///</summary>
         public Nullable<int> status { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
+        public Nullable<int> review_id { get; set; }
     }
 }

@@ -27,11 +27,10 @@ namespace HT.Mobile.Controllers
         /// <param name="content"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult AddReview(int newsId,string reviewType,string content)
+        public ActionResult AddReview(ht_review review)
         {
             Model.ht_review model = new Model.ht_review();
 
-            model.add_time = DateTime.Now;
 
             AuthenticationUser loginInfo = HT.BLL.BLLUser.GetLoginUserInfo();
 
@@ -42,16 +41,19 @@ namespace HT.Mobile.Controllers
                 return Json(apiResp);
             }
 
+            model.avatar = loginInfo.avatar;
             model.userid = loginInfo.id;
             model.nickname = loginInfo.nickname;
             model.status = 0;
-            model.review_content = content;
-            model.news_id = newsId;
-            model.review_type = reviewType;
-
+            model.add_time = DateTime.Now;
+            model.review_content = review.review_content;
+            model.news_id = review.news_id;
+            model.review_type = review.review_type;
+            model.review_id = review.review_id;
             if (HT.BLL.BLLReview.AddReview(model) > 0)
             {
                 apiResp.status = true;
+                apiResp.result = model;
                 apiResp.msg = "评论完成";
             }
             else
@@ -70,14 +72,14 @@ namespace HT.Mobile.Controllers
 
         public ActionResult ReviewList(int page,int rows,HT.Model.ht_review searchKey)
         {
-            List<ht_review> list = BLLReview.GetReviewList(page, rows, searchKey);
+            Model.Model.PageResult<Model.ht_review> pageModel = BLLReview.GetReviewList(page, rows, searchKey);
             if (Request.IsAjaxRequest())
             {
                 apiResp.status = true;
-                apiResp.result = list;
+                apiResp.result = pageModel;
                 return Json(apiResp);
             }
-            return View(list);
+            return View(pageModel);
         }
 
         #endregion
