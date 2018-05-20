@@ -92,11 +92,36 @@ namespace HT.Mobile.Controllers
         {
             return View();
         }
-        /// <summary>
-        /// 发布车源信息
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult PostCars()
+
+		/// <summary>
+		/// 发布项目 货源信息
+		/// </summary>
+		/// <param name="model"></param>
+		/// <returns></returns>
+		[HttpPost]
+		public ActionResult PostGoodsSubmit(ht_news model)
+		{
+			string msg = "";
+			string orderId = "";
+			if (BLL.BLLNews.Add(model, out msg, out orderId))
+			{
+				apiResp.status = true;
+				apiResp.msg = "OK";
+				apiResp.result = new { order_id=orderId};
+			}
+			else
+			{
+				apiResp.msg =msg;
+				
+			}
+			return Json(apiResp);
+
+		}
+		/// <summary>
+		/// 发布车源信息
+		/// </summary>
+		/// <returns></returns>
+		public ActionResult PostCars()
         {
             return View();
         }

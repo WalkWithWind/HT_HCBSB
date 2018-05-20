@@ -443,5 +443,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ht_review">
+      <EntityTypeMapping TypeName="Model.ht_review">
+        <MappingFragment StoreEntitySet="ht_review">
+          <ScalarProperty Name="review_id" ColumnName="review_id" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="news_id" ColumnName="news_id" />
+          <ScalarProperty Name="add_time" ColumnName="add_time" />
+          <ScalarProperty Name="review_content" ColumnName="review_content" />
+          <ScalarProperty Name="review_type" ColumnName="review_type" />
+          <ScalarProperty Name="avatar" ColumnName="avatar" />
+          <ScalarProperty Name="nickname" ColumnName="nickname" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

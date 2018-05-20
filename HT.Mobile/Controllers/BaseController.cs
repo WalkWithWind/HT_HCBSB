@@ -10,5 +10,6 @@ namespace HT.Mobile.Controllers
     public class BaseController : Controller
     {
         public ApiResponse apiResp = new ApiResponse();
+
     }
 }

@@ -56,6 +56,9 @@ var vue = new Vue({
 		'model.reward_money': function (val, oldval) {
 				this.calcTotal();
 			},
+	     'model.set_top_money': function (val, oldval) {
+				this.calcTotal();
+			}
 	},
     methods: {
         init: function () {
@@ -91,30 +94,33 @@ var vue = new Vue({
 		},
 		calcTotal: function () {//计算总金额
 			var _this = this;
-			console.log(["model", _this.model]);
+			
 			_this.model.total = 0;
 			if (_this.model.freight > 0) {
 				_this.model.total += parseFloat(_this.model.freight);
 			}
-			_this.model.total+= _this.model.set_top_money;
+			if (_this.model.set_top_money > 0) {
+				_this.model.total += parseFloat(_this.model.set_top_money);
+			}
 			if (_this.model.validity_unit == "天") {
-				
-				_this.model.total +=_this.validity_unit_day_money * parseFloat(_this.model.validity_num);
+				if (_this.model.validity_num>0) {
+					_this.model.total += _this.validity_unit_day_money * parseFloat(_this.model.validity_num);
+
+				}
 			} else if (_this.model.validity_unit == "月") {
-				_this.model.total +=_this.validity_unit_month_money * parseFloat(_this.model.validity_num);
+				if (_this.model.validity_num>0) {
+					_this.model.total += _this.validity_unit_month_money * parseFloat(_this.model.validity_num);
+
+				}
 			}
 			if (_this.model.reward_money > 0) {
 				_this.model.total += parseFloat(_this.model.reward_money);
 			}
-			
-
-
-		},
-        submit: function () {
-			var _this = this;
 			console.log(["model", _this.model]);
+
+
 		},
-		topCate: function () {
+		topCate: function () {//分类置顶点击
 			var _this = this;
 			_this.top_cate_select = !_this.top_cate_select;
 			if (_this.top_cate_select) {
@@ -126,11 +132,11 @@ var vue = new Vue({
 				_this.model.set_top_money = 0;
 				_this.model.set_top = "";
 			}
-			_this.calcTotal();
-			console.log(["_this.model.set_top_money", _this.model.set_top_money]);
-			console.log(["_this.model.set_top ", _this.model.set_top]);
+			//_this.calcTotal();
+			//console.log(["_this.model.set_top_money", _this.model.set_top_money]);
+			//console.log(["_this.model.set_top ", _this.model.set_top]);
 		},
-		topAll: function () {
+		topAll: function () {//全站置顶点击
 			var _this = this;
 			_this.top_all_select = !_this.top_all_select;
 			if (_this.top_all_select) {
@@ -141,10 +147,85 @@ var vue = new Vue({
 				_this.model.set_top_money = 0;
 				_this.model.set_top = "";
 			}
-			_this.calcTotal();
-			console.log(["_this.model.set_top_money ", _this.model.set_top_money]);
-			console.log(["_this.model.set_top ", _this.model.set_top]);
+			//_this.calcTotal();
+			//console.log(["_this.model.set_top_money ", _this.model.set_top_money]);
+			//console.log(["_this.model.set_top ", _this.model.set_top]);
+		},
+		checkInput: function () {//检查输入
+			//return true;
+			var _this = this;
+			if (_this.model.validity_num == "" || _this.model.validity_num<=0) {
+				alert("请输入有效期");
+				return false;
+
+			}
+			if (_this.model.start_city == "" ) {
+				alert("请选择出发城市");
+				return false;
+
+			}
+			if (_this.model.stop_city == "") {
+				alert("请选择到达城市");
+				return false;
+
+			}
+			if (_this.model.goods_weight == "") {
+				alert("请输入货物重量体积");
+				return false;
+
+			}
+			if (_this.model.freight == "") {
+				alert("请输入运费");
+				return false;
+
+			}
+			if (_this.model.use_time == "") {
+				alert("请输入装车时间");
+				return false;
+
+			}
+			if (_this.model.contact_name == "") {
+				alert("请输入联系人");
+				return false;
+
+			}
+			if (_this.model.contact_phone == "") {
+				alert("请输入联系电话");
+				return false;
+			}
+			return true;
+
+		},
+		submit: function () {//提交
+			var _this = this;
+			if (!_this.checkInput()) {
+				return false;
+			}
+			confirm("提示", "确定发布", "发布", "取消", function () {
+				$.ajax({
+					type: 'post',
+					url: '/Project/PostGoodsSubmit',
+					data: _this.model,
+					dataType: 'json',
+					success: function (resp) {
+						if (resp.status) {
+							window.location.href = "/WX/Pay/"+resp.result.order_id;
+						} else {
+							alert(resp.msg);
+						}
+					}
+				});
+
+			}, function () {
+
+				layer.closeAll();
+
+		    })
+
+			
+			
 		}
+
     }
 });
 vue.init();

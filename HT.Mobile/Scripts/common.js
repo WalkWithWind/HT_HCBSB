@@ -62,6 +62,7 @@ window.confirm = function (title, msg, yesText, cancelText, yesFn, cancelFn) {
 };
 
 
+
 function GetUrlParam(_k, _i) {
     var _h = window.location.href;
     _h = _h.substr(_h.lastIndexOf(_k) + _k.length+1);

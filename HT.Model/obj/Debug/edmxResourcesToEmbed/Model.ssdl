@@ -287,6 +287,21 @@
     <Property Name="cid" Type="int" />
     <Property Name="sort" Type="int" />
   </EntityType>
+  <EntityType Name="ht_review">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userid" Type="int" Nullable="false" />
+    <Property Name="nickname" Type="nvarchar" MaxLength="50" />
+    <Property Name="avatar" Type="nvarchar" MaxLength="200" />
+    <Property Name="review_type" Type="nvarchar" MaxLength="50" />
+    <Property Name="review_content" Type="nvarchar" MaxLength="500" />
+    <Property Name="add_time" Type="datetime" />
+    <Property Name="news_id" Type="int" />
+    <Property Name="status" Type="int" />
+    <Property Name="review_id" Type="int" />
+  </EntityType>
   <EntityType Name="ht_single_page">
     <Key>
       <PropertyRef Name="id" />
@@ -468,6 +483,7 @@
     <EntitySet Name="ht_order_appraise" EntityType="Self.ht_order_appraise" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ht_payment" EntityType="Self.ht_payment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ht_region" EntityType="Self.ht_region" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_review" EntityType="Self.ht_review" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ht_single_page" EntityType="Self.ht_single_page" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ht_sms_config" EntityType="Self.ht_sms_config" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ht_sms_email" EntityType="Self.ht_sms_email" Schema="dbo" store:Type="Tables" />

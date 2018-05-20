@@ -353,6 +353,39 @@ namespace HT.BLL
                     .ThenByDescending(p => p.update_time).ToList();
             }
         }
-        #endregion 热门推荐（猜你喜欢）
-    }
+		#endregion 热门推荐（猜你喜欢）
+
+		/// <summary>
+		/// 发布项目
+		/// </summary>
+		/// <param name="model">模型</param>
+		/// <param name="msg">提示消息</param>
+		/// <param name="orderId">订单号,成功时返回</param>
+		/// <returns>成功 失败</returns>
+		public static bool Add(ht_news model,out string msg,out string orderId)
+		{
+			msg = "";
+			orderId = "";
+			using (Entities db = new Entities())
+			{
+				try
+				{
+					model.add_time = DateTime.Now;
+					model.order_no = DateTime.Now.ToString("yyyyMMddHHmmss") + new Random().Next(111111, 999999);
+					db.ht_news.Add(model);
+					if (db.SaveChanges() > 0)
+					{
+						return true;
+					}
+				}
+				catch (Exception ex)
+				{
+					msg = ex.Message;
+					
+				}
+				return false;
+
+			}
+		}
+	}
 }
