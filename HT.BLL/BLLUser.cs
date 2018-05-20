@@ -88,6 +88,20 @@ namespace HT.BLL
             return JsonConvert.DeserializeObject<AuthenticationUser>(userDataSource);
         }
 
+        /// <summary>
+        /// 是否登录
+        /// </summary>
+        /// <returns></returns>
+        public static bool IsLogin()
+        {
+            AuthenticationUser loginInfo = HT.BLL.BLLUser.GetLoginUserInfo();
+            if (loginInfo == null)
+            {
+                return false;
+            }
+            return true;
+        }
+
 
     }
 }

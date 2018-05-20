@@ -62,6 +62,9 @@
     <Compile Include="ht_category.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="ht_comm_relation.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="ht_help.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

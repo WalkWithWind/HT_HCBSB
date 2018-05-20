@@ -61,6 +61,7 @@
     <Compile Include="BLLAuthentication.cs" />
     <Compile Include="BLLCategory.cs" />
     <Compile Include="BLLNews.cs" />
+    <Compile Include="BLLRelation.cs" />
     <Compile Include="BLLReview.cs" />
     <Compile Include="BLLUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

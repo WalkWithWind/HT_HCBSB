@@ -53,5 +53,6 @@ namespace HT.Model
         public virtual DbSet<ht_user_point_log> ht_user_point_log { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<ht_review> ht_review { get; set; }
+        public virtual DbSet<ht_comm_relation> ht_comm_relation { get; set; }
     }
 }

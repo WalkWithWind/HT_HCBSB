@@ -53,6 +53,16 @@
           <Property Name="title" Type="nvarchar" MaxLength="50" />
           <Property Name="sort" Type="int" />
         </EntityType>
+        <EntityType Name="ht_comm_relation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="relation_id" Type="nvarchar" MaxLength="50" />
+          <Property Name="main_id" Type="nvarchar" MaxLength="50" />
+          <Property Name="relation_type" Type="nvarchar" MaxLength="50" />
+          <Property Name="add_time" Type="datetime" />
+        </EntityType>
         <EntityType Name="ht_help">
           <Key>
             <PropertyRef Name="id" />
@@ -476,6 +486,7 @@
           <EntitySet Name="ht_ad" EntityType="Self.ht_ad" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ht_ad_category" EntityType="Self.ht_ad_category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ht_category" EntityType="Self.ht_category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ht_comm_relation" EntityType="Self.ht_comm_relation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ht_help" EntityType="Self.ht_help" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ht_manager" EntityType="Self.ht_manager" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ht_manager_log" EntityType="Self.ht_manager_log" Schema="dbo" store:Type="Tables" />
@@ -558,6 +569,7 @@
             <End Role="ht_news" EntitySet="ht_news" />
           </AssociationSet>
           <EntitySet Name="ht_review" EntityType="Model.ht_review" />
+          <EntitySet Name="ht_comm_relation" EntityType="Model.ht_comm_relation" />
         </EntityContainer>
         <EntityType Name="ht_account">
           <Key>
@@ -1031,6 +1043,16 @@
           <Property Name="status" Type="Int32" />
           <Property Name="review_id" Type="Int32" />
         </EntityType>
+        <EntityType Name="ht_comm_relation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="relation_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="main_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="relation_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="add_time" Type="DateTime" Precision="3" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1491,6 +1513,17 @@
                 <ScalarProperty Name="avatar" ColumnName="avatar" />
                 <ScalarProperty Name="nickname" ColumnName="nickname" />
                 <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ht_comm_relation">
+            <EntityTypeMapping TypeName="Model.ht_comm_relation">
+              <MappingFragment StoreEntitySet="ht_comm_relation">
+                <ScalarProperty Name="add_time" ColumnName="add_time" />
+                <ScalarProperty Name="relation_type" ColumnName="relation_type" />
+                <ScalarProperty Name="main_id" ColumnName="main_id" />
+                <ScalarProperty Name="relation_id" ColumnName="relation_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
