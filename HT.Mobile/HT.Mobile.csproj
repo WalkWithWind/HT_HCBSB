@@ -152,6 +152,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PartialController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
+    <Compile Include="Controllers\RelationController.cs" />
     <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="Controllers\WXController.cs" />
     <Compile Include="Filter\OAuthFilter.cs" />
@@ -183,6 +184,7 @@
     <Content Include="images\icon\icon03_1.png" />
     <Content Include="images\icon\icon03_2.png" />
     <Content Include="images\icon\icon03_3.png" />
+    <Content Include="images\icon\icon03_4.png" />
     <Content Include="images\icon\icon04_1.png" />
     <Content Include="images\icon\icon04_2.png" />
     <Content Include="images\icon\icon04_3.png" />
@@ -317,6 +319,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\Relation\" />
     <Folder Include="Views\Review\" />
     <Folder Include="Views\User\" />
     <Folder Include="Views\WX\" />

@@ -75,7 +75,13 @@ namespace HT.BLL
             using (Entities db = new Entities())
             {
                 db.Configuration.ProxyCreationEnabled = false;
-                return db.ht_news.FirstOrDefault(p => p.id== id);
+                var newsDetail = db.ht_news.Find(id);
+                if (newsDetail != null)
+                {
+                    newsDetail.view_num++;
+                    db.SaveChanges();
+                }
+                return newsDetail;
             }
         }
         /// <summary>
