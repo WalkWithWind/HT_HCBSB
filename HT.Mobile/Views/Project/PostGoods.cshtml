@@ -5,6 +5,7 @@
 }
 
 <div class="main">
+
 	<div class="top">
 		<div class="wrapper">
 			<a href="javascript:history.go(-1);" class="back_btn">返回</a>
@@ -40,7 +41,7 @@
 				<input type="text" placeholder="请输入有效期" v-model="model.validity_num">
 				<div class="ro_box">
 					<input type="radio" value="天" id="day" checked v-model="model.validity_unit"><label for="day">天</label>
-					<input type="radio" value="月" id="mounth" v-model="model.validity_unit" ><label for="mounth">月</label>
+					<input type="radio" value="月" id="mounth" v-model="model.validity_unit"><label for="mounth">月</label>
 				</div>
 			</li>
 			<li>
@@ -99,7 +100,7 @@
 			<dt>货物类型</dt>
 			<dd>
 
-	     <a href="javascript:;" v-bind:class="[{ 'cur':model.good_type=='' }]"
+				<a href="javascript:;" v-bind:class="[{ 'cur':model.good_type=='' }]"
 				   v-on:click="model.good_type=''">不限</a>
 				<a href="javascript:;" v-for="item in goodsTypeData"
 				   v-bind:class="[{ 'cur': item.title==model.good_type }]"
@@ -131,7 +132,7 @@
 			</dd>
 			<dd>
 				<span>装车时间</span>
-				<input type="text" placeholder="点击选择装车时间"  v-model="model.use_time">
+				<input type="text" placeholder="点击选择装车时间" v-model="model.use_time">
 			</dd>
 		</dl>
 	</div>
@@ -174,7 +175,7 @@
 			</dd>
 			<dd>
 				<span>联系电话</span>
-				<input type="text" value=""  v-model="model.contact_phone" placeholder="联系电话">
+				<input type="text" value="" v-model="model.contact_phone" placeholder="联系电话">
 			</dd>
 		</dl>
 	</div>
@@ -195,7 +196,7 @@
 					<i></i>
 				</div>
 			</dd>
-			<dd >
+			<dd>
 				<div class="pt1">
 					<img src="/images/icon/icon27_2.png">
 				</div>
@@ -203,7 +204,7 @@
 					<span>全站置顶</span>
 					<p>全站所有分类置顶显示，效果更好</p>
 				</div>
-				<div class="pt3"  v-on:click="topAll">
+				<div class="pt3" v-on:click="topAll">
 					<span>{{top_all_money}}元</span>
 					<i></i>
 				</div>
@@ -233,7 +234,7 @@
 					</div>
 					<p>
 						<span>手动输入打赏金额</span>
-						<input type="text" placeholder="请输入打赏金额" v-model="model.reward_money" >
+						<input type="text" placeholder="请输入打赏金额" v-model="model.reward_money">
 					</p>
 				</div>
 
@@ -242,9 +243,66 @@
 		<a v-on:click="submit" class="btn">确认发布（共支付{{model.total}}元）</a>
 	</div>
 
+	@*<div class="start_box zhx_box tab-box hide">
+		<ul class="zhx_box_title tab-title">
+			<li v-bind:class="[{'active':select.startProvinceTab}]"
+				v-on:click="selectTabProvince('start')">
+				<a href="javascript:;">省</a>
+			</li>
+			<li v-bind:class="[{'active':!select.startProvinceTab}]"
+				v-on:click="selectTabCity('start')">
+				<a href="javascript:;">市</a>
+			</li>
+		</ul>
+		<div v-bind:class="['province','clearfix','tab-content',{'hide':!select.startProvinceTab}]">
+			<a href="javascript:;" v-for="item in cityData.get(0)"
+			   v-bind:class="[{ 'active': item==searchKey.start_province }]"
+			   v-text="item" v-on:click="selectProvince('start',item)">
+			</a>
+		</div>
+		<div v-bind:class="['city','clearfix','tab-content',{'hide':select.startProvinceTab}]">
+			<a href="javascript:;" v-for="item in cityData.getCitysByProvince(searchKey.start_province)"
+			   v-bind:class="[{ 'active':item==searchKey.start_city }]"
+			   v-text="item" v-on:click="selectCity('start',item)">
+			</a>
+		</div>
+		<div class="sub_btn_box">
+			<a href="javascript:void(0);" class="cancle" v-on:click="resetCity('start')">重置</a>
+			<a href="javascript:void(0);" class="confirm" v-on:click="confirm()">确定</a>
+		</div>
+	</div>
+
+	<div class="stop_box zhx_box tab-box hide">
+		<ul class="zhx_box_title tab-title">
+			<li v-bind:class="[{'active':select.stopProvinceTab}]"
+				v-on:click="selectTabProvince('stop')">
+				<a href="javascript:;">省</a>
+			</li>
+			<li v-bind:class="[{'active':!select.stopProvinceTab}]"
+				v-on:click="selectTabCity('stop')">
+				<a href="javascript:;">市</a>
+			</li>
+		</ul>
+		<div v-bind:class="['province','clearfix','tab-content',{'hide':!select.stopProvinceTab}]">
+			<a href="javascript:;" v-for="item in cityData.get(0)"
+			   v-bind:class="[{ 'active': item==searchKey.stop_province }]"
+			   v-text="item" v-on:click="selectProvince('stop',item)">
+			</a>
+		</div>
+		<div v-bind:class="['city','clearfix','tab-content',{'hide':select.stopProvinceTab}]">
+			<a href="javascript:;" v-for="item in cityData.getCitysByProvince(searchKey.stop_province)"
+			   v-bind:class="[{ 'active':item==searchKey.stop_city }]"
+			   v-text="item" v-on:click="selectCity('stop',item)">
+			</a>
+		</div>
+		<div class="sub_btn_box">
+			<a href="javascript:void(0);" class="cancle" v-on:click="resetCity('stop')">重置</a>
+			<a href="javascript:void(0);" class="confirm" v-on:click="confirm()">确定</a>
+		</div>
+	</div>*@
+
 </div>
-
-
+<script src="~/Scripts/geo.js"></script>
 <script src="~/Scripts/Project/PostGoods.js"></script>
 <script>
     var mySwiper = new Swiper('.banner .swiper-container', {

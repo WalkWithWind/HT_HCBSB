@@ -13,28 +13,28 @@ namespace HT.Model
     using System.Collections.Generic;
     
     ///<summary>
-    ///
+    ///System.Data.SqlClient
     ///</summary>
-    public partial class sysdiagrams
+    public partial class sysdiagram
     {
     ///<summary>
-    ///
+    ///System.Data.SqlClient
     ///</summary>
         public string name { get; set; }
     ///<summary>
-    ///
+    ///System.Data.SqlClient
     ///</summary>
         public int principal_id { get; set; }
     ///<summary>
-    ///
+    ///System.Data.SqlClient
     ///</summary>
         public int diagram_id { get; set; }
     ///<summary>
-    ///
+    ///System.Data.SqlClient
     ///</summary>
         public Nullable<int> version { get; set; }
     ///<summary>
-    ///
+    ///System.Data.SqlClient
     ///</summary>
         public byte[] definition { get; set; }
     }

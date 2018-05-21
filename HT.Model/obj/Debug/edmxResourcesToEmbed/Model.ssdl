@@ -48,6 +48,16 @@
     <Property Name="title" Type="nvarchar" MaxLength="50" />
     <Property Name="sort" Type="int" />
   </EntityType>
+  <EntityType Name="ht_comm_relation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="relation_id" Type="nvarchar" MaxLength="50" />
+    <Property Name="main_id" Type="nvarchar" MaxLength="50" />
+    <Property Name="relation_type" Type="nvarchar" MaxLength="50" />
+    <Property Name="add_time" Type="datetime" />
+  </EntityType>
   <EntityType Name="ht_help">
     <Key>
       <PropertyRef Name="id" />
@@ -182,6 +192,7 @@
     <Property Name="praise_num" Type="int" Nullable="false" />
     <Property Name="share_num" Type="int" Nullable="false" />
     <Property Name="is_delete" Type="int" />
+    <Property Name="total" Type="decimal" Precision="18" Scale="2" />
   </EntityType>
   <EntityType Name="ht_news_cate">
     <Key>
@@ -471,6 +482,7 @@
     <EntitySet Name="ht_ad" EntityType="Self.ht_ad" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ht_ad_category" EntityType="Self.ht_ad_category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ht_category" EntityType="Self.ht_category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_comm_relation" EntityType="Self.ht_comm_relation" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ht_help" EntityType="Self.ht_help" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ht_manager" EntityType="Self.ht_manager" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ht_manager_log" EntityType="Self.ht_manager_log" Schema="dbo" store:Type="Tables" />

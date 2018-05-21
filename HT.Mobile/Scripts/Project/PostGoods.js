@@ -3,7 +3,9 @@
 var vue = new Vue({
     el: '.main',
     data: {
-        model: {
+		model: {
+			cateid: 1,//类型 1货源
+			cate: "找货源",//货源
 			validity_num:"",//有效期
 			validity_unit: "天",//有效期单位 天,月
 			start_province:"",//出发地省份
@@ -23,7 +25,7 @@ var vue = new Vue({
 			other_remark: "",//其它补充
 			contact_name: "",//联系人
 			contact_phone: "",//联系电话
-			set_top:"",//置顶类型 1分类2 全站
+			set_top:"1",//置顶类型 1分类2 全站
 			set_top_money: 0,//置顶金额
 			reward_money: 0,//打赏金额
 			total:0//需支付金额
@@ -126,7 +128,7 @@ var vue = new Vue({
 			if (_this.top_cate_select) {
 				_this.top_all_select = false;
 				_this.model.set_top_money = _this.top_cate_money;
-				_this.model.set_top = "分类";
+				_this.model.set_top = "1";
 				
 			} else {
 				_this.model.set_top_money = 0;
@@ -142,7 +144,7 @@ var vue = new Vue({
 			if (_this.top_all_select) {
 				_this.top_cate_select = false;
 				_this.model.set_top_money = _this.top_all_money;
-				_this.model.set_top = "全站";
+				_this.model.set_top = "2";
 			} else {
 				_this.model.set_top_money = 0;
 				_this.model.set_top = "";
@@ -209,7 +211,7 @@ var vue = new Vue({
 					dataType: 'json',
 					success: function (resp) {
 						if (resp.status) {
-							window.location.href = "/WX/Pay/"+resp.result.order_id;
+							window.location.href = "/WX/Pay/"+resp.result.order_no;
 						} else {
 							alert(resp.msg);
 						}

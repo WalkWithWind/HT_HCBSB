@@ -5,6 +5,7 @@
     <EntitySet Name="ht_ad" EntityType="Model.ht_ad" />
     <EntitySet Name="ht_ad_category" EntityType="Model.ht_ad_category" />
     <EntitySet Name="ht_category" EntityType="Model.ht_category" />
+    <EntitySet Name="ht_comm_relation" EntityType="Model.ht_comm_relation" />
     <EntitySet Name="ht_help" EntityType="Model.ht_help" />
     <EntitySet Name="ht_manager" EntityType="Model.ht_manager" />
     <EntitySet Name="ht_manager_log" EntityType="Model.ht_manager_log" />
@@ -17,6 +18,7 @@
     <EntitySet Name="ht_order_appraise" EntityType="Model.ht_order_appraise" />
     <EntitySet Name="ht_payment" EntityType="Model.ht_payment" />
     <EntitySet Name="ht_region" EntityType="Model.ht_region" />
+    <EntitySet Name="ht_review" EntityType="Model.ht_review" />
     <EntitySet Name="ht_single_page" EntityType="Model.ht_single_page" />
     <EntitySet Name="ht_sms_config" EntityType="Model.ht_sms_config" />
     <EntitySet Name="ht_sms_email" EntityType="Model.ht_sms_email" />
@@ -27,7 +29,7 @@
     <EntitySet Name="ht_user_message" EntityType="Model.ht_user_message" />
     <EntitySet Name="ht_user_money_log" EntityType="Model.ht_user_money_log" />
     <EntitySet Name="ht_user_point_log" EntityType="Model.ht_user_point_log" />
-    <EntitySet Name="sysdiagrams" EntityType="Model.sysdiagrams" />
+    <EntitySet Name="sysdiagrams" EntityType="Model.sysdiagram" />
     <AssociationSet Name="FK__ht_manage__rolei__3B0BC30C" Association="Model.FK__ht_manage__rolei__3B0BC30C">
       <End Role="ht_manager_role" EntitySet="ht_manager_role" />
       <End Role="ht_manager" EntitySet="ht_manager" />
@@ -40,7 +42,6 @@
       <End Role="ht_news_cate" EntitySet="ht_news_cate" />
       <End Role="ht_news" EntitySet="ht_news" />
     </AssociationSet>
-    <EntitySet Name="ht_review" EntityType="Model.ht_review" />
   </EntityContainer>
   <EntityType Name="ht_account">
     <Key>
@@ -89,6 +90,16 @@
     <Property Name="cid" Type="Int32" />
     <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="sort" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ht_comm_relation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="relation_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="main_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="relation_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="add_time" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="ht_help">
     <Key>
@@ -228,6 +239,7 @@
     <Property Name="praise_num" Type="Int32" Nullable="false" />
     <Property Name="share_num" Type="Int32" Nullable="false" />
     <Property Name="is_delete" Type="Int32" />
+    <Property Name="total" Type="Decimal" Precision="18" Scale="2" />
     <NavigationProperty Name="ht_news_cate" Relationship="Model.FK_ht_news_ht_news_cate" FromRole="ht_news" ToRole="ht_news_cate" />
   </EntityType>
   <EntityType Name="ht_news_cate">
@@ -334,6 +346,21 @@
     <Property Name="pid" Type="Int32" />
     <Property Name="cid" Type="Int32" />
     <Property Name="sort" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ht_review">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userid" Type="Int32" Nullable="false" />
+    <Property Name="nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="avatar" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="review_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="review_content" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="add_time" Type="DateTime" Precision="3" />
+    <Property Name="news_id" Type="Int32" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="review_id" Type="Int32" />
   </EntityType>
   <EntityType Name="ht_single_page">
     <Key>
@@ -453,7 +480,7 @@
     <Property Name="remark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="addtime" Type="DateTime" Precision="3" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
+  <EntityType Name="sysdiagram">
     <Key>
       <PropertyRef Name="diagram_id" />
     </Key>
@@ -499,19 +526,4 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="ht_review">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="userid" Type="Int32" Nullable="false" />
-    <Property Name="nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="avatar" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="review_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="review_content" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="add_time" Type="DateTime" Precision="3" />
-    <Property Name="news_id" Type="Int32" />
-    <Property Name="status" Type="Int32" />
-    <Property Name="review_id" Type="Int32" />
-  </EntityType>
 </Schema>

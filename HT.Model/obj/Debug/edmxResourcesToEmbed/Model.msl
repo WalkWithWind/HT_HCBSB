@@ -53,6 +53,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ht_comm_relation">
+      <EntityTypeMapping TypeName="Model.ht_comm_relation">
+        <MappingFragment StoreEntitySet="ht_comm_relation">
+          <ScalarProperty Name="add_time" ColumnName="add_time" />
+          <ScalarProperty Name="relation_type" ColumnName="relation_type" />
+          <ScalarProperty Name="main_id" ColumnName="main_id" />
+          <ScalarProperty Name="relation_id" ColumnName="relation_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="ht_help">
       <EntityTypeMapping TypeName="Model.ht_help">
         <MappingFragment StoreEntitySet="ht_help">
@@ -138,6 +149,7 @@
     <EntitySetMapping Name="ht_news">
       <EntityTypeMapping TypeName="Model.ht_news">
         <MappingFragment StoreEntitySet="ht_news">
+          <ScalarProperty Name="total" ColumnName="total" />
           <ScalarProperty Name="is_delete" ColumnName="is_delete" />
           <ScalarProperty Name="share_num" ColumnName="share_num" />
           <ScalarProperty Name="praise_num" ColumnName="praise_num" />
@@ -304,6 +316,22 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ht_review">
+      <EntityTypeMapping TypeName="Model.ht_review">
+        <MappingFragment StoreEntitySet="ht_review">
+          <ScalarProperty Name="review_id" ColumnName="review_id" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="news_id" ColumnName="news_id" />
+          <ScalarProperty Name="add_time" ColumnName="add_time" />
+          <ScalarProperty Name="review_content" ColumnName="review_content" />
+          <ScalarProperty Name="review_type" ColumnName="review_type" />
+          <ScalarProperty Name="avatar" ColumnName="avatar" />
+          <ScalarProperty Name="nickname" ColumnName="nickname" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="ht_single_page">
       <EntityTypeMapping TypeName="Model.ht_single_page">
         <MappingFragment StoreEntitySet="ht_single_page">
@@ -433,29 +461,13 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="Model.sysdiagrams">
+      <EntityTypeMapping TypeName="Model.sysdiagram">
         <MappingFragment StoreEntitySet="sysdiagrams">
           <ScalarProperty Name="definition" ColumnName="definition" />
           <ScalarProperty Name="version" ColumnName="version" />
           <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
           <ScalarProperty Name="principal_id" ColumnName="principal_id" />
           <ScalarProperty Name="name" ColumnName="name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ht_review">
-      <EntityTypeMapping TypeName="Model.ht_review">
-        <MappingFragment StoreEntitySet="ht_review">
-          <ScalarProperty Name="review_id" ColumnName="review_id" />
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="news_id" ColumnName="news_id" />
-          <ScalarProperty Name="add_time" ColumnName="add_time" />
-          <ScalarProperty Name="review_content" ColumnName="review_content" />
-          <ScalarProperty Name="review_type" ColumnName="review_type" />
-          <ScalarProperty Name="avatar" ColumnName="avatar" />
-          <ScalarProperty Name="nickname" ColumnName="nickname" />
-          <ScalarProperty Name="userid" ColumnName="userid" />
-          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

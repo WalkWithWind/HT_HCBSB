@@ -233,6 +233,10 @@ namespace HT.Model
     ///
     ///</summary>
         public Nullable<int> is_delete { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
+        public Nullable<decimal> total { get; set; }
     
         public virtual ht_news_cate ht_news_cate { get; set; }
     }

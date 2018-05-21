@@ -360,18 +360,18 @@ namespace HT.BLL
 		/// </summary>
 		/// <param name="model">模型</param>
 		/// <param name="msg">提示消息</param>
-		/// <param name="orderId">订单号,成功时返回</param>
+		/// <param name="orderNo">订单号,成功时返回</param>
 		/// <returns>成功 失败</returns>
-		public static bool Add(ht_news model,out string msg,out string orderId)
+		public static bool Add(ht_news model,out string msg,out string orderNo)
 		{
 			msg = "";
-			orderId = "";
+			orderNo = DateTime.Now.ToString("yyyyMMddHHmmss") + new Random().Next(111111, 999999);
 			using (Entities db = new Entities())
 			{
 				try
 				{
 					model.add_time = DateTime.Now;
-					model.order_no = DateTime.Now.ToString("yyyyMMddHHmmss") + new Random().Next(111111, 999999);
+					model.order_no = orderNo;
 					db.ht_news.Add(model);
 					if (db.SaveChanges() > 0)
 					{

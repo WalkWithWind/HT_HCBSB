@@ -100,13 +100,15 @@ namespace HT.Mobile.Controllers
 		/// <param name="model"></param>
 		/// <returns></returns>
 		[HttpPost]
+		[Authorize]
 		public ActionResult PostGoodsSubmit(ht_news model)
 		{
 			string msg = "";
-			string orderId = "";
-			if (BLLNews.Add(model, out msg, out orderId))
+			string orderNo = "";
+			model.add_userid = BLLUser.GetLoginUserInfo().id;
+			if (BLLNews.Add(model, out msg, out orderNo))
 			{
-				return JsonResult(APIErrCode.Success, "OK", new { order_id = orderId });
+				return JsonResult(APIErrCode.Success, "OK", new { order_no = orderNo });
 			}
 			else
 			{
