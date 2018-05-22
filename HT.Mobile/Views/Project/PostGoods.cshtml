@@ -55,11 +55,11 @@
 			<dt>货源路线</dt>
 			<dd>
 				<span>出发地</span>
-				<input type="text" placeholder="请选择出发地" v-model="model.start_city">
+				<input type="text" placeholder="请选择出发地" v-model="model.start_city" v-on:click="showCity('start')">
 			</dd>
 			<dd>
 				<span>到达地</span>
-				<input type="text" placeholder="请选择到达地" v-model="model.stop_city">
+				<input type="text" placeholder="请选择到达地" v-model="model.stop_city" v-on:click="showCity('stop')">
 			</dd>
 		</dl>
 	</div>
@@ -243,7 +243,7 @@
 		<a v-on:click="submit" class="btn">确认发布（共支付{{model.total}}元）</a>
 	</div>
 
-	@*<div class="start_box zhx_box tab-box hide">
+	<div class="start_box zhx_box tab-box hide">
 		<ul class="zhx_box_title tab-title">
 			<li v-bind:class="[{'active':select.startProvinceTab}]"
 				v-on:click="selectTabProvince('start')">
@@ -256,13 +256,13 @@
 		</ul>
 		<div v-bind:class="['province','clearfix','tab-content',{'hide':!select.startProvinceTab}]">
 			<a href="javascript:;" v-for="item in cityData.get(0)"
-			   v-bind:class="[{ 'active': item==searchKey.start_province }]"
+			   v-bind:class="[{ 'active': item==model.start_province }]"
 			   v-text="item" v-on:click="selectProvince('start',item)">
 			</a>
 		</div>
 		<div v-bind:class="['city','clearfix','tab-content',{'hide':select.startProvinceTab}]">
-			<a href="javascript:;" v-for="item in cityData.getCitysByProvince(searchKey.start_province)"
-			   v-bind:class="[{ 'active':item==searchKey.start_city }]"
+			<a href="javascript:;" v-for="item in cityData.getCitysByProvince(model.start_province)"
+			   v-bind:class="[{ 'active':item==model.start_city }]"
 			   v-text="item" v-on:click="selectCity('start',item)">
 			</a>
 		</div>
@@ -285,13 +285,13 @@
 		</ul>
 		<div v-bind:class="['province','clearfix','tab-content',{'hide':!select.stopProvinceTab}]">
 			<a href="javascript:;" v-for="item in cityData.get(0)"
-			   v-bind:class="[{ 'active': item==searchKey.stop_province }]"
+			   v-bind:class="[{ 'active': item==model.stop_province }]"
 			   v-text="item" v-on:click="selectProvince('stop',item)">
 			</a>
 		</div>
 		<div v-bind:class="['city','clearfix','tab-content',{'hide':select.stopProvinceTab}]">
-			<a href="javascript:;" v-for="item in cityData.getCitysByProvince(searchKey.stop_province)"
-			   v-bind:class="[{ 'active':item==searchKey.stop_city }]"
+			<a href="javascript:;" v-for="item in cityData.getCitysByProvince(model.stop_province)"
+			   v-bind:class="[{ 'active':item==model.stop_city }]"
 			   v-text="item" v-on:click="selectCity('stop',item)">
 			</a>
 		</div>
@@ -299,7 +299,7 @@
 			<a href="javascript:void(0);" class="cancle" v-on:click="resetCity('stop')">重置</a>
 			<a href="javascript:void(0);" class="confirm" v-on:click="confirm()">确定</a>
 		</div>
-	</div>*@
+	</div>
 
 </div>
 <script src="~/Scripts/geo.js"></script>
