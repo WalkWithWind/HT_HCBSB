@@ -89,8 +89,8 @@
                         <span v-text="goodsData.view_num"></span>
                     </li>
                     <li>
-                        <img src="/images/icon/icon03_2.png">
-                        <img src="/images/icon/icon03_4.png">
+                        <img src="/images/icon/icon03_2.png"  v-show="!goodsData.is_praise" v-on:click="clickPraise(goodsData)">
+                        <img src="/images/icon/icon03_4.png" v-show="goodsData.is_praise" v-on:click="cancelClickPraise(goodsData)">
                         <span v-text="goodsData.praise_num"></span>
                     </li>
                     <li>
@@ -173,7 +173,7 @@
                                 <p>
                                     <i class="lab1" v-show="z.set_top>0">置顶</i>
                                     <i class="lab2" v-show="z.cateid==1">有货找车</i>
-                                    <i class="lab2" v-show="z.cateid==2">有车着火</i>
+                                    <i class="lab2" v-show="z.cateid==2">有车找货</i>
                                     <i class="lab2" v-show="z.cateid==3">招聘司机</i>
                                     <i class="lab2" v-show="z.cateid==4">司机求职</i>
                                     <i class="lab2" v-show="z.cateid==5">二手车出售</i>
@@ -206,7 +206,8 @@
                                 <span v-text="z.view_num"></span>
                             </li>
                             <li>
-                                <img src="/images/icon/icon03_2.png">
+                                <img src="/images/icon/icon03_2.png" v-show="!z.is_praise" v-on:click="clickPraise(z)">
+                                <img src="/images/icon/icon03_4.png" v-show="z.is_praise" v-on:click="cancelClickPraise(z)">
                                 <span v-text="z.praise_num"></span>
                             </li>
                             <li>
@@ -217,108 +218,6 @@
                     </div>
                 </div>
             </li>
-            @*<li>
-                <div class="wrapper">
-                    <div class="ind_main_t">
-                        <div class="use">
-                            <div class="img">
-                                <img src="/images/icon/icon06.png">
-                            </div>
-                            <div class="txt">
-                                <span>美好的未来</span>
-                                <p>
-                                    <i class="lab1">置顶</i><i class="lab2">二手车出售</i>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="call">
-                            <a href="javascript:void(0);">
-                                <img src="/images/icon/icon02.png">
-                                <span>打电话</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="ind_main_m">
-                        <p>业务方向定位为同城即时整车货运，意在整合社会运力资源，搭建快速、平价、安心、专业的同城货运交易平台。货主通过货拉拉平台，可以快速匹配附近的货车资源，并以低价获得优质的货运服务；广大货车司机亦可借助货拉拉迅速对接到客户需求，大大提升货车利用效率，进而获得更为丰厚的收入回报</p>
-                    </div>
-                    <div class="ind_lab">
-                        <i class="lab1">36万</i>
-                        <i class="lab2">解放</i>
-                        <i class="lab4">牵引车</i>
-                    </div>
-                    <div class="ind_img">
-                        <img src="/images/img/img02.jpg">
-                        <img src="/images/img/img02.jpg">
-                        <img src="/images/img/img02.jpg">
-                        <img src="/images/img/img02.jpg">
-                    </div>
-                    <div class="ind_time">2分钟前更新</div>
-                    <div class="ind_flo">
-                        <ol class="clearfix">
-                            <li>
-                                <img src="/images/icon/icon03_1.png">
-                                <span>2132</span>
-                            </li>
-                            <li>
-                                <img src="/images/icon/icon03_2.png">
-                                <span>2132</span>
-                            </li>
-                            <li>
-                                <img src="/images/icon/icon03_3.png">
-                                <span>2132</span>
-                            </li>
-                        </ol>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="wrapper">
-                    <div class="ind_main_t">
-                        <div class="use">
-                            <div class="img">
-                                <img src="/images/icon/icon06.png">
-                            </div>
-                            <div class="txt">
-                                <span>美好的未来</span>
-                                <p>
-                                    <i class="lab1">置顶</i><i class="lab2">司机求职</i>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="call">
-                            <a href="javascript:void(0);">
-                                <img src="/images/icon/icon02.png">
-                                <span>打电话</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="ind_main_m">
-                        <p>业务方向定位为同城即时整车货运，意在整合社会运力资源，搭建快速、平价、安心、专业的同城货运交易平台。货主通过货拉拉平台，可以快速匹配附近的货车资源，并以低价获得优质的货运服务；广大货车司机亦可借助货拉拉迅速对接到客户需求，大大提升货车利用效率，进而获得更为丰厚的收入回报</p>
-                    </div>
-                    <div class="ind_lab">
-                        <i class="lab1">B2</i>
-                        <i class="lab2">上海</i>
-                        <i class="lab4">载货车</i>
-                    </div>
-                    <div class="ind_time">2分钟前更新</div>
-                    <div class="ind_flo">
-                        <ol class="clearfix">
-                            <li>
-                                <img src="/images/icon/icon03_1.png">
-                                <span>2132</span>
-                            </li>
-                            <li>
-                                <img src="/images/icon/icon03_2.png">
-                                <span>2132</span>
-                            </li>
-                            <li>
-                                <img src="/images/icon/icon03_3.png">
-                                <span>2132</span>
-                            </li>
-                        </ol>
-                    </div>
-                </div>
-            </li>*@
         </ul>
     </div>
 

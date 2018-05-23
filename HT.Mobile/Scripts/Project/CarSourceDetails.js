@@ -1,39 +1,39 @@
 ﻿
-var detailVm = new Vue({
-    el: '.mainDetails',
+var carVm = new Vue({
+    el: '.cardDetails',
     data: {
-        goodsData: {},
-        newId: GetUrlParam('GoodsSourceDetails', 0),
-        keyWords: {
-            id: GetUrlParam('GoodsSourceDetails',0)
+        newsData: {},
+        id: GetUrlParam('CarSourceDetails', 0),
+        newsSearchKey: {
+            id: 0
         },
         reviewData: {
             total: 0,
             list: []
         },
-        searchKey: {
+        reviewSearchKey: {
             page: 1,
             rows: 2,
-            news_id: GetUrlParam('GoodsSourceDetails', 0),
-            review_type:'comment'
+            news_id: '',
+            review_type: 'comment'
         },
         reviewInfo: {
-            review_content:'',
-            news_id: GetUrlParam('GoodsSourceDetails', 0),
+            review_content: '',
+            news_id: 0,
             review_type: '',//comment评论 reply回复
-            review_id:0
+            review_id: 0
         },
         likeData: [],//猜你喜欢
         likeSearchKey: {
             page: 1,
             rows: 5,
             min: 1,
-            id: GetUrlParam('GoodsSourceDetails', 0)
+            id: 0
         },
         relationSearchKey: {
-            main_id:''
+            main_id: ''
         },
-        layerIndex:0
+        layerIndex: 0
     },
     methods: {
         init: function () {
@@ -45,16 +45,17 @@ var detailVm = new Vue({
         //详情数据
         loadData: function () {
             var _this = this;
+            _this.newsSearchKey.id = _this.id;
             _this.isLoading = true;
             $.ajax({
                 type: 'post',
                 url: '/Project/BaseNewsDetails',
-                data: _this.keyWords,
+                data: _this.newsSearchKey,
                 dataType: 'json',
                 success: function (resp) {
                     _this.isLoading = false;
                     if (resp.status) {
-                        _this.goodsData = resp.result;
+                        _this.newsData = resp.result;
                         console.log('_this.goodsData', _this.goodsData);
                     }
                 }
@@ -63,11 +64,12 @@ var detailVm = new Vue({
         //加载留言
         loadReview: function () {
             var _this = this;
+            _this.reviewSearchKey.news_id = _this.id;
             _this.isLoading = true;
             $.ajax({
                 type: 'post',
                 url: '/Review/ReviewList',
-                data: _this.searchKey,
+                data: _this.reviewSearchKey,
                 dataType: 'json',
                 success: function (resp) {
                     _this.isLoading = false;
@@ -90,7 +92,7 @@ var detailVm = new Vue({
                 alert('没有更多了');
                 return;
             }
-            this.searchKey.page++;
+            this.reviewSearchKey.page++;
             _this.loadReview();
 
         },
@@ -98,6 +100,7 @@ var detailVm = new Vue({
         //猜你喜欢
         loadLikeData: function () {
             var _this = this;
+            _this.likeSearchKey.id = _this.id;
             _this.isLoading = true;
             $.ajax({
                 type: 'post',
@@ -107,7 +110,7 @@ var detailVm = new Vue({
                 success: function (resp) {
                     _this.isLoading = false;
                     if (resp.status) {
-                        _this.likeData = resp.result; 
+                        _this.likeData = resp.result;
                         console.log('_this.likeData', _this.likeData);
                     }
                 }
@@ -130,7 +133,7 @@ var detailVm = new Vue({
                     if (resp.status) {
                         layer.close(_this.layerIndex);
                         alert(resp.msg);
-                        if (resp.result){
+                        if (resp.result) {
                             resp.result.classOpen = false;
                             resp.result.classText = '全文';
                             _this.reviewInfo.review_content = '';
@@ -156,7 +159,7 @@ var detailVm = new Vue({
             });
         },
         //点赞
-        clickPraise:function(news) {
+        clickPraise: function (news) {
             var _this = this;
             _this.relationSearchKey.main_id = _this.newId;
             _this.isLoading = true;
@@ -181,7 +184,7 @@ var detailVm = new Vue({
 
         //取消点赞
         cancelClickPraise: function (news) {
-            console.log('news',news);
+            console.log('news', news);
             var _this = this;
             _this.relationSearchKey.main_id = _this.newId;
             _this.isLoading = true;
@@ -205,11 +208,12 @@ var detailVm = new Vue({
 
         },
         //显示留言对话框
-        showReview: function (value,reviewId) {
+        showReview: function (value, reviewId) {
             var _this = this;
+            _this.reviewInfo.news_id = _this.id;
             _this.reviewInfo.review_type = value;
             if (reviewId) _this.reviewInfo.review_id = reviewId;
-            _this.layerIndex=layer.open({
+            _this.layerIndex = layer.open({
                 type: 1,
                 title: '留言',
                 content: $('.zhp_message_box'),
@@ -225,9 +229,9 @@ var detailVm = new Vue({
             var _this = this;
             item.classOpen = !item.classOpen;
             item.classText = item.classOpen ? '收起' : '全文';
-            console.log('item',item);
+            console.log('item', item);
         }
 
     }
 });
-detailVm.init();
+carVm.init();

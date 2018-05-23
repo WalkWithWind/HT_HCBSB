@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using HT.Model.Enum;
+using HT.Model.Model;
 
 namespace HT.Mobile.Controllers
 {
@@ -46,6 +47,10 @@ namespace HT.Mobile.Controllers
         public ActionResult BaseNewsDetails(int id)
         {
             HT.Model.ht_news model = BLLNews.GetNewsDetails(id);
+            if (model != null)
+            {
+                model.is_praise = BLLRelation.IsExistRelation(model.id.ToString(),BLLUser.GetUserId().ToString(), "praise");
+            }
             if (Request.IsAjaxRequest())
             {
                 apiResp.status = true;

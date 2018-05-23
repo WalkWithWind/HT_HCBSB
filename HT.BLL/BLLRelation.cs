@@ -28,16 +28,11 @@ namespace HT.BLL
         /// </summary>
         /// <param name="relation"></param>
         /// <returns></returns>
-        public static bool IsExistRelation(ht_comm_relation relation)
+        public static bool IsExistRelation(string mainId,string relationId,string relationType)
         {
             using (Entities db = new Entities())
             {
-                db.Configuration.ProxyCreationEnabled = false;
-                var data = db.ht_comm_relation.Where(p => true);
-                if (!string.IsNullOrWhiteSpace(relation.relation_type)) data = data.Where(p => p.relation_type == relation.relation_type);
-                if (!string.IsNullOrWhiteSpace(relation.main_id)) data = data.Where(p => p.main_id == relation.main_id);
-                if (!string.IsNullOrWhiteSpace(relation.relation_id)) data = data.Where(p => p.relation_id == relation.relation_id);
-                return data.Count() > 0 ? true : false;
+                return db.ht_comm_relation.FirstOrDefault(p => p.main_id == mainId && p.relation_id == relationId && p.relation_type == relationType) != null ? true : false;
             }
         }
         /// <summary>
@@ -49,15 +44,14 @@ namespace HT.BLL
         {
             using (Entities db = new Entities())
             {
-                var data = db.ht_comm_relation.Where(p => true);
-                if (!string.IsNullOrWhiteSpace(relation.relation_type)) data = data.Where(p => p.relation_type == relation.relation_type);
-                if (!string.IsNullOrWhiteSpace(relation.main_id)) data = data.Where(p => p.main_id == relation.main_id);
-                if (!string.IsNullOrWhiteSpace(relation.relation_id)) data = data.Where(p => p.relation_id == relation.relation_id);
-                foreach (var item in data)
+                ht_comm_relation model = db.ht_comm_relation.FirstOrDefault(p => p.main_id == relation.main_id && p.relation_id == relation.relation_id && p.relation_type == relation.relation_type);
+
+                if (model != null)
                 {
-                    db.ht_comm_relation.Remove(item);
+                    db.ht_comm_relation.Remove(model);
+                    return db.SaveChanges();
                 }
-                return db.SaveChanges();
+                return 0;
             }
         }
     }

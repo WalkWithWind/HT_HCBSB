@@ -150,6 +150,7 @@
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\ApiResponse.cs" />
+    <Compile Include="Model\ht_news.cs" />
     <Compile Include="Model\ht_review.cs" />
     <Compile Include="Model\PageResult.cs" />
     <Compile Include="Model\AuthenticationUser.cs" />
