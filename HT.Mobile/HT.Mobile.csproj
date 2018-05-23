@@ -239,6 +239,7 @@
     <Content Include="images\img\img04.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\geo.js" />
     <Content Include="Scripts\Home\Index.js" />
