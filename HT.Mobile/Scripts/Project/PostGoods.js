@@ -43,7 +43,12 @@ var vue = new Vue({
 		top_all_money: 2,//全站置顶金额
 		top_type: 0,//置顶类型 1分类 2全站 0不置顶
 		validity_unit_day_money: 10,// 元/天
-		validity_unit_month_money: 200// 元/月
+		validity_unit_month_money: 200,// 元/月
+		select: {
+			startProvinceTab: true,
+			stopProvinceTab: true
+		},
+		cityData: dsy
 	},
 		watch: {
 		'model.validity_num': function (val, oldval) {
@@ -225,6 +230,76 @@ var vue = new Vue({
 		    })
 
 			
+			
+		},
+		showCity: function (code) {
+			var _title = code == 'start' ? '出发地' : '目的地';
+			layer.open({
+				type: 1,
+				title: _title,
+				content: $('.' + code + '_box'),
+				offset: 'lb',
+				area: ['100%', '500px'],
+				shade: 0.5,
+				scrollbar: false,
+				anim: 2
+			});
+		},
+		selectProvince: function (code, item) {
+			var _this = this;
+			if (code == 'start') {
+				if (_this.model.start_province != item) _this.model.start_city = '';
+				_this.model.start_province = item;
+				_this.select.startProvinceTab = false;
+
+			} else {
+				if (_this.model.stop_province != item) _this.model.stop_city = '';
+				_this.model.stop_province = item;
+				_this.select.stopProvinceTab = false;
+
+			}
+		},
+		selectCity: function (code, item) {
+			var _this = this;
+			if (code == 'start') {
+				_this.model.start_city = item;
+			} else {
+				_this.model.stop_city = item;
+			}
+		},
+		selectTabProvince: function (code) {
+			var _this = this;
+			if (code == 'start') {
+				_this.select.startProvinceTab = true;
+			} else {
+				_this.select.stopProvinceTab = true;
+			}
+		},
+		selectTabCity: function (code) {
+			var _this = this;
+			if (code == 'start') {
+				if (_this.model.start_province == '') return;
+				_this.select.startProvinceTab = false;
+			} else {
+				if (_this.model.stop_province == '') return;
+				_this.select.stopProvinceTab = false;
+			}
+		},
+		resetCity: function (code) {
+			var _this = this;
+			if (code == 'start') {
+				_this.select.startProvinceTab = true;
+				_this.model.start_province = '';
+				_this.model.start_city = '';
+			} else {
+				_this.select.stopProvinceTab = true;
+				_this.model.stop_province = '';
+				_this.model.stop_city = '';
+			}
+		},
+		confirm: function (code) {
+			var _this = this;
+			layer.closeAll();
 			
 		}
 
