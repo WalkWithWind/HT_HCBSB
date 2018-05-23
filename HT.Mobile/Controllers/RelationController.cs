@@ -1,4 +1,5 @@
-﻿using HT.Model;
+﻿using HT.BLL;
+using HT.Model;
 using HT.Model.Model;
 using System;
 using System.Collections.Generic;
@@ -20,11 +21,11 @@ namespace HT.Mobile.Controllers
         /// </summary>
         /// <param name="news_id"></param>
         /// <returns></returns>
-        public ActionResult AddRelation(string news_id)
+        public ActionResult AddRelation(ht_comm_relation relation)
         {
             ht_comm_relation model = new ht_comm_relation();
 
-            AuthenticationUser loginInfo = HT.BLL.BLLUser.GetLoginUserInfo();
+            AuthenticationUser loginInfo = BLLUser.GetLoginUserInfo();
 
             if (loginInfo == null)
             {
@@ -34,7 +35,7 @@ namespace HT.Mobile.Controllers
             }
             model.add_time = DateTime.Now;
             model.relation_type = "praise";
-            model.main_id = news_id;
+            model.main_id = relation.main_id;
             model.relation_id = loginInfo.id.ToString();
             if (HT.BLL.BLLRelation.AddRelation(model) > 0)
             {
@@ -48,6 +49,29 @@ namespace HT.Mobile.Controllers
             }
             return Json(apiResp);
         }
+        /// <summary>
+        /// 取消点赞
+        /// </summary>
+        /// <param name="relation"></param>
+        /// <returns></returns>
+        public ActionResult DeleteRelation(ht_comm_relation relation)
+        {
+            relation.relation_type = "praise";
+            relation.relation_id = BLLUser.GetUserId().ToString();
+            int count = BLLRelation.DeleteRelation(relation);
+            if (count > 0)
+            {
+                apiResp.msg = "取消点赞成功";
+                apiResp.status = true;
+            }
+            else
+            {
+                apiResp.msg = "点赞出错";
+                apiResp.code = (int)HT.Model.Enum.APIErrCode.OperateFail;
+            }
+            return Json(apiResp);
+        }
+
 
     }
 }

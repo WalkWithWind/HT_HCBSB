@@ -101,6 +101,20 @@ namespace HT.BLL
             }
             return true;
         }
+        /// <summary>
+        /// 获取用户id
+        /// </summary>
+        /// <returns></returns>
+        public static int GetUserId()
+        {
+            AuthenticationUser loginInfo = HT.BLL.BLLUser.GetLoginUserInfo();
+
+            if (loginInfo != null)
+            {
+                return loginInfo.id;
+            }
+            return 0;
+        }
 
 
     }
