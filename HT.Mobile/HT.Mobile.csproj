@@ -154,6 +154,7 @@
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\RelationController.cs" />
     <Compile Include="Controllers\ReviewController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\WXController.cs" />
     <Compile Include="Filter\OAuthFilter.cs" />
     <Compile Include="Global.asax.cs">
@@ -260,16 +261,20 @@
     <Content Include="Scripts\layer\theme\default\loading-1.gif" />
     <Content Include="Scripts\layer\theme\default\loading-2.gif" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Project\CarBuy.js" />
+    <Content Include="Scripts\Project\CarSell.js" />
     <Content Include="Scripts\Project\CarSource.js" />
     <Content Include="Scripts\Project\Job.js" />
     <Content Include="Scripts\Project\PostGoods.js" />
     <Content Include="Scripts\Project\GoodsSource.js" />
     <Content Include="Scripts\Project\GoodsSourceDetails.js" />
     <Content Include="Scripts\Project\Recruit.js" />
+    <Content Include="Scripts\Project\Template.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\swiper\swiper.min.css" />
     <Content Include="Scripts\swiper\swiper.min.js" />
+    <Content Include="Scripts\User\TestLogin.js" />
     <Content Include="Scripts\vueFilter.js" />
     <Content Include="Scripts\vue\vue.min.js" />
     <Content Include="Web.config" />
@@ -315,6 +320,19 @@
     <Content Include="Views\Shared\_CityJs.cshtml" />
     <Content Include="Views\Shared\_FootLink.cshtml" />
     <Content Include="Views\Partial\List.cshtml" />
+    <Content Include="Views\User\TestLogin.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\Issue.cshtml" />
+    <Content Include="Views\User\Wallet.cshtml" />
+    <Content Include="Views\User\Withdraw.cshtml" />
+    <Content Include="Views\User\WithdrawSuccess.cshtml" />
+    <Content Include="Views\User\_WhiteStyle.cshtml" />
+    <Content Include="Views\User\EarnMoney.cshtml" />
+    <Content Include="Views\User\Team.cshtml" />
+    <Content Include="Views\User\SecondaryDistribution.cshtml" />
+    <Content Include="Views\User\MyDistribution.cshtml" />
+    <Content Include="Views\User\Pay.cshtml" />
+    <Content Include="Views\User\PayResult.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -322,7 +340,6 @@
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Relation\" />
     <Folder Include="Views\Review\" />
-    <Folder Include="Views\User\" />
     <Folder Include="Views\WX\" />
   </ItemGroup>
   <ItemGroup>

@@ -76,13 +76,26 @@ namespace HT.BLL
             using (Entities db = new Entities())
             {
                 db.Configuration.ProxyCreationEnabled = false;
-                var newsDetail = db.ht_news.Find(id);
+                var newsDetail = db.ht_news.FirstOrDefault(p=>p.id == id);
                 if (newsDetail != null)
                 {
                     newsDetail.view_num++;
                     db.SaveChanges();
                 }
                 return newsDetail;
+            }
+        }
+        /// <summary>
+        /// 订单号获取信息详情
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static ht_news GetNewsDetailsByOrderNo(string order_no)
+        {
+            using (Entities db = new Entities())
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                return db.ht_news.FirstOrDefault(p=>p.order_no == order_no);
             }
         }
         /// <summary>
@@ -106,7 +119,7 @@ namespace HT.BLL
 
         #region 热门推荐（猜你喜欢）
         /// <summary>
-        /// 热门推荐
+        /// 猜你喜欢
         /// </summary>
         /// <param name="page"></param>
         /// <param name="rows"></param>
@@ -116,8 +129,8 @@ namespace HT.BLL
             using (Entities db = new Entities())
             {
                 db.Configuration.ProxyCreationEnabled = false;
-                ht_news searchKey = db.ht_news.FirstOrDefault(p => p.id == id);
                 var data = db.ht_news.Where(p => true);
+                ht_news searchKey = db.ht_news.FirstOrDefault(p => p.id == id);
                 if (searchKey == null)
                 {
                     return data.OrderByDescending(p => p.set_top)
@@ -233,133 +246,6 @@ namespace HT.BLL
                     .ThenByDescending(p => p.update_time).ToList();
             }
         }
-        /// <summary>
-        /// 热门推荐（猜你喜欢）
-        /// </summary>
-        /// <param name="page"></param>
-        /// <param name="rows"></param>
-        /// <param name="id">排除当前记录</param>
-        /// <param name="min">最少返回数</param>
-        /// <returns></returns>
-        public static List<ht_news> GetRecommendNewsList(int page, int rows,int id, int min = 1)
-        {
-            using (Entities db = new Entities())
-            {
-                db.Configuration.ProxyCreationEnabled = false;
-                ht_news searchKey = db.ht_news.FirstOrDefault(p => p.id == id);
-                var data = db.ht_news.Where(p => true);
-                if (searchKey == null) {
-                        return data.OrderByDescending(p => p.set_top)
-                            .ThenByDescending(p => p.praise_num)
-                            .ThenByDescending(p => p.update_time).ToList();
-                }
-                //排除id
-                if (searchKey.id != 0) data = data.Where(p => p.id!= searchKey.id);
-                //分类一致
-                if (searchKey.cateid != 0) data = data.Where(p => p.cateid == searchKey.cateid);
-                if (!string.IsNullOrWhiteSpace(searchKey.use_type)) {
-                    if (data.Where(p => p.use_type == searchKey.use_type).Count() < min) {
-                        return data.OrderByDescending(p => p.set_top)
-                            .ThenByDescending(p => p.praise_num)
-                            .ThenByDescending(p => p.update_time).ToList();
-                    }
-                    data = data.Where(p => p.use_type == searchKey.use_type);
-                }
-                if (!string.IsNullOrWhiteSpace(searchKey.car_style))
-                {
-                    if (data.Where(p => p.car_style == searchKey.car_style).Count() < min)
-                    {
-                        return data.OrderByDescending(p => p.set_top)
-                            .ThenByDescending(p => p.praise_num)
-                            .ThenByDescending(p => p.update_time).ToList();
-                    }
-                    data = data.Where(p => p.car_style == searchKey.car_style);
-                }
-                if (!string.IsNullOrWhiteSpace(searchKey.car_length))
-                {
-                    if (data.Where(p => p.car_length == searchKey.car_length).Count() < min)
-                    {
-                        return data.OrderByDescending(p => p.set_top)
-                            .ThenByDescending(p => p.praise_num)
-                            .ThenByDescending(p => p.update_time).ToList();
-                    }
-                    data = data.Where(p => p.car_length == searchKey.car_length);
-                }
-                if (!string.IsNullOrWhiteSpace(searchKey.goods_type))
-                {
-                    if (data.Where(p => p.goods_type == searchKey.goods_type).Count() < min)
-                    {
-                        return data.OrderByDescending(p => p.set_top)
-                            .ThenByDescending(p => p.praise_num)
-                            .ThenByDescending(p => p.update_time).ToList();
-                    }
-                    data = data.Where(p => p.goods_type == searchKey.goods_type);
-                }
-                if (!string.IsNullOrWhiteSpace(searchKey.start_province))
-                {
-                    if (data.Where(p => p.start_province == searchKey.start_province).Count() < min)
-                    {
-                        return data.OrderByDescending(p => p.set_top)
-                            .ThenByDescending(p => p.praise_num)
-                            .ThenByDescending(p => p.update_time).ToList();
-                    }
-                    data = data.Where(p => p.start_province == searchKey.start_province);
-                }
-                if (!string.IsNullOrWhiteSpace(searchKey.start_city))
-                {
-                    if (data.Where(p => p.start_city == searchKey.start_city).Count() < min)
-                    {
-                        return data.OrderByDescending(p => p.set_top)
-                            .ThenByDescending(p => p.praise_num)
-                            .ThenByDescending(p => p.update_time).ToList();
-                    }
-                    data = data.Where(p => p.start_city == searchKey.start_city);
-                }
-                if (!string.IsNullOrWhiteSpace(searchKey.start_district))
-                {
-                    if (data.Where(p => p.start_district == searchKey.start_district).Count() < min)
-                    {
-                        return data.OrderByDescending(p => p.set_top)
-                            .ThenByDescending(p => p.praise_num)
-                            .ThenByDescending(p => p.update_time).ToList();
-                    }
-                    data = data.Where(p => p.start_district == searchKey.start_district);
-                }
-                if (!string.IsNullOrWhiteSpace(searchKey.stop_province))
-                {
-                    if (data.Where(p => p.stop_province == searchKey.stop_province).Count() < min)
-                    {
-                        return data.OrderByDescending(p => p.set_top)
-                            .ThenByDescending(p => p.praise_num)
-                            .ThenByDescending(p => p.update_time).ToList();
-                    }
-                    data = data.Where(p => p.stop_province == searchKey.stop_province);
-                }
-                if (!string.IsNullOrWhiteSpace(searchKey.stop_city))
-                {
-                    if (data.Where(p => p.stop_city == searchKey.stop_city).Count() < min)
-                    {
-                        return data.OrderByDescending(p => p.set_top)
-                            .ThenByDescending(p => p.praise_num)
-                            .ThenByDescending(p => p.update_time).ToList();
-                    }
-                    data = data.Where(p => p.stop_city == searchKey.stop_city);
-                }
-                if (!string.IsNullOrWhiteSpace(searchKey.stop_district))
-                {
-                    if (data.Where(p => p.stop_district == searchKey.stop_district).Count() < min)
-                    {
-                        return data.OrderByDescending(p => p.set_top)
-                            .ThenByDescending(p => p.praise_num)
-                            .ThenByDescending(p => p.update_time).ToList();
-                    }
-                    data = data.Where(p => p.stop_district == searchKey.stop_district);
-                }
-                return data.OrderByDescending(p => p.set_top)
-                    .ThenByDescending(p => p.praise_num)
-                    .ThenByDescending(p => p.update_time).ToList();
-            }
-        }
 		#endregion 热门推荐（猜你喜欢）
 
 		/// <summary>
@@ -372,7 +258,7 @@ namespace HT.BLL
 		public static bool Add(ht_news model,out string msg,out string orderNo)
 		{
 			msg = "";
-			orderNo = DateTime.Now.ToString("yyyyMMddHHmmss") + new Random().Next(111111, 999999);
+			orderNo = "B"+DateTime.Now.ToString("yyyyMMddHHmmssffffff") + new Random().Next(111111, 999999);
 			using (Entities db = new Entities())
 			{
 				try

@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "我的团队——我的分销";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="main">
+    <div class="top">
+        <div class="wrapper">
+            <a href="javascript:history.go(-1);" class="back_btn">返回</a>
+        </div>
+    </div>
+    <ul class="md_sec">
+        @for (int i = 0; i < 8; i++)
+        {
+        <li>
+            <div class="pt1">
+                <span>返利订单：B54128413165415</span>
+                <p>二级推荐人订单返利</p>
+            </div>
+            <div class="pt2">
+                <span>2018-03-28 14：25</span>
+                <em>￥65.48</em>
+            </div>
+        </li>
+        }
+    </ul>
+</div>
+

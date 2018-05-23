@@ -153,6 +153,7 @@
     <Compile Include="Model\ht_review.cs" />
     <Compile Include="Model\PageResult.cs" />
     <Compile Include="Model\AuthenticationUser.cs" />
+    <Compile Include="Model\RespUser.cs" />
     <Compile Include="Model\WeixinUserInfo.cs" />
     <Compile Include="Model\WXOAuthAccessToken.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

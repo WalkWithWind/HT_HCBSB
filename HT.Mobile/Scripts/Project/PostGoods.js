@@ -216,7 +216,7 @@ var vue = new Vue({
 					dataType: 'json',
 					success: function (resp) {
 						if (resp.status) {
-							window.location.href = "/WX/Pay/"+resp.result.order_no;
+							window.location.href = "/User/Pay/"+resp.result.order_no;
 						} else {
 							alert(resp.msg);
 						}

@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "Wallet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.Partial("_WhiteStyle")
+<div class="main">
+    <div class="top">
+        <div class="wrapper">
+            <a href="javascript:history.go(-1);" class="back_btn">返回</a>
+            <a href="@Url.Action("Withdraw","User")" class="wdd">提现</a>
+        </div>
+    </div>
+    <div class="wal_box">
+        <div class="wal_img">
+            <img src="/images/icon/icon22.png">
+        </div>
+        <p class="wal_p"><span>我的余额</span>4721320.00 </p>
+    </div>
+
+    <div class="wal_m">
+        <p class="title">使用明细</p>
+        <ul>
+            <li>
+                <span>支出</span>
+                <p>
+                    <em>2018-02-28</em>
+                    <i class="expend">-100</i>
+                </p>
+            </li>
+            <li>
+                <span>收入</span>
+                <p>
+                    <em>2018-02-28</em>
+                    <i class="income">+100</i>
+                </p>
+            </li>
+            <li>
+                <span>支出</span>
+                <p>
+                    <em>2018-02-28</em>
+                    <i class="expend">-100</i>
+                </p>
+            </li>
+            <li>
+                <span>收入</span>
+                <p>
+                    <em>2018-02-28</em>
+                    <i class="income">+100</i>
+                </p>
+            </li>
+            <li>
+                <span>支出</span>
+                <p>
+                    <em>2018-02-28</em>
+                    <i class="expend">-100</i>
+                </p>
+            </li>
+            <li>
+                <span>收入</span>
+                <p>
+                    <em>2018-02-28</em>
+                    <i class="income">+100</i>
+                </p>
+            </li>
+        </ul>
+        <a href="javascript:void(0);" class="more_btn">查看更多</a>
+    </div>
+</div>
+

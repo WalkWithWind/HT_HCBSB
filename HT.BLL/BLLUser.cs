@@ -38,6 +38,18 @@ namespace HT.BLL
                 return db.ht_user.FirstOrDefault(p => p.id == id);
             }
         }
+        /// <summary>
+        /// 根据账号获取用户信息
+        /// </summary>
+        /// <param name="username">username</param>
+        /// <returns></returns>
+        public static ht_user GetUserByUsername(string username)
+        {
+            using (Entities db = new Entities())
+            {
+                return db.ht_user.FirstOrDefault(p => p.username == username);
+            }
+        }
 
         /// <summary>
         /// 新增账号
