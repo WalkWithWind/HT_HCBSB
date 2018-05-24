@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "提现成功";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.Partial("_WhiteStyle")
+<div class="main">
+    <div class="top">
+        <div class="wrapper">
+            <a href="javascript:history.go(-1);" class="back_btn">返回</a>
+        </div>
+    </div>
+    <div class="pays_box">
+        <img src="/images/icon/icon21.png">
+        <p>恭喜您提现成功</p>
+        <a href="@Url.Action("Withdraw","User")">查看余额</a>
+    </div>
+</div>

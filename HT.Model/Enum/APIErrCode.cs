@@ -103,6 +103,10 @@ namespace HT.Model.Enum
         /// <summary>
         /// 已经是好友
         /// </summary>
-        HasFriend = 10032
+        HasFriend = 10032,
+        /// <summary>
+        /// 密码错误
+        /// </summary>
+        PasswordFail = 10034
     }
 }

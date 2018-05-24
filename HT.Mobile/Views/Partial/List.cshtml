@@ -261,6 +261,8 @@
                 <i class="lab2" v-text="item.start_city"></i>
                 <i class="lab3" v-text="item.use_type"></i>
                 <i class="lab4" v-text="item.car_style"></i>
+                <i class="lab1" v-text="item.car_length"></i>
+                <i class="lab2" v-text="item.goods_type"></i>
             </div>
             <div class="ind_img">
                 <img v-bind:src="img" v-for="img in item.imgs.split(',')">
@@ -319,10 +321,10 @@
                 <p v-text="item.other_remark"></p>
             </div>
             <div class="ind_lab">
-                <i class="lab1" v-text="item.recruit_num+'年'"></i>
                 <i class="lab2" v-text="item.start_city"></i>
-                <i class="lab3" v-text="item.use_type"></i>
                 <i class="lab4" v-text="item.car_style"></i>
+                <i class="lab3" v-text="item.use_type"></i>
+                <i class="lab1" v-text="item.recruit_num+'年'"></i>
             </div>
             <div class="ind_time">
                 {{item.update_time|dateFormart('更新')}}

@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "TestLogin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.Partial("_Header")
+<div class="main">
+    <div class="banner">
+        @Html.Action("AdList", "Partial", new { code = "index_banner" })
+    </div>
+    <div class="form">
+        <div class="pg_sec2 pg_sec5">
+            <dl>
+                <dd>
+                    <span>账号</span>
+                    <input type="number" placeholder="请输入账号" v-model="username">
+                </dd>
+                <dd>
+                    <span>密码</span>
+                    <input type="password" placeholder="请输入密码" v-model="password">
+                </dd>
+            </dl>
+        </div>
+        <div class="pg_sec8">
+            <a v-on:click="login" class="btn">登陆</a>
+        </div>
+    </div>
+</div>
+@Html.Partial("_Footer")
+@Scripts.Render("/Scripts/User/TestLogin.js")
+

@@ -1,0 +1,50 @@
+﻿@model HT.Model.Model.AuthenticationUser
+@{
+    ViewBag.Title = "个人中心";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.Partial("_WhiteStyle")
+<div class="main">
+    <div class="pl_part1">
+        <div class="uer_img">
+            @if (!string.IsNullOrWhiteSpace(Model.avatar))
+            {
+                <img src="@Model.avatar">
+            }
+        </div>
+        <p class="uer_name">@Model.nickname</p>
+    </div>
+    <ul class="pl_lists_ul">
+        <li>
+            <a href="@Url.Action("Issue","User")">
+                <img src="/images/icon/icon16_1.png">
+                <span>我的发布</span>
+            </a>
+        </li>
+        <li>
+            <a href="@Url.Action("Wallet","User")">
+                <img src="/images/icon/icon16_2.png">
+                <span>我的钱包</span>
+            </a>
+        </li>
+        <li>
+            <a href="@Url.Action("EarnMoney","User")">
+                <img src="/images/icon/icon16_3.png">
+                <span>我要赚钱</span>
+            </a>
+        </li>
+        <li>
+            <a href="@Url.Action("Team","User")">
+                <img src="/images/icon/icon16_4.png">
+                <span>我的团队</span>
+            </a>
+        </li>
+        <li>
+            <a href="@Url.Action("TestLogin","User")">
+                <img src="/images/icon/icon16_4.png">
+                <span>模拟登陆</span>
+            </a>
+        </li>
+    </ul>
+</div>
+@Html.Partial("_Footer")

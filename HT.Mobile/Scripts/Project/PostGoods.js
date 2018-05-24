@@ -20,7 +20,7 @@ var vue = new Vue({
 			goods_weight_unit: "吨",//重量体积类型
 			freight: "",//运费金额
 			use_time:"",//装车时间
-			load_type: "",//选择的装卸方式
+            use_mode: "",//选择的装卸方式
 			pay_method: "全现金",//选择的付款方式
 			other_remark: "",//其它补充
 			contact_name: "",//联系人
@@ -34,7 +34,7 @@ var vue = new Vue({
         carLengthData: [],//车长列表
 		carStyleData: [],//车型列表
 		goodsTypeData: [],//货物类型列表
-		loadTypeData: [],//装卸方式列表
+		useModeData: [],//装卸方式列表
 		payTypeData: [],//付款方式列表
 		rewardMoneyData: [],//打赏金额列表
 		top_cate_select: false,//是否选中分类置顶
@@ -74,7 +74,7 @@ var vue = new Vue({
             this.loadCateData('car_length', 4);//车长
 			this.loadCateData('car_style', 16);//车型列表
 			this.loadCateData('good_type', 27);//货物类型列表
-			this.loadCateData('load_type', 40);//装卸方式列表
+            this.loadCateData('use_mode', 40);//装卸方式列表
 			this.loadCateData('pay_type', 47);//付款方式列表
 			this.loadCateData('reward_money', 55);//打赏福利列表
         },
@@ -91,7 +91,7 @@ var vue = new Vue({
 						if (code == 'car_length') { _this.carLengthData = resp.result };
 						if (code == 'car_style') { _this.carStyleData = resp.result };
 						if (code == 'good_type') { _this.goodsTypeData = resp.result };
-						if (code == 'load_type') { _this.loadTypeData = resp.result };
+                        if (code == 'use_mode') { _this.useModeData = resp.result };
 						if (code == 'pay_type') { _this.payTypeData = resp.result };
 						if (code == 'reward_money') { _this.rewardMoneyData = resp.result };
 						
@@ -216,7 +216,7 @@ var vue = new Vue({
 					dataType: 'json',
 					success: function (resp) {
 						if (resp.status) {
-							window.location.href = "/WX/Pay/"+resp.result.order_no;
+							window.location.href = "/User/Pay/"+resp.result.order_no;
 						} else {
 							alert(resp.msg);
 						}

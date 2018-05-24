@@ -142,11 +142,11 @@
 			<dt>装卸方式</dt>
 			<dd>
 
-				<a href="javascript:;" v-bind:class="[{ 'cur':model.load_type=='' }]"
-				   v-on:click="model.load_type=''">不限</a>
-				<a href="javascript:;" v-for="item in loadTypeData"
-				   v-bind:class="[{ 'cur': item.title==model.load_type }]"
-				   v-text="item.title" v-on:click="model.load_type=item.title"></a>
+				<a href="javascript:;" v-bind:class="[{ 'cur':model.use_mode=='' }]"
+				   v-on:click="model.use_mode=''">不限</a>
+				<a href="javascript:;" v-for="item in useModeData"
+				   v-bind:class="[{ 'cur': item.title==model.use_mode }]"
+				   v-text="item.title" v-on:click="model.use_mode=item.title"></a>
 			</dd>
 		</dl>
 		<dl>

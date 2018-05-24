@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "我的团队——二级分销";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="main">
+    <div class="top">
+        <div class="wrapper">
+            <a href="javascript:history.go(-1);" class="back_btn">返回</a>
+        </div>
+    </div>
+    <ul class="tm_sec2 sd_sec">
+        @for (int i = 0; i < 7; i++)
+        {
+        <li>
+            <div class="pt1">
+                <img src="/images/icon/icon06.png">
+            </div>
+            <div class="pt2">
+                <span>美好的未来</span>
+                <p>加入时间：2018-03-28</p>
+            </div>
+            <div class="pt3">
+                <span>分销收益</span>
+                <em>￥65.48</em>
+            </div>
+        </li>
+        }
+    </ul>
+</div>
+

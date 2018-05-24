@@ -35,5 +35,16 @@ namespace HT.BLL
             // 身份验证票据Cookie输出到客户端 
             HttpContext.Current.Response.Cookies.Add(userCookie);
         }
+        /// <summary>
+        /// 获取登录信息
+        /// </summary>
+        /// <returns></returns>
+        public static AuthenticationUser GetAuthenticationUser()
+        {
+            var cookie = HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName];
+            if (cookie == null) return null;
+            var userData = FormsAuthentication.Decrypt(cookie.Value).UserData;
+            return JsonConvert.DeserializeObject<AuthenticationUser>(userData);
+        }
     }
 }

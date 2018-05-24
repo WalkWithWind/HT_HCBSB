@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "提现";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.Partial("_WhiteStyle")
+<div class="main">
+    <div class="top">
+        <div class="wrapper">
+            <a href="javascript:history.go(-1);" class="back_btn">返回</a>
+        </div>
+    </div>
+    <div class="form_main wd_main">
+        <div class="wrapper">
+            <form action="@Url.Action("WithdrawSuccess","User")">
+                <p>
+                    <input type="text" placeholder="请输入提现金额">
+                </p>
+                <input type="submit" value="提现">
+            </form>
+        </div>
+    </div>
+</div>
+
