@@ -271,6 +271,7 @@
     <Content Include="Scripts\Project\GoodsSource.js" />
     <Content Include="Scripts\Project\GoodsSourceDetails.js" />
     <Content Include="Scripts\Project\Recruit.js" />
+    <Content Include="Scripts\Project\RecruitDetails.js" />
     <Content Include="Scripts\Project\Template.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />

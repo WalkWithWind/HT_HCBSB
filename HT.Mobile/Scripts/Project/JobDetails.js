@@ -1,9 +1,9 @@
 ﻿
-var carVm = new Vue({
-    el: '.cardDetails',
+var jobVm = new Vue({
+    el: '.jobDetails',
     data: {
         newsData: {},
-        id: GetUrlParam('CarSourceDetails', 0),
+        id: GetUrlParam('JobDetails', 0),
         newsSearchKey: {
             id: 0
         },
@@ -234,4 +234,4 @@ var carVm = new Vue({
 
     }
 });
-carVm.init();
+jobVm.init();

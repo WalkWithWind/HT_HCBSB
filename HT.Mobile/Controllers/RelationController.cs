@@ -39,6 +39,7 @@ namespace HT.Mobile.Controllers
             model.relation_id = loginInfo.id.ToString();
             if (HT.BLL.BLLRelation.AddRelation(model) > 0)
             {
+                BLLNews.AddPraise(int.Parse(relation.main_id));
                 apiResp.status = true;
                 apiResp.msg = "点赞成功";
             }
@@ -61,6 +62,7 @@ namespace HT.Mobile.Controllers
             int count = BLLRelation.DeleteRelation(relation);
             if (count > 0)
             {
+                BLLNews.DeletePraise(int.Parse(relation.main_id));
                 apiResp.msg = "取消点赞成功";
                 apiResp.status = true;
             }
