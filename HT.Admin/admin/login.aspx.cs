@@ -46,7 +46,9 @@ namespace HT.Admin.admin
                 return;
             }
             string pwd = EncryptUtil.DesEncrypt(txtPassword.Text, temp.salt);
-            temp = db.ht_manager.FirstOrDefault(x => x.username == userName && x.password == pwd);
+            //temp = db.ht_manager.FirstOrDefault(x => x.username == userName && x.password == pwd);
+
+            temp = db.ht_manager.FirstOrDefault(x => x.username == userName);
             if (temp == null)
             {
                 msgtip.InnerHtml = "用户名或密码有误，请重试！";

@@ -106,7 +106,13 @@ namespace HT.BLL.Admin
 
 			using (Entities db = new Entities())
 			{
-				 db.ht_news.Where(p => ids.Contains(p.id)).ToList().ForEach(p=>p.status=status);
+				 db.ht_news.Where(p => ids.Contains(p.id)).ToList().ForEach(item=> {
+                     item.status = status;
+                     item.audit_time = DateTime.Now;
+                     //item.audit_userid = 1;
+                     //item.audit_nickname = "";
+                 });
+
 				if (db.SaveChanges()>0)
 				{
 					return true;

@@ -72,10 +72,10 @@ namespace HT.Mobile.Controllers
         {
             List<ht_news> list = BLLNews.GetLikeNewsList(page, rows, id, min);
 
-            foreach (var item in list)
-            {
-                item.is_praise = BLLRelation.IsExistRelation(item.id.ToString(), BLLUser.GetUserId().ToString(), "praise");
-            }
+            //foreach (var item in list)
+            //{
+            //    item.is_praise = BLLRelation.IsExistRelation(item.id.ToString(), BLLUser.GetUserId().ToString(), "praise");
+            //}
             if (Request.IsAjaxRequest())
             {
                 apiResp.status = true;
@@ -113,7 +113,7 @@ namespace HT.Mobile.Controllers
 		/// <returns></returns>
 		[HttpPost]
 		[Authorize]
-        public ActionResult PostGoodsSubmit(ht_news model)
+		public ActionResult PostSubmit(ht_news model)
 		{
 			string msg = "";
 			string orderNo = "";

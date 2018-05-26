@@ -68,10 +68,11 @@
 
 			<tr>
 				<th align="center" width="5%">选择</th>
-				<th align="center" width="15%">联系人</th>
-				<th align="center" width="15%">联系电话</th>
+				<th align="center" width="10%">联系人</th>
+				<th align="center" width="10%">联系电话</th>
 				<th align="center" width="15%">发布时间</th>
-				<th align="center" width="15%">车辆所在地</th>
+				<th align="center" width="15%">置顶金额</th>
+				<th align="center" width="10%">车辆所在地</th>
 				<th align="center" width="15%">品牌</th>
 				<th align="center" width="10%">状态</th>
 				<th align="center" width="10%">操作</th>
@@ -85,13 +86,19 @@
 				</td>
 				<td align="center">{{item.contact_name}}</td>
 				<td align="center">{{item.contact_phone}}</td>
-				<td align="center">{{item.add_time.replace(/T/g,' ')}}</td>
+				<td align="center">{{item.add_time|date}}</td>
+				<td align="center">
+                    {{item.set_top_money+'元'}}
+                    <span v-show="item.set_top==0">没有置顶</span>
+                    <span v-show="item.set_top==1">（分类置顶）</span>
+                    <span v-show="item.set_top==2">（全站置顶）</span>
+				</td>
 				<td align="center">{{item.start_province}}-
                             {{item.start_city}}
 				</td>
 
 				<td align="center">
-
+                    {{item.use_type}}
 				</td>
 				<td align="center">
                     <span v-if="item.status==0">待审核</span>
@@ -130,6 +137,7 @@
 	<script type="text/javascript" charset="utf-8" src="/admin/js/laymain.js"></script>
 	<script type="text/javascript" src="/scripts/laypage/1.2/laypage.js?v=1012"></script>
 	<script type="text/javascript" charset="utf-8" src="/admin/js/common.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/admin/js/vueFilter.js"></script>
 	<script src="/scripts/datepicker/WdatePicker.js"></script>
 	<script type="text/javascript">
 
