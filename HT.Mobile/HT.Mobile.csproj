@@ -266,10 +266,13 @@
     <Content Include="Scripts\layer\theme\default\loading-2.gif" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\Project\CarBuy.js" />
+    <Content Include="Scripts\Project\CarBuyDetails.js" />
     <Content Include="Scripts\Project\CarSell.js" />
+    <Content Include="Scripts\Project\CarSellDetails.js" />
     <Content Include="Scripts\Project\CarSource.js" />
     <Content Include="Scripts\Project\CarSourceDetails.js" />
     <Content Include="Scripts\Project\Job.js" />
+    <Content Include="Scripts\Project\JobDetails.js" />
     <Content Include="Scripts\Project\PostTemplate.js" />
     <Content Include="Scripts\Project\PostCarBuy.js" />
     <Content Include="Scripts\Project\PostCarSell.js" />
@@ -282,6 +285,7 @@
     <Content Include="Scripts\Project\Recruit.js" />
     <Content Include="Scripts\Project\RecruitDetails.js" />
     <Content Include="Scripts\Project\Template.js" />
+    <Content Include="Scripts\Project\TemplateDetails.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\swiper\swiper.min.css" />
@@ -345,6 +349,7 @@
     <Content Include="Views\User\MyDistribution.cshtml" />
     <Content Include="Views\User\Pay.cshtml" />
     <Content Include="Views\User\PayResult.cshtml" />
+    <Content Include="Views\Partial\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

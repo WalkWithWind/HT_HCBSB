@@ -11,10 +11,10 @@
         <EntityTypeShape EntityType="Model.ht_category" Width="1.5" PointX="10.75" PointY="0.75" />
         <EntityTypeShape EntityType="Model.ht_comm_relation" Width="1.5" PointX="10.75" PointY="3.75" />
         <EntityTypeShape EntityType="Model.ht_help" Width="1.5" PointX="10.75" PointY="6.75" />
-        <EntityTypeShape EntityType="Model.ht_manager" Width="1.5" PointX="3" PointY="1.125" />
+        <EntityTypeShape EntityType="Model.ht_manager" Width="1.5" PointX="3" PointY="4" />
         <EntityTypeShape EntityType="Model.ht_manager_log" Width="1.5" PointX="10.75" PointY="9.75" />
         <EntityTypeShape EntityType="Model.ht_manager_role" Width="1.5" PointX="0.75" PointY="3" />
-        <EntityTypeShape EntityType="Model.ht_manager_role_value" Width="1.5" PointX="3" PointY="5.125" />
+        <EntityTypeShape EntityType="Model.ht_manager_role_value" Width="1.5" PointX="3" PointY="1.125" />
         <EntityTypeShape EntityType="Model.ht_navigation" Width="1.5" PointX="12.75" PointY="0.75" />
         <EntityTypeShape EntityType="Model.ht_news" Width="1.5" PointX="8" PointY="1.375" />
         <EntityTypeShape EntityType="Model.ht_news_cate" Width="1.5" PointX="5.75" PointY="6" />

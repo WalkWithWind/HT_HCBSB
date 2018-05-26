@@ -70,10 +70,10 @@ namespace HT.Mobile.Controllers
         {
             List<ht_news> list = BLLNews.GetLikeNewsList(page, rows, id, min);
 
-            foreach (var item in list)
-            {
-                item.is_praise = BLLRelation.IsExistRelation(item.id.ToString(), BLLUser.GetUserId().ToString(), "praise");
-            }
+            //foreach (var item in list)
+            //{
+            //    item.is_praise = BLLRelation.IsExistRelation(item.id.ToString(), BLLUser.GetUserId().ToString(), "praise");
+            //}
             if (Request.IsAjaxRequest())
             {
                 apiResp.status = true;

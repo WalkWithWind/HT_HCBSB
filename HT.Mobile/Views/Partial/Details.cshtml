@@ -1,0 +1,248 @@
+﻿
+<script type="text/template" id="details-component-template">
+
+    <div>
+        <!--联系人-->
+        <div class="eld_item2">
+            <div class="wrapper">
+                <dl>
+                    <dt>联系电话</dt>
+                    <dd>
+                        <span v-text="newsData.contact_phone"></span>
+                        <a class="btn" v-bind:href="'tel://'+newsData.contact_phone"><img src="/images/icon/icon12.png">打电话</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>联系人</dt>
+                    <dd>
+                        <span v-text="newsData.contact_name"></span>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+
+        <!-- 广告 -->
+        <img src="/images/img/img01.jpg">
+
+        <!-- 留言 -->
+        <div class="eld_item3">
+            <p class="p_tt">
+                <span>留言</span>
+                <a href="javascript:void(0);" v-on:click="showReview('comment')" class="btn"><img src="/images/icon/icon13.png">我要留言</a>
+            </p>
+            <ul class="eld_item3_ul">
+                <li v-for="item in reviewData.list">
+                    <div class="img_box">
+                        <img v-bind:src="item.avatar">
+                    </div>
+                    <div class="txt_box" v-bind:class="{'open':item.classOpen}">
+                        <p class="p1" v-text="item.nickname"></p>
+                        <p class="p2">{{item.add_time|dateFormart('更新')}}</p>
+                        <p class="p3" v-text="item.review_content"></p>
+                        <i class="txt_box_btn" v-on:click="changeClass(item)" v-text="item.classText"></i>
+                        <a href="javascript:void(0);" v-on:click="showReview('reply',item.id)" class="reply_btn">回复</a>
+                    </div>
+                    <div class="reply_box" v-for="p in item.reply_list">
+                        <dl>
+                            <dt v-text="p.nickname+'：'"></dt>
+                            <dd v-text="p.review_content"></dd>
+                        </dl>
+                    </div>
+                </li>
+            </ul>
+            <a href="javascript:void(0);" v-on:click="loadMoreReview()" class="more_btn">加载更多</a>
+        </div>
+
+        <!-- 打电话 -->
+        <div class="eld_item4">
+            <a v-bind:href="'tel://'+newsData.contact_phone" class="call_btn">打电话</a>
+        </div>
+
+        <!-- 猜你喜欢 -->
+        <div class="ind_sec1">
+            <p class="p_tt"><span>猜你喜欢</span></p>
+            <ul class="ind_sec1_ul">
+                <li v-for="z in likeData">
+                    <list-component v-bind:item="z" v-if="z"></list-component>
+                </li>
+            </ul>
+        </div>
+
+        <div class="zhp_message_box hide">
+            <textarea v-model="reviewInfo.review_content" placeholder="请输入留言内容"></textarea>
+            <a href="javascript:;" v-on:click="addReview()" class="btn">提交</a>
+        </div>
+    </div>
+</script>
+<script>
+    Vue.component('details-component', {
+        template: '#details-component-template',
+        props: {
+            newsData: {}
+        },
+        data: function () {
+            var _this = this;
+            setTimeout(function () {
+                _this.init();
+            }, 100);
+            var data =
+                {
+                    newsData: {},
+                    id: _this.newsData.id,
+                    reviewData: {
+                        total: 0,
+                        list: []
+                    },
+                    reviewSearchKey: {
+                        page: 1,
+                        rows: 2,
+                        news_id: '',
+                        review_type: 'comment'
+                    },
+                    reviewInfo: {
+                        review_content: '',
+                        news_id: 0,
+                        review_type: '',//comment评论 reply回复
+                        review_id: 0
+                    },
+                    likeData: [],//猜你喜欢
+                    likeSearchKey: {
+                        page: 1,
+                        rows: 5,
+                        min: 1,
+                        id: 0
+                    },
+                    layerIndex: 0
+                }
+            return data;
+        },
+        methods: {
+            init: function () {
+                this.loadReview();
+                this.loadLikeData();
+            },
+            //加载留言
+            loadReview: function () {
+                var _this = this;
+                _this.reviewSearchKey.news_id = _this.id;
+                _this.isLoading = true;
+                $.ajax({
+                    type: 'post',
+                    url: '/Review/ReviewList',
+                    data: _this.reviewSearchKey,
+                    dataType: 'json',
+                    success: function (resp) {
+                        _this.isLoading = false;
+                        if (resp.status) {
+                            for (var i = 0; i < resp.result.list.length; i++) {
+                                resp.result.list[i].classOpen = false;
+                                resp.result.list[i].classText = '全文';
+                            }
+                            _this.reviewData.list = _this.reviewData.list.concat(resp.result.list);
+                            _this.reviewData.total = resp.result.total;
+                            console.log('_this.reviewData', _this.reviewData);
+                        }
+                    }
+                });
+            },
+            //更多留言
+            loadMoreReview: function () {
+                var _this = this;
+                if (_this.reviewData.list.length >= _this.reviewData.total) {
+                    alert('没有更多了');
+                    return;
+                }
+                this.reviewSearchKey.page++;
+                _this.loadReview();
+
+            },
+            //猜你喜欢
+            loadLikeData: function () {
+                var _this = this;
+                _this.likeSearchKey.id = _this.id;
+                _this.isLoading = true;
+                $.ajax({
+                    type: 'post',
+                    url: '/Project/BaseLikeNewsList',
+                    data: _this.likeSearchKey,
+                    dataType: 'json',
+                    success: function (resp) {
+                        _this.isLoading = false;
+                        if (resp.status) {
+                            _this.likeData = resp.result;
+                            console.log('_this.likeData', _this.likeData);
+                        }
+                    }
+                });
+            },
+            //留言
+            addReview: function () {
+                var _this = this;
+                if (!_this.reviewInfo.review_content) {
+                    alert('请输入内容');
+                    return;
+                }
+                $.ajax({
+                    type: 'post',
+                    url: '/Review/AddReview',
+                    data: _this.reviewInfo,
+                    dataType: 'json',
+                    success: function (resp) {
+                        _this.isLoading = false;
+                        if (resp.status) {
+                            layer.close(_this.layerIndex);
+                            alert(resp.msg);
+                            if (resp.result) {
+                                resp.result.classOpen = false;
+                                resp.result.classText = '全文';
+                                _this.reviewInfo.review_content = '';
+                                if (_this.reviewInfo.review_type == 'comment') {
+                                    _this.reviewData.list.insert(0, resp.result);
+                                } else if (_this.reviewInfo.review_type == 'reply') {
+                                    for (var i = 0; i < _this.reviewData.list.length; i++) {
+                                        if (_this.reviewData.list[i].id == resp.result.review_id) {
+                                            if (_this.reviewData.list[i].reply_list != null) {
+                                                _this.reviewData.list[i].reply_list.insert(0, resp.result);
+                                            } else {
+                                                _this.reviewData.list[i].reply_list = [];
+                                                _this.reviewData.list[i].reply_list.push(resp.result);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        } else {
+                            alert(resp.msg);
+                        }
+                    }
+                });
+            },
+            //显示留言对话框
+            showReview: function (value, reviewId) {
+                var _this = this;
+                _this.reviewInfo.news_id = _this.id;
+                _this.reviewInfo.review_type = value;
+                if (reviewId) _this.reviewInfo.review_id = reviewId;
+                _this.layerIndex = layer.open({
+                    type: 1,
+                    title: '留言',
+                    content: $('.zhp_message_box'),
+                    offset: 'lb',
+                    area: ['100%', 'auto'],
+                    shade: 0.5,
+                    scrollbar: false,
+                    anim: 2
+                });
+            },
+            //控制留言的全文 收起
+            changeClass: function (item) {
+                var _this = this;
+                item.classOpen = !item.classOpen;
+                item.classText = item.classOpen ? '收起' : '全文';
+                console.log('item', item);
+            }
+
+        }
+    })
+</script>
+@Html.Action("Template", "Partial", new { id = "List" })
