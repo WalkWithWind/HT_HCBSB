@@ -8,21 +8,17 @@ var vue = new Vue({
             cate: "车辆出售",//车辆出售
             validity_num: "",//有效期
             validity_unit: "天",//有效期单位 天,月
-            start_province: "",//工作地区省份
-            start_city: '', //工作地区城市
-            stop_province: '',//籍贯省份
-            stop_city: '',//籍贯
+            start_province: "",//车辆所在地省份
+            start_city: '', //车辆所在地城市
             use_type: '',//品牌
             car_length: '', //排放标准
             car_style: '',//车型
             use_mode: "个人户",//车辆户型
             good_type: "能",//能否提档
             goods_weight: "",//马力
-            //goods_weight_unit: "吨",//重量体积类型
             freight: "",//出售价格
             use_time: "",//行驶证登记时间
             imgs: "",//图片上传
-            //pay_method: "",//选择的付款方式
             other_remark: "",//其它补充
             contact_name: "",//联系人
             contact_phone: "",//联系电话
@@ -33,11 +29,8 @@ var vue = new Vue({
         },
         useTypeData: [],//品牌列表
         carLengthData: [],//排放标准
-        carStyleData: [],//驾驶类型列表
+        carStyleData: [],//车型列表
         imgsData: [],//上传图片
-        //goodsTypeData: [],//驾驶路线列表
-        //useModeData: [],//装卸方式列表
-        //payTypeData: [],//付款方式列表
         rewardMoneyData: [],//打赏金额列表
         top_cate_select: false,//是否选中分类置顶
         top_all_select: false,//是否选中全站置顶
@@ -56,9 +49,6 @@ var vue = new Vue({
         'model.validity_num': function (val, oldval) {
             this.calcTotal();
         },
-        //'model.freight': function (val, oldval) {
-        //		this.calcTotal();
-        //	},
         'model.validity_unit': function (val, oldval) {
             this.calcTotal();
         },
@@ -75,9 +65,6 @@ var vue = new Vue({
             this.loadCateData('use_type', 106);//品牌
             this.loadCateData('car_length', 111);//排放标准
             this.loadCateData('car_style', 16);//车型
-            //this.loadCateData('good_type', 78);//驾驶路线
-            //         this.loadCateData('use_mode', 40);//装卸方式列表
-            //this.loadCateData('pay_type', 47);//付款方式列表
             this.loadCateData('reward_money', 55);//打赏福利列表
 
             this.loadConfigData('top_cate_money');//分类置顶金额
@@ -98,9 +85,6 @@ var vue = new Vue({
                         if (code == 'use_type') { _this.useTypeData = resp.result };
                         if (code == 'car_length') { _this.carLengthData = resp.result };
                         if (code == 'car_style') { _this.carStyleData = resp.result };
-                        //if (code == 'good_type') { _this.goodsTypeData = resp.result };
-                        //                  if (code == 'use_mode') { _this.useModeData = resp.result };
-                        //if (code == 'pay_type') { _this.payTypeData = resp.result };
                         if (code == 'reward_money') { _this.rewardMoneyData = resp.result };
 
                     }
