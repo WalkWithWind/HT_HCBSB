@@ -15,13 +15,6 @@ var vue = new Vue({
             use_type: '',//驾照等级
             car_length: '', //驾龄
             car_style: '',//驾驶类型
-            //good_type: "",//驾驶路线
-			//goods_weight: "",//货物重量体积类
-			//goods_weight_unit: "吨",//重量体积类型
-			//freight: "",//运费金额
-			//use_time:"",//装车时间
-            //use_mode: "",//选择的装卸方式
-			//pay_method: "",//选择的付款方式
 			other_remark: "",//其它补充
 			contact_name: "",//联系人
 			contact_phone: "",//联系电话
@@ -33,9 +26,6 @@ var vue = new Vue({
         useTypeData: [],//驾照等级列表
         carLengthData: [],//驾龄列表
         carStyleData: [],//驾驶类型列表
-        //goodsTypeData: [],//驾驶路线列表
-		//useModeData: [],//装卸方式列表
-		//payTypeData: [],//付款方式列表
 		rewardMoneyData: [],//打赏金额列表
 		top_cate_select: false,//是否选中分类置顶
 		top_all_select: false,//是否选中全站置顶
@@ -54,9 +44,6 @@ var vue = new Vue({
 		'model.validity_num': function (val, oldval) {
 			    this.calcTotal();
 			},
-		//'model.freight': function (val, oldval) {
-		//		this.calcTotal();
-		//	},
 		'model.validity_unit': function (val, oldval) {
 				this.calcTotal();
 			},
@@ -73,9 +60,6 @@ var vue = new Vue({
             this.loadCateData('use_type', 60);//驾照等级
             this.loadCateData('car_length', 82);//驾龄
             this.loadCateData('car_style', 72);//驾驶类型
-            //this.loadCateData('good_type', 78);//驾驶路线
-   //         this.loadCateData('use_mode', 40);//装卸方式列表
-			//this.loadCateData('pay_type', 47);//付款方式列表
             this.loadCateData('reward_money', 55);//打赏福利列表
 
             this.loadConfigData('top_cate_money');//分类置顶金额
@@ -96,9 +80,6 @@ var vue = new Vue({
 						if (code == 'use_type') { _this.useTypeData = resp.result };
 						if (code == 'car_length') { _this.carLengthData = resp.result };
 						if (code == 'car_style') { _this.carStyleData = resp.result };
-						//if (code == 'good_type') { _this.goodsTypeData = resp.result };
-      //                  if (code == 'use_mode') { _this.useModeData = resp.result };
-						//if (code == 'pay_type') { _this.payTypeData = resp.result };
 						if (code == 'reward_money') { _this.rewardMoneyData = resp.result };
 						
                     }
@@ -195,21 +176,7 @@ var vue = new Vue({
 				return false;
 
 			}
-			//if (_this.model.goods_weight == "") {
-			//	alert("请输入货物重量体积");
-			//	return false;
 
-			//}
-			//if (_this.model.freight == "") {
-			//	alert("请输入运费");
-			//	return false;
-
-			//}
-			//if (_this.model.use_time == "") {
-			//	alert("请输入装车时间");
-			//	return false;
-
-			//}
 			if (_this.model.contact_name == "") {
 				alert("请输入联系人");
 				return false;

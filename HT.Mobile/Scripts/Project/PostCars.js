@@ -12,16 +12,8 @@ var vue = new Vue({
 			start_city: '', //出发地城市
 			stop_province: '',//目的地省份
 			stop_city: '',//目的地城市
-            //use_type: '',//选择的用车类型
 			car_length: '', //选择的车长
 			car_style: '',//选择的车型
-			//good_type: "",//选择的货物类型
-			//goods_weight: "",//货物重量体积类
-			//goods_weight_unit: "吨",//重量体积类型
-			//freight: "",//运费金额
-			//use_time:"",//装车时间
-            //use_mode: "",//选择的装卸方式
-			//pay_method: "",//选择的付款方式
 			other_remark: "",//其它补充
 			contact_name: "",//联系人
 			contact_phone: "",//联系电话
@@ -30,12 +22,8 @@ var vue = new Vue({
 			reward_money: 0,//打赏金额
 			total:0//需支付金额
         },
-        //useTypeData: [],//用车类型列表
         carLengthData: [],//车长列表
 		carStyleData: [],//车型列表
-		//goodsTypeData: [],//货物类型列表
-		//useModeData: [],//装卸方式列表
-		//payTypeData: [],//付款方式列表
 		rewardMoneyData: [],//打赏金额列表
 		top_cate_select: false,//是否选中分类置顶
 		top_all_select: false,//是否选中全站置顶
@@ -54,9 +42,6 @@ var vue = new Vue({
 		'model.validity_num': function (val, oldval) {
 			    this.calcTotal();
 			},
-		//'model.freight': function (val, oldval) {
-		//		this.calcTotal();
-		//	},
 		'model.validity_unit': function (val, oldval) {
 				this.calcTotal();
 			},
@@ -70,12 +55,8 @@ var vue = new Vue({
     methods: {
         init: function () {
             
-            //this.loadCateData('use_type', 1);//用车类型
             this.loadCateData('car_length', 4);//车长
 			this.loadCateData('car_style', 16);//车型列表
-			//this.loadCateData('good_type', 27);//货物类型列表
-   //         this.loadCateData('use_mode', 40);//装卸方式列表
-			//this.loadCateData('pay_type', 47);//付款方式列表
             this.loadCateData('reward_money', 55);//打赏福利列表
 
             this.loadConfigData('top_cate_money');//分类置顶金额
@@ -93,12 +74,8 @@ var vue = new Vue({
                 dataType: 'json',
                 success: function (resp) {
                     if (resp.status) {
-						//if (code == 'use_type') { _this.useTypeData = resp.result };
 						if (code == 'car_length') { _this.carLengthData = resp.result };
 						if (code == 'car_style') { _this.carStyleData = resp.result };
-						//if (code == 'good_type') { _this.goodsTypeData = resp.result };
-      //                  if (code == 'use_mode') { _this.useModeData = resp.result };
-						//if (code == 'pay_type') { _this.payTypeData = resp.result };
 						if (code == 'reward_money') { _this.rewardMoneyData = resp.result };
 						
                     }
@@ -128,9 +105,6 @@ var vue = new Vue({
 			var _this = this;
 			
 			_this.model.total = 0;
-			//if (_this.model.freight > 0) {
-			//	_this.model.total += parseFloat(_this.model.freight);
-			//}
 			if (_this.model.set_top_money > 0) {
 				_this.model.total += parseFloat(_this.model.set_top_money);
 			}
@@ -195,21 +169,7 @@ var vue = new Vue({
 				return false;
 
 			}
-			//if (_this.model.goods_weight == "") {
-			//	alert("请输入货物重量体积");
-			//	return false;
 
-			//}
-			//if (_this.model.freight == "") {
-			//	alert("请输入运费");
-			//	return false;
-
-			//}
-			//if (_this.model.use_time == "") {
-			//	alert("请输入装车时间");
-			//	return false;
-
-			//}
 			if (_this.model.contact_name == "") {
 				alert("请输入联系人");
 				return false;
@@ -252,7 +212,7 @@ var vue = new Vue({
 			
 		},
 		showCity: function (code) {
-			var _title = code == 'start' ? '出发地' : '目的地';
+			var _title = code == 'start' ? '出发地' : '到达地';
 			layer.open({
 				type: 1,
 				title: _title,
