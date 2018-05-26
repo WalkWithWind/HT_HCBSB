@@ -82,6 +82,7 @@
     <Content Include="admin\js\layindex.js" />
     <Content Include="admin\js\laymain.js" />
     <Content Include="admin\js\uploader.js" />
+    <Content Include="admin\js\vueFilter.js" />
     <Content Include="admin\project\carbuy\detail.aspx" />
     <Content Include="admin\project\carbuy\list.aspx" />
     <Content Include="admin\project\carsale\detail.aspx" />
