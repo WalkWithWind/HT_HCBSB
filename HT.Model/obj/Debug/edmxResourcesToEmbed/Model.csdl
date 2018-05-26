@@ -89,6 +89,7 @@
     <Property Name="pid" Type="Int32" />
     <Property Name="cid" Type="Int32" />
     <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="img" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
     <Property Name="sort" Type="Int32" />
   </EntityType>
   <EntityType Name="ht_comm_relation">

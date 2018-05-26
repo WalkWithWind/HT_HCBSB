@@ -46,6 +46,7 @@
     <Property Name="pid" Type="int" />
     <Property Name="cid" Type="int" />
     <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="img" Type="nvarchar" MaxLength="300" />
     <Property Name="sort" Type="int" />
   </EntityType>
   <EntityType Name="ht_comm_relation">

@@ -110,7 +110,7 @@ namespace HT.Mobile.Controllers
 		/// <returns></returns>
 		[HttpPost]
 		[Authorize]
-		public ActionResult PostGoodsSubmit(ht_news model)
+		public ActionResult PostSubmit(ht_news model)
 		{
 			string msg = "";
 			string orderNo = "";

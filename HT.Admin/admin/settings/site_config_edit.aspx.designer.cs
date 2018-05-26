@@ -211,6 +211,42 @@ namespace HT.Admin.admin.settings {
         protected global::System.Web.UI.WebControls.TextBox txtDistributionLevel2;
         
         /// <summary>
+        /// txtPubAmountDay 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPubAmountDay;
+        
+        /// <summary>
+        /// txtPubAmountMonth 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPubAmountMonth;
+        
+        /// <summary>
+        /// txtTopCateMoney 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTopCateMoney;
+        
+        /// <summary>
+        /// txtTopAllMoney 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTopAllMoney;
+        
+        /// <summary>
         /// txtAppId 控件。
         /// </summary>
         /// <remarks>

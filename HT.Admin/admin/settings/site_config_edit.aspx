@@ -193,6 +193,28 @@
                     <span class="Validform_checktip">*返给上二级的用户比例百分比(0-100)</span>
                 </dd>
             </dl>
+            <dl>
+                <dt>发布费用:</dt>
+                <dd>
+                    <asp:TextBox ID="txtPubAmountDay" runat="server" CssClass="input txt" datatype="/^[0-9]+(\.[0-9]{1,2})?$/" sucmsg=" " />
+                    <span class="Validform_checktip">*元/天</span>
+                </dd>
+                  <dd>
+                    <asp:TextBox ID="txtPubAmountMonth" runat="server" CssClass="input txt" datatype="/^[0-9]+(\.[0-9]{1,2})?$/" sucmsg=" " />
+                    <span class="Validform_checktip">*元/月</span>
+                </dd>
+            </dl>
+               <dl>
+                <dt>置顶费用:</dt>
+                <dd>
+                    分类置顶:<asp:TextBox ID="txtTopCateMoney" runat="server" CssClass="input txt" datatype="/^[0-9]+(\.[0-9]{1,2})?$/" sucmsg=" " />
+                    <span class="Validform_checktip">*元</span>
+                </dd>
+                  <dd>
+                    全站置顶:<asp:TextBox ID="txtTopAllMoney" runat="server" CssClass="input txt" datatype="/^[0-9]+(\.[0-9]{1,2})?$/" sucmsg=" " />
+                    <span class="Validform_checktip">*元</span>
+                </dd>
+            </dl>
         </div>
 
 

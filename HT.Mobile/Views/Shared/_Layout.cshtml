@@ -3,6 +3,8 @@
 <head>
     <title>@ViewBag.Title</title>
     @Html.Partial("_HeadLink")
+    <link href="/Content/Project/Project.css" rel="stylesheet" />
+    @RenderSection("styles", required: false)
 </head>
 <body>
     @RenderBody()

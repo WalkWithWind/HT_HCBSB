@@ -149,6 +149,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ConfigController.cs" />
+    <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PartialController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
@@ -166,6 +168,7 @@
     <Content Include="Content\base.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Project\Project.css" />
     <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -270,6 +273,12 @@
     <Content Include="Scripts\Project\CarSourceDetails.js" />
     <Content Include="Scripts\Project\Job.js" />
     <Content Include="Scripts\Project\JobDetails.js" />
+    <Content Include="Scripts\Project\PostTemplate.js" />
+    <Content Include="Scripts\Project\PostCarBuy.js" />
+    <Content Include="Scripts\Project\PostCarSell.js" />
+    <Content Include="Scripts\Project\PostJob.js" />
+    <Content Include="Scripts\Project\PostRecruit.js" />
+    <Content Include="Scripts\Project\PostCars.js" />
     <Content Include="Scripts\Project\PostGoods.js" />
     <Content Include="Scripts\Project\GoodsSource.js" />
     <Content Include="Scripts\Project\GoodsSourceDetails.js" />
@@ -346,6 +355,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\Config\" />
+    <Folder Include="Views\File\" />
     <Folder Include="Views\Relation\" />
     <Folder Include="Views\Review\" />
     <Folder Include="Views\WX\" />

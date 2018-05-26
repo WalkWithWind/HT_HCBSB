@@ -39,11 +39,11 @@ var vue = new Vue({
 		rewardMoneyData: [],//打赏金额列表
 		top_cate_select: false,//是否选中分类置顶
 		top_all_select: false,//是否选中全站置顶
-		top_cate_money: 1,//分类置顶金额
-		top_all_money: 2,//全站置顶金额
+		top_cate_money: 0,//分类置顶金额
+		top_all_money: 0,//全站置顶金额
 		top_type: 0,//置顶类型 1分类 2全站 0不置顶
-		validity_unit_day_money: 10,// 元/天
-		validity_unit_month_money: 200,// 元/月
+		validity_unit_day_money: 0,// 发布费用 元/天
+        validity_unit_month_money: 0,// 发布费用 元/月
 		select: {
 			startProvinceTab: true,
 			stopProvinceTab: true
@@ -54,9 +54,9 @@ var vue = new Vue({
 		'model.validity_num': function (val, oldval) {
 			    this.calcTotal();
 			},
-		'model.freight': function (val, oldval) {
-				this.calcTotal();
-			},
+		//'model.freight': function (val, oldval) {
+		//		this.calcTotal();
+		//	},
 		'model.validity_unit': function (val, oldval) {
 				this.calcTotal();
 			},
@@ -76,7 +76,13 @@ var vue = new Vue({
 			this.loadCateData('good_type', 27);//货物类型列表
             this.loadCateData('use_mode', 40);//装卸方式列表
 			this.loadCateData('pay_type', 47);//付款方式列表
-			this.loadCateData('reward_money', 55);//打赏福利列表
+            this.loadCateData('reward_money', 55);//打赏福利列表
+
+            this.loadConfigData('top_cate_money');//分类置顶金额
+            this.loadConfigData('top_all_money');//全站置顶金额
+            this.loadConfigData('pub_amount_day');//发布费用 元/天
+            this.loadConfigData('pub_amount_month');//发布费用 元/月
+
         },
         loadCateData: function (code, cid) {
             var _this = this;
@@ -98,14 +104,33 @@ var vue = new Vue({
                     }
                 }
             });
-		},
+        },
+        loadConfigData: function (configName) {
+            var _this = this;
+            $.ajax({
+                type: 'post',
+                url: '/Config/Get',
+                data: { configName: configName },
+                dataType: 'json',
+                success: function (resp) {
+                    if (resp.status) {
+                        if (configName == 'top_cate_money') { _this.top_cate_money = parseFloat(resp.result) };
+                        if (configName == 'top_all_money') { _this.top_all_money = parseFloat(resp.result)};
+                        if (configName == 'pub_amount_day') { _this.validity_unit_day_money = parseFloat(resp.result) };
+                        if (configName == 'pub_amount_month') { _this.validity_unit_month_money = parseFloat(resp.result)};
+
+
+                    }
+                }
+            });
+        },//配置
 		calcTotal: function () {//计算总金额
 			var _this = this;
 			
 			_this.model.total = 0;
-			if (_this.model.freight > 0) {
-				_this.model.total += parseFloat(_this.model.freight);
-			}
+			//if (_this.model.freight > 0) {
+			//	_this.model.total += parseFloat(_this.model.freight);
+			//}
 			if (_this.model.set_top_money > 0) {
 				_this.model.total += parseFloat(_this.model.set_top_money);
 			}
@@ -139,9 +164,6 @@ var vue = new Vue({
 				_this.model.set_top_money = 0;
 				_this.model.set_top = "";
 			}
-			//_this.calcTotal();
-			//console.log(["_this.model.set_top_money", _this.model.set_top_money]);
-			//console.log(["_this.model.set_top ", _this.model.set_top]);
 		},
 		topAll: function () {//全站置顶点击
 			var _this = this;
@@ -154,9 +176,6 @@ var vue = new Vue({
 				_this.model.set_top_money = 0;
 				_this.model.set_top = "";
 			}
-			//_this.calcTotal();
-			//console.log(["_this.model.set_top_money ", _this.model.set_top_money]);
-			//console.log(["_this.model.set_top ", _this.model.set_top]);
 		},
 		checkInput: function () {//检查输入
 			//return true;
@@ -211,7 +230,7 @@ var vue = new Vue({
 			confirm("提示", "确定发布", "发布", "取消", function () {
 				$.ajax({
 					type: 'post',
-					url: '/Project/PostGoodsSubmit',
+                    url: '/Project/PostSubmit',
 					data: _this.model,
 					dataType: 'json',
 					success: function (resp) {
@@ -265,7 +284,8 @@ var vue = new Vue({
 				_this.model.start_city = item;
 			} else {
 				_this.model.stop_city = item;
-			}
+            }
+            layer.closeAll();
 		},
 		selectTabProvince: function (code) {
 			var _this = this;
@@ -284,24 +304,9 @@ var vue = new Vue({
 				if (_this.model.stop_province == '') return;
 				_this.select.stopProvinceTab = false;
 			}
-		},
-		resetCity: function (code) {
-			var _this = this;
-			if (code == 'start') {
-				_this.select.startProvinceTab = true;
-				_this.model.start_province = '';
-				_this.model.start_city = '';
-			} else {
-				_this.select.stopProvinceTab = true;
-				_this.model.stop_province = '';
-				_this.model.stop_city = '';
-			}
-		},
-		confirm: function (code) {
-			var _this = this;
-			layer.closeAll();
-			
 		}
+
+
 
     }
 });

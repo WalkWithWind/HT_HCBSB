@@ -3,350 +3,346 @@
     ViewBag.Title = "发布-货源";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section styles{
+
+}
 
 <div class="main">
+    <div class="top">
+        <div class="wrapper">
+            <a href="javascript:history.go(-1);" class="back_btn">返回</a>
+            <a href="javascript:void(0);" class="wdd">发布须知</a>
+        </div>
+    </div>
+    <div class="banner">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
 
-	<div class="top">
-		<div class="wrapper">
-			<a href="javascript:history.go(-1);" class="back_btn">返回</a>
-			<a href="javascript:void(0);" class="wdd">发布须知</a>
-		</div>
-	</div>
-	<div class="banner">
-		<div class="swiper-container">
-			<div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="/images/img/img00.jpg">
+                </div>
+                <div class="swiper-slide">
+                    <img src="/images/img/img00.jpg">
+                </div>
+                <div class="swiper-slide">
+                    <img src="/images/img/img00.jpg">
+                </div>
+                <div class="swiper-slide">
+                    <img src="/images/img/img00.jpg">
+                </div>
 
-				<div class="swiper-slide">
-					<img src="/images/img/img00.jpg">
-				</div>
-				<div class="swiper-slide">
-					<img src="/images/img/img00.jpg">
-				</div>
-				<div class="swiper-slide">
-					<img src="/images/img/img00.jpg">
-				</div>
-				<div class="swiper-slide">
-					<img src="/images/img/img00.jpg">
-				</div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
 
-			</div>
-			<div class="swiper-pagination"></div>
-		</div>
-	</div>
+    <div class="pg_sec1">
+        <ul class="">
+            <li class="li1">
+                <span>有效期</span>
+                <input type="text" placeholder="请输入有效期" v-model="model.validity_num">
+                <div class="ro_box">
+                    <input type="radio" value="天" id="day" checked v-model="model.validity_unit"><label for="day">天</label>
+                    <input type="radio" value="月" id="mounth" v-model="model.validity_unit"><label for="mounth">月</label>
+                </div>
+            </li>
+            <li>
+                <p>本类信息支付费用说明：{{validity_unit_day_money}}元/天，{{validity_unit_month_money}}元/月</p>
+            </li>
+        </ul>
+    </div>
 
-	<div class="pg_sec1">
-		<ul class="">
-			<li class="li1">
-				<span>有效期</span>
-				<input type="text" placeholder="请输入有效期" v-model="model.validity_num">
-				<div class="ro_box">
-					<input type="radio" value="天" id="day" checked v-model="model.validity_unit"><label for="day">天</label>
-					<input type="radio" value="月" id="mounth" v-model="model.validity_unit"><label for="mounth">月</label>
-				</div>
-			</li>
-			<li>
-				<p>本类信息支付费用说明：{{validity_unit_day_money}}元/天，{{validity_unit_month_money}}元/月</p>
-			</li>
-		</ul>
-	</div>
+    <div class="pg_sec2">
+        <dl>
+            <dt>货源路线</dt>
+            <dd>
+                <span>出发地</span>
+                <input type="text" placeholder="请选择出发地" v-model="model.start_city" v-on:click="showCity('start')">
+            </dd>
+            <dd>
+                <span>到达地</span>
+                <input type="text" placeholder="请选择到达地" v-model="model.stop_city" v-on:click="showCity('stop')">
+            </dd>
+        </dl>
+    </div>
 
-	<div class="pg_sec2">
-		<dl>
-			<dt>货源路线</dt>
-			<dd>
-				<span>出发地</span>
-				<input type="text" placeholder="请选择出发地" v-model="model.start_city" v-on:click="showCity('start')">
-			</dd>
-			<dd>
-				<span>到达地</span>
-				<input type="text" placeholder="请选择到达地" v-model="model.stop_city" v-on:click="showCity('stop')">
-			</dd>
-		</dl>
-	</div>
-
-	<div class="pg_sec3">
-		<dl>
-			<dt>用车类型</dt>
-			<dd>
-				<a href="javascript:;" v-bind:class="[{ 'cur':model.use_type=='' }]"
-				   v-on:click="model.use_ty
+    <div class="pg_sec3">
+        <dl>
+            <dt>用车类型</dt>
+            <dd>
+                <a href="javascript:;" v-bind:class="[{ 'cur':model.use_type=='' }]"
+                   v-on:click="model.use_ty
 				   pe=''">不限</a>
-				<a href="javascript:;" v-for="item in useTypeData"
-				   v-bind:class="[{ 'cur': item.title==model.use_type }]"
-				   v-text="item.title" v-on:click="model.use_type=item.title"></a>
-			</dd>
-		</dl>
-		<dl>
-			<dt>车长<span>（米，可选）</span></dt>
-			<dd>
-				<a href="javascript:;" v-bind:class="[{ 'cur':model.car_length=='' }]"
-				   v-on:click="model.car_length=''">不限</a>
-				<a href="javascript:;" v-for="item in carLengthData"
-				   v-bind:class="[{ 'cur': item.title==model.car_length }]"
-				   v-text="item.title" v-on:click="model.car_length=item.title"></a>
-			</dd>
-		</dl>
-		<dl>
-			<dt>车型</dt>
-			<dd>
-				<a href="javascript:;" v-bind:class="[{ 'cur':model.car_style=='' }]"
-				   v-on:click="model.car_style=''">不限</a>
-				<a href="javascript:;" v-for="item in carStyleData"
-				   v-bind:class="[{ 'cur': item.title==model.car_style }]"
-				   v-text="item.title" v-on:click="model.car_style=item.title"></a>
-			</dd>
-		</dl>
-		<dl>
-			<dt>货物类型</dt>
-			<dd>
+                <a href="javascript:;" v-for="item in useTypeData"
+                   v-bind:class="[{ 'cur': item.title==model.use_type }]"
+                   v-text="item.title" v-on:click="model.use_type=item.title"></a>
+            </dd>
+        </dl>
+        <dl>
+            <dt>车长<span>（米，可选）</span></dt>
+            <dd>
+                <a href="javascript:;" v-bind:class="[{ 'cur':model.car_length=='' }]"
+                   v-on:click="model.car_length=''">不限</a>
+                <a href="javascript:;" v-for="item in carLengthData"
+                   v-bind:class="[{ 'cur': item.title==model.car_length }]"
+                   v-text="item.title" v-on:click="model.car_length=item.title"></a>
+            </dd>
+        </dl>
+        <dl>
+            <dt>车型</dt>
+            <dd>
+                <a href="javascript:;" v-bind:class="[{ 'cur':model.car_style=='' }]"
+                   v-on:click="model.car_style=''">不限</a>
+                <a href="javascript:;" v-for="item in carStyleData"
+                   v-bind:class="[{ 'cur': item.title==model.car_style }]"
+                   v-text="item.title" v-on:click="model.car_style=item.title"></a>
+            </dd>
+        </dl>
+        <dl>
+            <dt>货物类型</dt>
+            <dd>
 
-				<a href="javascript:;" v-bind:class="[{ 'cur':model.good_type=='' }]"
-				   v-on:click="model.good_type=''">不限</a>
-				<a href="javascript:;" v-for="item in goodsTypeData"
-				   v-bind:class="[{ 'cur': item.title==model.good_type }]"
-				   v-text="item.title" v-on:click="model.good_type=item.title"></a>
+                <a href="javascript:;" v-bind:class="[{ 'cur':model.good_type=='' }]"
+                   v-on:click="model.good_type=''">不限</a>
+                <a href="javascript:;" v-for="item in goodsTypeData"
+                   v-bind:class="[{ 'cur': item.title==model.good_type }]"
+                   v-text="item.title" v-on:click="model.good_type=item.title"></a>
 
-			</dd>
-		</dl>
-	</div>
+            </dd>
+        </dl>
+    </div>
 
-	<div class="pg_sec1 pg_sec4">
-		<ul class="">
-			<li class="li1">
-				<span>货物重量体积</span>
-				<input type="text" placeholder="请输入具体数值" v-model="model.goods_weight">
-				<div class="ro_box">
-					<input type="radio" value="吨" id="ton" checked v-model="model.goods_weight_unit"><label for="ton">吨</label>
-					<input type="radio" value="方" id="fang" v-model="model.goods_weight_unit"><label for="fang">方</label>
-				</div>
-			</li>
-		</ul>
-	</div>
+    <div class="pg_sec1 pg_sec4">
+        <ul class="">
+            <li class="li1">
+                <span>货物重量体积</span>
+                <input type="text" placeholder="请输入具体数值" v-model="model.goods_weight">
+                <div class="ro_box">
+                    <input type="radio" value="吨" id="ton" checked v-model="model.goods_weight_unit"><label for="ton">吨</label>
+                    <input type="radio" value="方" id="fang" v-model="model.goods_weight_unit"><label for="fang">方</label>
+                </div>
+            </li>
+        </ul>
+    </div>
 
-	<div class="pg_sec2 pg_sec5">
-		<dl>
-			<dd class="th_dd">
-				<span>运费金额</span>
-				<input type="number" placeholder="请输入金额" v-model="model.freight">
-				<i>元</i>
-			</dd>
-			<dd>
-				<span>装车时间</span>
-				<input type="text" placeholder="点击选择装车时间" v-model="model.use_time">
-			</dd>
-		</dl>
-	</div>
+    <div class="pg_sec2 pg_sec5">
+        <dl>
+            <dd class="th_dd">
+                <span>运费金额</span>
+                <input type="number" placeholder="请输入金额" v-model="model.freight">
+                <i>元</i>
+            </dd>
+            <dd>
+                <span>装车时间</span>
+                <input type="date" placeholder="点击选择装车时间" v-model="model.use_time">
+            </dd>
+        </dl>
+    </div>
 
-	<div class="pg_sec3 pg_sec6">
-		<dl>
-			<dt>装卸方式</dt>
-			<dd>
+    <div class="pg_sec3 pg_sec6">
+        <dl>
+            <dt>装卸方式</dt>
+            <dd>
 
-				<a href="javascript:;" v-bind:class="[{ 'cur':model.use_mode=='' }]"
-				   v-on:click="model.use_mode=''">不限</a>
-				<a href="javascript:;" v-for="item in useModeData"
-				   v-bind:class="[{ 'cur': item.title==model.use_mode }]"
-				   v-text="item.title" v-on:click="model.use_mode=item.title"></a>
-			</dd>
-		</dl>
-		<dl>
-			<dt>付款方式</dt>
-			<dd>
+                <a href="javascript:;" v-bind:class="[{ 'cur':model.use_mode=='' }]"
+                   v-on:click="model.use_mode=''">不限</a>
+                <a href="javascript:;" v-for="item in useModeData"
+                   v-bind:class="[{ 'cur': item.title==model.use_mode }]"
+                   v-text="item.title" v-on:click="model.use_mode=item.title"></a>
+            </dd>
+        </dl>
+        <dl>
+            <dt>付款方式</dt>
+            <dd>
 
-				<a href="javascript:;" v-for="item in payTypeData"
-				   v-bind:class="[{ 'cur': item.title==model.pay_method }]"
-				   v-text="item.title" v-on:click="model.pay_method=item.title"></a>
-			</dd>
-		</dl>
-		<dl>
-			<dt>其他补充</dt>
-			<dd>
-				<textarea placeholder="装卸方式、付款方式、备注" v-model="model.other_remark"></textarea>
-			</dd>
-		</dl>
-	</div>
+                <a href="javascript:;" v-for="item in payTypeData"
+                   v-bind:class="[{ 'cur': item.title==model.pay_method }]"
+                   v-text="item.title" v-on:click="model.pay_method=item.title"></a>
+            </dd>
+        </dl>
+        <dl>
+            <dt>其他补充</dt>
+            <dd>
+                <textarea placeholder="装卸方式、付款方式、备注" v-model="model.other_remark"></textarea>
+            </dd>
+        </dl>
+    </div>
 
-	<div class="pg_sec2 pg_sec7">
-		<dl>
-			<dt>联系信息</dt>
-			<dd>
-				<span>联系人</span>
-				<input type="text" value="" v-model="model.contact_name" placeholder="联系人">
-			</dd>
-			<dd>
-				<span>联系电话</span>
-				<input type="text" value="" v-model="model.contact_phone" placeholder="联系电话">
-			</dd>
-		</dl>
-	</div>
+    <div class="pg_sec2 pg_sec7">
+        <dl>
+            <dt>联系信息</dt>
+            <dd>
+                <span>联系人</span>
+                <input type="text" value="" v-model="model.contact_name" placeholder="联系人">
+            </dd>
+            <dd>
+                <span>联系电话</span>
+                <input type="text" value="" v-model="model.contact_phone" placeholder="联系电话">
+            </dd>
+        </dl>
+    </div>
 
-	<div class="pg_sec8 pg_sec9">
-		<dl>
-			<dt>增值服务</dt>
-			<dd>
-				<div class="pt1">
-					<img src="/images/icon/icon27_1.png">
-				</div>
-				<div class="pt2">
-					<span>分类置顶</span>
-					<p>将在此分类也置顶显示，更能多人看到</p>
-				</div>
-				<div class="pt3" v-on:click="topCate">
-					<span>{{top_cate_money}}元</span>
-					<i></i>
-				</div>
-			</dd>
-			<dd>
-				<div class="pt1">
-					<img src="/images/icon/icon27_2.png">
-				</div>
-				<div class="pt2">
-					<span>全站置顶</span>
-					<p>全站所有分类置顶显示，效果更好</p>
-				</div>
-				<div class="pt3" v-on:click="topAll">
-					<span>{{top_all_money}}元</span>
-					<i></i>
-				</div>
-			</dd>
-		</dl>
-	</div>
-	<div class="pg_sec8 pg_sec10">
-		<dl>
-			<dd>
-				<div class="pt1">
-					<img src="/images/icon/icon27_3.png">
-				</div>
-				<div class="pt2">
-					<span>打赏福利</span>
-					<p>客服将优先多渠道推送</p>
-				</div>
-				<div class="pt3">
-					<span>{{model.reward_money}}元</span>
-					<i></i>
-				</div>
-				<div class="clear"></div>
-				<div class="pt4">
-					<div class="txt_n">
-						<a href="javascript:;" v-for="item in rewardMoneyData"
-						   v-bind:class="[{ 'cur': item.title==model.reward_money }]"
-						   v-text="item.title" v-on:click="model.reward_money=item.title"></a>
-					</div>
-					<p>
-						<span>手动输入打赏金额</span>
-						<input type="text" placeholder="请输入打赏金额" v-model="model.reward_money">
-					</p>
-				</div>
+    <div class="pg_sec8 pg_sec9">
+        <dl>
+            <dt>增值服务</dt>
+            <dd>
+                <div class="pt1">
+                    <img src="/images/icon/icon27_1.png">
+                </div>
+                <div class="pt2">
+                    <span>分类置顶</span>
+                    <p>将在此分类也置顶显示，更能多人看到</p>
+                </div>
+                <div class="pt3" v-on:click="topCate">
+                    <span>{{top_cate_money}}元</span>
+                    <i></i>
+                </div>
+            </dd>
+            <dd>
+                <div class="pt1">
+                    <img src="/images/icon/icon27_2.png">
+                </div>
+                <div class="pt2">
+                    <span>全站置顶</span>
+                    <p>全站所有分类置顶显示，效果更好</p>
+                </div>
+                <div class="pt3" v-on:click="topAll">
+                    <span>{{top_all_money}}元</span>
+                    <i></i>
+                </div>
+            </dd>
+        </dl>
+    </div>
+    <div class="pg_sec8 pg_sec10">
+        <dl>
+            <dd>
+                <div class="pt1">
+                    <img src="/images/icon/icon27_3.png">
+                </div>
+                <div class="pt2">
+                    <span>打赏福利</span>
+                    <p>客服将优先多渠道推送</p>
+                </div>
+                <div class="pt3">
+                    <span>{{model.reward_money}}元</span>
+                    <i></i>
+                </div>
+                <div class="clear"></div>
+                <div class="pt4">
+                    <div class="txt_n">
+                        <a href="javascript:;" v-for="item in rewardMoneyData"
+                           v-bind:class="[{ 'cur': item.title==model.reward_money }]"
+                           v-text="item.title" v-on:click="model.reward_money=item.title"></a>
+                    </div>
+                    <p>
+                        <span>手动输入打赏金额</span>
+                        <input type="text" placeholder="请输入打赏金额" v-model="model.reward_money">
+                    </p>
+                </div>
 
-			</dd>
-		</dl>
-		<a v-on:click="submit" class="btn">确认发布（共支付{{model.total}}元）</a>
-	</div>
+            </dd>
+        </dl>
+        <a v-on:click="submit" class="btn">确认发布（共支付<label class="total">{{model.total}}</label>元）</a>
+    </div>
 
-	<div class="start_box zhx_box tab-box hide">
-		<ul class="zhx_box_title tab-title">
-			<li v-bind:class="[{'active':select.startProvinceTab}]"
-				v-on:click="selectTabProvince('start')">
-				<a href="javascript:;">省</a>
-			</li>
-			<li v-bind:class="[{'active':!select.startProvinceTab}]"
-				v-on:click="selectTabCity('start')">
-				<a href="javascript:;">市</a>
-			</li>
-		</ul>
-		<div v-bind:class="['province','clearfix','tab-content',{'hide':!select.startProvinceTab}]">
-			<a href="javascript:;" v-for="item in cityData.get(0)"
-			   v-bind:class="[{ 'active': item==model.start_province }]"
-			   v-text="item" v-on:click="selectProvince('start',item)">
-			</a>
-		</div>
-		<div v-bind:class="['city','clearfix','tab-content',{'hide':select.startProvinceTab}]">
-			<a href="javascript:;" v-for="item in cityData.getCitysByProvince(model.start_province)"
-			   v-bind:class="[{ 'active':item==model.start_city }]"
-			   v-text="item" v-on:click="selectCity('start',item)">
-			</a>
-		</div>
-		<div class="sub_btn_box">
-			<a href="javascript:void(0);" class="cancle" v-on:click="resetCity('start')">重置</a>
-			<a href="javascript:void(0);" class="confirm" v-on:click="confirm()">确定</a>
-		</div>
-	</div>
+    <div class="start_box zhx_box tab-box hide">
+        <ul class="zhx_box_title tab-title">
+            <li v-bind:class="[{'active':select.startProvinceTab}]"
+                v-on:click="selectTabProvince('start')">
+                <a href="javascript:;">省</a>
+            </li>
+            <li v-bind:class="[{'active':!select.startProvinceTab}]"
+                v-on:click="selectTabCity('start')">
+                <a href="javascript:;">市</a>
+            </li>
+        </ul>
+        <div v-bind:class="['province','clearfix','tab-content',{'hide':!select.startProvinceTab}]">
+            <a href="javascript:;" v-for="item in cityData.get(0)"
+               v-bind:class="[{ 'active': item==model.start_province }]"
+               v-text="item" v-on:click="selectProvince('start',item)">
+            </a>
+        </div>
+        <div v-bind:class="['city','clearfix','tab-content',{'hide':select.startProvinceTab}]">
+            <a href="javascript:;" v-for="item in cityData.getCitysByProvince(model.start_province)"
+               v-bind:class="[{ 'active':item==model.start_city }]"
+               v-text="item" v-on:click="selectCity('start',item)">
+            </a>
+        </div>
 
-	<div class="stop_box zhx_box tab-box hide">
-		<ul class="zhx_box_title tab-title">
-			<li v-bind:class="[{'active':select.stopProvinceTab}]"
-				v-on:click="selectTabProvince('stop')">
-				<a href="javascript:;">省</a>
-			</li>
-			<li v-bind:class="[{'active':!select.stopProvinceTab}]"
-				v-on:click="selectTabCity('stop')">
-				<a href="javascript:;">市</a>
-			</li>
-		</ul>
-		<div v-bind:class="['province','clearfix','tab-content',{'hide':!select.stopProvinceTab}]">
-			<a href="javascript:;" v-for="item in cityData.get(0)"
-			   v-bind:class="[{ 'active': item==model.stop_province }]"
-			   v-text="item" v-on:click="selectProvince('stop',item)">
-			</a>
-		</div>
-		<div v-bind:class="['city','clearfix','tab-content',{'hide':select.stopProvinceTab}]">
-			<a href="javascript:;" v-for="item in cityData.getCitysByProvince(model.stop_province)"
-			   v-bind:class="[{ 'active':item==model.stop_city }]"
-			   v-text="item" v-on:click="selectCity('stop',item)">
-			</a>
-		</div>
-		<div class="sub_btn_box">
-			<a href="javascript:void(0);" class="cancle" v-on:click="resetCity('stop')">重置</a>
-			<a href="javascript:void(0);" class="confirm" v-on:click="confirm()">确定</a>
-		</div>
-	</div>
+    </div>
+
+    <div class="stop_box zhx_box tab-box hide">
+        <ul class="zhx_box_title tab-title">
+            <li v-bind:class="[{'active':select.stopProvinceTab}]"
+                v-on:click="selectTabProvince('stop')">
+                <a href="javascript:;">省</a>
+            </li>
+            <li v-bind:class="[{'active':!select.stopProvinceTab}]"
+                v-on:click="selectTabCity('stop')">
+                <a href="javascript:;">市</a>
+            </li>
+        </ul>
+        <div v-bind:class="['province','clearfix','tab-content',{'hide':!select.stopProvinceTab}]">
+            <a href="javascript:;" v-for="item in cityData.get(0)"
+               v-bind:class="[{ 'active': item==model.stop_province }]"
+               v-text="item" v-on:click="selectProvince('stop',item)">
+            </a>
+        </div>
+        <div v-bind:class="['city','clearfix','tab-content',{'hide':select.stopProvinceTab}]">
+            <a href="javascript:;" v-for="item in cityData.getCitysByProvince(model.stop_province)"
+               v-bind:class="[{ 'active':item==model.stop_city }]"
+               v-text="item" v-on:click="selectCity('stop',item)">
+            </a>
+        </div>
+
+    </div>
 
 </div>
-<script src="~/Scripts/geo.js"></script>
-<script src="~/Scripts/Project/PostGoods.js"></script>
-<script>
-    var mySwiper = new Swiper('.banner .swiper-container', {
-        autoplay: 5000,
-        pagination: '.swiper-pagination',
-        loop: true,
-    })
+@section scripts{
+    <script src="~/Scripts/geo.js"></script>
+    <script src="~/Scripts/Project/PostGoods.js"></script>
+    <script>
+        var mySwiper = new Swiper('.banner .swiper-container', {
+            autoplay: 5000,
+            pagination: '.swiper-pagination',
+            loop: true,
+        })
 
-    $(function(){
-        var $dd = $(".pg_sec3 dd");
-        $dd.each(function(){
-            $(this).find("a:not('.m_btn')").click(function(){
-                $(this).addClass("cur").siblings("a:not('.m_btn')").removeClass("cur");
+        $(function () {
+            var $dd = $(".pg_sec3 dd");
+            $dd.each(function () {
+                $(this).find("a:not('.m_btn')").click(function () {
+                    $(this).addClass("cur").siblings("a:not('.m_btn')").removeClass("cur");
+                })
             })
         })
-    })
 
-    $(function(){
-        var $a = $(".pg_sec8 .pt4 .txt_n a");
+        $(function () {
+            var $a = $(".pg_sec8 .pt4 .txt_n a");
 
-        $a.click(function(){
-            $(this).addClass("cur").siblings().removeClass("cur");
+            $a.click(function () {
+                $(this).addClass("cur").siblings().removeClass("cur");
+            })
+
         })
 
-    })
-
-    $(function(){
-        var $dd = $(".pg_sec8 dl dd");
-        var $dd_t = $(".pg_sec10 dl dd")
-		$dd.each(function () {
-            $(this).find("i").click(function(){
-                $(this).parents("dd").toggleClass("active").siblings().removeClass("active");
-                (function(){
-                    if( $dd_t.hasClass("active") ){
-                        $(".pg_sec10 dl dd .pt4").show();
-                    }else {
-                        $(".pg_sec10 dl dd .pt4").hide();
-                    }
-                }())
+        $(function () {
+            var $dd = $(".pg_sec8 dl dd");
+            var $dd_t = $(".pg_sec10 dl dd")
+            $dd.each(function () {
+                $(this).find("i").click(function () {
+                    $(this).parents("dd").toggleClass("active").siblings().removeClass("active");
+                    (function () {
+                        if ($dd_t.hasClass("active")) {
+                            $(".pg_sec10 dl dd .pt4").show();
+                        } else {
+                            $(".pg_sec10 dl dd .pt4").hide();
+                        }
+                    }())
+                })
             })
         })
-    })
 
+    </script>
 
-
-
-</script>
+}
