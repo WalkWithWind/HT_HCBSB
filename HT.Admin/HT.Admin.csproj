@@ -68,6 +68,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="admin\cate\pinpai_list.aspx" />
     <Content Include="admin\cate\cate_list.aspx" />
     <Content Include="admin\center.aspx" />
     <Content Include="admin\configuration\ht_ads_edit.aspx" />
@@ -601,6 +602,13 @@
     </Compile>
     <Compile Include="admin\api\project\updatestatus.ashx.cs">
       <DependentUpon>updatestatus.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\cate\pinpai_list.aspx.cs">
+      <DependentUpon>pinpai_list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\cate\pinpai_list.aspx.designer.cs">
+      <DependentUpon>pinpai_list.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\cate\cate_list.aspx.cs">
       <DependentUpon>cate_list.aspx</DependentUpon>

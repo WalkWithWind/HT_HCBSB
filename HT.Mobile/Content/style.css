@@ -2239,7 +2239,21 @@ footer {
     top: 0.05rem;
     right: -0.15rem;
     height: 0.7rem;
-    line-height: 0.6rem;
+    line-height: 0.58rem;
+    width: 30%;
+    text-align: center;
+    color:#fff;
+}
+.pg_sec7 dl dd .btn1 {
+    padding: .08rem .2rem;
+    background: #ebebeb;
+    border-radius: .06rem;
+    margin-left: .2rem;
+    position: absolute;
+    top: 0.05rem;
+    right: -0.15rem;
+    height: 0.7rem;
+    line-height: 0.58rem;
     width: 30%;
     text-align: center;
     color:#fff;

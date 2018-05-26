@@ -36,10 +36,6 @@ namespace HT.Model
     ///<summary>
     ///
     ///</summary>
-        public string img { get; set; }
-    ///<summary>
-    ///
-    ///</summary>
         public Nullable<int> sort { get; set; }
     }
 }

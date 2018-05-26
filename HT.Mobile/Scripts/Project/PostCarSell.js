@@ -62,7 +62,7 @@ var vue = new Vue({
     methods: {
         init: function () {
 
-            this.loadCateData('use_type', 106);//品牌
+            this.loadPinpaiData();//品牌
             this.loadCateData('car_length', 111);//排放标准
             this.loadCateData('car_style', 16);//车型
             this.loadCateData('reward_money', 55);//打赏福利列表
@@ -87,6 +87,20 @@ var vue = new Vue({
                         if (code == 'car_style') { _this.carStyleData = resp.result };
                         if (code == 'reward_money') { _this.rewardMoneyData = resp.result };
 
+                    }
+                }
+            });
+        },
+        loadPinpaiData: function () {
+            var _this = this;
+            $.ajax({
+                type: 'post',
+                url: '/Home/PinpaiList',
+                data: { cid: cid },
+                dataType: 'json',
+                success: function (resp) {
+                    if (resp.status) {
+                       _this.useTypeData = resp.result;
                     }
                 }
             });

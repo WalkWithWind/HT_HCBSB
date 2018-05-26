@@ -32,7 +32,7 @@ namespace HT.Mobile.Filter
                 {
                     string currentUrl = filterContext.HttpContext.Request.Url.PathAndQuery.ToString();//当前绝对地址
                     //访问授权链接
-                    filterContext.HttpContext.Response.Redirect("/User/Mobile/" + HttpUtility.UrlEncode(currentUrl));
+                    filterContext.HttpContext.Response.Redirect("/User/Mobile?url=" + HttpUtility.UrlEncode(currentUrl));
                 }
             }
         }

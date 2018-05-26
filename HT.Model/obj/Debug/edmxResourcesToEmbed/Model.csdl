@@ -6,6 +6,7 @@
     <EntitySet Name="ht_ad_category" EntityType="Model.ht_ad_category" />
     <EntitySet Name="ht_category" EntityType="Model.ht_category" />
     <EntitySet Name="ht_comm_relation" EntityType="Model.ht_comm_relation" />
+    <EntitySet Name="ht_commission" EntityType="Model.ht_commission" />
     <EntitySet Name="ht_help" EntityType="Model.ht_help" />
     <EntitySet Name="ht_manager" EntityType="Model.ht_manager" />
     <EntitySet Name="ht_manager_log" EntityType="Model.ht_manager_log" />
@@ -17,6 +18,7 @@
     <EntitySet Name="ht_order" EntityType="Model.ht_order" />
     <EntitySet Name="ht_order_appraise" EntityType="Model.ht_order_appraise" />
     <EntitySet Name="ht_payment" EntityType="Model.ht_payment" />
+    <EntitySet Name="ht_pinpai" EntityType="Model.ht_pinpai" />
     <EntitySet Name="ht_region" EntityType="Model.ht_region" />
     <EntitySet Name="ht_review" EntityType="Model.ht_review" />
     <EntitySet Name="ht_single_page" EntityType="Model.ht_single_page" />
@@ -75,6 +77,7 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tgroup" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="sort" Type="Int32" />
@@ -88,7 +91,6 @@
     <Property Name="pid" Type="Int32" />
     <Property Name="cid" Type="Int32" />
     <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="img" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
     <Property Name="sort" Type="Int32" />
   </EntityType>
   <EntityType Name="ht_comm_relation">
@@ -100,6 +102,17 @@
     <Property Name="main_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="relation_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="add_time" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ht_commission">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userid" Type="Int32" Nullable="false" />
+    <Property Name="add_time" Type="DateTime" Precision="3" />
+    <Property Name="source_userid" Type="Int32" />
+    <Property Name="source_pre_userid" Type="Int32" />
+    <Property Name="total_money" Type="Decimal" Precision="18" Scale="2" />
   </EntityType>
   <EntityType Name="ht_help">
     <Key>
@@ -336,6 +349,16 @@
     <Property Name="sort" Type="Int32" />
     <Property Name="fee" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="addtime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ht_pinpai">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="initial" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="img" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="sort" Type="Int32" />
   </EntityType>
   <EntityType Name="ht_region">
     <Key>

@@ -13,9 +13,9 @@ namespace HT.Model
     using System.Collections.Generic;
     
     ///<summary>
-    ///广告分类
+    ///
     ///</summary>
-    public partial class ht_ad_category
+    public partial class ht_pinpai
     {
     ///<summary>
     ///
@@ -24,7 +24,7 @@ namespace HT.Model
     ///<summary>
     ///
     ///</summary>
-        public string tgroup { get; set; }
+        public string initial { get; set; }
     ///<summary>
     ///
     ///</summary>
@@ -32,14 +32,10 @@ namespace HT.Model
     ///<summary>
     ///
     ///</summary>
-        public string code { get; set; }
+        public string img { get; set; }
     ///<summary>
     ///
     ///</summary>
         public Nullable<int> sort { get; set; }
-    ///<summary>
-    ///
-    ///</summary>
-        public Nullable<int> num { get; set; }
     }
 }

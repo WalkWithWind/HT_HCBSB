@@ -34,9 +34,9 @@
                 dataType: 'json',
                 success: function (resp) {
                     _this.isLoading = false;
+                    layer.msg(resp.msg);
                     if (resp.status) {
                         _this.setInterval(90);
-                        layer.msg(resp.msg);
                     }
                 }
             });
@@ -67,11 +67,9 @@
                 dataType: 'json',
                 success: function (resp) {
                     _this.isLoading = false;
-                    if (resp.status) {
-                        layer.msg(resp.msg, {}, function () {
-                            location.href = _this.url;
-                        })
-                    }
+                    layer.msg(resp.msg, {}, function () {
+                        if (resp.status) location.href = _this.url;
+                    })
                 }
             });
         }

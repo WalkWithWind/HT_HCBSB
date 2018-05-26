@@ -62,6 +62,9 @@
     <Compile Include="ht_category.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="ht_commission.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="ht_comm_relation.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -96,6 +99,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="ht_payment.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ht_pinpai.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="ht_region.cs">

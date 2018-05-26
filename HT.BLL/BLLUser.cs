@@ -3,6 +3,7 @@ using HT.Model.Model;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,15 +53,15 @@ namespace HT.BLL
         }
 
         /// <summary>
-        /// 新增账号
+        /// 新增或更新账号
         /// </summary>
         /// <param name="openid"></param>
         /// <returns></returns>
-        public static int AddUser(ht_user user)
+        public static int PostUser(ht_user user)
         {
             using (Entities db = new Entities())
             {
-                db.ht_user.Add(user);
+                db.ht_user.AddOrUpdate(user);
                 db.SaveChanges();
                 return user.id;
             }
@@ -126,7 +127,5 @@ namespace HT.BLL
             }
             return 0;
         }
-
-
     }
 }

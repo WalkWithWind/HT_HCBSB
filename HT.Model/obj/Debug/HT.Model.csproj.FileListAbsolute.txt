@@ -84,7 +84,6 @@ G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\obj\Debug\HT.Model.csproj.Cor
 G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\obj\Debug\HT.Model.csproj.CopyComplete
 G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\obj\Debug\HT.Model.dll
 G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\obj\Debug\HT.Model.pdb
-G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\obj\Debug\HT.Model.csprojResolveAssemblyReference.cache
 D:\Project\HCBSB\HT.Model\bin\Debug\HT.Model.dll.config
 D:\Project\HCBSB\HT.Model\bin\Debug\HT.Model.dll
 D:\Project\HCBSB\HT.Model\bin\Debug\HT.Model.pdb
@@ -99,3 +98,4 @@ D:\Project\HCBSB\HT.Model\obj\Debug\HT.Model.csproj.CoreCompileInputs.cache
 D:\Project\HCBSB\HT.Model\obj\Debug\HT.Model.csproj.CopyComplete
 D:\Project\HCBSB\HT.Model\obj\Debug\HT.Model.dll
 D:\Project\HCBSB\HT.Model\obj\Debug\HT.Model.pdb
+G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\obj\Debug\HT.Model.csprojResolveAssemblyReference.cache

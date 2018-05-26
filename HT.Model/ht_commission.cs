@@ -13,9 +13,9 @@ namespace HT.Model
     using System.Collections.Generic;
     
     ///<summary>
-    ///广告分类
+    ///
     ///</summary>
-    public partial class ht_ad_category
+    public partial class ht_commission
     {
     ///<summary>
     ///
@@ -24,22 +24,22 @@ namespace HT.Model
     ///<summary>
     ///
     ///</summary>
-        public string tgroup { get; set; }
+        public int userid { get; set; }
     ///<summary>
     ///
     ///</summary>
-        public string title { get; set; }
+        public Nullable<System.DateTime> add_time { get; set; }
     ///<summary>
     ///
     ///</summary>
-        public string code { get; set; }
+        public Nullable<int> source_userid { get; set; }
     ///<summary>
     ///
     ///</summary>
-        public Nullable<int> sort { get; set; }
+        public Nullable<int> source_pre_userid { get; set; }
     ///<summary>
     ///
     ///</summary>
-        public Nullable<int> num { get; set; }
+        public Nullable<decimal> total_money { get; set; }
     }
 }

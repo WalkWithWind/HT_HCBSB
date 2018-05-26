@@ -33,6 +33,7 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tgroup" Type="nvarchar" MaxLength="50" />
     <Property Name="title" Type="nvarchar" MaxLength="50" />
     <Property Name="code" Type="nvarchar" MaxLength="50" />
     <Property Name="sort" Type="int" />
@@ -46,7 +47,6 @@
     <Property Name="pid" Type="int" />
     <Property Name="cid" Type="int" />
     <Property Name="title" Type="nvarchar" MaxLength="50" />
-    <Property Name="img" Type="nvarchar" MaxLength="300" />
     <Property Name="sort" Type="int" />
   </EntityType>
   <EntityType Name="ht_comm_relation">
@@ -58,6 +58,17 @@
     <Property Name="main_id" Type="nvarchar" MaxLength="50" />
     <Property Name="relation_type" Type="nvarchar" MaxLength="50" />
     <Property Name="add_time" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ht_commission">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userid" Type="int" Nullable="false" />
+    <Property Name="add_time" Type="datetime" />
+    <Property Name="source_userid" Type="int" />
+    <Property Name="source_pre_userid" Type="int" />
+    <Property Name="total_money" Type="decimal" Precision="18" Scale="2" />
   </EntityType>
   <EntityType Name="ht_help">
     <Key>
@@ -289,6 +300,16 @@
     <Property Name="fee" Type="decimal" Precision="18" Scale="2" />
     <Property Name="addtime" Type="datetime" />
   </EntityType>
+  <EntityType Name="ht_pinpai">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="initial" Type="nvarchar" MaxLength="2" />
+    <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="img" Type="nvarchar" MaxLength="300" />
+    <Property Name="sort" Type="int" />
+  </EntityType>
   <EntityType Name="ht_region">
     <Key>
       <PropertyRef Name="id" />
@@ -475,6 +496,7 @@
     <EntitySet Name="ht_ad_category" EntityType="Self.ht_ad_category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ht_category" EntityType="Self.ht_category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ht_comm_relation" EntityType="Self.ht_comm_relation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_commission" EntityType="Self.ht_commission" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ht_help" EntityType="Self.ht_help" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ht_manager" EntityType="Self.ht_manager" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ht_manager_log" EntityType="Self.ht_manager_log" Schema="dbo" store:Type="Tables" />
@@ -486,6 +508,7 @@
     <EntitySet Name="ht_order" EntityType="Self.ht_order" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ht_order_appraise" EntityType="Self.ht_order_appraise" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ht_payment" EntityType="Self.ht_payment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_pinpai" EntityType="Self.ht_pinpai" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ht_region" EntityType="Self.ht_region" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ht_review" EntityType="Self.ht_review" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ht_single_page" EntityType="Self.ht_single_page" Schema="dbo" store:Type="Tables" />

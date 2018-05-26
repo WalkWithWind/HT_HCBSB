@@ -60,5 +60,22 @@ namespace HT.Mobile.Controllers
             }
             return View(apiResp);
         }
+
+        /// <summary>
+        /// 品牌列表
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult PinpaiList(int cid)
+        {
+            List<ht_pinpai> model = BLLPinpai.GetPinpaiList();
+            if (Request.IsAjaxRequest())
+            {
+                apiResp.status = true;
+                apiResp.result = model;
+                return Json(apiResp);
+            }
+            return View(apiResp);
+        }
+
     }
 }

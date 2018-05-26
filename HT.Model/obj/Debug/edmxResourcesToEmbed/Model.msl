@@ -38,6 +38,7 @@
           <ScalarProperty Name="sort" ColumnName="sort" />
           <ScalarProperty Name="code" ColumnName="code" />
           <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="tgroup" ColumnName="tgroup" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -46,7 +47,6 @@
       <EntityTypeMapping TypeName="Model.ht_category">
         <MappingFragment StoreEntitySet="ht_category">
           <ScalarProperty Name="sort" ColumnName="sort" />
-          <ScalarProperty Name="img" ColumnName="img" />
           <ScalarProperty Name="title" ColumnName="title" />
           <ScalarProperty Name="cid" ColumnName="cid" />
           <ScalarProperty Name="pid" ColumnName="pid" />
@@ -61,6 +61,18 @@
           <ScalarProperty Name="relation_type" ColumnName="relation_type" />
           <ScalarProperty Name="main_id" ColumnName="main_id" />
           <ScalarProperty Name="relation_id" ColumnName="relation_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_commission">
+      <EntityTypeMapping TypeName="Model.ht_commission">
+        <MappingFragment StoreEntitySet="ht_commission">
+          <ScalarProperty Name="total_money" ColumnName="total_money" />
+          <ScalarProperty Name="source_pre_userid" ColumnName="source_pre_userid" />
+          <ScalarProperty Name="source_userid" ColumnName="source_userid" />
+          <ScalarProperty Name="add_time" ColumnName="add_time" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -302,6 +314,17 @@
           <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="remark" ColumnName="remark" />
           <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_pinpai">
+      <EntityTypeMapping TypeName="Model.ht_pinpai">
+        <MappingFragment StoreEntitySet="ht_pinpai">
+          <ScalarProperty Name="sort" ColumnName="sort" />
+          <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="initial" ColumnName="initial" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>

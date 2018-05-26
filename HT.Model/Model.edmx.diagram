@@ -10,29 +10,31 @@
         <EntityTypeShape EntityType="Model.ht_ad_category" Width="1.5" PointX="4.75" PointY="9.75" />
         <EntityTypeShape EntityType="Model.ht_category" Width="1.5" PointX="10.75" PointY="0.75" />
         <EntityTypeShape EntityType="Model.ht_comm_relation" Width="1.5" PointX="10.75" PointY="3.75" />
-        <EntityTypeShape EntityType="Model.ht_help" Width="1.5" PointX="10.75" PointY="6.75" />
+        <EntityTypeShape EntityType="Model.ht_commission" Width="1.5" PointX="10.75" PointY="6.75" />
+        <EntityTypeShape EntityType="Model.ht_help" Width="1.5" PointX="10.75" PointY="9.75" />
         <EntityTypeShape EntityType="Model.ht_manager" Width="1.5" PointX="3" PointY="1.125" />
-        <EntityTypeShape EntityType="Model.ht_manager_log" Width="1.5" PointX="10.75" PointY="9.75" />
+        <EntityTypeShape EntityType="Model.ht_manager_log" Width="1.5" PointX="12.75" PointY="0.75" />
         <EntityTypeShape EntityType="Model.ht_manager_role" Width="1.5" PointX="0.75" PointY="3" />
         <EntityTypeShape EntityType="Model.ht_manager_role_value" Width="1.5" PointX="3" PointY="5.125" />
-        <EntityTypeShape EntityType="Model.ht_navigation" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.ht_navigation" Width="1.5" PointX="0.75" PointY="12.75" />
         <EntityTypeShape EntityType="Model.ht_news" Width="1.5" PointX="8" PointY="1.375" />
         <EntityTypeShape EntityType="Model.ht_news_cate" Width="1.5" PointX="5.75" PointY="6" />
-        <EntityTypeShape EntityType="Model.ht_order" Width="1.5" PointX="0.75" PointY="12.75" />
-        <EntityTypeShape EntityType="Model.ht_order_appraise" Width="1.5" PointX="2.75" PointY="12.75" />
-        <EntityTypeShape EntityType="Model.ht_payment" Width="1.5" PointX="12.75" PointY="4.75" />
-        <EntityTypeShape EntityType="Model.ht_region" Width="1.5" PointX="4.75" PointY="12.75" />
-        <EntityTypeShape EntityType="Model.ht_review" Width="1.5" PointX="12.75" PointY="8.75" />
-        <EntityTypeShape EntityType="Model.ht_single_page" Width="1.5" PointX="12.75" PointY="12.75" />
-        <EntityTypeShape EntityType="Model.ht_sms_config" Width="1.5" PointX="6.75" PointY="13.75" />
-        <EntityTypeShape EntityType="Model.ht_sms_email" Width="1.5" PointX="8.75" PointY="13.75" />
-        <EntityTypeShape EntityType="Model.ht_sms_record" Width="1.5" PointX="14.75" PointY="0.75" />
-        <EntityTypeShape EntityType="Model.ht_sms_template" Width="1.5" PointX="14.75" PointY="3.75" />
-        <EntityTypeShape EntityType="Model.ht_sys_config" Width="1.5" PointX="14.75" PointY="6.75" />
-        <EntityTypeShape EntityType="Model.ht_user" Width="1.5" PointX="14.75" PointY="9.75" />
-        <EntityTypeShape EntityType="Model.ht_user_message" Width="1.5" PointX="14.75" PointY="14.75" />
-        <EntityTypeShape EntityType="Model.ht_user_money_log" Width="1.5" PointX="10.75" PointY="15.75" />
-        <EntityTypeShape EntityType="Model.ht_user_point_log" Width="1.5" PointX="16.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.ht_order" Width="1.5" PointX="2.75" PointY="12.75" />
+        <EntityTypeShape EntityType="Model.ht_order_appraise" Width="1.5" PointX="12.75" PointY="4.75" />
+        <EntityTypeShape EntityType="Model.ht_payment" Width="1.5" PointX="4.75" PointY="12.75" />
+        <EntityTypeShape EntityType="Model.ht_pinpai" Width="1.5" PointX="12.75" PointY="8.75" />
+        <EntityTypeShape EntityType="Model.ht_region" Width="1.5" PointX="10.75" PointY="12.75" />
+        <EntityTypeShape EntityType="Model.ht_review" Width="1.5" PointX="12.75" PointY="11.75" />
+        <EntityTypeShape EntityType="Model.ht_single_page" Width="1.5" PointX="6.75" PointY="13.75" />
+        <EntityTypeShape EntityType="Model.ht_sms_config" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.ht_sms_email" Width="1.5" PointX="14.75" PointY="3.75" />
+        <EntityTypeShape EntityType="Model.ht_sms_record" Width="1.5" PointX="14.75" PointY="6.75" />
+        <EntityTypeShape EntityType="Model.ht_sms_template" Width="1.5" PointX="14.75" PointY="9.75" />
+        <EntityTypeShape EntityType="Model.ht_sys_config" Width="1.5" PointX="14.75" PointY="12.75" />
+        <EntityTypeShape EntityType="Model.ht_user" Width="1.5" PointX="8.75" PointY="15.75" />
+        <EntityTypeShape EntityType="Model.ht_user_message" Width="1.5" PointX="10.75" PointY="15.75" />
+        <EntityTypeShape EntityType="Model.ht_user_money_log" Width="1.5" PointX="12.75" PointY="15.75" />
+        <EntityTypeShape EntityType="Model.ht_user_point_log" Width="1.5" PointX="14.75" PointY="15.75" />
         <AssociationConnector Association="Model.FK__ht_manage__rolei__3B0BC30C" />
         <AssociationConnector Association="Model.FK__ht_manage__rolei__3BFFE745" />
         <AssociationConnector Association="Model.FK_ht_news_ht_news_cate" />

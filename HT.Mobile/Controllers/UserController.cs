@@ -137,10 +137,10 @@ namespace HT.Mobile.Controllers
         /// </summary>
         /// <param name="id">目标页</param>
         /// <returns></returns>
-        public ActionResult Mobile(string id)
+        public ActionResult Mobile(string url)
         {
             var authenticationUser = BLLAuthentication.GetAuthenticationUser();
-            ViewBag.Url = id;
+            ViewBag.Url = url;
             return View(authenticationUser);
         }
         #endregion 页面
@@ -160,7 +160,7 @@ namespace HT.Mobile.Controllers
         /// <returns></returns>
         public ActionResult GetCode(string mobile)
         {
-            if(MyRegex.IsPhone(mobile)) return JsonResult(APIErrCode.PhoneFormatError, "手机格式错误");
+            if(!MyRegex.IsPhone(mobile)) return JsonResult(APIErrCode.PhoneFormatError, "手机格式错误");
             var authenticationUser = BLLAuthentication.GetAuthenticationUser();
             var code =  HT.Utility.Utils.Number(6);
             new XCache().Add("Code"+ authenticationUser.openid, code, 5);//写入缓存
@@ -174,30 +174,39 @@ namespace HT.Mobile.Controllers
         /// <returns></returns>
         public ActionResult PostMobile(string mobile,string code)
         {
-            if (MyRegex.IsPhone(mobile)) return JsonResult(APIErrCode.PhoneFormatError, "手机格式错误");
+            if (!MyRegex.IsPhone(mobile)) return JsonResult(APIErrCode.PhoneFormatError, "手机格式错误");
 
             var authenticationUser = BLLAuthentication.GetAuthenticationUser();
             var obj = new XCache().Get("Code" + authenticationUser.openid);//写入缓存
             if(obj == null) return JsonResult(APIErrCode.CheckCodeErr, "验证码已过期");
             if(obj.ToString().ToUpper() != code.Trim().ToUpper()) return JsonResult(APIErrCode.CheckCodeErr, "验证码错误");
-            ht_user user = new ht_user();
-            user.openid = authenticationUser.openid;
-            user.username = user.openid;
-            user.salt = Utils.GetSalt();
-            user.password = EncryptUtil.DesEncrypt("123456", user.salt);
-            if (authenticationUser.parent_id.HasValue) {
-                user.parent_id = authenticationUser.parent_id;
-                ht_user parentUser = BLLUser.GetUserById(authenticationUser.parent_id.Value);
-                if(parentUser!=null && parentUser.parent_id.HasValue)
+            ht_user user = BLLUser.GetUserByOpenid(authenticationUser.openid);
+            if (user == null)
+            {
+                user = new ht_user();
+                user.username = user.openid;
+                user.openid = authenticationUser.openid;
+                user.salt = Utils.GetSalt();
+                user.password = EncryptUtil.DesEncrypt("123456", user.salt);
+                user.points = 0;
+                user.money = 0;
+                if (authenticationUser.parent_id.HasValue)
                 {
-                    user.pparent_id = parentUser.parent_id;
+                    user.parent_id = authenticationUser.parent_id;
+                    ht_user parentUser = BLLUser.GetUserById(authenticationUser.parent_id.Value);
+                    if (parentUser != null && parentUser.parent_id.HasValue)
+                    {
+                        user.pparent_id = parentUser.parent_id;
+                    }
                 }
             }
-            user.points = 0;
-            user.money = 0;
+            user.mobile = mobile;
             user.avatar = authenticationUser.avatar;
             user.nickname = authenticationUser.nickname;
-            if(BLLUser.AddUser(user) > 0) return JsonResult(APIErrCode.Success, "提交成功");
+            if (BLLUser.PostUser(user) > 0) {
+                BLLAuthentication.LoginAuthenticationTicket(user);
+                return JsonResult(APIErrCode.Success, "提交成功");
+            }
             return JsonResult(APIErrCode.CheckCodeErr, "提交失败");
         }
         #endregion 接口
