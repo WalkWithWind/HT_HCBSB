@@ -75,20 +75,15 @@
     </div>
 </script>
 <script>
-    Vue.component('details-component', {
+     Vue.component('details-component', {
         template: '#details-component-template',
         props: {
             newsData: {}
         },
         data: function () {
             var _this = this;
-            setTimeout(function () {
-                _this.init();
-            }, 100);
             var data =
                 {
-                    newsData: {},
-                    id: _this.newsData.id,
                     reviewData: {
                         total: 0,
                         list: []
@@ -116,6 +111,14 @@
                 }
             return data;
         },
+        //render: function (createElement) {
+        //    var _this = this;
+        //    if (!!_this.newsData.id) {
+        //        _this.id = _this.newsData.id;
+        //        _this.init();
+        //    }
+        //    return createElement()
+        //},
         methods: {
             init: function () {
                 this.loadReview();
@@ -124,7 +127,7 @@
             //加载留言
             loadReview: function () {
                 var _this = this;
-                _this.reviewSearchKey.news_id = _this.id;
+                _this.reviewSearchKey.news_id = _this.newsData.id;
                 _this.isLoading = true;
                 $.ajax({
                     type: 'post',
@@ -159,7 +162,7 @@
             //猜你喜欢
             loadLikeData: function () {
                 var _this = this;
-                _this.likeSearchKey.id = _this.id;
+                _this.likeSearchKey.id = _this.newsData.id;
                 _this.isLoading = true;
                 $.ajax({
                     type: 'post',
@@ -220,7 +223,7 @@
             //显示留言对话框
             showReview: function (value, reviewId) {
                 var _this = this;
-                _this.reviewInfo.news_id = _this.id;
+                _this.reviewInfo.news_id = _this.newsData.id;
                 _this.reviewInfo.review_type = value;
                 if (reviewId) _this.reviewInfo.review_id = reviewId;
                 _this.layerIndex = layer.open({
@@ -244,5 +247,6 @@
 
         }
     })
+
 </script>
 @Html.Action("Template", "Partial", new { id = "List" })
