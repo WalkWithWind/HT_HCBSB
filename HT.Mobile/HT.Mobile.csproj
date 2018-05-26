@@ -265,11 +265,13 @@
     <Content Include="Scripts\Project\CarBuy.js" />
     <Content Include="Scripts\Project\CarSell.js" />
     <Content Include="Scripts\Project\CarSource.js" />
+    <Content Include="Scripts\Project\CarSourceDetails.js" />
     <Content Include="Scripts\Project\Job.js" />
     <Content Include="Scripts\Project\PostGoods.js" />
     <Content Include="Scripts\Project\GoodsSource.js" />
     <Content Include="Scripts\Project\GoodsSourceDetails.js" />
     <Content Include="Scripts\Project\Recruit.js" />
+    <Content Include="Scripts\Project\RecruitDetails.js" />
     <Content Include="Scripts\Project\Template.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />

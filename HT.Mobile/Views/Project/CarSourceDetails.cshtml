@@ -88,7 +88,7 @@
             <dl>
                 <dt>联系人</dt>
                 <dd>
-                    <span>王先生</span>
+                    <span v-text="newsData.contact_name"></span>
                 </dd>
             </dl>
             <p class="lip">联系我时，请说在货车百事通看到的，谢谢！</p>
@@ -129,7 +129,7 @@
 
     <!-- 打电话 -->
     <div class="eld_item4">
-        <a href="javascript:void(0);" class="call_btn">打电话</a>
+        <a v-bind:href="'tel://'+newsData.contact_phone" class="call_btn">打电话</a>
     </div>
 
     <!-- 猜你喜欢 -->

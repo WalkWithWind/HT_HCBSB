@@ -241,6 +241,7 @@ namespace HT.BLL
                     }
                     data = data.Where(p => p.stop_district == searchKey.stop_district);
                 }
+
                 return data.OrderByDescending(p => p.set_top)
                     .ThenByDescending(p => p.praise_num)
                     .ThenByDescending(p => p.update_time).ToList();
@@ -280,5 +281,25 @@ namespace HT.BLL
 
 			}
 		}
-	}
+
+
+        public static int AddPraise(int id)
+        {
+            using (Entities db = new Entities())
+            {
+                db.ht_news.Find(id).praise_num++;
+                return db.SaveChanges();
+            }
+        }
+
+        public static int DeletePraise(int id)
+        {
+            using (Entities db = new Entities())
+            {
+                db.ht_news.Find(id).praise_num--;
+                return db.SaveChanges();
+            }
+        }
+
+    }
 }
