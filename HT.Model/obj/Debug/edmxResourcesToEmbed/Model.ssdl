@@ -46,6 +46,7 @@
     <Property Name="pid" Type="int" />
     <Property Name="cid" Type="int" />
     <Property Name="title" Type="nvarchar" MaxLength="50" />
+    <Property Name="img" Type="nvarchar" MaxLength="300" />
     <Property Name="sort" Type="int" />
   </EntityType>
   <EntityType Name="ht_comm_relation">
@@ -183,7 +184,7 @@
     <Property Name="audit_userid" Type="int" />
     <Property Name="audit_nickname" Type="nvarchar" MaxLength="50" />
     <Property Name="audit_time" Type="datetime" />
-    <Property Name="status" Type="int" Nullable="false" />
+    <Property Name="status" Type="int" />
     <Property Name="pay_status" Type="int" Nullable="false" />
     <Property Name="pay_time" Type="datetime" />
     <Property Name="pay_trade_no" Type="nvarchar" MaxLength="50" />
@@ -394,6 +395,7 @@
     <Property Name="openid" Type="nvarchar" MaxLength="50" />
     <Property Name="issubscribe" Type="int" Nullable="false" />
     <Property Name="parent_id" Type="int" />
+    <Property Name="pparent_id" Type="int" />
     <Property Name="addtime" Type="datetime" />
   </EntityType>
   <EntityType Name="ht_user_message">
@@ -430,16 +432,6 @@
     <Property Name="point" Type="int" />
     <Property Name="remark" Type="varchar" MaxLength="50" />
     <Property Name="addtime" Type="datetime" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <Association Name="FK__ht_manage__rolei__3B0BC30C">
     <End Role="ht_manager_role" Type="Self.ht_manager_role" Multiplicity="0..1" />
@@ -506,7 +498,6 @@
     <EntitySet Name="ht_user_message" EntityType="Self.ht_user_message" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ht_user_money_log" EntityType="Self.ht_user_money_log" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ht_user_point_log" EntityType="Self.ht_user_point_log" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__ht_manage__rolei__3B0BC30C" Association="Self.FK__ht_manage__rolei__3B0BC30C">
       <End Role="ht_manager_role" EntitySet="ht_manager_role" />
       <End Role="ht_manager" EntitySet="ht_manager" />

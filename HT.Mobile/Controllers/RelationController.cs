@@ -37,9 +37,8 @@ namespace HT.Mobile.Controllers
             model.relation_type = "praise";
             model.main_id = relation.main_id;
             model.relation_id = loginInfo.id.ToString();
-            if (HT.BLL.BLLRelation.AddRelation(model) > 0)
+            if (BLLNews.AddPraise(int.Parse(relation.main_id), model)> 0)
             {
-                BLLNews.AddPraise(int.Parse(relation.main_id));
                 apiResp.status = true;
                 apiResp.msg = "点赞成功";
             }
@@ -59,16 +58,14 @@ namespace HT.Mobile.Controllers
         {
             relation.relation_type = "praise";
             relation.relation_id = BLLUser.GetUserId().ToString();
-            int count = BLLRelation.DeleteRelation(relation);
-            if (count > 0)
+            if (BLLNews.DeletePraise(int.Parse(relation.main_id), relation)>0)
             {
-                BLLNews.DeletePraise(int.Parse(relation.main_id));
                 apiResp.msg = "取消点赞成功";
                 apiResp.status = true;
             }
             else
             {
-                apiResp.msg = "点赞出错";
+                apiResp.msg = "取消点赞出错";
                 apiResp.code = (int)HT.Model.Enum.APIErrCode.OperateFail;
             }
             return Json(apiResp);

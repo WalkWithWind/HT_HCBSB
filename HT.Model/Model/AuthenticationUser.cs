@@ -16,6 +16,8 @@ namespace HT.Model.Model
         public int id { get; set; }
         public string openid { get; set; }
         public string nickname { get; set; }
+        public string mobile { get; set; }
         public string avatar { get; set; }
+        public int? parent_id { get; set; }
     }
 }

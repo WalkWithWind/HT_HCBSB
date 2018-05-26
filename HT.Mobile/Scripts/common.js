@@ -61,11 +61,17 @@ window.confirm = function (title, msg, yesText, cancelText, yesFn, cancelFn) {
     });
 };
 
-
-
 function GetUrlParam(_k, _i) {
     var _h = window.location.href;
     _h = _h.substr(_h.lastIndexOf(_k) + _k.length+1);
     return _h.split('/')[_i];
 }
+function IsPhone(mobile) {
+    var myreg = /^[1][3,4,5,7,8][0-9]{9}$/;
+    if (!myreg.test(mobile)) {
+        return false;
+    } else {
+        return true;
+    }
+}  
 

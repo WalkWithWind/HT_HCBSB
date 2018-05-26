@@ -23,10 +23,11 @@ namespace HT.BLL
                 id = user.id,
                 openid = user.openid,
                 nickname = user.nickname,
+                mobile = user.mobile,
                 avatar = user.avatar
             });
             var expires = DateTime.Now.AddMinutes(30);
-            var ticket = new FormsAuthenticationTicket(1, user.username, DateTime.Now, expires, true, userData);
+            var ticket = new FormsAuthenticationTicket(1, user.openid, DateTime.Now, expires, true, userData);
             // 加密
             var hashTicket = FormsAuthentication.Encrypt(ticket);
             // 生成cookie 

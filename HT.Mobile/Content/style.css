@@ -2219,4 +2219,28 @@ footer {
     width: 33.333%;
 }
 /* s-地区选择*/
+.pg_sec7 dl dd{
+    position:relative;
 
+}
+.pg_sec7 dl dd span{
+    text-align:center;
+}
+.pg_sec7 dl dd input[type='text'] {
+    text-align:left;
+    float:none;
+}
+.pg_sec7 dl dd .btn {
+    padding: .08rem .2rem;
+    background: #fdcf24;
+    border-radius: .06rem;
+    margin-left: .2rem;
+    position: absolute;
+    top: 0.05rem;
+    right: -0.15rem;
+    height: 0.7rem;
+    line-height: 0.6rem;
+    width: 30%;
+    text-align: center;
+    color:#fff;
+}

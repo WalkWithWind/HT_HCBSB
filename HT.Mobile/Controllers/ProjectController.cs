@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using HT.Model.Enum;
 using HT.Model.Model;
+using HT.Mobile.Filter;
 
 namespace HT.Mobile.Controllers
 {
@@ -26,9 +27,10 @@ namespace HT.Mobile.Controllers
         /// <param name="page"></param>
         /// <param name="rows"></param>
         /// <returns></returns>
-        public ActionResult BaseNewsList(ht_news searchKey, int page = 1, int rows = 5, bool recommend =false)
+        public ActionResult BaseNewsList(ht_news searchKey, int page = 1, int rows = 5)
         {
-            Model.Model.PageResult<ht_news> pageModel = BLLNews.GetNewsListPageResult(page, rows, searchKey, recommend);
+            if (searchKey.isme.HasValue && searchKey.isme.Value) searchKey.add_userid = BLLAuthentication.GetAuthenticationUser().id; //我的发布
+            Model.Model.PageResult<ht_news> pageModel = BLLNews.GetNewsListPageResult(page, rows, searchKey);
 
             if (Request.IsAjaxRequest())
             {
@@ -98,6 +100,7 @@ namespace HT.Mobile.Controllers
         /// 发布货源信息
         /// </summary>
         /// <returns></returns>
+        [CheckFilter]
         public ActionResult PostGoods()
         {
             return View();
@@ -110,7 +113,7 @@ namespace HT.Mobile.Controllers
 		/// <returns></returns>
 		[HttpPost]
 		[Authorize]
-		public ActionResult PostGoodsSubmit(ht_news model)
+        public ActionResult PostGoodsSubmit(ht_news model)
 		{
 			string msg = "";
 			string orderNo = "";
@@ -125,11 +128,12 @@ namespace HT.Mobile.Controllers
 			}
 
 		}
-		/// <summary>
-		/// 发布车源信息
-		/// </summary>
-		/// <returns></returns>
-		public ActionResult PostCars()
+        /// <summary>
+        /// 发布车源信息
+        /// </summary>
+        /// <returns></returns>
+        [CheckFilter]
+        public ActionResult PostCars()
         {
             return View();
         }
@@ -137,6 +141,7 @@ namespace HT.Mobile.Controllers
         /// 发布招聘司机
         /// </summary>
         /// <returns></returns>
+        [CheckFilter]
         public ActionResult PostRecruit()
         {
             return View();
@@ -145,6 +150,7 @@ namespace HT.Mobile.Controllers
         /// 发布司机求职
         /// </summary>
         /// <returns></returns>
+        [CheckFilter]
         public ActionResult PostJob()
         {
             return View();
@@ -153,6 +159,7 @@ namespace HT.Mobile.Controllers
         /// 发布车辆出售
         /// </summary>
         /// <returns></returns>
+        [CheckFilter]
         public ActionResult PostCarSell()
         {
             return View();
@@ -161,6 +168,7 @@ namespace HT.Mobile.Controllers
         /// 发布车辆求购
         /// </summary>
         /// <returns></returns>
+        [CheckFilter]
         public ActionResult PostCarBuy()
         {
             return View();
@@ -169,6 +177,7 @@ namespace HT.Mobile.Controllers
         /// 发布通用模板
         /// </summary>
         /// <returns></returns>
+        [CheckFilter]
         public ActionResult PostTemplate()
         {
             return View();

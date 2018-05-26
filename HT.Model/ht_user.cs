@@ -76,6 +76,10 @@ namespace HT.Model
     ///<summary>
     ///
     ///</summary>
+        public Nullable<int> pparent_id { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public Nullable<System.DateTime> addtime { get; set; }
     }
 }

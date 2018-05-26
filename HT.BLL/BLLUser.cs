@@ -35,7 +35,7 @@ namespace HT.BLL
         {
             using (Entities db = new Entities())
             {
-                return db.ht_user.FirstOrDefault(p => p.id == id);
+                return db.ht_user.Find(id);
             }
         }
         /// <summary>
@@ -62,7 +62,6 @@ namespace HT.BLL
             {
                 db.ht_user.Add(user);
                 db.SaveChanges();
-
                 return user.id;
             }
         }

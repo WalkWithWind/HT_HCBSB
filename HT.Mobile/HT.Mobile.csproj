@@ -156,6 +156,7 @@
     <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\WXController.cs" />
+    <Compile Include="Filter\CheckFilter.cs" />
     <Compile Include="Filter\OAuthFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -277,6 +278,8 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\swiper\swiper.min.css" />
     <Content Include="Scripts\swiper\swiper.min.js" />
+    <Content Include="Scripts\User\Issue.js" />
+    <Content Include="Scripts\User\Mobile.js" />
     <Content Include="Scripts\User\TestLogin.js" />
     <Content Include="Scripts\vueFilter.js" />
     <Content Include="Scripts\vue\vue.min.js" />
@@ -336,6 +339,7 @@
     <Content Include="Views\User\MyDistribution.cshtml" />
     <Content Include="Views\User\Pay.cshtml" />
     <Content Include="Views\User\PayResult.cshtml" />
+    <Content Include="Views\User\Mobile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

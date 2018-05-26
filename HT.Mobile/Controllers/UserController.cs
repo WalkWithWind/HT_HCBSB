@@ -1,5 +1,7 @@
 ﻿using HT.BLL;
+using HT.Model;
 using HT.Model.Enum;
+using HT.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -130,6 +132,17 @@ namespace HT.Mobile.Controllers
             var details = BLLNews.GetNewsDetailsByOrderNo(order_no);
             return View(details.pay_status);
         }
+        /// <summary>
+        /// 完善信息
+        /// </summary>
+        /// <param name="id">目标页</param>
+        /// <returns></returns>
+        public ActionResult Mobile(string id)
+        {
+            var authenticationUser = BLLAuthentication.GetAuthenticationUser();
+            ViewBag.Url = id;
+            return View(authenticationUser);
+        }
         #endregion 页面
         #region 接口
         /// <summary>
@@ -140,6 +153,52 @@ namespace HT.Mobile.Controllers
         {
             var authenticationUser = BLLAuthentication.GetAuthenticationUser();
             return JsonResult(APIErrCode.Success,"获取成功",authenticationUser);
+        }
+        /// <summary>
+        /// 获取验证码 5分钟
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult GetCode(string mobile)
+        {
+            if(MyRegex.IsPhone(mobile)) return JsonResult(APIErrCode.PhoneFormatError, "手机格式错误");
+            var authenticationUser = BLLAuthentication.GetAuthenticationUser();
+            var code =  HT.Utility.Utils.Number(6);
+            new XCache().Add("Code"+ authenticationUser.openid, code, 5);//写入缓存
+            return JsonResult(APIErrCode.Success, "获取验证码成功", code);
+        }
+        /// <summary>
+        /// 完善手机
+        /// </summary>
+        /// <param name="mobile"></param>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        public ActionResult PostMobile(string mobile,string code)
+        {
+            if (MyRegex.IsPhone(mobile)) return JsonResult(APIErrCode.PhoneFormatError, "手机格式错误");
+
+            var authenticationUser = BLLAuthentication.GetAuthenticationUser();
+            var obj = new XCache().Get("Code" + authenticationUser.openid);//写入缓存
+            if(obj == null) return JsonResult(APIErrCode.CheckCodeErr, "验证码已过期");
+            if(obj.ToString().ToUpper() != code.Trim().ToUpper()) return JsonResult(APIErrCode.CheckCodeErr, "验证码错误");
+            ht_user user = new ht_user();
+            user.openid = authenticationUser.openid;
+            user.username = user.openid;
+            user.salt = Utils.GetSalt();
+            user.password = EncryptUtil.DesEncrypt("123456", user.salt);
+            if (authenticationUser.parent_id.HasValue) {
+                user.parent_id = authenticationUser.parent_id;
+                ht_user parentUser = BLLUser.GetUserById(authenticationUser.parent_id.Value);
+                if(parentUser!=null && parentUser.parent_id.HasValue)
+                {
+                    user.pparent_id = parentUser.parent_id;
+                }
+            }
+            user.points = 0;
+            user.money = 0;
+            user.avatar = authenticationUser.avatar;
+            user.nickname = authenticationUser.nickname;
+            if(BLLUser.AddUser(user) > 0) return JsonResult(APIErrCode.Success, "提交成功");
+            return JsonResult(APIErrCode.CheckCodeErr, "提交失败");
         }
         #endregion 接口
     }

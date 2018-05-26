@@ -1,6 +1,7 @@
 ﻿using HT.Model;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +19,7 @@ namespace HT.BLL
         /// <param name="searchKey">查询条件</param>
         /// <param name="searchKey">查询条件</param>
         /// <returns></returns>
-        private static IQueryable<ht_news> GetNewsData(Entities db, ht_news searchKey,bool isOrder=false,bool isRecommend=false)
+        private static IQueryable<ht_news> GetNewsData(Entities db, ht_news searchKey,bool isOrder=false)
         {
             db.Configuration.ProxyCreationEnabled = false;
             var data = db.ht_news.Where(p => true);
@@ -34,9 +35,20 @@ namespace HT.BLL
             if (!string.IsNullOrWhiteSpace(searchKey.car_style)) data = data.Where(p => p.car_style == searchKey.car_style);
             if (!string.IsNullOrWhiteSpace(searchKey.goods_type)) data = data.Where(p => p.goods_type == searchKey.goods_type);
             if (!string.IsNullOrWhiteSpace(searchKey.goods_type)) data = data.Where(p => p.goods_type == searchKey.goods_type);
+            if(searchKey.expire.HasValue && searchKey.expire == 1)
+            {
+                data = data.Where(p => (p.validity_unit == "月" && DbFunctions.AddMonths(p.add_time,p.validity_num.Value) < DateTime.Now) || (p.validity_unit == "天" && DbFunctions.AddDays(p.add_time, p.validity_num.Value) < DateTime.Now));
+            }
+            else
+            {
+                data = data.Where(p => (p.validity_unit == "月" && DbFunctions.AddMonths(p.add_time, p.validity_num.Value) > DateTime.Now) || (p.validity_unit == "天" && DbFunctions.AddDays(p.add_time, p.validity_num.Value) > DateTime.Now));
+            }
+            if (searchKey.status.HasValue) data = data.Where(p => p.status == searchKey.status);
+            if (searchKey.add_userid != 0) data = data.Where(p => p.add_userid == searchKey.add_userid);
+
             if (isOrder == false) return data;
             var orderData = data.OrderByDescending(p => p.set_top);
-            if(isRecommend) orderData = orderData.ThenByDescending(p => p.praise_num);
+            if(searchKey.recommend.HasValue && searchKey.recommend.Value) orderData = orderData.ThenByDescending(p => p.praise_num);
             orderData = orderData.ThenByDescending(p => p.update_time);
             return orderData;
         }
@@ -102,13 +114,13 @@ namespace HT.BLL
         /// 获取信息列表返回数据
         /// </summary>
         /// <returns></returns>
-        public static Model.Model.PageResult<ht_news> GetNewsListPageResult(int page, int rows, ht_news searchKey,bool isRecommend)
+        public static Model.Model.PageResult<ht_news> GetNewsListPageResult(int page, int rows, ht_news searchKey)
         {
             Model.Model.PageResult<ht_news> pageModel = new Model.Model.PageResult<ht_news>();
             using (Entities db = new Entities())
             {
                 pageModel.total = GetNewsData(db, searchKey).Count();
-                pageModel.list = GetNewsData(db, searchKey, true,isRecommend).Skip((page - 1) * rows).Take(rows).ToList();
+                pageModel.list = GetNewsData(db, searchKey, true).Skip((page - 1) * rows).Take(rows).ToList();
             }
             pageModel.totalpage = (int)Math.Ceiling((decimal)pageModel.total / (decimal)rows);//总页数
 
@@ -266,6 +278,7 @@ namespace HT.BLL
 				{
 					model.add_time = DateTime.Now;
 					model.order_no = orderNo;
+                    model.status = 0;
 					db.ht_news.Add(model);
 					if (db.SaveChanges() > 0)
 					{
@@ -282,22 +295,35 @@ namespace HT.BLL
 			}
 		}
 
-
-        public static int AddPraise(int id)
+        /// <summary>
+        /// 点赞数加
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static int AddPraise(int id, ht_comm_relation relation)
         {
             using (Entities db = new Entities())
             {
+                db.ht_comm_relation.Add(relation);
                 db.ht_news.Find(id).praise_num++;
                 return db.SaveChanges();
             }
         }
-
-        public static int DeletePraise(int id)
+        /// <summary>
+        /// 点赞数减
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static int DeletePraise(int id, ht_comm_relation relation)
         {
             using (Entities db = new Entities())
             {
+                ht_comm_relation model = db.ht_comm_relation.FirstOrDefault(p => p.main_id == relation.main_id && p.relation_id == relation.relation_id && p.relation_type == relation.relation_type);
+                if (model == null) return 0;
+                db.ht_comm_relation.Remove(model);
                 db.ht_news.Find(id).praise_num--;
-                return db.SaveChanges();
+                int rusult = db.SaveChanges();
+                return rusult;
             }
         }
 

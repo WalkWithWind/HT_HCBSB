@@ -23,6 +23,7 @@ namespace HT.Mobile.Controllers
             string state = Request["state"];//state 原样返回
 
             string pageUrl = HttpUtility.UrlDecode(state);
+
             string appSecret = "";
             string getAccessTokenUrl = string.Format("https://api.weixin.qq.com/sns/oauth2/access_token?appid={0}&secret={1}&code={2}&grant_type=authorization_code",
                 appId,
@@ -37,32 +38,22 @@ namespace HT.Mobile.Controllers
                 BLLAuthentication.LoginAuthenticationTicket(user);
                 return Redirect(pageUrl);
             }
-            else
-            {
-                user = new ht_user();
-                user.addtime = DateTime.Now;
-                user.parent_id = 0;
-                user.points = 0;
-                user.money = 0;
-                user.issubscribe = 0;
-                user.salt = Utils.GetCheckCode(6); //获得6位的salt加密字符串
-                user.password = EncryptUtil.DesEncrypt("123456", user.salt);
-
-            }
             string wxUserInfoSourceJson = RequestUtil.Get(string.Format("https://api.weixin.qq.com/sns/userinfo?access_token={0}&openid={1}",
-                        accessTokenModel.access_token,
-                        accessTokenModel.openid
-                    ));
+                       accessTokenModel.access_token,
+                       accessTokenModel.openid
+                   ));
             WeixinUserInfo wxUserInfo = JsonConvert.DeserializeObject<WeixinUserInfo>(wxUserInfoSourceJson);
-            user.username = user.openid;
-            user.openid = wxUserInfo.openid;
+
+            user = new ht_user();
             user.nickname = wxUserInfo.nickname;
             user.avatar = wxUserInfo.headimgurl;
-			if (BLLUser.AddUser(user)>0)
-			{
-				BLLAuthentication.LoginAuthenticationTicket(user);
-
-			}
+            user.username = accessTokenModel.openid;
+            user.openid = accessTokenModel.openid;
+            string prms = pageUrl.Substring(pageUrl.IndexOf("?") + 1);
+            var qList = HttpUtility.ParseQueryString(prms);
+            var pid = qList.Get("pid");
+            if (pid!=null) user.parent_id = Convert.ToInt32(pid);
+            BLLAuthentication.LoginAuthenticationTicket(user);
             return Redirect(pageUrl);
         }
     }

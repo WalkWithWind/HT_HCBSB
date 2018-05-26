@@ -29,7 +29,6 @@
     <EntitySet Name="ht_user_message" EntityType="Model.ht_user_message" />
     <EntitySet Name="ht_user_money_log" EntityType="Model.ht_user_money_log" />
     <EntitySet Name="ht_user_point_log" EntityType="Model.ht_user_point_log" />
-    <EntitySet Name="sysdiagrams" EntityType="Model.sysdiagram" />
     <AssociationSet Name="FK__ht_manage__rolei__3B0BC30C" Association="Model.FK__ht_manage__rolei__3B0BC30C">
       <End Role="ht_manager_role" EntitySet="ht_manager_role" />
       <End Role="ht_manager" EntitySet="ht_manager" />
@@ -89,6 +88,7 @@
     <Property Name="pid" Type="Int32" />
     <Property Name="cid" Type="Int32" />
     <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="img" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
     <Property Name="sort" Type="Int32" />
   </EntityType>
   <EntityType Name="ht_comm_relation">
@@ -230,7 +230,7 @@
     <Property Name="audit_userid" Type="Int32" />
     <Property Name="audit_nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="audit_time" Type="DateTime" Precision="3" />
-    <Property Name="status" Type="Int32" Nullable="false" />
+    <Property Name="status" Type="Int32" />
     <Property Name="pay_status" Type="Int32" Nullable="false" />
     <Property Name="pay_time" Type="DateTime" Precision="3" />
     <Property Name="pay_trade_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -443,6 +443,7 @@
     <Property Name="openid" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="issubscribe" Type="Int32" Nullable="false" />
     <Property Name="parent_id" Type="Int32" />
+    <Property Name="pparent_id" Type="Int32" />
     <Property Name="addtime" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="ht_user_message">
@@ -479,16 +480,6 @@
     <Property Name="point" Type="Int32" />
     <Property Name="remark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="addtime" Type="DateTime" Precision="3" />
-  </EntityType>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <Association Name="FK__ht_manage__rolei__3B0BC30C">
     <End Type="Model.ht_manager_role" Role="ht_manager_role" Multiplicity="0..1" />

@@ -107,6 +107,10 @@ namespace HT.Model.Enum
         /// <summary>
         /// 密码错误
         /// </summary>
-        PasswordFail = 10034
+        PasswordFail = 10034,
+        /// <summary>
+        /// 手机为空
+        /// </summary>
+        MobileIsNull = 10035
     }
 }

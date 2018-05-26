@@ -10,20 +10,6 @@ namespace HT.BLL
     public class BLLRelation
     {
         /// <summary>
-        /// 添加
-        /// </summary>
-        /// <param name="review"></param>
-        /// <returns></returns>
-        public static int AddRelation(ht_comm_relation relation)
-        {
-            using (Entities db = new Entities())
-            {
-                db.ht_comm_relation.Add(relation);
-                return db.SaveChanges();
-            }
-        }
-
-        /// <summary>
         /// 是否存在关系
         /// </summary>
         /// <param name="relation"></param>
@@ -36,6 +22,19 @@ namespace HT.BLL
             }
         }
         /// <summary>
+        /// 添加
+        /// </summary>
+        /// <param name="review"></param>
+        /// <returns></returns>
+        public static int AddRelation(ht_comm_relation relation)
+        {
+            using (Entities db = new Entities())
+            {
+                db.ht_comm_relation.Add(relation);
+                return db.SaveChanges();
+            }
+        }
+        /// <summary>
         /// 取消点赞
         /// </summary>
         /// <param name="relation"></param>
@@ -45,7 +44,6 @@ namespace HT.BLL
             using (Entities db = new Entities())
             {
                 ht_comm_relation model = db.ht_comm_relation.FirstOrDefault(p => p.main_id == relation.main_id && p.relation_id == relation.relation_id && p.relation_type == relation.relation_type);
-
                 if (model != null)
                 {
                     db.ht_comm_relation.Remove(model);
