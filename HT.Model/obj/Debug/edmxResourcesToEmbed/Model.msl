@@ -46,6 +46,7 @@
       <EntityTypeMapping TypeName="Model.ht_category">
         <MappingFragment StoreEntitySet="ht_category">
           <ScalarProperty Name="sort" ColumnName="sort" />
+          <ScalarProperty Name="img" ColumnName="img" />
           <ScalarProperty Name="title" ColumnName="title" />
           <ScalarProperty Name="cid" ColumnName="cid" />
           <ScalarProperty Name="pid" ColumnName="pid" />

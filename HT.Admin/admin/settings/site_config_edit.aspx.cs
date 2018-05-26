@@ -49,9 +49,11 @@ namespace HT.Admin.admin.settings
 			txtMchId.Text = SiteConfig["wx_mchid"];
 			txtMchSecret.Text = SiteConfig["wx_mchsecret"];
 			txtCerPath.Text = SiteConfig["wx_cerpath"];
-
-
-		}
+            txtPubAmountDay.Text= SiteConfig["pub_amount_day"];
+            txtPubAmountMonth.Text = SiteConfig["pub_amount_month"];
+            txtTopAllMoney.Text= SiteConfig["top_all_money"];
+            txtTopCateMoney.Text= SiteConfig["top_cate_money"];
+        }
 
         protected void btnSubmit_Click(object sender , EventArgs e)
         {
@@ -83,7 +85,11 @@ namespace HT.Admin.admin.settings
 			list.Find(x => x.xkey == "wx_mchid").xvalue = txtMchId.Text;
 			list.Find(x => x.xkey == "wx_mchsecret").xvalue = txtMchSecret.Text;
 			list.Find(x => x.xkey == "wx_cerpath").xvalue = txtCerPath.Text;
-			db.SaveChanges();
+            list.Find(x => x.xkey == "pub_amount_day").xvalue = txtPubAmountDay.Text;
+            list.Find(x => x.xkey == "pub_amount_month").xvalue = txtPubAmountMonth.Text;
+            list.Find(x => x.xkey == "top_all_money").xvalue = txtTopAllMoney.Text;
+            list.Find(x => x.xkey == "top_cate_money").xvalue = txtTopCateMoney.Text;
+            db.SaveChanges();
             JscriptMsg("修改系统配置成功！" , "site_config_edit.aspx");
         }
     }

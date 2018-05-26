@@ -3,257 +3,292 @@
     ViewBag.Title = "发布-卖车";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="top">
-    <div class="wrapper">
-        <a href="javascript:history.go(-1);" class="back_btn">返回</a>
-        <a href="javascript:void(0);" class="wdd">发布须知</a>
-    </div>
-</div>
-<div class="banner">
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <img src="/images/img/img00.jpg">
-            </div>
-            <div class="swiper-slide">
-                <img src="/images/img/img00.jpg">
-            </div>
-            <div class="swiper-slide">
-                <img src="/images/img/img00.jpg">
-            </div>
-            <div class="swiper-slide">
-                <img src="/images/img/img00.jpg">
-            </div>
+@section styles{
+
+}
+<div class="main">
+
+
+    <div class="top">
+        <div class="wrapper">
+            <a href="javascript:history.go(-1);" class="back_btn">返回</a>
+            <a href="javascript:void(0);" class="wdd">发布须知</a>
         </div>
-        <div class="swiper-pagination"></div>
     </div>
-</div>
-<div class="pg_sec1">
-    <ul class="">
-        <li class="li1">
-            <span>有限期</span>
-            <input type="text" placeholder="请输入有效期">
-            <div class="ro_box">
-                <input type="radio" name="name1" id="day" checked>
-                <label for="day">天</label>
-                <input type="radio" name="name1" id="mounth">
-                <label for="mounth">月</label>
-            </div>
-        </li>
-        <li>
-            <p>本类信息支付费用说明：10元/天，200元/月</p>
-        </li>
-    </ul>
-</div>
-
-<div class="pg_sec3 pcs_sec1">
-    <dl>
-        <dt>选择品牌</dt>
-        <dd>
-            <a class="cur" href="javascript:;"><img src="/images/icon/icon29_1.png"></a>
-            <a href="javascript:;"><img src="/images/icon/icon29_2.png"></a>
-            <a href="javascript:;"><img src="/images/icon/icon29_3.png"></a>
-            <a href="javascript:;"><img src="/images/icon/icon29_4.png"></a>
-            <a href="javascript:;"><img src="/images/icon/icon29_1.png"></a>
-            <a href="javascript:;"><img src="/images/icon/icon29_2.png"></a>
-            <a href="javascript:;"><img src="/images/icon/icon29_3.png"></a>
-            <a class="m_btn" href="post-car-brand.asp">更多</a>
-        </dd>
-    </dl>
-</div>
-<div class="pg_sec3 MB10">
-    <dl>
-        <dt>选择车型</dt>
-        <dd>
-            <a class="cur" href="javascript:;">牵引车</a>
-            <a href="javascript:;">载货车</a>
-            <a href="javascript:;">自卸车</a>
-            <a href="javascript:;">工程车</a>
-            <a href="javascript:;">轻卡小货</a>
-        </dd>
-    </dl>
-</div>
-
-<div class="pg_sec2">
-    <dl>
-        <dd>
-            <span>输入马力</span>
-            <input type="text" placeholder="请输入马力">
-        </dd>
-        <dd>
-            <span>出售价格</span>
-            <input type="text" placeholder="请输入价格（元）">
-        </dd>
-        <dd>
-            <span>车辆所在地</span>
-            <input type="text" placeholder="请选择车辆所在地">
-        </dd>
-        <dd>
-            <span>行驶证登记时间</span>
-            <input type="text" placeholder="请选择年月">
-        </dd>
-    </dl>
-</div>
-<div class="pg_sec3 MB10">
-    <dl>
-        <dt>排放标准</dt>
-        <dd>
-            <a class="cur" href="javascript:;">国三</a>
-            <a href="javascript:;">国四</a>
-            <a href="javascript:;">国五</a>
-            <a href="javascript:;">国六</a>
-            <a href="javascript:;">其他</a>
-        </dd>
-    </dl>
-</div>
-
-<div class="pcs_sec2 MB10">
-    <ul>
-        <li>
-            <span>车辆户型</span>
-            <input type="radio" name="name1" id="c" checked><label for="c">公司户</label>
-            <input type="radio" name="name1" id="p"><label for="p">个人户</label>
-        </li>
-        <li>
-            <span>能否提档</span>
-            <input type="radio" name="name2" id="y" checked><label for="y">能</label>
-            <input type="radio" name="name2" id="n"><label for="n">不能</label>
-        </li>
-    </ul>
-</div>
-
-<div class="pcs_sec3">
-    <span>图片上传</span>
-    <a href="javascript:void(0);">
-        <img src="/images/icon/icon30.png" class="upimg">
-    </a>
-    <em>做多上传5张</em>
-</div>
-
-<div class="pg_sec3 pg_sec6">
-    <dl>
-        <dt>其他补充</dt>
-        <dd>
-            <textarea placeholder="内容描述（可以输入文字和语音录入，语音请讲普通话）"></textarea>
-        </dd>
-    </dl>
-</div>
-<div class="pg_sec2 pg_sec7">
-    <dl>
-        <dt>联系信息</dt>
-        <dd>
-            <span>联系人</span>
-            <input type="text" value="笑笑" readonly>
-        </dd>
-        <dd>
-            <span>联系电话</span>
-            <input type="text" value="18812345678" readonly>
-        </dd>
-    </dl>
-</div>
-<div class="pg_sec8 pg_sec9">
-    <dl>
-        <dt>增值服务</dt>
-        <dd class="active">
-            <div class="pt1">
-                <img src="/images/icon/icon27_1.png">
-            </div>
-            <div class="pt2">
-                <span>分类置顶</span>
-                <p>将在此分类也置顶显示，更能多人看到</p>
-            </div>
-            <div class="pt3">
-                <span>10元</span>
-                <i></i>
-            </div>
-        </dd>
-        <dd>
-            <div class="pt1">
-                <img src="/images/icon/icon27_2.png">
-            </div>
-            <div class="pt2">
-                <span>全站置顶</span>
-                <p>全站所有分类置顶显示，效果更好</p>
-            </div>
-            <div class="pt3">
-                <span>20元</span>
-                <i></i>
-            </div>
-        </dd>
-    </dl>
-</div>
-<div class="pg_sec8 pg_sec10">
-    <dl>
-        <dd>
-            <div class="pt1">
-                <img src="/images/icon/icon27_3.png">
-            </div>
-            <div class="pt2">
-                <span>打赏福利</span>
-                <p>客服将优先多渠道推送</p>
-            </div>
-            <div class="pt3">
-                <span>20元</span>
-                <i></i>
-            </div>
-            <div class="clear"></div>
-            <div class="pt4">
-                <div class="txt_n">
-                    <a href="javascript:;">6.66</a>
-                    <a class="cur" href="javascript:;">8.88</a>
-                    <a href="javascript:;">9.99</a>
-                    <a href="javascript:;">66.6</a>
-                    <a href="javascript:;">88.8</a>
-                    <a href="javascript:;">99.9</a>
+    <div class="banner">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="/images/img/img00.jpg">
                 </div>
-                <p>
-                    <span>手动输入打赏金额</span>
-                    <input type="text" placeholder="请输入打赏金额">
-                </p>
+                <div class="swiper-slide">
+                    <img src="/images/img/img00.jpg">
+                </div>
+                <div class="swiper-slide">
+                    <img src="/images/img/img00.jpg">
+                </div>
+                <div class="swiper-slide">
+                    <img src="/images/img/img00.jpg">
+                </div>
             </div>
-        </dd>
-    </dl>
-    <a href="javascript:void(0);" class="btn">确认发布（共支付10元）</a>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+    <div class="pg_sec1">
+        <ul class="">
+            <li class="li1">
+                <span>有效期</span>
+                <input type="text" placeholder="请输入有效期" v-model="model.validity_num">
+                <div class="ro_box">
+                    <input type="radio" value="天" id="day" checked v-model="model.validity_unit"><label for="day">天</label>
+                    <input type="radio" value="月" id="mounth" v-model="model.validity_unit"><label for="mounth">月</label>
+                </div>
+            </li>
+            <li>
+                <p>本类信息支付费用说明：{{validity_unit_day_money}}元/天，{{validity_unit_month_money}}元/月</p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="pg_sec3 pcs_sec1">
+        <dl>
+            <dt>选择品牌</dt>
+            <dd>
+                <a href="javascript:;" v-for="item in useTypeData"
+                   v-bind:class="[{ 'cur': item.title==model.use_type }]"  v-on:click="model.use_type=item.title">
+                    <img v-bind:src="item.img" />
+                </a>
+            </dd>
+        </dl>
+
+
+    </div>
+    <div class="pg_sec3 MB10">
+        <dl>
+            <dt>车型</dt>
+            <dd>
+                
+                <a href="javascript:;" v-for="item in carStyleData"
+                   v-bind:class="[{ 'cur': item.title==model.car_style }]"
+                   v-text="item.title" v-on:click="model.car_style=item.title"></a>
+            </dd>
+        </dl>
+    </div>
+
+    <div class="pg_sec2">
+        <dl>
+            <dd>
+                <span>输入马力</span>
+                <input type="text" placeholder="请输入马力"  v-model="model.goods_weight">
+            </dd>
+            <dd>
+                <span>出售价格</span>
+                <input type="text" placeholder="请输入价格（元）" v-model="model.freight">
+            </dd>
+            <dd>
+                <span>车辆所在地</span>
+                <input type="text" placeholder="请选择车辆所在地" v-model="model.start_city" v-on:click="showCity('start')">
+            </dd>
+            <dd>
+                <span>行驶证登记时间</span>
+                <input type="date"  placeholder="请选择行驶证登记时间" v-model="model.use_time">
+            </dd>
+        </dl>
+    </div>
+    <div class="pg_sec3 MB10">
+        <dl>
+            <dt>排放标准</dt>
+            <dd>
+                <a href="javascript:;" v-for="item in carLengthData"
+                   v-bind:class="[{ 'cur': item.title==model.car_length }]"
+                   v-text="item.title" v-on:click="model.car_length=item.title"></a>
+            </dd>
+        </dl>
+    </div>
+
+    <div class="pcs_sec2 MB10">
+        <ul>
+            <li>
+                <span>车辆户型</span>
+                <input type="radio" name="name1" id="c" value="公司户"  v-model="model.use_mode"><label for="c">公司户</label>
+                <input type="radio" name="name1" id="p" value="个人户" checked v-model="model.use_mode"><label for="p">个人户</label>
+            </li>
+            <li>
+                <span>能否提档</span>
+                <input type="radio" name="name2" id="y" value="能" checked v-model="model.good_type"><label for="y">能</label>
+                <input type="radio" name="name2" id="n" value="不能" v-model="model.good_type"><label for="n">不能</label>
+            </li>
+        </ul>
+    </div>
+
+    <div class="pcs_sec3">
+        <span>图片上传</span>
+        <a href="javascript:void(0);">
+            <img class="upimg" v-for="item in imgsData" v-bind:src="item">
+            <img class="upimg" src="/images/icon/icon30.png" v-on:click="upload">
+        </a>
+        <em>最多上传5张图片</em>
+    </div>
+
+    <div class="pg_sec3 pg_sec6">
+        <dl>
+            <dt>其他补充</dt>
+            <dd>
+                <textarea placeholder="装卸方式、付款方式、备注" v-model="model.other_remark"></textarea>
+            </dd>
+        </dl>
+    </div>
+
+    <div class="pg_sec2 pg_sec7">
+        <dl>
+            <dt>联系信息</dt>
+            <dd>
+                <span>联系人</span>
+                <input type="text" value="" v-model="model.contact_name" placeholder="联系人">
+            </dd>
+            <dd>
+                <span>联系电话</span>
+                <input type="text" value="" v-model="model.contact_phone" placeholder="联系电话">
+            </dd>
+        </dl>
+    </div>
+
+    <div class="pg_sec8 pg_sec9">
+        <dl>
+            <dt>增值服务</dt>
+            <dd>
+                <div class="pt1">
+                    <img src="/images/icon/icon27_1.png">
+                </div>
+                <div class="pt2">
+                    <span>分类置顶</span>
+                    <p>将在此分类也置顶显示，更能多人看到</p>
+                </div>
+                <div class="pt3" v-on:click="topCate">
+                    <span>{{top_cate_money}}元</span>
+                    <i></i>
+                </div>
+            </dd>
+            <dd>
+                <div class="pt1">
+                    <img src="/images/icon/icon27_2.png">
+                </div>
+                <div class="pt2">
+                    <span>全站置顶</span>
+                    <p>全站所有分类置顶显示，效果更好</p>
+                </div>
+                <div class="pt3" v-on:click="topAll">
+                    <span>{{top_all_money}}元</span>
+                    <i></i>
+                </div>
+            </dd>
+        </dl>
+    </div>
+    <div class="pg_sec8 pg_sec10">
+        <dl>
+            <dd>
+                <div class="pt1">
+                    <img src="/images/icon/icon27_3.png">
+                </div>
+                <div class="pt2">
+                    <span>打赏福利</span>
+                    <p>客服将优先多渠道推送</p>
+                </div>
+                <div class="pt3">
+                    <span>{{model.reward_money}}元</span>
+                    <i></i>
+                </div>
+                <div class="clear"></div>
+                <div class="pt4">
+                    <div class="txt_n">
+                        <a href="javascript:;" v-for="item in rewardMoneyData"
+                           v-bind:class="[{ 'cur': item.title==model.reward_money }]"
+                           v-text="item.title" v-on:click="model.reward_money=item.title"></a>
+                    </div>
+                    <p>
+                        <span>手动输入打赏金额</span>
+                        <input type="text" placeholder="请输入打赏金额" v-model="model.reward_money">
+                    </p>
+                </div>
+
+            </dd>
+        </dl>
+        <a v-on:click="submit" class="btn">确认发布（共支付<label class="total">{{model.total}}</label>元）</a>
+    </div>
+
+    <div class="start_box zhx_box tab-box hide">
+        <ul class="zhx_box_title tab-title">
+            <li v-bind:class="[{'active':select.startProvinceTab}]"
+                v-on:click="selectTabProvince('start')">
+                <a href="javascript:;">省</a>
+            </li>
+            <li v-bind:class="[{'active':!select.startProvinceTab}]"
+                v-on:click="selectTabCity('start')">
+                <a href="javascript:;">市</a>
+            </li>
+        </ul>
+        <div v-bind:class="['province','clearfix','tab-content',{'hide':!select.startProvinceTab}]">
+            <a href="javascript:;" v-for="item in cityData.get(0)"
+               v-bind:class="[{ 'active': item==model.start_province }]"
+               v-text="item" v-on:click="selectProvince('start',item)">
+            </a>
+        </div>
+        <div v-bind:class="['city','clearfix','tab-content',{'hide':select.startProvinceTab}]">
+            <a href="javascript:;" v-for="item in cityData.getCitysByProvince(model.start_province)"
+               v-bind:class="[{ 'active':item==model.start_city }]"
+               v-text="item" v-on:click="selectCity('start',item)">
+            </a>
+        </div>
+    </div>
+
+
+    <input  type="file" name="file" id="file" style="display:none;" v-on:change="fileChange"/>
 </div>
-<script>
-    var mySwiper = new Swiper('.banner .swiper-container', {
-        // autoplay: 5000,
-        pagination: '.swiper-pagination',
-        loop: true,
-    })
 
-    $(function() {
-        var $dd = $(".pg_sec3 dd");
-        $dd.each(function() {
-            $(this).find("a:not('.m_btn')").click(function() {
-                $(this).addClass("cur").siblings("a:not('.m_btn')").removeClass("cur");
+
+@section scripts{
+    <script src="~/Scripts/geo.js"></script>
+    <script src="~/Scripts/Project/PostCarSell.js"></script>
+    <script>
+        var mySwiper = new Swiper('.banner .swiper-container', {
+            // autoplay: 5000,
+            pagination: '.swiper-pagination',
+            loop: true,
+        })
+
+        $(function () {
+            var $dd = $(".pg_sec3 dd");
+            $dd.each(function () {
+                $(this).find("a:not('.m_btn')").click(function () {
+                    $(this).addClass("cur").siblings("a:not('.m_btn')").removeClass("cur");
+                })
             })
         })
-    })
 
-    $(function() {
-        var $a = $(".pg_sec8 .pt4 .txt_n a");
+        $(function () {
+            var $a = $(".pg_sec8 .pt4 .txt_n a");
 
-        $a.click(function() {
-            $(this).addClass("cur").siblings().removeClass("cur");
+            $a.click(function () {
+                $(this).addClass("cur").siblings().removeClass("cur");
+            })
+
         })
 
-    })
-
-    $(function() {
-        var $dd = $(".pg_sec8 dl dd");
-        var $dd_t = $(".pg_sec10 dl dd")
-        $dd.each(function() {
-            $(this).find("i").click(function() {
-                $(this).parents("dd").toggleClass("active").siblings().removeClass("active");
-                (function() {
-                    if ($dd_t.hasClass("active")) {
-                        $(".pg_sec10 dl dd .pt4").show();
-                    } else {
-                        $(".pg_sec10 dl dd .pt4").hide();
-                    }
-                }())
+        $(function () {
+            var $dd = $(".pg_sec8 dl dd");
+            var $dd_t = $(".pg_sec10 dl dd")
+            $dd.each(function () {
+                $(this).find("i").click(function () {
+                    $(this).parents("dd").toggleClass("active").siblings().removeClass("active");
+                    (function () {
+                        if ($dd_t.hasClass("active")) {
+                            $(".pg_sec10 dl dd .pt4").show();
+                        } else {
+                            $(".pg_sec10 dl dd .pt4").hide();
+                        }
+                    }())
+                })
             })
         })
-    })
-</script>
+    </script>
+}

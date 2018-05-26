@@ -34,63 +34,63 @@ namespace HT.Model
     ///</summary>
         public string title { get; set; }
     ///<summary>
-    ///SEO描述
+    ///描述
     ///</summary>
         public string description { get; set; }
     ///<summary>
-    ///SEO关键词
+    ///联系人
     ///</summary>
         public string contact_name { get; set; }
     ///<summary>
-    ///
+    ///联系电话
     ///</summary>
         public string contact_phone { get; set; }
     ///<summary>
-    ///详情
+    ///有效期
     ///</summary>
         public Nullable<int> validity_num { get; set; }
     ///<summary>
-    ///点击量
+    ///有效期单位
     ///</summary>
         public string validity_unit { get; set; }
     ///<summary>
-    ///
+    ///出发地、工作地点、车辆所在地 (省份)
     ///</summary>
         public string start_province { get; set; }
     ///<summary>
-    ///
+    ///出发地、工作地点、车辆所在地 (城市)
     ///</summary>
         public string start_city { get; set; }
     ///<summary>
-    ///
+    ///出发地、工作地点、车辆所在地 (区)
     ///</summary>
         public string start_district { get; set; }
     ///<summary>
-    ///
+    ///出发地、工作地点、车辆所在地 (详细地址)
     ///</summary>
         public string start_address { get; set; }
     ///<summary>
-    ///
+    ///到达地、籍贯 （省份）
     ///</summary>
         public string stop_province { get; set; }
     ///<summary>
-    ///
+    ///到达地、籍贯 （城市）
     ///</summary>
         public string stop_city { get; set; }
     ///<summary>
-    ///
+    ///到达地、籍贯 （地区）
     ///</summary>
         public string stop_district { get; set; }
     ///<summary>
-    ///
+    ///到达地、籍贯 （详细地址）
     ///</summary>
         public string stop_address { get; set; }
     ///<summary>
-    ///
+    ///标签
     ///</summary>
         public string tags { get; set; }
     ///<summary>
-    ///
+    ///用车类型、驾照等级、选择品牌
     ///</summary>
         public string use_type { get; set; }
     ///<summary>
@@ -98,35 +98,35 @@ namespace HT.Model
     ///</summary>
         public string use_img { get; set; }
     ///<summary>
-    ///
+    ///车长、工资待遇、驾龄、排放标准
     ///</summary>
         public string car_length { get; set; }
     ///<summary>
-    ///
+    ///车型、驾驶类型、选择车型
     ///</summary>
         public string car_style { get; set; }
     ///<summary>
-    ///
+    ///货物类型、驾驶路线
     ///</summary>
         public string goods_type { get; set; }
     ///<summary>
-    ///
+    ///货物重量体积、马力
     ///</summary>
         public Nullable<int> goods_weight { get; set; }
     ///<summary>
-    ///
+    ///货物重量体积单位
     ///</summary>
         public string goods_weight_unit { get; set; }
     ///<summary>
-    ///
+    ///运费金额、出售价格
     ///</summary>
         public Nullable<decimal> freight { get; set; }
     ///<summary>
-    ///
+    ///装车时间、行驶证登记时间
     ///</summary>
         public Nullable<System.DateTime> use_time { get; set; }
     ///<summary>
-    ///
+    ///装卸方式、车辆户型、能否提档
     ///</summary>
         public string use_mode { get; set; }
     ///<summary>
@@ -134,7 +134,7 @@ namespace HT.Model
     ///</summary>
         public string pay_method { get; set; }
     ///<summary>
-    ///
+    ///其他备注
     ///</summary>
         public string other_remark { get; set; }
     ///<summary>
@@ -150,83 +150,83 @@ namespace HT.Model
     ///</summary>
         public Nullable<decimal> reward_money { get; set; }
     ///<summary>
-    ///
+    ///招聘人数
     ///</summary>
         public Nullable<int> recruit_num { get; set; }
     ///<summary>
-    ///
+    ///图片上传（5）
     ///</summary>
         public string imgs { get; set; }
     ///<summary>
-    ///
+    ///发布人id
     ///</summary>
         public int add_userid { get; set; }
     ///<summary>
-    ///
+    ///发布人昵称
     ///</summary>
         public string add_nickname { get; set; }
     ///<summary>
-    ///
+    ///发布人头像
     ///</summary>
         public string add_avatar { get; set; }
     ///<summary>
-    ///
+    ///发布时间
     ///</summary>
         public System.DateTime add_time { get; set; }
     ///<summary>
-    ///
+    ///修改人id
     ///</summary>
         public Nullable<int> update_userid { get; set; }
     ///<summary>
-    ///
+    ///修改昵称
     ///</summary>
         public string update_nickname { get; set; }
     ///<summary>
-    ///
+    ///修改时间
     ///</summary>
         public Nullable<System.DateTime> update_time { get; set; }
     ///<summary>
-    ///
+    ///审核人id
     ///</summary>
         public Nullable<int> audit_userid { get; set; }
     ///<summary>
-    ///
+    ///审核人昵称
     ///</summary>
         public string audit_nickname { get; set; }
     ///<summary>
-    ///
+    ///审核时间
     ///</summary>
         public Nullable<System.DateTime> audit_time { get; set; }
     ///<summary>
-    ///
+    ///状态
     ///</summary>
         public int status { get; set; }
     ///<summary>
-    ///
+    ///支付状态
     ///</summary>
         public int pay_status { get; set; }
     ///<summary>
-    ///
+    ///支付时间
     ///</summary>
         public Nullable<System.DateTime> pay_time { get; set; }
     ///<summary>
-    ///
+    ///交易单号
     ///</summary>
         public string pay_trade_no { get; set; }
     ///<summary>
-    ///
+    ///订单号
     ///</summary>
         public string order_no { get; set; }
     ///<summary>
-    ///
+    ///浏览数
     ///</summary>
         public int view_num { get; set; }
     ///<summary>
-    ///
+    ///点赞数
     ///</summary>
         public int praise_num { get; set; }
     ///<summary>
-    ///
+    ///分享数
     ///</summary>
         public int share_num { get; set; }
     ///<summary>

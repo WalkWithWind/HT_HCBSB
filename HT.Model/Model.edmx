@@ -51,6 +51,7 @@
           <Property Name="pid" Type="int" />
           <Property Name="cid" Type="int" />
           <Property Name="title" Type="nvarchar" MaxLength="50" />
+          <Property Name="img" Type="nvarchar" MaxLength="300" />
           <Property Name="sort" Type="int" />
         </EntityType>
         <EntityType Name="ht_comm_relation">
@@ -618,6 +619,7 @@
           <Property Name="pid" Type="Int32" />
           <Property Name="cid" Type="Int32" />
           <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="img" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="sort" Type="Int32" />
         </EntityType>
         <EntityType Name="ht_comm_relation">
@@ -1106,6 +1108,7 @@
             <EntityTypeMapping TypeName="Model.ht_category">
               <MappingFragment StoreEntitySet="ht_category">
                 <ScalarProperty Name="sort" ColumnName="sort" />
+                <ScalarProperty Name="img" ColumnName="img" />
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="cid" ColumnName="cid" />
                 <ScalarProperty Name="pid" ColumnName="pid" />
