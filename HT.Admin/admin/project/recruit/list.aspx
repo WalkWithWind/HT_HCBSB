@@ -72,8 +72,9 @@
                 
 				<th align="center" width="10%">联系人</th>
 				<th align="center" width="10%">联系电话</th>
-				<th align="center" width="20%">发布时间</th>
-				<th align="center" width="20%">工作地区</th>
+				<th align="center" width="15%">发布时间</th>
+				<th align="center" width="10%">置顶金额</th>
+				<th align="center" width="15%">工作地区</th>
 				<th align="center" width="10%">招聘人数</th>
 				<th align="center" width="15%">状态</th>
 				<th align="center" width="10%">操作</th>
@@ -90,7 +91,13 @@
                 
 				<td align="center">{{item.contact_name}}</td>
 				<td align="center">{{item.contact_phone}}</td>
-				<td align="center">{{item.add_time.replace(/T/g,' ')}}</td>
+				<td align="center">{{item.add_time|date}}</td>
+				<td align="center">
+                    {{item.set_top_money+'元'}}
+                    <span v-show="item.set_top==0">没有置顶</span>
+                    <span v-show="item.set_top==1">（分类置顶）</span>
+                    <span v-show="item.set_top==2">（全站置顶）</span>
+				</td>
 				<td align="center">{{item.start_province}}-
                             {{item.start_city}}
 				</td>
@@ -134,6 +141,7 @@
 	<script type="text/javascript" charset="utf-8" src="/admin/js/laymain.js"></script>
 	<script type="text/javascript" src="/scripts/laypage/1.2/laypage.js?v=1012"></script>
 	<script type="text/javascript" charset="utf-8" src="/admin/js/common.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/admin/js/vueFilter.js"></script>
 	<script src="/scripts/datepicker/WdatePicker.js"></script>
 	<script type="text/javascript">
 

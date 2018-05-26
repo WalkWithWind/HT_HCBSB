@@ -76,7 +76,7 @@
 			 <dl>
                 <dt>发布时间</dt>
                 <dd>
-                   {{newsData.add_time}}
+                   {{newsData.add_time|Date}}
                 </dd>
             </dl>
 		
@@ -118,7 +118,12 @@
              <dl>
                 <dt>置顶金额</dt>
                 <dd>
-                  {{newsData.reward_money}}  {{newsData.set_top_money}}
+                  {{newsData.reward_money+'元'}}  
+
+                    
+                    <span v-show="newsData.set_top==0">没有置顶</span>
+                    <span v-show="newsData.set_top==1">（分类置顶）</span>
+                    <span v-show="newsData.set_top==2">（全站置顶）</span>
                 </dd>
             </dl>
 
@@ -127,7 +132,7 @@
             <dl>
                 <dt>打赏金额</dt>
                 <dd>
-                  {{newsData.reward_money}} （元）
+                  {{newsData.reward_money+'元'}}
                 </dd>
             </dl>
 			
@@ -167,10 +172,13 @@
 </html>
 
 <script type="text/javascript" charset="utf-8" src="/scripts/vue/vue.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="/admin/js/vueFilter.js"></script>
+<script type="text/javascript" charset="utf-8" src="/admin/js/common.js"></script>
 <script type="text/javascript">
     
     var url = '/admin/api/project/detail.ashx';
-	 var updateUrl = '/admin/api/project/updatestatus.ashx';
+    var updateUrl = '/admin/api/project/updatestatus.ashx';
+
     var commVm = new Vue({
         el: '.maindiv',
         data: {
@@ -195,7 +203,6 @@
                     success: function (resp) {
                         if (resp.status) {
                             _this.newsData = resp.result;
-                            //console.log('_this.data', this.newsData);
                             if (_this.newsData.imgs) {
                                 _this.imgs = _this.newsData.imgs.split(',');
                             }

@@ -80,6 +80,7 @@
             <dl>
                 <dt>品牌</dt>
                 <dd>
+                    {{newsData.use_type}}
                 </dd>
             </dl>
 
@@ -117,7 +118,11 @@
              <dl>
                 <dt>置顶金额</dt>
                 <dd>
-                  {{newsData.reward_money}}  {{newsData.set_top_money}}
+                  {{newsData.set_top_money}}
+
+                    <span v-show="newsData.set_top==0">没有置顶</span>
+                    <span v-show="newsData.set_top==1">（分类置顶）</span>
+                    <span v-show="newsData.set_top==2">（全站置顶）</span>
                 </dd>
             </dl>
             
@@ -165,6 +170,7 @@
 </html>
 
 <script type="text/javascript" charset="utf-8" src="/scripts/vue/vue.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="/admin/js/vueFilter.js"></script>
 <script type="text/javascript">
     
     var url = '/admin/api/project/detail.ashx';

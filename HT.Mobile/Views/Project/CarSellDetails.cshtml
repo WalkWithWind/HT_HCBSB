@@ -94,21 +94,7 @@
                     {{newsData.update_time|dateFormart('更新')}}
                 </div>
                 <div class="ind_flo">
-                    <ol class="clearfix">
-                        <li>
-                            <img src="/images/icon/icon03_1.png">
-                            <span v-text="newsData.view_num"></span>
-                        </li>
-                        <li>
-                            <img src="/images/icon/icon03_2.png" v-show="!newsData.is_praise" v-on:click="clickPraise(newsData)">
-                            <img src="/images/icon/icon03_4.png" v-show="newsData.is_praise" v-on:click="cancelClickPraise(newsData)">
-                            <span v-text="newsData.praise_num"></span>
-                        </li>
-                        <li>
-                            <img src="/images/icon/icon03_3.png">
-                            <span v-text="newsData.share_num"></span>
-                        </li>
-                    </ol>
+
                 </div>
             </div>
         </li>

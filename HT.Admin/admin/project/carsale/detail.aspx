@@ -52,13 +52,6 @@
         </div>
 
         <div class="tab-content">
-          <%--  <dl>
-                <dt>标题</dt>
-                <dd>
-                   {{newsData.title}}
-                </dd>
-            </dl>--%>
-
             <dl>
                 <dt>联系人</dt>
                 <dd>
@@ -75,7 +68,7 @@
 			 <dl>
                 <dt>发布时间</dt>
                 <dd>
-                   {{newsData.add_time.replace(/T/g,' ')}}
+                   {{newsData.add_time|date}}
                 </dd>
             </dl>
 			<dl>
@@ -96,7 +89,7 @@
              <dl>
                 <dt>品牌</dt>
                 <dd>
-                   
+                   {{newsData.use_type}}
                 </dd>
             </dl>
 
@@ -104,7 +97,7 @@
             <dl>
                 <dt>车型</dt>
                 <dd>
-                    {{newsData.use_type}}
+                    {{newsData.car_style}}
                 </dd>
             </dl>
 
@@ -112,7 +105,7 @@
              <dl>
                 <dt>马力</dt>
                 <dd>
-                    {{newsData.goods_weight}}
+                    {{newsData.goods_weight+'马力'}}
                 </dd>
             </dl>
 
@@ -127,7 +120,7 @@
              <dl>
                 <dt>行驶证登记时间</dt>
                 <dd>
-                    {{newsData.use_time.replace(/T/g,' ')}}
+                    {{newsData.use_time|date}}
                 </dd>
             </dl>
 
@@ -143,21 +136,17 @@
             <dl>
                 <dt>车辆户型</dt>
                 <dd>
+                    {{newsData.goods_type}}
                 </dd>
             </dl>
 
             <dl>
                 <dt>能否提档</dt>
                 <dd>
+                    {{newsData.use_mode}}
                 </dd>
             </dl>
 
-             <dl>
-                <dt>货物类型</dt>
-                <dd>
-                    {{newsData.goods_type}}
-                </dd>
-            </dl>
 
 			<dl>
                 <dt>图片</dt>
@@ -178,7 +167,12 @@
              <dl>
                 <dt>置顶金额</dt>
                 <dd>
-                  {{newsData.reward_money}}  {{newsData.set_top_money}}
+                  
+                  {{newsData.set_top_money}}
+
+                    <span v-show="newsData.set_top==0">没有置顶</span>
+                    <span v-show="newsData.set_top==1">（分类置顶）</span>
+                    <span v-show="newsData.set_top==2">（全站置顶）</span>
                 </dd>
             </dl>
             
@@ -226,6 +220,7 @@
 </html>
 
 <script type="text/javascript" charset="utf-8" src="/scripts/vue/vue.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="/admin/js/vueFilter.js"></script>
 <script type="text/javascript">
     
     var url = '/admin/api/project/detail.ashx';
