@@ -99,36 +99,8 @@
             </div>
         </li>
     </ul>
-
-    <details-component v-bind:news-data="newsData"></details-component>
+    <details-component v-bind:id="id"  v-bind:news-data="newsData"></details-component>
 </div>
 @Html.Partial("_Footer")
 @Html.Action("Template", "Partial", new { id = "Details" })
 @Scripts.Render("/Scripts/Project/CarSellDetails.js")
-<script>
-            //$(function () {
-            //    var $txt_box = $(".txt_box");
-            //    $txt_box.each(function () {
-            //        var num = 0;
-            //        $(this).find(".txt_box_btn").click(function () {
-            //            if (num == 0) {
-            //                $(this).text('收起');
-            //                $(this).parent().addClass('open');
-            //                num = 1;
-            //            } else {
-            //                $(this).text('全文');
-            //                $(this).parent().removeClass('open');
-            //                num = 0;
-            //            }
-            //        })
-            //    })
-            //})
-
-            //var mySwiper = new Swiper('.swiper-container', {
-            //    // autoplay: 5000,
-            //    pagination: '.swiper-pagination',
-            //    paginationType: 'fraction',
-            //    spaceBetween: 6,
-            //    loop: true,
-            //})
-</script>

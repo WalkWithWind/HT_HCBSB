@@ -75,50 +75,43 @@
     </div>
 </script>
 <script>
-     Vue.component('details-component', {
+    Vue.component('details-component', {
         template: '#details-component-template',
         props: {
+            id: {},
             newsData: {}
         },
-        data: function () {
-            var _this = this;
-            var data =
-                {
-                    reviewData: {
-                        total: 0,
-                        list: []
-                    },
-                    reviewSearchKey: {
-                        page: 1,
-                        rows: 2,
-                        news_id: '',
-                        review_type: 'comment'
-                    },
-                    reviewInfo: {
-                        review_content: '',
-                        news_id: 0,
-                        review_type: '',//comment评论 reply回复
-                        review_id: 0
-                    },
-                    likeData: [],//猜你喜欢
-                    likeSearchKey: {
-                        page: 1,
-                        rows: 5,
-                        min: 1,
-                        id: 0
-                    },
-                    layerIndex: 0
-                }
-            return data;
+        data() {
+            return {
+                reviewData: {
+                    total: 0,
+                    list: []
+                },
+                reviewSearchKey: {
+                    page: 1,
+                    rows: 2,
+                    news_id: '',
+                    review_type: 'comment'
+                },
+                reviewInfo: {
+                    review_content: '',
+                    news_id: 0,
+                    review_type: '',//comment评论 reply回复
+                    review_id: 0
+                },
+                likeData: [],//猜你喜欢
+                likeSearchKey: {
+                    page: 1,
+                    rows: 5,
+                    min: 1,
+                    id: 0
+                },
+                layerIndex: 0
+            };
         },
-        //render: function (createElement) {
-        //    var _this = this;
-        //    if (!!_this.newsData.id) {
-        //        _this.id = _this.newsData.id;
-        //        _this.init();
-        //    }
-        //    return createElement()
-        //},
+        created() {
+            this.init();
+        },
         methods: {
             init: function () {
                 this.loadReview();
@@ -127,7 +120,7 @@
             //加载留言
             loadReview: function () {
                 var _this = this;
-                _this.reviewSearchKey.news_id = _this.newsData.id;
+                _this.reviewSearchKey.news_id = _this.id;
                 _this.isLoading = true;
                 $.ajax({
                     type: 'post',
@@ -143,7 +136,7 @@
                             }
                             _this.reviewData.list = _this.reviewData.list.concat(resp.result.list);
                             _this.reviewData.total = resp.result.total;
-                            console.log('_this.reviewData', _this.reviewData);
+                            //console.log('_this.reviewData', _this.reviewData);
                         }
                     }
                 });
@@ -162,7 +155,7 @@
             //猜你喜欢
             loadLikeData: function () {
                 var _this = this;
-                _this.likeSearchKey.id = _this.newsData.id;
+                _this.likeSearchKey.id = _this.id;
                 _this.isLoading = true;
                 $.ajax({
                     type: 'post',
@@ -173,7 +166,7 @@
                         _this.isLoading = false;
                         if (resp.status) {
                             _this.likeData = resp.result;
-                            console.log('_this.likeData', _this.likeData);
+                            //console.log('_this.likeData', _this.likeData);
                         }
                     }
                 });
@@ -223,7 +216,7 @@
             //显示留言对话框
             showReview: function (value, reviewId) {
                 var _this = this;
-                _this.reviewInfo.news_id = _this.newsData.id;
+                _this.reviewInfo.news_id = _this.id;
                 _this.reviewInfo.review_type = value;
                 if (reviewId) _this.reviewInfo.review_id = reviewId;
                 _this.layerIndex = layer.open({
@@ -242,9 +235,8 @@
                 var _this = this;
                 item.classOpen = !item.classOpen;
                 item.classText = item.classOpen ? '收起' : '全文';
-                console.log('item', item);
+                //console.log('item', item);
             }
-
         }
     })
 

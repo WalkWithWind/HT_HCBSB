@@ -33,7 +33,7 @@ var mainDetails = new Vue({
                     if (resp.status) {
                         _this.newsData = resp.result;
                         _this.imgs = _this.newsData.imgs.split(',');
-                        console.log('_this.newsData', _this.newsData);
+                        //console.log('_this.newsData', _this.newsData);
                     }
                 }
             });
