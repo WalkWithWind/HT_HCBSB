@@ -12,10 +12,10 @@
                             <em v-if="item.set_top>0">置顶</em>
                         </div>
                         <div class="infor_p2">
-                            <i class="lab1" v-text="item.use_type"></i>
-                            <i class="lab2" v-text="item.car_style"></i>
-                            <i class="lab3" v-text="item.car_length+'米'"></i>
-                            <i class="lab4" v-text="item.goods_type"></i>
+                            <i class="lab1" v-show="item.use_type" v-text="item.use_type"></i>
+                            <i class="lab2" v-show="item.car_style" v-text="item.car_style"></i>
+                            <i class="lab3" v-show="item.car_length" v-text="item.car_length+'米'"></i>
+                            <i class="lab4"v-show="item.goods_type"  v-text="item.goods_type"></i>
                         </div>
                         <div class="infor_p3">
                             <div class="img">
