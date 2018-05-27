@@ -10,6 +10,7 @@
         isLoadAll: false,
         searchKey: {
             cateid: 6,
+            status: 1,
             start_province: '',
             start_city: '',
             use_type: '',
@@ -36,6 +37,7 @@
         },
         loadData: function () {
             var _this = this;
+            if (_this.isLoading) return;
             _this.isLoading = true;
             //_this.isLoadingLayer = layer.load(0);
             $.ajax({
@@ -63,8 +65,8 @@
             var _this = this;
             $(window).bind('scroll', function (e) {
                 var _wh = $(window).height();
-                var _st = $('body').get(0).scrollTop;
-                var _sh = $('body').get(0).scrollHeight;
+                var _st = $(document).scrollTop();
+                var _sh = $(document).height();
                 if ((_sh - _st - _wh < 10) && (!_this.isLoadAll)) {
                     _this.loadMore();
                 }

@@ -14,10 +14,14 @@ namespace HT.Admin.admin.configuration
     {
         protected string action = HTEnums.ActionEnum.Add.ToString(); //操作类型
         private int id = 0;
+        protected string group;
+        protected string code;
         protected void Page_Load(object sender, EventArgs e)
         {
             ChkAdminLevel("ht_ads_list", HTEnums.ActionEnum.View.ToString()); //检查权限
             string _action = HTRequest.GetQueryString("action");
+            this.code = HTRequest.GetQueryString("code");
+            this.group = HTRequest.GetQueryString("group");
             if (!string.IsNullOrEmpty(_action) && _action == HTEnums.ActionEnum.Edit.ToString())
             {
                 this.action = HTEnums.ActionEnum.Edit.ToString();//修改类型
@@ -46,12 +50,36 @@ namespace HT.Admin.admin.configuration
         #region 绑定位置=================================
         private void TreeBindP()
         {
-            var list = db.ht_ad_category.OrderBy(s => s.sort).ToList();
-            this.ddlcode.Items.Clear();
-            this.ddlcode.Items.Add(new ListItem("请选择广告位...", ""));
+            var list = db.ht_ad_category.ToList();
+            this.ddlgroup.Items.Clear();
             foreach (var tiem in list)
             {
+                if (this.ddlgroup.Items.FindByValue(tiem.tgroup) != null) continue;
+                this.ddlgroup.Items.Add(new ListItem(tiem.tgroup, tiem.tgroup));
+            }
+            if (group != "")
+            {
+                ddlgroup.SelectedValue = group;
+            }
+            else
+            {
+                ddlgroup.SelectedIndex = 0;
+                group = ddlgroup.SelectedValue;
+            }
+
+            this.ddlcode.Items.Clear();
+            foreach (var tiem in list.Where(p => p.tgroup == group))
+            {
                 this.ddlcode.Items.Add(new ListItem(tiem.title, tiem.code));
+            }
+            if (code != "")
+            {
+                ddlcode.SelectedValue = code;
+            }
+            else
+            {
+                ddlcode.SelectedIndex = 0;
+                code = ddlcode.SelectedValue;
             }
         }
         #endregion
@@ -144,7 +172,7 @@ namespace HT.Admin.admin.configuration
                     JscriptMsg("保存过程中发生错误！", "");
                     return;
                 }
-                JscriptMsg("保存成功！", "ht_ads_list.aspx");
+                JscriptMsg("保存成功！", Utils.CombUrlTxt("ht_ads_list.aspx","group={0}&code={1}",this.ddlgroup.SelectedValue, this.ddlcode.SelectedValue));
             }
             else //添加
             {
@@ -154,7 +182,7 @@ namespace HT.Admin.admin.configuration
                     JscriptMsg("保存过程中发生错误！", "");
                     return;
                 }
-                JscriptMsg("保存成功！", "ht_ads_list.aspx");
+                JscriptMsg("保存成功！", Utils.CombUrlTxt("ht_ads_list.aspx","group={0}&code={1}", this.ddlgroup.SelectedValue, this.ddlcode.SelectedValue));
             }
         }
     }

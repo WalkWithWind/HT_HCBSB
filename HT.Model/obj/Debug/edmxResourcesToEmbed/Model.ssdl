@@ -67,8 +67,11 @@
     <Property Name="userid" Type="int" Nullable="false" />
     <Property Name="add_time" Type="datetime" />
     <Property Name="source_userid" Type="int" />
+    <Property Name="source_user_nick" Type="nvarchar" MaxLength="50" />
+    <Property Name="source_user_avatar" Type="nvarchar" MaxLength="150" />
     <Property Name="source_pre_userid" Type="int" />
     <Property Name="total_money" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="news_id" Type="int" />
   </EntityType>
   <EntityType Name="ht_help">
     <Key>
@@ -167,9 +170,9 @@
     <Property Name="stop_city" Type="nvarchar" MaxLength="50" />
     <Property Name="stop_district" Type="nvarchar" MaxLength="50" />
     <Property Name="stop_address" Type="nvarchar" MaxLength="50" />
-    <Property Name="tags" Type="nvarchar" MaxLength="50" />
+    <Property Name="tags" Type="nvarchar" MaxLength="2000" />
     <Property Name="use_type" Type="nvarchar" MaxLength="50" />
-    <Property Name="use_img" Type="nvarchar" MaxLength="300" />
+    <Property Name="use_img" Type="nvarchar" MaxLength="2000" />
     <Property Name="car_length" Type="nvarchar" MaxLength="50" />
     <Property Name="car_style" Type="nvarchar" MaxLength="50" />
     <Property Name="goods_type" Type="nvarchar" MaxLength="50" />
@@ -196,6 +199,7 @@
     <Property Name="audit_nickname" Type="nvarchar" MaxLength="50" />
     <Property Name="audit_time" Type="datetime" />
     <Property Name="status" Type="int" />
+    <Property Name="pay" Type="nvarchar" MaxLength="10" />
     <Property Name="pay_status" Type="int" Nullable="false" />
     <Property Name="pay_time" Type="datetime" />
     <Property Name="pay_trade_no" Type="nvarchar" MaxLength="50" />

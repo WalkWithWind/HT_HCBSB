@@ -68,8 +68,11 @@
     <EntitySetMapping Name="ht_commission">
       <EntityTypeMapping TypeName="Model.ht_commission">
         <MappingFragment StoreEntitySet="ht_commission">
+          <ScalarProperty Name="news_id" ColumnName="news_id" />
           <ScalarProperty Name="total_money" ColumnName="total_money" />
           <ScalarProperty Name="source_pre_userid" ColumnName="source_pre_userid" />
+          <ScalarProperty Name="source_user_avatar" ColumnName="source_user_avatar" />
+          <ScalarProperty Name="source_user_nick" ColumnName="source_user_nick" />
           <ScalarProperty Name="source_userid" ColumnName="source_userid" />
           <ScalarProperty Name="add_time" ColumnName="add_time" />
           <ScalarProperty Name="userid" ColumnName="userid" />
@@ -171,6 +174,7 @@
           <ScalarProperty Name="pay_trade_no" ColumnName="pay_trade_no" />
           <ScalarProperty Name="pay_time" ColumnName="pay_time" />
           <ScalarProperty Name="pay_status" ColumnName="pay_status" />
+          <ScalarProperty Name="pay" ColumnName="pay" />
           <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="audit_time" ColumnName="audit_time" />
           <ScalarProperty Name="audit_nickname" ColumnName="audit_nickname" />

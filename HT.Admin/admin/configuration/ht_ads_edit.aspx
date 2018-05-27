@@ -63,6 +63,14 @@
                 </dd>
             </dl>
             <dl>
+                <dt>广告分组</dt>
+                <dd>
+                    <div class="rule-single-select">
+                        <asp:DropDownList ID="ddlgroup" runat="server" datatype="*" errormsg="请选择广告分组" sucmsg=" "></asp:DropDownList>
+                    </div>
+                </dd>
+            </dl>
+            <dl>
                 <dt>广告位</dt>
                 <dd>
                     <div class="rule-single-select">

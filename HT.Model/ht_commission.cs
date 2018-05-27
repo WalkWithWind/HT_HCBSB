@@ -36,10 +36,22 @@ namespace HT.Model
     ///<summary>
     ///
     ///</summary>
+        public string source_user_nick { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
+        public string source_user_avatar { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
         public Nullable<int> source_pre_userid { get; set; }
     ///<summary>
     ///
     ///</summary>
         public Nullable<decimal> total_money { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
+        public Nullable<int> news_id { get; set; }
     }
 }
