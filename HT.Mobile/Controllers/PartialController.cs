@@ -29,7 +29,7 @@ namespace HT.Mobile.Controllers
                 apiResp.result = model;
                 return Json(apiResp);
             }
-            return View(model);
+            return PartialView(model);
         }
         /// <summary>
         /// 对应模板展示
