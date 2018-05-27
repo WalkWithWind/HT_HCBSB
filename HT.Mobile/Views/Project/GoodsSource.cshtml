@@ -2,6 +2,8 @@
 @using HT.Model;
 @model HT.Model.Model.PageResult<ht_news>
 @{
+    /**/
+
     ViewBag.Title = "货源信息";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -120,6 +122,8 @@
     </div>
 </div>
 @Html.Partial("_Footer")
-@Html.Action("Template", "Partial", new { id = "List" })
-@Html.Partial("_CityJs")
-@Scripts.Render("/Scripts/Project/GoodsSource.js")
+@section scripts{
+    @Html.Partial("_CityJs")
+    @Html.Action("Template", "Partial", new { id = "List" })
+    @Scripts.Render("/Scripts/Project/GoodsSource.js")
+}

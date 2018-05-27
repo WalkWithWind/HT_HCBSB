@@ -293,6 +293,7 @@
     <Content Include="Scripts\swiper\swiper.min.js" />
     <Content Include="Scripts\User\Issue.js" />
     <Content Include="Scripts\User\Mobile.js" />
+    <Content Include="Scripts\User\Pay.js" />
     <Content Include="Scripts\User\SecondaryDistribution.js" />
     <Content Include="Scripts\User\Team.js" />
     <Content Include="Scripts\User\TestLogin.js" />

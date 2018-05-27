@@ -110,6 +110,8 @@
 </div>
 
 @Html.Partial("_Footer")
-@Html.Action("Template", "Partial", new { id = "List" })
-@Html.Partial("_CityJs")
-@Scripts.Render("/Scripts/Project/CarSource.js")
+@section scripts{
+    @Html.Action("Template", "Partial", new { id = "List" })
+    @Html.Partial("_CityJs")
+    @Scripts.Render("/Scripts/Project/CarSource.js")
+}

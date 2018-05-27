@@ -6,11 +6,12 @@ var listVm = new Vue({
             total: 0,
             list: []
         },
-        isLoading: true,
+        isLoading: false,
         //isLoadingLayer: -1,
         isLoadAll: false,
         searchKey: {
             cateid: 3,
+            status: 1,
             start_province: '',
             start_city: '',
             use_type: '',
@@ -41,6 +42,7 @@ var listVm = new Vue({
         },
         loadData: function () {
             var _this = this;
+            if (_this.isLoading) return;
             _this.isLoading = true;
             //_this.isLoadingLayer = layer.load(0);
             $.ajax({
@@ -68,8 +70,8 @@ var listVm = new Vue({
             var _this = this;
             $(window).bind('scroll', function (e) {
                 var _wh = $(window).height();
-                var _st = $('body').get(0).scrollTop;
-                var _sh = $('body').get(0).scrollHeight;
+                var _st = $(document).scrollTop();
+                var _sh = $(document).height();
                 if ((_sh - _st - _wh < 10) && (!_this.isLoadAll)) {
                     _this.loadMore();
                 }

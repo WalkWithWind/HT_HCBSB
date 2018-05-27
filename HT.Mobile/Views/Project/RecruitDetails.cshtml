@@ -212,24 +212,7 @@
 </div>
 
 @Html.Partial("_Footer")
-@Scripts.Render("/Scripts/Project/RecruitDetails.js")
 
-<script>
-    //$(function () {
-    //    var $txt_box = $(".txt_box");
-    //    $txt_box.each(function () {
-    //        var num = 0;
-    //        $(this).find(".txt_box_btn").click(function () {
-    //            if (num == 0) {
-    //                $(this).text('收起');
-    //                $(this).parent().addClass('open');
-    //                num = 1;
-    //            } else {
-    //                $(this).text('全文');
-    //                $(this).parent().removeClass('open');
-    //                num = 0;
-    //            }
-    //        })
-    //    })
-    //})
-</script>
+@section scripts{
+    @Scripts.Render("/Scripts/Project/RecruitDetails.js")
+}

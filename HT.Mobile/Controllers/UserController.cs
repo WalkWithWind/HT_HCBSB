@@ -111,9 +111,13 @@ namespace HT.Mobile.Controllers
         /// <returns></returns>
         public ActionResult Pay(string id)
         {
+            var details = BLLNews.GetNewsDetailsByOrderNo(id);
+            if(details.pay_status == 1) //已支付
+            {
+                return PayResult(id);
+            }
             int user_id = BLLAuthentication.GetAuthenticationUser().id;
             var user = BLLUser.GetUserById(user_id);
-            var details = BLLNews.GetNewsDetailsByOrderNo(id);
             ViewBag.RespUser = new Model.Model.RespUser
             {
                 id = user.id,
@@ -127,9 +131,9 @@ namespace HT.Mobile.Controllers
         /// 支付成功
         /// </summary>
         /// <returns></returns>
-        public ActionResult PayResult(string order_no)
+        public ActionResult PayResult(string id)
         {
-            var details = BLLNews.GetNewsDetailsByOrderNo(order_no);
+            var details = BLLNews.GetNewsDetailsByOrderNo(id);
             return View(details.pay_status);
         }
         /// <summary>
@@ -208,6 +212,16 @@ namespace HT.Mobile.Controllers
                 return JsonResult(APIErrCode.Success, "提交成功");
             }
             return JsonResult(APIErrCode.CheckCodeErr, "提交失败");
+        }
+        /// <summary>
+        /// 余额支付提交
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult PostMoneyPay(string order_no)
+        {
+            string msg = "";
+            if (BLLNews.PayNews(order_no, "余额", "",out msg) ==0) return JsonResult(APIErrCode.OperateFail, msg);
+            return JsonResult(APIErrCode.Success, "支付完成");
         }
         /// <summary>
         /// 我的团队

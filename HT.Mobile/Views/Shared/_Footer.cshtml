@@ -55,22 +55,21 @@
     <p class="tt">长按下方二维码识别+关注</p>
     <img src="/images/icon/icon08.png">
 </div>
-
-<script>
-
-    $(".zhx_div .btn").click(function(){
-        layer.open({
-            type: 1,
-            title: false,
-            skin: 'layui-layer-zhx',
-            content: $('.zhx_code'),
-            area: ['260px', 'auto'],
-            closeBtn: 1,
-            shade: 0.3,
-            shadeClose : false,
-            scrollbar: false,
-            anim : 2
-        });
-    })
-
-</script>
+@section scripts{
+    <script>
+        $(".zhx_div .btn").click(function () {
+            layer.open({
+                type: 1,
+                title: false,
+                skin: 'layui-layer-zhx',
+                content: $('.zhx_code'),
+                area: ['260px', 'auto'],
+                closeBtn: 1,
+                shade: 0.3,
+                shadeClose: false,
+                scrollbar: false,
+                anim: 2
+            });
+        })
+    </script>
+}
