@@ -134,7 +134,8 @@ namespace HT.Mobile.Controllers
         public ActionResult PayResult(string id)
         {
             var details = BLLNews.GetNewsDetailsByOrderNo(id);
-            return View(details.pay_status);
+
+            return View();
         }
         /// <summary>
         /// 完善信息
