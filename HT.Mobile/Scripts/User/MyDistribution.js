@@ -1,19 +1,25 @@
-﻿var teamChildVm = new Vue({
-    el: '.teamChild',
+﻿
+
+
+
+
+
+var myDistributionVm = new Vue({
+    el: '.main',
     data: {
         isLoadAll: false,
-        teamChildData: {
+        disData: {
             list: [],
             total: 0
         },
         searchKey: {
             page: 1,
-            rows: 12,
-            parentid: GetUrlParam('SecondaryDistribution',0)
+            rows: 12
         }
     },
     methods: {
         init: function () {
+
             this.bindScroll();
             this.loadData();
         },
@@ -23,7 +29,7 @@
             _this.isLoading = true;
             $.ajax({
                 type: 'post',
-                url: '/User/TeamChildList',
+                url: '/User/DistributionData',
                 data: _this.searchKey,
                 dataType: 'json',
                 success: function (resp) {
@@ -32,10 +38,10 @@
                         if (resp.result.list.length == 0) {
                             _this.isLoadAll = true;
                         } else {
-                            _this.teamChildData.list = _this.teamChildData.list.concat(resp.result.list);
+                            _this.disData.list = _this.disData.list.concat(resp.result.list);
                         }
-                        _this.teamChildData.total = resp.result.total;
-                        console.log('_this.teamChildData', _this.teamChildData);
+                        _this.disData.total = resp.result.total;
+                        console.log('_this.disData', _this.disData);
                     }
                 }
             });
@@ -55,11 +61,11 @@
 
         loadMore: function () {
             var _this = this;
-            if (_this.teamChildData.list.length >= _this.teamChildData.total) return;
+            if (_this.disData.list.length >= _this.disData.total) return;
             this.searchKey.page++;
             this.loadData();
         },
 
     }
 });
-teamChildVm.init();
+myDistributionVm.init();

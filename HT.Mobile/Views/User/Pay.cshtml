@@ -2,8 +2,6 @@
 @{
     ViewBag.Title = "Pay";
     Layout = "~/Views/Shared/_Layout.cshtml";
-
-    var info = (HT.Model.ht_news)Model;
 }
 <div class="main">
     <div class="top">
@@ -92,11 +90,13 @@
     </div>
 </div>
 @Html.Partial("_Footer")
-<script>
+@section scripts{
+    <script>
     var data = {
         order_no='@Model.order_no',
         total=@Model.total,
         money=@ViewBag.RespUser.money
     };
-</script>
-@Scripts.Render("/Scripts/User/Pay.js")
+    </script>
+    @Scripts.Render("/Scripts/User/Pay.js")
+}

@@ -79,10 +79,8 @@
 
     <details-component v-bind:news-data="newsData"></details-component>
 </div>
-
-
-
 @Html.Partial("_Footer")
-@Html.Action("Template", "Partial", new { id = "Details" })
-@Scripts.Render("/Scripts/Project/TemplateDetails.js")
-
+@section scripts{
+    @Html.Action("Template", "Partial", new { id = "Details" })
+    @Scripts.Render("/Scripts/Project/TemplateDetails.js")
+}

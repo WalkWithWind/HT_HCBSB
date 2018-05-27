@@ -293,6 +293,7 @@
     <Content Include="Scripts\swiper\swiper.min.js" />
     <Content Include="Scripts\User\Issue.js" />
     <Content Include="Scripts\User\Mobile.js" />
+    <Content Include="Scripts\User\MyDistribution.js" />
     <Content Include="Scripts\User\Pay.js" />
     <Content Include="Scripts\User\SecondaryDistribution.js" />
     <Content Include="Scripts\User\Team.js" />
@@ -357,6 +358,7 @@
     <Content Include="Views\User\PayResult.cshtml" />
     <Content Include="Views\User\Mobile.cshtml" />
     <Content Include="Views\Partial\Details.cshtml" />
+    <Content Include="Views\Shared\_LayoutIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

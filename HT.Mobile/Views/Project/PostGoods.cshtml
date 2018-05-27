@@ -298,8 +298,8 @@
 
 </div>
 @section scripts{
-    <script src="~/Scripts/geo.js"></script>
-    <script src="~/Scripts/Project/PostGoods.js?v=1.01"></script>
+    @Scripts.Render("/Scripts/geo.js")
+    @Scripts.Render("/Scripts/Project/PostGoods.js")
     <script>
         var mySwiper = new Swiper('.banner .swiper-container', {
             autoplay: 5000,

@@ -1,5 +1,6 @@
 ﻿@{
     ViewBag.Title = "货车百事帮";
+    Layout = "~/Views/Shared/_LayoutIndex.cshtml";
 }
 @Html.Partial("_Header")
 <div class="banner">
@@ -64,6 +65,7 @@
     </div>
 </div>
 @Html.Partial("_Footer")
-@Html.Action("Template", "Partial", new { id = "List" })
-@Scripts.Render("/Scripts/Home/Index.js")
-
+@section scripts{
+    @Html.Action("Template", "Partial", new { id = "List" })
+    @Scripts.Render("/Scripts/Home/Index.js")
+}

@@ -10,8 +10,7 @@
 </head>
 <body>
     @RenderBody()
-    @*@Html.Partial("_FootLink")*@
-    @Scripts.Render("~/baseJs")
-    @RenderSection("scripts", required: false)
 </body>
 </html>
+@Scripts.Render("~/baseJs")
+@RenderSection("scripts", required: false)
