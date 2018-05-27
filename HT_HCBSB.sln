@@ -16,6 +16,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HT.BLL", "HT.BLL\HT.BLL.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HT.Mobile", "HT.Mobile\HT.Mobile.csproj", "{5C052137-5BF8-42C0-B052-D208639A5EE9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroMessenger", "MicroMessenger\MicroMessenger.csproj", "{EE8C9EB8-510D-499D-A5F7-3ECD6D552DFA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +44,10 @@ Global
 		{5C052137-5BF8-42C0-B052-D208639A5EE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C052137-5BF8-42C0-B052-D208639A5EE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C052137-5BF8-42C0-B052-D208639A5EE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE8C9EB8-510D-499D-A5F7-3ECD6D552DFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE8C9EB8-510D-499D-A5F7-3ECD6D552DFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE8C9EB8-510D-499D-A5F7-3ECD6D552DFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE8C9EB8-510D-499D-A5F7-3ECD6D552DFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

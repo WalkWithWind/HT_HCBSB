@@ -31,5 +31,16 @@ namespace HT.Utility
             JavaScriptSerializer jscvt = new JavaScriptSerializer();
             return jscvt.DeserializeObject(json);
         }
+        /// <summary>
+        /// 将json数据反序列化成对象
+        /// </summary>
+        /// <param name="json">json数据</param>
+        /// <returns>对象</returns>
+        public static T JsonToObject<T>(string json)
+        {
+            JavaScriptSerializer jscvt = new JavaScriptSerializer();
+            return jscvt.Deserialize<T>(json);
+        }
+
     }
 }
