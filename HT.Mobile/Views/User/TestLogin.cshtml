@@ -27,5 +27,6 @@
     </div>
 </div>
 @Html.Partial("_Footer")
-@Scripts.Render("/Scripts/User/TestLogin.js")
-
+@section scripts{
+    @Scripts.Render("/Scripts/User/TestLogin.js")
+}

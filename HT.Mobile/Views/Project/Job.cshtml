@@ -92,7 +92,9 @@
     </div>
 </div>
 @Html.Partial("_Footer")
-@Html.Action("Template", "Partial", new { id = "List" })
-@Html.Partial("_CityJs")
-@Scripts.Render("/Scripts/Project/Job.js")
+@section scripts{
+    @Html.Action("Template", "Partial", new { id = "List" })
+    @Html.Partial("_CityJs")
+    @Scripts.Render("/Scripts/Project/Job.js")
+}
 

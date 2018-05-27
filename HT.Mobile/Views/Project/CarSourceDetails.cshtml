@@ -203,5 +203,7 @@
     </div>
 </div>
 @Html.Partial("_Footer")
-@Scripts.Render("/Scripts/Project/CarSourceDetails.js")
+@section scripts{
+    @Scripts.Render("/Scripts/Project/CarSourceDetails.js")
+}
 

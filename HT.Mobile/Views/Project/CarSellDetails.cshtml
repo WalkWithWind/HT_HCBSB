@@ -35,14 +35,14 @@
                             <img v-bind:src="img">
                         </div>
                         @*<div class="swiper-slide">
-                            <img src="/images/img/img03.jpg">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="/images/img/img03.jpg">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="/images/img/img03.jpg">
-                        </div>*@
+                                <img src="/images/img/img03.jpg">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="/images/img/img03.jpg">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="/images/img/img03.jpg">
+                            </div>*@
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
@@ -99,8 +99,10 @@
             </div>
         </li>
     </ul>
-    <details-component v-bind:id="id"  v-bind:news-data="newsData"></details-component>
+    <details-component v-bind:id="id" v-bind:news-data="newsData"></details-component>
 </div>
 @Html.Partial("_Footer")
-@Html.Action("Template", "Partial", new { id = "Details" })
-@Scripts.Render("/Scripts/Project/CarSellDetails.js")
+@section scripts{
+    @Html.Action("Template", "Partial", new { id = "Details" })
+    @Scripts.Render("/Scripts/Project/CarSellDetails.js")
+}

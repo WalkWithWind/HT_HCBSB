@@ -6,7 +6,7 @@ var listVm = new Vue({
             total: 0,
             list: []
         },
-        isLoading: true,
+        isLoading: false,
         //isLoadingLayer: -1,
         isLoadAll: false,
         searchKey: {

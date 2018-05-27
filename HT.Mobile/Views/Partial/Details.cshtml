@@ -1,6 +1,4 @@
-﻿
-<script type="text/template" id="details-component-template">
-
+﻿<script type="text/template" id="details-component-template">
     <div>
         <!--联系人-->
         <div class="eld_item2">
@@ -101,6 +99,7 @@
                 },
                 likeData: [],//猜你喜欢
                 likeSearchKey: {
+                    status: 1,
                     page: 1,
                     rows: 5,
                     min: 1,
@@ -239,6 +238,5 @@
             }
         }
     })
-
 </script>
 @Html.Action("Template", "Partial", new { id = "List" })

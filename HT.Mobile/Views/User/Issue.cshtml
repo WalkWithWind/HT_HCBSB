@@ -11,8 +11,8 @@
     </div>
     <div class="tab-box">
         <ul class="pl_nav_ul tab-title">
-            <li v-for="tabLi in tabList" 
-                v-bind:class="[{ 'active':(tabLi.pay_status==searchKey.pay_status && tabLi.status==searchKey.status && tabLi.expire==searchKey.expire) }]" 
+            <li v-for="tabLi in tabList"
+                v-bind:class="[{ 'active':(tabLi.pay_status==searchKey.pay_status && tabLi.status==searchKey.status && tabLi.expire==searchKey.expire) }]"
                 v-on:click="selectTab(tabLi)">
                 <a href="javascript:void(0);" v-text="tabLi.text"></a>
             </li>
@@ -223,21 +223,7 @@
         </ul>
         <a href="pay.asp" class="btn">确认置顶（共支付10元）</a>
     </div>
-
-
-    <script>
-        $(".pl_form_ul li .btn_box .btn1").click(function () {
-            layer.open({
-                type: 1,
-                title: '请选择置顶',
-                content: $('.zhp_box'),
-                offset: 'lb',
-                area: ['100%', 'auto'],
-                shade: 0.5,
-                scrollbar: false,
-                anim: 2
-            });
-        })
-    </script>
 </div>
-@Scripts.Render("/Scripts/User/Issue.js")
+@section scripts{
+    @Scripts.Render("/Scripts/User/Issue.js")
+}
