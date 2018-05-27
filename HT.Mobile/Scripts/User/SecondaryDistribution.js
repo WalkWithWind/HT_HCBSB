@@ -8,7 +8,7 @@
         },
         searchKey: {
             page: 1,
-            rows: 10,
+            rows: 12,
             parentid: GetUrlParam('SecondaryDistribution',0)
         }
     },
