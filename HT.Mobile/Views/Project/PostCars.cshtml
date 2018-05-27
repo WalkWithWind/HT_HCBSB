@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section styles{
-
+    <link href="/Content/Project/Project.css" rel="stylesheet" />
 }
 <div class="main">
 
@@ -65,21 +65,21 @@
         <dl>
             <dt>车长<span>（米，可选）</span></dt>
             <dd>
-                <a href="javascript:;" v-bind:class="[{ 'cur':model.car_length=='' }]"
-                   v-on:click="model.car_length=''">不限</a>
+                <a href="javascript:;" v-bind:class="[{ 'cur':carLenSelect.length==0 }]"
+                   v-on:click="carLenSelect=[]">不限</a>
                 <a href="javascript:;" v-for="item in carLengthData"
-                   v-bind:class="[{ 'cur': item.title==model.car_length }]"
-                   v-text="item.title" v-on:click="model.car_length=item.title"></a>
+                   v-bind:class="[{ 'cur': carLenSelect.indexOf(item.title)>=0 }]"
+                   v-text="item.title" v-on:click="carLengthClick(item)"></a>
             </dd>
         </dl>
         <dl>
             <dt>车型</dt>
             <dd>
-                <a href="javascript:;" v-bind:class="[{ 'cur':model.car_style=='' }]"
-                   v-on:click="model.car_style=''">不限</a>
+                <a href="javascript:;" v-bind:class="[{ 'cur':carStyleSelect.length==0 }]"
+                   v-on:click="carStyleSelect=[]">不限</a>
                 <a href="javascript:;" v-for="item in carStyleData"
-                   v-bind:class="[{ 'cur': item.title==model.car_style }]"
-                   v-text="item.title" v-on:click="model.car_style=item.title"></a>
+                   v-bind:class="[{ 'cur': carStyleSelect.indexOf(item.title)>=0 }]"
+                   v-text="item.title" v-on:click="carStyleClick(item)"></a>
             </dd>
         </dl>
     </div>
@@ -117,9 +117,9 @@
                     <span>分类置顶</span>
                     <p>将在此分类也置顶显示，更能多人看到</p>
                 </div>
-                <div class="pt3" v-on:click="topCate">
+                <div class="pt3">
                     <span>{{top_cate_money}}元</span>
-                    <i></i>
+                    <i v-on:click="topCate"></i>
                 </div>
             </dd>
             <dd>
@@ -130,13 +130,14 @@
                     <span>全站置顶</span>
                     <p>全站所有分类置顶显示，效果更好</p>
                 </div>
-                <div class="pt3" v-on:click="topAll">
+                <div class="pt3">
                     <span>{{top_all_money}}元</span>
-                    <i></i>
+                    <i v-on:click="topAll"></i>
                 </div>
             </dd>
         </dl>
     </div>
+
     <div class="pg_sec8 pg_sec10">
         <dl>
             <dd>
@@ -149,7 +150,7 @@
                 </div>
                 <div class="pt3">
                     <span>{{model.reward_money}}元</span>
-                    <i></i>
+                    <i v-on:click="rewardClick"></i>
                 </div>
                 <div class="clear"></div>
                 <div class="pt4">

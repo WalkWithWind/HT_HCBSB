@@ -18,7 +18,7 @@ var vue = new Vue({
 			other_remark: "",//其它补充
 			contact_name: "",//联系人
 			contact_phone: "",//联系电话
-			set_top:"1",//置顶类型 1分类2 全站
+            set_top: "",//置顶类型  空不置顶 1分类 2全站
 			set_top_money: 0,//置顶金额
 			reward_money: 0,//打赏金额
 			total:0//需支付金额
@@ -28,10 +28,10 @@ var vue = new Vue({
         carStyleData: [],//驾驶类型列表
 		rewardMoneyData: [],//打赏金额列表
 		top_cate_select: false,//是否选中分类置顶
-		top_all_select: false,//是否选中全站置顶
+        top_all_select: false,//是否选中全站置顶
+        reward_select: false,//是否选中赏福利
 		top_cate_money: 0,//分类置顶金额
 		top_all_money: 0,//全站置顶金额
-		top_type: 0,//置顶类型 1分类 2全站 0不置顶
 		validity_unit_day_money: 0,// 发布费用 元/天
         validity_unit_month_money: 0,// 发布费用 元/月
 		select: {
@@ -157,7 +157,17 @@ var vue = new Vue({
 				_this.model.set_top_money = 0;
 				_this.model.set_top = "";
 			}
-		},
+        },
+        rewardClick: function () {//打赏福利点击
+            var _this = this;
+            _this.reward_select = !_this.reward_select;
+            if (_this.reward_select) {
+
+            } else {
+                _this.model.reward_money = 0;
+
+            }
+        },
 		checkInput: function () {//检查输入
 			//return true;
 			var _this = this;
