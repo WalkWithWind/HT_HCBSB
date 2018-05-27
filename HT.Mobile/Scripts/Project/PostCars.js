@@ -17,19 +17,21 @@ var vue = new Vue({
 			other_remark: "",//其它补充
 			contact_name: "",//联系人
 			contact_phone: "",//联系电话
-			set_top:"1",//置顶类型 1分类2 全站
+            set_top: "",//置顶类型  空不置顶 1分类 2全站
 			set_top_money: 0,//置顶金额
 			reward_money: 0,//打赏金额
 			total:0//需支付金额
         },
+        carLenSelect: [],//选中的车长
+        carStyleSelect: [],//选中的车型
         carLengthData: [],//车长列表
 		carStyleData: [],//车型列表
 		rewardMoneyData: [],//打赏金额列表
 		top_cate_select: false,//是否选中分类置顶
-		top_all_select: false,//是否选中全站置顶
+        top_all_select: false,//是否选中全站置顶
+        reward_select: false,//是否选中赏福利
 		top_cate_money: 0,//分类置顶金额
 		top_all_money: 0,//全站置顶金额
-		top_type: 0,//置顶类型 1分类 2全站 0不置顶
 		validity_unit_day_money: 0,// 发布费用 元/天
         validity_unit_month_money: 0,// 发布费用 元/月
 		select: {
@@ -150,7 +152,17 @@ var vue = new Vue({
 				_this.model.set_top_money = 0;
 				_this.model.set_top = "";
 			}
-		},
+        },
+        rewardClick: function () {//打赏福利点击
+            var _this = this;
+            _this.reward_select = !_this.reward_select;
+            if (_this.reward_select) {
+
+            } else {
+                _this.model.reward_money = 0;
+
+            }
+        },
 		checkInput: function () {//检查输入
 			//return true;
 			var _this = this;
@@ -186,7 +198,9 @@ var vue = new Vue({
 			var _this = this;
 			if (!_this.checkInput()) {
 				return false;
-			}
+            }
+            _this.model.car_length = _this.carLenSelect.join(',');
+            _this.model.car_style = _this.carStyleSelect.join(',');
 			confirm("提示", "确定发布", "发布", "取消", function () {
 				$.ajax({
 					type: 'post',
@@ -264,7 +278,46 @@ var vue = new Vue({
 				if (_this.model.stop_province == '') return;
 				_this.select.stopProvinceTab = false;
 			}
-		}
+        },
+        carLengthClick: function (item) {//车长选择
+            if (this.carLenSelect.indexOf(item.title) >= 0) {
+                // 删除
+                for (var i = 0; i < this.carLenSelect.length; i++) {
+                    if (this.carLenSelect[i] == item.title) {
+                        this.carLenSelect.splice(i, 1);
+                    }
+                }
+            } else {
+                //if (this.carLenSelect.length >= 5) {
+                //    alert("最多选择5个标签");
+                //    return false;
+                //}
+                this.carLenSelect.push(item.title);
+            }
+            console.log(["this.carLenSelect", this.carLenSelect]);
+
+
+
+        },
+        carStyleClick: function (item) {//车型选择
+            if (this.carStyleSelect.indexOf(item.title) >= 0) {
+                // 删除
+                for (var i = 0; i < this.carStyleSelect.length; i++) {
+                    if (this.carStyleSelect[i] == item.title) {
+                        this.carStyleSelect.splice(i, 1);
+                    }
+                }
+            } else {
+                //if (this.carLenSelect.length >= 5) {
+                //    alert("最多选择5个标签");
+                //    return false;
+                //}
+                this.carStyleSelect.push(item.title);
+            }
+
+
+
+        }
 
 
     }

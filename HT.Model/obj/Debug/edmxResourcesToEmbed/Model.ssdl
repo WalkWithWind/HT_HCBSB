@@ -172,7 +172,7 @@
     <Property Name="stop_address" Type="nvarchar" MaxLength="50" />
     <Property Name="tags" Type="nvarchar" MaxLength="50" />
     <Property Name="use_type" Type="nvarchar" MaxLength="50" />
-    <Property Name="use_img" Type="nvarchar" MaxLength="300" />
+    <Property Name="use_img" Type="nvarchar" MaxLength="2000" />
     <Property Name="car_length" Type="nvarchar" MaxLength="50" />
     <Property Name="car_style" Type="nvarchar" MaxLength="50" />
     <Property Name="goods_type" Type="nvarchar" MaxLength="50" />
