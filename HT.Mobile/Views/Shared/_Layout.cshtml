@@ -6,11 +6,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     @Styles.Render("~/baseCss")
+    @Styles.Render("/Scripts/geo.js")
     @RenderSection("styles", required: false)
 </head>
 <body>
     @RenderBody()
 </body>
 </html>
-@Scripts.Render("~/baseJs")
+@Scripts.Render("/Scripts/jquery-2.1.4.min.js",
+                      "/Scripts/vue/vue.min.js",
+                      "/Scripts/vueFilter.js",
+                      "/Scripts/swiper/swiper.min.js",
+                      "/Scripts/layer/layer.js",
+                      "/Scripts/common.js");
 @RenderSection("scripts", required: false)

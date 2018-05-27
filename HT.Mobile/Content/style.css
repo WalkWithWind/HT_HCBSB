@@ -2194,10 +2194,10 @@ footer {
 .zhx_box_title li.active:after {
 	background: #ffb400;
 }
-.zhx_box .province, .city {
+.zhx_box .province, .zhx_box .city, .zhx_box .day, .zhx_box .time {
     margin-bottom: .2rem;
 }
-.zhx_box .province a, .city a {
+.zhx_box .province a, .zhx_box .city a, .zhx_box .day a, .zhx_box .time a {
     float: left;
     height: .8rem;
     border: .02rem solid #eaeaea;
@@ -2208,7 +2208,7 @@ footer {
     margin-bottom: -.02rem;
     margin-left: -.02rem;
 }
-.zhx_box .province .active,.zhx_box .city .active {
+.zhx_box .province .active, .zhx_box .city .active, .zhx_box .day .active, .zhx_box .time .active {
     background-color: #5EB9F2;
     color: #ffffff;
 }
@@ -2218,6 +2218,13 @@ footer {
 .zhx_box .city a {
     width: 33.333%;
 }
+.zhx_box .day a {
+    width: 50%;
+}
+.zhx_box .time a {
+    width: 50%;
+}
+
 /* s-地区选择*/
 .pg_sec7 dl dd{
     position:relative;

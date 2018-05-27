@@ -15,12 +15,16 @@ namespace HT.Model
     ///<summary>
     ///资讯百宝箱
     ///</summary>
-    public partial class ht_news
+    public partial class ht_news_del
     {
     ///<summary>
     ///
     ///</summary>
         public int id { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
+        public int news_id { get; set; }
     ///<summary>
     ///分类id
     ///</summary>
@@ -241,7 +245,5 @@ namespace HT.Model
     ///
     ///</summary>
         public Nullable<decimal> total { get; set; }
-    
-        public virtual ht_news_cate ht_news_cate { get; set; }
     }
 }

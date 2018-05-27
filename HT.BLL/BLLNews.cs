@@ -39,11 +39,12 @@ namespace HT.BLL
             {
                 data = data.Where(p => (p.validity_unit == "月" && DbFunctions.AddMonths(p.add_time,p.validity_num.Value) < DateTime.Now) || (p.validity_unit == "天" && DbFunctions.AddDays(p.add_time, p.validity_num.Value) < DateTime.Now));
             }
-            else
+            else if(searchKey.expire.HasValue && searchKey.expire == 0)
             {
                 data = data.Where(p => (p.validity_unit == "月" && DbFunctions.AddMonths(p.add_time, p.validity_num.Value) > DateTime.Now) || (p.validity_unit == "天" && DbFunctions.AddDays(p.add_time, p.validity_num.Value) > DateTime.Now));
             }
             if (searchKey.status.HasValue) data = data.Where(p => p.status == searchKey.status);
+            if (searchKey.pay_status.HasValue) data = data.Where(p => p.pay_status == searchKey.pay_status);
             if (searchKey.add_userid != 0) data = data.Where(p => p.add_userid == searchKey.add_userid);
 
             if (isOrder == false) return data;
@@ -279,7 +280,8 @@ namespace HT.BLL
 					model.add_time = DateTime.Now;
 					model.order_no = orderNo;
                     model.status = 0;
-					db.ht_news.Add(model);
+                    model.pay_status = 0;
+                    db.ht_news.Add(model);
 					if (db.SaveChanges() > 0)
 					{
 						return true;
@@ -324,6 +326,86 @@ namespace HT.BLL
                 db.ht_news.Find(id).praise_num--;
                 int rusult = db.SaveChanges();
                 return rusult;
+            }
+        }
+        /// <summary>
+        /// 删除新闻
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static int DelNews(int id)
+        {
+            using (Entities db = new Entities())
+            {
+                var details = db.ht_news.Find(id);
+                #region 支付过的删除时备份一下
+                if (details.pay_status == 1)
+                {
+                    ht_news_del bk = new ht_news_del()
+                    {
+                        news_id = details.id,
+                        cateid = details.cateid,
+                        cate = details.cate,
+                        title = details.title,
+                        description = details.description,
+                        contact_name = details.contact_name,
+                        contact_phone = details.contact_phone,
+                        validity_num = details.validity_num,
+                        validity_unit = details.validity_unit,
+                        start_province = details.start_province,
+                        start_city = details.start_city,
+                        start_district = details.start_district,
+                        start_address = details.start_address,
+                        stop_province = details.stop_province,
+                        stop_city = details.stop_city,
+                        stop_district = details.stop_district,
+                        stop_address = details.stop_address,
+                        tags = details.tags,
+                        use_type = details.use_type,
+                        use_img = details.use_img,
+                        car_length = details.car_length,
+                        car_style = details.car_style,
+                        goods_type = details.goods_type,
+                        goods_weight = details.goods_weight,
+                        goods_weight_unit = details.goods_weight_unit,
+                        freight = details.freight,
+                        use_time = details.use_time,
+                        use_mode = details.use_mode,
+                        pay_method = details.pay_method,
+                        other_remark = details.other_remark,
+                        set_top = details.set_top,
+                        set_top_money = details.set_top_money,
+                        reward_money = details.reward_money,
+                        recruit_num = details.recruit_num,
+                        imgs = details.imgs,
+                        add_userid = details.add_userid,
+                        add_nickname = details.add_nickname,
+                        add_avatar = details.add_avatar,
+                        add_time = details.add_time,
+                        update_userid = details.update_userid,
+                        update_nickname = details.update_nickname,
+                        update_time = details.update_time,
+                        audit_userid = details.audit_userid,
+                        audit_nickname = details.audit_nickname,
+                        audit_time = details.audit_time,
+                        status = details.status,
+                        pay = details.pay,
+                        pay_status = details.pay_status,
+                        pay_time = details.pay_time,
+                        pay_trade_no = details.pay_trade_no,
+                        order_no = details.order_no,
+                        view_num = details.view_num,
+                        praise_num = details.praise_num,
+                        share_num = details.share_num,
+                        is_delete = details.is_delete,
+                        total = details.total
+                    };
+                    db.ht_news_del.Add(bk);
+                }
+                #endregion 支付过的删除时备份一下
+
+                db.ht_news.Remove(details);
+                return db.SaveChanges();
             }
         }
         /// <summary>

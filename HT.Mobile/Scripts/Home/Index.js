@@ -5,11 +5,11 @@
             total: 0,
             list: []
         },
-        isLoading: true,
-        isLoadAll: false,
+        isLoading: false,
+        //isLoadAll: false,
         searchKey: {
             recommend: true,
-            page: 1,
+            page: 0,
             rows: 5
         }
     },
@@ -20,6 +20,8 @@
         },
         loadData: function () {
             var _this = this;
+            if (_this.isLoading) return;
+            this.searchKey.page++;
             _this.isLoading = true;
             //_this.isLoadingLayer = layer.load(0);
             $.ajax({
@@ -47,16 +49,15 @@
             var _this = this;
             $(window).bind('scroll', function (e) {
                 var _wh = $(window).height();
-                var _st = $('body').get(0).scrollTop;
-                var _sh = $('body').get(0).scrollHeight;
-                if ((_sh - _st - _wh < 10) && (!_this.isLoadAll)) {
+                var _st = $(document).scrollTop();
+                var _sh = $(document).height();
+                if (_sh - _st - _wh < 10) {
                     _this.loadMore();
                 }
             });
         },
         loadMore: function () {
             if (this.listData.list.length >= this.listData.total) return;
-            this.searchKey.page++;
             this.loadData();
         }
     }

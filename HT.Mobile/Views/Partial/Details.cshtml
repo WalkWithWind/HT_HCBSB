@@ -86,7 +86,7 @@
                     list: []
                 },
                 reviewSearchKey: {
-                    page: 1,
+                    page: 0,
                     rows: 2,
                     news_id: '',
                     review_type: 'comment'
@@ -100,12 +100,14 @@
                 likeData: [],//猜你喜欢
                 likeSearchKey: {
                     status: 1,
-                    page: 1,
+                    expire: 0,
+                    page: 0,
                     rows: 5,
                     min: 1,
                     id: 0
                 },
-                layerIndex: 0
+                layerIndex: 0,
+                isLoading: false
             };
         },
         created() {
@@ -120,6 +122,8 @@
             loadReview: function () {
                 var _this = this;
                 _this.reviewSearchKey.news_id = _this.id;
+                if (_this.isLoading) return;
+                this.reviewSearchKey.page++;
                 _this.isLoading = true;
                 $.ajax({
                     type: 'post',
@@ -147,7 +151,6 @@
                     alert('没有更多了');
                     return;
                 }
-                this.reviewSearchKey.page++;
                 _this.loadReview();
 
             },
@@ -155,14 +158,13 @@
             loadLikeData: function () {
                 var _this = this;
                 _this.likeSearchKey.id = _this.id;
-                _this.isLoading = true;
+                _this.likeSearchKey.page++;
                 $.ajax({
                     type: 'post',
                     url: '/Project/BaseLikeNewsList',
                     data: _this.likeSearchKey,
                     dataType: 'json',
                     success: function (resp) {
-                        _this.isLoading = false;
                         if (resp.status) {
                             _this.likeData = resp.result;
                             //console.log('_this.likeData', _this.likeData);

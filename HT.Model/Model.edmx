@@ -78,6 +78,20 @@
           <Property Name="total_money" Type="decimal" Precision="18" Scale="2" />
           <Property Name="news_id" Type="int" />
         </EntityType>
+        <EntityType Name="ht_distribution_log">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userid" Type="int" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="50" />
+          <Property Name="order_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="money" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="source_userid" Type="int" />
+          <Property Name="source_pre_userid" Type="int" />
+          <Property Name="news_id" Type="int" />
+          <Property Name="add_time" Type="datetime" />
+        </EntityType>
         <EntityType Name="ht_help">
           <Key>
             <PropertyRef Name="id" />
@@ -184,7 +198,7 @@
           <Property Name="goods_weight" Type="int" />
           <Property Name="goods_weight_unit" Type="nvarchar" MaxLength="8" />
           <Property Name="freight" Type="decimal" Precision="10" Scale="2" />
-          <Property Name="use_time" Type="datetime" />
+          <Property Name="use_time" Type="nvarchar" MaxLength="50" />
           <Property Name="use_mode" Type="nvarchar" MaxLength="50" />
           <Property Name="pay_method" Type="nvarchar" MaxLength="50" />
           <Property Name="other_remark" Type="nvarchar" MaxLength="400" />
@@ -205,7 +219,7 @@
           <Property Name="audit_time" Type="datetime" />
           <Property Name="status" Type="int" />
           <Property Name="pay" Type="nvarchar" MaxLength="10" />
-          <Property Name="pay_status" Type="int" Nullable="false" />
+          <Property Name="pay_status" Type="int" />
           <Property Name="pay_time" Type="datetime" />
           <Property Name="pay_trade_no" Type="nvarchar" MaxLength="50" />
           <Property Name="order_no" Type="nvarchar" MaxLength="50" />
@@ -224,6 +238,68 @@
           <Property Name="status" Type="int" />
           <Property Name="sort" Type="int" />
           <Property Name="addtime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ht_news_del">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="news_id" Type="int" Nullable="false" />
+          <Property Name="cateid" Type="int" Nullable="false" />
+          <Property Name="cate" Type="nvarchar" MaxLength="50" />
+          <Property Name="title" Type="nvarchar" MaxLength="100" />
+          <Property Name="description" Type="nvarchar" MaxLength="100" />
+          <Property Name="contact_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="contact_phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="validity_num" Type="int" />
+          <Property Name="validity_unit" Type="nvarchar" MaxLength="4" />
+          <Property Name="start_province" Type="nvarchar" MaxLength="50" />
+          <Property Name="start_city" Type="nvarchar" MaxLength="50" />
+          <Property Name="start_district" Type="nvarchar" MaxLength="50" />
+          <Property Name="start_address" Type="nvarchar" MaxLength="200" />
+          <Property Name="stop_province" Type="nvarchar" MaxLength="50" />
+          <Property Name="stop_city" Type="nvarchar" MaxLength="50" />
+          <Property Name="stop_district" Type="nvarchar" MaxLength="50" />
+          <Property Name="stop_address" Type="nvarchar" MaxLength="50" />
+          <Property Name="tags" Type="nvarchar" MaxLength="2000" />
+          <Property Name="use_type" Type="nvarchar" MaxLength="50" />
+          <Property Name="use_img" Type="nvarchar" MaxLength="2000" />
+          <Property Name="car_length" Type="nvarchar" MaxLength="50" />
+          <Property Name="car_style" Type="nvarchar" MaxLength="50" />
+          <Property Name="goods_type" Type="nvarchar" MaxLength="50" />
+          <Property Name="goods_weight" Type="int" />
+          <Property Name="goods_weight_unit" Type="nvarchar" MaxLength="8" />
+          <Property Name="freight" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="use_time" Type="nvarchar" MaxLength="50" />
+          <Property Name="use_mode" Type="nvarchar" MaxLength="50" />
+          <Property Name="pay_method" Type="nvarchar" MaxLength="50" />
+          <Property Name="other_remark" Type="nvarchar" MaxLength="400" />
+          <Property Name="set_top" Type="int" />
+          <Property Name="set_top_money" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="reward_money" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="recruit_num" Type="int" />
+          <Property Name="imgs" Type="nvarchar" MaxLength="1000" />
+          <Property Name="add_userid" Type="int" Nullable="false" />
+          <Property Name="add_nickname" Type="nvarchar" MaxLength="50" />
+          <Property Name="add_avatar" Type="nvarchar" MaxLength="200" />
+          <Property Name="add_time" Type="datetime" Nullable="false" />
+          <Property Name="update_userid" Type="int" />
+          <Property Name="update_nickname" Type="nvarchar" MaxLength="50" />
+          <Property Name="update_time" Type="datetime" />
+          <Property Name="audit_userid" Type="int" />
+          <Property Name="audit_nickname" Type="nvarchar" MaxLength="50" />
+          <Property Name="audit_time" Type="datetime" />
+          <Property Name="status" Type="int" />
+          <Property Name="pay" Type="nvarchar" MaxLength="10" />
+          <Property Name="pay_status" Type="int" />
+          <Property Name="pay_time" Type="datetime" />
+          <Property Name="pay_trade_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="order_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="view_num" Type="int" Nullable="false" />
+          <Property Name="praise_num" Type="int" Nullable="false" />
+          <Property Name="share_num" Type="int" Nullable="false" />
+          <Property Name="is_delete" Type="int" />
+          <Property Name="total" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="ht_order">
           <Key>
@@ -463,6 +539,16 @@
           <Property Name="remark" Type="varchar" MaxLength="50" />
           <Property Name="addtime" Type="datetime" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <Association Name="FK__ht_manage__rolei__3B0BC30C">
           <End Role="ht_manager_role" Type="Self.ht_manager_role" Multiplicity="0..1" />
           <End Role="ht_manager" Type="Self.ht_manager" Multiplicity="*" />
@@ -506,6 +592,7 @@
           <EntitySet Name="ht_category" EntityType="Self.ht_category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ht_comm_relation" EntityType="Self.ht_comm_relation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ht_commission" EntityType="Self.ht_commission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ht_distribution_log" EntityType="Self.ht_distribution_log" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ht_help" EntityType="Self.ht_help" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ht_manager" EntityType="Self.ht_manager" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ht_manager_log" EntityType="Self.ht_manager_log" Schema="dbo" store:Type="Tables" />
@@ -514,6 +601,7 @@
           <EntitySet Name="ht_navigation" EntityType="Self.ht_navigation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ht_news" EntityType="Self.ht_news" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ht_news_cate" EntityType="Self.ht_news_cate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ht_news_del" EntityType="Self.ht_news_del" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ht_order" EntityType="Self.ht_order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ht_order_appraise" EntityType="Self.ht_order_appraise" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ht_payment" EntityType="Self.ht_payment" Schema="dbo" store:Type="Tables" />
@@ -530,6 +618,7 @@
           <EntitySet Name="ht_user_message" EntityType="Self.ht_user_message" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ht_user_money_log" EntityType="Self.ht_user_money_log" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ht_user_point_log" EntityType="Self.ht_user_point_log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__ht_manage__rolei__3B0BC30C" Association="Self.FK__ht_manage__rolei__3B0BC30C">
             <End Role="ht_manager_role" EntitySet="ht_manager_role" />
             <End Role="ht_manager" EntitySet="ht_manager" />
@@ -554,6 +643,7 @@
           <EntitySet Name="ht_category" EntityType="Model.ht_category" />
           <EntitySet Name="ht_comm_relation" EntityType="Model.ht_comm_relation" />
           <EntitySet Name="ht_commission" EntityType="Model.ht_commission" />
+          <EntitySet Name="ht_distribution_log" EntityType="Model.ht_distribution_log" />
           <EntitySet Name="ht_help" EntityType="Model.ht_help" />
           <EntitySet Name="ht_manager" EntityType="Model.ht_manager" />
           <EntitySet Name="ht_manager_log" EntityType="Model.ht_manager_log" />
@@ -562,6 +652,7 @@
           <EntitySet Name="ht_navigation" EntityType="Model.ht_navigation" />
           <EntitySet Name="ht_news" EntityType="Model.ht_news" />
           <EntitySet Name="ht_news_cate" EntityType="Model.ht_news_cate" />
+          <EntitySet Name="ht_news_del" EntityType="Model.ht_news_del" />
           <EntitySet Name="ht_order" EntityType="Model.ht_order" />
           <EntitySet Name="ht_order_appraise" EntityType="Model.ht_order_appraise" />
           <EntitySet Name="ht_payment" EntityType="Model.ht_payment" />
@@ -578,6 +669,7 @@
           <EntitySet Name="ht_user_message" EntityType="Model.ht_user_message" />
           <EntitySet Name="ht_user_money_log" EntityType="Model.ht_user_money_log" />
           <EntitySet Name="ht_user_point_log" EntityType="Model.ht_user_point_log" />
+          <EntitySet Name="sysdiagrams" EntityType="Model.sysdiagram" />
           <AssociationSet Name="FK__ht_manage__rolei__3B0BC30C" Association="Model.FK__ht_manage__rolei__3B0BC30C">
             <End Role="ht_manager_role" EntitySet="ht_manager_role" />
             <End Role="ht_manager" EntitySet="ht_manager" />
@@ -663,6 +755,20 @@
           <Property Name="source_pre_userid" Type="Int32" />
           <Property Name="total_money" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="news_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ht_distribution_log">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userid" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="order_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="money" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="source_userid" Type="Int32" />
+          <Property Name="source_pre_userid" Type="Int32" />
+          <Property Name="news_id" Type="Int32" />
+          <Property Name="add_time" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="ht_help">
           <Key>
@@ -774,7 +880,7 @@
           <Property Name="goods_weight" Type="Int32" />
           <Property Name="goods_weight_unit" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
           <Property Name="freight" Type="Decimal" Precision="10" Scale="2" />
-          <Property Name="use_time" Type="DateTime" Precision="3" />
+          <Property Name="use_time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="use_mode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="pay_method" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="other_remark" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
@@ -795,7 +901,7 @@
           <Property Name="audit_time" Type="DateTime" Precision="3" />
           <Property Name="status" Type="Int32" />
           <Property Name="pay" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="pay_status" Type="Int32" Nullable="false" />
+          <Property Name="pay_status" Type="Int32" />
           <Property Name="pay_time" Type="DateTime" Precision="3" />
           <Property Name="pay_trade_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="order_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -816,6 +922,68 @@
           <Property Name="sort" Type="Int32" />
           <Property Name="addtime" Type="DateTime" Precision="3" />
           <NavigationProperty Name="ht_news" Relationship="Model.FK_ht_news_ht_news_cate" FromRole="ht_news_cate" ToRole="ht_news" />
+        </EntityType>
+        <EntityType Name="ht_news_del">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="news_id" Type="Int32" Nullable="false" />
+          <Property Name="cateid" Type="Int32" Nullable="false" />
+          <Property Name="cate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="contact_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="contact_phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="validity_num" Type="Int32" />
+          <Property Name="validity_unit" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="start_province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="start_city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="start_district" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="start_address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="stop_province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="stop_city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="stop_district" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="stop_address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tags" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="use_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="use_img" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="car_length" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="car_style" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="goods_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="goods_weight" Type="Int32" />
+          <Property Name="goods_weight_unit" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="freight" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="use_time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="use_mode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="pay_method" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="other_remark" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="set_top" Type="Int32" />
+          <Property Name="set_top_money" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="reward_money" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="recruit_num" Type="Int32" />
+          <Property Name="imgs" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="add_userid" Type="Int32" Nullable="false" />
+          <Property Name="add_nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="add_avatar" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="add_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="update_userid" Type="Int32" />
+          <Property Name="update_nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="update_time" Type="DateTime" Precision="3" />
+          <Property Name="audit_userid" Type="Int32" />
+          <Property Name="audit_nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="audit_time" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="pay" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="pay_status" Type="Int32" />
+          <Property Name="pay_time" Type="DateTime" Precision="3" />
+          <Property Name="pay_trade_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="order_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="view_num" Type="Int32" Nullable="false" />
+          <Property Name="praise_num" Type="Int32" Nullable="false" />
+          <Property Name="share_num" Type="Int32" Nullable="false" />
+          <Property Name="is_delete" Type="Int32" />
+          <Property Name="total" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="ht_order">
           <Key>
@@ -1055,6 +1223,16 @@
           <Property Name="remark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="addtime" Type="DateTime" Precision="3" />
         </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         <Association Name="FK__ht_manage__rolei__3B0BC30C">
           <End Type="Model.ht_manager_role" Role="ht_manager_role" Multiplicity="0..1" />
           <End Type="Model.ht_manager" Role="ht_manager" Multiplicity="*" />
@@ -1171,6 +1349,21 @@
                 <ScalarProperty Name="source_user_nick" ColumnName="source_user_nick" />
                 <ScalarProperty Name="source_userid" ColumnName="source_userid" />
                 <ScalarProperty Name="add_time" ColumnName="add_time" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ht_distribution_log">
+            <EntityTypeMapping TypeName="Model.ht_distribution_log">
+              <MappingFragment StoreEntitySet="ht_distribution_log">
+                <ScalarProperty Name="add_time" ColumnName="add_time" />
+                <ScalarProperty Name="news_id" ColumnName="news_id" />
+                <ScalarProperty Name="source_pre_userid" ColumnName="source_pre_userid" />
+                <ScalarProperty Name="source_userid" ColumnName="source_userid" />
+                <ScalarProperty Name="money" ColumnName="money" />
+                <ScalarProperty Name="order_no" ColumnName="order_no" />
+                <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="userid" ColumnName="userid" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
@@ -1327,6 +1520,69 @@
                 <ScalarProperty Name="sort" ColumnName="sort" />
                 <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ht_news_del">
+            <EntityTypeMapping TypeName="Model.ht_news_del">
+              <MappingFragment StoreEntitySet="ht_news_del">
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="is_delete" ColumnName="is_delete" />
+                <ScalarProperty Name="share_num" ColumnName="share_num" />
+                <ScalarProperty Name="praise_num" ColumnName="praise_num" />
+                <ScalarProperty Name="view_num" ColumnName="view_num" />
+                <ScalarProperty Name="order_no" ColumnName="order_no" />
+                <ScalarProperty Name="pay_trade_no" ColumnName="pay_trade_no" />
+                <ScalarProperty Name="pay_time" ColumnName="pay_time" />
+                <ScalarProperty Name="pay_status" ColumnName="pay_status" />
+                <ScalarProperty Name="pay" ColumnName="pay" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="audit_time" ColumnName="audit_time" />
+                <ScalarProperty Name="audit_nickname" ColumnName="audit_nickname" />
+                <ScalarProperty Name="audit_userid" ColumnName="audit_userid" />
+                <ScalarProperty Name="update_time" ColumnName="update_time" />
+                <ScalarProperty Name="update_nickname" ColumnName="update_nickname" />
+                <ScalarProperty Name="update_userid" ColumnName="update_userid" />
+                <ScalarProperty Name="add_time" ColumnName="add_time" />
+                <ScalarProperty Name="add_avatar" ColumnName="add_avatar" />
+                <ScalarProperty Name="add_nickname" ColumnName="add_nickname" />
+                <ScalarProperty Name="add_userid" ColumnName="add_userid" />
+                <ScalarProperty Name="imgs" ColumnName="imgs" />
+                <ScalarProperty Name="recruit_num" ColumnName="recruit_num" />
+                <ScalarProperty Name="reward_money" ColumnName="reward_money" />
+                <ScalarProperty Name="set_top_money" ColumnName="set_top_money" />
+                <ScalarProperty Name="set_top" ColumnName="set_top" />
+                <ScalarProperty Name="other_remark" ColumnName="other_remark" />
+                <ScalarProperty Name="pay_method" ColumnName="pay_method" />
+                <ScalarProperty Name="use_mode" ColumnName="use_mode" />
+                <ScalarProperty Name="use_time" ColumnName="use_time" />
+                <ScalarProperty Name="freight" ColumnName="freight" />
+                <ScalarProperty Name="goods_weight_unit" ColumnName="goods_weight_unit" />
+                <ScalarProperty Name="goods_weight" ColumnName="goods_weight" />
+                <ScalarProperty Name="goods_type" ColumnName="goods_type" />
+                <ScalarProperty Name="car_style" ColumnName="car_style" />
+                <ScalarProperty Name="car_length" ColumnName="car_length" />
+                <ScalarProperty Name="use_img" ColumnName="use_img" />
+                <ScalarProperty Name="use_type" ColumnName="use_type" />
+                <ScalarProperty Name="tags" ColumnName="tags" />
+                <ScalarProperty Name="stop_address" ColumnName="stop_address" />
+                <ScalarProperty Name="stop_district" ColumnName="stop_district" />
+                <ScalarProperty Name="stop_city" ColumnName="stop_city" />
+                <ScalarProperty Name="stop_province" ColumnName="stop_province" />
+                <ScalarProperty Name="start_address" ColumnName="start_address" />
+                <ScalarProperty Name="start_district" ColumnName="start_district" />
+                <ScalarProperty Name="start_city" ColumnName="start_city" />
+                <ScalarProperty Name="start_province" ColumnName="start_province" />
+                <ScalarProperty Name="validity_unit" ColumnName="validity_unit" />
+                <ScalarProperty Name="validity_num" ColumnName="validity_num" />
+                <ScalarProperty Name="contact_phone" ColumnName="contact_phone" />
+                <ScalarProperty Name="contact_name" ColumnName="contact_name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="cate" ColumnName="cate" />
+                <ScalarProperty Name="cateid" ColumnName="cateid" />
+                <ScalarProperty Name="news_id" ColumnName="news_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1582,6 +1838,17 @@
                 <ScalarProperty Name="point" ColumnName="point" />
                 <ScalarProperty Name="userid" ColumnName="userid" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Model.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

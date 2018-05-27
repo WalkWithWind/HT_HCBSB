@@ -41,9 +41,9 @@
                 <div class="content-tab-ul-wrap">
                     <ul>
                         <li><a class="selected" href="javascript:;">基本参数设置</a></li>
-                        <li><a href="javascript:;">文件上传设置</a></li>
+                        <%--<li><a href="javascript:;">文件上传设置</a></li>--%>
                         <li><a href="javascript:;">规则设置</a></li>
-						 <li><a href="javascript:;">微信配置</a></li>
+                        <li><a href="javascript:;">微信配置</a></li>
                     </ul>
                 </div>
             </div>
@@ -95,7 +95,7 @@
                 </dd>
             </dl>
         </div>
-        <div class="tab-content" style="display: none">
+        <%--<div class="tab-content" style="display: none">
             <dl>
                 <dt>站点安装目录</dt>
                 <dd>
@@ -142,79 +142,64 @@
       <span class="Validform_checktip">*左边高度，右边宽度，超出自动裁剪，0为不受限制</span>
                 </dd>
             </dl>
-        </div>
+        </div>--%>
         <div class="tab-content" style="display: none">
             <dl>
-                <dt>船主保证金</dt>
-                <dd>
-                    <asp:TextBox ID="transportmargin" runat="server" CssClass="input txt" datatype="/^[0-9]+(\.[0-9]{1,2})?$/" sucmsg=" " />
-                    <span class="Validform_checktip">*元</span>
-                </dd>
-            </dl>
-            <dl>
-                <dt>货主保证金最小值</dt>
-                <dd>
-                    <asp:TextBox ID="freightmarginmin" runat="server" CssClass="input txt" datatype="/^[0-9]+(\.[0-9]{1,2})?$/" sucmsg=" " />
-                    <span class="Validform_checktip">*元</span>
-                </dd>
-            </dl>
-            <dl>
-                <dt>货主保证金最大值</dt>
-                <dd>
-                    <asp:TextBox ID="freightmarginmax" runat="server" CssClass="input txt" datatype="/^[0-9]+(\.[0-9]{1,2})?$/" sucmsg=" " />
-                    <span class="Validform_checktip">*元</span>
-                </dd>
-            </dl>
-            <dl>
-                <dt>货主保证金比例</dt>
-                <dd>
-                    <asp:TextBox ID="freightmarginrate" runat="server" CssClass="input txt" datatype="numrange" sucmsg=" " min="0" max="100" />
-                    <span class="Validform_checktip">%</span>
-                </dd>
-            </dl>
-            <dl>
-                <dt>分润金额</dt>
-                <dd>
-                    <asp:TextBox ID="shareprofitrate" runat="server" CssClass="input txt" datatype="/^[0-9]+(\.[0-9]{1,2})?$/" sucmsg=" " />
-                    <span class="Validform_checktip">*每吨货所分润的金额 , 元/吨</span>
-                </dd>
-            </dl>
-			    <dl>
                 <dt>分佣一级比例(百分比)</dt>
                 <dd>
                     <asp:TextBox ID="txtDistributionLevel1" runat="server" CssClass="input txt" datatype="/^[0-9]+(\.[0-9]{1,2})?$/" sucmsg=" " />
                     <span class="Validform_checktip">*返给上一级的用户比例百分比(0-100)</span>
                 </dd>
             </dl>
-			   <dl>
+            <dl>
                 <dt>分佣二级比例(百分比)</dt>
                 <dd>
                     <asp:TextBox ID="txtDistributionLevel2" runat="server" CssClass="input txt" datatype="/^[0-9]+(\.[0-9]{1,2})?$/" sucmsg=" " />
                     <span class="Validform_checktip">*返给上二级的用户比例百分比(0-100)</span>
                 </dd>
             </dl>
+            <dl>
+                <dt>发布费用:</dt>
+                <dd>
+                    <asp:TextBox ID="txtPubAmountDay" runat="server" CssClass="input txt" datatype="/^[0-9]+(\.[0-9]{1,2})?$/" sucmsg=" " />
+                    <span class="Validform_checktip">*元/天</span>
+                </dd>
+                <dd>
+                    <asp:TextBox ID="txtPubAmountMonth" runat="server" CssClass="input txt" datatype="/^[0-9]+(\.[0-9]{1,2})?$/" sucmsg=" " />
+                    <span class="Validform_checktip">*元/月</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>置顶费用:</dt>
+                <dd>分类置顶:<asp:TextBox ID="txtTopCateMoney" runat="server" CssClass="input txt" datatype="/^[0-9]+(\.[0-9]{1,2})?$/" sucmsg=" " />
+                    <span class="Validform_checktip">*元</span>
+                </dd>
+                <dd>全站置顶:<asp:TextBox ID="txtTopAllMoney" runat="server" CssClass="input txt" datatype="/^[0-9]+(\.[0-9]{1,2})?$/" sucmsg=" " />
+                    <span class="Validform_checktip">*元</span>
+                </dd>
+            </dl>
         </div>
 
 
-	 <div class="tab-content" style="display: none">
+        <div class="tab-content" style="display: none">
             <dl>
                 <dt>AppId</dt>
                 <dd>
-                    <asp:TextBox ID="txtAppId" runat="server" CssClass="input txt"  sucmsg=" " />
+                    <asp:TextBox ID="txtAppId" runat="server" CssClass="input txt" sucmsg=" " />
                     <span class="Validform_checktip">AppId</span>
                 </dd>
             </dl>
             <dl>
                 <dt>AppSecret</dt>
                 <dd>
-                   <asp:TextBox ID="txtAppSecret" runat="server" CssClass="input txt"  sucmsg=" " />
+                    <asp:TextBox ID="txtAppSecret" runat="server" CssClass="input txt" sucmsg=" " />
                     <span class="Validform_checktip">AppSecret</span>
                 </dd>
             </dl>
             <dl>
                 <dt>商户号(MCHID)</dt>
                 <dd>
-                    <asp:TextBox ID="txtMchId" runat="server" CssClass="input txt"  sucmsg=" " />
+                    <asp:TextBox ID="txtMchId" runat="server" CssClass="input txt" sucmsg=" " />
                     <span class="Validform_checktip">微信支付商户号</span>
                 </dd>
             </dl>
@@ -225,7 +210,7 @@
                     <span class="Validform_checktip">支付密钥</span>
                 </dd>
             </dl>
-			   <dl>
+            <dl>
                 <dt>证书路径</dt>
                 <dd>
                     <asp:TextBox ID="txtCerPath" runat="server" CssClass="input txt" />

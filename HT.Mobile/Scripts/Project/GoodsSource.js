@@ -8,10 +8,11 @@ var listVm = new Vue({
         },
         isLoading: false,
         //isLoadingLayer: -1,
-        isLoadAll: false,
+        //isLoadAll: false,
         searchKey: {
             cateid: 1,
             status: 1,
+            expire: 0,
             start_province: '',
             start_city: '',
             stop_province: '',
@@ -19,7 +20,7 @@ var listVm = new Vue({
             use_type: '',
             car_length: '',
             car_style: '',
-            page: 1,
+            page: 0,
             rows: 5
         },
         select: {
@@ -30,6 +31,9 @@ var listVm = new Vue({
         useTypeData: [],
         carLengthData: [],
         carStyleData: []
+    },
+    created() {
+        this.init();
     },
     methods: {
         init: function () {
@@ -42,6 +46,7 @@ var listVm = new Vue({
         loadData: function () {
             var _this = this;
             if (_this.isLoading) return;
+            this.searchKey.page++;
             _this.isLoading = true;
             //_this.isLoadingLayer = layer.load(0);
             $.ajax({
@@ -71,21 +76,20 @@ var listVm = new Vue({
                 var _wh = $(window).height();
                 var _st = $(document).scrollTop();
                 var _sh = $(document).height();
-                if ((_sh - _st - _wh < 10) && (!_this.isLoadAll)) {
+                if (_sh - _st - _wh < 10) {
                     _this.loadMore();
                 }
             });
         },
         loadMore: function () {
             if (this.listData.list.length >= this.listData.total) return;
-            this.searchKey.page++;
             this.loadData();
         },
         searchData: function () {
             var _this = this;
             _this.listData.total = 0;
             _this.listData.list = [];
-            _this.searchKey.page = 1;
+            _this.searchKey.page = 0;
             _this.loadData();
         },
         loadCateData: function (code, cid) {
@@ -162,6 +166,7 @@ var listVm = new Vue({
             } else {
                 _this.searchKey.stop_city = item;
             }
+            _this.confirm();
         },
         selectTabProvince: function (code) {
             var _this = this;
@@ -200,4 +205,3 @@ var listVm = new Vue({
         }
     }
 });
-listVm.init();

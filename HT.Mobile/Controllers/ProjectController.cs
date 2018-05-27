@@ -129,6 +129,23 @@ namespace HT.Mobile.Controllers
 
 		}
         /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult PostDel(int id)
+        {
+            if (BLLNews.DelNews(id)>0)
+            {
+                return JsonResult(APIErrCode.Success, "删除成功");
+            }
+            else
+            {
+                return JsonResult(APIErrCode.OperateFail, "删除失败");
+            }
+        }
+        /// <summary>
         /// 发布车源信息
         /// </summary>
         /// <returns></returns>

@@ -1,27 +1,33 @@
 
-$(function() {
-    //tab切换
-    //var $product_tab = $(".tab-box")
-    //$product_tab.each(function() {
-    //    var _this = $(this);
-    //    var $title = _this.find(".tab-title");
-    //    var $content = _this.find(".tab-content");
-    //    $title.find("li").click(function () {
-    //        if ($(this).hasClass('click-off')) return false;
-    //        var index = $(this).index();
-    //        $title.find("li").removeClass("active");
-    //        $content.hide();
-    //        $(this).addClass("active");
-    //        $content.eq(index).fadeIn(500);
-    //    })
-    //})
-
+$(function () {
+    if ($('.banner .swiper-container').get(0) != null) {
+        var mySwiper = new Swiper('.banner .swiper-container', {
+            autoplay: 5000,
+            pagination: '.swiper-pagination',
+            loop: true,
+        })
+    }
 });
 
 
 
-
-
+Date.prototype.Format = function (fmt) { //author: meizz 
+    var o = {
+        "M+": this.getMonth() + 1,                 //月份 
+        "d+": this.getDate(),                    //日 
+        "h+": this.getHours(),                   //小时 
+        "m+": this.getMinutes(),                 //分 
+        "s+": this.getSeconds(),                 //秒 
+        "q+": Math.floor((this.getMonth() + 3) / 3), //季度 
+        "S": this.getMilliseconds()             //毫秒 
+    };
+    if (/(y+)/.test(fmt))
+        fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    for (var k in o)
+        if (new RegExp("(" + k + ")").test(fmt))
+            fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+    return fmt;
+}
 
 Array.prototype.insert = function (index, item) {
     this.splice(index, 0, item);

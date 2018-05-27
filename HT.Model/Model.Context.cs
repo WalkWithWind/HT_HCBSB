@@ -31,6 +31,7 @@ namespace HT.Model
         public virtual DbSet<ht_category> ht_category { get; set; }
         public virtual DbSet<ht_comm_relation> ht_comm_relation { get; set; }
         public virtual DbSet<ht_commission> ht_commission { get; set; }
+        public virtual DbSet<ht_distribution_log> ht_distribution_log { get; set; }
         public virtual DbSet<ht_help> ht_help { get; set; }
         public virtual DbSet<ht_manager> ht_manager { get; set; }
         public virtual DbSet<ht_manager_log> ht_manager_log { get; set; }
@@ -39,6 +40,7 @@ namespace HT.Model
         public virtual DbSet<ht_navigation> ht_navigation { get; set; }
         public virtual DbSet<ht_news> ht_news { get; set; }
         public virtual DbSet<ht_news_cate> ht_news_cate { get; set; }
+        public virtual DbSet<ht_news_del> ht_news_del { get; set; }
         public virtual DbSet<ht_order> ht_order { get; set; }
         public virtual DbSet<ht_order_appraise> ht_order_appraise { get; set; }
         public virtual DbSet<ht_payment> ht_payment { get; set; }
@@ -55,5 +57,6 @@ namespace HT.Model
         public virtual DbSet<ht_user_message> ht_user_message { get; set; }
         public virtual DbSet<ht_user_money_log> ht_user_money_log { get; set; }
         public virtual DbSet<ht_user_point_log> ht_user_point_log { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

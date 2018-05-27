@@ -80,6 +80,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ht_distribution_log">
+      <EntityTypeMapping TypeName="Model.ht_distribution_log">
+        <MappingFragment StoreEntitySet="ht_distribution_log">
+          <ScalarProperty Name="add_time" ColumnName="add_time" />
+          <ScalarProperty Name="news_id" ColumnName="news_id" />
+          <ScalarProperty Name="source_pre_userid" ColumnName="source_pre_userid" />
+          <ScalarProperty Name="source_userid" ColumnName="source_userid" />
+          <ScalarProperty Name="money" ColumnName="money" />
+          <ScalarProperty Name="order_no" ColumnName="order_no" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="ht_help">
       <EntityTypeMapping TypeName="Model.ht_help">
         <MappingFragment StoreEntitySet="ht_help">
@@ -231,6 +246,69 @@
           <ScalarProperty Name="sort" ColumnName="sort" />
           <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_news_del">
+      <EntityTypeMapping TypeName="Model.ht_news_del">
+        <MappingFragment StoreEntitySet="ht_news_del">
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="is_delete" ColumnName="is_delete" />
+          <ScalarProperty Name="share_num" ColumnName="share_num" />
+          <ScalarProperty Name="praise_num" ColumnName="praise_num" />
+          <ScalarProperty Name="view_num" ColumnName="view_num" />
+          <ScalarProperty Name="order_no" ColumnName="order_no" />
+          <ScalarProperty Name="pay_trade_no" ColumnName="pay_trade_no" />
+          <ScalarProperty Name="pay_time" ColumnName="pay_time" />
+          <ScalarProperty Name="pay_status" ColumnName="pay_status" />
+          <ScalarProperty Name="pay" ColumnName="pay" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="audit_time" ColumnName="audit_time" />
+          <ScalarProperty Name="audit_nickname" ColumnName="audit_nickname" />
+          <ScalarProperty Name="audit_userid" ColumnName="audit_userid" />
+          <ScalarProperty Name="update_time" ColumnName="update_time" />
+          <ScalarProperty Name="update_nickname" ColumnName="update_nickname" />
+          <ScalarProperty Name="update_userid" ColumnName="update_userid" />
+          <ScalarProperty Name="add_time" ColumnName="add_time" />
+          <ScalarProperty Name="add_avatar" ColumnName="add_avatar" />
+          <ScalarProperty Name="add_nickname" ColumnName="add_nickname" />
+          <ScalarProperty Name="add_userid" ColumnName="add_userid" />
+          <ScalarProperty Name="imgs" ColumnName="imgs" />
+          <ScalarProperty Name="recruit_num" ColumnName="recruit_num" />
+          <ScalarProperty Name="reward_money" ColumnName="reward_money" />
+          <ScalarProperty Name="set_top_money" ColumnName="set_top_money" />
+          <ScalarProperty Name="set_top" ColumnName="set_top" />
+          <ScalarProperty Name="other_remark" ColumnName="other_remark" />
+          <ScalarProperty Name="pay_method" ColumnName="pay_method" />
+          <ScalarProperty Name="use_mode" ColumnName="use_mode" />
+          <ScalarProperty Name="use_time" ColumnName="use_time" />
+          <ScalarProperty Name="freight" ColumnName="freight" />
+          <ScalarProperty Name="goods_weight_unit" ColumnName="goods_weight_unit" />
+          <ScalarProperty Name="goods_weight" ColumnName="goods_weight" />
+          <ScalarProperty Name="goods_type" ColumnName="goods_type" />
+          <ScalarProperty Name="car_style" ColumnName="car_style" />
+          <ScalarProperty Name="car_length" ColumnName="car_length" />
+          <ScalarProperty Name="use_img" ColumnName="use_img" />
+          <ScalarProperty Name="use_type" ColumnName="use_type" />
+          <ScalarProperty Name="tags" ColumnName="tags" />
+          <ScalarProperty Name="stop_address" ColumnName="stop_address" />
+          <ScalarProperty Name="stop_district" ColumnName="stop_district" />
+          <ScalarProperty Name="stop_city" ColumnName="stop_city" />
+          <ScalarProperty Name="stop_province" ColumnName="stop_province" />
+          <ScalarProperty Name="start_address" ColumnName="start_address" />
+          <ScalarProperty Name="start_district" ColumnName="start_district" />
+          <ScalarProperty Name="start_city" ColumnName="start_city" />
+          <ScalarProperty Name="start_province" ColumnName="start_province" />
+          <ScalarProperty Name="validity_unit" ColumnName="validity_unit" />
+          <ScalarProperty Name="validity_num" ColumnName="validity_num" />
+          <ScalarProperty Name="contact_phone" ColumnName="contact_phone" />
+          <ScalarProperty Name="contact_name" ColumnName="contact_name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="cate" ColumnName="cate" />
+          <ScalarProperty Name="cateid" ColumnName="cateid" />
+          <ScalarProperty Name="news_id" ColumnName="news_id" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -486,6 +564,17 @@
           <ScalarProperty Name="point" ColumnName="point" />
           <ScalarProperty Name="userid" ColumnName="userid" />
           <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Model.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

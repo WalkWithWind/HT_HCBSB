@@ -34,3 +34,17 @@ G:\工作\文档\汪汪找船\HT_Search_Boat\HT.Model\bin\Release\zh-Hans\Entity
 G:\工作\文档\汪汪找船\HT_Search_Boat\HT.Model\obj\Release\HT.Model.csprojResolveAssemblyReference.cache
 G:\工作\文档\汪汪找船\HT_Search_Boat\HT.Model\obj\Release\HT.Model.dll
 G:\工作\文档\汪汪找船\HT_Search_Boat\HT.Model\obj\Release\HT.Model.pdb
+G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\bin\Release\HT.Model.dll.config
+G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\bin\Release\HT.Model.dll
+G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\bin\Release\HT.Model.pdb
+G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\bin\Release\EntityFramework.dll
+G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\bin\Release\EntityFramework.SqlServer.dll
+G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\bin\Release\EntityFramework.xml
+G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\bin\Release\EntityFramework.SqlServer.xml
+G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\bin\Release\zh-Hans\EntityFramework.resources.dll
+G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\bin\Release\zh-Hans\EntityFramework.SqlServer.resources.dll
+G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\obj\Release\HT.Model.csprojResolveAssemblyReference.cache
+G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\obj\Release\HT.Model.csproj.CoreCompileInputs.cache
+G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\obj\Release\HT.Model.csproj.CopyComplete
+G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\obj\Release\HT.Model.dll
+G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\obj\Release\HT.Model.pdb

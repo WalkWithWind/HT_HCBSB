@@ -40,8 +40,6 @@
                                 <span>@(Model.set_top_money.Value)元</span>
                             </div>
                         </dd>
-                        <dd class="active">
-                        </dd>
                     </dl>
                 }
                 @if (Model.reward_money > 0)
@@ -93,9 +91,9 @@
 @section scripts{
     <script>
     var data = {
-        order_no='@Model.order_no',
-        total=@Model.total,
-        money=@ViewBag.RespUser.money
+        order_no:'@Model.order_no',
+        total:@Model.total,
+        money:@ViewBag.RespUser.money
     };
     </script>
     @Scripts.Render("/Scripts/User/Pay.js")

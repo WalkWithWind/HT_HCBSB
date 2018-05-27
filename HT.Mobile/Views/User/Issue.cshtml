@@ -19,196 +19,30 @@
         </ul>
         <div class="pl_form tab-content">
             <ul class="pl_form_ul">
-                <li>
+                <li v-for="(item, index) in listData.list" v-bind:data-id="item.id">
                     <p class="title">
-                        <span>发布时间：2018-03-28</span>
-                        <span>显示中 4月28日过期</span>
+                        <span>发布时间：{{item.add_time|jsonFormart}}</span>
+                        <span v-text="item.status_text"></span>
                     </p>
                     <div class="ind_main_t">
                         <div class="use">
                             <div class="img">
-                                <img src="/images/icon/icon06.png">
+                                <img v-bind:src="item.add_avatar">
                             </div>
                             <div class="txt">
-                                <span>美好的未来</span>
+                                <span v-text="item.add_nickname"></span>
                                 <p>
-                                    <i class="lab2">有货找车</i>
+                                    <i class="lab2" v-text="item.cate"></i>
                                 </p>
                             </div>
                         </div>
                     </div>
                     <div class="btn_box">
-                        <a href="javascript:void(0);" class="btn1">我要置顶</a>
-                        <a href="javascript:void(0);" class="btn2">分享</a>
-                    </div>
-                </li>
-                <li>
-                    <p class="title">
-                        <span>发布时间：2018-03-28</span>
-                        <span>待付款</span>
-                    </p>
-                    <div class="ind_main_t">
-                        <div class="use">
-                            <div class="img">
-                                <img src="/images/icon/icon06.png">
-                            </div>
-                            <div class="txt">
-                                <span>美好的未来</span>
-                                <p>
-                                    <i class="lab2">有货找车</i>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="btn_box">
-                        <a href="javascript:void(0);" class="btn1">我要置顶</a>
-                        <a href="javascript:void(0);" class="btn3">立即付款</a>
-                        <a href="javascript:void(0);" class="btn2">重新编辑</a>
-                    </div>
-                </li>
-                <li>
-                    <p class="title">
-                        <span>发布时间：2018-03-28</span>
-                        <span>待审核</span>
-                    </p>
-                    <div class="ind_main_t">
-                        <div class="use">
-                            <div class="img">
-                                <img src="/images/icon/icon06.png">
-                            </div>
-                            <div class="txt">
-                                <span>美好的未来</span>
-                                <p>
-                                    <i class="lab2">有货找车</i>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <p class="title">
-                        <span>发布时间：2018-03-28</span>
-                        <span>已过期</span>
-                    </p>
-                    <div class="ind_main_t">
-                        <div class="use">
-                            <div class="img">
-                                <img src="/images/icon/icon06.png">
-                            </div>
-                            <div class="txt">
-                                <span>美好的未来</span>
-                                <p>
-                                    <i class="lab2">有货找车</i>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="btn_box">
-                        <a href="javascript:void(0);" class="btn2">删除</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div class="pl_form tab-content hide">
-            <ul class="pl_form_ul">
-                <li>
-                    <p class="title">
-                        <span>发布时间：2018-03-28</span>
-                        <span>显示中 4月28日过期</span>
-                    </p>
-                    <div class="ind_main_t">
-                        <div class="use">
-                            <div class="img">
-                                <img src="/images/icon/icon06.png">
-                            </div>
-                            <div class="txt">
-                                <span>美好的未来</span>
-                                <p>
-                                    <i class="lab2">有货找车</i>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="btn_box">
-                        <a href="javascript:void(0);" class="btn1">我要置顶</a>
-                        <a href="javascript:void(0);" class="btn2">分享</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div class="pl_form tab-content hide">
-            <ul class="pl_form_ul">
-                <li>
-                    <p class="title">
-                        <span>发布时间：2018-03-28</span>
-                        <span>待付款</span>
-                    </p>
-                    <div class="ind_main_t">
-                        <div class="use">
-                            <div class="img">
-                                <img src="/images/icon/icon06.png">
-                            </div>
-                            <div class="txt">
-                                <span>美好的未来</span>
-                                <p>
-                                    <i class="lab2">有货找车</i>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="btn_box">
-                        <a href="javascript:void(0);" class="btn1">我要置顶</a>
-                        <a href="javascript:void(0);" class="btn3">立即付款</a>
-                        <a href="javascript:void(0);" class="btn2">重新编辑</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div class="pl_form tab-content hide">
-            <ul class="pl_form_ul">
-                <li>
-                    <p class="title">
-                        <span>发布时间：2018-03-28</span>
-                        <span>待审核</span>
-                    </p>
-                    <div class="ind_main_t">
-                        <div class="use">
-                            <div class="img">
-                                <img src="/images/icon/icon06.png">
-                            </div>
-                            <div class="txt">
-                                <span>美好的未来</span>
-                                <p>
-                                    <i class="lab2">有货找车</i>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div class="pl_form tab-content hide">
-            <ul class="pl_form_ul">
-                <li>
-                    <p class="title">
-                        <span>发布时间：2018-03-28</span>
-                        <span>已过期</span>
-                    </p>
-                    <div class="ind_main_t">
-                        <div class="use">
-                            <div class="img">
-                                <img src="/images/icon/icon06.png">
-                            </div>
-                            <div class="txt">
-                                <span>美好的未来</span>
-                                <p>
-                                    <i class="lab2">有货找车</i>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="btn_box">
-                        <a href="javascript:void(0);" class="btn2">删除</a>
+                        <a href="javascript:void(0);" class="btn1" v-if="item.set_top==0 && item.status!=2 && item.status_text.indexOf('已过期')<0">我要置顶</a>
+                        <a href="javascript:void(0);" class="btn2" v-if="item.status_text.indexOf('显示中')==0">分享</a>
+                        <a v-bind:href="'/User/Pay/'+item.order_no" class="btn3" v-if="item.status_text.indexOf('待付款')==0" >立即付款</a>
+                        <a href="javascript:void(0);" class="btn2" v-if="item.status_text.indexOf('待付款')==0">重新编辑</a>
+                        <a href="javascript:void(0);" class="btn2" v-if="item.status==2 || item.status_text.indexOf('已过期')==0" v-on:click="del(item,index)">删除</a>
                     </div>
                 </li>
             </ul>

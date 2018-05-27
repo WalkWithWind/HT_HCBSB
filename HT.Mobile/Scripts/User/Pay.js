@@ -1,10 +1,10 @@
 ﻿var listVm = new Vue({
     el: '.main',
     data: {
-        order_no=data.order_no,
-        total=data.total,
-        money =data.money,
-        pay='余额'
+        order_no:data.order_no,
+        total:data.total,
+        money:data.money,
+        pay:'余额'
     },
     created() {
         this.init();
