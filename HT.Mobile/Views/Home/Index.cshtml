@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Title = "货车百事帮";
-    Layout = "~/Views/Shared/_LayoutIndex.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @Html.Partial("_Header")
 <div class="banner">
@@ -63,6 +63,19 @@
             </li>
         </ul>
     </div>
+</div>
+<!-- 未关注 -->
+<div class="zhx_div hide">
+    <div class="main">
+        <img src="/images/icon/icon07.png" class="zhx_logo">
+        <p>请关注货车百事帮，100万货车司机加入...</p>
+        <a class="btn" href="javascript:;">关注</a>
+    </div>
+</div>
+<!-- 弹出二维码关注 -->
+<div class="zhx_code hide">
+    <p class="tt">长按下方二维码识别+关注</p>
+    <img src="/images/icon/icon08.png">
 </div>
 @Html.Partial("_Footer")
 @section scripts{
