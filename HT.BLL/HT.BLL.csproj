@@ -67,6 +67,7 @@
     <Compile Include="BLLConfig.cs" />
     <Compile Include="BLLReview.cs" />
     <Compile Include="BLLUser.cs" />
+    <Compile Include="BLLWeixin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -74,10 +75,17 @@
       <Project>{baa59196-19b0-4bc5-8b86-dad4d07771b7}</Project>
       <Name>HT.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HT.Utility\HT.Utility.csproj">
+      <Project>{2c15b7bb-625a-4b54-9831-d3297adf128a}</Project>
+      <Name>HT.Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

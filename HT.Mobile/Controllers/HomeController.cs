@@ -16,6 +16,7 @@ namespace HT.Mobile.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
+            //var token = BLL.BLLWeixin.AccessToken;
             return View();
         }
         /// <summary>
