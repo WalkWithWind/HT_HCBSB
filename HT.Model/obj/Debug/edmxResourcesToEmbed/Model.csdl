@@ -219,9 +219,9 @@
     <Property Name="stop_city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="stop_district" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="stop_address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="tags" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="tags" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
     <Property Name="use_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="use_img" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="use_img" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
     <Property Name="car_length" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="car_style" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="goods_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -248,6 +248,7 @@
     <Property Name="audit_nickname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="audit_time" Type="DateTime" Precision="3" />
     <Property Name="status" Type="Int32" />
+    <Property Name="pay" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
     <Property Name="pay_status" Type="Int32" Nullable="false" />
     <Property Name="pay_time" Type="DateTime" Precision="3" />
     <Property Name="pay_trade_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />

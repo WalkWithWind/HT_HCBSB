@@ -202,6 +202,10 @@ namespace HT.Model
     ///</summary>
         public Nullable<int> status { get; set; }
     ///<summary>
+    ///
+    ///</summary>
+        public string pay { get; set; }
+    ///<summary>
     ///支付状态
     ///</summary>
         public int pay_status { get; set; }

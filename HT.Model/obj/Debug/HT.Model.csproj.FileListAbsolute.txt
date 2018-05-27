@@ -99,4 +99,3 @@ D:\Project\HCBSB\HT.Model\obj\Debug\HT.Model.csproj.CopyComplete
 D:\Project\HCBSB\HT.Model\obj\Debug\HT.Model.dll
 D:\Project\HCBSB\HT.Model\obj\Debug\HT.Model.pdb
 G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\obj\Debug\HT.Model.csprojResolveAssemblyReference.cache
-C:\我走路带风\Project\HT_HCBSB\HT.Model\obj\Debug\HT.Model.csprojResolveAssemblyReference.cache
