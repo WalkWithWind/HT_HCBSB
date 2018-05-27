@@ -7,7 +7,7 @@
             total: 0
         },
         searchKey: {
-            page: 1,
+            page: 0,
             rows: 12,
             parentid: GetUrlParam('SecondaryDistribution',0)
         }
@@ -20,6 +20,7 @@
         loadData: function () {
             var _this = this;
             if (_this.isLoading) return;
+            this.searchKey.page++;
             _this.isLoading = true;
             $.ajax({
                 type: 'post',
@@ -29,9 +30,7 @@
                 success: function (resp) {
                     _this.isLoading = false;
                     if (resp.status) {
-                        if (resp.result.list.length == 0) {
-                            _this.isLoadAll = true;
-                        } else {
+                        if (resp.result.list.length > 0) {
                             _this.teamChildData.list = _this.teamChildData.list.concat(resp.result.list);
                         }
                         _this.teamChildData.total = resp.result.total;
@@ -47,7 +46,7 @@
                 var _wh = $(window).height();
                 var _st = $(document).scrollTop();
                 var _sh = $(document).height();
-                if ((_sh - _st - _wh < 10) && (!_this.isLoadAll)) {
+                if (_sh - _st - _wh < 10) {
                     _this.loadMore();
                 }
             });
@@ -56,7 +55,6 @@
         loadMore: function () {
             var _this = this;
             if (_this.teamChildData.list.length >= _this.teamChildData.total) return;
-            this.searchKey.page++;
             this.loadData();
         },
 

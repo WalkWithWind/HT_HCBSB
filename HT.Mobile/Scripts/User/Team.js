@@ -13,7 +13,7 @@ var teamVm = new Vue({
             total_people_num: 0,
         },
         searchKey: {
-            page: 1,
+            page: 0,
             rows: 10
         }
     },
@@ -26,6 +26,7 @@ var teamVm = new Vue({
         loadData: function () {
             var _this = this;
             if (_this.isLoading) return;
+            this.searchKey.page++;
             _this.isLoading = true;
             $.ajax({
                 type: 'post',
@@ -35,9 +36,7 @@ var teamVm = new Vue({
                 success: function (resp) {
                     _this.isLoading = false;
                     if (resp.status) {
-                        if (resp.result.list.length == 0) {
-                            _this.isLoadAll = true;
-                        } else {
+                        if (resp.result.list.length > 0) {
                             _this.teamData.list = _this.teamData.list.concat(resp.result.list);
                         }
                         _this.teamData.total = resp.result.total;
@@ -55,7 +54,7 @@ var teamVm = new Vue({
                 var _wh = $(window).height();
                 var _st = $(document).scrollTop();
                 var _sh = $(document).height();
-                if ((_sh - _st - _wh < 10) && (!_this.isLoadAll)) {
+                if (_sh - _st - _wh < 10) {
                     _this.loadMore();
                 }
             });
@@ -64,7 +63,6 @@ var teamVm = new Vue({
         loadMore: function () {
             var _this = this;
             if (_this.teamData.list.length >= _this.teamData.total) return;
-            this.searchKey.page++;
             this.loadData();
         },
        
