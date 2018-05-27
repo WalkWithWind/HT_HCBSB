@@ -2,13 +2,16 @@
 <html>
 <head>
     <title>@ViewBag.Title</title>
-    @Html.Partial("_HeadLink")
-    <link href="/Content/Project/Project.css" rel="stylesheet" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    @Styles.Render("~/baseCss")
     @RenderSection("styles", required: false)
 </head>
 <body>
     @RenderBody()
     @Html.Partial("_FootLink")
+    @Scripts.Render("~/baseJs")
     @RenderSection("scripts", required: false)
 </body>
 </html>

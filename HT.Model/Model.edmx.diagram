@@ -17,7 +17,6 @@
         <EntityTypeShape EntityType="Model.ht_manager_role" Width="1.5" PointX="0.75" PointY="3" />
         <EntityTypeShape EntityType="Model.ht_manager_role_value" Width="1.5" PointX="3" PointY="5.125" />
         <EntityTypeShape EntityType="Model.ht_navigation" Width="1.5" PointX="0.75" PointY="12.75" />
-        <EntityTypeShape EntityType="Model.ht_news" Width="1.5" PointX="8" PointY="1.375" />
         <EntityTypeShape EntityType="Model.ht_news_cate" Width="1.5" PointX="5.75" PointY="6" />
         <EntityTypeShape EntityType="Model.ht_order" Width="1.5" PointX="2.75" PointY="12.75" />
         <EntityTypeShape EntityType="Model.ht_order_appraise" Width="1.5" PointX="12.75" PointY="4.75" />
@@ -37,6 +36,8 @@
         <EntityTypeShape EntityType="Model.ht_user_point_log" Width="1.5" PointX="14.75" PointY="15.75" />
         <AssociationConnector Association="Model.FK__ht_manage__rolei__3B0BC30C" />
         <AssociationConnector Association="Model.FK__ht_manage__rolei__3BFFE745" />
+        <EntityTypeShape EntityType="Model.ht_news" Width="1.5" PointX="8" PointY="1.375" />
+        <EntityTypeShape EntityType="Model.sysdiagram" Width="1.5" PointX="5.375" PointY="16.75" />
         <AssociationConnector Association="Model.FK_ht_news_ht_news_cate" />
       </Diagram>
     </edmx:Diagrams>

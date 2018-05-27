@@ -4,6 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section styles{
+    <link href="/Content/Project/Project.css" rel="stylesheet" />
 
 }
 <div class="main">
@@ -55,7 +56,7 @@
             <dt>选择品牌</dt>
             <dd>
                 <a href="javascript:;" v-for="item in useTypeData"
-                   v-bind:class="[{ 'cur': item.title==model.use_type }]"  v-on:click="model.use_type=item.title">
+                   v-bind:class="[{ 'cur': item.title==model.use_type }]" v-on:click="model.use_type=item.title">
                     <img v-bind:src="item.img" />
                 </a>
             </dd>
@@ -67,7 +68,7 @@
         <dl>
             <dt>车型</dt>
             <dd>
-                
+
                 <a href="javascript:;" v-for="item in carStyleData"
                    v-bind:class="[{ 'cur': item.title==model.car_style }]"
                    v-text="item.title" v-on:click="model.car_style=item.title"></a>
@@ -79,7 +80,7 @@
         <dl>
             <dd>
                 <span>输入马力</span>
-                <input type="text" placeholder="请输入马力"  v-model="model.goods_weight">
+                <input type="text" placeholder="请输入马力" v-model="model.goods_weight">
             </dd>
             <dd>
                 <span>出售价格</span>
@@ -91,7 +92,7 @@
             </dd>
             <dd>
                 <span>行驶证登记时间</span>
-                <input type="date"  placeholder="请选择行驶证登记时间" v-model="model.use_time">
+                <input type="date" placeholder="请选择行驶证登记时间" v-model="model.use_time">
             </dd>
         </dl>
     </div>
@@ -110,7 +111,7 @@
         <ul>
             <li>
                 <span>车辆户型</span>
-                <input type="radio" name="name1" id="c" value="公司户"  v-model="model.use_mode"><label for="c">公司户</label>
+                <input type="radio" name="name1" id="c" value="公司户" v-model="model.use_mode"><label for="c">公司户</label>
                 <input type="radio" name="name1" id="p" value="个人户" checked v-model="model.use_mode"><label for="p">个人户</label>
             </li>
             <li>
@@ -164,9 +165,9 @@
                     <span>分类置顶</span>
                     <p>将在此分类也置顶显示，更能多人看到</p>
                 </div>
-                <div class="pt3" v-on:click="topCate">
+                <div class="pt3">
                     <span>{{top_cate_money}}元</span>
-                    <i></i>
+                    <i v-on:click="topCate"></i>
                 </div>
             </dd>
             <dd>
@@ -177,13 +178,14 @@
                     <span>全站置顶</span>
                     <p>全站所有分类置顶显示，效果更好</p>
                 </div>
-                <div class="pt3" v-on:click="topAll">
+                <div class="pt3">
                     <span>{{top_all_money}}元</span>
-                    <i></i>
+                    <i v-on:click="topAll"></i>
                 </div>
             </dd>
         </dl>
     </div>
+
     <div class="pg_sec8 pg_sec10">
         <dl>
             <dd>
@@ -196,7 +198,7 @@
                 </div>
                 <div class="pt3">
                     <span>{{model.reward_money}}元</span>
-                    <i></i>
+                    <i v-on:click="rewardClick"></i>
                 </div>
                 <div class="clear"></div>
                 <div class="pt4">
@@ -242,7 +244,7 @@
     </div>
 
 
-    <input  type="file" name="file" id="file" style="display:none;" v-on:change="fileChange"/>
+    <input type="file" name="file" id="file" style="display:none;" v-on:change="fileChange" />
 </div>
 
 

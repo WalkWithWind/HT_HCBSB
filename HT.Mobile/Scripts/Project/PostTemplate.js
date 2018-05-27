@@ -13,19 +13,20 @@ var vue = new Vue({
             other_remark: "",//其它补充
             contact_name: "",//联系人
             contact_phone: "",//联系电话
-            set_top: "1",//置顶类型 1分类2 全站
+            set_top: "",//置顶类型  空不置顶 1分类 2全站
             set_top_money: 0,//置顶金额
             reward_money: 0,//打赏金额
             total: 0//需支付金额
         },
+        tagsSelect: [],//选中标签
         tagsData: [],//标签列表
         imgsData: [],//上传图片
         rewardMoneyData: [],//打赏金额列表
         top_cate_select: false,//是否选中分类置顶
         top_all_select: false,//是否选中全站置顶
+        reward_select: false,//是否选中赏福利
         top_cate_money: 0,//分类置顶金额
         top_all_money: 0,//全站置顶金额
-        top_type: 0,//置顶类型 1分类 2全站 0不置顶
         validity_unit_day_money: 0,// 发布费用 元/天
         validity_unit_month_money: 0// 发布费用 元/月
 
@@ -65,6 +66,7 @@ var vue = new Vue({
                 success: function (resp) {
                     if (resp.status) {
                         if (code == 'tags') { _this.tagsData = resp.result };
+                        if (code == 'reward_money') { _this.rewardMoneyData = resp.result };
 
                     }
                 }
@@ -139,6 +141,16 @@ var vue = new Vue({
                 _this.model.set_top = "";
             }
         },
+        rewardClick: function () {//打赏福利点击
+            var _this = this;
+            _this.reward_select = !_this.reward_select;
+            if (_this.reward_select) {
+
+            } else {
+                _this.model.reward_money = 0;
+
+            }
+        },
         checkInput: function () {//检查输入
             //return true;
             var _this = this;
@@ -165,6 +177,7 @@ var vue = new Vue({
                 return false;
             }
             _this.model.imgs = _this.imgsData.join(',');
+            _this.model.tags = _this.tagsSelect.join(',');
             confirm("提示", "确定发布", "发布", "取消", function () {
                 $.ajax({
                     type: 'post',
@@ -221,6 +234,25 @@ var vue = new Vue({
 
                 }
             });
+
+
+        },
+        tagsClick: function (item) {//标签选择
+            if (this.tagsSelect.indexOf(item.title) >= 0) {
+                // 删除
+                for (var i = 0; i < this.tagsSelect.length; i++) {
+                    if (this.tagsSelect[i] == item.title) {
+                        this.tagsSelect.splice(i, 1);
+                    }
+                }
+            } else {
+                //if (this.carLenSelect.length >= 5) {
+                //    alert("最多选择5个标签");
+                //    return false;
+                //}
+                this.tagsSelect.push(item.title);
+            }
+
 
 
         }

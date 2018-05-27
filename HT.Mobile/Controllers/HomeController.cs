@@ -65,7 +65,7 @@ namespace HT.Mobile.Controllers
         /// 品牌列表
         /// </summary>
         /// <returns></returns>
-        public ActionResult PinpaiList(int cid)
+        public ActionResult PinpaiList()
         {
             List<ht_pinpai> model = BLLPinpai.GetPinpaiList();
             if (Request.IsAjaxRequest())
