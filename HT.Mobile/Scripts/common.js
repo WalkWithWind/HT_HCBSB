@@ -7,6 +7,20 @@ $(function () {
             loop: true,
         })
     }
+    if ($('.zhx_div .btn').get(0) != null && $('.zhx_code').get(0) != null) {
+        layer.open({
+            type: 1,
+            title: false,
+            skin: 'layui-layer-zhx',
+            content: $('.zhx_code'),
+            area: ['260px', 'auto'],
+            closeBtn: 1,
+            shade: 0.3,
+            shadeClose: false,
+            scrollbar: false,
+            anim: 2
+        });
+    }
 });
 
 
