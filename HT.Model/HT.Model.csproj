@@ -164,9 +164,6 @@
     <Compile Include="Model\WeixinUserInfo.cs" />
     <Compile Include="Model\WXOAuthAccessToken.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config">

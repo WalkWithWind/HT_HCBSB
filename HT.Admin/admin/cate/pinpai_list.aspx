@@ -14,32 +14,14 @@
     <link href="../../scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
     <link href="../skin/default/style.css" rel="stylesheet" type="text/css" />
     <link href="../../css/pagination.css" rel="stylesheet" type="text/css" />
-    <%--<link href="/scripts/layer/3.1.0/theme/default/layer.css" rel="stylesheet" type="text/css" />--%>
+    <link href="/scripts/layer/3.1.0/theme/default/layer.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="../../scripts/jquery/jquery-1.11.2.min.js"></script>
     <script type="text/javascript" src="../../scripts/artdialog/dialog-plus-min.js"></script>
-    <%--<script type="text/javascript" src="/scripts/layer/3.1.0/layer.js"></script>--%>
+    <script type="text/javascript" src="/scripts/layer/3.1.0/layer.js"></script>
     <script type="text/javascript" charset="utf-8" src="../js/laymain.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../../scripts/webuploader/webuploader.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="../js/uploader.js"></script>
     <script type="text/javascript" charset="utf-8" src="../js/common.js"></script>
-    <script type="text/javascript">
-        $(function () {
-            $("#linkImgUrl").click(function () {
-                layer.open({
-                    type: 1,
-                    title: '查看图片',
-                    shadeClose: true,
-                    shade: 0.8,
-                    area: ['800px', '90%'],
-                    content: '<img src=' + $("#txtImgUrl").val() + ' width="100%"  />'
-                });
-            })
-            //初始化表单验证
-            $("#form1").initValidform();
-            //初始化上传控件
-            $(".upload-img").InitUploader({ filesize: "10240", sendurl: "../../tools/upload_ajax.ashx", swf: "../../scripts/webuploader/uploader.swf", filetypes: "gif,jpg,png,bmp" });
-            //初始化编辑器
-        });
-    </script>
     <style>
         .hide {
             display: none;
@@ -103,7 +85,9 @@
                     <td align="center"><%#Eval("title")%></td>
                     <td align="center"><%#Eval("sort")%></td>
                     <td align="center">
-                        <a class="re_edit" data-id="<%#Eval("id")%>" data-title="<%#Eval("title")%>" data-sort="<%#Eval("sort")%>" href="javascript:;">修改</a>
+                        <a class="re_edit" data-id="<%#Eval("id")%>" data-title="<%#Eval("title")%>" data-sort="<%#Eval("sort")%>" 
+                            data-initial="<%#Eval("initial")%>" data-img="<%#Eval("img")%>" 
+                            href="javascript:;">修改</a>
                     </td>
                 </tr>
             </ItemTemplate>
@@ -127,25 +111,25 @@
             <dl>
                 <dt>名称：</dt>
                 <dd>
-                    <input type="text" class="title" name="title" placeholder="名称" value="" /></dd>
+                    <input type="text" class="title input" name="title" placeholder="名称" value="" /></dd>
             </dl>
             <dl>
                 <dt>首字母：</dt>
                 <dd>
-                    <input type="text" class="initial" name="initial" placeholder="首字母" value="" /></dd>
+                    <input type="text" class="initial input" name="initial" placeholder="首字母" value="" /></dd>
             </dl>
             <dl>
-                <dt>首字母：</dt>
+                <dt>图片：</dt>
                 <dd>
-                    <input id="txtImgUrl" class="input normal upload-path" />
-                    <div class="upload-box upload-img"></div>&nbsp;<a href="javascript:void(0)" id="linkImgUrl">查看</a>
-                    <span class="Validform_checktip"></span>
+                    <input class="txtImgUrl input upload-path" />
+                    <div class="upload-box upload-img"></div>
+                    &nbsp;<span class="linkImgUrl" style="color:#2A72C5;" onclick="showImg()">查看</span>
                 </dd>
             </dl>
             <dl>
                 <dt>排序：</dt>
                 <dd>
-                    <input type="text" class="sort" name="sort" placeholder="排序" sucmsg="" datatype="n" value="99" />
+                    <input type="text" class="sort input" name="sort" placeholder="排序" sucmsg="" datatype="n" value="99" />
 
                 </dd>
             </dl>
@@ -155,6 +139,7 @@
 </html>
 <script type="text/javascript">
     $(function () {
+        
         $('.add').click(function () {
             var dhtml = $('.addDialog').html();
             var d = dialog({
@@ -165,12 +150,14 @@
                     var _thisDialog = this;
                     var _cid = $(_thisDialog.node).find('.cid').val();
                     var _title = $(_thisDialog.node).find('.title').val();
+                    var _initial = $(_thisDialog.node).find('.initial').val();
+                    var _img = $(_thisDialog.node).find('.txtImgUrl').val();
                     var _sort = $(_thisDialog.node).find('.sort').val();
                     $.ajax({
                         type: 'POST',
-                        url: '/admin/cate/cate_list.aspx',
+                        url: '/admin/cate/pinpai_list.aspx',
                         dataType: 'json',
-                        data: { action: 'add', cid: _cid, title: _title, sort: _sort },
+                        data: { action: 'add', cid: _cid, title: _title, initial: _initial,img:_img, sort: _sort },
                         success: function (data) {
                             parent.jsprint(data.msg, '');
                             if (data.status == 1) {
@@ -186,10 +173,14 @@
                 }
             });
             d.show();
+            //初始化上传控件
+            $(".ui-dialog-body .upload-img").InitUploader({ filesize: "10240", sendurl: "../../tools/upload_ajax.ashx", swf: "../../scripts/webuploader/uploader.swf", filetypes: "gif,jpg,png,bmp" });
         });
         $('.re_edit').click(function () {
             var _oid = $(this).attr('data-id');
             var _otitle = $(this).attr('data-title');
+            var _oinitial = $(this).attr('data-initial');
+            var _oimg = $(this).attr('data-img');
             var _osort = $(this).attr('data-sort');
             var dhtml = $('.addDialog').html();
             var d = dialog({
@@ -201,12 +192,14 @@
                     var _id = $(_thisDialog.node).find('.id').val();
                     var _cid = $(_thisDialog.node).find('.cid').val();
                     var _title = $(_thisDialog.node).find('.title').val();
+                    var _initial = $(_thisDialog.node).find('.initial').val();
+                    var _img = $(_thisDialog.node).find('.txtImgUrl').val();
                     var _sort = $(_thisDialog.node).find('.sort').val();
                     $.ajax({
                         type: 'POST',
-                        url: '/admin/cate/cate_list.aspx',
+                        url: '/admin/cate/pinpai_list.aspx',
                         dataType: 'json',
-                        data: { action: 'edit', id: _id, cid: _cid, title: _title, sort: _sort },
+                        data: { action: 'edit', id: _id, cid: _cid, title: _title, initial: _initial,img:_img, sort: _sort },
                         success: function (data) {
                             parent.jsprint(data.msg, '');
                             if (data.status == 1) {
@@ -223,10 +216,29 @@
             });
             $(d.node).find('.id').val(_oid);
             $(d.node).find('.title').val(_otitle);
+            $(d.node).find('.initial').val(_oinitial);
+            $(d.node).find('.txtImgUrl').val(_oimg);
             $(d.node).find('.sort').val(_osort);
             d.show();
+            //初始化上传控件
+            $(".ui-dialog-body .upload-img").InitUploader({ filesize: "10240", sendurl: "../../tools/upload_ajax.ashx", swf: "../../scripts/webuploader/uploader.swf", filetypes: "gif,jpg,png,bmp" });
         });
     })
+    function showImg() {
+        var src = $(".ui-dialog-body .txtImgUrl").val();
+        if (!src) {
+            layer.msg('请上传图片');
+            return;
+        }
+        layer.open({
+            type: 1,
+            title: '查看图片',
+            shadeClose: true,
+            shade: 0.8,
+            area: ['800px', '90%'],
+            content: '<img src=' + src + ' width="100%"  />'
+        });
+    }
 </script>
 
 

@@ -326,6 +326,34 @@ namespace HT.BLL
                 return rusult;
             }
         }
+        /// <summary>
+        /// 支付
+        /// </summary>
+        /// <param name="order_no">订单号</param>
+        /// <param name="pay">支付方式</param>
+        /// <param name="pay_trade_no">交易号</param>
+        /// <returns></returns>
+        public static int PayNews(string order_no,string pay,string pay_trade_no,out string msg)
+        {
+            msg = "支付失败";
+            using (Entities db = new Entities())
+            {
+                var details = db.ht_news.FirstOrDefault(p => p.order_no == order_no);
+                if(details.pay_status ==1)
+                {
+                    msg = "已支付过";
+                    return 0;
+                }
 
+                ht_user user = db.ht_user.Find(details.add_userid);
+                user.money = user.money - details.total;
+                details.pay_status = 1;
+                details.pay_time = DateTime.Now;
+                details.pay = pay;
+                details.pay_trade_no = pay_trade_no;
+                // var tran = db.Database.BeginTransaction();
+                return db.SaveChanges();
+            }
+        }
     }
 }

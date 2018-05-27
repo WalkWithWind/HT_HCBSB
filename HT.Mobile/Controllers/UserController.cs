@@ -111,9 +111,13 @@ namespace HT.Mobile.Controllers
         /// <returns></returns>
         public ActionResult Pay(string id)
         {
+            var details = BLLNews.GetNewsDetailsByOrderNo(id);
+            if(details.pay_status == 1) //已支付
+            {
+                return PayResult(id);
+            }
             int user_id = BLLAuthentication.GetAuthenticationUser().id;
             var user = BLLUser.GetUserById(user_id);
-            var details = BLLNews.GetNewsDetailsByOrderNo(id);
             ViewBag.RespUser = new Model.Model.RespUser
             {
                 id = user.id,
@@ -127,9 +131,9 @@ namespace HT.Mobile.Controllers
         /// 支付成功
         /// </summary>
         /// <returns></returns>
-        public ActionResult PayResult(string order_no)
+        public ActionResult PayResult(string id)
         {
-            var details = BLLNews.GetNewsDetailsByOrderNo(order_no);
+            var details = BLLNews.GetNewsDetailsByOrderNo(id);
             return View(details.pay_status);
         }
         /// <summary>
@@ -209,6 +213,71 @@ namespace HT.Mobile.Controllers
             }
             return JsonResult(APIErrCode.CheckCodeErr, "提交失败");
         }
+        /// <summary>
+        /// 余额支付提交
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult PostMoneyPay(string order_no)
+        {
+            string msg = "";
+            if (BLLNews.PayNews(order_no, "余额", "",out msg) ==0) return JsonResult(APIErrCode.OperateFail, msg);
+            return JsonResult(APIErrCode.Success, "支付完成");
+        }
+        /// <summary>
+        /// 我的团队
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="rows"></param>
+        /// <returns></returns>
+        public ActionResult TeamList(int page,int rows)
+        {
+            if (Request.IsAjaxRequest())
+            {
+                int total = 0;
+                decimal totalMoney = 0;
+                int totalPeopleNum = 0;
+                List<ht_commission> teamlist = BLLDistribution.GetCommussionList(page, rows, BLLUser.GetUserId(), out total,out totalMoney,out totalPeopleNum);
+                apiResp.result = new
+                {
+                    list = teamlist,
+                    total = total,
+                    total_money = totalMoney,
+                    total_people_num = totalPeopleNum
+                };
+                apiResp.msg = "查询完成";
+                apiResp.status = true;
+                return Json(apiResp);
+            }
+            return View();
+        }
+
+        /// <summary>
+        /// 团队详情
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="rows"></param>
+        /// <param name="parentid"></param>
+        /// <returns></returns>
+        public ActionResult TeamChildList(int page,int rows,int parentid)
+        {
+            if (Request.IsAjaxRequest())
+            {
+                int total = 0;
+                var list = BLLDistribution.GetCommussionByChild(page, rows, parentid, out total); apiResp.result = new
+                {
+                    list = list,
+                    total = total
+                };
+                apiResp.msg = "查询完成";
+                apiResp.status = true;
+                return Json(apiResp);
+            }
+            return View();
+        }
+
+
+
+
         #endregion 接口
     }
 }

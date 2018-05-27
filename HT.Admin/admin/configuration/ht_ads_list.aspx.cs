@@ -1,4 +1,5 @@
 ﻿using HT.Admin.Models;
+using HT.Model;
 using HT.Utility;
 using System;
 using System.Collections.Generic;
@@ -18,12 +19,13 @@ namespace HT.Admin.admin.configuration
         protected int page;
         protected int pageSize;
         protected string keyword;
-
+        protected string group;
         protected string code;
         protected void Page_Load(object sender, EventArgs e)
         {
             this.keyword = HTRequest.GetQueryString("keyword");
             this.code = HTRequest.GetQueryString("code");
+            this.group = HTRequest.GetQueryString("group");
             this.pageSize = GetPageSize(10); //每页数量
             ChkAdminLevel("ht_ads_list", HTEnums.ActionEnum.View.ToString()); //检查权限
             if (!Page.IsPostBack)
@@ -36,12 +38,35 @@ namespace HT.Admin.admin.configuration
         #region 绑定位置=================================
         private void TreeBindP()
         {
-            var list = db.ht_ad_category.OrderBy(s => s.sort).ToList();
-            this.ddlPlaceCode.Items.Clear();
-            this.ddlPlaceCode.Items.Add(new ListItem("请选择广告位...", ""));
+            var list = db.ht_ad_category.ToList();
+            this.ddlGroup.Items.Clear();
             foreach (var tiem in list)
             {
+                if (this.ddlGroup.Items.FindByValue(tiem.tgroup) != null) continue;
+                this.ddlGroup.Items.Add(new ListItem(tiem.tgroup, tiem.tgroup));
+            }
+            if (group != "")
+            {
+                ddlGroup.SelectedValue = group;
+            }
+            else
+            {
+                ddlGroup.SelectedIndex = 0;
+                group = ddlGroup.SelectedValue;
+            }
+
+            this.ddlPlaceCode.Items.Clear();
+            foreach (var tiem in list.Where(p=>p.tgroup ==group))
+            {
                 this.ddlPlaceCode.Items.Add(new ListItem(tiem.title, tiem.code));
+            }
+            if (code != ""){
+                ddlPlaceCode.SelectedValue = code;
+            }
+            else
+            {
+                ddlPlaceCode.SelectedIndex = 0;
+                code = ddlPlaceCode.SelectedValue;
             }
         }
         #endregion
@@ -61,7 +86,6 @@ namespace HT.Admin.admin.configuration
                 if (code != "")
                 {
                     shujuzhi = shujuzhi.Where(s => s.code == code);
-                    ddlPlaceCode.SelectedValue = code;
                 }
                 //数据数量  一定要放到绑定前面
                 int count = shujuzhi.Count();
@@ -69,7 +93,7 @@ namespace HT.Admin.admin.configuration
                 rptList.DataBind();
                 //绑定页码
                 txtPageNum.Text = this.pageSize.ToString();
-                string pageUrl = Utils.CombUrlTxt("ht_ads_list.aspx", "page={0}&keyword={1}&code={2}", "__id__", keyword, this.code);
+                string pageUrl = Utils.CombUrlTxt("ht_ads_list.aspx", "page={0}&keyword={1}&group={2}&code={3}", "__id__", keyword, this.group, this.code);
                 PageContent.InnerHtml = Utils.OutPageList(this.pageSize, this.page, count, pageUrl, 8);
             }
             catch (Exception)
@@ -105,7 +129,7 @@ namespace HT.Admin.admin.configuration
                     Utils.WriteCookie("ht_ads_list_page_size", _pagesize.ToString(), 43200);
                 }
             }
-            Response.Redirect(Utils.CombUrlTxt("ht_ads_list.aspx", "keyword={0}&code={1}", keyword, this.code));
+            Response.Redirect(Utils.CombUrlTxt("ht_ads_list.aspx", "keyword={0}&group={1}&code={2}", keyword, this.group, this.code));
         }
 
         //批量删除
@@ -145,12 +169,17 @@ namespace HT.Admin.admin.configuration
         //筛选广告位
         protected void ddlPlaceCode_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Response.Redirect(Utils.CombUrlTxt("ht_ads_list.aspx", "keyword={0}&code={1}", keyword, ddlPlaceCode.SelectedValue));
+            Response.Redirect(Utils.CombUrlTxt("ht_ads_list.aspx", "keyword={0}&group={1}&code={2}", keyword, group, ddlPlaceCode.SelectedValue));
         }
 
         protected void lbtnSearch_Click(object sender, EventArgs e)
         {
-            Response.Redirect(Utils.CombUrlTxt("ht_ads_list.aspx", "keyword={0}&code={1}", txtKeywords.Text, code));
+            Response.Redirect(Utils.CombUrlTxt("ht_ads_list.aspx", "keyword={0}&group={1}&code={2}", txtKeywords.Text, group, code));
+        }
+
+        protected void ddlGroup_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Response.Redirect(Utils.CombUrlTxt("ht_ads_list.aspx", "keyword={0}&group={1}&code={2}", txtKeywords.Text, ddlGroup.SelectedValue, code));
         }
     }
 }

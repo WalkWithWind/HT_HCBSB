@@ -14,54 +14,55 @@
     <ul class="pl_form_ul">
         <li>
             <div class="pg_sec8 pg_sec9">
-            @if (Model.set_top > 0)
-            {
-            <dl>
-                <dd class="active">
-                   @if (Model.set_top == 1)
-                   {
-                    <div class="pt1">
-                        <img src="/images/icon/icon27_1.png">
-                    </div>
-                    <div class="pt2">
-                        <span>分类置顶</span>
-                        <p>将在此分类也置顶显示，更能多人看到</p>
-                    </div>
-                   }
-                   else {
-                    <div class="pt1">
-                        <img src="/images/icon/icon27_2.png">
-                    </div>
-                    <div class="pt2">
-                        <span>全站置顶</span>
-                        <p>全站所有分类置顶显示，效果更好</p>
-                    </div>
-                   }
-                    <div class="pt3">
-                        <span>@(Model.set_top_money.Value)元</span>
-                    </div>
-                </dd>
-                <dd class="active">
-                </dd>
-            </dl>
-            }
-            @if (Model.reward_money > 0)
-            {
-            <dl>
-                <dd>
-                    <div class="pt1">
-                        <img src="/images/icon/icon27_3.png">
-                    </div>
-                    <div class="pt2">
-                        <span>打赏福利</span>
-                        <p>客服将优先多渠道推送</p>
-                    </div>
-                    <div class="pt3">
-                        <span>@(Model.reward_money)元</span>
-                    </div>
-                </dd>
-            </dl>
-            }
+                @if (Model.set_top > 0)
+                {
+                    <dl>
+                        <dd class="active">
+                            @if (Model.set_top == 1)
+                            {
+                                <div class="pt1">
+                                    <img src="/images/icon/icon27_1.png">
+                                </div>
+                                <div class="pt2">
+                                    <span>分类置顶</span>
+                                    <p>将在此分类也置顶显示，更能多人看到</p>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="pt1">
+                                    <img src="/images/icon/icon27_2.png">
+                                </div>
+                                <div class="pt2">
+                                    <span>全站置顶</span>
+                                    <p>全站所有分类置顶显示，效果更好</p>
+                                </div>
+                            }
+                            <div class="pt3">
+                                <span>@(Model.set_top_money.Value)元</span>
+                            </div>
+                        </dd>
+                        <dd class="active">
+                        </dd>
+                    </dl>
+                }
+                @if (Model.reward_money > 0)
+                {
+                    <dl>
+                        <dd>
+                            <div class="pt1">
+                                <img src="/images/icon/icon27_3.png">
+                            </div>
+                            <div class="pt2">
+                                <span>打赏福利</span>
+                                <p>客服将优先多渠道推送</p>
+                            </div>
+                            <div class="pt3">
+                                <span>@(Model.reward_money)元</span>
+                            </div>
+                        </dd>
+                    </dl>
+                }
             </div>
             <div class="ind_main_t">
                 <div class="use">
@@ -84,9 +85,18 @@
     <div class="pay_m">
         <p class="title">支付方式</p>
         <ul>
-            <li><input type="radio" name="name1" id="pay1" checked> <img src="/images/icon/icon20_1.png"> <label for="pay1">余额支付</label> <span>可用余额@(ViewBag.RespUser.money)元</span></li>
-            <li><input type="radio" name="name1" id="pay2"> <img src="/images/icon/icon20_2.png"> <label for="pay2">微信支付</label> <span>使用微信支付，简单方便</span></li>
+            <li><input type="radio" name="name1" id="pay1" v-if="money>total" v-bind:checked="pay=='余额'" v-on:click="pay='余额'"><img src="/images/icon/icon20_1.png"> <label for="pay1">余额支付</label> <span>可用余额 @(ViewBag.RespUser.money) 元</span></li>
+            <li><input type="radio" name="name1" id="pay2" v-bind:checked="pay=='微信'" v-on:click="pay='微信'"> <img src="/images/icon/icon20_2.png"> <label for="pay2">微信支付</label> <span>使用微信支付，简单方便</span></li>
         </ul>
-        <a href="@Url.Action("PayResult","User")" class="btn">立即支付</a>
+        <a href="javascript:void(0);" class="btn" v-on:click="pay()">立即支付</a>
     </div>
 </div>
+@Html.Partial("_Footer")
+<script>
+    var data = {
+        order_no='@Model.order_no',
+        total=@Model.total,
+        money=@ViewBag.RespUser.money
+    };
+</script>
+@Scripts.Render("/Scripts/User/Pay.js")
