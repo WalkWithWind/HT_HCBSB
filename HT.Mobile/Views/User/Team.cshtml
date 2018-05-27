@@ -13,32 +13,30 @@
     <ul class="tm_sec1">
         <li>
             团队人数（人）
-            <span>2</span>
+            <span v-text="teamData.total_people_num"></span>
         </li>
         <li>
             团队收益（元）
-            <span>528.16</span>
+            <span v-text="teamData.total_money.toFixed(2)"></span>
         </li>
     </ul>
     <ul class="tm_sec2">
-        @for (int i = 0; i < 7; i++)
-        {
-        <li>
-            <a href="@Url.Action("SecondaryDistribution","User",new { id=0})">
-                <div class="pt1">
-                    <img src="/images/icon/icon06.png">
-                </div>
-                <div class="pt2">
-                    <span>美好的未来</span>
-                    <p>加入时间：2018-03-28</p>
-                </div>
-                <div class="pt3">
-                    <span>分销收益</span>
-                    <em>￥65.48</em>
-                </div>
-            </a>
+        <li v-for="item in teamData.list">
+            <a v-bind:href="'/User/SecondaryDistribution/'+item.source_userid">
+                    <div class="pt1">
+                        <img v-bind:src="item.source_user_avatar">
+                    </div>
+                    <div class="pt2">
+                        <span v-text="item.source_user_nick"></span>
+                        <p>加入时间：{{item.add_time|jsonFormart}}</p>
+                    </div>
+                    <div class="pt3">
+                        <span>分销收益</span>
+                        <em>￥{{item.total_money.toFixed(2)}}</em>
+                    </div>
+                </a>
         </li>
-        }
     </ul>
 </div>
+@Scripts.Render("/Scripts/User/Team.js")
 

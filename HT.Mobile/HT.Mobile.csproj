@@ -293,6 +293,8 @@
     <Content Include="Scripts\swiper\swiper.min.js" />
     <Content Include="Scripts\User\Issue.js" />
     <Content Include="Scripts\User\Mobile.js" />
+    <Content Include="Scripts\User\SecondaryDistribution.js" />
+    <Content Include="Scripts\User\Team.js" />
     <Content Include="Scripts\User\TestLogin.js" />
     <Content Include="Scripts\vueFilter.js" />
     <Content Include="Scripts\vue\vue.min.js" />

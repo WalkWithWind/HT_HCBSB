@@ -31,6 +31,7 @@
     <EntitySet Name="ht_user_message" EntityType="Model.ht_user_message" />
     <EntitySet Name="ht_user_money_log" EntityType="Model.ht_user_money_log" />
     <EntitySet Name="ht_user_point_log" EntityType="Model.ht_user_point_log" />
+    <EntitySet Name="sysdiagrams" EntityType="Model.sysdiagram" />
     <AssociationSet Name="FK__ht_manage__rolei__3B0BC30C" Association="Model.FK__ht_manage__rolei__3B0BC30C">
       <End Role="ht_manager_role" EntitySet="ht_manager_role" />
       <End Role="ht_manager" EntitySet="ht_manager" />
@@ -111,8 +112,11 @@
     <Property Name="userid" Type="Int32" Nullable="false" />
     <Property Name="add_time" Type="DateTime" Precision="3" />
     <Property Name="source_userid" Type="Int32" />
+    <Property Name="source_user_nick" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="source_user_avatar" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="source_pre_userid" Type="Int32" />
     <Property Name="total_money" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="news_id" Type="Int32" />
   </EntityType>
   <EntityType Name="ht_help">
     <Key>
@@ -503,6 +507,16 @@
     <Property Name="point" Type="Int32" />
     <Property Name="remark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="addtime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <Association Name="FK__ht_manage__rolei__3B0BC30C">
     <End Type="Model.ht_manager_role" Role="ht_manager_role" Multiplicity="0..1" />
