@@ -31,6 +31,7 @@ namespace HT.Model
         public virtual DbSet<ht_category> ht_category { get; set; }
         public virtual DbSet<ht_comm_relation> ht_comm_relation { get; set; }
         public virtual DbSet<ht_commission> ht_commission { get; set; }
+        public virtual DbSet<ht_distribution_log> ht_distribution_log { get; set; }
         public virtual DbSet<ht_help> ht_help { get; set; }
         public virtual DbSet<ht_manager> ht_manager { get; set; }
         public virtual DbSet<ht_manager_log> ht_manager_log { get; set; }

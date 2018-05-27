@@ -264,13 +264,31 @@ namespace HT.Mobile.Controllers
             if (Request.IsAjaxRequest())
             {
                 int total = 0;
-                var list = BLLDistribution.GetCommussionByChild(page, rows, parentid, out total); apiResp.result = new
+                var list = BLLDistribution.GetCommussionByChild(page, rows, parentid, out total);
+                apiResp.result = new
                 {
                     list = list,
                     total = total
                 };
                 apiResp.msg = "查询完成";
                 apiResp.status = true;
+                return Json(apiResp);
+            }
+            return View();
+        }
+
+        public ActionResult DistributionData(int page,int rows)
+        {
+            if (Request.IsAjaxRequest())
+            {
+                int total = 0;
+                var list = BLLDistribution.GetMyDistributionList(page,rows, BLLUser.GetUserId(),out total);
+                apiResp.status = true;
+                apiResp.result = new {
+                    list =list,
+                    total=total
+                };
+                apiResp.msg = "查询完成";
                 return Json(apiResp);
             }
             return View();

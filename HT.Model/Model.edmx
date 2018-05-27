@@ -78,6 +78,20 @@
           <Property Name="total_money" Type="decimal" Precision="18" Scale="2" />
           <Property Name="news_id" Type="int" />
         </EntityType>
+        <EntityType Name="ht_distribution_log">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userid" Type="int" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="50" />
+          <Property Name="order_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="money" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="source_userid" Type="int" />
+          <Property Name="source_pre_userid" Type="int" />
+          <Property Name="news_id" Type="int" />
+          <Property Name="add_time" Type="datetime" />
+        </EntityType>
         <EntityType Name="ht_help">
           <Key>
             <PropertyRef Name="id" />
@@ -506,6 +520,7 @@
           <EntitySet Name="ht_category" EntityType="Self.ht_category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ht_comm_relation" EntityType="Self.ht_comm_relation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ht_commission" EntityType="Self.ht_commission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ht_distribution_log" EntityType="Self.ht_distribution_log" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ht_help" EntityType="Self.ht_help" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ht_manager" EntityType="Self.ht_manager" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ht_manager_log" EntityType="Self.ht_manager_log" Schema="dbo" store:Type="Tables" />
@@ -554,6 +569,7 @@
           <EntitySet Name="ht_category" EntityType="Model.ht_category" />
           <EntitySet Name="ht_comm_relation" EntityType="Model.ht_comm_relation" />
           <EntitySet Name="ht_commission" EntityType="Model.ht_commission" />
+          <EntitySet Name="ht_distribution_log" EntityType="Model.ht_distribution_log" />
           <EntitySet Name="ht_help" EntityType="Model.ht_help" />
           <EntitySet Name="ht_manager" EntityType="Model.ht_manager" />
           <EntitySet Name="ht_manager_log" EntityType="Model.ht_manager_log" />
@@ -663,6 +679,20 @@
           <Property Name="source_pre_userid" Type="Int32" />
           <Property Name="total_money" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="news_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ht_distribution_log">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userid" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="order_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="money" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="source_userid" Type="Int32" />
+          <Property Name="source_pre_userid" Type="Int32" />
+          <Property Name="news_id" Type="Int32" />
+          <Property Name="add_time" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="ht_help">
           <Key>
@@ -1171,6 +1201,21 @@
                 <ScalarProperty Name="source_user_nick" ColumnName="source_user_nick" />
                 <ScalarProperty Name="source_userid" ColumnName="source_userid" />
                 <ScalarProperty Name="add_time" ColumnName="add_time" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ht_distribution_log">
+            <EntityTypeMapping TypeName="Model.ht_distribution_log">
+              <MappingFragment StoreEntitySet="ht_distribution_log">
+                <ScalarProperty Name="add_time" ColumnName="add_time" />
+                <ScalarProperty Name="news_id" ColumnName="news_id" />
+                <ScalarProperty Name="source_pre_userid" ColumnName="source_pre_userid" />
+                <ScalarProperty Name="source_userid" ColumnName="source_userid" />
+                <ScalarProperty Name="money" ColumnName="money" />
+                <ScalarProperty Name="order_no" ColumnName="order_no" />
+                <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="userid" ColumnName="userid" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>

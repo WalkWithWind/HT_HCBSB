@@ -44,5 +44,21 @@ namespace HT.BLL
             }
         }
 
+
+        public static List<ht_distribution_log> GetMyDistributionList(int page,int rows,int userId,out int total)
+        {
+            using (Entities db = new Entities())
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                var list = db.ht_distribution_log.Where(p => true);
+                if (userId > 0)
+                {
+                    list = list.Where(p => p.userid == userId);
+                }
+                total = list.Count();
+                return list.OrderByDescending(p => p.add_time).Skip((page - 1) * rows).Take(rows).ToList();
+            }
+        }
+
     }
 }

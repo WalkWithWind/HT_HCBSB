@@ -10,19 +10,30 @@
         </div>
     </div>
     <ul class="md_sec">
-        @for (int i = 0; i < 8; i++)
-        {
-        <li>
+       
+
+        
+
+        <li v-for="item in disData.list">
             <div class="pt1">
-                <span>返利订单：B54128413165415</span>
-                <p>二级推荐人订单返利</p>
+                <span>返利订单：{{item.order_no}}</span>
+                <p v-text="item.title"></p>
             </div>
             <div class="pt2">
-                <span>2018-03-28 14：25</span>
-                <em>￥65.48</em>
+                <span>{{item.add_time|jsonFormart}}</span>
+                <em>￥{{item.money.toFixed(2)}}</em>
             </div>
         </li>
-        }
+
+        <li v-show="disData.list.length==0" style="text-align:center;line-height:1.2rem;color:#ccc;">
+            暂无记录
+        </li>
     </ul>
 </div>
+
+@section scripts{
+    @Scripts.Render("/Scripts/User/MyDistribution.js")
+}
+
+
 
