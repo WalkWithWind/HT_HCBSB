@@ -94,6 +94,7 @@ namespace HT.Mobile.Controllers
         /// <returns></returns>
         public ActionResult PostMessage()
         {
+            ViewBag.FootActive = 2;
             return View();
         }
         /// <summary>
@@ -113,7 +114,8 @@ namespace HT.Mobile.Controllers
 		/// <returns></returns>
 		[HttpPost]
 		[Authorize]
-		public ActionResult PostSubmit(ht_news model)
+        [CheckFilter]
+        public ActionResult PostSubmit(ht_news model)
 		{
 			string msg = "";
 			string orderNo = "";
@@ -208,6 +210,7 @@ namespace HT.Mobile.Controllers
         /// <returns></returns>
         public ActionResult GoodsSource()
         {
+            ViewBag.FootActive = 1;
             return View();
         }
         /// <summary>
@@ -284,6 +287,7 @@ namespace HT.Mobile.Controllers
         /// <returns></returns>
         public ActionResult CarSell()
         {
+            ViewBag.FootActive = 3;
             return View();
         }
         /// <summary>

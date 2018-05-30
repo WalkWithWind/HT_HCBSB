@@ -1,6 +1,8 @@
 ﻿using HT.BLL;
+using HT.Mobile.Filter;
 using HT.Model;
 using HT.Model.Enum;
+using HT.Model.Model;
 using HT.Utility;
 using System;
 using System.Collections.Generic;
@@ -18,8 +20,10 @@ namespace HT.Mobile.Controllers
         /// 个人中心
         /// </summary>
         /// <returns></returns>
+        [CheckFilter]
         public ActionResult Index()
         {
+            ViewBag.FootActive = 4;
             var authenticationUser = BLLAuthentication.GetAuthenticationUser();
             return View(authenticationUser);
         }
@@ -27,6 +31,7 @@ namespace HT.Mobile.Controllers
         /// 我的发布
         /// </summary>
         /// <returns></returns>
+        [CheckFilter]
         public ActionResult Issue()
         {
             return View();
@@ -35,6 +40,7 @@ namespace HT.Mobile.Controllers
         /// 我的钱包
         /// </summary>
         /// <returns></returns>
+        [CheckFilter]
         public ActionResult Wallet()
         {
             return View();
@@ -43,6 +49,7 @@ namespace HT.Mobile.Controllers
         /// 提现
         /// </summary>
         /// <returns></returns>
+        [CheckFilter]
         public ActionResult Withdraw()
         {
             return View();
@@ -51,6 +58,7 @@ namespace HT.Mobile.Controllers
         /// 提现成功
         /// </summary>
         /// <returns></returns>
+        [CheckFilter]
         public ActionResult WithdrawSuccess()
         {
             return View();
@@ -59,6 +67,7 @@ namespace HT.Mobile.Controllers
         /// 我要赚钱
         /// </summary>
         /// <returns></returns>
+        [CheckFilter]
         public ActionResult EarnMoney()
         {
             return View();
@@ -67,6 +76,7 @@ namespace HT.Mobile.Controllers
         /// 我的团队
         /// </summary>
         /// <returns></returns>
+        [CheckFilter]
         public ActionResult Team()
         {
             return View();
@@ -75,6 +85,7 @@ namespace HT.Mobile.Controllers
         /// 我的分销
         /// </summary>
         /// <returns></returns>
+        [CheckFilter]
         public ActionResult MyDistribution()
         {
             return View();
@@ -83,6 +94,7 @@ namespace HT.Mobile.Controllers
         /// 二级分销
         /// </summary>
         /// <returns></returns>
+        [CheckFilter]
         public ActionResult SecondaryDistribution(int id)
         {
             return View();
@@ -109,6 +121,7 @@ namespace HT.Mobile.Controllers
         /// </summary>
         /// <param name="id">因mvc路由实是order_no</param>
         /// <returns></returns>
+        [CheckFilter]
         public ActionResult Pay(string id)
         {
             var details = BLLNews.GetNewsDetailsByOrderNo(id);
@@ -160,16 +173,24 @@ namespace HT.Mobile.Controllers
             return JsonResult(APIErrCode.Success,"获取成功",authenticationUser);
         }
         /// <summary>
-        /// 获取验证码 5分钟
+        /// 获取验证码
         /// </summary>
         /// <returns></returns>
         public ActionResult GetCode(string mobile)
         {
             if(!MyRegex.IsPhone(mobile)) return JsonResult(APIErrCode.PhoneFormatError, "手机格式错误");
-            var authenticationUser = BLLAuthentication.GetAuthenticationUser();
-            var code =  HT.Utility.Utils.Number(6);
-            new XCache().Add("Code"+ authenticationUser.openid, code, 5);//写入缓存
+            AuthenticationUser authenticationUser = BLLAuthentication.GetAuthenticationUser();
+            string code =  HT.Utility.Utils.Number(6);
             return JsonResult(APIErrCode.Success, "获取验证码成功", code);
+            string sms_expire = BLLConfig.Get("sms_expire");
+            int expire =  Convert.ToInt32(sms_expire);
+            string msg = "";
+            if(BLLSendSms.SendMsg(mobile, code, "mobile", expire, out msg))
+            {
+                new XCache().Add("Code" + authenticationUser.openid, code, expire);//写入缓存
+                return JsonResult(APIErrCode.Success, "获取验证码成功", code);
+            }
+            return JsonResult(APIErrCode.OperateFail, msg);
         }
         /// <summary>
         /// 完善手机
@@ -230,6 +251,7 @@ namespace HT.Mobile.Controllers
         /// <param name="page"></param>
         /// <param name="rows"></param>
         /// <returns></returns>
+        [CheckFilter]
         public ActionResult TeamList(int page,int rows)
         {
             if (Request.IsAjaxRequest())
@@ -259,6 +281,7 @@ namespace HT.Mobile.Controllers
         /// <param name="rows"></param>
         /// <param name="parentid"></param>
         /// <returns></returns>
+        [CheckFilter]
         public ActionResult TeamChildList(int page,int rows,int parentid)
         {
             if (Request.IsAjaxRequest())
@@ -277,6 +300,7 @@ namespace HT.Mobile.Controllers
             return View();
         }
 
+        [CheckFilter]
         public ActionResult DistributionData(int page,int rows)
         {
             if (Request.IsAjaxRequest())

@@ -34,9 +34,11 @@
                 dataType: 'json',
                 success: function (resp) {
                     _this.isLoading = false;
-                    layer.msg(resp.msg);
+                    //layer.msg(resp.msg);
                     if (resp.status) {
+                        layer.msg("测试验证码：" + resp.data);
                         _this.setInterval(90);
+                    } else {
                     }
                 }
             });

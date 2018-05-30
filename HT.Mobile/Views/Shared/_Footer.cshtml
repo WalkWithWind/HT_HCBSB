@@ -1,21 +1,21 @@
 ﻿<div class="H50"></div>
 <footer>
     <ul class="footer_ul">
-        <li class="item active">
+        <li class="item @(ViewBag.FootActive==0?"active":"" )">
             <a href="@Url.Action("Index","Home")">
                 <img src="/images/icon/icon04_1.png" alt="">
                 <img src="/images/icon/icon04_5.png" alt="">
                 <p>首页</p>
             </a>
         </li>
-        <li class="item">
+        <li class="item @(ViewBag.FootActive==1?"active":"" )">
             <a href="@Url.Action("GoodsSource","Project")">
                 <img src="/images/icon/icon04_2.png" alt="">
                 <img src="/images/icon/icon04_6.png" alt="">
                 <p>货源信息</p>
             </a>
         </li>
-        <li class="item item_s">
+        <li class="item item_s @(ViewBag.FootActive==2?"active":"" )">
             <a href="@Url.Action("PostMessage","Project")">
                 <div class="img">
                     <img src="/images/icon/icon05.png" alt="">
@@ -23,14 +23,14 @@
                 <p>发布</p>
             </a>
         </li>
-        <li class="item">
+        <li class="item @(ViewBag.FootActive==3?"active":"" )">
             <a href="@Url.Action("CarSell","Project")">
                 <img src="/images/icon/icon04_3.png" alt="">
                 <img src="/images/icon/icon04_7.png" alt="">
                 <p>车辆买卖</p>
             </a>
         </li>
-        <li class="item">
+        <li class="item @(ViewBag.FootActive==4?"active":"" )">
             <a href="@Url.Action("Index","User")">
                 <img src="/images/icon/icon04_4.png" alt="">
                 <img src="/images/icon/icon04_8.png" alt="">

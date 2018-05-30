@@ -66,6 +66,7 @@
     <Compile Include="BLLRelation.cs" />
     <Compile Include="BLLConfig.cs" />
     <Compile Include="BLLReview.cs" />
+    <Compile Include="BLLSendSms.cs" />
     <Compile Include="BLLUser.cs" />
     <Compile Include="BLLWeixin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
