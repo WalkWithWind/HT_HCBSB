@@ -1703,20 +1703,20 @@ footer {
 .pg_sec3 dd {
 	overflow: hidden;
 }
-.pg_sec3 dd a {
-	float: left;
-	height: .6rem;
-	min-width: .96rem;
-	padding: 0 .2rem;
-	border: .02rem solid #dbdbdb;
-	border-radius: .08rem;
-	font-size: .24rem;
-	color: #999;
-	line-height: .58rem;
-	text-align: center;
-	margin: 0 .2rem .2rem 0;
-	overflow: hidden;
-}
+    .pg_sec3 dd a {
+        float: left;
+        height: .6rem;
+        min-width: 17%;
+        padding: 0 .2rem;
+        border: .02rem solid #dbdbdb;
+        border-radius: .08rem;
+        font-size: .24rem;
+        color: #999;
+        line-height: .58rem;
+        text-align: center;
+        margin: 0 .2rem .2rem 0;
+        overflow: hidden;
+    }
 .pg_sec3 dd a.cur {
 	color: #feb300;
 	border: .02rem solid #feb300;
@@ -2175,7 +2175,7 @@ footer {
 .zhx_box_title {}
 .zhx_box_title li {
 	float: left;
-	width: 50%;
+	width: 33.3333%;
 	line-height: .8rem;
 }
 .zhx_box_title li a {
@@ -2194,10 +2194,10 @@ footer {
 .zhx_box_title li.active:after {
 	background: #ffb400;
 }
-.zhx_box .province, .zhx_box .city, .zhx_box .day, .zhx_box .time {
+.zhx_box .province, .zhx_box .city, .zhx_box .district, .zhx_box .day, .zhx_box .time {
     margin-bottom: .2rem;
 }
-.zhx_box .province a, .zhx_box .city a, .zhx_box .day a, .zhx_box .time a {
+.zhx_box .province a, .zhx_box .city a, .zhx_box .district a, .zhx_box .day a, .zhx_box .time a {
     float: left;
     height: .8rem;
     border: .02rem solid #eaeaea;
@@ -2208,7 +2208,7 @@ footer {
     margin-bottom: -.02rem;
     margin-left: -.02rem;
 }
-.zhx_box .province .active, .zhx_box .city .active, .zhx_box .day .active, .zhx_box .time .active {
+.zhx_box .province .active, .zhx_box .city .active, .zhx_box .district .active, .zhx_box .day .active, .zhx_box .time .active {
     background-color: #5EB9F2;
     color: #ffffff;
 }
@@ -2216,6 +2216,9 @@ footer {
     width: 25%;
 }
 .zhx_box .city a {
+    width: 33.333%;
+}
+.zhx_box .district a {
     width: 33.333%;
 }
 .zhx_box .day a {

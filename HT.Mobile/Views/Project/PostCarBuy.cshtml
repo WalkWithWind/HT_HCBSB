@@ -16,23 +16,7 @@
         </div>
     </div>
     <div class="banner">
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <img src="/images/img/img00.jpg">
-                </div>
-                <div class="swiper-slide">
-                    <img src="/images/img/img00.jpg">
-                </div>
-                <div class="swiper-slide">
-                    <img src="/images/img/img00.jpg">
-                </div>
-                <div class="swiper-slide">
-                    <img src="/images/img/img00.jpg">
-                </div>
-            </div>
-            <div class="swiper-pagination"></div>
-        </div>
+        @Html.Action("AdList", "Partial", new { code = "push_carbuy_banner" })
     </div>
     <div class="pg_sec1">
         <ul class="">
@@ -86,7 +70,7 @@
             </dd>
             <dd>
                 <span>车辆所在地</span>
-                <input type="text" placeholder="请选择车辆所在地" v-model="model.start_city" v-on:click="showCity('start')">
+                <input type="text" placeholder="请选择车辆所在地" readonly="readonly" v-bind:value="model.start_city + model.start_district" v-on:click="showCity('start')">
             </dd>
         </dl>
     </div>
@@ -95,7 +79,7 @@
         <dl>
             <dt>其他补充</dt>
             <dd>
-                <textarea placeholder="装卸方式、付款方式、备注" v-model="model.other_remark"></textarea>
+                <textarea placeholder="请填写其他补充信息" v-model="model.other_remark"></textarea>
             </dd>
         </dl>
     </div>
@@ -176,45 +160,48 @@
         </dl>
         <a v-on:click="submit" class="btn">确认发布（共支付<label class="total">{{model.total}}</label>元）</a>
     </div>
-
     <div class="start_box zhx_box tab-box hide">
         <ul class="zhx_box_title tab-title">
-            <li v-bind:class="[{'active':select.startProvinceTab}]"
+            <li v-bind:class="[{'active':select.startProvinceTab==0}]"
                 v-on:click="selectTabProvince('start')">
                 <a href="javascript:;">省</a>
             </li>
-            <li v-bind:class="[{'active':!select.startProvinceTab}]"
+            <li v-bind:class="[{'active':select.startProvinceTab==1}]"
                 v-on:click="selectTabCity('start')">
                 <a href="javascript:;">市</a>
             </li>
+            <li v-bind:class="[{'active':select.startProvinceTab==2}]"
+                v-on:click="selectTabDistrict('start')">
+                <a href="javascript:;">区</a>
+            </li>
         </ul>
-        <div v-bind:class="['province','clearfix','tab-content',{'hide':!select.startProvinceTab}]">
+        <div v-bind:class="['province','clearfix','tab-content',{'hide':select.startProvinceTab!=0}]">
             <a href="javascript:;" v-for="item in cityData.get(0)"
                v-bind:class="[{ 'active': item==model.start_province }]"
                v-text="item" v-on:click="selectProvince('start',item)">
             </a>
         </div>
-        <div v-bind:class="['city','clearfix','tab-content',{'hide':select.startProvinceTab}]">
+        <div v-bind:class="['city','clearfix','tab-content',{'hide':select.startProvinceTab!=1}]"
+             v-if="model.start_province!=''">
             <a href="javascript:;" v-for="item in cityData.getCitysByProvince(model.start_province)"
                v-bind:class="[{ 'active':item==model.start_city }]"
                v-text="item" v-on:click="selectCity('start',item)">
             </a>
         </div>
+        <div v-bind:class="['district','clearfix','tab-content',{'hide':select.startProvinceTab!=2}]"
+             v-if="model.start_city!=''">
+            <a href="javascript:;" v-for="item in cityData.getDistricts(model.start_province,model.start_city)"
+               v-bind:class="[{ 'active':item==model.start_district }]"
+               v-text="item" v-on:click="selectDistrict('start',item)">
+            </a>
+        </div>
     </div>
-
-
 
 </div>
 @section scripts{
     <script src="~/Scripts/geo.js"></script>
     <script src="~/Scripts/Project/PostCarBuy.js"></script>
     <script>
-        var mySwiper = new Swiper('.banner .swiper-container', {
-            // autoplay: 5000,
-            pagination: '.swiper-pagination',
-            loop: true,
-        })
-
         $(function () {
             var $dd = $(".pg_sec3 dd");
             $dd.each(function () {

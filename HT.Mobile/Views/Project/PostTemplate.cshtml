@@ -15,23 +15,7 @@
         </div>
     </div>
     <div class="banner">
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <img src="/images/img/img00.jpg">
-                </div>
-                <div class="swiper-slide">
-                    <img src="/images/img/img00.jpg">
-                </div>
-                <div class="swiper-slide">
-                    <img src="/images/img/img00.jpg">
-                </div>
-                <div class="swiper-slide">
-                    <img src="/images/img/img00.jpg">
-                </div>
-            </div>
-            <div class="swiper-pagination"></div>
-        </div>
+        @Html.Action("AdList", "Partial", new { code = "push_temp_banner" })
     </div>
     <div class="pg_sec1">
         <ul class="">
@@ -74,7 +58,7 @@
         <dl>
             <dt>其他补充</dt>
             <dd>
-                <textarea placeholder="装卸方式、付款方式、备注" v-model="model.other_remark"></textarea>
+                <textarea placeholder="请填写其他补充信息" v-model="model.other_remark"></textarea>
             </dd>
         </dl>
     </div>

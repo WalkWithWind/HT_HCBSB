@@ -15,6 +15,7 @@ var listVm = new Vue({
             expire: 0,
             start_province: '',
             start_city: '',
+            start_district: '',
             use_type: '',
             car_length: '',
             car_style: '',
@@ -23,8 +24,7 @@ var listVm = new Vue({
             rows: 5
         },
         select: {
-            startProvinceTab: true,
-            stopProvinceTab: true
+            startProvinceTab: 0
         },
         cityData: dsy,
         useTypeData: [],
@@ -155,29 +155,46 @@ var listVm = new Vue({
         },
         selectProvince: function (code, item) {
             var _this = this;
-            if (_this.searchKey.start_province != item) _this.searchKey.start_city = '';
+            if (_this.searchKey.start_province != item) {
+                _this.searchKey.start_city = '';
+                _this.searchKey.start_district = '';
+            }
             _this.searchKey.start_province = item;
-            _this.select.startProvinceTab = false;
+            _this.select.startProvinceTab = 1;
         },
         selectCity: function (code, item) {
             var _this = this;
+            if (_this.searchKey.start_city != item) {
+                _this.searchKey.start_district = '';
+            }
             _this.searchKey.start_city = item;
+            _this.select.startProvinceTab = 2;
+        },
+        selectDistrict: function (code, item) {
+            var _this = this;
+            _this.searchKey.start_district = item;
             _this.confirm();
         },
         selectTabProvince: function (code) {
             var _this = this;
-            _this.select.startProvinceTab = true;
+            _this.select.startProvinceTab = 0;
         },
         selectTabCity: function (code) {
             var _this = this;
             if (_this.searchKey.start_province == '') return;
-            _this.select.startProvinceTab = false;
+            _this.select.startProvinceTab = 1;
+        },
+        selectTabDistrict: function (code) {
+            var _this = this;
+            if (_this.searchKey.start_city == '') return;
+            _this.select.startProvinceTab = 2;
         },
         resetCity: function (code) {
             var _this = this;
-            _this.select.startProvinceTab = true;
+            _this.select.startProvinceTab = 0;
             _this.searchKey.start_province = '';
             _this.searchKey.start_city = '';
+            _this.searchKey.start_district = '';
         },
         confirm: function (code) {
             var _this = this;

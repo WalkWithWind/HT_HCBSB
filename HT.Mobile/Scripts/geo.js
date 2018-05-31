@@ -11,6 +11,11 @@ Dsy.prototype.getCitysByProvince = function (province) {
     var _index = this.Items[0].indexOf(province);
     return this.Items['0_' + _index];
 }
+Dsy.prototype.getDistricts = function (province, city) {
+    var _index = this.Items[0].indexOf(province);
+    var _index1 = this.Items['0_' + _index].indexOf(city);
+    return this.Items['0_' + _index + '_' + _index1];
+}
 
 var dsy = new Dsy();
 

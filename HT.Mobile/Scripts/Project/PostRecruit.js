@@ -10,6 +10,7 @@ var vue = new Vue({
 			validity_unit: "天",//有效期单位 天,月
             start_province: "",//工作地区省份
             start_city: '', //工作地区城市
+            start_district: '', //工作地区域
             use_type: '',//驾照等级
             car_length: '', //工资待遇
             car_style: '',//驾驶类型
@@ -35,8 +36,7 @@ var vue = new Vue({
 		validity_unit_day_money: 0,// 发布费用 元/天
         validity_unit_month_money: 0,// 发布费用 元/月
 		select: {
-			startProvinceTab: true,
-			stopProvinceTab: true
+			startProvinceTab: 0
 		},
 		cityData: dsy
 	},
@@ -240,50 +240,43 @@ var vue = new Vue({
 				scrollbar: false,
 				anim: 2
 			});
-		},
-		selectProvince: function (code, item) {
-			var _this = this;
-			if (code == 'start') {
-				if (_this.model.start_province != item) _this.model.start_city = '';
-				_this.model.start_province = item;
-				_this.select.startProvinceTab = false;
-
-			} else {
-				if (_this.model.stop_province != item) _this.model.stop_city = '';
-				_this.model.stop_province = item;
-				_this.select.stopProvinceTab = false;
-
-			}
-		},
-		selectCity: function (code, item) {
-			var _this = this;
-			if (code == 'start') {
-				_this.model.start_city = item;
-			} else {
-				_this.model.stop_city = item;
+        },
+        selectProvince: function (code, item) {
+            var _this = this;
+            if (_this.model.start_province != item) {
+                _this.model.start_city = '';
+                _this.model.start_district = '';
             }
+            _this.model.start_province = item;
+            _this.select.startProvinceTab = 1;
+        },
+        selectCity: function (code, item) {
+            var _this = this;
+            if (_this.model.start_city != item) {
+                _this.model.start_district = '';
+            }
+            _this.model.start_city = item;
+            _this.select.startProvinceTab = 2;
+        },
+        selectDistrict: function (code, item) {
+            var _this = this;
+            _this.model.start_district = item;
             layer.closeAll();
-		},
-		selectTabProvince: function (code) {
-			var _this = this;
-			if (code == 'start') {
-				_this.select.startProvinceTab = true;
-			} else {
-				_this.select.stopProvinceTab = true;
-			}
-		},
-		selectTabCity: function (code) {
-			var _this = this;
-			if (code == 'start') {
-				if (_this.model.start_province == '') return;
-				_this.select.startProvinceTab = false;
-			} else {
-				if (_this.model.stop_province == '') return;
-				_this.select.stopProvinceTab = false;
-			}
-		}
-
-
+        },
+        selectTabProvince: function (code) {
+            var _this = this;
+            _this.select.startProvinceTab = 0;
+        },
+        selectTabCity: function (code) {
+            var _this = this;
+            if (_this.model.start_province == '') return;
+            _this.select.startProvinceTab = 1;
+        },
+        selectTabDistrict: function (code) {
+            var _this = this;
+            if (_this.model.start_city == '') return;
+            _this.select.startProvinceTab = 2;
+        }
     }
 });
 vue.init();

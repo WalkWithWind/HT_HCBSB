@@ -15,25 +15,7 @@
             </div>
         </div>
         <div class="banner">
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-
-                    <div class="swiper-slide">
-                        <img src="/images/img/img00.jpg">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="/images/img/img00.jpg">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="/images/img/img00.jpg">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="/images/img/img00.jpg">
-                    </div>
-
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
+            @Html.Action("AdList", "Partial", new { code = "push_goods_banner" })
         </div>
         <div class="pg_sec1">
             <ul class="">
@@ -56,11 +38,11 @@
                 <dt>货源路线</dt>
                 <dd>
                     <span>出发地</span>
-                    <input type="text" placeholder="请选择出发地" v-model="model.start_city" v-on:click="showCity('start')">
+                    <input type="text" placeholder="请选择出发地" readonly="readonly" v-bind:value="model.start_city + model.start_district" v-on:click="showCity('start')">
                 </dd>
                 <dd>
                     <span>到达地</span>
-                    <input type="text" placeholder="请选择到达地" v-model="model.stop_city" v-on:click="showCity('stop')">
+                    <input type="text" placeholder="请选择到达地" readonly="readonly" v-bind:value="model.stop_city + model.stop_district" v-on:click="showCity('stop')">
                 </dd>
             </dl>
         </div>
@@ -243,52 +225,75 @@
             </dl>
             <a v-on:click="submit" class="btn">确认发布（共支付<label class="total">{{model.total}}</label>元）</a>
         </div>
-
         <div class="start_box zhx_box tab-box hide">
             <ul class="zhx_box_title tab-title">
-                <li v-bind:class="[{'active':select.startProvinceTab}]"
+                <li v-bind:class="[{'active':select.startProvinceTab==0}]"
                     v-on:click="selectTabProvince('start')">
                     <a href="javascript:;">省</a>
                 </li>
-                <li v-bind:class="[{'active':!select.startProvinceTab}]"
+                <li v-bind:class="[{'active':select.startProvinceTab==1}]"
                     v-on:click="selectTabCity('start')">
                     <a href="javascript:;">市</a>
                 </li>
+                <li v-bind:class="[{'active':select.startProvinceTab==2}]"
+                    v-on:click="selectTabDistrict('start')">
+                    <a href="javascript:;">区</a>
+                </li>
             </ul>
-            <div v-bind:class="['province','clearfix','tab-content',{'hide':!select.startProvinceTab}]">
+            <div v-bind:class="['province','clearfix','tab-content',{'hide':select.startProvinceTab!=0}]">
                 <a href="javascript:;" v-for="item in cityData.get(0)"
                    v-bind:class="[{ 'active': item==model.start_province }]"
                    v-text="item" v-on:click="selectProvince('start',item)">
                 </a>
             </div>
-            <div v-bind:class="['city','clearfix','tab-content',{'hide':select.startProvinceTab}]">
+            <div v-bind:class="['city','clearfix','tab-content',{'hide':select.startProvinceTab!=1}]"
+                 v-if="model.start_province!=''">
                 <a href="javascript:;" v-for="item in cityData.getCitysByProvince(model.start_province)"
                    v-bind:class="[{ 'active':item==model.start_city }]"
                    v-text="item" v-on:click="selectCity('start',item)">
                 </a>
             </div>
+            <div v-bind:class="['district','clearfix','tab-content',{'hide':select.startProvinceTab!=2}]"
+                 v-if="model.start_city!=''">
+                <a href="javascript:;" v-for="item in cityData.getDistricts(model.start_province,model.start_city)"
+                   v-bind:class="[{ 'active':item==model.start_district }]"
+                   v-text="item" v-on:click="selectDistrict('start',item)">
+                </a>
+            </div>
         </div>
         <div class="stop_box zhx_box tab-box hide">
             <ul class="zhx_box_title tab-title">
-                <li v-bind:class="[{'active':select.stopProvinceTab}]"
+                <li v-bind:class="[{'active':select.stopProvinceTab==0}]"
                     v-on:click="selectTabProvince('stop')">
                     <a href="javascript:;">省</a>
                 </li>
-                <li v-bind:class="[{'active':!select.stopProvinceTab}]"
+                <li v-bind:class="[{'active':select.stopProvinceTab==1}]"
                     v-on:click="selectTabCity('stop')">
                     <a href="javascript:;">市</a>
                 </li>
+                <li v-bind:class="[{'active':select.stopProvinceTab==2}]"
+                    v-on:click="selectTabDistrict('stop')">
+                    <a href="javascript:;">区</a>
+                </li>
             </ul>
-            <div v-bind:class="['province','clearfix','tab-content',{'hide':!select.stopProvinceTab}]">
+            <div v-bind:class="['province','clearfix','tab-content',{'hide':select.stopProvinceTab!=0}]">
                 <a href="javascript:;" v-for="item in cityData.get(0)"
                    v-bind:class="[{ 'active': item==model.stop_province }]"
                    v-text="item" v-on:click="selectProvince('stop',item)">
                 </a>
             </div>
-            <div v-bind:class="['city','clearfix','tab-content',{'hide':select.stopProvinceTab}]">
+            <div v-bind:class="['city','clearfix','tab-content',{'hide':select.stopProvinceTab!=1}]"
+                 v-if="model.stop_province!=''">
                 <a href="javascript:;" v-for="item in cityData.getCitysByProvince(model.stop_province)"
                    v-bind:class="[{ 'active':item==model.stop_city }]"
                    v-text="item" v-on:click="selectCity('stop',item)">
+                </a>
+            </div>
+            <div v-bind:class="['district','clearfix','tab-content',{'hide':select.stopProvinceTab!=2}]"
+                 v-if="model.stop_city!=''">
+                <a href="javascript:;" v-for="item in cityData.getDistricts(model.stop_province,model.stop_city)"
+                   v-bind:class="[{ 'active':item==model.stop_district }]"
+                   v-text="item" v-on:click="selectDistrict('stop',item)">
                 </a>
             </div>
         </div>

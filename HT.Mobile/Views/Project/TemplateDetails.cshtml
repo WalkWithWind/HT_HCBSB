@@ -7,8 +7,6 @@
 @Html.Partial("_Header")
 
 <div class="template">
-
-
     <ul class="ind_sec1_ul car_item">
         <li>
             <div class="wrapper">
@@ -76,8 +74,27 @@
             </div>
         </li>
     </ul>
-
-    <details-component v-bind:news-data="newsData"></details-component>
+    <!--联系人-->
+    <div class="eld_item2">
+        <div class="wrapper">
+            <dl>
+                <dt>联系电话</dt>
+                <dd>
+                    <span v-text="newsData.contact_phone"></span>
+                    <a class="btn" v-bind:href="'tel://'+newsData.contact_phone"><img src="/images/icon/icon12.png">打电话</a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>联系人</dt>
+                <dd>
+                    <span v-text="newsData.contact_name"></span>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <!-- 广告 -->
+    @Html.Action("AdList", "Partial", new { code = "details_temp_banner" })
+    <details-component v-bind:id="id" v-bind:news-data="newsData"></details-component>
 </div>
 @Html.Partial("_Footer")
 @section scripts{

@@ -11,9 +11,11 @@
         <div class="wrapper">
             <div class="infor">
                 <div class="infor_p1">
-                    <span v-text="goodsData.start_province+goodsData.start_city"></span>
+                    <span v-text="goodsData.start_city"></span>
+                    <span v-text="goodsData.start_district"></span>
                     <i></i><!-- 中间的箭头符号 -->
-                    <span v-text="goodsData.stop_province+goodsData.stop_city"></span>
+                    <span v-text="goodsData.stop_city"></span>
+                    <span v-text="goodsData.stop_district"></span>
                     <em v-show="goodsData.set_top>0">置顶</em>
                 </div>
                 <div class="infor_p2">
@@ -34,9 +36,15 @@
                 </div>
             </div>
             <div class="details_main">
-                <dl>
+                <dl style="width:100%">
                     <dt>行驶路线：</dt>
-                    <dd v-text="goodsData.start_province+'—'+goodsData.stop_province"></dd>
+                    <dd>
+                        <span v-text="goodsData.start_city"></span>
+                        <span v-text="goodsData.start_district"></span>
+                        —
+                        <span v-text="goodsData.stop_city"></span>
+                        <span v-text="goodsData.stop_district"></span>
+                    </dd>
                 </dl>
                 <dl>
                     <dt>用车类型：</dt>

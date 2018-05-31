@@ -24,28 +24,43 @@
     <div class="clearfix"></div>
     <div class="start_box zhx_box tab-box hide">
         <ul class="zhx_box_title tab-title">
-            <li v-bind:class="[{'active':select.startProvinceTab}]"
+            <li v-bind:class="[{'active':select.startProvinceTab==0}]"
                 v-on:click="selectTabProvince('start')">
                 <a href="javascript:;">省</a>
             </li>
-            <li v-bind:class="[{'active':!select.startProvinceTab}]"
+            <li v-bind:class="[{'active':select.startProvinceTab==1}]"
                 v-on:click="selectTabCity('start')">
                 <a href="javascript:;">市</a>
             </li>
+            <li v-bind:class="[{'active':select.startProvinceTab==2}]"
+                v-on:click="selectTabDistrict('start')">
+                <a href="javascript:;">区</a>
+            </li>
         </ul>
-        <div v-bind:class="['province','clearfix','tab-content',{'hide':!select.startProvinceTab}]">
+        <div v-bind:class="['province','clearfix','tab-content',{'hide':select.startProvinceTab!=0}]">
             <a href="javascript:;" v-for="item in cityData.get(0)"
                v-bind:class="[{ 'active': item==searchKey.start_province }]"
                v-text="item" v-on:click="selectProvince('start',item)">
             </a>
         </div>
-        <div v-bind:class="['city','clearfix','tab-content',{'hide':select.startProvinceTab}]">
+        <div v-bind:class="['city','clearfix','tab-content',{'hide':select.startProvinceTab!=1}]"
+             v-if="searchKey.start_province!=''">
             <a href="javascript:;" v-for="item in cityData.getCitysByProvince(searchKey.start_province)"
                v-bind:class="[{ 'active':item==searchKey.start_city }]"
                v-text="item" v-on:click="selectCity('start',item)">
             </a>
         </div>
-
+        <div v-bind:class="['district','clearfix','tab-content',{'hide':select.startProvinceTab!=2}]"
+             v-if="searchKey.start_city!=''">
+            <a href="javascript:;" v-for="item in cityData.getDistricts(searchKey.start_province,searchKey.start_city)"
+               v-bind:class="[{ 'active':item==searchKey.start_district }]"
+               v-text="item" v-on:click="selectDistrict('start',item)">
+            </a>
+        </div>
+        <div class="sub_btn_box">
+            <a href="javascript:void(0);" class="cancle" v-on:click="resetCity('start')">重置</a>
+            <a href="javascript:void(0);" class="confirm" v-on:click="confirm()">确定</a>
+        </div>
     </div>
     <div class="use_type_box zhp_box hide">
         <div class="cty_box">

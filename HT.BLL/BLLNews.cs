@@ -131,6 +131,68 @@ namespace HT.BLL
         #endregion 信息查询
 
         #region 热门推荐（猜你喜欢）
+        private static IQueryable<ht_news> GetLikeNewsData(Entities db, int id, int min)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            var data = db.ht_news.Where(p => true);
+            ht_news searchKey = db.ht_news.FirstOrDefault(p => p.id == id);
+            if (searchKey == null) return data; 
+            //排除id
+            if (searchKey.id != 0) data = data.Where(p => p.id != searchKey.id);
+            //分类一致
+            if (searchKey.cateid != 0) data = data.Where(p => p.cateid == searchKey.cateid);
+            if (!string.IsNullOrWhiteSpace(searchKey.use_type))
+            {
+                if (data.Where(p => p.use_type == searchKey.use_type).Count() < min) return data;
+                data = data.Where(p => p.use_type == searchKey.use_type);
+            }
+            if (!string.IsNullOrWhiteSpace(searchKey.car_style))
+            {
+                if (data.Where(p => p.car_style == searchKey.car_style).Count() < min) return data;
+                data = data.Where(p => p.car_style == searchKey.car_style);
+            }
+            if (!string.IsNullOrWhiteSpace(searchKey.car_length))
+            {
+                if (data.Where(p => p.car_length == searchKey.car_length).Count() < min) return data;
+                data = data.Where(p => p.car_length == searchKey.car_length);
+            }
+            if (!string.IsNullOrWhiteSpace(searchKey.goods_type))
+            {
+                if (data.Where(p => p.goods_type == searchKey.goods_type).Count() < min) return data;
+                data = data.Where(p => p.goods_type == searchKey.goods_type);
+            }
+            if (!string.IsNullOrWhiteSpace(searchKey.start_province))
+            {
+                if (data.Where(p => p.start_province == searchKey.start_province).Count() < min) return data;
+                data = data.Where(p => p.start_province == searchKey.start_province);
+            }
+            if (!string.IsNullOrWhiteSpace(searchKey.start_city))
+            {
+                if (data.Where(p => p.start_city == searchKey.start_city).Count() < min) return data;
+                data = data.Where(p => p.start_city == searchKey.start_city);
+            }
+            if (!string.IsNullOrWhiteSpace(searchKey.start_district))
+            {
+                if (data.Where(p => p.start_district == searchKey.start_district).Count() < min) return data;
+                data = data.Where(p => p.start_district == searchKey.start_district);
+            }
+            if (!string.IsNullOrWhiteSpace(searchKey.stop_province))
+            {
+                if (data.Where(p => p.stop_province == searchKey.stop_province).Count() < min) return data;
+                data = data.Where(p => p.stop_province == searchKey.stop_province);
+            }
+            if (!string.IsNullOrWhiteSpace(searchKey.stop_city))
+            {
+                if (data.Where(p => p.stop_city == searchKey.stop_city).Count() < min) return data;
+                data = data.Where(p => p.stop_city == searchKey.stop_city);
+            }
+            if (!string.IsNullOrWhiteSpace(searchKey.stop_district))
+            {
+                if (data.Where(p => p.stop_district == searchKey.stop_district).Count() < min) return data;
+                data = data.Where(p => p.stop_district == searchKey.stop_district);
+            }
+            return data;
+        }
         /// <summary>
         /// 猜你喜欢
         /// </summary>
@@ -141,123 +203,11 @@ namespace HT.BLL
         {
             using (Entities db = new Entities())
             {
-                db.Configuration.ProxyCreationEnabled = false;
-                var data = db.ht_news.Where(p => true);
-                ht_news searchKey = db.ht_news.FirstOrDefault(p => p.id == id);
-                if (searchKey == null)
-                {
-                    return data.OrderByDescending(p => p.set_top)
-                        .ThenByDescending(p => p.praise_num)
-                        .ThenByDescending(p => p.update_time).ToList();
-                }
-                //排除id
-                if (searchKey.id != 0) data = data.Where(p => p.id != searchKey.id);
-                //分类一致
-                if (searchKey.cateid != 0) data = data.Where(p => p.cateid == searchKey.cateid);
-                if (!string.IsNullOrWhiteSpace(searchKey.use_type))
-                {
-                    if (data.Where(p => p.use_type == searchKey.use_type).Count() < min)
-                    {
-                        return data.OrderByDescending(p => p.set_top)
-                            .ThenByDescending(p => p.praise_num)
-                            .ThenByDescending(p => p.update_time).ToList();
-                    }
-                    data = data.Where(p => p.use_type == searchKey.use_type);
-                }
-                if (!string.IsNullOrWhiteSpace(searchKey.car_style))
-                {
-                    if (data.Where(p => p.car_style == searchKey.car_style).Count() < min)
-                    {
-                        return data.OrderByDescending(p => p.set_top)
-                            .ThenByDescending(p => p.praise_num)
-                            .ThenByDescending(p => p.update_time).ToList();
-                    }
-                    data = data.Where(p => p.car_style == searchKey.car_style);
-                }
-                if (!string.IsNullOrWhiteSpace(searchKey.car_length))
-                {
-                    if (data.Where(p => p.car_length == searchKey.car_length).Count() < min)
-                    {
-                        return data.OrderByDescending(p => p.set_top)
-                            .ThenByDescending(p => p.praise_num)
-                            .ThenByDescending(p => p.update_time).ToList();
-                    }
-                    data = data.Where(p => p.car_length == searchKey.car_length);
-                }
-                if (!string.IsNullOrWhiteSpace(searchKey.goods_type))
-                {
-                    if (data.Where(p => p.goods_type == searchKey.goods_type).Count() < min)
-                    {
-                        return data.OrderByDescending(p => p.set_top)
-                            .ThenByDescending(p => p.praise_num)
-                            .ThenByDescending(p => p.update_time).ToList();
-                    }
-                    data = data.Where(p => p.goods_type == searchKey.goods_type);
-                }
-                if (!string.IsNullOrWhiteSpace(searchKey.start_province))
-                {
-                    if (data.Where(p => p.start_province == searchKey.start_province).Count() < min)
-                    {
-                        return data.OrderByDescending(p => p.set_top)
-                            .ThenByDescending(p => p.praise_num)
-                            .ThenByDescending(p => p.update_time).ToList();
-                    }
-                    data = data.Where(p => p.start_province == searchKey.start_province);
-                }
-                if (!string.IsNullOrWhiteSpace(searchKey.start_city))
-                {
-                    if (data.Where(p => p.start_city == searchKey.start_city).Count() < min)
-                    {
-                        return data.OrderByDescending(p => p.set_top)
-                            .ThenByDescending(p => p.praise_num)
-                            .ThenByDescending(p => p.update_time).ToList();
-                    }
-                    data = data.Where(p => p.start_city == searchKey.start_city);
-                }
-                if (!string.IsNullOrWhiteSpace(searchKey.start_district))
-                {
-                    if (data.Where(p => p.start_district == searchKey.start_district).Count() < min)
-                    {
-                        return data.OrderByDescending(p => p.set_top)
-                            .ThenByDescending(p => p.praise_num)
-                            .ThenByDescending(p => p.update_time).ToList();
-                    }
-                    data = data.Where(p => p.start_district == searchKey.start_district);
-                }
-                if (!string.IsNullOrWhiteSpace(searchKey.stop_province))
-                {
-                    if (data.Where(p => p.stop_province == searchKey.stop_province).Count() < min)
-                    {
-                        return data.OrderByDescending(p => p.set_top)
-                            .ThenByDescending(p => p.praise_num)
-                            .ThenByDescending(p => p.update_time).ToList();
-                    }
-                    data = data.Where(p => p.stop_province == searchKey.stop_province);
-                }
-                if (!string.IsNullOrWhiteSpace(searchKey.stop_city))
-                {
-                    if (data.Where(p => p.stop_city == searchKey.stop_city).Count() < min)
-                    {
-                        return data.OrderByDescending(p => p.set_top)
-                            .ThenByDescending(p => p.praise_num)
-                            .ThenByDescending(p => p.update_time).ToList();
-                    }
-                    data = data.Where(p => p.stop_city == searchKey.stop_city);
-                }
-                if (!string.IsNullOrWhiteSpace(searchKey.stop_district))
-                {
-                    if (data.Where(p => p.stop_district == searchKey.stop_district).Count() < min)
-                    {
-                        return data.OrderByDescending(p => p.set_top)
-                            .ThenByDescending(p => p.praise_num)
-                            .ThenByDescending(p => p.update_time).ToList();
-                    }
-                    data = data.Where(p => p.stop_district == searchKey.stop_district);
-                }
-
-                return data.OrderByDescending(p => p.set_top)
+                var data = GetLikeNewsData(db, id, min).OrderByDescending(p => p.set_top)
                     .ThenByDescending(p => p.praise_num)
-                    .ThenByDescending(p => p.update_time).ToList();
+                    .ThenByDescending(p => p.update_time);
+
+                return data.Skip((page - 1) * rows).Take(rows).ToList();
             }
         }
 		#endregion 热门推荐（猜你喜欢）

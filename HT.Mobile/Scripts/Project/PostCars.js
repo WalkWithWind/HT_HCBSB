@@ -9,9 +9,11 @@ var vue = new Vue({
 			validity_num:"",//有效期
 			validity_unit: "天",//有效期单位 天,月
 			start_province:"",//出发地省份
-			start_city: '', //出发地城市
-			stop_province: '',//目的地省份
-			stop_city: '',//目的地城市
+            start_city: '', //出发地城市
+            start_district: '', //出发地区域
+            stop_province: '',//目的地省份
+            stop_city: '',//目的地城市
+            stop_district: '',//目的地区域
 			car_length: '', //选择的车长
 			car_style: '',//选择的车型
 			other_remark: "",//其它补充
@@ -35,8 +37,8 @@ var vue = new Vue({
 		validity_unit_day_money: 0,// 发布费用 元/天
         validity_unit_month_money: 0,// 发布费用 元/月
 		select: {
-			startProvinceTab: true,
-			stopProvinceTab: true
+			startProvinceTab: 0,
+			stopProvinceTab: 0
 		},
 		cityData: dsy
 	},
@@ -238,46 +240,78 @@ var vue = new Vue({
 				anim: 2
 			});
 		},
-		selectProvince: function (code, item) {
-			var _this = this;
-			if (code == 'start') {
-				if (_this.model.start_province != item) _this.model.start_city = '';
-				_this.model.start_province = item;
-				_this.select.startProvinceTab = false;
+        selectProvince: function (code, item) {
+            var _this = this;
+            if (code == 'start') {
+                if (_this.model.start_province != item) {
+                    _this.model.start_city = '';
+                    _this.model.start_district = '';
+                }
+                _this.model.start_province = item;
+                _this.select.startProvinceTab = 1;
 
-			} else {
-				if (_this.model.stop_province != item) _this.model.stop_city = '';
-				_this.model.stop_province = item;
-				_this.select.stopProvinceTab = false;
+            } else {
+                if (_this.model.stop_province != item) {
+                    _this.model.stop_city = '';
+                    _this.model.stop_district = '';
+                }
+                _this.model.stop_province = item;
+                _this.select.stopProvinceTab = 1;
 
-			}
-		},
-		selectCity: function (code, item) {
-			var _this = this;
-			if (code == 'start') {
-				_this.model.start_city = item;
-			} else {
-				_this.model.stop_city = item;
+            }
+        },
+        selectCity: function (code, item) {
+            var _this = this;
+            if (code == 'start') {
+                if (_this.model.start_city != item) {
+                    _this.model.start_district = '';
+                }
+                _this.model.start_city = item;
+                _this.select.startProvinceTab = 2;
+            } else {
+                if (_this.model.stop_city != item) {
+                    _this.model.stop_district = '';
+                }
+                _this.model.stop_city = item;
+                _this.select.stopProvinceTab = 2;
+            }
+        },
+        selectDistrict: function (code, item) {
+            var _this = this;
+            if (code == 'start') {
+                _this.model.start_district = item;
+            } else {
+                _this.model.stop_district = item;
             }
             layer.closeAll();
-		},
-		selectTabProvince: function (code) {
-			var _this = this;
-			if (code == 'start') {
-				_this.select.startProvinceTab = true;
-			} else {
-				_this.select.stopProvinceTab = true;
-			}
-		},
-		selectTabCity: function (code) {
-			var _this = this;
-			if (code == 'start') {
-				if (_this.model.start_province == '') return;
-				_this.select.startProvinceTab = false;
-			} else {
-				if (_this.model.stop_province == '') return;
-				_this.select.stopProvinceTab = false;
-			}
+        },
+        selectTabProvince: function (code) {
+            var _this = this;
+            if (code == 'start') {
+                _this.select.startProvinceTab = 0;
+            } else {
+                _this.select.stopProvinceTab = 0;
+            }
+        },
+        selectTabCity: function (code) {
+            var _this = this;
+            if (code == 'start') {
+                if (_this.model.start_province == '') return;
+                _this.select.startProvinceTab = 1;
+            } else {
+                if (_this.model.stop_province == '') return;
+                _this.select.stopProvinceTab = 1;
+            }
+        },
+        selectTabDistrict: function (code) {
+            var _this = this;
+            if (code == 'start') {
+                if (_this.model.start_city == '') return;
+                _this.select.startProvinceTab = 2;
+            } else {
+                if (_this.model.stop_city == '') return;
+                _this.select.stopProvinceTab = 2;
+            }
         },
         carLengthClick: function (item) {//车长选择
             if (this.carLenSelect.indexOf(item.title) >= 0) {

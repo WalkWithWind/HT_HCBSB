@@ -32,7 +32,10 @@
                 <div class="details_main">
                     <dl>
                         <dt>籍贯：</dt>
-                        <dd v-text="newsData.stop_city"></dd>
+                        <dd>
+                            <span v-text="newsData.stop_city"></span>
+                            <span v-text="newsData.stop_district"></span>
+                        </dd>
                     </dl>
                     <dl>
                         <dt>驾照等级：</dt>
@@ -40,7 +43,10 @@
                     </dl>
                     <dl>
                         <dt>工作地点：</dt>
-                        <dd v-text="newsData.start_city"></dd>
+                        <dd>
+                            <span v-text="newsData.start_city"></span>
+                            <span v-text="newsData.start_district"></span>
+                        </dd>
                     </dl>
                     <dl>
                         <dt>驾驶车型：</dt>
@@ -96,8 +102,7 @@
     </div>
 
     <!-- 广告 -->
-    <img src="/images/img/img01.jpg">
-
+    @Html.Action("AdList", "Partial", new { code = "details_job_banner" })
     <!-- 留言 -->
     <div class="eld_item3">
         <p class="p_tt">

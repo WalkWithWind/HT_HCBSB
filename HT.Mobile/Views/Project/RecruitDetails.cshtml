@@ -40,7 +40,10 @@
                     </dl>
                     <dl>
                         <dt>工作地点：</dt>
-                        <dd v-text="newsData.start_city"></dd>
+                        <dd>
+                            <span v-text="newsData.start_city"></span>
+                            <span v-text="newsData.start_district"></span>
+                        </dd>
                     </dl>
                     <dl>
                         <dt>人数：</dt>
@@ -104,7 +107,7 @@
     </div>
 
     <!-- 广告 -->
-    <img src="/images/img/img01.jpg">
+    @Html.Action("AdList", "Partial", new { code = "details_recruit_banner" })
 
     <!-- 留言 -->
     <div class="eld_item3">

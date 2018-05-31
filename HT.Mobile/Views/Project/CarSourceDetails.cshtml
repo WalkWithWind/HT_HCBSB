@@ -42,9 +42,15 @@
                         <dt>车型：</dt>
                         <dd v-text="newsData.car_style"></dd>
                     </dl>
-                    <dl>
+                    <dl style="width:100%">
                         <dt>行驶路线：</dt>
-                        <dd v-text="newsData.start_province+'—'+newsData.stop_province"></dd>
+                        <dd>
+                            <span v-text="newsData.start_city"></span>
+                            <span v-text="newsData.start_district"></span>
+                            —
+                            <span v-text="newsData.stop_city"></span>
+                            <span v-text="newsData.stop_district"></span>
+                        </dd>
                     </dl>
                     <dl>
                         <dt>其他：</dt>
@@ -96,7 +102,7 @@
     </div>
 
     <!-- 广告 -->
-    <img src="/images/img/img01.jpg">
+    @Html.Action("AdList", "Partial", new { code = "details_cars_banner" })
 
     <!-- 留言 -->
     <div class="eld_item3">
