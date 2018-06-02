@@ -111,7 +111,7 @@ namespace MicroMessenger
             }
             catch (Exception ex)
             {
-                using (System.IO.StreamWriter sw = new System.IO.StreamWriter(@"D:\WXPay\Error.txt", true, Encoding.GetEncoding("UTF-8")))
+                using (System.IO.StreamWriter sw = new System.IO.StreamWriter(@"E:\WXPay\Error.txt", true, Encoding.GetEncoding("UTF-8")))
                 {
                     sw.WriteLine(backStr);
                 }

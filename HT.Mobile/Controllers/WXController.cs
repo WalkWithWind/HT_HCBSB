@@ -102,7 +102,7 @@ namespace HT.Mobile.Controllers
                 //Tolog("进入支付回调");
                 XmlDocument xmlDoc = new XmlDocument();
                 xmlDoc.Load(Request.InputStream);
-                xmlDoc.Save(string.Format("D:\\WXPay\\Notify{0}.xml", DateTime.Now.ToString("yyyyMMddHHmmssfff")));//写入日志
+                xmlDoc.Save(string.Format("E:\\WXPay\\Notify{0}.xml", DateTime.Now.ToString("yyyyMMddHHmmssfff")));//写入日志
                 //全部参数
                 Dictionary<string, string> parametersAll = new Dictionary<string, string>();
                 foreach (XmlElement item in xmlDoc.DocumentElement.ChildNodes)
@@ -131,7 +131,7 @@ namespace HT.Mobile.Controllers
             }
             catch (Exception ex)
             {
-                using (System.IO.StreamWriter sw = new System.IO.StreamWriter(@"D:\WXPay\Error.txt", true, Encoding.GetEncoding("UTF-8")))
+                using (System.IO.StreamWriter sw = new System.IO.StreamWriter(@"E:\WXPay\Error.txt", true, Encoding.GetEncoding("UTF-8")))
                 {
                     sw.WriteLine(ex.ToString());
                 }
