@@ -410,7 +410,6 @@ D:\Work\HCBSB\HT.Mobile\obj\Debug\HT.Mobile.csproj.CoreCompileInputs.cache
 D:\Work\HCBSB\HT.Mobile\obj\Debug\HT.Mobile.csproj.CopyComplete
 D:\Work\HCBSB\HT.Mobile\obj\Debug\HT.Mobile.dll
 D:\Work\HCBSB\HT.Mobile\obj\Debug\HT.Mobile.pdb
-D:\Project\HCBSB\HT.Mobile\bin\HT.Mobile.dll.config
 D:\Project\HCBSB\HT.Mobile\bin\HT.Mobile.dll
 D:\Project\HCBSB\HT.Mobile\bin\HT.Mobile.pdb
 D:\Project\HCBSB\HT.Mobile\bin\roslyn\csc.exe
@@ -464,11 +463,8 @@ D:\Project\HCBSB\HT.Mobile\bin\System.Web.WebPages.dll
 D:\Project\HCBSB\HT.Mobile\bin\System.Web.WebPages.Razor.dll
 D:\Project\HCBSB\HT.Mobile\bin\WebGrease.dll
 D:\Project\HCBSB\HT.Mobile\bin\HT.BLL.pdb
-D:\Project\HCBSB\HT.Mobile\bin\HT.BLL.dll.config
 D:\Project\HCBSB\HT.Mobile\bin\HT.Model.pdb
-D:\Project\HCBSB\HT.Mobile\bin\HT.Model.dll.config
 D:\Project\HCBSB\HT.Mobile\bin\HT.Utility.pdb
-D:\Project\HCBSB\HT.Mobile\bin\HT.Utility.dll.config
 D:\Project\HCBSB\HT.Mobile\bin\EntityFramework.xml
 D:\Project\HCBSB\HT.Mobile\bin\EntityFramework.SqlServer.xml
 D:\Project\HCBSB\HT.Mobile\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
@@ -496,8 +492,14 @@ D:\Project\HCBSB\HT.Mobile\bin\zh-Hans\System.Web.Razor.resources.dll
 D:\Project\HCBSB\HT.Mobile\bin\zh-Hans\System.Web.WebPages.resources.dll
 D:\Project\HCBSB\HT.Mobile\bin\zh-Hans\System.Web.WebPages.Deployment.resources.dll
 D:\Project\HCBSB\HT.Mobile\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
+D:\Project\HCBSB\HT.Mobile\obj\Debug\HT.Mobile.dll
+D:\Project\HCBSB\HT.Mobile\obj\Debug\HT.Mobile.pdb
+D:\Project\HCBSB\HT.Mobile\bin\MicroMessenger.dll
+D:\Project\HCBSB\HT.Mobile\bin\MicroMessenger.pdb
+D:\Project\HCBSB\HT.Mobile\bin\HT.Mobile.dll.config
+D:\Project\HCBSB\HT.Mobile\bin\HT.BLL.dll.config
+D:\Project\HCBSB\HT.Mobile\bin\HT.Model.dll.config
+D:\Project\HCBSB\HT.Mobile\bin\HT.Utility.dll.config
 D:\Project\HCBSB\HT.Mobile\obj\Debug\HT.Mobile.csprojAssemblyReference.cache
 D:\Project\HCBSB\HT.Mobile\obj\Debug\HT.Mobile.csproj.CoreCompileInputs.cache
 D:\Project\HCBSB\HT.Mobile\obj\Debug\HT.Mobile.csproj.CopyComplete
-D:\Project\HCBSB\HT.Mobile\obj\Debug\HT.Mobile.dll
-D:\Project\HCBSB\HT.Mobile\obj\Debug\HT.Mobile.pdb

@@ -387,5 +387,41 @@ namespace HT.BLL
                 return db.SaveChanges();
             }
         }
+
+        /// <summary>
+        /// 微信支付成功
+        /// </summary>
+        /// <param name="orderNo">订单号</param>
+        /// <param name="tradeNo">交易号</param>
+        /// <returns></returns>
+        public static bool WXPaySuccess(string orderNo,string tradeNo)
+        {
+          
+            using (Entities db = new Entities())
+            {
+                try
+                {
+                    var details = db.ht_news.FirstOrDefault(p => p.order_no == orderNo);
+                    if (details.pay_status == 1)
+                    {
+
+                        return false;
+                    }
+                    details.pay_status = 1;
+                    details.pay_time = DateTime.Now;
+                    details.pay = "";
+                    details.pay_trade_no = tradeNo;
+                    return db.SaveChanges() > 0;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                    
+                }
+
+            }
+        }
+
+
     }
 }
