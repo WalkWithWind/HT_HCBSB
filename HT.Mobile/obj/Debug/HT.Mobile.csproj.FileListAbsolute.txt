@@ -496,10 +496,4 @@ D:\Project\HCBSB\HT.Mobile\obj\Debug\HT.Mobile.dll
 D:\Project\HCBSB\HT.Mobile\obj\Debug\HT.Mobile.pdb
 D:\Project\HCBSB\HT.Mobile\bin\MicroMessenger.dll
 D:\Project\HCBSB\HT.Mobile\bin\MicroMessenger.pdb
-D:\Project\HCBSB\HT.Mobile\bin\HT.Mobile.dll.config
-D:\Project\HCBSB\HT.Mobile\bin\HT.BLL.dll.config
-D:\Project\HCBSB\HT.Mobile\bin\HT.Model.dll.config
-D:\Project\HCBSB\HT.Mobile\bin\HT.Utility.dll.config
-D:\Project\HCBSB\HT.Mobile\obj\Debug\HT.Mobile.csprojAssemblyReference.cache
-D:\Project\HCBSB\HT.Mobile\obj\Debug\HT.Mobile.csproj.CoreCompileInputs.cache
-D:\Project\HCBSB\HT.Mobile\obj\Debug\HT.Mobile.csproj.CopyComplete
+D:\Project\HCBSB\HT.Mobile\obj\Debug\HT.Mobile.csprojResolveAssemblyReference.cache
