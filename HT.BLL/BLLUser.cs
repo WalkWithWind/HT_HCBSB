@@ -128,7 +128,7 @@ namespace HT.BLL
             return 0;
         }
 
-        public static List<ht_user_money_log> GetUserMoneyLogData(int page,int rows,int userId,out int total)
+        public static List<ht_user_money_log> GetUserMoneyLogData(int page,int rows,int userId,int type,out int total)
         {
             using (Entities db = new Entities())
             {
