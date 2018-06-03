@@ -142,8 +142,8 @@
     <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="sort" Type="Int32" />
-    <Property Name="excursion_count" Type="Int32" />
     <Property Name="update_time" Type="DateTime" Precision="3" />
+    <Property Name="add_time" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="ht_manager">
     <Key>
@@ -222,7 +222,7 @@
     <Property Name="cateid" Type="Int32" Nullable="false" />
     <Property Name="cate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
     <Property Name="contact_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="contact_phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="validity_num" Type="Int32" />
@@ -576,6 +576,7 @@
     <Property Name="money" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="addtime" Type="DateTime" Precision="3" />
+    <Property Name="status" Type="Int32" />
   </EntityType>
   <EntityType Name="ht_user_point_log">
     <Key>

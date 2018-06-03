@@ -70,16 +70,17 @@
 				<th align="center" width="5%">选择</th>
 				<%--<th align="center" width="12%">标题</th>--%>
                 
-				<th align="center" width="10%">联系人</th>
-				<th align="center" width="10%">联系电话</th>
+				<th align="center" width="8%">联系人</th>
+				<th align="center" width="8%">联系电话</th>
 				<th align="center" width="10%">发布时间</th>
 				<th align="center" width="10%">置顶金额</th>
+				<th align="center" width="6%">打赏金额</th>
 				<th align="center" width="10%">出发地</th>
 				<th align="center" width="10%">到达地</th>
 				<th align="center" width="10%">装车时间</th>
-				<th align="center" width="10%">运费金额</th>
-				<th align="center" width="10%">状态</th>
-				<th align="center" width="5%">操作</th>
+				<th align="center" width="8%">运费金额</th>
+				<th align="center" width="6%">状态</th>
+				<th align="center">操作</th>
 			</tr>
 
 			<tr v-for="item in dataList">
@@ -100,17 +101,21 @@
                     <span v-show="item.set_top==1">（分类置顶）</span>
                     <span v-show="item.set_top==2">（全站置顶）</span>
 				</td>
-				<td align="center">{{item.start_province}}-
-                            {{item.start_city}}
+				<td align="center">
+                    {{item.reward_money+'元'}}
+				</td>
+				<td align="center">
+                    {{(item.start_city+item.start_district)|stringRemove('')}}
 				</td>
 
-				<td align="center">{{item.stop_province}}-
-                            {{item.stop_city}}
+				<td align="center">
+                    {{(item.stop_city+item.stop_district)|stringRemove('')}}
 				</td>
-				<td align="center">{{item.use_time.replace(/T/g,' ')}}</td>
+				<td align="center">{{item.use_time}}</td>
 				<td align="center">{{item.freight}}</td>
 				<td align="center">
-                    <span v-if="item.status==0">待审核</span>
+                    <span v-if="item.status==0 && item.pay_status==0">待支付</span>
+                    <span v-if="item.status==0 && item.pay_status==1">待审核</span>
                     <span v-if="item.status==1">审核通过</span> 
                     <span v-if="item.status==2">审核不通过</span>
 				</td>

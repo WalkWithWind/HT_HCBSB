@@ -16,5 +16,9 @@ namespace HT.Model.Const
         /// 获取短信手机
         /// </summary>
         public const string Cookie_SMS_Mobile = "cookie_sms_mobile";
+        /// <summary>
+        /// 获取短信手机
+        /// </summary>
+        public const string Cookie_OpenId_Cachekey = "cookie_openid_cachekey";
     }
 }

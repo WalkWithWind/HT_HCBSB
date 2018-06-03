@@ -210,6 +210,7 @@ namespace HT.Mobile.Controllers
             if (user == null)
             {
                 user = new ht_user();
+                user.addtime = DateTime.Now;
                 user.username = user.openid;
                 user.openid = authenticationUser.openid;
                 user.salt = Utils.GetSalt();

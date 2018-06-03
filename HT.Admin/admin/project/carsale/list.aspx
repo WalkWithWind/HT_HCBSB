@@ -70,12 +70,13 @@
 				<th align="center" width="5%">选择</th>
 				<th align="center" width="10%">联系人</th>
 				<th align="center" width="10%">联系电话</th>
-				<th align="center" width="15%">发布时间</th>
-				<th align="center" width="15%">置顶金额</th>
+				<th align="center" width="10%">发布时间</th>
+				<th align="center" width="10%">置顶金额</th>
+				<th align="center" width="10%">打赏金额</th>
 				<th align="center" width="10%">车辆所在地</th>
 				<th align="center" width="15%">品牌</th>
 				<th align="center" width="10%">状态</th>
-				<th align="center" width="10%">操作</th>
+				<th align="center">操作</th>
 			</tr>
 
 			<tr v-for="item in dataList">
@@ -93,15 +94,19 @@
                     <span v-show="item.set_top==1">（分类置顶）</span>
                     <span v-show="item.set_top==2">（全站置顶）</span>
 				</td>
-				<td align="center">{{item.start_province}}-
-                            {{item.start_city}}
+				<td align="center">
+                    {{item.reward_money+'元'}}
+				</td>
+				<td align="center">
+                    {{(item.start_city+item.start_district)|stringRemove('')}}
 				</td>
 
 				<td align="center">
                     {{item.use_type}}
 				</td>
 				<td align="center">
-                    <span v-if="item.status==0">待审核</span>
+                    <span v-if="item.status==0 && item.pay_status==0">待支付</span>
+                    <span v-if="item.status==0 && item.pay_status==1">待审核</span>
                     <span v-if="item.status==1">审核通过</span> 
                     <span v-if="item.status==2">审核不通过</span>
 				</td>
