@@ -64,7 +64,7 @@ Vue.filter('statusFormart', function (value,num,unit,status,pay_status) {
 });
 Vue.filter('stringRemove', function (value, defvalue) {
     if (!value) return defvalue;
-    var removes = ['省', '市', '直辖市', '自治区', '区', '县', '镇'];
+    var removes = ['null', 'undefined',  '省','省', '市', '直辖市', '自治区', '区', '县', '镇'];
     for (var i = 0; i < removes.length; i++) {
         if (removes[i]) {
             value = value.replace(removes[i], '');

@@ -7,7 +7,7 @@
     <link href="/Content/Project/Project.css" rel="stylesheet" />
 
 }
-    <div class="main">
+    <div class="main hide" v-bind:class="['show']">
         <div class="top">
             <div class="wrapper">
                 <a href="javascript:history.go(-1);" class="back_btn">返回</a>
@@ -37,11 +37,11 @@
 
                 <dd>
                     <span>籍贯</span>
-                    <input type="text" placeholder="请选择籍贯" readonly="readonly" v-bind:value="model.stop_city + model.stop_district" v-on:click="showCity('stop')">
+                    <input type="text" placeholder="请选择籍贯" readonly="readonly" v-bind:value="(model.stop_city+model.stop_district)|stringRemove('')" v-on:click="select.showCityStop=true">
                 </dd>
                 <dd>
                     <span>工作地区</span>
-                    <input type="text" placeholder="请选择工作地区" readonly="readonly" v-bind:value="model.start_city + model.start_district" v-on:click="showCity('start')">
+                    <input type="text" placeholder="请选择工作地区" readonly="readonly" v-bind:value="(model.start_city+model.start_district)|stringRemove('')" v-on:click="select.showCityStart=true">
                 </dd>
 
             </dl>
@@ -166,94 +166,34 @@
             </dl>
             <a v-on:click="submit" class="btn">确认发布（共支付<label class="total">{{model.total}}</label>元）</a>
         </div>
-        <div class="start_box zhx_box tab-box hide">
-            <ul class="zhx_box_title tab-title">
-                <li v-bind:class="[{'active':select.startProvinceTab==0}]"
-                    v-on:click="selectTabProvince('start')">
-                    <a href="javascript:;">省</a>
-                </li>
-                <li v-bind:class="[{'active':select.startProvinceTab==1}]"
-                    v-on:click="selectTabCity('start')">
-                    <a href="javascript:;">市</a>
-                </li>
-                <li v-bind:class="[{'active':select.startProvinceTab==2}]"
-                    v-on:click="selectTabDistrict('start')">
-                    <a href="javascript:;">区</a>
-                </li>
-            </ul>
-            <div v-bind:class="['province','clearfix','tab-content',{'hide':select.startProvinceTab!=0}]">
-                <a href="javascript:;" v-for="item in cityData.get(0)"
-                   v-bind:class="[{ 'active': item==model.start_province }]"
-                   v-text="item" v-on:click="selectProvince('start',item)">
-                </a>
-            </div>
-            <div v-bind:class="['city','clearfix','tab-content',{'hide':select.startProvinceTab!=1}]"
-                 v-if="model.start_province!=''">
-                <a href="javascript:;" v-for="item in cityData.getCitysByProvince(model.start_province)"
-                   v-bind:class="[{ 'active':item==model.start_city }]"
-                   v-text="item" v-on:click="selectCity('start',item)">
-                </a>
-            </div>
-            <div v-bind:class="['district','clearfix','tab-content',{'hide':select.startProvinceTab!=2}]"
-                 v-if="model.start_city!=''">
-                <a href="javascript:;" v-for="item in cityData.getDistricts(model.start_province,model.start_city)"
-                   v-bind:class="[{ 'active':item==model.start_district }]"
-                   v-text="item" v-on:click="selectDistrict('start',item)">
-                </a>
-            </div>
-        </div>
-        <div class="stop_box zhx_box tab-box hide">
-            <ul class="zhx_box_title tab-title">
-                <li v-bind:class="[{'active':select.stopProvinceTab==0}]"
-                    v-on:click="selectTabProvince('stop')">
-                    <a href="javascript:;">省</a>
-                </li>
-                <li v-bind:class="[{'active':select.stopProvinceTab==1}]"
-                    v-on:click="selectTabCity('stop')">
-                    <a href="javascript:;">市</a>
-                </li>
-                <li v-bind:class="[{'active':select.stopProvinceTab==2}]"
-                    v-on:click="selectTabDistrict('stop')">
-                    <a href="javascript:;">区</a>
-                </li>
-            </ul>
-            <div v-bind:class="['province','clearfix','tab-content',{'hide':select.stopProvinceTab!=0}]">
-                <a href="javascript:;" v-for="item in cityData.get(0)"
-                   v-bind:class="[{ 'active': item==model.stop_province }]"
-                   v-text="item" v-on:click="selectProvince('stop',item)">
-                </a>
-            </div>
-            <div v-bind:class="['city','clearfix','tab-content',{'hide':select.stopProvinceTab!=1}]"
-                 v-if="model.stop_province!=''">
-                <a href="javascript:;" v-for="item in cityData.getCitysByProvince(model.stop_province)"
-                   v-bind:class="[{ 'active':item==model.stop_city }]"
-                   v-text="item" v-on:click="selectCity('stop',item)">
-                </a>
-            </div>
-            <div v-bind:class="['district','clearfix','tab-content',{'hide':select.stopProvinceTab!=2}]"
-                 v-if="model.stop_city!=''">
-                <a href="javascript:;" v-for="item in cityData.getDistricts(model.stop_province,model.stop_city)"
-                   v-bind:class="[{ 'active':item==model.stop_district }]"
-                   v-text="item" v-on:click="selectDistrict('stop',item)">
-                </a>
-            </div>
-        </div>
-
-
+        <city-dialog v-bind:box="'start_box'"
+                     v-bind:box-title="'工作地区'"
+                     v-bind:ob="model"
+                     v-bind:province="'start_province'"
+                     v-bind:city="'start_city'"
+                     v-bind:district="'start_district'"
+                     v-bind:show-dialog="'showCityStart'"
+                     v-bind:show-ob="select"
+                     v-if="select.showCityStart">
+        </city-dialog>
+        <city-dialog v-bind:box="'stop_box'"
+                     v-bind:box-title="'籍贯'"
+                     v-bind:ob="model"
+                     v-bind:province="'stop_province'"
+                     v-bind:city="'stop_city'"
+                     v-bind:district="'stop_district'"
+                     v-bind:show-dialog="'showCityStop'"
+                     v-bind:show-ob="select"
+                     v-if="select.showCityStop">
+        </city-dialog>
     </div>
 
 
 @section scripts{
-    <script src="~/Scripts/geo.js"></script>
-    <script src="~/Scripts/Project/PostJob.js"></script>
-
+    @Html.Partial("_CityJs")
+    @Scripts.Render("/Scripts/Project/PostJob.js")
+    @Html.Action("Template", "Partial", new { id = "CityDialog" })
     <script>
-        var mySwiper = new Swiper('.banner .swiper-container', {
-            // autoplay: 5000,
-            pagination: '.swiper-pagination',
-            loop: true,
-        })
-
         $(function () {
             var $dd = $(".pg_sec3 dd");
             $dd.each(function () {
