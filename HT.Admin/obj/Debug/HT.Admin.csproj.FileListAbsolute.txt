@@ -210,6 +210,12 @@ D:\Project\HCBSB\HT.Admin\bin\zh-Hans\EntityFramework.resources.dll
 D:\Project\HCBSB\HT.Admin\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
 D:\Project\HCBSB\HT.Admin\obj\Debug\HT.Admin.dll
 D:\Project\HCBSB\HT.Admin\obj\Debug\HT.Admin.pdb
-D:\Project\HCBSB\HT.Admin\obj\Debug\HT.Admin.csprojResolveAssemblyReference.cache
 D:\Project\HCBSB\HT.Admin\bin\MicroMessenger.dll
 D:\Project\HCBSB\HT.Admin\bin\MicroMessenger.pdb
+D:\Project\HCBSB\HT.Admin\bin\HT.Admin.dll.config
+D:\Project\HCBSB\HT.Admin\bin\HT.BLL.dll.config
+D:\Project\HCBSB\HT.Admin\bin\HT.Model.dll.config
+D:\Project\HCBSB\HT.Admin\bin\HT.Utility.dll.config
+D:\Project\HCBSB\HT.Admin\obj\Debug\HT.Admin.csprojAssemblyReference.cache
+D:\Project\HCBSB\HT.Admin\obj\Debug\HT.Admin.csproj.CoreCompileInputs.cache
+D:\Project\HCBSB\HT.Admin\obj\Debug\HT.Admin.csproj.CopyComplete

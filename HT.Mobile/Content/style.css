@@ -2280,3 +2280,14 @@ footer {
     text-align: center;
     color:#fff;
 }
+
+.txt-left{
+    text-align:left;
+}
+.txt-right{
+    text-align:right;
+}
+.txt-center{
+    text-align:center;
+}
+

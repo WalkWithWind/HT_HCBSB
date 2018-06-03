@@ -11,7 +11,8 @@
     <div class="top">
         <div class="wrapper">
             <a href="javascript:history.go(-1);" class="back_btn">返回</a>
-            <a href="javascript:void(0);" class="wdd">发布须知</a>
+            @*<a href="javascript:void(0);" class="wdd">发布须知</a>*@
+            <post-help-dialog></post-help-dialog>
         </div>
     </div>
     <div class="banner">
@@ -210,6 +211,7 @@
     @Scripts.Render("/Scripts/Project/PostCarSell.js")
     @Html.Action("Template", "Partial", new { id = "CityDialog" })
     @Html.Action("Template", "Partial", new { id = "PinpaiDialog" })
+    @Html.Action("Template", "Partial", new { id = "PostHelpDialog" })
     <script>
         $(function () {
             var $dd = $(".pg_sec3 dd");

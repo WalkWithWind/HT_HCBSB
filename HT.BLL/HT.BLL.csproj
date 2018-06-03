@@ -55,12 +55,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\BLLHelp.cs" />
     <Compile Include="Admin\BLLProject.cs" />
     <Compile Include="Admin\BLLUser.cs" />
     <Compile Include="BLLAd.cs" />
     <Compile Include="BLLAuthentication.cs" />
     <Compile Include="BLLCategory.cs" />
     <Compile Include="BLLDistribution.cs" />
+    <Compile Include="BLLHelp.cs" />
     <Compile Include="BLLNews.cs" />
     <Compile Include="BLLPinpai.cs" />
     <Compile Include="BLLRelation.cs" />

@@ -275,7 +275,7 @@
 					okValue: '确定',
 					ok: function () {
 						
-						$.ajax({
+					    $.ajax({
 						type: 'post',
 							url: delUrl,
 							data: { ids: _this.getSelectIds() },

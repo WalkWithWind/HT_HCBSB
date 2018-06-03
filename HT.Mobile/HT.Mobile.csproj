@@ -373,6 +373,7 @@
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Config\" />
     <Folder Include="Views\File\" />
+    <Folder Include="Views\Help\" />
     <Folder Include="Views\Relation\" />
     <Folder Include="Views\Review\" />
   </ItemGroup>
@@ -406,6 +407,9 @@
       <Project>{ee8c9eb8-510d-499d-a5f7-3ecd6d552dfa}</Project>
       <Name>MicroMessenger</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

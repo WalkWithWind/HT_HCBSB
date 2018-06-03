@@ -529,3 +529,8 @@ textarea.input{ width:300px; height:65px; }
 .H20 {
     height: 20px;
 }
+
+.ui-dialog-body {
+    min-width: 130px;
+    text-align: left;
+}

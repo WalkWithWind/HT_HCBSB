@@ -77,6 +77,7 @@
     <Content Include="admin\configuration\ht_single_page_edit.aspx" />
     <Content Include="admin\configuration\ht_help_list.aspx" />
     <Content Include="admin\configuration\ht_help_edit.aspx" />
+    <Content Include="admin\help\release_details.aspx" />
     <Content Include="admin\ie6update.html" />
     <Content Include="admin\index.aspx" />
     <Content Include="admin\js\common.js" />
@@ -583,6 +584,10 @@
     <Content Include="scripts\tooles.js" />
     <Content Include="scripts\uploader.js" />
     <Content Include="scripts\vue\vue.min.js" />
+    <Content Include="scripts\wangEditor-3.1.1\wangEditor.css" />
+    <Content Include="scripts\wangEditor-3.1.1\wangEditor.js" />
+    <Content Include="scripts\wangEditor-3.1.1\wangEditor.min.css" />
+    <Content Include="scripts\wangEditor-3.1.1\wangEditor.min.js" />
     <Content Include="scripts\webuploader\uploader.swf" />
     <Content Include="scripts\webuploader\webuploader.min.js" />
     <Content Include="Web.config" />
@@ -590,6 +595,12 @@
   <ItemGroup>
     <Compile Include="admin\api\BaseHandler.ashx.cs">
       <DependentUpon>BaseHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\api\help\get.ashx.cs">
+      <DependentUpon>get.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\api\help\update.ashx.cs">
+      <DependentUpon>update.ashx</DependentUpon>
     </Compile>
     <Compile Include="admin\api\project\delete.ashx.cs">
       <DependentUpon>delete.ashx</DependentUpon>
@@ -665,6 +676,13 @@
     </Compile>
     <Compile Include="admin\configuration\ht_help_edit.aspx.designer.cs">
       <DependentUpon>ht_help_edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\help\release_details.aspx.cs">
+      <DependentUpon>release_details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\help\release_details.aspx.designer.cs">
+      <DependentUpon>release_details.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
@@ -909,6 +927,8 @@
     <Content Include="admin\api\project\detail.ashx" />
     <Content Include="admin\api\project\delete.ashx" />
     <Content Include="admin\api\project\updatestatus.ashx" />
+    <Content Include="admin\api\help\get.ashx" />
+    <Content Include="admin\api\help\update.ashx" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
