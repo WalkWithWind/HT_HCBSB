@@ -1,17 +1,15 @@
-﻿using HT.Model;
-using HT.Model.Model;
+﻿using HT.Model.Model;
 using HT.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 namespace MicroMessenger
 {
     public class WXApi
     {
         /// <summary>
-        /// 获取微信JSAPI支付Json字符串
+        /// 获取微信JSAPI支付对象
         /// </summary>
         /// <param name="orderId">订单号</param>
         /// <param name="totalAmount">订单金额</param>

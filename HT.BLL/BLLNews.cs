@@ -359,7 +359,7 @@ namespace HT.BLL
             }
         }
         /// <summary>
-        /// 支付
+        /// 余额支付
         /// </summary>
         /// <param name="order_no">订单号</param>
         /// <param name="pay">支付方式</param>
@@ -376,6 +376,14 @@ namespace HT.BLL
                     msg = "已支付过";
                     return 0;
                 }
+
+                ht_user_money_log log = new ht_user_money_log();
+                log.userid = details.add_userid;
+                log.type =1;
+                log.money = -details.total;
+                log.remark = string.Format("余额支出{0}元", details.total);
+                log.addtime = DateTime.Now;
+                db.ht_user_money_log.Add(log);
 
                 ht_user user = db.ht_user.Find(details.add_userid);
                 user.money = user.money - details.total;
@@ -399,25 +407,35 @@ namespace HT.BLL
           
             using (Entities db = new Entities())
             {
-                try
-                {
+
                     var details = db.ht_news.FirstOrDefault(p => p.order_no == orderNo);
                     if (details.pay_status == 1)
                     {
 
                         return false;
                     }
+                    ht_user_money_log log = new ht_user_money_log();
+                    log.userid = details.add_userid;
+                    log.type = 0;
+                    log.money = details.total;
+                    log.remark =string.Format( "微信支付充值{0}元",details.total);
+                    log.addtime = DateTime.Now;
+                    db.ht_user_money_log.Add(log);
+
+                    ht_user_money_log log2 = new ht_user_money_log();
+                    log2.userid = details.add_userid;
+                    log2.type = 0;
+                    log2.money = -details.total;
+                    log2.remark = string.Format("微信支付支出{0}元", details.total);
+                    log2.addtime = DateTime.Now;
+                    db.ht_user_money_log.Add(log2);
+
                     details.pay_status = 1;
                     details.pay_time = DateTime.Now;
-                    details.pay = "";
+                    details.pay = "微信";
                     details.pay_trade_no = tradeNo;
                     return db.SaveChanges() > 0;
-                }
-                catch (Exception ex)
-                {
-                    return false;
-                    
-                }
+
 
             }
         }

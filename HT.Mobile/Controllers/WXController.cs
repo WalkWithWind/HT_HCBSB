@@ -90,8 +90,7 @@ namespace HT.Mobile.Controllers
                 }
                 else
                 {
-                    return JsonResult(Model.Enum.APIErrCode.OperateFail, "订单无效或已经支付");
-
+                    return JsonResult(Model.Enum.APIErrCode.OperateFail);
                 }
             }
             else
@@ -112,10 +111,8 @@ namespace HT.Mobile.Controllers
             try
             {
 
-                //Tolog("进入支付回调");
                 XmlDocument xmlDoc = new XmlDocument();
                 xmlDoc.Load(Request.InputStream);
-                xmlDoc.Save(string.Format("E:\\WXPay\\Notify{0}.xml", DateTime.Now.ToString("yyyyMMddHHmmssfff")));//写入日志
                 //全部参数
                 Dictionary<string, string> parametersAll = new Dictionary<string, string>();
                 foreach (XmlElement item in xmlDoc.DocumentElement.ChildNodes)
@@ -132,9 +129,11 @@ namespace HT.Mobile.Controllers
                 parametersAll = (from entry in parametersAll
                                  orderby entry.Key ascending
                                  select entry).ToDictionary(pair => pair.Key, pair => pair.Value);//全部参数排序
+
+                xmlDoc.Save(string.Format("E:\\WXPay\\{0}_Notify.xml", parametersAll["out_trade_no"]));//写入日志
                 if (MicroMessenger.CommonUtil.VerifySign(parametersAll, BLLConfig.Get("wx_mchsecret")))
                 {
-                    if (BLLNews.WXPaySuccess(parametersAll["out_trade_no"], parametersAll["out_trade_no"]))
+                    if (BLLNews.WXPaySuccess(parametersAll["out_trade_no"], parametersAll["transaction_id"]))
                     {
                         return Content(successXml);
                     }
