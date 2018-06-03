@@ -14,7 +14,7 @@ using System.Text;
 
 namespace HT.Mobile.Controllers
 {
-    public class WXController : Controller
+    public class WXController : BaseController
     {
         /// <summary>
         /// 用户授权回调
@@ -71,21 +71,34 @@ namespace HT.Mobile.Controllers
         public ActionResult Pay(string id)
         {
             var order = BLLNews.GetNewsDetailsByOrderNo(id);
-            if (order == null || order.pay_status == 1)
-            {
-                return RedirectToAction("PayFail", new { id = id });
-            }
-            string Ip = Request.UserHostAddress;
-            string openId = BLLUser.GetLoginUserInfo().openid;
-            string notiUrl = Request.Url.Scheme + "://" + Request.Url.Authority + "/WX/PayNotify";//通知地址
             ViewBag.OrderNo = id;
-            bool isRequestSuccess = false;
-            ViewBag.PayRequest = BLLWeixin.WXPay(order.order_no, order.total.Value, openId, Ip, notiUrl, out isRequestSuccess);
-            if (!isRequestSuccess)
+            if (Request.IsAjaxRequest())
             {
-                return RedirectToAction("PayFail", new { id = id });
+                if (order == null || order.pay_status == 1)
+                {
+                    return JsonResult(Model.Enum.APIErrCode.OperateFail, "订单无效或已经支付");
+                }
+                string Ip = Request.UserHostAddress;
+                string openId = BLLUser.GetLoginUserInfo().openid;
+                string notiUrl = Request.Url.Scheme + "://" + Request.Url.Authority + "/WX/PayNotify";//通知地址
+               
+                bool isRequestSuccess = false;
+                var payRequest = BLLWeixin.WXPay(order.order_no, order.total.Value, openId, Ip, notiUrl, out isRequestSuccess);
+                if (isRequestSuccess)
+                {
+                    return JsonResult(Model.Enum.APIErrCode.Success, "OK", payRequest);
+                }
+                else
+                {
+                    return JsonResult(Model.Enum.APIErrCode.OperateFail, "订单无效或已经支付");
+
+                }
             }
-            return View();
+            else
+            {
+                return View();
+            }
+            
 
         }
         /// <summary>
