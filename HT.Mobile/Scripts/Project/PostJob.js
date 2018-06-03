@@ -34,20 +34,19 @@ var vue = new Vue({
         reward_select: false,//是否选中赏福利
 		top_cate_money: 0,//分类置顶金额
 		top_all_money: 0,//全站置顶金额
-		validity_unit_day_money: 0,// 发布费用 元/天
-        validity_unit_month_money: 0,// 发布费用 元/月
+        pub_job_amount: 0,// 发布费用
+        validity_to_time: 0,// 有效期至
+        validity_to_time_str: '',// 有效期至
+        interval:-1,
         select: {
             showCityStart: false,
             showCityStop: false
 		}
 	},
-		watch: {
-		'model.validity_num': function (val, oldval) {
-			    this.calcTotal();
-			},
-		'model.validity_unit': function (val, oldval) {
-				this.calcTotal();
-			},
+    watch: {
+        'pub_job_amount': function (val, oldval) {
+            this.calcTotal();
+        },
 		'model.reward_money': function (val, oldval) {
 				this.calcTotal();
 			},
@@ -65,8 +64,9 @@ var vue = new Vue({
 
             this.loadConfigData('top_cate_money');//分类置顶金额
             this.loadConfigData('top_all_money');//全站置顶金额
-            this.loadConfigData('pub_amount_day');//发布费用 元/天
-            this.loadConfigData('pub_amount_month');//发布费用 元/月
+            this.loadConfigData('pub_job_amount');//发布费用
+            this.loadConfigData('pub_job_value');//发布时长
+            this.loadConfigData('pub_job_unit');//发布单位
 
         },
         loadCateData: function (code, cid) {
@@ -96,43 +96,54 @@ var vue = new Vue({
                 dataType: 'json',
                 success: function (resp) {
                     if (resp.status) {
-                        if (configName == 'top_cate_money') { _this.top_cate_money = parseFloat(resp.result) };
-                        if (configName == 'top_all_money') { _this.top_all_money = parseFloat(resp.result)};
-                        if (configName == 'pub_amount_day') { _this.validity_unit_day_money = parseFloat(resp.result) };
-                        if (configName == 'pub_amount_month') { _this.validity_unit_month_money = parseFloat(resp.result)};
-
-
+                        if (configName == 'top_cate_money') { _this.top_cate_money = parseFloat(resp.result); };
+                        if (configName == 'top_all_money') { _this.top_all_money = parseFloat(resp.result); };
+                        if (configName == 'pub_job_amount') { _this.pub_job_amount = parseFloat(resp.result); };
+                        if (configName == 'pub_job_value') { _this.model.validity_num = parseFloat(resp.result); _this.getInterval(); };
+                        if (configName == 'pub_job_unit') { _this.model.validity_unit = resp.result; _this.getInterval(); };
                     }
                 }
             });
         },//配置
+        getInterval: function () {
+            var _this = this;
+            if (_this.interval == -1 && !!_this.model.validity_num && !!_this.model.validity_unit) {
+                var value = new Date();
+                if (_this.model.validity_unit == '月') {
+                    value.setMonth(value.getMonth() + _this.model.validity_num);
+                }
+                else if (_this.model.validity_unit == '天') {
+                    value.setDate(value.getDate() + _this.model.validity_num);
+                }
+                _this.validity_to_time = value.getTime();
+                _this.getTime();
+                //_this.interval = setInterval(function () {
+                //    _this.validity_to_time += 1000000;
+                //    _this.getTime();
+                //}, 1000);
+            }
+        },
+        getTime: function () {
+            var _this = this;
+            var value = new Date(_this.validity_to_time);
+            var year = value.getFullYear();
+            var month = value.getMonth() + 1 < 10 ? "0" + (value.getMonth() + 1) : value.getMonth() + 1;
+            var day = value.getDate() < 10 ? "0" + value.getDate() : value.getDate();
+            var hour = value.getHours() < 10 ? "0" + value.getHours() : value.getHours();
+            var minute = value.getMinutes() < 10 ? "0" + value.getMinutes() : value.getMinutes();
+            _this.validity_to_time_str = year + "-" + month + "-" + day + " " + hour + ":" + minute;
+        },
 		calcTotal: function () {//计算总金额
 			var _this = this;
-			
-			_this.model.total = 0;
-			//if (_this.model.freight > 0) {
-			//	_this.model.total += parseFloat(_this.model.freight);
-			//}
+            _this.model.total = 0;
+            _this.model.total += _this.pub_job_amount;
 			if (_this.model.set_top_money > 0) {
 				_this.model.total += parseFloat(_this.model.set_top_money);
-			}
-			if (_this.model.validity_unit == "天") {
-				if (_this.model.validity_num>0) {
-					_this.model.total += _this.validity_unit_day_money * parseFloat(_this.model.validity_num);
-
-				}
-			} else if (_this.model.validity_unit == "月") {
-				if (_this.model.validity_num>0) {
-					_this.model.total += _this.validity_unit_month_money * parseFloat(_this.model.validity_num);
-
-				}
 			}
 			if (_this.model.reward_money > 0) {
 				_this.model.total += parseFloat(_this.model.reward_money);
 			}
-			console.log(["model", _this.model]);
-
-
+			//console.log(["model", _this.model]);
 		},
 		topCate: function () {//分类置顶点击
 			var _this = this;
@@ -175,7 +186,6 @@ var vue = new Vue({
 			if (_this.model.validity_num == "" || _this.model.validity_num<=0) {
 				alert("请输入有效期");
 				return false;
-
 			}
 			if (_this.model.start_city == "" ) {
                 alert("请选择请选择工作地区");
@@ -201,10 +211,12 @@ var vue = new Vue({
 
 		},
 		submit: function () {//提交
-			var _this = this;
+            var _this = this;
+            //console.log(_this.model);
+            //return false;
 			if (!_this.checkInput()) {
 				return false;
-			}
+            }
 			//confirm("提示", "确定发布", "发布", "取消", function () {
 				$.ajax({
 					type: 'post',

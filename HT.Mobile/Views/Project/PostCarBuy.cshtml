@@ -12,8 +12,8 @@
         <div class="top">
             <div class="wrapper">
                 <a href="javascript:history.go(-1);" class="back_btn">返回</a>
-            @*<a href="javascript:void(0);" class="wdd">发布须知</a>*@
-            <post-help-dialog></post-help-dialog>
+                @*<a href="javascript:void(0);" class="wdd">发布须知</a>*@
+                <post-help-dialog></post-help-dialog>
             </div>
         </div>
         <div class="banner">
@@ -35,9 +35,9 @@
             </ul>
         </div>
         <pinpai-dialog v-bind:ob="model"
-                       v-bind:pinpai="'use_type'" 
-                       v-bind:mult="true" 
-                       v-bind:box="'pinpai_box'" 
+                       v-bind:pinpai="'use_type'"
+                       v-bind:mult="true"
+                       v-bind:box="'pinpai_box'"
                        v-bind:box-title="'选择品牌'">
         </pinpai-dialog>
         <div class="pg_sec3 MB10">
@@ -76,20 +76,7 @@
                 </dd>
             </dl>
         </div>
-
-        <div class="pg_sec2 pg_sec7">
-            <dl>
-                <dt>联系信息</dt>
-                <dd>
-                    <span>联系人</span>
-                    <input type="text" value="" v-model="model.contact_name" placeholder="联系人">
-                </dd>
-                <dd>
-                    <span>联系电话</span>
-                    <input type="text" value="" v-model="model.contact_phone" placeholder="联系电话">
-                </dd>
-            </dl>
-        </div>
+        <contact v-bind:ob="model" v-bind:name="'contact_name'" v-bind:phone="'contact_phone'"></contact>
 
         <div class="pg_sec8 pg_sec9">
             <dl>
@@ -171,6 +158,7 @@
     @Html.Action("Template", "Partial", new { id = "CityDialog" })
     @Html.Action("Template", "Partial", new { id = "PinpaiDialog" })
     @Html.Action("Template", "Partial", new { id = "PostHelpDialog" })
+    @Html.Action("Template", "Partial", new { id = "Contact" })
     <script>
         $(function () {
             var $dd = $(".pg_sec3 dd");
