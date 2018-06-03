@@ -360,6 +360,7 @@
     <Content Include="Views\User\Mobile.cshtml" />
     <Content Include="Views\Partial\Details.cshtml" />
     <Content Include="Views\Shared\_LayoutIndex.cshtml" />
+    <Content Include="Views\Partial\CityDialog.cshtml" />
     <Content Include="Views\WX\Pay.cshtml" />
     <Content Include="Views\WX\PaySuccess.cshtml" />
     <None Include="Views\WX\PayFail.cshtml" />

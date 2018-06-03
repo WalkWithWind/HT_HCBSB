@@ -13,7 +13,7 @@
         init: function(){
             if (this.money < this.total) this.pay = '微信';
         },
-        pay: function () {
+        postPay: function () {
             if (this.pay == '余额') {
                 this.moneyPay();
                 return;
