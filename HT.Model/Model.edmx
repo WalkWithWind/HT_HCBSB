@@ -528,6 +528,7 @@
           <Property Name="money" Type="decimal" Precision="18" Scale="2" />
           <Property Name="remark" Type="nvarchar" MaxLength="500" />
           <Property Name="addtime" Type="datetime" />
+          <Property Name="status" Type="int" />
         </EntityType>
         <EntityType Name="ht_user_point_log">
           <Key>
@@ -538,6 +539,16 @@
           <Property Name="point" Type="int" />
           <Property Name="remark" Type="varchar" MaxLength="50" />
           <Property Name="addtime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <Association Name="FK__ht_manage__rolei__3B0BC30C">
           <End Role="ht_manager_role" Type="Self.ht_manager_role" Multiplicity="0..1" />
@@ -608,6 +619,7 @@
           <EntitySet Name="ht_user_message" EntityType="Self.ht_user_message" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ht_user_money_log" EntityType="Self.ht_user_money_log" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ht_user_point_log" EntityType="Self.ht_user_point_log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__ht_manage__rolei__3B0BC30C" Association="Self.FK__ht_manage__rolei__3B0BC30C">
             <End Role="ht_manager_role" EntitySet="ht_manager_role" />
             <End Role="ht_manager" EntitySet="ht_manager" />
@@ -658,6 +670,7 @@
           <EntitySet Name="ht_user_message" EntityType="Model.ht_user_message" />
           <EntitySet Name="ht_user_money_log" EntityType="Model.ht_user_money_log" />
           <EntitySet Name="ht_user_point_log" EntityType="Model.ht_user_point_log" />
+          <EntitySet Name="sysdiagrams" EntityType="Model.sysdiagram" />
           <AssociationSet Name="FK__ht_manage__rolei__3B0BC30C" Association="Model.FK__ht_manage__rolei__3B0BC30C">
             <End Role="ht_manager_role" EntitySet="ht_manager_role" />
             <End Role="ht_manager" EntitySet="ht_manager" />
@@ -1200,6 +1213,7 @@
           <Property Name="money" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="addtime" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="Int32" />
         </EntityType>
         <EntityType Name="ht_user_point_log">
           <Key>
@@ -1210,6 +1224,16 @@
           <Property Name="point" Type="Int32" />
           <Property Name="remark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="addtime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <Association Name="FK__ht_manage__rolei__3B0BC30C">
           <End Type="Model.ht_manager_role" Role="ht_manager_role" Multiplicity="0..1" />
@@ -1799,6 +1823,7 @@
           <EntitySetMapping Name="ht_user_money_log">
             <EntityTypeMapping TypeName="Model.ht_user_money_log">
               <MappingFragment StoreEntitySet="ht_user_money_log">
+                <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="addtime" ColumnName="addtime" />
                 <ScalarProperty Name="remark" ColumnName="remark" />
                 <ScalarProperty Name="money" ColumnName="money" />
@@ -1816,6 +1841,17 @@
                 <ScalarProperty Name="point" ColumnName="point" />
                 <ScalarProperty Name="userid" ColumnName="userid" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Model.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -6,7 +6,7 @@
 @section styles{
     @Html.Partial("_WhiteStyle")
 }
-<div class="main">
+<div class="withdraw">
     <div class="top">
         <div class="wrapper">
             <a href="javascript:history.go(-1);" class="back_btn">返回</a>
@@ -14,13 +14,14 @@
     </div>
     <div class="form_main wd_main">
         <div class="wrapper">
-            <form action="@Url.Action("WithdrawSuccess","User")">
                 <p>
-                    <input type="text" placeholder="请输入提现金额">
+                    <input type="text" v-model="money" placeholder="请输入提现金额">
                 </p>
-                <input type="submit" value="提现">
-            </form>
+                <input type="submit" v-on:click="withdraw()" value="提现">
         </div>
     </div>
 </div>
+@section scripts{
+    @Scripts.Render("/Scripts/User/Withdraw.js")
+}
 

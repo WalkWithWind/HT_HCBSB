@@ -57,5 +57,6 @@ namespace HT.Model
         public virtual DbSet<ht_user_message> ht_user_message { get; set; }
         public virtual DbSet<ht_user_money_log> ht_user_money_log { get; set; }
         public virtual DbSet<ht_user_point_log> ht_user_point_log { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }
