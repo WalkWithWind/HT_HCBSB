@@ -32,18 +32,11 @@
             </li>
         </ul>
     </div>
-
-    <div class="pg_sec3 pcs_sec1">
-        <dl>
-            <dt>选择品牌</dt>
-            <dd>
-                <a href="javascript:;" v-for="item in useTypeData"
-                   v-bind:class="[{ 'cur': item.title==model.use_type }]" v-on:click="model.use_type=item.title">
-                    <img v-bind:src="item.img" />
-                </a>
-            </dd>
-        </dl>
-    </div>
+    <pinpai-dialog v-bind:ob="model" 
+                   v-bind:pinpai="'use_type'" 
+                   v-bind:box="'pinpai_box'" 
+                   v-bind:box-title="'选择品牌'">
+    </pinpai-dialog>
     <div class="pg_sec3 MB10">
         <dl>
             <dt>车型</dt>
@@ -213,15 +206,11 @@
 
 @section scripts{
     @Html.Partial("_CityJs")
+    @Scripts.Render("/Scripts/jquery.linq.min.js")
     @Scripts.Render("/Scripts/Project/PostCarSell.js")
     @Html.Action("Template", "Partial", new { id = "CityDialog" })
+    @Html.Action("Template", "Partial", new { id = "PinpaiDialog" })
     <script>
-        var mySwiper = new Swiper('.banner .swiper-container', {
-            // autoplay: 5000,
-            pagination: '.swiper-pagination',
-            loop: true,
-        })
-
         $(function () {
             var $dd = $(".pg_sec3 dd");
             $dd.each(function () {

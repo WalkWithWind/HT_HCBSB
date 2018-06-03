@@ -8,171 +8,167 @@
     <link href="/Content/Project/Project.css" rel="stylesheet" />
 
 }
-<div class="main hide" v-bind:class="['show']">
-    <div class="top">
-        <div class="wrapper">
-            <a href="javascript:history.go(-1);" class="back_btn">返回</a>
-            <a href="javascript:void(0);" class="wdd">发布须知</a>
+    <div class="main hide" v-bind:class="['show']">
+        <div class="top">
+            <div class="wrapper">
+                <a href="javascript:history.go(-1);" class="back_btn">返回</a>
+                <a href="javascript:void(0);" class="wdd">发布须知</a>
+            </div>
         </div>
-    </div>
-    <div class="banner">
-        @Html.Action("AdList", "Partial", new { code = "push_carbuy_banner" })
-    </div>
-    <div class="pg_sec1">
-        <ul class="">
-            <li class="li1">
-                <span>有效期</span>
-                <input type="text" placeholder="请输入有效期" v-model="model.validity_num">
-                <div class="ro_box">
-                    <input type="radio" value="天" id="day" checked v-model="model.validity_unit"><label for="day">天</label>
-                    <input type="radio" value="月" id="mounth" v-model="model.validity_unit"><label for="mounth">月</label>
-                </div>
-            </li>
-            <li>
-                <p>本类信息支付费用说明：{{validity_unit_day_money}}元/天，{{validity_unit_month_money}}元/月</p>
-            </li>
-        </ul>
-    </div>
-
-    <div class="pg_sec3 pcs_sec1">
-        <dl>
-            <dt>选择品牌</dt>
-            <dd>
-                <a href="javascript:;" v-for="item in useTypeData"
-                   v-bind:class="[{ 'cur': useTypeSelectData.indexOf(item.title)>=0 }]" v-on:click="useTypeClick(item)">
-                    <img v-bind:src="item.img" />
-                </a>
-            </dd>
-        </dl>
-    </div>
-    <div class="pg_sec3 MB10">
-        <dl>
-            <dt>车型</dt>
-            <dd>
-                <a href="javascript:;" v-for="item in carStyleData"
-                   v-bind:class="[{ 'cur': carStyleSelect.indexOf(item.title)>=0 }]"
-                   v-text="item.title" v-on:click="carStyleClick(item)"></a>
-            </dd>
-        </dl>
-    </div>
-
-    <div class="pg_sec2">
-        <dl>
-            <dd>
-                <span>输入马力</span>
-                <input type="text" placeholder="请输入马力" v-model="model.goods_weight">
-            </dd>
-            <dd>
-                <span>车龄</span>
-                <input type="number" placeholder="请输入车辆使用年限（年）" v-model="model.recruit_num">
-            </dd>
-            <dd>
-                <span>车辆所在地</span>
-                <input type="text" placeholder="请选择车辆所在地" readonly="readonly" v-bind:value="(model.start_city+model.start_district)|stringRemove('')" v-on:click="select.showCityStart=true">
-            </dd>
-        </dl>
-    </div>
-
-    <div class="pg_sec3 pg_sec6">
-        <dl>
-            <dt>其他补充</dt>
-            <dd>
-                <textarea placeholder="请填写其他补充信息" v-model="model.other_remark"></textarea>
-            </dd>
-        </dl>
-    </div>
-
-    <div class="pg_sec2 pg_sec7">
-        <dl>
-            <dt>联系信息</dt>
-            <dd>
-                <span>联系人</span>
-                <input type="text" value="" v-model="model.contact_name" placeholder="联系人">
-            </dd>
-            <dd>
-                <span>联系电话</span>
-                <input type="text" value="" v-model="model.contact_phone" placeholder="联系电话">
-            </dd>
-        </dl>
-    </div>
-
-    <div class="pg_sec8 pg_sec9">
-        <dl>
-            <dt>增值服务</dt>
-            <dd>
-                <div class="pt1">
-                    <img src="/images/icon/icon27_1.png">
-                </div>
-                <div class="pt2">
-                    <span>分类置顶</span>
-                    <p>将在此分类也置顶显示，更能多人看到</p>
-                </div>
-                <div class="pt3">
-                    <span>{{top_cate_money}}元</span>
-                    <i v-on:click="topCate"></i>
-                </div>
-            </dd>
-            <dd>
-                <div class="pt1">
-                    <img src="/images/icon/icon27_2.png">
-                </div>
-                <div class="pt2">
-                    <span>全站置顶</span>
-                    <p>全站所有分类置顶显示，效果更好</p>
-                </div>
-                <div class="pt3">
-                    <span>{{top_all_money}}元</span>
-                    <i v-on:click="topAll"></i>
-                </div>
-            </dd>
-        </dl>
-    </div>
-    <div class="pg_sec8 pg_sec10">
-        <dl>
-            <dd>
-                <div class="pt1">
-                    <img src="/images/icon/icon27_3.png">
-                </div>
-                <div class="pt2">
-                    <span>打赏福利</span>
-                    <p>客服将优先多渠道推送</p>
-                </div>
-                <div class="pt3">
-                    <span>{{model.reward_money}}元</span>
-                    <i v-on:click="rewardClick"></i>
-                </div>
-                <div class="clear"></div>
-                <div class="pt4">
-                    <div class="txt_n">
-                        <a href="javascript:;" v-for="item in rewardMoneyData"
-                           v-bind:class="[{ 'cur': item.title==model.reward_money }]"
-                           v-text="item.title" v-on:click="model.reward_money=item.title"></a>
+        <div class="banner">
+            @Html.Action("AdList", "Partial", new { code = "push_carbuy_banner" })
+        </div>
+        <div class="pg_sec1">
+            <ul class="">
+                <li class="li1">
+                    <span>有效期</span>
+                    <input type="text" placeholder="请输入有效期" v-model="model.validity_num">
+                    <div class="ro_box">
+                        <input type="radio" value="天" id="day" checked v-model="model.validity_unit"><label for="day">天</label>
+                        <input type="radio" value="月" id="mounth" v-model="model.validity_unit"><label for="mounth">月</label>
                     </div>
-                    <p>
-                        <span>手动输入打赏金额</span>
-                        <input type="text" placeholder="请输入打赏金额" v-model="model.reward_money">
-                    </p>
-                </div>
+                </li>
+                <li>
+                    <p>本类信息支付费用说明：{{validity_unit_day_money}}元/天，{{validity_unit_month_money}}元/月</p>
+                </li>
+            </ul>
+        </div>
+        <pinpai-dialog v-bind:ob="model"
+                       v-bind:pinpai="'use_type'" 
+                       v-bind:mult="true" 
+                       v-bind:box="'pinpai_box'" 
+                       v-bind:box-title="'选择品牌'">
+        </pinpai-dialog>
+        <div class="pg_sec3 MB10">
+            <dl>
+                <dt>车型</dt>
+                <dd>
+                    <a href="javascript:;" v-for="item in carStyleData"
+                       v-bind:class="[{ 'cur': carStyleSelect.indexOf(item.title)>=0 }]"
+                       v-text="item.title" v-on:click="carStyleClick(item)"></a>
+                </dd>
+            </dl>
+        </div>
 
-            </dd>
-        </dl>
-        <a v-on:click="submit" class="btn">确认发布（共支付<label class="total">{{model.total}}</label>元）</a>
+        <div class="pg_sec2">
+            <dl>
+                <dd>
+                    <span>输入马力</span>
+                    <input type="text" placeholder="请输入马力" v-model="model.goods_weight">
+                </dd>
+                <dd>
+                    <span>车龄</span>
+                    <input type="number" placeholder="请输入车辆使用年限（年）" v-model="model.recruit_num">
+                </dd>
+                <dd>
+                    <span>车辆所在地</span>
+                    <input type="text" placeholder="请选择车辆所在地" readonly="readonly" v-bind:value="(model.start_city+model.start_district)|stringRemove('')" v-on:click="select.showCityStart=true">
+                </dd>
+            </dl>
+        </div>
+
+        <div class="pg_sec3 pg_sec6">
+            <dl>
+                <dt>其他补充</dt>
+                <dd>
+                    <textarea placeholder="请填写其他补充信息" v-model="model.other_remark"></textarea>
+                </dd>
+            </dl>
+        </div>
+
+        <div class="pg_sec2 pg_sec7">
+            <dl>
+                <dt>联系信息</dt>
+                <dd>
+                    <span>联系人</span>
+                    <input type="text" value="" v-model="model.contact_name" placeholder="联系人">
+                </dd>
+                <dd>
+                    <span>联系电话</span>
+                    <input type="text" value="" v-model="model.contact_phone" placeholder="联系电话">
+                </dd>
+            </dl>
+        </div>
+
+        <div class="pg_sec8 pg_sec9">
+            <dl>
+                <dt>增值服务</dt>
+                <dd>
+                    <div class="pt1">
+                        <img src="/images/icon/icon27_1.png">
+                    </div>
+                    <div class="pt2">
+                        <span>分类置顶</span>
+                        <p>将在此分类也置顶显示，更能多人看到</p>
+                    </div>
+                    <div class="pt3">
+                        <span>{{top_cate_money}}元</span>
+                        <i v-on:click="topCate"></i>
+                    </div>
+                </dd>
+                <dd>
+                    <div class="pt1">
+                        <img src="/images/icon/icon27_2.png">
+                    </div>
+                    <div class="pt2">
+                        <span>全站置顶</span>
+                        <p>全站所有分类置顶显示，效果更好</p>
+                    </div>
+                    <div class="pt3">
+                        <span>{{top_all_money}}元</span>
+                        <i v-on:click="topAll"></i>
+                    </div>
+                </dd>
+            </dl>
+        </div>
+        <div class="pg_sec8 pg_sec10">
+            <dl>
+                <dd>
+                    <div class="pt1">
+                        <img src="/images/icon/icon27_3.png">
+                    </div>
+                    <div class="pt2">
+                        <span>打赏福利</span>
+                        <p>客服将优先多渠道推送</p>
+                    </div>
+                    <div class="pt3">
+                        <span>{{model.reward_money}}元</span>
+                        <i v-on:click="rewardClick"></i>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="pt4">
+                        <div class="txt_n">
+                            <a href="javascript:;" v-for="item in rewardMoneyData"
+                               v-bind:class="[{ 'cur': item.title==model.reward_money }]"
+                               v-text="item.title" v-on:click="model.reward_money=item.title"></a>
+                        </div>
+                        <p>
+                            <span>手动输入打赏金额</span>
+                            <input type="text" placeholder="请输入打赏金额" v-model="model.reward_money">
+                        </p>
+                    </div>
+
+                </dd>
+            </dl>
+            <a v-on:click="submit" class="btn">确认发布（共支付<label class="total">{{model.total}}</label>元）</a>
+        </div>
+        <city-dialog v-bind:box="'start_box'"
+                     v-bind:box-title="'车辆所在地'"
+                     v-bind:ob="model"
+                     v-bind:province="'start_province'"
+                     v-bind:city="'start_city'"
+                     v-bind:district="'start_district'"
+                     v-bind:show-dialog="'showCityStart'"
+                     v-bind:show-ob="select"
+                     v-if="select.showCityStart">
+        </city-dialog>
     </div>
-    <city-dialog v-bind:box="'start_box'"
-                 v-bind:box-title="'车辆所在地'"
-                 v-bind:ob="model"
-                 v-bind:province="'start_province'"
-                 v-bind:city="'start_city'"
-                 v-bind:district="'start_district'"
-                 v-bind:show-dialog="'showCityStart'"
-                 v-bind:show-ob="select"
-                 v-if="select.showCityStart">
-    </city-dialog>
-</div>
 @section scripts{
     @Html.Partial("_CityJs")
+    @Scripts.Render("/Scripts/jquery.linq.min.js")
     @Scripts.Render("/Scripts/Project/PostCarBuy.js")
     @Html.Action("Template", "Partial", new { id = "CityDialog" })
+    @Html.Action("Template", "Partial", new { id = "PinpaiDialog" })
     <script>
         $(function () {
             var $dd = $(".pg_sec3 dd");

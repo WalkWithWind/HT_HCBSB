@@ -28,7 +28,6 @@ var vue = new Vue({
             reward_money: 0,//打赏金额
             total: 0//需支付金额
         },
-        useTypeData: [],//品牌列表
         carLengthData: [],//排放标准
         carStyleData: [],//车型列表
         imgsData: [],//上传图片
@@ -60,8 +59,6 @@ var vue = new Vue({
     },
     methods: {
         init: function () {
-
-            this.loadPinpaiData();//品牌
             this.loadCateData('car_length', 111);//排放标准
             this.loadCateData('car_style', 16);//车型
             this.loadCateData('reward_money', 55);//打赏福利列表
@@ -86,20 +83,6 @@ var vue = new Vue({
                         if (code == 'car_style') { _this.carStyleData = resp.result };
                         if (code == 'reward_money') { _this.rewardMoneyData = resp.result };
 
-                    }
-                }
-            });
-        },
-        loadPinpaiData: function () {
-            var _this = this;
-            $.ajax({
-                type: 'post',
-                url: '/Home/PinpaiList',
-                data: {  },
-                dataType: 'json',
-                success: function (resp) {
-                    if (resp.status) {
-                       _this.useTypeData = resp.result;
                     }
                 }
             });
@@ -254,7 +237,7 @@ var vue = new Vue({
                 return false;
             }
             _this.model.imgs = _this.imgsData.join(',');
-            confirm("提示", "确定发布", "发布", "取消", function () {
+            //confirm("提示", "确定发布", "发布", "取消", function () {
                 $.ajax({
                     type: 'post',
                     url: '/Project/PostSubmit',
@@ -269,9 +252,9 @@ var vue = new Vue({
                     }
                 });
 
-            }, function () {
-                layer.closeAll();
-            })
+            //}, function () {
+            //    layer.closeAll();
+            //})
         },
         upload: function () {
 

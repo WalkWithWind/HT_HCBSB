@@ -178,7 +178,7 @@ var vue = new Vue({
             }
             _this.model.imgs = _this.imgsData.join(',');
             _this.model.tags = _this.tagsSelect.join(',');
-            confirm("提示", "确定发布", "发布", "取消", function () {
+            //confirm("提示", "确定发布", "发布", "取消", function () {
                 $.ajax({
                     type: 'post',
                     url: '/Project/PostSubmit',
@@ -193,14 +193,9 @@ var vue = new Vue({
                     }
                 });
 
-            }, function () {
-
-                layer.closeAll();
-
-            })
-
-
-
+            //}, function () {
+            //    layer.closeAll();
+            //})
         },
         upload: function () {
             var _this = this;

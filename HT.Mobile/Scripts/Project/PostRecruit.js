@@ -203,7 +203,7 @@ var vue = new Vue({
 			if (!_this.checkInput()) {
 				return false;
 			}
-			confirm("提示", "确定发布", "发布", "取消", function () {
+			//confirm("提示", "确定发布", "发布", "取消", function () {
 				$.ajax({
 					type: 'post',
                     url: '/Project/PostSubmit',
@@ -217,9 +217,9 @@ var vue = new Vue({
 						}
 					}
 				});
-			}, function () {
-				layer.closeAll();
-		    })
+			//}, function () {
+			//	layer.closeAll();
+		 //   })
 		}
     }
 });

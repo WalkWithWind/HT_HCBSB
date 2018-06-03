@@ -5,17 +5,15 @@
 }
 @Html.Partial("_Header")
 
-<div class="mainDetails">
+<div class="mainDetails hide" v-bind:class="['show']">
 
     <div class="el_item eld_item">
         <div class="wrapper">
             <div class="infor">
                 <div class="infor_p1">
-                    <span v-text="goodsData.start_city"></span>
-                    <span v-text="goodsData.start_district"></span>
+                    <span>{{(goodsData.start_city+goodsData.start_district)|stringRemove('')}}</span>
                     <i></i><!-- 中间的箭头符号 -->
-                    <span v-text="goodsData.stop_city"></span>
-                    <span v-text="goodsData.stop_district"></span>
+                    <span>{{(goodsData.stop_city+goodsData.stop_district)|stringRemove('')}}</span>
                     <em v-show="goodsData.set_top>0">置顶</em>
                 </div>
                 <div class="infor_p2">
@@ -39,11 +37,9 @@
                 <dl style="width:100%">
                     <dt>行驶路线：</dt>
                     <dd>
-                        <span v-text="goodsData.start_city"></span>
-                        <span v-text="goodsData.start_district"></span>
+                        <span>{{(goodsData.start_city+goodsData.start_district)|stringRemove('')}}</span>
                         —
-                        <span v-text="goodsData.stop_city"></span>
-                        <span v-text="goodsData.stop_district"></span>
+                        <span>{{(goodsData.stop_city+goodsData.stop_district)|stringRemove('')}}</span>
                     </dd>
                 </dl>
                 <dl>
