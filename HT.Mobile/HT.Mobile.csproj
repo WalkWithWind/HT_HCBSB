@@ -253,6 +253,7 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\common.js" />
+    <Content Include="Scripts\jquery.linq.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -366,6 +367,7 @@
     <Content Include="Views\WX\Pay.cshtml" />
     <Content Include="Views\WX\PaySuccess.cshtml" />
     <Content Include="Views\Partial\PostHelpDialog.cshtml" />
+    <Content Include="Views\Partial\PinpaiDialog.cshtml" />
     <None Include="Views\WX\PayFail.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -408,6 +410,9 @@
       <Project>{ee8c9eb8-510d-499d-a5f7-3ecd6d552dfa}</Project>
       <Name>MicroMessenger</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

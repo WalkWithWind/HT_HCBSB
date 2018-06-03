@@ -5,7 +5,7 @@
 }
 @Html.Partial("_Header")
 
-<div class="details">
+<div class="details hide" v-bind:class="['show']">
     <ul class="ind_sec1_ul car_item">
         <li>
             <div class="wrapper">
@@ -33,15 +33,6 @@
                         <div class="swiper-slide" v-for="img in imgs">
                             <img v-bind:src="img">
                         </div>
-                        @*<div class="swiper-slide">
-                                <img src="/images/img/img03.jpg">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="/images/img/img03.jpg">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="/images/img/img03.jpg">
-                            </div>*@
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
@@ -68,7 +59,7 @@
                     </dl>
                     <dl>
                         <dt>车辆所在地：</dt>
-                        <dd><span v-text="newsData.start_city"></span><span v-text="newsData.start_district"></span></dd>
+                        <dd>{{(newsData.start_city+newsData.start_district)|stringRemove('')}}</dd>
                     </dl>
                     <dl>
                         <dt>车辆户型：</dt>

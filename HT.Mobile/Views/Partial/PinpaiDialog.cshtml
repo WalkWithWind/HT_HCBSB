@@ -1,0 +1,218 @@
+﻿<script type="text/template" id="pinpai-template">
+    <div class="pg_sec3 pcs_sec1">
+        <dl>
+            <dt>选择品牌</dt>
+            <dd>
+                <a href="javascript:;" v-for="item in defData"
+                   v-bind:class="[{ 'cur': ob[pinpai].split(',').indexOf(item.title)>=0}]" v-on:click="selectDefItem(item)">
+                    <img v-bind:src="item.img" v-bind:alt="item.title" />
+                </a>
+                <a href="javascript:;" class="m_btn" v-on:click="showMore()" v-if="resultData.length>8">
+                    更多
+                </a>
+            </dd>
+        </dl>
+        <div class="hide" v-bind:class="[box]" v-if="pinpaiData.length>0">
+            <div class="top">
+                <div class="wrapper">
+                    <a href="javascript:void(0);" class="back_btn" v-on:click="closeMore()">返回</a>
+                    <p class="tt">选择品牌</p>
+                </div>
+            </div>
+            <div class="pcd_sec1" v-if="remenData.length>0">
+                <dl>
+                    <dt>热门品牌</dt>
+                    <dd>
+                        <a href="javascript:;" 
+                            v-bind:class="[{'cur':selectPinpai.split(',').indexOf(item.title)>=0}]" 
+                            v-for="item in remenData" 
+                            v-on:click="selectItem(item)">
+                            <img v-bind:src="item.img" v-bind:alt="item.title">
+                        </a>
+                    </dd>
+                </dl>
+            </div>
+            <div class="pcd_sec" v-for="pitem in pinpaiData">
+                <p class="p1" v-text="pitem.initial"></p>
+                <ul>
+                    <li v-bind:class="[{'active':selectPinpai.split(',').indexOf(item.title)>=0}]" 
+                        v-for="item in pitem.listData" 
+                        v-on:click="selectItem(item)">
+                        <img v-bind:src="item.img">
+                        <span v-text="item.title"></span>
+                    </li>
+                </ul>
+            </div>
+            <div class="H40"></div>
+            <div class="sub_btn_box pcd_btn_box">
+                <a href="javascript:void(0);" class="cancle" v-on:click="reset()">重置</a>
+                <a href="javascript:void(0);" class="confirm" v-on:click="confirm()">确定</a>
+            </div>
+        </div>
+    </div>
+</script>
+<script>
+    Vue.component('pinpai-dialog', {
+        template: '#pinpai-template',
+        props: {
+            box: {},
+            boxTitle: {},
+            ob: {},
+            pinpai: {},
+            max: {
+                default: 3
+            },
+            mult: {
+                default: false
+            }
+        },
+        data: function (){
+            return {
+                initials: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y','Z'],
+                selectPinpai:this.ob[this.pinpai],
+                resultData:[],
+                pinpaiData: [],
+                defData: [],
+                remenData: [],
+                layerIndex: -1,
+                isOk: false
+            }
+        },
+        mounted: function () {
+            this.init();
+        },
+        methods: {
+            init: function () {
+                this.loadPinpaiData();//品牌
+            },
+            loadPinpaiData: function () {
+                var _this = this;
+                $.ajax({
+                    type: 'post',
+                    url: '/Home/PinpaiList',
+                    data: {},
+                    dataType: 'json',
+                    success: function (resp) {
+                        if (resp.status) {
+                            _this.resultData = resp.result;
+                            _this.buildData();
+                        }
+                    }
+                });
+            },
+            buildData: function () {
+                var _this = this;
+                if (_this.resultData.length > 8) {
+                    //console.log(_this.remenData);
+                    _this.remenData = _this.resultData.slice(0, 8);
+                    //console.log(_this.remenData);
+                    for (var i = 0; i < _this.initials.length; i++) {
+                        var arr = $.Enumerable.From(_this.resultData).Where(function (x) { return x.initial == _this.initials[i]; }).ToArray();
+                        if (arr.length > 0) _this.pinpaiData.push({ initial: _this.initials[i], listData: arr });
+                    }
+                    if (!_this.selectPinpai) {
+                        _this.defData = _this.resultData.slice(0, 7);
+                    } else {
+                        var spl = _this.selectPinpai.split(',');
+                        var arr = $.Enumerable.From(_this.resultData).Where(function (x) { return spl.indexOf(x.title) >= 0; }).ToArray();
+                        if (arr.length>0) _this.defData = arr;
+                        var len = 8 - _this.defData.length;
+                        if (len > 0) {
+                            var arr1 = $.Enumerable.From(_this.resultData).Where(function (x) { return spl.indexOf(x.title) < 0; }).ToArray();
+                            _this.defData.push(_this.arr1.slice(0, len));
+                        }
+                    }
+                } else {
+                    _this.defData = _this.resultData;
+                }
+            },
+            showMore: function () {
+                var _this = this;
+                _this.layerIndex = layer.open({
+                    type: 1,
+                    title: this.boxTitle,
+                    content: $('.' + this.box),
+                    offset: 'lb',
+                    area: ['100%', '100%'],
+                    shade: 0.5,
+                    title: false,
+                    closeBtn: 0,
+                    scrollbar: false,
+                    anim: 2,
+                    end: function () {
+                        if (_this.isOk) {
+                            _this.ob[_this.pinpai] = _this.selectPinpai;
+                            var spl = _this.selectPinpai.split(',');
+                            var arr = $.Enumerable.From(_this.defData).Where(function (x) { return spl.indexOf(x.title) >= 0; }).ToArray();
+                            if (spl.length == arr.length) return;
+
+                            var arr1 = $.Enumerable.From(_this.defData).Where(function (x) { return spl.indexOf(x.title) < 0; }).ToArray();
+                            _this.defData = $.Enumerable.From(_this.resultData).Where(function (x) { return spl.indexOf(x.title) >= 0; }).ToArray();
+
+                            var len = 7 - _this.defData.length;
+                            _this.defData = arr1.slice(0, len).concat(_this.defData);
+                        }
+                    }
+                });
+            },
+            selectDefItem: function (item) {
+                if (!this.mult) {
+                    this.selectPinpai = item.title;
+                    this.ob[this.pinpai] = this.selectPinpai;
+                    return;
+                }
+                var spl = [];
+                if (this.ob[this.pinpai]) {
+                    spl = this.ob[this.pinpai].split(',');
+                }
+                var i = spl.indexOf(item.title);
+                if (i >= 0) {
+                    spl.splice(i, 1);
+                    this.selectPinpai = spl.join(',');
+                    this.ob[this.pinpai] = this.selectPinpai;
+
+                } else {
+                    if (spl.length > this.max -1) {
+                        spl.splice(0, 1);
+                    }
+                    spl.push(item.title);
+                    this.selectPinpai = spl.join(',');
+                    this.ob[this.pinpai] = this.selectPinpai;
+                }
+            },
+            selectItem: function (item) {
+                if (!this.mult) {
+                    this.selectPinpai = item.title;
+                    return;
+                }
+                var spl = [];
+                if (this.selectPinpai) {
+                    spl = this.selectPinpai.split(',');
+                }
+                var i = spl.indexOf(item.title);
+                if (i >= 0) {
+                    spl.splice(i, 1);
+                    this.selectPinpai = spl.join(',');
+
+                } else {
+                    if (spl.length > this.max -1) {
+                        spl.splice(0, 1);
+                    }
+                    spl.push(item.title);
+                    this.selectPinpai = spl.join(',');
+                }
+            },
+            reset: function () {
+                this.selectPinpai = this.ob[this.pinpai];
+            },
+            closeMore: function () {
+                layer.close(this.layerIndex);
+            },
+            confirm: function () {
+                this.isOk = true;
+                layer.close(this.layerIndex);
+            }
+        }
+    })
+</script>
+

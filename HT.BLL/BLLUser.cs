@@ -106,7 +106,7 @@ namespace HT.BLL
         /// <returns></returns>
         public static bool IsLogin()
         {
-            AuthenticationUser loginInfo = HT.BLL.BLLUser.GetLoginUserInfo();
+            AuthenticationUser loginInfo = GetLoginUserInfo();
             if (loginInfo == null)
             {
                 return false;
@@ -119,7 +119,7 @@ namespace HT.BLL
         /// <returns></returns>
         public static int GetUserId()
         {
-            AuthenticationUser loginInfo = HT.BLL.BLLUser.GetLoginUserInfo();
+            AuthenticationUser loginInfo = GetLoginUserInfo();
 
             if (loginInfo != null)
             {
