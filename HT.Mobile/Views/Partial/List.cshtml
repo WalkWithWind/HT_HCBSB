@@ -6,9 +6,9 @@
                     <div class="infor">
                         <a v-bind:href="'/Project/GoodsSourceDetails/'+item.id">
                             <div class="infor_p1">
-                                <span v-text="item.start_city"></span><span v-text="item.start_district"></span>
+                                <span>{{(item.start_city+item.start_district)|stringRemove('出发地')}}</span>
                                 <i></i><!-- 中间的箭头符号 -->
-                                <span v-text="item.stop_city"></span><span v-text="item.stop_district"></span>
+                                <span>{{(item.stop_city+item.stop_district)|stringRemove('到达地')}}</span>
                                 <em v-if="item.set_top>0">置顶</em>
                             </div>
                             <div class="infor_p2">

@@ -174,7 +174,6 @@ var carVm = new Vue({
                         console.log('resp', resp);
                         news.is_praise = true;
                         news.praise_num++;
-
                     } else {
                         alert(resp.msg);
                     }

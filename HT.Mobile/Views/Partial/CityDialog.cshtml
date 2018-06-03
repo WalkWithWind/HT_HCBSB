@@ -1,0 +1,147 @@
+﻿<script type="text/template" id="city-template">
+    <div class="zhx_box tab-box hide" v-bind:class="[box]">
+        <ul class="zhx_box_title tab-title">
+            <li v-bind:class="[{'active':selectTab==0}]"
+                v-on:click="selectTabProvince()">
+                <a href="javascript:;">省</a>
+            </li>
+            <li v-bind:class="[{'active':selectTab==1}]"
+                v-on:click="selectTabCity()">
+                <a href="javascript:;">市</a>
+            </li>
+            <li v-bind:class="[{'active':selectTab==2}]"
+                v-on:click="selectTabDistrict()">
+                <a href="javascript:;">区</a>
+            </li>
+        </ul>
+        <div v-bind:class="['province','clearfix','tab-content',{'hide':selectTab!=0}]">
+            <a href="javascript:;" v-bind:class="[{ 'active':''==ob[province] }]" v-if="hasAllProvince" v-on:click="selectProvince('')">
+                全国
+            </a>
+            <a href="javascript:;" v-for="item in cityData.get(0)"
+               v-bind:class="[{ 'active': item==ob[province] }]"
+               v-text="item" v-on:click="selectProvince(item)">
+            </a>
+        </div>
+        <div v-bind:class="['city','clearfix','tab-content',{'hide':selectTab!=1}]"
+             v-if="ob[province]!=''">
+            <a href="javascript:;" v-bind:class="[{ 'active':''==ob[city] }]" v-if="hasAllCity" v-on:click="selectCity('')">
+                {{('全'+ob[province])|stringRemove('全市')}}
+            </a>
+            <a href="javascript:;" v-for="item in cityData.getCitysByProvince(ob[province])"
+               v-bind:class="[{ 'active':item==ob[city] }]"
+               v-text="item" v-on:click="selectCity(item)">
+            </a>
+        </div>
+        <div v-bind:class="['district','clearfix','tab-content',{'hide':selectTab!=2}]"
+             v-if="ob[city]!=''">
+            <a href="javascript:;" v-bind:class="[{ 'active':''==ob[district] }]" v-if="hasAllDistrict" v-on:click="selectDistrict('')">
+                {{('全'+ob[city])|stringRemove('全市')}}
+            </a>
+            <a href="javascript:;" v-for="item in cityData.getDistricts(ob[province],ob[city])"
+               v-bind:class="[{ 'active':item==ob[district] }]"
+               v-text="item" v-on:click="selectDistrict(item)">
+            </a>
+        </div>
+    </div>
+</script>
+<script>
+    Vue.component('city-dialog', {
+        template: '#city-template',
+        props: {
+            box: {},
+            boxTitle: {},
+            showOb: {},
+            showDialog:{},
+            ob: {},
+            province: {},
+            city: {},
+            district: {},
+            hasAllDistrict: {
+                default: false
+            },
+            hasAllCity: {
+                default: false
+            },
+            hasAllProvince: {
+                default: false
+            }
+        },
+        data: function (){
+            return {
+                cityData: dsy,
+                selectTab: 0,
+                layerIndex:-1
+            }
+        },
+        mounted: function() {
+            var _this = this;
+            if (_this.ob[_this.city]) _this.selectTab = 2;
+            if (_this.ob[_this.district]) _this.selectTab = 2;
+            _this.init();
+        },
+        methods: {
+            init: function () {
+                var _this = this;
+                _this.layerIndex = layer.open({
+                    type: 1,
+                    title: this.boxTitle,
+                    content: $('.' + this.box),
+                    offset: 'lb',
+                    area: ['100%', '500px'],
+                    shade: 0.5,
+                    scrollbar: false,
+                    anim: 2,
+                    end: function () {
+                        _this.$emit('end');
+                        _this.showOb[_this.showDialog] = false;
+                    }
+                });
+            },
+            selectProvince: function (item) {
+                var _this = this;
+                if (_this.ob[_this.province] != item) {
+                    _this.ob[_this.city] = '';
+                    _this.ob[_this.district] = '';
+                }
+                _this.ob[_this.province] = item;
+                if (!item) {
+                    layer.closeAll();
+                } else {
+                    _this.selectTab = 1;
+                }
+            },
+            selectCity: function (item) {
+                var _this = this;
+                if (_this.ob[_this.city] != item) {
+                    _this.ob[_this.district] = '';
+                }
+                _this.ob[_this.city] = item;
+                if (!item) {
+                    layer.closeAll();
+                } else {
+                    _this.selectTab = 2;
+                }
+            },
+            selectDistrict: function (item) {
+                var _this = this;
+                _this.ob[_this.district] = item;
+                layer.closeAll();
+            },
+            selectTabProvince: function (code) {
+                var _this = this;
+                _this.selectTab = 0;
+            },
+            selectTabCity: function (code) {
+                var _this = this;
+                if (_this.ob[_this.province] == '') return;
+                _this.selectTab = 1;
+            },
+            selectTabDistrict: function (code) {
+                var _this = this;
+                if (_this.ob[_this.city] == '') return;
+                _this.selectTab = 2;
+            }
+        }
+    })
+</script>

@@ -6,16 +6,20 @@
         money:data.money,
         pay:'余额'
     },
-    created() {
+    created:function() {
         this.init();
     },
     methods: {
         init: function(){
             if (this.money < this.total) this.pay = '微信';
         },
-        pay: function () {
+        postPay: function () {
             if (this.pay == '余额') {
                 this.moneyPay();
+                return;
+            }
+            if (this.pay == '微信') {
+                window.location.href="/WX/Pay/"+data.order_no;
                 return;
             }
         },

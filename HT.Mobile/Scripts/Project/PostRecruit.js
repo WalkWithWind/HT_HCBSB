@@ -35,10 +35,9 @@ var vue = new Vue({
 		top_all_money: 0,//全站置顶金额
 		validity_unit_day_money: 0,// 发布费用 元/天
         validity_unit_month_money: 0,// 发布费用 元/月
-		select: {
-			startProvinceTab: 0
-		},
-		cityData: dsy
+        select: {
+            showCityStart: false
+		}
 	},
 		watch: {
 		'model.validity_num': function (val, oldval) {
@@ -218,65 +217,10 @@ var vue = new Vue({
 						}
 					}
 				});
-
 			}, function () {
-
 				layer.closeAll();
-
 		    })
-
-			
-			
-		},
-		showCity: function (code) {
-			var _title = code == 'start' ? '工作地区' : '';
-			layer.open({
-				type: 1,
-				title: _title,
-				content: $('.' + code + '_box'),
-				offset: 'lb',
-				area: ['100%', '500px'],
-				shade: 0.5,
-				scrollbar: false,
-				anim: 2
-			});
-        },
-        selectProvince: function (code, item) {
-            var _this = this;
-            if (_this.model.start_province != item) {
-                _this.model.start_city = '';
-                _this.model.start_district = '';
-            }
-            _this.model.start_province = item;
-            _this.select.startProvinceTab = 1;
-        },
-        selectCity: function (code, item) {
-            var _this = this;
-            if (_this.model.start_city != item) {
-                _this.model.start_district = '';
-            }
-            _this.model.start_city = item;
-            _this.select.startProvinceTab = 2;
-        },
-        selectDistrict: function (code, item) {
-            var _this = this;
-            _this.model.start_district = item;
-            layer.closeAll();
-        },
-        selectTabProvince: function (code) {
-            var _this = this;
-            _this.select.startProvinceTab = 0;
-        },
-        selectTabCity: function (code) {
-            var _this = this;
-            if (_this.model.start_province == '') return;
-            _this.select.startProvinceTab = 1;
-        },
-        selectTabDistrict: function (code) {
-            var _this = this;
-            if (_this.model.start_city == '') return;
-            _this.select.startProvinceTab = 2;
-        }
+		}
     }
 });
 vue.init();

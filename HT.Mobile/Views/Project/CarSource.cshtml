@@ -4,14 +4,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @Html.Partial("_Header")
-<div class="main">
+<div class="main hide" v-bind:class="['show']">
     <div class="el_top">
         <div class="wrapper">
             <ul class="el_top_ul">
-                <li><a class="start_city" v-on:click="showCity('start')"><span v-text="(searchKey.start_city==''?'出发地':searchKey.start_city)">出发地</span><i></i></a></li>
-                <li><a class="stop_city" v-on:click="showCity('stop')"><span v-text="(searchKey.stop_city==''?'到达地':searchKey.stop_city)">到达地</span><i></i></a></li>
-                <li><a class="car_length" v-on:click="showCarLength()"><span v-text="(searchKey.car_length==''?'车长':searchKey.car_length)">车长</span><i></i></a></li>
-                <li><a class="car_stype" v-on:click="showCarStyle()"><span v-text="(searchKey.car_style==''?'车型':searchKey.car_style)">车型</span><i></i></a></li>
+                <li style="width: 40%;"><a class="start_city" v-on:click="select.showCityStart=true"><span>{{(searchKey.start_city+searchKey.start_district)|stringRemove('出发地')}}</span><i></i></a></li>
+                <li style="width: 40%;">
+                    <span class="jt"></span>
+                    <a class="stop_city" v-on:click="select.showCityStop=true"><span>{{(searchKey.stop_city+searchKey.stop_district)|stringRemove('到达地')}}</span><i></i></a>
+                </li>
+                <li style="width: 20%;"><a class="more" v-on:click="showCarLength()">更多<i></i></a></li>
             </ul>
         </div>
     </div>
@@ -21,103 +23,31 @@
         </li>
     </ul>
     <div class="clearfix"></div>
-
-    <div class="start_box zhx_box tab-box hide">
-        <ul class="zhx_box_title tab-title">
-            <li v-bind:class="[{'active':select.startProvinceTab==0}]"
-                v-on:click="selectTabProvince('start')">
-                <a href="javascript:;">省</a>
-            </li>
-            <li v-bind:class="[{'active':select.startProvinceTab==1}]"
-                v-on:click="selectTabCity('start')">
-                <a href="javascript:;">市</a>
-            </li>
-            <li v-bind:class="[{'active':select.startProvinceTab==2}]"
-                v-on:click="selectTabDistrict('start')">
-                <a href="javascript:;">区</a>
-            </li>
-        </ul>
-        <div v-bind:class="['province','clearfix','tab-content',{'hide':select.startProvinceTab!=0}]">
-            <a href="javascript:;" v-for="item in cityData.get(0)"
-               v-bind:class="[{ 'active': item==searchKey.start_province }]"
-               v-text="item" v-on:click="selectProvince('start',item)">
-            </a>
-        </div>
-        <div v-bind:class="['city','clearfix','tab-content',{'hide':select.startProvinceTab!=1}]"
-             v-if="searchKey.start_province!=''">
-            <a href="javascript:;" v-for="item in cityData.getCitysByProvince(searchKey.start_province)"
-               v-bind:class="[{ 'active':item==searchKey.start_city }]"
-               v-text="item" v-on:click="selectCity('start',item)">
-            </a>
-        </div>
-        <div v-bind:class="['district','clearfix','tab-content',{'hide':select.startProvinceTab!=2}]"
-             v-if="searchKey.start_city!=''">
-            <a href="javascript:;" v-for="item in cityData.getDistricts(searchKey.start_province,searchKey.start_city)"
-               v-bind:class="[{ 'active':item==searchKey.start_district }]"
-               v-text="item" v-on:click="selectDistrict('start',item)">
-            </a>
-        </div>
-        <div class="sub_btn_box">
-            <a href="javascript:void(0);" class="cancle" v-on:click="resetCity('start')">重置</a>
-            <a href="javascript:void(0);" class="confirm" v-on:click="confirm()">确定</a>
-        </div>
-    </div>
-    <div class="stop_box zhx_box tab-box hide">
-        <ul class="zhx_box_title tab-title">
-            <li v-bind:class="[{'active':select.stopProvinceTab==0}]"
-                v-on:click="selectTabProvince('stop')">
-                <a href="javascript:;">省</a>
-            </li>
-            <li v-bind:class="[{'active':select.stopProvinceTab==1}]"
-                v-on:click="selectTabCity('stop')">
-                <a href="javascript:;">市</a>
-            </li>
-            <li v-bind:class="[{'active':select.stopProvinceTab==2}]"
-                v-on:click="selectTabDistrict('stop')">
-                <a href="javascript:;">区</a>
-            </li>
-        </ul>
-        <div v-bind:class="['province','clearfix','tab-content',{'hide':select.stopProvinceTab!=0}]">
-            <a href="javascript:;" v-for="item in cityData.get(0)"
-               v-bind:class="[{ 'active': item==searchKey.stop_province }]"
-               v-text="item" v-on:click="selectProvince('stop',item)">
-            </a>
-        </div>
-        <div v-bind:class="['city','clearfix','tab-content',{'hide':select.stopProvinceTab!=1}]"
-             v-if="searchKey.stop_province!=''">
-            <a href="javascript:;" v-for="item in cityData.getCitysByProvince(searchKey.stop_province)"
-               v-bind:class="[{ 'active':item==searchKey.stop_city }]"
-               v-text="item" v-on:click="selectCity('stop',item)">
-            </a>
-        </div>
-        <div v-bind:class="['district','clearfix','tab-content',{'hide':select.stopProvinceTab!=2}]"
-             v-if="searchKey.stop_city!=''">
-            <a href="javascript:;" v-for="item in cityData.getDistricts(searchKey.stop_province,searchKey.stop_city)"
-               v-bind:class="[{ 'active':item==searchKey.stop_district }]"
-               v-text="item" v-on:click="selectDistrict('stop',item)">
-            </a>
-        </div>
-        <div class="sub_btn_box">
-            <a href="javascript:void(0);" class="cancle" v-on:click="resetCity('stop')">重置</a>
-            <a href="javascript:void(0);" class="confirm" v-on:click="confirm()">确定</a>
-        </div>
-    </div>
+    <city-dialog v-bind:box="'start_box'"
+                 v-bind:box-title="'出发地'"
+                 v-bind:ob="searchKey"
+                 v-bind:province="'start_province'"
+                 v-bind:city="'start_city'"
+                 v-bind:district="'start_district'"
+                 v-bind:show-dialog="'showCityStart'"
+                 v-bind:show-ob="select"
+                 v-bind:has-all-district="true"
+                 v-if="select.showCityStart"
+                 v-on:end="confirm()">
+    </city-dialog>
+    <city-dialog v-bind:box="'stop_box'"
+                 v-bind:box-title="'到达地'"
+                 v-bind:ob="searchKey"
+                 v-bind:province="'stop_province'"
+                 v-bind:city="'stop_city'"
+                 v-bind:district="'stop_district'"
+                 v-bind:show-dialog="'showCityStop'"
+                 v-bind:show-ob="select"
+                 v-bind:has-all-district="true"
+                 v-if="select.showCityStop"
+                 v-on:end="confirm()">
+    </city-dialog>
     <div class="car_length_box zhp_box hide">
-        <div class="cty_box">
-            <p>车长<span>（米）</span></p>
-            <a href="javascript:;" v-bind:class="[{ 'cur':searchKey.car_length=='' }]"
-               v-on:click="searchKey.car_length=''">不限</a>
-            <a href="javascript:;" v-for="item in carLengthData"
-               v-bind:class="[{ 'cur': item.title==searchKey.car_length }]"
-               v-text="item.title" v-on:click="searchKey.car_length=item.title"></a>
-            @*<a href="javascript:;" class="m_btn">更多</a>*@
-        </div>
-        <div class="sub_btn_box">
-            <a href="javascript:void(0);" class="cancle" v-on:click="searchKey.car_length=''">重置</a>
-            <a href="javascript:void(0);" class="confirm" v-on:click="confirm()">确定</a>
-        </div>
-    </div>
-    <div class="car_style_box zhj_box hide">
         <div class="cty_box">
             <p>车型</p>
             <a href="javascript:;" v-bind:class="[{ 'cur':searchKey.car_style=='' }]"
@@ -126,9 +56,16 @@
                v-bind:class="[{ 'cur': item.title==searchKey.car_style }]"
                v-text="item.title" v-on:click="searchKey.car_style=item.title"></a>
         </div>
+        <div class="cty_box">
+            <p>车长<span>（米）</span></p>
+            <a href="javascript:;" v-bind:class="[{ 'cur':searchKey.car_length=='' }]"
+               v-on:click="searchKey.car_length=''">不限</a>
+            <a href="javascript:;" v-for="item in carLengthData"
+               v-bind:class="[{ 'cur': item.title==searchKey.car_length }]"
+               v-text="item.title" v-on:click="searchKey.car_length=item.title"></a>
+        </div>
         <div class="sub_btn_box">
-            <a href="javascript:void(0);" class="cancle"
-               v-on:click="searchKey.car_style='';">重置</a>
+            <a href="javascript:void(0);" class="cancle" v-on:click="searchKey.car_style='';searchKey.car_length=''">重置</a>
             <a href="javascript:void(0);" class="confirm" v-on:click="confirm()">确定</a>
         </div>
     </div>
@@ -136,7 +73,8 @@
 
 @Html.Partial("_Footer")
 @section scripts{
-    @Html.Action("Template", "Partial", new { id = "List" })
     @Html.Partial("_CityJs")
+    @Html.Action("Template", "Partial", new { id = "List" })
+    @Html.Action("Template", "Partial", new { id = "CityDialog" })
     @Scripts.Render("/Scripts/Project/CarSource.js")
 }

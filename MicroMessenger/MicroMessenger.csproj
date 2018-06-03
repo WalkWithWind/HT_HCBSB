@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,7 +41,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommonUtil.cs" />
+    <Compile Include="MD5SignUtil.cs" />
+    <Compile Include="MD5Util.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WXApi.cs" />
+    <Compile Include="WXPayRequest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HT.Model\HT.Model.csproj">
+      <Project>{baa59196-19b0-4bc5-8b86-dad4d07771b7}</Project>
+      <Name>HT.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HT.Utility\HT.Utility.csproj">
+      <Project>{2c15b7bb-625a-4b54-9831-d3297adf128a}</Project>
+      <Name>HT.Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -504,6 +504,18 @@ footer {
 	width: 25%;
 	height: .8rem;
 }
+.el_top_ul li .jt {
+    width: .5rem;
+    height: .4rem;
+    background: url('/images/icon/icon11.png') no-repeat center;
+    -webkit-background-size: .5rem auto;
+    background-size: .5rem auto;
+    display: inline-block;
+    vertical-align: middle;
+    position: absolute;
+    top: .2rem;
+    left: 38%;
+}
 .el_top_ul li a {
 	display: block;
 	font-size: .28rem;
@@ -519,7 +531,7 @@ footer {
 	background: url('/images/icon/icon10.png') no-repeat right center;
 	-webkit-background-size: .16rem auto;
 	background-size: .16rem auto;
-	margin-left: .1rem;
+	margin-left: .15rem;
 	margin-top: -.06rem;
 }
 .el_item {
@@ -545,7 +557,6 @@ footer {
 	background: url('/images/icon/icon11.png') no-repeat center;
 	-webkit-background-size: .5rem auto;
 	background-size: .5rem auto;
-
 	display: inline-block;
 	vertical-align: middle;
 }
@@ -2144,7 +2155,7 @@ footer {
 .cty_box a {
 	float: left;
     height: .6rem;
-    min-width: .96rem;
+    min-width: 17.4%;
     padding: 0 .2rem;
     border: .02rem solid #dbdbdb;
     border-radius: .08rem;
@@ -2152,7 +2163,7 @@ footer {
     color: #999;
     line-height: .58rem;
     text-align: center;
-    margin: 0 .2rem .2rem 0;
+    margin: 1% 1.25%;
     overflow: hidden;
 }
 .cty_box a.cur {
@@ -2171,6 +2182,7 @@ footer {
 .zhx_box {
 	padding: .2rem 3% 0;
 	overflow: hidden;
+    font-weight:bold;
 }
 .zhx_box_title {}
 .zhx_box_title li {

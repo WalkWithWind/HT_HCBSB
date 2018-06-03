@@ -82,6 +82,10 @@
       <Project>{2c15b7bb-625a-4b54-9831-d3297adf128a}</Project>
       <Name>HT.Utility</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MicroMessenger\MicroMessenger.csproj">
+      <Project>{ee8c9eb8-510d-499d-a5f7-3ecd6d552dfa}</Project>
+      <Name>MicroMessenger</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

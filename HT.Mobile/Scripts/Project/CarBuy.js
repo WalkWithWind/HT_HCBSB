@@ -23,9 +23,8 @@
             rows: 5
         },
         select: {
-            startProvinceTab: 0
+            showCity: false
         },
-        cityData: dsy,
         useTypeData: [],
         carStyleData: []
     },
@@ -100,18 +99,6 @@
                 }
             });
         },
-        showCity: function () {
-            layer.open({
-                type: 1,
-                title: '地区',
-                content: $('.start_box'),
-                offset: 'lb',
-                area: ['100%', '500px'],
-                shade: 0.5,
-                scrollbar: false,
-                anim: 2
-            });
-        },
         showUseType: function () {
             layer.open({
                 type: 1,
@@ -147,49 +134,6 @@
                 scrollbar: false,
                 anim: 2
             });
-        },
-        selectProvince: function (code, item) {
-            var _this = this;
-            if (_this.searchKey.start_province != item) {
-                _this.searchKey.start_city = '';
-                _this.searchKey.start_district = '';
-            }
-            _this.searchKey.start_province = item;
-            _this.select.startProvinceTab = 1;
-        },
-        selectCity: function (code, item) {
-            var _this = this;
-            if (_this.searchKey.start_city != item) {
-                _this.searchKey.start_district = '';
-            }
-            _this.searchKey.start_city = item;
-            _this.select.startProvinceTab = 2;
-        },
-        selectDistrict: function (code, item) {
-            var _this = this;
-            _this.searchKey.start_district = item;
-            _this.confirm();
-        },
-        selectTabProvince: function (code) {
-            var _this = this;
-            _this.select.startProvinceTab = 0;
-        },
-        selectTabCity: function (code) {
-            var _this = this;
-            if (_this.searchKey.start_province == '') return;
-            _this.select.startProvinceTab = 1;
-        },
-        selectTabDistrict: function (code) {
-            var _this = this;
-            if (_this.searchKey.start_city == '') return;
-            _this.select.startProvinceTab = 2;
-        },
-        resetCity: function (code) {
-            var _this = this;
-            _this.select.startProvinceTab = 0;
-            _this.searchKey.start_province = '';
-            _this.searchKey.start_city = '';
-            _this.searchKey.start_district = '';
         },
         confirm: function (code) {
             var _this = this;
