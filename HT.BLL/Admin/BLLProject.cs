@@ -109,7 +109,7 @@ namespace HT.BLL.Admin
 				 db.ht_news.Where(p => ids.Contains(p.id)).ToList().ForEach(item=> {
                      item.status = status;
                      item.audit_time = DateTime.Now;
-                     //item.audit_userid = 1;
+                     item.audit_userid = 0;
                      //item.audit_nickname = "";
                  });
 
@@ -121,10 +121,7 @@ namespace HT.BLL.Admin
 				{
 					return false;
 				}
-				
-
 			}
-
 		}
 
 	}

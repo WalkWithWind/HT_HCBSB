@@ -31,7 +31,10 @@ namespace HT.Mobile.Controllers
         {
             if (searchKey.isme.HasValue && searchKey.isme.Value) searchKey.add_userid = BLLAuthentication.GetAuthenticationUser().id; //我的发布
             Model.Model.PageResult<ht_news> pageModel = BLLNews.GetNewsListPageResult(page, rows, searchKey);
-
+            foreach (var item in pageModel.list)
+            {
+                item.is_praise = BLLRelation.IsExistRelation(item.id.ToString(),BLLUser.GetUserId().ToString(), "praise");
+            }
             if (Request.IsAjaxRequest())
             {
                 apiResp.status = true;
@@ -84,6 +87,22 @@ namespace HT.Mobile.Controllers
             }
 
             return View(list);
+        }
+        /// <summary>
+        /// 获取发布须知内容
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult BaseHelpDetails(int id)
+        {
+            var model = BLL.BLLHelp.GetHelp(id);
+            if (Request.IsAjaxRequest())
+            {
+                apiResp.status = true;
+                apiResp.result = model;
+                return Json(apiResp);
+            }
+            return View(model);
         }
         #endregion 信息基础接口 Api
 

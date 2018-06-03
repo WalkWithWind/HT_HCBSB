@@ -34,12 +34,12 @@ namespace HT.Model
     ///</summary>
         public Nullable<int> sort { get; set; }
     ///<summary>
-    ///游览量
-    ///</summary>
-        public Nullable<int> excursion_count { get; set; }
-    ///<summary>
     ///更新时间
     ///</summary>
         public Nullable<System.DateTime> update_time { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
+        public Nullable<System.DateTime> add_time { get; set; }
     }
 }
