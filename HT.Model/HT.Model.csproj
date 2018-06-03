@@ -52,6 +52,7 @@
     <Compile Include="Const\Keys.cs" />
     <Compile Include="Enum\APIErrCode.cs" />
     <Compile Include="Enum\CookieKeys.cs" />
+    <Compile Include="Enum\UserMoneyDetails.cs" />
     <Compile Include="Enum\WithDraw.cs" />
     <Compile Include="ht_account.cs">
       <DependentUpon>Model.tt</DependentUpon>

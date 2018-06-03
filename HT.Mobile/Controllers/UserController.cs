@@ -329,7 +329,7 @@ namespace HT.Mobile.Controllers
             {
                 int total = 0;
                 var userId = BLLUser.GetUserId();
-                var list = BLLUser.GetUserMoneyLogData(page, rows, userId, out total);
+                var list = BLLUser.GetUserMoneyLogData(page, rows, userId, 0, out total);
                 ht_user user = BLLUser.GetUserById(userId);
                 apiResp.result = new {
                     list = list,
