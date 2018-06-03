@@ -35,10 +35,10 @@
     <div class="use_type_box zhp_box hide">
         <div class="cty_box">
             <a href="javascript:;" v-bind:class="[{ 'cur':searchKey.use_type=='' }]"
-               v-on:click="searchKey.use_type=''">不限</a>
+               v-on:click="searchKey.use_type='';confirm();">不限</a>
             <a href="javascript:;" v-for="item in useTypeData"
                v-bind:class="[{ 'cur': item.title==searchKey.use_type }]"
-               v-text="item.title" v-on:click="searchKey.use_type=item.title"></a>
+               v-text="item.title" v-on:click="searchKey.use_type=item.title;confirm();"></a>
         </div>
         <div class="sub_btn_box">
             <a href="javascript:void(0);" class="cancle" v-on:click="searchKey.use_type=''">重置</a>
@@ -48,10 +48,10 @@
     <div class="car_style_box zhj_box hide">
         <div class="cty_box">
             <a href="javascript:;" v-bind:class="[{ 'cur':searchKey.car_style=='' }]"
-               v-on:click="searchKey.car_style=''">不限</a>
+               v-on:click="searchKey.car_style='';confirm();">不限</a>
             <a href="javascript:;" v-for="item in carStyleData"
                v-bind:class="[{ 'cur': item.title==searchKey.car_style }]"
-               v-text="item.title" v-on:click="searchKey.car_style=item.title"></a>
+               v-text="item.title" v-on:click="searchKey.car_style=item.title;confirm();"></a>
         </div>
         <div class="sub_btn_box">
             <a href="javascript:void(0);" class="cancle"
