@@ -11,7 +11,8 @@
     <div class="top">
         <div class="wrapper">
             <a href="javascript:history.go(-1);" class="back_btn">返回</a>
-            <a href="javascript:void(0);" class="wdd">发布须知</a>
+            @*<a href="javascript:void(0);" class="wdd">发布须知</a>*@
+            <post-help-dialog></post-help-dialog>
         </div>
     </div>
     <div class="banner">
@@ -143,6 +144,7 @@
     <input type="file" name="file" id="file" style="display:none;" v-on:change="fileChange" />
 </div>
 @section scripts{
+    @Html.Action("Template", "Partial", new { id = "PostHelpDialog" })
     <script src="~/Scripts/Project/PostTemplate.js"></script>
     <script>
         var mySwiper = new Swiper('.banner .swiper-container', {
