@@ -35,9 +35,6 @@ namespace MicroMessenger
         /// 支付签名
         /// </summary>
         public string paySign { get; set; }
-        /// <summary>
-        /// 支付微信地址
-        /// </summary>
-        public string codeUrl { get; set; }
+
     }
 }

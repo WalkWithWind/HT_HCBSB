@@ -24,7 +24,7 @@ namespace MicroMessenger
         /// <param name="body">订单内容</param>
         /// <param name="tradeType">交易类型</param>
         /// <returns></returns>
-        public static string GetBrandWcPayRequest(string orderId, decimal totalAmount, string appId, string mchId, string key, string openId, string ip, string notifyUrl, out bool isSuccess,string body = "", string tradeType = "")
+        public static WXPayRequest GetBrandWcPayRequest(string orderId, decimal totalAmount, string appId, string mchId, string key, string openId, string ip, string notifyUrl, out bool isSuccess, string body = "", string tradeType = "")
         {
             isSuccess = false;
             string backStr = "";
@@ -77,7 +77,7 @@ namespace MicroMessenger
                 var returnCode = result.Element("xml").Element("return_code").Value;
                 if (returnCode.ToUpper()=="FAIL")
                 {
-                    return returnCode;
+                    return null;
                 }
                 string preId = "";
                 var rusultCode = result.Element("xml").Element("result_code").Value;
@@ -106,7 +106,7 @@ namespace MicroMessenger
                 string paySign = MD5SignUtil.Sign(strTemp2, key);
                 wxPayReq.paySign = paySign;
                 isSuccess = true;
-                return JSONHelper.ObjectToJson(wxPayReq);
+                return wxPayReq;
                 #endregion
             }
             catch (Exception ex)
@@ -115,7 +115,9 @@ namespace MicroMessenger
                 {
                     sw.WriteLine(backStr);
                 }
-                return System.Xml.Linq.XDocument.Parse(backStr).Element("xml").Element("return_msg").Value;
+                //return System.Xml.Linq.XDocument.Parse(backStr).Element("xml").Element("return_msg").Value;
+                return null;
+
             }
         }
 

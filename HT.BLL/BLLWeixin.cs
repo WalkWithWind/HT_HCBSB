@@ -69,7 +69,7 @@ namespace HT.BLL
         /// <param name="body">订单内容</param>
         /// <param name="tradeType">交易类型</param>
         /// <returns></returns>
-        public static string WXPay(string orderId, decimal totalAmount, string openId, string ip,string notiUrl,out bool isSuccess, string body = "", string tradeType = "")
+        public static WXPayRequest WXPay(string orderId, decimal totalAmount, string openId, string ip, string notiUrl, out bool isSuccess, string body = "", string tradeType = "")
         {
             string appId = BLLConfig.Get("wx_appid");
             string mchId = BLLConfig.Get("wx_mchid");
