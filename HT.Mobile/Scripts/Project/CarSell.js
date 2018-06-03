@@ -33,7 +33,7 @@
         init: function () {
             this.bindScroll();
             this.loadData();
-            this.loadCateData('use_type', 106);
+            this.loadPinpaiData();
             this.loadCateData('car_length', 111);
             this.loadCateData('car_style', 16);
         },
@@ -79,6 +79,20 @@
             if (this.listData.list.length >= this.listData.total) return;
             this.loadData();
         },
+        loadPinpaiData: function () {
+            var _this = this;
+            $.ajax({
+                type: 'post',
+                url: '/Home/PinpaiList',
+                data: {},
+                dataType: 'json',
+                success: function (resp) {
+                    if (resp.status) {
+                        _this.useTypeData = resp.result;
+                    }
+                }
+            });
+        },
         searchData: function () {
             var _this = this;
             _this.listData.total = 0;
@@ -95,7 +109,6 @@
                 dataType: 'json',
                 success: function (resp) {
                     if (resp.status) {
-                        if (code == 'use_type') _this.useTypeData = resp.result;
                         if (code == 'car_length') _this.carLengthData = resp.result;
                         if (code == 'car_style') _this.carStyleData = resp.result;
                         if (code == 'goods_type') _this.goodsTypeData = resp.result;

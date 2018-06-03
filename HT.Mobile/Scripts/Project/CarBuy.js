@@ -32,7 +32,7 @@
         init: function () {
             this.bindScroll();
             this.loadData();
-            this.loadCateData('use_type', 106);
+            this.loadPinpaiData();
             this.loadCateData('car_style', 16);
         },
         loadData: function () {
@@ -95,6 +95,20 @@
                     if (resp.status) {
                         if (code == 'use_type') _this.useTypeData = resp.result;
                         if (code == 'car_style') _this.carStyleData = resp.result;
+                    }
+                }
+            });
+        },
+        loadPinpaiData: function () {
+            var _this = this;
+            $.ajax({
+                type: 'post',
+                url: '/Home/PinpaiList',
+                data: {},
+                dataType: 'json',
+                success: function (resp) {
+                    if (resp.status) {
+                        _this.useTypeData = resp.result;
                     }
                 }
             });
