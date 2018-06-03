@@ -371,6 +371,7 @@
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Config\" />
     <Folder Include="Views\File\" />
+    <Folder Include="Views\Help\" />
     <Folder Include="Views\Relation\" />
     <Folder Include="Views\Review\" />
   </ItemGroup>

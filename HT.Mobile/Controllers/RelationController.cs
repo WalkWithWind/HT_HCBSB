@@ -23,16 +23,20 @@ namespace HT.Mobile.Controllers
         /// <returns></returns>
         public ActionResult AddRelation(ht_comm_relation relation)
         {
-            ht_comm_relation model = new ht_comm_relation();
-
             AuthenticationUser loginInfo = BLLUser.GetLoginUserInfo();
-
             if (loginInfo == null)
             {
                 apiResp.msg = "请先登录";
                 apiResp.code = (int)HT.Model.Enum.APIErrCode.UserIsNotLogin;
                 return Json(apiResp);
             }
+            if(BLLRelation.IsExistRelation(relation.main_id, loginInfo.id.ToString(), "praise"))
+            {
+                apiResp.msg = "重复关注";
+                apiResp.code = (int)HT.Model.Enum.APIErrCode.UserIsNotLogin;
+                return Json(apiResp);
+            }
+            ht_comm_relation model = new ht_comm_relation();
             model.add_time = DateTime.Now;
             model.relation_type = "praise";
             model.main_id = relation.main_id;

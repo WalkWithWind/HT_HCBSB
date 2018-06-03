@@ -6,9 +6,9 @@
                     <div class="infor">
                         <a v-bind:href="'/Project/GoodsSourceDetails/'+item.id">
                             <div class="infor_p1">
-                                <span v-text="item.start_city"></span><span v-text="item.start_district"></span>
+                                <span>{{(item.start_city+item.start_district)|stringRemove('出发地')}}</span>
                                 <i></i><!-- 中间的箭头符号 -->
-                                <span v-text="item.stop_city"></span><span v-text="item.stop_district"></span>
+                                <span>{{(item.stop_city+item.stop_district)|stringRemove('到达地')}}</span>
                                 <em v-if="item.set_top>0">置顶</em>
                             </div>
                             <div class="infor_p2">
@@ -42,7 +42,8 @@
                                 <span v-text="item.view_num"></span>
                             </li>
                             <li>
-                                <img src="/images/icon/icon03_2.png">
+                                <img src="/images/icon/icon03_2.png" v-show="!item.is_praise" v-on:click="clickPraise(item)">
+                                <img src="/images/icon/icon03_4.png" v-show="item.is_praise" v-on:click="cancelClickPraise(item)">
                                 <span v-text="item.praise_num"></span>
                             </li>
                             <li>
@@ -99,7 +100,8 @@
                         </li>
                         <li>
                             <a href="javascript:;">
-                                <img src="/images/icon/icon03_2.png">
+                                <img src="/images/icon/icon03_2.png" v-show="!item.is_praise" v-on:click="clickPraise(item)">
+                                <img src="/images/icon/icon03_4.png" v-show="item.is_praise" v-on:click="cancelClickPraise(item)">
                                 <span v-text="item.praise_num"></span>
                             </a>
                         </li>
@@ -159,7 +161,8 @@
                         </li>
                         <li>
                             <a href="javascript:;">
-                                <img src="/images/icon/icon03_2.png">
+                                <img src="/images/icon/icon03_2.png" v-show="!item.is_praise" v-on:click="clickPraise(item)">
+                                <img src="/images/icon/icon03_4.png" v-show="item.is_praise" v-on:click="cancelClickPraise(item)">
                                 <span v-text="item.praise_num"></span>
                             </a>
                         </li>
@@ -216,7 +219,8 @@
                         </li>
                         <li>
                             <a href="javascript:;">
-                                <img src="/images/icon/icon03_2.png">
+                                <img src="/images/icon/icon03_2.png" v-show="!item.is_praise" v-on:click="clickPraise(item)">
+                                <img src="/images/icon/icon03_4.png" v-show="item.is_praise" v-on:click="cancelClickPraise(item)">
                                 <span v-text="item.praise_num"></span>
                             </a>
                         </li>
@@ -280,7 +284,8 @@
                         </li>
                         <li>
                             <a href="javascript:;">
-                                <img src="/images/icon/icon03_2.png">
+                                <img src="/images/icon/icon03_2.png" v-show="!item.is_praise" v-on:click="clickPraise(item)">
+                                <img src="/images/icon/icon03_4.png" v-show="item.is_praise" v-on:click="cancelClickPraise(item)">
                                 <span v-text="item.praise_num"></span>
                             </a>
                         </li>
@@ -339,7 +344,8 @@
                         </li>
                         <li>
                             <a href="javascript:;">
-                                <img src="/images/icon/icon03_2.png">
+                                <img src="/images/icon/icon03_2.png" v-show="!item.is_praise" v-on:click="clickPraise(item)">
+                                <img src="/images/icon/icon03_4.png" v-show="item.is_praise" v-on:click="cancelClickPraise(item)">
                                 <span v-text="item.praise_num"></span>
                             </a>
                         </li>
@@ -398,7 +404,8 @@
                         </li>
                         <li>
                             <a href="javascript:;">
-                                <img src="/images/icon/icon03_2.png">
+                                <img src="/images/icon/icon03_2.png" v-show="!item.is_praise" v-on:click="clickPraise(item)">
+                                <img src="/images/icon/icon03_4.png" v-show="item.is_praise" v-on:click="cancelClickPraise(item)">
                                 <span v-text="item.praise_num"></span>
                             </a>
                         </li>
@@ -414,10 +421,69 @@
         </div>
     </script>
 <script>
-        Vue.component('list-component', {
-            template: '#list-component-template',
-            props: {
-                item: {}
+    Vue.component('list-component', {
+        template: '#list-component-template',
+        props: {
+            item: {}
+        },
+        methods: {
+            //点赞
+            clickPraise: function (item) {
+                var _this = this;
+                var reqData = {
+                    main_id: item.id
+                };
+                if (_this.isLoading) return;
+                _this.isLoading = true;
+                $.ajax({
+                    type: 'post',
+                    url: '/Relation/AddRelation',
+                    data: reqData,
+                    dataType: 'json',
+                    success: function (resp) {
+                        _this.isLoading = false;
+                        if (resp.status) {
+                            item.is_praise = true;
+                            item.praise_num++;
+
+                        } else {
+                            alert(resp.msg);
+                        }
+                    }
+                });
+            },
+            //取消点赞
+            cancelClickPraise: function (item) {
+                var _this = this;
+                var reqData = {
+                    main_id: item.id
+                };
+                if (_this.isLoading) return;
+                _this.isLoading = true;
+
+                $.ajax({
+                    type: 'post',
+                    url: '/Relation/DeleteRelation',
+                    data: reqData,
+                    dataType: 'json',
+                    success: function (resp) {
+                        _this.isLoading = false;
+                        if (resp.status) {
+                            item.is_praise = false;
+                            item.praise_num--;
+
+                        } else {
+                            alert(resp.msg);
+                        }
+                    }
+                });
             }
-        })
+        }
+
+
+
+
+
+
+    });
     </script>

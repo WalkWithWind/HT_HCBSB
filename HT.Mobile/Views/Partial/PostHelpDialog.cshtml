@@ -1,0 +1,60 @@
+﻿<script type="text/template" id="post-help-dialog-template">
+    <a href="javascript:void(0);" v-on:click="release()" class="wdd">发布须知</a>
+</script>
+<script>
+    Vue.component('post-help-dialog', {
+        template: '#post-help-dialog-template',
+        data() {
+            return {
+                id:1,
+                contents: ''
+            };
+        },
+        created() {
+            this.init();
+        },
+        methods: {
+            init: function () {
+                this.loadData();
+            },
+            release: function () {
+                var _this = this;
+                layer.open({
+                    type: 1,
+                    title: '发布须知',
+                    content: _this.contents,
+                    offset: 'lb',
+                    area: ['100%', '100%'],
+                    shade: 0.5,
+                    scrollbar: false,
+                    anim: 2
+                });
+                $('.layui-layer-title').css('height', '1rem');
+                $('.layui-layer-title').css('line-height', '1rem');
+                $('.layui-layer-title').css('text-align', 'center');
+                $('.layui-layer-title').css('padding', '0px');
+                $('.layui-layer-title').css('background-color', '#fdcf24');
+                $('.layui-layer-content').css('padding', '8px');
+            },
+            loadData: function () {
+                var _this = this;
+                var reqData = {
+                    id: _this.id
+                };
+                $.ajax({
+                    type: 'post',
+                    url: '/Project/BaseHelpDetails',
+                    data: reqData,
+                    dataType: 'json',
+                    success: function (resp) {
+                        _this.isLoading = false;
+
+                        if (resp.status) {
+                            _this.contents = resp.result.contents;
+                        }
+                    }
+                });
+            }
+        }
+    })
+</script>

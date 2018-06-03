@@ -8,10 +8,9 @@
     <div class="el_top">
         <div class="wrapper">
             <ul class="el_top_ul">
-                <li style="width: 33.333%;"><a class="start_city" v-on:click="showCity()"><span v-text="(searchKey.start_city==''?'地区':searchKey.start_city)">地区</span><i></i></a></li>
+                <li style="width: 33.333%;"><a class="start_city" v-on:click="select.showCity=true"><span>{{(searchKey.start_city+searchKey.start_district)|stringRemove('地区')}}</span><i></i></a></li>
                 <li style="width: 33.333%;"><a class="car_length" v-on:click="showCarStyle()"><span v-text="(searchKey.car_style==''?'车型':searchKey.car_style)">车型</span><i></i></a></li>
                 <li style="width: 33.333%;"><a class="use_type" v-on:click="showUseType()"><span v-text="(searchKey.use_type==''?'品牌':searchKey.use_type)">品牌</span><i></i></a></li>
-                @*<li><a class="more" v-on:click="showCarLength()"><span>更多</span><i></i></a></li>*@
             </ul>
         </div>
     </div>
@@ -21,46 +20,18 @@
         </li>
     </ul>
     <div class="clearfix"></div>
-    <div class="start_box zhx_box tab-box hide">
-        <ul class="zhx_box_title tab-title">
-            <li v-bind:class="[{'active':select.startProvinceTab==0}]"
-                v-on:click="selectTabProvince('start')">
-                <a href="javascript:;">省</a>
-            </li>
-            <li v-bind:class="[{'active':select.startProvinceTab==1}]"
-                v-on:click="selectTabCity('start')">
-                <a href="javascript:;">市</a>
-            </li>
-            <li v-bind:class="[{'active':select.startProvinceTab==2}]"
-                v-on:click="selectTabDistrict('start')">
-                <a href="javascript:;">区</a>
-            </li>
-        </ul>
-        <div v-bind:class="['province','clearfix','tab-content',{'hide':select.startProvinceTab!=0}]">
-            <a href="javascript:;" v-for="item in cityData.get(0)"
-               v-bind:class="[{ 'active': item==searchKey.start_province }]"
-               v-text="item" v-on:click="selectProvince('start',item)">
-            </a>
-        </div>
-        <div v-bind:class="['city','clearfix','tab-content',{'hide':select.startProvinceTab!=1}]"
-             v-if="searchKey.start_province!=''">
-            <a href="javascript:;" v-for="item in cityData.getCitysByProvince(searchKey.start_province)"
-               v-bind:class="[{ 'active':item==searchKey.start_city }]"
-               v-text="item" v-on:click="selectCity('start',item)">
-            </a>
-        </div>
-        <div v-bind:class="['district','clearfix','tab-content',{'hide':select.startProvinceTab!=2}]"
-             v-if="searchKey.start_city!=''">
-            <a href="javascript:;" v-for="item in cityData.getDistricts(searchKey.start_province,searchKey.start_city)"
-               v-bind:class="[{ 'active':item==searchKey.start_district }]"
-               v-text="item" v-on:click="selectDistrict('start',item)">
-            </a>
-        </div>
-        <div class="sub_btn_box">
-            <a href="javascript:void(0);" class="cancle" v-on:click="resetCity('start')">重置</a>
-            <a href="javascript:void(0);" class="confirm" v-on:click="confirm()">确定</a>
-        </div>
-    </div>
+    <city-dialog v-bind:box="'start_box'"
+                 v-bind:box-title="'地区'"
+                 v-bind:ob="searchKey"
+                 v-bind:province="'start_province'"
+                 v-bind:city="'start_city'"
+                 v-bind:district="'start_district'"
+                 v-bind:show-dialog="'showCity'"
+                 v-bind:show-ob="select"
+                 v-bind:has-all-district="true"
+                 v-if="select.showCity"
+                 v-on:end="confirm()">
+    </city-dialog>
     <div class="use_type_box zhp_box hide">
         <div class="cty_box">
             <a href="javascript:;" v-bind:class="[{ 'cur':searchKey.use_type=='' }]"
@@ -105,7 +76,8 @@
 </div>
 @Html.Partial("_Footer")
 @section scripts{
-    @Html.Action("Template", "Partial", new { id = "List" })
     @Html.Partial("_CityJs")
+    @Html.Action("Template", "Partial", new { id = "List" })
+    @Html.Action("Template", "Partial", new { id = "CityDialog" })
     @Scripts.Render("/Scripts/Project/CarBuy.js")
 }

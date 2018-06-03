@@ -36,9 +36,8 @@ var vue = new Vue({
         validity_unit_day_money: 0,// 发布费用 元/天
         validity_unit_month_money: 0,// 发布费用 元/月
         select: {
-            startProvinceTab: 0
-        },
-        cityData: dsy
+            showCityStart: false
+        }
     },
     watch: {
         'model.validity_num': function (val, oldval) {
@@ -255,55 +254,6 @@ var vue = new Vue({
 
 
         },
-        showCity: function (code) {
-            var _title = code == 'start' ? '车辆所在地' : '';
-            layer.open({
-                type: 1,
-                title: _title,
-                content: $('.' + code + '_box'),
-                offset: 'lb',
-                area: ['100%', '500px'],
-                shade: 0.5,
-                scrollbar: false,
-                anim: 2
-            });
-        },
-        selectProvince: function (code, item) {
-            var _this = this;
-            if (_this.model.start_province != item) {
-                _this.model.start_city = '';
-                _this.model.start_district = '';
-            }
-            _this.model.start_province = item;
-            _this.select.startProvinceTab = 1;
-        },
-        selectCity: function (code, item) {
-            var _this = this;
-            if (_this.model.start_city != item) {
-                _this.model.start_district = '';
-            }
-            _this.model.start_city = item;
-            _this.select.startProvinceTab = 2;
-        },
-        selectDistrict: function (code, item) {
-            var _this = this;
-            _this.model.start_district = item;
-            layer.closeAll();
-        },
-        selectTabProvince: function (code) {
-            var _this = this;
-            _this.select.startProvinceTab = 0;
-        },
-        selectTabCity: function (code) {
-            var _this = this;
-            if (_this.model.start_province == '') return;
-            _this.select.startProvinceTab = 1;
-        },
-        selectTabDistrict: function (code) {
-            var _this = this;
-            if (_this.model.start_city == '') return;
-            _this.select.startProvinceTab = 2;
-        },
         useTypeClick: function (item) {//品牌选择
             if (this.useTypeSelectData.indexOf(item.title) >= 0) {
                 // 删除
@@ -319,9 +269,6 @@ var vue = new Vue({
                 //}
                 this.useTypeSelectData.push(item.title);
             }
-            
-
-
 
         },
         carStyleClick: function (item) {//车型选择
