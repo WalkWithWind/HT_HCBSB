@@ -48,3 +48,17 @@ G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\obj\Release\HT.Model.csproj.C
 G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\obj\Release\HT.Model.csproj.CopyComplete
 G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\obj\Release\HT.Model.dll
 G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\obj\Release\HT.Model.pdb
+D:\Project\HCBSB\HT.Model\bin\Release\HT.Model.dll.config
+D:\Project\HCBSB\HT.Model\bin\Release\HT.Model.dll
+D:\Project\HCBSB\HT.Model\bin\Release\HT.Model.pdb
+D:\Project\HCBSB\HT.Model\bin\Release\EntityFramework.dll
+D:\Project\HCBSB\HT.Model\bin\Release\EntityFramework.SqlServer.dll
+D:\Project\HCBSB\HT.Model\bin\Release\EntityFramework.xml
+D:\Project\HCBSB\HT.Model\bin\Release\EntityFramework.SqlServer.xml
+D:\Project\HCBSB\HT.Model\bin\Release\zh-Hans\EntityFramework.resources.dll
+D:\Project\HCBSB\HT.Model\bin\Release\zh-Hans\EntityFramework.SqlServer.resources.dll
+D:\Project\HCBSB\HT.Model\obj\Release\HT.Model.csprojAssemblyReference.cache
+D:\Project\HCBSB\HT.Model\obj\Release\HT.Model.csproj.CoreCompileInputs.cache
+D:\Project\HCBSB\HT.Model\obj\Release\HT.Model.csproj.CopyComplete
+D:\Project\HCBSB\HT.Model\obj\Release\HT.Model.dll
+D:\Project\HCBSB\HT.Model\obj\Release\HT.Model.pdb

@@ -128,14 +128,14 @@ D:\Project\HCBSB\HT.Utility\bin\Debug\EntityFramework.SqlServer.dll
 D:\Project\HCBSB\HT.Utility\bin\Debug\HT.Model.dll
 D:\Project\HCBSB\HT.Utility\bin\Debug\Newtonsoft.Json.dll
 D:\Project\HCBSB\HT.Utility\bin\Debug\HT.Model.pdb
-D:\Project\HCBSB\HT.Utility\bin\Debug\HT.Model.dll.config
 D:\Project\HCBSB\HT.Utility\bin\Debug\EntityFramework.xml
 D:\Project\HCBSB\HT.Utility\bin\Debug\EntityFramework.SqlServer.xml
 D:\Project\HCBSB\HT.Utility\bin\Debug\Newtonsoft.Json.xml
 D:\Project\HCBSB\HT.Utility\bin\Debug\zh-Hans\EntityFramework.resources.dll
 D:\Project\HCBSB\HT.Utility\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+D:\Project\HCBSB\HT.Utility\obj\Debug\HT.Utility.dll
+D:\Project\HCBSB\HT.Utility\obj\Debug\HT.Utility.pdb
+D:\Project\HCBSB\HT.Utility\bin\Debug\HT.Model.dll.config
 D:\Project\HCBSB\HT.Utility\obj\Debug\HT.Utility.csprojAssemblyReference.cache
 D:\Project\HCBSB\HT.Utility\obj\Debug\HT.Utility.csproj.CoreCompileInputs.cache
 D:\Project\HCBSB\HT.Utility\obj\Debug\HT.Utility.csproj.CopyComplete
-D:\Project\HCBSB\HT.Utility\obj\Debug\HT.Utility.dll
-D:\Project\HCBSB\HT.Utility\obj\Debug\HT.Utility.pdb

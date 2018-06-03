@@ -93,9 +93,9 @@ D:\Project\HCBSB\HT.Model\bin\Debug\EntityFramework.xml
 D:\Project\HCBSB\HT.Model\bin\Debug\EntityFramework.SqlServer.xml
 D:\Project\HCBSB\HT.Model\bin\Debug\zh-Hans\EntityFramework.resources.dll
 D:\Project\HCBSB\HT.Model\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
-D:\Project\HCBSB\HT.Model\obj\Debug\HT.Model.csprojAssemblyReference.cache
-D:\Project\HCBSB\HT.Model\obj\Debug\HT.Model.csproj.CoreCompileInputs.cache
-D:\Project\HCBSB\HT.Model\obj\Debug\HT.Model.csproj.CopyComplete
 D:\Project\HCBSB\HT.Model\obj\Debug\HT.Model.dll
 D:\Project\HCBSB\HT.Model\obj\Debug\HT.Model.pdb
 G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\obj\Debug\HT.Model.csprojResolveAssemblyReference.cache
+D:\Project\HCBSB\HT.Model\obj\Debug\HT.Model.csprojAssemblyReference.cache
+D:\Project\HCBSB\HT.Model\obj\Debug\HT.Model.csproj.CoreCompileInputs.cache
+D:\Project\HCBSB\HT.Model\obj\Debug\HT.Model.csproj.CopyComplete

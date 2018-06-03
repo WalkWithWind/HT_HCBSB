@@ -1,0 +1,47 @@
+﻿@{
+    Layout =null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>微信支付</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link href="/Content/weui.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast">
+            <i class="weui-loading weui-icon_toast"></i>
+            <p class="weui-toast__content">正在发起支付请求,请稍候</p>
+        </div>
+    </div>
+</body>
+<script src="/Scripts/jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+    // 当微信内置浏览器完成内部初始化后会触发WeixinJSBridgeReady事件。
+    document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+
+        WeixinJSBridge.invoke('getBrandWCPayRequest', @ViewBag.PayRequest, function (res) {
+            // 返回res.err_msg,取值 
+            // get_brand_wcpay_request:cancel 用户取消 
+            // get_brand_wcpay_request:fail 发送失败 
+            // get_brand_wcpay_request:ok 发送成功 
+            if (res.err_msg == "get_brand_wcpay_request:ok") {
+
+                window.location.href = "/WX/PaySuccess/" + @ViewBag.OrderNo;
+            }
+            else {
+                window.location.href = "/WX/PayFail" + @ViewBag.OrderNo;
+
+            }
+
+        });
+    })
+</script>
+</html>
+
+
+

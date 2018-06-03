@@ -171,6 +171,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Project\Project.css" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\weui.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -360,6 +361,9 @@
     <Content Include="Views\Partial\Details.cshtml" />
     <Content Include="Views\Shared\_LayoutIndex.cshtml" />
     <Content Include="Views\Partial\CityDialog.cshtml" />
+    <Content Include="Views\WX\Pay.cshtml" />
+    <Content Include="Views\WX\PaySuccess.cshtml" />
+    <None Include="Views\WX\PayFail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -369,7 +373,6 @@
     <Folder Include="Views\File\" />
     <Folder Include="Views\Relation\" />
     <Folder Include="Views\Review\" />
-    <Folder Include="Views\WX\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -396,6 +399,10 @@
     <ProjectReference Include="..\HT.Utility\HT.Utility.csproj">
       <Project>{2c15b7bb-625a-4b54-9831-d3297adf128a}</Project>
       <Name>HT.Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MicroMessenger\MicroMessenger.csproj">
+      <Project>{ee8c9eb8-510d-499d-a5f7-3ecd6d552dfa}</Project>
+      <Name>MicroMessenger</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
