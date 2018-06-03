@@ -68,6 +68,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="admin\audit\audit_withdraw.aspx" />
     <Content Include="admin\cate\pinpai_list.aspx" />
     <Content Include="admin\cate\cate_list.aspx" />
     <Content Include="admin\center.aspx" />
@@ -613,6 +614,13 @@
     </Compile>
     <Compile Include="admin\api\project\updatestatus.ashx.cs">
       <DependentUpon>updatestatus.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\audit\audit_withdraw.aspx.cs">
+      <DependentUpon>audit_withdraw.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\audit\audit_withdraw.aspx.designer.cs">
+      <DependentUpon>audit_withdraw.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\cate\pinpai_list.aspx.cs">
       <DependentUpon>pinpai_list.aspx</DependentUpon>

@@ -127,5 +127,47 @@ namespace HT.BLL
             }
             return 0;
         }
+
+        public static List<ht_user_money_log> GetUserMoneyLogData(int page,int rows,int userId,out int total)
+        {
+            using (Entities db = new Entities())
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                var data = db.ht_user_money_log.Where(p => true);
+                if (userId > 0) data = data.Where(p => p.userid == userId);
+
+                total = data.Count();
+                return data.OrderByDescending(p => p.addtime).Skip((page - 1) * rows).Take(rows).ToList();
+            }
+        }
+
+        public static bool AddUserMoneyLogData(int userId,decimal money,string remark,int  type)
+        {
+            using (Entities db = new Entities())
+            {
+                ht_user_money_log model = new ht_user_money_log();
+                model.addtime = DateTime.Now;
+                model.userid = userId;
+                model.remark = remark;
+                model.money = -money;
+                model.type = type;
+                db.ht_user_money_log.Add(model);
+                return db.SaveChanges() > 0 ? true : false;
+            }
+        }
+
+
+        public static decimal GetToauditTotalMoney(int userId,int type,int status)
+        {
+            using (Entities db = new Entities())
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                var data = db.ht_user_money_log.Where(p => true);
+                data = data.Where(p => p.userid == userId);
+                data = data.Where(p => p.type == type);
+                data = data.Where(p => p.status == status);
+                return (decimal)data.ToList().Sum(p => p.money);
+            }
+        }
     }
 }

@@ -26,7 +26,7 @@ namespace HT.Model
     ///</summary>
         public Nullable<int> userid { get; set; }
     ///<summary>
-    ///
+    ///1提现
     ///</summary>
         public Nullable<int> type { get; set; }
     ///<summary>
@@ -41,5 +41,9 @@ namespace HT.Model
     ///
     ///</summary>
         public Nullable<System.DateTime> addtime { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
+        public Nullable<int> status { get; set; }
     }
 }

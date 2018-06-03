@@ -317,9 +317,73 @@ namespace HT.Mobile.Controllers
             }
             return View();
         }
+        /// <summary>
+        /// 余额明细
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="rows"></param>
+        /// <returns></returns>
+        public ActionResult UserMoneyLogData(int page,int rows)
+        {
+            if (Request.IsAjaxRequest())
+            {
+                int total = 0;
+                var userId = BLLUser.GetUserId();
+                var list = BLLUser.GetUserMoneyLogData(page, rows, userId, out total);
+                ht_user user = BLLUser.GetUserById(userId);
+                apiResp.result = new {
+                    list = list,
+                    total = total,
+                    total_amount = user != null ? user.money : 0
+                };
+                apiResp.status = true;
+                apiResp.msg = "查询完成";
+                return Json(apiResp);
+            }
+            return View();
 
+        }
+        /// <summary>
+        /// 提现
+        /// </summary>
+        /// <param name="money"></param>
+        /// <returns></returns>
+        public ActionResult AddUserMoneyLog(decimal money)
+        {
+            if (Request.IsAjaxRequest())
+            {
 
+                var userId = BLLUser.GetUserId();
+                ht_user user = BLLUser.GetUserById(userId);
+                if(user==null)
+                {
+                    apiResp.msg = "请先登录";
+                    apiResp.status = true;
+                    return Json(apiResp);
+                }
 
+                var toauditMoney = BLLUser.GetToauditTotalMoney(userId,1,(int)Model.Enum.WithDraw.ToAudit);
+
+                if ((user.money - toauditMoney) < money)
+                {
+                    apiResp.msg = "余额不足";
+                    apiResp.status = true;
+                    return Json(apiResp);
+                }
+                if (BLLUser.AddUserMoneyLogData(userId, money,"提现",1))
+                {
+                    apiResp.msg = "提现成功";
+                    apiResp.status = true;
+                }
+                else
+                {
+                    apiResp.msg = "提现失败";
+                    apiResp.status = true;
+                }
+                return Json(apiResp);
+            }
+            return View();
+        }
 
         #endregion 接口
     }

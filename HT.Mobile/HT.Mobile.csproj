@@ -299,6 +299,8 @@
     <Content Include="Scripts\User\SecondaryDistribution.js" />
     <Content Include="Scripts\User\Team.js" />
     <Content Include="Scripts\User\TestLogin.js" />
+    <Content Include="Scripts\User\Wallet.js" />
+    <Content Include="Scripts\User\Withdraw.js" />
     <Content Include="Scripts\vueFilter.js" />
     <Content Include="Scripts\vue\vue.min.js" />
     <Content Include="Web.config" />
@@ -363,6 +365,7 @@
     <Content Include="Views\Partial\CityDialog.cshtml" />
     <Content Include="Views\WX\Pay.cshtml" />
     <Content Include="Views\WX\PaySuccess.cshtml" />
+    <Content Include="Views\Partial\PostHelpDialog.cshtml" />
     <None Include="Views\WX\PayFail.cshtml" />
   </ItemGroup>
   <ItemGroup>
