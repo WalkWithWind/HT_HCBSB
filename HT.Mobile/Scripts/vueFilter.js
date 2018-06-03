@@ -62,3 +62,13 @@ Vue.filter('statusFormart', function (value,num,unit,status,pay_status) {
     if (year == curDate.getFullYear()) return "显示中 " +month + "月" + day + "日 " +"过期";
     return "显示中 " +year + "年" + month + "月" + day+"日 "+"过期";
 });
+Vue.filter('stringRemove', function (value, defvalue) {
+    if (!value) return defvalue;
+    var removes = ['省', '市', '直辖市', '自治区', '区', '县', '镇'];
+    for (var i = 0; i < removes.length; i++) {
+        if (removes[i]) {
+            value = value.replace(removes[i], '');
+        } 
+    }
+    return value;
+})

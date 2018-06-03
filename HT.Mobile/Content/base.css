@@ -272,9 +272,8 @@ header, nav, article, footer, address {
 .hide {
     display: none;
 }
-
 .show {
-    display: block;
+    display: block !important;
 }
 
 .H5 {

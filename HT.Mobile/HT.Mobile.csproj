@@ -359,6 +359,7 @@
     <Content Include="Views\User\Mobile.cshtml" />
     <Content Include="Views\Partial\Details.cshtml" />
     <Content Include="Views\Shared\_LayoutIndex.cshtml" />
+    <Content Include="Views\Partial\CityDialog.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

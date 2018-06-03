@@ -25,10 +25,9 @@ var listVm = new Vue({
             rows: 5
         },
         select: {
-            startProvinceTab: 0,
-            stopProvinceTab: 0
+            showCityStart: false,
+            showCityStop: false
         },
-        cityData: dsy,
         carLengthData: [],
         carStyleData: []
     },
@@ -116,22 +115,10 @@ var listVm = new Vue({
                 anim: 2
             });
         },
-        showCarStyle: function () {
-            layer.open({
-                type: 1,
-                title: '车型',
-                content: $('.car_style_box'),
-                offset: 'lb',
-                area: ['100%', 'auto'],
-                shade: 0.5,
-                scrollbar: false,
-                anim: 2
-            });
-        },
         showCarLength: function () {
             layer.open({
                 type: 1,
-                title: '货源筛选',
+                title: '车源筛选',
                 content: $('.car_length_box'),
                 offset: 'lb',
                 area: ['100%', 'auto'],
