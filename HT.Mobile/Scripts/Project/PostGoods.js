@@ -3,6 +3,7 @@
 var vue = new Vue({
     el: '.main',
     data: {
+        id: GetUrlParam('PostGoods', 0),
         model: {
             cateid: 1,//类型 1货源
             cate: "找货源",//货源
@@ -76,20 +77,18 @@ var vue = new Vue({
             this.calcTotal();
         }
     },
-    created() {
-
+    created: function() {
         var curDate = new Date();
         this.useDayData.push(curDate.Format('MM月dd日'));
         for (var i = 1; i < 7; i++) {
             curDate.setDate(curDate.getDate() + 1);
             this.useDayData.push(curDate.Format('MM月dd日'));
         }
-
         this.init();
     },
     methods: {
         init: function () {
-
+            if (this.id && this.id != '0') this.loadData();
             this.loadCateData('use_type', 1);//用车类型
             this.loadCateData('car_length', 4);//车长
             this.loadCateData('car_style', 16);//车型列表
@@ -103,6 +102,22 @@ var vue = new Vue({
             this.loadConfigData('pub_amount_day');//发布费用 元/天
             this.loadConfigData('pub_amount_month');//发布费用 元/月
 
+        },
+        loadData: function () {
+            var _this = this;
+            $.ajax({
+                type: 'post',
+                url: '/Project/BaseNewsDetails',
+                data: { id: _this.id },
+                dataType: 'json',
+                success: function (resp) {
+                    if (resp.status) {
+                        if (resp.result.car_length) _this.carLenSelect = resp.result.car_length.split(',');
+                        if (resp.result.car_style) _this.carStyleSelect = resp.result.car_style.split(',');
+                        _this.model = resp.result;
+                    }
+                }
+            });
         },
         loadCateData: function (code, cid) {
             var _this = this;
@@ -168,9 +183,7 @@ var vue = new Vue({
             if (_this.model.reward_money > 0) {
                 _this.model.total += parseFloat(_this.model.reward_money);
             }
-            console.log(["model", _this.model]);
-
-
+            //console.log(["model", _this.model]);
         },
         topCate: function () {//分类置顶点击
             var _this = this;
@@ -350,4 +363,3 @@ var vue = new Vue({
         }
     }
 });
-vue.init();

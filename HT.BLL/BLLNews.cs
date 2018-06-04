@@ -353,7 +353,6 @@ namespace HT.BLL
                     db.ht_news_del.Add(bk);
                 }
                 #endregion 支付过的删除时备份一下
-
                 db.ht_news.Remove(details);
                 return db.SaveChanges();
             }

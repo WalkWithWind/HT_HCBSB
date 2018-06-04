@@ -26,7 +26,9 @@
         },
         methods: {
             init: function () {
-                this.loadUserData();//品牌
+                if (!this.ob[this.name] && !this.ob[this.phone]) {
+                    this.loadUserData();//品牌
+                }
             },
             loadUserData: function () {
                 var _this = this;

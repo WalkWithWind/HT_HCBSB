@@ -108,6 +108,23 @@
             if (year == curDate.getFullYear()) return "显示中 " + month + "月" + day + "日 " + "过期";
             return "显示中 " + year + "年" + month + "月" + day + "日 " + "过期";
         },
+        toEdit: function (item) {
+            if (item.cateid == 1) {
+                location.href = '/Project/PostGoods/' + item.id;
+            } else if (item.cateid == 2) {
+                location.href = '/Project/PostCars/' + item.id;
+            } else if (item.cateid == 3) {
+                location.href = '/Project/PostRecruit/' + item.id;
+            } else if (item.cateid == 4) {
+                location.href = '/Project/PostJob/' + item.id;
+            } else if (item.cateid == 5) {
+                location.href = '/Project/PostCarSell/' + item.id;
+            } else if (item.cateid == 6) {
+                location.href = '/Project/PostCarBuy/' + item.id;
+            } else if (item.cateid == 7) {
+                location.href = '/Project/PostTemplate/' + item.id;
+            }
+        },
         del: function (item,index) {
             var _this = this;
             if (_this.isLoading) return;

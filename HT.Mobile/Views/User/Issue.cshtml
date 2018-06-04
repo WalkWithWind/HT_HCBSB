@@ -41,7 +41,7 @@
                         <a href="javascript:void(0);" class="btn1" v-if="item.set_top==0 && item.status!=2 && item.status_text.indexOf('已过期')<0">我要置顶</a>
                         <a href="javascript:void(0);" class="btn2" v-if="item.status_text.indexOf('显示中')==0">分享</a>
                         <a v-bind:href="'/User/Pay/'+item.order_no" class="btn3" v-if="item.status_text.indexOf('待付款')==0" >立即付款</a>
-                        <a href="javascript:void(0);" class="btn2" v-if="item.status_text.indexOf('待付款')==0">重新编辑</a>
+                        <a href="javascript:void(0);" class="btn2" v-if="item.status_text.indexOf('待付款')==0" v-on:click="toEdit(item)">重新编辑</a>
                         <a href="javascript:void(0);" class="btn2" v-if="item.status==2 || item.status_text.indexOf('已过期')==0" v-on:click="del(item,index)">删除</a>
                     </div>
                 </li>
