@@ -369,6 +369,7 @@
     <Content Include="Views\Partial\PostHelpDialog.cshtml" />
     <Content Include="Views\Partial\PinpaiDialog.cshtml" />
     <Content Include="Views\Partial\Contact.cshtml" />
+    <Content Include="Views\Partial\Shortcut.cshtml" />
     <None Include="Views\WX\PayFail.cshtml" />
   </ItemGroup>
   <ItemGroup>

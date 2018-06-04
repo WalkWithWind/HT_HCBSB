@@ -97,11 +97,8 @@
     <!-- 广告 -->
     @Html.Action("AdList", "Partial", new { code = "details_carbuy_banner" })
     <details-component v-bind:id="id" v-bind:news-data="newsData"></details-component>
-
 </div>
-
 @Html.Partial("_Footer")
-
 @section scripts{
     @Html.Action("Template", "Partial", new { id = "Details" })
     @Scripts.Render("/Scripts/Project/CarBuyDetails.js")

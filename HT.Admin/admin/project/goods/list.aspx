@@ -211,7 +211,7 @@
 							_this.selectAll = false,
 							_this.selectAllText = "全选";
 					        laypage({
-							cont: document.getElementById('pageDiv'), //容器。值支持id名、原生dom对象，jquery对象。【如该容器为】：<div id="page1"></div>
+							cont:$('#pageDiv'), //容器。值支持id名、原生dom对象，jquery对象。【如该容器为】：<div id="page1"></div>
 							pages: _this.totalPage, //通过后台拿到的总页数
 							curr: _this.pageindex, //当前页
 							layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip'],

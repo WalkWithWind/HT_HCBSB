@@ -1,0 +1,69 @@
+﻿<script type="text/template" id="shortcut-template">
+    <div class="shortcut" style="position:fixed;right:10px;bottom:70px;">
+        <div class="upItem">
+            <div class="item">
+                <div class="phone" v-on:click="tel()">
+                    电话
+                </div>
+            </div>
+            <div class="item">
+                <div class="post" v-on:click="post()">发布</div>
+            </div>
+            <div class="item">
+                <div class="review" v-on:click="$emit('add-review')">留言</div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="li">
+                <div class="img active" v-on:click="setShow()">﹥</div>
+            </div>
+        </div>
+    </div>
+</script>
+<script>
+    Vue.component('shortcut', {
+        template: '#shortcut-template',
+        props: {
+            cateid: {},
+            phone: {}
+        },
+        data: function () {
+            return {
+                show: true
+            }
+        },
+        methods: {
+            tel: function () {
+                if (this.phone) location.href = 'tel://' + this.phone;
+            },
+            post: function () {
+                if (this.cateid == 1) {
+                    location.href = '/Project/PostGoods';
+                } else if (this.cateid == 2) {
+                    location.href = '/Project/PostCars';
+                } else if (this.cateid == 3) {
+                    location.href = '/Project/PostRecruit';
+                } else if (this.cateid == 4) {
+                    location.href = '/Project/PostJob';
+                } else if (this.cateid == 5) {
+                    location.href = '/Project/PostCarSell';
+                } else if (this.cateid == 6) {
+                    location.href = '/Project/PostCarBuy';
+                } else if (this.cateid == 7) {
+                    location.href = '/Project/PostTemplate';
+                }
+            },
+            setShow: function () {
+                if (this.show) {
+                    $(".shortcut .upItem").animate({ left: "70px" });
+                    $(".shortcut .img").css({ 'transform':'rotate(360deg)' });
+                    this.show = false;
+                } else {
+                    $(".shortcut .upItem").animate({ left: "0px" });
+                    $(".shortcut .img").css({ 'transform': 'rotate(270deg)' });
+                    this.show = true;
+                }
+            }
+        }
+    })
+</script>

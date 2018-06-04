@@ -6,7 +6,7 @@ var vue = new Vue({
         id: GetUrlParam('PostGoods', 0),
         model: {
             cateid: 1,//类型 1货源
-            cate: "找货源",//货源
+            cate: "有货找车",//货源
             validity_num: "",//有效期
             validity_unit: "天",//有效期单位 天,月
             start_province: "",//出发地省份

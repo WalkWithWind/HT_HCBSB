@@ -26,7 +26,7 @@ namespace HT.BLL.Admin
             using (Entities db = new Entities())
             {
                 db.Configuration.ProxyCreationEnabled = false;
-				var unDelList = db.ht_news.Where(r => r.is_delete == 0);
+				var unDelList = db.ht_news.Where(r => true);
 				if (cateId > 0)
 				{
                     unDelList = unDelList.Where(r => r.cateid == cateId);

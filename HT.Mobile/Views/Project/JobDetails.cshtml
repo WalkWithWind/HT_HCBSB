@@ -198,18 +198,20 @@
             </li>
         </ul>
     </div>
-
-
     <div class="zhp_message_box hide">
         <textarea v-model="reviewInfo.review_content" placeholder="请输入留言内容"></textarea>
         <a href="javascript:;" v-on:click="addReview()" class="btn">提交</a>
     </div>
-
+    <shortcut v-bind:phone="newsData.contact_phone"
+              v-bind:cateid="newsData.cateid"
+              v-on:add-review="showReview('comment')">
+    </shortcut>
 </div>
 
 @Html.Partial("_Footer")
 @section scripts{
     @Scripts.Render("/Scripts/Project/JobDetails.js")
+    @Html.Action("Template", "Partial", new { id = "Shortcut" })
     <script>
         $(function () {
             var $txt_box = $(".txt_box");
