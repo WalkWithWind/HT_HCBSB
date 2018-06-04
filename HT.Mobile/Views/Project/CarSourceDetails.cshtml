@@ -5,7 +5,7 @@
 }
 @Html.Partial("_Header")
 
-<div class="cardDetails">
+<div class="cardDetails hide" v-bind:class="['show']">
 
     <ul class="ind_sec1_ul car_item">
         <li>
@@ -45,11 +45,9 @@
                     <dl style="width:100%">
                         <dt>行驶路线：</dt>
                         <dd>
-                            <span v-text="newsData.start_city"></span>
-                            <span v-text="newsData.start_district"></span>
+                            <span>{{(newsData.start_city+newsData.start_district)|stringRemove('')}}</span>
                             —
-                            <span v-text="newsData.stop_city"></span>
-                            <span v-text="newsData.stop_district"></span>
+                            <span>{{(newsData.stop_city+newsData.stop_district)|stringRemove('')}}</span>
                         </dd>
                     </dl>
                     <dl>

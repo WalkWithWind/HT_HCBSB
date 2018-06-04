@@ -13,23 +13,7 @@
     </div>
 
     <div class="banner">
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <img src="/images/img/img00.jpg">
-                </div>
-                <div class="swiper-slide">
-                    <img src="/images/img/img00.jpg">
-                </div>
-                <div class="swiper-slide">
-                    <img src="/images/img/img00.jpg">
-                </div>
-                <div class="swiper-slide">
-                    <img src="/images/img/img00.jpg">
-                </div>
-            </div>
-            <div class="swiper-pagination"></div>
-        </div>
+        @Html.Action("AdList", "Partial", new { code = "push_msg" })
     </div>
 
     @*<div class="pm_sec1">
@@ -86,6 +70,7 @@
         </div>
     </div>
 </div>
+@Html.Partial("_Footer")
 @section scripts{
     @Html.Action("Template", "Partial", new { id = "PostHelpDialog" })
     <script type="text/javascript">

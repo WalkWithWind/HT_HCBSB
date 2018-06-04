@@ -68,6 +68,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="admin\audit\audit_withdraw.aspx" />
     <Content Include="admin\cate\pinpai_list.aspx" />
     <Content Include="admin\cate\cate_list.aspx" />
     <Content Include="admin\center.aspx" />
@@ -97,6 +98,8 @@
     <Content Include="admin\project\driverjob\list.aspx" />
     <Content Include="admin\project\recruit\detail.aspx" />
     <Content Include="admin\project\recruit\list.aspx" />
+    <Content Include="admin\users\detail.aspx" />
+    <Content Include="admin\users\list.aspx" />
     <Content Include="scripts\laypage\1.2\laypage.js" />
     <Content Include="scripts\laypage\1.2\skin\laypage.css" />
     <Content Include="admin\login.aspx" />
@@ -593,6 +596,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="admin\api\audit\withdraw\list.ashx.cs">
+      <DependentUpon>list.ashx</DependentUpon>
+    </Compile>
     <Compile Include="admin\api\BaseHandler.ashx.cs">
       <DependentUpon>BaseHandler.ashx</DependentUpon>
     </Compile>
@@ -613,6 +619,19 @@
     </Compile>
     <Compile Include="admin\api\project\updatestatus.ashx.cs">
       <DependentUpon>updatestatus.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\api\user\detail.ashx.cs">
+      <DependentUpon>detail.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\api\user\list.ashx.cs">
+      <DependentUpon>list.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\audit\audit_withdraw.aspx.cs">
+      <DependentUpon>audit_withdraw.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\audit\audit_withdraw.aspx.designer.cs">
+      <DependentUpon>audit_withdraw.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\cate\pinpai_list.aspx.cs">
       <DependentUpon>pinpai_list.aspx</DependentUpon>
@@ -894,6 +913,20 @@
     <Compile Include="admin\configuration\ht_sms_email_edit.aspx.designer.cs">
       <DependentUpon>ht_sms_email_edit.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\users\detail.aspx.cs">
+      <DependentUpon>detail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\users\detail.aspx.designer.cs">
+      <DependentUpon>detail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\users\list.aspx.cs">
+      <DependentUpon>list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\users\list.aspx.designer.cs">
+      <DependentUpon>list.aspx</DependentUpon>
+    </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -929,6 +962,9 @@
     <Content Include="admin\api\project\updatestatus.ashx" />
     <Content Include="admin\api\help\get.ashx" />
     <Content Include="admin\api\help\update.ashx" />
+    <Content Include="admin\api\audit\withdraw\list.ashx" />
+    <Content Include="admin\api\user\list.ashx" />
+    <Content Include="admin\api\user\detail.ashx" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -953,7 +989,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="admin\lib\" />
-    <Folder Include="admin\users\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

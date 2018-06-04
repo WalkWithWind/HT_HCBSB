@@ -1,0 +1,48 @@
+﻿<script type="text/template" id="contact-template">
+    <div class="pg_sec2 pg_sec7">
+        <dl>
+            <dt>联系信息</dt>
+            <dd>
+                <span>联系人</span>
+                <input type="text" value="" v-model="ob[name]" placeholder="联系人">
+            </dd>
+            <dd>
+                <span>联系电话</span>
+                <input type="text" value="" v-model="ob[phone]" placeholder="联系电话">
+            </dd>
+        </dl>
+    </div>
+</script>
+<script>
+    Vue.component('contact', {
+        template: '#contact-template',
+        props: {
+            ob: {},
+            name: {},
+            phone: {}
+        },
+        mounted: function () {
+            this.init();
+        },
+        methods: {
+            init: function () {
+                this.loadUserData();//品牌
+            },
+            loadUserData: function () {
+                var _this = this;
+                $.ajax({
+                    type: 'post',
+                    url: '/User/GetAuthenticationUser',
+                    data: {},
+                    dataType: 'json',
+                    success: function (resp) {
+                        if (resp.status) {
+                            _this.ob[_this.name] = resp.result.nickname;
+                            _this.ob[_this.phone] = resp.result.mobile;
+                        }
+                    }
+                });
+            }
+        }
+    })
+</script>

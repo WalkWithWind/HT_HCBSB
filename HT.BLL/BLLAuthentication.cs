@@ -22,7 +22,7 @@ namespace HT.BLL
                 mobile = user.mobile,
                 avatar = user.avatar
             });
-            var expires = DateTime.Now.AddMinutes(30);
+            var expires = DateTime.Now.AddHours(2);
             var ticket = new FormsAuthenticationTicket(1, user.openid, DateTime.Now, expires, true, userData);
             // 加密
             var hashTicket = FormsAuthentication.Encrypt(ticket);

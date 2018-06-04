@@ -23,7 +23,6 @@ var vue = new Vue({
             reward_money: 0,//打赏金额
             total: 0//需支付金额
         },
-        useTypeSelectData: [],//选中品牌
         carStyleSelect: [],//选中的车型
         useTypeData: [],//品牌列表
         carStyleData: [],//车型列表
@@ -55,8 +54,6 @@ var vue = new Vue({
     },
     methods: {
         init: function () {
-
-            this.loadPinpaiData();//品牌
             this.loadCateData('car_style', 16);//车型
             this.loadCateData('reward_money', 55);//打赏福利列表
 
@@ -79,20 +76,6 @@ var vue = new Vue({
                         if (code == 'car_style') { _this.carStyleData = resp.result };
                         if (code == 'reward_money') { _this.rewardMoneyData = resp.result };
 
-                    }
-                }
-            });
-        },
-        loadPinpaiData: function () {//品牌
-            var _this = this;
-            $.ajax({
-                type: 'post',
-                url: '/Home/PinpaiList',
-                data: {},
-                dataType: 'json',
-                success: function (resp) {
-                    if (resp.status) {
-                        _this.useTypeData = resp.result;
                     }
                 }
             });
@@ -184,7 +167,7 @@ var vue = new Vue({
                 return false;
 
             }
-            if (_this.useTypeSelectData.length==0) {
+            if (!_this.model.use_type) {
                 alert("请选择品牌");
                 return false;
 
@@ -228,9 +211,8 @@ var vue = new Vue({
             if (!_this.checkInput()) {
                 return false;
             }
-            _this.model.use_type = _this.useTypeSelectData.join(',');
             _this.model.car_style = _this.carStyleSelect.join(',');
-            confirm("提示", "确定发布", "发布", "取消", function () {
+            //confirm("提示", "确定发布", "发布", "取消", function () {
                 $.ajax({
                     type: 'post',
                     url: '/Project/PostSubmit',
@@ -245,11 +227,11 @@ var vue = new Vue({
                     }
                 });
 
-            }, function () {
+            //}, function () {
 
-                layer.closeAll();
+            //    layer.closeAll();
 
-            })
+            //})
 
 
 

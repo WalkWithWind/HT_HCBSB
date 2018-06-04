@@ -71,7 +71,7 @@ namespace HT.BLL.Admin
 			using (Entities db = new Entities())
             {
 				db.Configuration.ProxyCreationEnabled = false;
-				return db.ht_news.FirstOrDefault(p => p.id == id);
+				return db.ht_news.Find(id);
             }
 
         }

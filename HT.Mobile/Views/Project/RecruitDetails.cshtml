@@ -5,7 +5,7 @@
 }
 @Html.Partial("_Header")
 
-<div class="recruitDetails">
+<div class="recruitDetails hide" v-bind:class="['show']">
 
     <ul class="ind_sec1_ul car_item">
         <li>
@@ -41,8 +41,7 @@
                     <dl>
                         <dt>工作地点：</dt>
                         <dd>
-                            <span v-text="newsData.start_city"></span>
-                            <span v-text="newsData.start_district"></span>
+                            <span>{{(newsData.start_city+newsData.start_district)|stringRemove('')}}</span>
                         </dd>
                     </dl>
                     <dl>

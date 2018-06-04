@@ -119,7 +119,7 @@ var listVm = new Vue({
         showCarLength: function () {
             layer.open({
                 type: 1,
-                title: '工资待遇',
+                title: '驾龄',
                 content: $('.car_length_box'),
                 offset: 'lb',
                 area: ['100%', 'auto'],

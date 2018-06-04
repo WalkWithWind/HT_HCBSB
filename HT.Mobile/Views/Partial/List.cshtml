@@ -143,7 +143,7 @@
                 </div>
                 <div class="ind_lab">
                     <i class="lab1" v-text="item.use_type"></i>
-                    <i class="lab2" v-text="item.start_city"></i>
+                    <i class="lab2">{{(model.start_city+model.start_district)|stringRemove('')}}</i>
                     <i class="lab3" v-text="item.goods_type"></i>
                     <i class="lab4" v-text="item.car_style"></i>
                     <i class="lab3" v-text="item.car_length"></i>

@@ -46,7 +46,7 @@
                     </dl>
                     <dl>
                         <dt>车辆地区：</dt>
-                        <dd><span v-text="newsData.start_city"></span><span v-text="newsData.start_district"></span></dd>
+                        <dd>{{(newsData.start_city+newsData.start_district)|stringRemove('')}}</dd>
                     </dl>
                     <dl>
                         <dt>其他：</dt>

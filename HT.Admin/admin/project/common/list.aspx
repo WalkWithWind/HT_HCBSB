@@ -70,12 +70,13 @@
 				<th align="center" width="5%">选择</th>
 				<th align="center" width="10%">联系人</th>
 				<th align="center" width="10%">联系电话</th>
-				<th align="center" width="15%">置顶金额</th>
+				<th align="center" width="10%">置顶金额</th>
+				<th align="center" width="10%">打赏金额</th>
 				<th align="center" width="10%">发布时间</th>
 				<th align="center" width="15%">标签</th>
-				<th align="center" width="15%">有效期</th>
+				<th align="center" width="10%">有效期</th>
 				<th align="center" width="10%">状态</th>
-				<th align="center" width="10%">操作</th>
+				<th align="center">操作</th>
 			</tr>
 
 			<tr v-for="item in dataList">
@@ -93,11 +94,15 @@
                     <span v-show="item.set_top==2">（全站置顶）</span>
 
 				</td>
+				<td align="center">
+                    {{item.reward_money+'元'}}
+				</td>
 				<td align="center">{{item.add_time|Date}}</td>
 				<td align="center">{{item.tags}}</td>
 				<td align="center">{{item.validity_num}}{{item.validity_unit}}</td>
 				<td align="center">
-                    <span v-if="item.status==0">待审核</span>
+                    <span v-if="item.status==0 && item.pay_status==0">待支付</span>
+                    <span v-if="item.status==0 && item.pay_status==1">待审核</span>
                     <span v-if="item.status==1">审核通过</span> 
                     <span v-if="item.status==2">审核不通过</span>
 				</td>

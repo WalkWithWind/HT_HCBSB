@@ -95,8 +95,8 @@
     <Property Name="title" Type="nvarchar" MaxLength="50" />
     <Property Name="contents" Type="nvarchar(max)" />
     <Property Name="sort" Type="int" />
-    <Property Name="excursion_count" Type="int" />
     <Property Name="update_time" Type="datetime" />
+    <Property Name="add_time" Type="datetime" />
   </EntityType>
   <EntityType Name="ht_manager">
     <Key>
@@ -171,7 +171,7 @@
     <Property Name="cateid" Type="int" Nullable="false" />
     <Property Name="cate" Type="nvarchar" MaxLength="50" />
     <Property Name="title" Type="nvarchar" MaxLength="100" />
-    <Property Name="description" Type="nvarchar" MaxLength="100" />
+    <Property Name="description" Type="nvarchar" MaxLength="1000" />
     <Property Name="contact_name" Type="nvarchar" MaxLength="50" />
     <Property Name="contact_phone" Type="nvarchar" MaxLength="50" />
     <Property Name="validity_num" Type="int" />
@@ -523,6 +523,7 @@
     <Property Name="money" Type="decimal" Precision="18" Scale="2" />
     <Property Name="remark" Type="nvarchar" MaxLength="500" />
     <Property Name="addtime" Type="datetime" />
+    <Property Name="status" Type="int" />
   </EntityType>
   <EntityType Name="ht_user_point_log">
     <Key>

@@ -52,6 +52,8 @@
     <Compile Include="Const\Keys.cs" />
     <Compile Include="Enum\APIErrCode.cs" />
     <Compile Include="Enum\CookieKeys.cs" />
+    <Compile Include="Enum\UserMoneyDetails.cs" />
+    <Compile Include="Enum\WithDraw.cs" />
     <Compile Include="ht_account.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -175,6 +177,9 @@
     <Compile Include="Model\WXApiResult.cs" />
     <Compile Include="Model\WXOAuthAccessToken.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config">

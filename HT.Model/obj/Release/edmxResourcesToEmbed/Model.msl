@@ -98,8 +98,8 @@
     <EntitySetMapping Name="ht_help">
       <EntityTypeMapping TypeName="Model.ht_help">
         <MappingFragment StoreEntitySet="ht_help">
+          <ScalarProperty Name="add_time" ColumnName="add_time" />
           <ScalarProperty Name="update_time" ColumnName="update_time" />
-          <ScalarProperty Name="excursion_count" ColumnName="excursion_count" />
           <ScalarProperty Name="sort" ColumnName="sort" />
           <ScalarProperty Name="contents" ColumnName="contents" />
           <ScalarProperty Name="title" ColumnName="title" />
@@ -547,6 +547,7 @@
     <EntitySetMapping Name="ht_user_money_log">
       <EntityTypeMapping TypeName="Model.ht_user_money_log">
         <MappingFragment StoreEntitySet="ht_user_money_log">
+          <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="addtime" ColumnName="addtime" />
           <ScalarProperty Name="remark" ColumnName="remark" />
           <ScalarProperty Name="money" ColumnName="money" />

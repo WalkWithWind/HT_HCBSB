@@ -103,3 +103,5 @@ G:\工作\文档\货车百事帮\HT_HCBSB\HT.Admin\obj\Release\HT.Admin.csproj.C
 G:\工作\文档\货车百事帮\HT_HCBSB\HT.Admin\obj\Release\HT.Admin.csproj.CopyComplete
 G:\工作\文档\货车百事帮\HT_HCBSB\HT.Admin\obj\Release\HT.Admin.dll
 G:\工作\文档\货车百事帮\HT_HCBSB\HT.Admin\obj\Release\HT.Admin.pdb
+G:\工作\文档\货车百事帮\HT_HCBSB\HT.Admin\bin\MicroMessenger.dll
+G:\工作\文档\货车百事帮\HT_HCBSB\HT.Admin\bin\MicroMessenger.pdb

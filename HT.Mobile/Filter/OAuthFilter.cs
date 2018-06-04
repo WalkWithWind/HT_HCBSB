@@ -19,8 +19,8 @@ namespace HT.Mobile.Filter
                 return;
                 string currentUrl =  filterContext.HttpContext.Request.Url.PathAndQuery.ToString();//当前地址和条件
                 string callBackUrl = filterContext.HttpContext.Request.Url.Scheme + "://" +filterContext.HttpContext.Request.Url.Authority+ "/WX/OAuthCallback";//当前绝对地址
-                var  oauthUrl = string.Format("https://open.weixin.qq.com/connect/oauth2/authorize?appid={0}&redirect_uri={1}&response_type=code&scope={2}&state={3}#wechat_redirect",
-                        "11111",
+                var oauthUrl = string.Format("https://open.weixin.qq.com/connect/oauth2/authorize?appid={0}&redirect_uri={1}&response_type=code&scope={2}&state={3}#wechat_redirect",
+                        BLLConfig.Get("wx_appid"),
                         callBackUrl,
                         "snsapi_userinfo",
                         HttpUtility.UrlEncode(currentUrl)

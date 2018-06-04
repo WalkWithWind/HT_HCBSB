@@ -20,16 +20,8 @@
     </div>
     <div class="pg_sec1">
         <ul class="">
-            <li class="li1">
-                <span>有效期</span>
-                <input type="text" placeholder="请输入有效期" v-model="model.validity_num">
-                <div class="ro_box">
-                    <input type="radio" value="天" id="day" checked v-model="model.validity_unit"><label for="day">天</label>
-                    <input type="radio" value="月" id="mounth" v-model="model.validity_unit"><label for="mounth">月</label>
-                </div>
-            </li>
-            <li>
-                <p>本类信息支付费用说明：{{validity_unit_day_money}}元/天，{{validity_unit_month_money}}元/月</p>
+            <li style="height:auto;padding: 10px 0px;color:#777;">
+                <span>本类信息发布需要支付费用：{{pub_job_amount}}元<br />有效期至：{{validity_to_time_str}}</span>
             </li>
         </ul>
     </div>
@@ -89,21 +81,7 @@
             </dd>
         </dl>
     </div>
-
-    <div class="pg_sec2 pg_sec7">
-        <dl>
-            <dt>联系信息</dt>
-            <dd>
-                <span>联系人</span>
-                <input type="text" value="" v-model="model.contact_name" placeholder="联系人">
-            </dd>
-            <dd>
-                <span>联系电话</span>
-                <input type="text" value="" v-model="model.contact_phone" placeholder="联系电话">
-            </dd>
-        </dl>
-    </div>
-
+    <contact v-bind:ob="model" v-bind:name="'contact_name'" v-bind:phone="'contact_phone'"></contact>
     <div class="pg_sec8 pg_sec9">
         <dl>
             <dt>增值服务</dt>
@@ -195,6 +173,7 @@
     @Scripts.Render("/Scripts/Project/PostJob.js")
     @Html.Action("Template", "Partial", new { id = "CityDialog" })
     @Html.Action("Template", "Partial", new { id = "PostHelpDialog" })
+    @Html.Action("Template", "Partial", new { id = "Contact" })
     <script>
         $(function () {
             var $dd = $(".pg_sec3 dd");
