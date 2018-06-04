@@ -48,6 +48,13 @@ namespace HT.Admin.admin.settings
             txtPubAmountMonth.Text = SiteConfig["pub_amount_month"];
             txtTopAllMoney.Text= SiteConfig["top_all_money"];
             txtTopCateMoney.Text= SiteConfig["top_cate_money"];
+            txtJobAmount.Text= SiteConfig["pub_job_amount"];
+            txtJobValue.Text = SiteConfig["pub_job_value"];
+            if (SiteConfig["pub_job_unit"]=="月")
+            {
+                rdoMonth.Checked = true;
+            }
+
         }
 
         protected void btnSubmit_Click(object sender , EventArgs e)
@@ -79,6 +86,16 @@ namespace HT.Admin.admin.settings
             list.Find(x => x.xkey == "pub_amount_month").xvalue = txtPubAmountMonth.Text;
             list.Find(x => x.xkey == "top_all_money").xvalue = txtTopAllMoney.Text;
             list.Find(x => x.xkey == "top_cate_money").xvalue = txtTopCateMoney.Text;
+            list.Find(x => x.xkey == "pub_job_amount").xvalue = txtJobAmount.Text;
+            list.Find(x => x.xkey == "pub_job_value").xvalue = txtJobValue.Text;
+            if (rdoDay.Checked)
+            {
+                list.Find(x => x.xkey == "pub_job_unit").xvalue = "天";
+            }
+            if (rdoMonth.Checked)
+            {
+                list.Find(x => x.xkey == "pub_job_unit").xvalue = "月";
+            }
             db.SaveChanges();
             JscriptMsg("修改系统配置成功！" , "site_config_edit.aspx");
         }
