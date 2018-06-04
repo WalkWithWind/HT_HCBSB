@@ -178,6 +178,21 @@
                     <span class="Validform_checktip">*元</span>
                 </dd>
             </dl>
+               <dl>
+                <dt>招聘/求职 费用:</dt>
+                <dd>费用:<asp:TextBox ID="txtJobAmount" runat="server" CssClass="input txt" datatype="/^[0-9]+(\.[0-9]{1,2})?$/" sucmsg=" " />
+                    <span class="Validform_checktip">*元</span>
+                </dd>
+                <dd>时间:<asp:TextBox ID="txtJobValue" runat="server" CssClass="input txt" datatype="/^[0-9]+(\.[0-9]{1,2})?$/" sucmsg=" " />
+                    <span class="Validform_checktip">*</span>
+                   
+                   <asp:RadioButton   ID="rdoDay"  Checked="true" Text="天"   GroupName="jobUnit"   runat="server" />  
+                   <asp:RadioButton   ID="rdoMonth"  Text="月"   GroupName="jobUnit"   runat="server" />  
+                
+               
+               
+                </dd>
+            </dl>
         </div>
 
 
