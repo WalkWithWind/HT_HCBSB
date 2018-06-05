@@ -165,6 +165,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\ht_user_money_log.cs" />
     <Compile Include="Model\WXAccessToken.cs" />
     <Compile Include="Model\ApiResponse.cs" />
     <Compile Include="Model\ht_news.cs" />

@@ -13,8 +13,82 @@
     <link href="/css/pagination.css" rel="stylesheet" type="text/css" />
 	<link href="/scripts/datepicker/skin/whyGreen/datepicker.css" rel="stylesheet" />
 </head>
-<body class="maindiv">
+<body class="mainbody">
+        <div class="maindiv">
+		    <!--导航栏-->
+		    <div class="location">
+			    <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+			    <a href="/admin/center.aspx" class="home"><i></i><span>首页</span></a>
+			    <i class="arrow"></i>
+			    <span>用户管理</span>
+		    </div>
+		    <!--/导航栏-->
 
+		    <!--工具栏-->
+		    <div class="toolbar-wrap">
+			    <div id="floatHead" class="toolbar">
+				    <div class="box-wrap">
+					    <div class="l-list">
+						    <ul class="icon-list">
+							    <li><a class="all" v-on:click="selectAllChange()" ><i></i><span>{{selectAllText}}</span></a></li>
+						    </ul>
+					    </div>
+					    <div class="r-list">
+						    <input name="txtKeywords" type="text" v-model="keyword" v-on:keyup.13="search()" id="txtKeywords" class="keyword" />
+						    <a id="lbtnSearch" class="btn-search" v-on:click="search()">查询</a>
+					    </div>
+				    </div>
+			    </div>
+		    </div>
+		    <!--/工具栏-->
+
+
+		    <!--文字列表-->
+		    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+
+			    <tr>
+				    <th align="center" width="5%">选择</th>
+				    <th align="center" width="15%">头像</th>
+				    <th align="center" width="15%">昵称</th>
+				    <th align="center" width="15%">提现金额</th>
+				    <th align="center" width="20%">提现时间</th>
+				    <th align="center" width="20%">备注</th>
+                    <th align="center" width="10%">审核状态</th>
+			    </tr>
+
+			    <tr v-for="item in dataList">
+				    <td align="center">
+					    <span class="checkall" style="vertical-align: middle;">
+						    <input id="rptList_chkId_0" type="checkbox" v-model="item.checked" /></span>
+				    </td>
+				    <td align="center"><img v-bind:src="item.avatar" width="50" /></td>
+				    <td align="center" v-text="item.nickname"></td>
+				    <td align="center" v-text="item.money"></td>
+				    <td align="center">{{item.addtime|date}}</td>
+			    	<td align="center" v-text="item.remark"></td>
+			    	<td align="center">
+                        <span v-show="item.status==0">待审核</span>
+                        <span v-show="item.status==1">审核通过</span>
+                        <span v-show="item.status==2">审核不通过</span>
+			    	</td>
+			    </tr>
+			    <tr v-if="dataList.length==0">
+				    <td align="center" colspan="6">暂无记录</td>
+			    </tr>
+		    </table>
+		    <!--/文字列表-->
+
+		    <!--内容底部-->
+		    <div class="line20"></div>
+		    <div class="pagelist">
+			    <div class="l-btns">
+				    <span>显示</span><input name="txtPageNum" type="text" v-model="pagesize" v-on:change="changePage()" onkeypress="if (WebForm_TextBoxKeyHandler(event) == false) return false;" id="txtPageNum" class="pagenum" onkeydown="return checkNumber(event);" /><span>条/页</span>
+			    </div>
+			    <div class="default"><span>共{{total}}记录</span><span style=" padding: 0px;border: 0px;margin:0px;" id="pageDiv"></span></div>
+			
+		    </div>
+		    <!--/内容底部-->
+         </div>
 </body>
     
     <script type="text/javascript" src="/scripts/jquery/jquery-1.11.2.min.js"></script>
@@ -24,6 +98,7 @@
 	<script type="text/javascript" src="/scripts/laypage/1.2/laypage.js?v=1012"></script>
 	<script type="text/javascript" charset="utf-8" src="/admin/js/common.js"></script>
     <script type="text/javascript" charset="utf-8" src="/admin/js/vueFilter.js"></script>
+	<script src="/scripts/datepicker/WdatePicker.js"></script>
 
 
     <script type="text/javascript">
@@ -37,13 +112,9 @@
                 selectAllText: "全选",
                 dataList: [],
                 total: 0,
+                keyword:'',
                 pageindex: 1,
                 pagesize: 10,
-                keyword: "",
-                status: "",
-                fromDate: "",
-                toDate: "",
-                cateId: GetParm('id'),
                 totalPage: 0
             },
             methods: {
@@ -54,16 +125,12 @@
 
                 loadData: function () {
                     var _this = this;
+
                     var reqData = {
                         pageindex: _this.pageindex,
-                        pagesize: _this.pagesize,
-                        keyword: _this.keyword,
-                        cate_id: _this.cateId,
-                        status: _this.status,
-                        fromdate: $("#txtFromDate").val(),
-                        todate: $("#txtToDate").val()
+                        pagesize: _this.pagesize
                     };
-                    //console.log('reqData', reqData);
+
                     $.ajax({
                         type: 'post',
                         url: url,
@@ -75,9 +142,10 @@
                                 _this.dataList = resp.result.list
                                 _this.totalPage = resp.result.totalpage;
                                 _this.selectAll = false,
-                                    _this.selectAllText = "全选";
+                                 _this.selectAllText = "全选";
+
                                 laypage({
-                                    cont: document.getElementById('pageDiv'), //容器。值支持id名、原生dom对象，jquery对象。【如该容器为】：<div id="page1"></div>
+                                    cont: $('#pageDiv'), //容器。值支持id名、原生dom对象，jquery对象。【如该容器为】：<div id="page1"></div>
                                     pages: _this.totalPage, //通过后台拿到的总页数
                                     curr: _this.pageindex, //当前页
                                     layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip'],
@@ -92,9 +160,6 @@
                                     prev: '<', //若不显示，设置false即可
                                     next: '>' //若不显示，设置false即可
                                 });
-
-
-
                             }
                             else {
 
@@ -239,6 +304,5 @@
         $(function () {
             commVm.init();
         });
-
      </script>
 </html>

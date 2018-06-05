@@ -151,6 +151,7 @@ namespace HT.BLL
                 model.remark = remark;
                 model.money = -money;
                 model.type = type;
+                model.status = 0;
                 db.ht_user_money_log.Add(model);
                 return db.SaveChanges() > 0 ? true : false;
             }
