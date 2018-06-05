@@ -5,7 +5,7 @@
 }
 @Html.Partial("_Header")
 
-<div class="jobDetails hide" v-bind:class="['show']">
+<div class="jobDetails hide" v-bind:class="[{'show':newsData.id}]">
 
     <ul class="ind_sec1_ul car_item">
         <li>

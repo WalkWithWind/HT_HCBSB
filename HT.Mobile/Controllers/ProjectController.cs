@@ -138,8 +138,12 @@ namespace HT.Mobile.Controllers
 		{
 			string msg = "";
 			string orderNo = "";
-			model.add_userid = BLLUser.GetLoginUserInfo().id;
-			if (BLLNews.Add(model, out msg, out orderNo))
+            var authenticationUser = BLLAuthentication.GetAuthenticationUser();
+
+            model.add_userid = authenticationUser.id;
+            model.add_nickname = authenticationUser.nickname;
+            model.add_avatar = authenticationUser.avatar;
+            if (BLLNews.Add(model, out msg, out orderNo))
 			{
 				return JsonResult(APIErrCode.Success, "OK", new { order_no = orderNo });
 			}

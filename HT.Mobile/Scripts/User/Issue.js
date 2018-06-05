@@ -110,19 +110,19 @@
         },
         toEdit: function (item) {
             if (item.cateid == 1) {
-                location.href = '/Project/PostGoods/' + item.id;
+                location.href = '/Project/EditPostGoods/' + item.id;
             } else if (item.cateid == 2) {
-                location.href = '/Project/PostCars/' + item.id;
+                location.href = '/Project/EditPostCars/' + item.id;
             } else if (item.cateid == 3) {
-                location.href = '/Project/PostRecruit/' + item.id;
+                location.href = '/Project/EditPostRecruit/' + item.id;
             } else if (item.cateid == 4) {
-                location.href = '/Project/PostJob/' + item.id;
+                location.href = '/Project/EditPostJob/' + item.id;
             } else if (item.cateid == 5) {
-                location.href = '/Project/PostCarSell/' + item.id;
+                location.href = '/Project/EditPostCarSell/' + item.id;
             } else if (item.cateid == 6) {
-                location.href = '/Project/PostCarBuy/' + item.id;
+                location.href = '/Project/EditPostCarBuy/' + item.id;
             } else if (item.cateid == 7) {
-                location.href = '/Project/PostTemplate/' + item.id;
+                location.href = '/Project/EditPostTemplate/' + item.id;
             }
         },
         del: function (item,index) {

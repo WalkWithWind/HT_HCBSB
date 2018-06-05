@@ -5,8 +5,7 @@
 }
 @Html.Partial("_Header")
 
-<div class="mainDetails hide" v-bind:class="['show']">
-
+<div class="mainDetails hide" v-bind:class="[{'show':goodsData.id}]">
     <div class="el_item eld_item">
         <div class="wrapper">
             <div class="infor">
@@ -17,10 +16,10 @@
                     <em v-show="goodsData.set_top>0">置顶</em>
                 </div>
                 <div class="infor_p2">
-                    <i class="lab1" v-show="goodsData.use_type" v-text="goodsData.use_type"></i>
-                    <i class="lab2" v-show="goodsData.car_style" v-text="goodsData.car_style"></i>
-                    <i class="lab3" v-show="goodsData.car_length" v-text="goodsData.car_length+'米'"></i>
-                    <i class="lab4" v-show="goodsData.goods_type" v-text="goodsData.goods_type"></i>
+                    <i class="lab1" v-if="goodsData.use_type" v-text="goodsData.use_type"></i>
+                    <i class="lab2" v-if="goodsData.car_style" v-text="goodsData.car_style"></i>
+                    <i class="lab3" v-if="goodsData.car_length" v-text="goodsData.car_length+'米'"></i>
+                    <i class="lab4" v-if="goodsData.goods_type" v-text="goodsData.goods_type"></i>
                 </div>
                 <div class="infor_p3">
                     <div class="img">
@@ -68,9 +67,7 @@
                 </dl>
                 <dl>
                     <dt>装车时间：</dt>
-                    <dd>
-                        {{goodsData.use_time|jsonFormart}}
-                    </dd>
+                    <dd v-text="goodsData.use_time"></dd>
                 </dl>
                 <dl>
                     <dt>装卸方式：</dt>
@@ -175,13 +172,7 @@
                                 <span v-text="z.add_nickname"></span>
                                 <p>
                                     <i class="lab1" v-show="z.set_top>0">置顶</i>
-                                    <i class="lab2" v-show="z.cateid==1">有货找车</i>
-                                    <i class="lab2" v-show="z.cateid==2">有车找货</i>
-                                    <i class="lab2" v-show="z.cateid==3">招聘司机</i>
-                                    <i class="lab2" v-show="z.cateid==4">司机求职</i>
-                                    <i class="lab2" v-show="z.cateid==5">二手车出售</i>
-                                    <i class="lab2" v-show="z.cateid==6">车辆求购</i>
-                                    <i class="lab2" v-show="z.cateid==7">其它</i>
+                                    <i class="lab2" v-if="z.cate" v-show="z.cate">有货找车</i>
                                 </p>
                             </div>
                         </div>

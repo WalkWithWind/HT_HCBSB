@@ -6,7 +6,7 @@
 }
 @Html.Partial("_Header")
 
-<div class="template hide" v-bind:class="['show']">
+<div class="template hide" v-bind:class="[{'show':newsData.id}]">
     <ul class="ind_sec1_ul car_item">
         <li>
             <div class="wrapper">
@@ -20,36 +20,20 @@
                                 <span v-text="newsData.add_nickname"></span>
                                 <p>
                                     <i class="lab1" v-show="newsData.set_top>0">置顶</i>
-                                    <i class="lab2">有车找货</i>
+                                    <i class="lab2" v-text="newsData.cate"></i>
                                 </p>
                             </div>
                         </a>
                     </div>
                 </div>
                 <div class="ind_main_m">
-                    <p>业务方向定位为同城即时整车货运，意在整合社会运力资源，搭建快速、平价、安心、专业的同城货运交易平台。货主通过货拉拉平台，可以快速匹配附近的货车资源，并以低价获得优质的货运服务；广大货车司机亦可借助货拉拉迅速对接到客户需求，大大提升货车利用效率，进而获得更为丰厚的收入回报</p>
+                    <p v-text="newsData.other_remark"></p>
                 </div>
-                <div class="details_main">
-                    <dl>
-                        <dt>类型：</dt>
-                        <dd>有车找货</dd>
-                    </dl>
-                    <dl>
-                        <dt>车长：</dt>
-                        <dd>4.2米</dd>
-                    </dl>
-                    <dl>
-                        <dt>车型：</dt>
-                        <dd>不限</dd>
-                    </dl>
-                    <dl>
-                        <dt>行驶路线：</dt>
-                        <dd>上海—广东</dd>
-                    </dl>
-                    <dl>
-                        <dt>其他：</dt>
-                        <dd>大家帮忙介绍</dd>
-                    </dl>
+                <div class="ind_lab" v-if="newsData.tags">
+                    <i class="lab1" v-if="tag" v-text="tag" v-for="tag in newsData.tags.split(',')"></i>
+                </div>
+                <div class="ind_img" v-if="newsData.imgs">
+                    <img v-bind:src="img" v-for="img in newsData.imgs.split(',')">
                 </div>
                 <div class="ind_time">
                     {{newsData.update_time|dateFormart('更新')}}

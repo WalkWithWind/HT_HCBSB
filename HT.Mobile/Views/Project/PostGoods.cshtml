@@ -82,11 +82,11 @@
             <dl>
                 <dt>货物类型</dt>
                 <dd>
-                    <a href="javascript:;" v-bind:class="[{ 'cur':model.good_type=='' }]"
-                       v-on:click="model.good_type='';">不限</a>
+                    <a href="javascript:;" v-bind:class="[{ 'cur':model.goods_type=='' }]"
+                       v-on:click="model.goods_type='';">不限</a>
                     <a href="javascript:;" v-for="item in goodsTypeData"
-                       v-bind:class="[{ 'cur': item.title==model.good_type }]"
-                       v-text="item.title" v-on:click="model.good_type=item.title;"></a>
+                       v-bind:class="[{ 'cur': item.title==model.goods_type }]"
+                       v-text="item.title" v-on:click="model.goods_type=item.title;"></a>
                 </dd>
             </dl>
         </div>

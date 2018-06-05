@@ -14,7 +14,7 @@ var vue = new Vue({
             use_type: '',//驾照等级
             car_length: '', //工资待遇
             car_style: '',//驾驶类型
-            good_type: "",//驾驶路线
+            goods_type: "",//驾驶路线
 			other_remark: "",//其它补充
 			contact_name: "",//联系人
 			contact_phone: "",//联系电话
@@ -57,7 +57,7 @@ var vue = new Vue({
             this.loadCateData('use_type', 60);//驾照等级
             this.loadCateData('car_length', 101);//工资待遇
             this.loadCateData('car_style', 72);//驾驶类型
-            this.loadCateData('good_type', 78);//驾驶路线
+            this.loadCateData('goods_type', 78);//驾驶路线
             this.loadCateData('reward_money', 55);//打赏福利列表
 
             this.loadConfigData('top_cate_money');//分类置顶金额
@@ -79,7 +79,7 @@ var vue = new Vue({
 						if (code == 'use_type') { _this.useTypeData = resp.result };
 						if (code == 'car_length') { _this.carLengthData = resp.result };
 						if (code == 'car_style') { _this.carStyleData = resp.result };
-						if (code == 'good_type') { _this.goodsTypeData = resp.result };
+                        if (code == 'goods_type') { _this.goodsTypeData = resp.result };
 						if (code == 'reward_money') { _this.rewardMoneyData = resp.result };
 						
                     }

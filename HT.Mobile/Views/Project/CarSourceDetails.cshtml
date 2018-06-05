@@ -5,7 +5,7 @@
 }
 @Html.Partial("_Header")
 
-<div class="cardDetails hide" v-bind:class="['show']">
+<div class="cardDetails hide" v-bind:class="[{'show':newsData.id}]">
 
     <ul class="ind_sec1_ul car_item">
         <li>
@@ -151,13 +151,7 @@
                                 <span v-text="z.add_nickname"></span>
                                 <p>
                                     <i class="lab1" v-show="z.set_top>0">置顶</i>
-                                    <i class="lab2" v-show="z.cateid==1">有货找车</i>
-                                    <i class="lab2" v-show="z.cateid==2">有车找货</i>
-                                    <i class="lab2" v-show="z.cateid==3">招聘司机</i>
-                                    <i class="lab2" v-show="z.cateid==4">司机求职</i>
-                                    <i class="lab2" v-show="z.cateid==5">二手车出售</i>
-                                    <i class="lab2" v-show="z.cateid==6">车辆求购</i>
-                                    <i class="lab2" v-show="z.cateid==7">其它</i>
+                                    <i class="lab2" v-if="z.cate" v-text="z.cate"></i>
                                 </p>
                             </div>
                         </div>

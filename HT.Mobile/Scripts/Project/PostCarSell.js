@@ -15,7 +15,7 @@ var vue = new Vue({
             car_length: '', //排放标准
             car_style: '',//车型
             use_mode: "个人户",//车辆户型
-            good_type: "能",//能否提档
+            goods_type: "能",//能否提档
             goods_weight: "",//马力
             freight: "",//出售价格
             use_time: "",//行驶证登记时间

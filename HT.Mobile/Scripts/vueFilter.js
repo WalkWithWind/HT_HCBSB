@@ -72,3 +72,7 @@ Vue.filter('stringRemove', function (value, defvalue) {
     }
     return value;
 })
+Vue.filter('tsgsFormart', function (value) {
+    if (!value) return '';
+    return value.split(',');
+})

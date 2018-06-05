@@ -228,9 +228,11 @@ namespace HT.BLL
 				try
 				{
 					model.add_time = DateTime.Now;
-					model.order_no = orderNo;
+                    model.update_time = model.add_time;
+                    model.order_no = orderNo;
                     model.status = 0;
                     model.pay_status = 0;
+                    model.is_delete = 0;
                     db.ht_news.Add(model);
 					if (db.SaveChanges() > 0)
 					{
