@@ -69,14 +69,14 @@
                 </dd>
             </dl>
 			<dl>
-                <dt>出发地</dt>
+                <dt>工作地区</dt>
                 <dd>
                    {{newsData.start_province}}-
                             {{newsData.start_city}}
                 </dd>
             </dl>
 		    <dl>
-                <dt>到达地</dt>
+                <dt>籍贯</dt>
                 <dd>
                   {{newsData.stop_province}}-
                             {{newsData.stop_city}}
@@ -91,68 +91,31 @@
             </dl>
 
             <dl>
-                <dt>用车类型</dt>
+                <dt>驾照等级</dt>
                 <dd>
                     {{newsData.use_type}}
                 </dd>
             </dl>
 
              <dl>
-                <dt>车长</dt>
+                <dt>驾龄</dt>
                 <dd>
-                    {{newsData.car_length}}（米）
+                    {{newsData.car_length}}
                 </dd>
             </dl>
 
             <dl>
-                <dt>车型</dt>
+                <dt>驾驶类型</dt>
                 <dd>
                     {{newsData.car_style}}
                 </dd>
             </dl>
-
-             <dl>
-                <dt>货物类型</dt>
-                <dd>
-                    {{newsData.goods_type}}
-                </dd>
-            </dl>
-
-             <dl>
-                <dt>货物重量体积</dt>
-                <dd>
-                    {{newsData.goods_weight}}{{newsData.goods_weight_unit}}
-                </dd>
-            </dl>
-
-            <dl>
-                <dt>运费金额</dt>
-                <dd>
-                    {{newsData.freight}}（元）
-                </dd>
-            </dl>
-			<dl>
-                <dt>装卸方式</dt>
-                <dd>
-                  {{newsData.use_mode}}
-                          
-                </dd>
-            </dl>
-
-            <dl>
-                <dt>付款方式</dt>
-                <dd>
-                  {{newsData.pay_method}}
-                </dd>
-            </dl>
-
             <dl>
                 <dt>其他补充</dt>
                 <dd>
                   {{newsData.other_remark}}
                 </dd>
             </dl>
-
              <dl>
                 <dt>置顶金额</dt>
                 <dd>
@@ -163,8 +126,6 @@
                     <span v-show="newsData.set_top==2">（全站置顶）</span>
                 </dd>
             </dl>
-            
-
             <dl>
                 <dt>打赏金额</dt>
                 <dd>
@@ -181,13 +142,7 @@
                 </dd>
             </dl>
         </div>
-      
-     
-
-
-	
         <!--内容-->
-
         <!--工具栏-->
         <div class="page-footer">
             <div class="btn-wrap">

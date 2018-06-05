@@ -1697,11 +1697,11 @@ footer {
 	width: 2.2rem;
 	margin-left: -2.2rem;
 }
-.pg_sec2 dl dd input[type='text'] {
-	float: left;
-	width: 100%;
-	text-align: right;
-	height: .8rem;
+.pg_sec2 dl dd input[type='text'], .pg_sec2 dl dd input[type='number'] {
+    float: left;
+    width: 100%;
+    text-align: right;
+    height: .8rem;
 }
 .pg_sec3 {
 	padding: 0 3%;

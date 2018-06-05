@@ -112,7 +112,7 @@
             <dl>
                 <dt>出售价格</dt>
                 <dd>
-                    {{newsData.freight}}（元）
+                    {{newsData.freight}}（万元）
                 </dd>
             </dl>
 
@@ -120,7 +120,7 @@
              <dl>
                 <dt>行驶证登记时间</dt>
                 <dd>
-                    {{newsData.use_time|date}}
+                    {{newsData.use_time}}
                 </dd>
             </dl>
 
@@ -136,18 +136,16 @@
             <dl>
                 <dt>车辆户型</dt>
                 <dd>
-                    {{newsData.goods_type}}
+                    {{newsData.use_mode}}
                 </dd>
             </dl>
 
             <dl>
                 <dt>能否提档</dt>
                 <dd>
-                    {{newsData.use_mode}}
+                    {{newsData.goods_type}}
                 </dd>
             </dl>
-
-
 			<dl>
                 <dt>图片</dt>
                 <dd>
