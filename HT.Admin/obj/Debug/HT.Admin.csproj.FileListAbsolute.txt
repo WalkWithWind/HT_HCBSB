@@ -221,3 +221,5 @@ D:\Project\HCBSB\HT.Admin\obj\Debug\HT.Admin.csproj.CoreCompileInputs.cache
 D:\Project\HCBSB\HT.Admin\obj\Debug\HT.Admin.csproj.CopyComplete
 G:\工作\文档\货车百事帮\HT_HCBSB\HT.Admin\bin\MicroMessenger.dll
 G:\工作\文档\货车百事帮\HT_HCBSB\HT.Admin\bin\MicroMessenger.pdb
+C:\我走路带风\Project\HT_HCBSB\HT.Admin\bin\MicroMessenger.dll
+C:\我走路带风\Project\HT_HCBSB\HT.Admin\bin\MicroMessenger.pdb

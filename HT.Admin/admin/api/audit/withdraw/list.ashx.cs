@@ -15,12 +15,16 @@ namespace HT.Admin.admin.api.audit.withdraw
         {
             int page = !string.IsNullOrEmpty(context.Request["pageindex"]) ? int.Parse(context.Request["pageindex"]) : 1;
             int rows = !string.IsNullOrEmpty(context.Request["pagesize"]) ? int.Parse(context.Request["pagesize"]) : 10;
-            int total = 0;
-            var list = BLL.BLLUser.GetUserMoneyLogData(page,rows,0, (int)Model.Enum.UserMoneyDetails.WithDraw, out total);
-            apiResp.result = new {
-                list =list,
-                total = total
-            };
+            var pageResult = HT.BLL.Admin.BLLUser.GetUserMoneyLogList(page, rows,(int)Model.Enum.UserMoneyDetails.WithDraw);
+            foreach (var item in pageResult.list)
+            {
+                HT.Model.ht_user user = BLL.BLLUser.GetUserById((int)item.userid);
+                if (user == null) continue;
+                item.nickname = user.nickname;
+                item.mobile = user.mobile;
+                item.avatar = user.avatar;
+            }
+            apiResp.result = pageResult;
             apiResp.status = true;
             apiResp.msg = "查询完成";
             context.Response.Write(HT.Utility.JSONHelper.ObjectToJson(apiResp));

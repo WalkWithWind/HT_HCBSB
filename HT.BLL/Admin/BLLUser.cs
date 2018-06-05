@@ -49,5 +49,34 @@ namespace HT.BLL.Admin
                 return db.ht_user.Find(id);
             }
         }
+
+        /// <summary>
+        /// 获取提现记录列表
+        /// </summary>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
+
+        public static HT.Model.Model.PageResult<ht_user_money_log> GetUserMoneyLogList(int pageIndex,int pageSize,int type)
+        {
+            HT.Model.Model.PageResult<ht_user_money_log> pageModel = new HT.Model.Model.PageResult<ht_user_money_log>();
+            using (Entities db = new Entities())
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                var userMoneyList = db.ht_user_money_log.Where(r => true);
+
+                if (type>0)
+                {
+                    userMoneyList = userMoneyList.Where(r => r.type == type);
+                }
+                int total = userMoneyList.Count();
+
+                pageModel.totalpage = (int)Math.Ceiling((decimal)total / (decimal)pageSize);//总页数
+                pageModel.total = total;
+                pageModel.list = userMoneyList.OrderByDescending(p => p.id).Skip(pageSize * (pageIndex - 1)).Take(pageSize).ToList();
+                return pageModel;
+            }
+        }
     }
 }
