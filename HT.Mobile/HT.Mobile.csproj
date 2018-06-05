@@ -169,6 +169,7 @@
     <Content Include="Content\base.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Partial\Datepicker.css" />
     <Content Include="Content\Project\Project.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\weui.css" />
@@ -268,6 +269,7 @@
     <Content Include="Scripts\layer\theme\default\loading-1.gif" />
     <Content Include="Scripts\layer\theme\default\loading-2.gif" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\Project\CarBuy.js" />
     <Content Include="Scripts\Project\CarBuyDetails.js" />
     <Content Include="Scripts\Project\CarSell.js" />
