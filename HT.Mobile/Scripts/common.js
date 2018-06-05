@@ -3,7 +3,7 @@ $(function () {
     if ($('.banner .swiper-container').get(0) != null) {
         var mySwiper = new Swiper('.banner .swiper-container', {
             autoplay: 5000,
-            pagination: '.swiper-pagination',
+            pagination: '.banner .swiper-pagination',
             loop: true,
         })
     }
