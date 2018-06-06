@@ -217,7 +217,8 @@ var vue = new Vue({
 			var _this = this;
 			if (!_this.checkInput()) {
 				return false;
-			}
+            }
+            console.log('_this.model', _this.model);
 			//confirm("提示", "确定发布", "发布", "取消", function () {
 				$.ajax({
 					type: 'post',

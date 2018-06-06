@@ -70,13 +70,13 @@
 				<th align="center" width="5%">选择</th>
 				<th align="center" width="10%">联系人</th>
 				<th align="center" width="10%">联系电话</th>
-				<th align="center" width="10%">发布时间</th>
+				<th align="center" width="15%">发布时间</th>
 				<th align="center" width="10%">置顶金额</th>
 				<th align="center" width="10%">打赏金额</th>
-				<th align="center" width="10%">车辆所在地</th>
-				<th align="center" width="15%">品牌</th>
+				<th align="center" width="15%">车辆所在地</th>
+				<th align="center" width="10%">品牌</th>
 				<th align="center" width="10%">状态</th>
-				<th align="center">操作</th>
+				<th align="center" width="5%">操作</th>
 			</tr>
 
 			<tr v-for="item in dataList">

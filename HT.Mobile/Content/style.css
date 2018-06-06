@@ -1642,12 +1642,13 @@ footer {
 	display: inline-block;
 	vertical-align: middle;
 	margin-left: .3rem;
-} 
-.pg_sec1 ul .li1 input[type='radio']:checked {
+}
+.pg_sec1 ul .li1 input[type='radio']:checked{
     background: url('/images/icon/icon19_2.png') no-repeat center;
     -webkit-background-size: .3rem .3rem;
     background-size: .3rem .3rem;
 }
+
 .pg_sec1 ul .li1 label {
 	font-size: .28rem;
 	color: #777;
@@ -2350,4 +2351,38 @@ footer {
 .shortcut .item .li .img.active {
     transform: rotate(270deg);
     transition: all .5s
+}
+
+.other-remark {
+    white-space: normal;
+    width: 85%;
+}
+.other-text {
+    vertical-align: top;
+    width: 15%;
+}
+.rdo-company {
+    -webkit-appearance: none;
+    width: .3rem;
+    height: .3rem;
+    background: url(/images/icon/icon19_1.png) no-repeat center;
+    -webkit-background-size: .3rem .3rem;
+    background-size: .3rem .3rem;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 2%;
+}
+
+.pg_sec2 input[type='radio']:checked {
+    background: url('/images/icon/icon19_2.png') no-repeat center;
+    -webkit-background-size: .3rem .3rem;
+    background-size: .3rem .3rem;
+}
+.label-text {
+    width: .9rem;
+    font-size: .28rem;
+    color: #777;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5%;
 }

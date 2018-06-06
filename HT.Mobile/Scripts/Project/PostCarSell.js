@@ -237,6 +237,9 @@ var vue = new Vue({
                 return false;
             }
             _this.model.imgs = _this.imgsData.join(',');
+
+            console.log('_this.model', _this.model);
+            //return;
             //confirm("提示", "确定发布", "发布", "取消", function () {
                 $.ajax({
                     type: 'post',

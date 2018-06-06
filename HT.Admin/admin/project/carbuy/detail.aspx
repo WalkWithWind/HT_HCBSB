@@ -59,14 +59,13 @@
 			 <dl>
                 <dt>发布时间</dt>
                 <dd>
-                   {{newsData.add_time.replace(/T/g,' ')}}
+                   {{newsData.add_time|Date}}
                 </dd>
             </dl>
 			<dl>
                 <dt>车辆所在地</dt>
                 <dd>
-                   {{newsData.start_province}}-
-                            {{newsData.start_city}}
+                    {{(newsData.start_city+newsData.start_district)|stringRemove('')}}
                 </dd>
             </dl>
 

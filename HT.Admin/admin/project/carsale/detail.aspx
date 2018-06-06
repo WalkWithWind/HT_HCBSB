@@ -74,8 +74,7 @@
 			<dl>
                 <dt>车辆所在地</dt>
                 <dd>
-                   {{newsData.start_province}}-
-                            {{newsData.start_city}}
+                    {{(newsData.start_city+newsData.start_district)|stringRemove('')}}
                 </dd>
             </dl>
 

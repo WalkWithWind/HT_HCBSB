@@ -69,15 +69,14 @@
 			<tr>
 				<th align="center" width="5%">选择</th>
 				<%--<th align="center" width="12%">标题</th>--%>
-                
 				<th align="center" width="10%">联系人</th>
 				<th align="center" width="10%">联系电话</th>
-				<th align="center" width="10%">发布时间</th>
-				<th align="center" width="10%">置顶金额</th>
+				<th align="center" width="15%">发布时间</th>
+				<th align="center" width="15%">置顶金额</th>
 				<th align="center" width="10%">打赏金额</th>
-				<th align="center" width="15%">工作地区</th>
+				<th align="center" width="10%">工作地区</th>
 				<th align="center" width="10%">招聘人数</th>
-				<th align="center" width="10%">状态</th>
+				<th align="center" width="5%">状态</th>
 				<th align="center">操作</th>
 			</tr>
 

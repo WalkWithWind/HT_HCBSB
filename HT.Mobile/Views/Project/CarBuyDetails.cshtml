@@ -44,13 +44,13 @@
                         <dt>马力：</dt>
                         <dd v-text="newsData.goods_weight+'马力'"></dd>
                     </dl>
-                    <dl>
+                    <dl style="width:100%;">
                         <dt>车辆地区：</dt>
                         <dd>{{(newsData.start_city+newsData.start_district)|stringRemove('')}}</dd>
                     </dl>
-                    <dl>
-                        <dt>其他：</dt>
-                        <dd v-text="newsData.other_remark"></dd>
+                    <dl style="width:100%;">
+                        <dt class="other-text">其他：</dt>
+                        <dd class="other-remark" v-text="newsData.other_remark"></dd>
                     </dl>
                 </div>
                 <div class="ind_time">

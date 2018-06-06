@@ -78,5 +78,30 @@ namespace HT.BLL.Admin
                 return pageModel;
             }
         }
+
+        /// <summary>
+		/// 批量更新审核状态
+		/// </summary>
+		/// <param name="id">id</param>
+		/// <param name="status">0待审核1审核通过2审核不通过</param>
+		/// <returns></returns>
+		public static bool UpdateStatus(List<int> ids, int status)
+        {
+
+            using (Entities db = new Entities())
+            {
+                db.ht_user_money_log.Where(p => ids.Contains(p.id)).ToList().ForEach(item => {
+                    item.status = status;
+                });
+                if (db.SaveChanges() > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
     }
 }

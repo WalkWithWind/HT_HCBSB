@@ -63,11 +63,11 @@
                     </dl>
                     <dl>
                         <dt>车辆户型：</dt>
-                        <dd v-text="newsData.goods_type"></dd>
+                        <dd v-text="newsData.use_mode"></dd>
                     </dl>
                     <dl>
                         <dt>能否提档：</dt>
-                        <dd v-text="newsData.use_mode"></dd>
+                        <dd v-text="newsData.goods_type"></dd>
                     </dl>
                     <dl>
                         <dt>行驶证登记时间：</dt>
@@ -75,9 +75,9 @@
                             {{newsData.use_time|jsonFormart}}
                         </dd>
                     </dl>
-                    <dl>
-                        <dt>其他：</dt>
-                        <dd v-text="newsData.other_remark"></dd>
+                    <dl style="width:100%;">
+                        <dt class="other-text">其他：</dt>
+                        <dd class="other-remark" v-text="newsData.other_remark"></dd>
                     </dl>
                 </div>
                 <div class="ind_time">

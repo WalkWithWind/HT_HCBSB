@@ -599,6 +599,9 @@
     <Compile Include="admin\api\audit\withdraw\list.ashx.cs">
       <DependentUpon>list.ashx</DependentUpon>
     </Compile>
+    <Compile Include="admin\api\audit\withdraw\update.ashx.cs">
+      <DependentUpon>update.ashx</DependentUpon>
+    </Compile>
     <Compile Include="admin\api\BaseHandler.ashx.cs">
       <DependentUpon>BaseHandler.ashx</DependentUpon>
     </Compile>
@@ -965,6 +968,7 @@
     <Content Include="admin\api\audit\withdraw\list.ashx" />
     <Content Include="admin\api\user\list.ashx" />
     <Content Include="admin\api\user\detail.ashx" />
+    <Content Include="admin\api\audit\withdraw\update.ashx" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

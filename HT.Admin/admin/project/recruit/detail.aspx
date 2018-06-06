@@ -78,8 +78,7 @@
 			<dl>
                 <dt>工作地区</dt>
                 <dd>
-                   {{newsData.start_province}}-
-                            {{newsData.start_city}}
+                    {{(newsData.start_city+newsData.start_district)|stringRemove('')}}
                 </dd>
             </dl>
             
