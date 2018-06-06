@@ -3,7 +3,6 @@
 var vue = new Vue({
     el: '.main',
     data: {
-        id: GetUrlParam('PostGoods', 0),
         model: {
             cateid: 1,//类型 1货源
             cate: "有货找车",//货源
@@ -18,7 +17,7 @@ var vue = new Vue({
             use_type: '',//选择的用车类型
             car_length: '', //选择的车长
             car_style: '',//选择的车型
-            good_type: "",//选择的货物类型
+            goods_type: "",//选择的货物类型
             goods_weight: "",//货物重量体积类
             goods_weight_unit: "吨",//重量体积类型
             freight: "",//运费金额
@@ -28,7 +27,7 @@ var vue = new Vue({
             other_remark: "",//其它补充
             contact_name: "",//联系人
             contact_phone: "",//联系电话
-            set_top: "",//置顶类型  空不置顶 1分类 2全站
+            set_top: 0,//置顶类型  空不置顶 1分类 2全站
             set_top_money: 0,//置顶金额
             reward_money: 0,//打赏金额
             total: 0//需支付金额
@@ -88,11 +87,10 @@ var vue = new Vue({
     },
     methods: {
         init: function () {
-            if (this.id && this.id != '0') this.loadData();
             this.loadCateData('use_type', 1);//用车类型
             this.loadCateData('car_length', 4);//车长
             this.loadCateData('car_style', 16);//车型列表
-            this.loadCateData('good_type', 27);//货物类型列表
+            this.loadCateData('goods_type', 27);//货物类型列表
             this.loadCateData('use_mode', 40);//装卸方式列表
             this.loadCateData('pay_type', 47);//付款方式列表
             this.loadCateData('reward_money', 55);//打赏福利列表
@@ -102,22 +100,6 @@ var vue = new Vue({
             this.loadConfigData('pub_amount_day');//发布费用 元/天
             this.loadConfigData('pub_amount_month');//发布费用 元/月
 
-        },
-        loadData: function () {
-            var _this = this;
-            $.ajax({
-                type: 'post',
-                url: '/Project/BaseNewsDetails',
-                data: { id: _this.id },
-                dataType: 'json',
-                success: function (resp) {
-                    if (resp.status) {
-                        if (resp.result.car_length) _this.carLenSelect = resp.result.car_length.split(',');
-                        if (resp.result.car_style) _this.carStyleSelect = resp.result.car_style.split(',');
-                        _this.model = resp.result;
-                    }
-                }
-            });
         },
         loadCateData: function (code, cid) {
             var _this = this;
@@ -131,7 +113,7 @@ var vue = new Vue({
                         if (code == 'use_type') { _this.useTypeData = resp.result };
                         if (code == 'car_length') { _this.carLengthData = resp.result; };
                         if (code == 'car_style') { _this.carStyleData = resp.result };
-                        if (code == 'good_type') { _this.goodsTypeData = resp.result };
+                        if (code == 'goods_type') { _this.goodsTypeData = resp.result };
                         if (code == 'use_mode') { _this.useModeData = resp.result };
                         if (code == 'pay_type') { _this.payTypeData = resp.result };
                         if (code == 'reward_money') { _this.rewardMoneyData = resp.result };
@@ -191,11 +173,11 @@ var vue = new Vue({
             if (_this.top_cate_select) {
                 _this.top_all_select = false;
                 _this.model.set_top_money = _this.top_cate_money;
-                _this.model.set_top = "1";
+                _this.model.set_top = 1;
 
             } else {
                 _this.model.set_top_money = 0;
-                _this.model.set_top = "";
+                _this.model.set_top = 0;
             }
         },
         topAll: function () {//全站置顶点击
@@ -204,10 +186,10 @@ var vue = new Vue({
             if (_this.top_all_select) {
                 _this.top_cate_select = false;
                 _this.model.set_top_money = _this.top_all_money;
-                _this.model.set_top = "2";
+                _this.model.set_top = 2;
             } else {
                 _this.model.set_top_money = 0;
-                _this.model.set_top = "";
+                _this.model.set_top = 0;
             }
         },
         rewardClick: function () {//打赏福利点击

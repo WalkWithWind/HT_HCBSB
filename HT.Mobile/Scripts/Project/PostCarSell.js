@@ -15,7 +15,7 @@ var vue = new Vue({
             car_length: '', //排放标准
             car_style: '',//车型
             use_mode: "个人户",//车辆户型
-            good_type: "能",//能否提档
+            goods_type: "能",//能否提档
             goods_weight: "",//马力
             freight: "",//出售价格
             use_time: "",//行驶证登记时间
@@ -28,6 +28,14 @@ var vue = new Vue({
             reward_money: 0,//打赏金额
             total: 0//需支付金额
         },
+        use_time: {
+            time: ''
+        },
+        use_time_limit: [{
+            type: 'fromto',
+            from: '2001-00-01',
+            to: new Date().Format('yyyy-MM-dd')
+        }],
         carLengthData: [],//排放标准
         carStyleData: [],//车型列表
         imgsData: [],//上传图片
@@ -233,6 +241,9 @@ var vue = new Vue({
         },
         submit: function () {//提交
             var _this = this;
+            _this.model.use_time = _this.use_time.time;
+            //console.log(_this.model.use_time);
+            //return false;
             if (!_this.checkInput()) {
                 return false;
             }

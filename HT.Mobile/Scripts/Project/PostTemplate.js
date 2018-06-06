@@ -5,7 +5,7 @@ var vue = new Vue({
     data: {
         model: {
             cateid: 7,//类型  7通用模板
-            cate: "通用模板",//通用模板
+            cate: "其他",//通用模板
             validity_num: "",//有效期
             validity_unit: "天",//有效期单位 天,月
             tags:"",//标签选择

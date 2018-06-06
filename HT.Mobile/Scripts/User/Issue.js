@@ -21,16 +21,41 @@
             isme:true,
             page: 0,
             rows: 5
-        }
+        },
+        setTop: {
+            idx:-1,
+            id: 0,
+            set_top: 0,
+            money: 0
+        },
+        top_cate_money: 0,
+        top_all_money: 0
     },
-    created() {
+    created: function() {
         this.init();
     },
     methods:{
         init: function () {
             this.bindScroll();
             this.loadData();
+            this.loadConfigData('top_cate_money');//分类置顶金额
+            this.loadConfigData('top_all_money');//全站置顶金额
         },
+        loadConfigData: function (configName) {
+            var _this = this;
+            $.ajax({
+                type: 'post',
+                url: '/Config/Get',
+                data: { configName: configName },
+                dataType: 'json',
+                success: function (resp) {
+                    if (resp.status) {
+                        if (configName == 'top_cate_money') { _this.top_cate_money = parseFloat(resp.result) };
+                        if (configName == 'top_all_money') { _this.top_all_money = parseFloat(resp.result) };
+                    }
+                }
+            });
+        },//配置
         loadData: function () {
             var _this = this;
             if (_this.isLoading) return;
@@ -110,19 +135,19 @@
         },
         toEdit: function (item) {
             if (item.cateid == 1) {
-                location.href = '/Project/PostGoods/' + item.id;
+                location.href = '/Project/EditPostGoods/' + item.id;
             } else if (item.cateid == 2) {
-                location.href = '/Project/PostCars/' + item.id;
+                location.href = '/Project/EditPostCars/' + item.id;
             } else if (item.cateid == 3) {
-                location.href = '/Project/PostRecruit/' + item.id;
+                location.href = '/Project/EditPostRecruit/' + item.id;
             } else if (item.cateid == 4) {
-                location.href = '/Project/PostJob/' + item.id;
+                location.href = '/Project/EditPostJob/' + item.id;
             } else if (item.cateid == 5) {
-                location.href = '/Project/PostCarSell/' + item.id;
+                location.href = '/Project/EditPostCarSell/' + item.id;
             } else if (item.cateid == 6) {
-                location.href = '/Project/PostCarBuy/' + item.id;
+                location.href = '/Project/EditPostCarBuy/' + item.id;
             } else if (item.cateid == 7) {
-                location.href = '/Project/PostTemplate/' + item.id;
+                location.href = '/Project/EditPostTemplate/' + item.id;
             }
         },
         del: function (item,index) {
@@ -142,6 +167,48 @@
                     }
                 }
             });
+        },
+        showSetTop: function (id, idx) {
+            var _this = this;
+            _this.setTop.idx = idx;
+            _this.setTop.id = id;
+            _this.setTop.set_top = 0;
+            _this.setTop.money = 0;
+
+            layer.open({
+                type: 1,
+                title: '请选择置顶',
+                content: $('.set_top_box'),
+                offset: 'lb',
+                area: ['100%', 'auto'],
+                shade: 0.5,
+                scrollbar: false,
+                anim: 2,
+                end: function () {
+                }
+            });
+        },
+        selectSetTop: function (num) {
+            this.setTop.set_top = num;
+            if (num == 1) {
+                this.setTop.money = this.top_cate_money;
+            } else if (num == 2) {
+                this.setTop.money = this.top_all_money;
+            }
+        },
+        confirmSetTop: function () {
+            layer.closeAll();
+            if (this.listData.list[this.setTop.idx].pay_status == 0) {
+                this.payUpdateSetTop();
+            } else {
+                this.postUpdateSetTop();
+            }
+        },
+        postUpdateSetTop: function () {
+            layer.msg('还未支付修改置顶类型去支付页支付');
+        },
+        payUpdateSetTop: function () {
+            layer.msg('支付成功后置顶');
         }
     }
 });

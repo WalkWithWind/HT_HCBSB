@@ -37,7 +37,6 @@ var carVm = new Vue({
     },
     methods: {
         init: function () {
-
             this.loadData();
             this.loadReview();
             this.loadLikeData();
@@ -56,7 +55,7 @@ var carVm = new Vue({
                     _this.isLoading = false;
                     if (resp.status) {
                         _this.newsData = resp.result;
-                        console.log('_this.goodsData', _this.goodsData);
+                        //console.log('_this.goodsData', _this.goodsData);
                     }
                 }
             });

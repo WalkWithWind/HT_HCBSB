@@ -22,13 +22,11 @@
 			<i class="arrow"></i>
 			<span>货源管理</span>
 		</div>
-		<!--/导航栏-->
-
+		<!--导航栏-->
 		<!--工具栏-->
 		<div class="toolbar-wrap">
 			<div id="floatHead" class="toolbar">
 				<div class="box-wrap">
-
 					<div class="l-list">
 
 						<ul class="icon-list">
@@ -60,9 +58,6 @@
 			</div>
 		</div>
 		<!--/工具栏-->
-
-
-
 		<!--文字列表-->
 		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
 

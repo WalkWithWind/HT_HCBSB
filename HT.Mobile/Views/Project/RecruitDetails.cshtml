@@ -5,7 +5,7 @@
 }
 @Html.Partial("_Header")
 
-<div class="recruitDetails hide" v-bind:class="['show']">
+<div class="recruitDetails hide" v-bind:class="[{'show':newsData.id}]">
 
     <ul class="ind_sec1_ul car_item">
         <li>
@@ -32,7 +32,7 @@
                 <div class="details_main">
                     <dl>
                         <dt>招聘类型：</dt>
-                        <dd v-text="newsData.use_mode"></dd>
+                        <dd>公司招聘</dd>
                     </dl>
                     <dl>
                         <dt>驾照要求：</dt>
@@ -56,13 +56,10 @@
                         <dt>驾驶车型：</dt>
                         <dd v-text="newsData.car_style"></dd>
                     </dl>
-                    <dl style="width:100%;">
-                        <dt>工资待遇：</dt>
-                        <dd v-text="newsData.car_length"></dd>
-                    </dl>
-                    <dl style="width:100%;">
-                        <dt class="other-text">其他：</dt>
-                        <dd class="other-remark" v-text="newsData.other_remark"></dd>
+                    <dl style="display: none;white-space: normal;">
+                        <dt style="display:table-cell;width: 45px;">其他：</dt>
+                        <dd style="display:table-cell;" v-text="newsData.other_remark">
+                        </dd>
                     </dl>
                 </div>
                 <div class="ind_time">

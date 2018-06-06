@@ -116,22 +116,10 @@ var listVm = new Vue({
                 anim: 2
             });
         },
-        showCarLength: function () {
-            layer.open({
-                type: 1,
-                title: '驾龄',
-                content: $('.car_length_box'),
-                offset: 'lb',
-                area: ['100%', 'auto'],
-                shade: 0.5,
-                scrollbar: false,
-                anim: 2
-            });
-        },
         showCarStyle: function () {
             layer.open({
                 type: 1,
-                title: '驾驶类型',
+                title: '更多筛选',
                 content: $('.car_style_box'),
                 offset: 'lb',
                 area: ['100%', 'auto'],

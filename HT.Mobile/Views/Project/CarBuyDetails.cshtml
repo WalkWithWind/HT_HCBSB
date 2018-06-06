@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @Html.Partial("_Header")
-<div class="carbuy hide" v-bind:class="['show']">
+<div class="carbuy hide" v-bind:class="[{'show':newsData.id}]">
     <ul class="ind_sec1_ul car_item">
         <li>
             <div class="wrapper">
@@ -44,13 +44,14 @@
                         <dt>马力：</dt>
                         <dd v-text="newsData.goods_weight+'马力'"></dd>
                     </dl>
-                    <dl style="width:100%;">
+                    <dl>
                         <dt>车辆地区：</dt>
                         <dd>{{(newsData.start_city+newsData.start_district)|stringRemove('')}}</dd>
                     </dl>
-                    <dl style="width:100%;">
-                        <dt class="other-text">其他：</dt>
-                        <dd class="other-remark" v-text="newsData.other_remark"></dd>
+                    <dl style="display: none;white-space: normal;">
+                        <dt style="display:table-cell;width: 45px;">其他：</dt>
+                        <dd style="display:table-cell;" v-text="newsData.other_remark">
+                        </dd>
                     </dl>
                 </div>
                 <div class="ind_time">

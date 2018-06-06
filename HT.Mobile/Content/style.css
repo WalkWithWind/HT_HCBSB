@@ -90,8 +90,11 @@ footer {
 }
 .footer_ul .item_s .img img {
 	width: .3rem;
-	display: inline-block;
+	display: none;
 	vertical-align: middle;
+}
+.footer_ul .item_s .img img:nth-child(1) {
+    display: inline-block;
 }
 .footer_ul .item_s .img:after {
 	content: '';
@@ -272,17 +275,20 @@ footer {
 	float: right;
 }
 .ind_main_t .use .img {
-	float: left;
-	width: 1.2rem;
+    float: left;
+    width: 1.2rem;
+    height: 1.2rem;
 }
 .ind_main_t .use .txt {
 	float: left;
 	margin-left: .2rem;
 }
 .ind_main_t .use .txt span {
-	font-size: .32rem;
-	color: #1f2227;
-	line-height: 1.6;
+    font-size: .32rem;
+    color: #1f2227;
+    line-height: .5rem;
+    height: .5rem;
+    display: block;
 }
 .ind_main_t .use .txt p {
 	overflow: hidden;
@@ -368,7 +374,7 @@ footer {
 	display: inline-block;
 	vertical-align: middle;
 	margin-right: .2rem;
-	width: 2rem;
+	height: 2.5rem;
 }
 
 
@@ -604,8 +610,9 @@ footer {
 	margin-bottom: .2rem;
 }
 .el_item .infor_p3 .img {
-	float: left;
+    float: left;
     width: .88rem;
+    height: .88rem;
 }
 .el_item .infor_p3 .txt {
 	float: left;
@@ -688,7 +695,7 @@ footer {
 	float: left;
 	min-width: 50%;
 	overflow: hidden;
-	margin-bottom: .18rem;
+	line-height: .6rem;
 	white-space: nowrap;
 	letter-spacing: -4px;
 	overflow-x: auto;
@@ -700,18 +707,18 @@ footer {
 	padding-left: .2rem;
 } */
 .details_main dt {
-	display: inline-block;
-	font-size: .28rem;
-	color: #1f2227;
-	line-height: .4rem;
-	letter-spacing: 0;
+    display: inline-block;
+    font-size: .28rem;
+    color: #1f2227;
+    line-height: .6rem;
+    letter-spacing: 0;
 }
 .details_main dd {
-	display: inline-block;
-	font-size: .26rem;
-	color: #555;
-	line-height: .4rem;
-	letter-spacing: 0;
+    display: inline-block;
+    font-size: .26rem;
+    color: #555;
+    line-height: .6rem;
+    letter-spacing: 0;
 }
 .eld_item2 {
 	background: #fff;
@@ -1691,11 +1698,11 @@ footer {
 	width: 2.2rem;
 	margin-left: -2.2rem;
 }
-.pg_sec2 dl dd input[type='text'] {
-	float: left;
-	width: 100%;
-	text-align: right;
-	height: .8rem;
+.pg_sec2 dl dd input[type='text'], .pg_sec2 dl dd input[type='number'] {
+    float: left;
+    width: 100%;
+    text-align: right;
+    height: .8rem;
 }
 .pg_sec3 {
 	padding: 0 3%;
@@ -2247,7 +2254,7 @@ footer {
 
 }
 .pg_sec7 dl dd span{
-    text-align:center;
+    text-align:left;
 }
 .pg_sec7 dl dd input[type='text'] {
     text-align:left;

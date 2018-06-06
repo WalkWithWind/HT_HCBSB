@@ -38,9 +38,9 @@
                         </div>
                     </div>
                     <div class="btn_box">
-                        <a href="javascript:void(0);" class="btn1" v-if="item.set_top==0 && item.status!=2 && item.status_text.indexOf('已过期')<0">我要置顶</a>
+                        <a href="javascript:void(0);" class="btn1" v-if="item.set_top==0 && (item.status_text.indexOf('显示中')==0 || item.status_text.indexOf('待付款')==0)" v-on:click="showSetTop(item.id,index)">我要置顶</a>
                         <a href="javascript:void(0);" class="btn2" v-if="item.status_text.indexOf('显示中')==0">分享</a>
-                        <a v-bind:href="'/User/Pay/'+item.order_no" class="btn3" v-if="item.status_text.indexOf('待付款')==0" >立即付款</a>
+                        <a v-bind:href="'/User/Pay/'+item.order_no" class="btn3" v-if="item.status_text.indexOf('待付款')==0">立即付款</a>
                         <a href="javascript:void(0);" class="btn2" v-if="item.status_text.indexOf('待付款')==0" v-on:click="toEdit(item)">重新编辑</a>
                         <a href="javascript:void(0);" class="btn2" v-if="item.status==2 || item.status_text.indexOf('已过期')==0" v-on:click="del(item,index)">删除</a>
                     </div>
@@ -48,14 +48,13 @@
             </ul>
         </div>
     </div>
-
-    <div class="zhp_box hide">
+    <div class="set_top_box zhp_box hide" v-if="setTop">
         <p class="tt">选择置顶可以让更多的人看到</p>
         <ul>
-            <li><input type="radio" name="name1" id="one" checked><label for="one">分类置顶（10元）</label></li>
-            <li><input type="radio" name="name1" id="all"><label for="all">全站置顶（20元）</label></li>
+            <li><input type="radio" name="name1" id="one" v-bind:checked="setTop.set_top==1" v-on:click="selectSetTop(1)"><label for="one">分类置顶（{{top_cate_money}}元）</label></li>
+            <li><input type="radio" name="name1" id="all" v-bind:checked="setTop.set_top==2" v-on:click="selectSetTop(2)"><label for="all">全站置顶（{{top_all_money}}元）</label></li>
         </ul>
-        <a href="pay.asp" class="btn">确认置顶（共支付10元）</a>
+        <a href="javascript:void(0);" class="btn" v-on:click="confirmSetTop()">确认置顶（共支付{{setTop.money}}元）</a>
     </div>
 </div>
 @section scripts{
