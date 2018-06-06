@@ -460,7 +460,7 @@
             picked: function picked() {
                 if (this.option.type === 'day' || this.option.type === 'min') {
                     var ctime = this.checked.year + '-' + this.checked.month + '-' + this.checked.day + ' ' + this.checked.hour + ':' + this.checked.min;
-                    this.checked.currentMoment = (0, _moment2.default)(ctime, 'YYYY-MM-dd HH:mm');
+                    this.checked.currentMoment = (0, _moment2.default)(ctime, 'YYYY-MM-DD HH:mm');
                     this.date.time = (0, _moment2.default)(this.checked.currentMoment).format(this.option.format);
                 } else {
                     this.date.time = JSON.stringify(this.selectedDays);
