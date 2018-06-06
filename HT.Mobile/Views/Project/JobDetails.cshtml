@@ -50,9 +50,10 @@
                         <dt>驾驶车型：</dt>
                         <dd v-text="newsData.car_style"></dd>
                     </dl>
-                    <dl>
-                        <dt>其他：</dt>
-                        <dd v-text="newsData.other_remark"></dd>
+                    <dl style="display: none;white-space: normal;">
+                        <dt style="display:table-cell;width: 45px;">其他：</dt>
+                        <dd style="display:table-cell;" v-text="newsData.other_remark">
+                        </dd>
                     </dl>
                 </div>
                 <div class="ind_time">

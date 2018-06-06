@@ -27,7 +27,7 @@ var vue = new Vue({
             other_remark: "",//其它补充
             contact_name: "",//联系人
             contact_phone: "",//联系电话
-            set_top: "",//置顶类型  空不置顶 1分类 2全站
+            set_top: 0,//置顶类型  空不置顶 1分类 2全站
             set_top_money: 0,//置顶金额
             reward_money: 0,//打赏金额
             total: 0//需支付金额
@@ -173,11 +173,11 @@ var vue = new Vue({
             if (_this.top_cate_select) {
                 _this.top_all_select = false;
                 _this.model.set_top_money = _this.top_cate_money;
-                _this.model.set_top = "1";
+                _this.model.set_top = 1;
 
             } else {
                 _this.model.set_top_money = 0;
-                _this.model.set_top = "";
+                _this.model.set_top = 0;
             }
         },
         topAll: function () {//全站置顶点击
@@ -186,10 +186,10 @@ var vue = new Vue({
             if (_this.top_all_select) {
                 _this.top_cate_select = false;
                 _this.model.set_top_money = _this.top_all_money;
-                _this.model.set_top = "2";
+                _this.model.set_top = 2;
             } else {
                 _this.model.set_top_money = 0;
-                _this.model.set_top = "";
+                _this.model.set_top = 0;
             }
         },
         rewardClick: function () {//打赏福利点击

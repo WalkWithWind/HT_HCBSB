@@ -22,8 +22,7 @@
 			<i class="arrow"></i>
 			<span>货源管理</span>
 		</div>
-		<!--/导航栏-->
-
+		<!--导航栏-->
 		<!--工具栏-->
 		<div class="toolbar-wrap">
 			<div id="floatHead" class="toolbar">

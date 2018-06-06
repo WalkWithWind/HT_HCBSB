@@ -50,9 +50,10 @@
                             <span>{{(newsData.stop_city+newsData.stop_district)|stringRemove('')}}</span>
                         </dd>
                     </dl>
-                    <dl>
-                        <dt>其他：</dt>
-                        <dd v-text="newsData.other_remark"></dd>
+                    <dl style="display: none;white-space: normal;">
+                        <dt style="display:table-cell;width: 45px;">其他：</dt>
+                        <dd style="display:table-cell;" v-text="newsData.other_remark">
+                        </dd>
                     </dl>
                 </div>
                 <div class="ind_time">

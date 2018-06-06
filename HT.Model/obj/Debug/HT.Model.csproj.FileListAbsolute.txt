@@ -98,3 +98,4 @@ D:\Project\HCBSB\HT.Model\obj\Debug\HT.Model.pdb
 D:\Project\HCBSB\HT.Model\obj\Debug\HT.Model.csprojAssemblyReference.cache
 D:\Project\HCBSB\HT.Model\obj\Debug\HT.Model.csproj.CoreCompileInputs.cache
 D:\Project\HCBSB\HT.Model\obj\Debug\HT.Model.csproj.CopyComplete
+G:\工作\文档\货车百事帮\HT_HCBSB\HT.Model\obj\Debug\HT.Model.csprojResolveAssemblyReference.cache

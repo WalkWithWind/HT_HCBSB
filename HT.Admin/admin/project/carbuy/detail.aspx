@@ -87,7 +87,7 @@
             <dl>
                 <dt>车型</dt>
                 <dd>
-                    {{newsData.use_type}}
+                    {{newsData.car_style}}
                 </dd>
             </dl>
 

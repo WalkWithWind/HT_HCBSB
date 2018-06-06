@@ -231,6 +231,7 @@ namespace HT.BLL
                     model.update_time = model.add_time;
                     model.order_no = orderNo;
                     model.status = 0;
+                    if (!model.set_top.HasValue) model.set_top = 0;
                     model.pay_status = 0;
                     model.is_delete = 0;
                     db.ht_news.Add(model);
