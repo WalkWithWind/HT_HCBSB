@@ -86,8 +86,8 @@
         <ul>
             <li>
                 <span>车辆户型</span>
-                <input type="radio" name="name1" id="c" value="公司户" v-model="model.use_mode"><label for="c">公司户</label>
-                <input type="radio" name="name1" id="p" value="个人户" checked v-model="model.use_mode"><label for="p">个人户</label>
+                <input type="radio" name="name1" id="c" value="公司户" v-bind:checked="model.use_mode=='公司户'" v-on:click="model.use_mode='公司户'"><label for="c">公司户</label>
+                <input type="radio" name="name1" id="p" value="个人户" v-bind:checked="model.use_mode=='个人户'" v-on:click="model.use_mode='个人户'"><label for="p">个人户</label>
             </li>
             <li>
                 <span>能否提档</span>
@@ -188,7 +188,7 @@
                  v-bind:show-ob="select"
                  v-if="select.showCityStart">
     </city-dialog>
-    <input type="file" name="file" id="file" style="display:none;" v-on:change="fileChange" />
+    <input type="file" name="file" id="file" accept="image/png,image/jpg,image/jpeg" style="display:none;" v-on:change="fileChange" />
 </div>
 
 

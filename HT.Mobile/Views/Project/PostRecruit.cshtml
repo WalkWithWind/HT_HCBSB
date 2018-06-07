@@ -29,9 +29,9 @@
         <div class="pg_sec2">
             <dl>
                 <dd>
-                    <span>车辆户型</span>
-                    <input type="radio" name="name1" id="c" class="rdo-company" value="公司招聘" checked v-model="model.use_mode"><label class="label-text" for="c">公司</label>
-                    <input type="radio" name="name1" id="p" class="rdo-company" value="个人招聘" v-model="model.use_mode"><label class="label-text" for="p">个人</label>
+                    <span>招聘类型</span>
+                    <input type="radio" name="name1" id="c" class="rdo-company" value="公司" v-bind:checked="model.use_mode=='公司'" v-on:click="model.use_mode='公司'"><label class="label-text" for="c">公司</label>
+                    <input type="radio" name="name1" id="p" class="rdo-company" value="个人" v-bind:checked="model.use_mode=='个人'" v-on:click="model.use_mode='个人'"><label class="label-text" for="p">个人</label>
                 </dd>
                 <dd>
                     <span>招聘人数</span>
