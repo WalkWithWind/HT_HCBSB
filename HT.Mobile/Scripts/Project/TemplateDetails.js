@@ -33,10 +33,25 @@ var mainDetails = new Vue({
                     if (resp.status) {
                         _this.newsData = resp.result;
                         _this.imgs = _this.newsData.imgs.split(',');
+                        _this.showSwiper();
                         console.log('_this.newsData', _this.newsData);
                     }
                 }
             });
+        },
+        showSwiper: function () {
+            setTimeout(function () {
+                var mySwiper = new Swiper('.zhc_container.swiper-container', {
+                    autoplay: 5000,
+                    height: 300,//你的slide高度
+                    prevButton: '.swiper-button-next',
+                    nextButton: '.swiper-button-prev',
+                    pagination: '.zhc_container .swiper-pagination',
+                    paginationType: 'fraction',
+                    spaceBetween: 6,
+                    loop: true,
+                })
+            }, 10);
         },
         //点赞
         clickPraise: function (news) {

@@ -8,8 +8,8 @@
 <div class="details hide" v-bind:class="[{'show':newsData.id}]">
     <ul class="ind_sec1_ul car_item">
         <li>
-            <div class="wrapper">
-                <div class="ind_main_t">
+            <div class="wrapper padding0">
+                <div class="ind_main_t padding3">
                     <div class="use">
                         <a href="car-source-details.asp">
                             <div class="img">
@@ -25,7 +25,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="ind_main_m">
+                <div class="ind_main_m padding3">
                     <p v-text="newsData.other_remark"></p>
                 </div>
                 <div class="zhc_container swiper-container">
@@ -34,9 +34,11 @@
                             <img v-bind:src="img">
                         </div>
                     </div>
+                    <div class="swiper-button-prev swiper-button-white"></div>
+                    <div class="swiper-button-next swiper-button-white"></div>
                     <div class="swiper-pagination"></div>
                 </div>
-                <div class="details_main">
+                <div class="details_main padding3">
                     <dl>
                         <dt>价格：</dt>
                         <dd v-text="newsData.freight+'万'"></dd>
@@ -115,5 +117,5 @@
 @section scripts{
     @Html.Action("Template", "Partial", new { id = "Details" })
     @Scripts.Render("/Scripts/Project/CarSellDetails.js")
-    
+
 }

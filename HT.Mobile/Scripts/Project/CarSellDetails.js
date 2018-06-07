@@ -17,6 +17,13 @@ var mainDetails = new Vue({
         init: function () {
 
             this.loadData();
+
+
+           
+
+           
+
+
         },
         //详情数据
         loadData: function () {
@@ -45,6 +52,8 @@ var mainDetails = new Vue({
             setTimeout(function () {
                 var mySwiper = new Swiper('.zhc_container.swiper-container', {
                     autoplay: 5000,
+                    prevButton: '.swiper-button-next',
+                    nextButton:'.swiper-button-prev',
                     pagination: '.zhc_container .swiper-pagination',
                     paginationType: 'fraction',
                     spaceBetween: 6,

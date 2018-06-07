@@ -2393,3 +2393,38 @@ footer {
     vertical-align: middle;
     margin-right: 5%;
 }
+
+
+
+.swiper-button-next {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23007aff'%2F%3E%3C%2Fsvg%3E");
+}
+/*改变了颜色和加粗的样式*/
+.swiper-button-next {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L5%2C44l-4.2-4.2L18.6%2C22L0.8%2C4.2L5%2C0z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E");
+}
+.swiper-button-prev {
+    height: 30px;
+    background-color: #333;
+    opacity: 0.8;
+    height: 35px;
+    left: 0px;
+    background-size: 10px 30px;
+}
+.swiper-button-next {
+    height: 30px;
+    height: 30px;
+    background-color: #333;
+    opacity: 0.8;
+    height: 35px;
+    right: 0px;
+    background-size: 10px 30px;
+}
+
+.padding3 {
+    padding-left: 3% !important;
+    padding-right: 3% !important;
+}
+.padding0 {
+    padding: 0!important;
+}
