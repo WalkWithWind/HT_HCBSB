@@ -2,8 +2,8 @@
     <div class="m-picker-item">
         <div class="m-scroller-indicator"></div>
         <div class="m-scroller-mask" v-on:touchstart="start" v-on:touchend="end" v-on:touchmove="move"></div>
-        <div class="m-scroller-item-box" :style="domStyle">
-            <div v-for="(i,k) in d" :key="k" class="m-scroller-item">{{i}}</div>
+        <div class="m-scroller-item-box" v-bind:style="domStyle">
+            <div v-for="(i,k) in d" v-bind:key="k" class="m-scroller-item">{{i}}</div>
         </div>
     </div>
 </script>
@@ -75,7 +75,7 @@
                 this.endY = e.changedTouches[0].pageY;
                 //非线性衰减
                 let t = Math.sqrt(Math.abs(this.endY - this.startY)) / 8;
-                console.log(t)
+                //console.log(t)
                 this.scroll(this.dY + this.endY - this.startY, t);
             },
             move: function(e) {

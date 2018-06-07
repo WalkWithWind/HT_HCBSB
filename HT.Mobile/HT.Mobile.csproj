@@ -373,6 +373,8 @@
     <Content Include="Views\Partial\Contact.cshtml" />
     <Content Include="Views\Partial\Shortcut.cshtml" />
     <Content Include="Views\Partial\Datepicker.cshtml" />
+    <Content Include="Views\Partial\ScorllDatepicker.cshtml" />
+    <Content Include="Views\Partial\ScorllDatepickerItem.cshtml" />
     <None Include="Views\WX\PayFail.cshtml" />
   </ItemGroup>
   <ItemGroup>

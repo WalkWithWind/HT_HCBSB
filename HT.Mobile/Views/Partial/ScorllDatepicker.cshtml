@@ -8,9 +8,9 @@
             </div>
             <div class="m-picker-content">
                 <div class="m-picker-item-box" v-if="type=='datePicker'">
-                    <PickerItem :val.sync="year" v-bind:selType="'year'" v-bind:change="change" v-bind:d="dataList[0]"></PickerItem>
-                    <PickerItem :val.sync="month" v-bind:selType="'month'" v-bind:change="change" v-bind:d="dataList[1]"></PickerItem>
-                    <PickerItem :val.sync="day" v-bind:selType="'day'" v-bind:change="change" v-bind:d="dataList[2]"></PickerItem>
+                    <PickerItem v-bind:val.sync="year" v-bind:selType="'year'" v-bind:change="change" v-bind:d="dataList[0]"></PickerItem>
+                    <PickerItem v-bind:val.sync="month" v-bind:selType="'month'" v-bind:change="change" v-bind:d="dataList[1]"></PickerItem>
+                    <PickerItem v-bind:val.sync="day" v-bind:selType="'day'" v-bind:change="change" v-bind:d="dataList[2]"></PickerItem>
                 </div>
                 <div class="m-picker-item-box" v-else>
                     <PickerItem v-for="(i,k) in dataList" v-bind:key="k" v-bind:change="change" v-bind:d="i"></PickerItem>
@@ -25,30 +25,48 @@
         template: '#scorll-datepicker-template',
         name: 'ScorllDatepicker',
         data: function () {
+
+            var dateArr = [];
+            var year = new Date().getFullYear();
+            var month = 1;
+            var day = 1;
+            var min = year-10;
+            var max = year+10;
+            if (limit.from) {
+                min = parseInt(limit.from.split('-')[0]);
+            }
+            if (limit.to) {
+                max = parseInt(limit.to.split('-')[0]);
+            }
+            if (this.date) {
+                dateArr = this.date.split('-');
+                year = parseInt(dateArr[0]);
+                month = parseInt(dateArr[1]);
+                day = parseInt(dateArr[2]);
+            }
+
             return {
                 show: false,
                 type: 'picker',
                 dataList: [],
-                year: 1,
-                month: 1,
-                day: 1,
-                endTime: '',
-                onOk(e) {
-                    console.log(e)
-                },
-                onCancel() {
-                }
+                year: year,
+                month: month,
+                day: day,
+                dateArr: dateArr,
+                yearArr: yearArr
             }
         },
         computed: {
             isR: function() {
                 return this.year % 4 == 0 ? true : false;
             },
-            endTimeArr: function() {
-                if (this.endTime) {
-                    return this.endTime.split('-');
-                } else {
-                    return [];
+            yearArr: function () {
+                var s = 2001;
+                var e = new Date().getFullYear();
+                if (limit.from) s = parseInt(limit.from.split('-')[0]);
+                if (limit.to) e = parseInt(limit.to.split('-')[0]);
+                for (let i = 1; i <= m[1]; i++) {
+                    newY.push(i + '日');
                 }
             }
         },
@@ -64,9 +82,9 @@
             itemSel: function() {
             },
             setMonth: function() {
-                let c2 = this.month == 2;
-                let c1 = [1, 3, 5, 7, 8, 10, 12].join().indexOf(this.month);
-                let m = '', newM = [];
+                var c2 = this.month == 2;
+                var c1 = [1, 3, 5, 7, 8, 10, 12].join().indexOf(this.month);
+                var m = '', newM = [];
                 if (c2) {
                     if (this.isR) {
                         m = [1, 29];
@@ -79,18 +97,18 @@
                     m = [1, 31];
                 }
                 let mArr = [], m2 = [1, 12];
-                if (this.endTimeArr) {
-                    if (this.year == + this.endTimeArr[0]) {
-                        m2[1] = + this.endTimeArr[1];
-                        if (this.month == +this.endTimeArr[1]) {
-                            m[1] = + this.endTimeArr[2];
+                if (this.timeArr) {
+                    if (this.year == + this.timeArr[0]) {
+                        m2[1] = + this.timeArr[1];
+                        if (this.month == +this.timeArr[1]) {
+                            m[1] = + this.timeArr[2];
                         }
                     }
                 }
-                for (let i = 1; i <= m[1]; i++) {
+                for (var i = 1; i <= m[1]; i++) {
                     newM.push(i + '日');
                 }
-                for (let i = 1; i <= m2[1]; i++) {
+                for (var i = 1; i <= m2[1]; i++) {
                     mArr.push(i + '月');
                 }
                 this.dataList[2] = newM;
@@ -117,14 +135,19 @@
             this.setMonth();
         },
         props: {
+            onOk: {},
+            onCancel: {},
             date: {
                 type: Object,
                 required: true
             },
             limit: {
-                type: Array,
+                type: Object,
                 default: function _default() {
-                    return [];
+                    return {
+                        from: '',
+                        to:''
+                    };
                 }
             }
         }
