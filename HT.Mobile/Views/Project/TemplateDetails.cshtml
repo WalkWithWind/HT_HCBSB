@@ -7,8 +7,8 @@
 <div class="template hide" v-bind:class="[{'show':newsData.id}]">
     <ul class="ind_sec1_ul car_item">
         <li>
-            <div class="wrapper">
-                <div class="ind_main_t">
+            <div class="wrapper padding0">
+                <div class="ind_main_t padding3">
                     <div class="use">
                         <a href="car-source-details.asp">
                             <div class="img">
@@ -24,19 +24,31 @@
                         </a>
                     </div>
                 </div>
-                <div class="ind_main_m">
+                <div class="ind_main_m padding3">
                     <p v-text="newsData.other_remark"></p>
                 </div>
                 <div class="ind_lab" v-if="newsData.tags">
                     <i class="lab1" v-if="tag" v-text="tag" v-for="tag in newsData.tags.split(',')"></i>
                 </div>
-                <div class="ind_img" v-if="newsData.imgs">
+                @*<div class="ind_img" v-if="newsData.imgs">
                     <img v-bind:src="img" v-for="img in newsData.imgs.split(',')">
+                </div>*@
+
+
+                <div class="zhc_container swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" v-for="img in imgs">
+                            <img v-bind:src="img">
+                        </div>
+                    </div>
+                    <div class="swiper-button-prev swiper-button-white"></div>
+                    <div class="swiper-button-next swiper-button-white"></div>
+                    <div class="swiper-pagination"></div>
                 </div>
                 <div class="ind_time">
                     {{newsData.update_time|dateFormart('更新')}}
                 </div>
-                <div class="ind_flo">
+                <div class="ind_flo padding3">
                     <ol class="clearfix">
                         <li>
                             <img src="/images/icon/icon03_1.png">
