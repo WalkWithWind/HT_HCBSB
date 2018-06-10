@@ -143,8 +143,10 @@
             },
             setZoom: function (key,num) {
                 $('.' + key).find('.m-scroller-item').css('zoom', '');
+                $('.' + key).find('.m-scroller-item.sel').removeClass('sel');
                 $($('.' + key).find('.m-scroller-item').get(num - 2)).css('zoom', '.6');
                 $($('.' + key).find('.m-scroller-item').get(num + 2)).css('zoom', '.6');
+                $($('.' + key).find('.m-scroller-item').get(num)).addClass('sel');
                 $($('.' + key).find('.m-scroller-item').get(num - 1)).css('zoom', '.8');
                 $($('.' + key).find('.m-scroller-item').get(num + 1)).css('zoom', '.8');
             },
