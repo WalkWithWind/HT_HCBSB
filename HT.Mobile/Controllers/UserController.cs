@@ -353,7 +353,6 @@ namespace HT.Mobile.Controllers
         {
             if (Request.IsAjaxRequest())
             {
-
                 var userId = BLLUser.GetUserId();
                 ht_user user = BLLUser.GetUserById(userId);
                 if(user==null)
@@ -362,16 +361,17 @@ namespace HT.Mobile.Controllers
                     apiResp.status = true;
                     return Json(apiResp);
                 }
+                int type = (int)Model.Enum.UserMoneyDetails.WithDraw;
 
-                var toauditMoney = BLLUser.GetToauditTotalMoney(userId,1,(int)Model.Enum.WithDraw.ToAudit);
+               // var toauditMoney = BLLUser.GetToauditTotalMoney(userId, type, (int)Model.Enum.WithDraw.ToAudit);
 
-                if ((user.money - toauditMoney) < money)
+                if (user.money < money)
                 {
                     apiResp.msg = "余额不足";
                     apiResp.status = true;
                     return Json(apiResp);
                 }
-                if (BLLUser.AddUserMoneyLogData(userId, money,"提现",1))
+                if (BLLUser.AddUserMoneyLogData(userId, money,"余额提现", type))
                 {
                     apiResp.msg = "提现成功";
                     apiResp.status = true;

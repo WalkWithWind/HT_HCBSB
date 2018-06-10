@@ -133,32 +133,38 @@ namespace HT.BLL
             using (Entities db = new Entities())
             {
                 db.Configuration.ProxyCreationEnabled = false;
+
                 var data = db.ht_user_money_log.Where(p => true);
+
                 if (userId > 0) data = data.Where(p => p.userid == userId);
 
                 total = data.Count();
+
                 return data.OrderByDescending(p => p.addtime).Skip((page - 1) * rows).Take(rows).ToList();
             }
         }
 
-        public static bool AddUserMoneyLogData(int userId,decimal money,string remark,int  type)
+        public static bool AddUserMoneyLogData(int id,decimal money,string remark, int type)
         {
             using (Entities db = new Entities())
             {
                 ht_user_money_log model = new ht_user_money_log();
                 model.addtime = DateTime.Now;
-                model.userid = userId;
+                model.userid = id;
                 model.remark = remark;
                 model.money = -money;
                 model.type = type;
                 model.status = 0;
                 db.ht_user_money_log.Add(model);
+
+                db.ht_user.Find(id).money -= money;
+
                 return db.SaveChanges() > 0 ? true : false;
             }
         }
 
 
-        public static decimal GetToauditTotalMoney(int userId,int type,int status)
+        public static decimal GetToauditTotalMoney(int userId, int type,int status)
         {
             using (Entities db = new Entities())
             {

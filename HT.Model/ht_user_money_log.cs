@@ -26,7 +26,7 @@ namespace HT.Model
     ///</summary>
         public Nullable<int> userid { get; set; }
     ///<summary>
-    ///1提现
+    ///提现
     ///</summary>
         public Nullable<int> type { get; set; }
     ///<summary>

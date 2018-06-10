@@ -243,6 +243,8 @@ var vue = new Vue({
             _this.model.car_length = _this.carLenSelect.join(',');
             _this.model.car_style = _this.carStyleSelect.join(',');
             //confirm("提示", "确定发布", "发布", "取消", function () {
+            //console.log('_this.model', _this.model);
+            //return;
                 $.ajax({
                     type: 'post',
                     url: '/Project/PostSubmit',

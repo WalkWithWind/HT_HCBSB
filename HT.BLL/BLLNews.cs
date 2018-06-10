@@ -23,6 +23,7 @@ namespace HT.BLL
         {
             db.Configuration.ProxyCreationEnabled = false;
             var data = db.ht_news.Where(p => true);
+            data = data.Where(p => p.is_delete == 0);
             if (searchKey.cateid != 0) data = data.Where(p => p.cateid == searchKey.cateid);
             if (!string.IsNullOrWhiteSpace(searchKey.start_province)) data = data.Where(p => p.start_province == searchKey.start_province);
             if (!string.IsNullOrWhiteSpace(searchKey.start_city)) data = data.Where(p => p.start_city == searchKey.start_city);
@@ -381,7 +382,7 @@ namespace HT.BLL
 
                 ht_user_money_log log = new ht_user_money_log();
                 log.userid = details.add_userid;
-                log.type =1;
+                log.type = (int)Model.Enum.UserMoneyDetails.PayNews;
                 log.money = -details.total;
                 log.remark = string.Format("余额支出{0}元", details.total);
                 log.addtime = DateTime.Now;

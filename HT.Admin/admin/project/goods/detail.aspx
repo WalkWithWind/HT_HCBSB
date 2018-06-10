@@ -126,7 +126,7 @@
             <dl>
                 <dt>装车时间</dt>
                 <dd>
-                    {{newsData.use_time}}（元）
+                    {{newsData.use_time}}
                 </dd>
             </dl>
             

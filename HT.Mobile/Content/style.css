@@ -2427,3 +2427,12 @@ footer {
 .padding0 {
     padding: 0!important;
 }
+.bold {
+    font-weight:bold;
+}
+.none-boder {
+    border:none !important; 
+}
+.black {
+    color: black !important;
+}

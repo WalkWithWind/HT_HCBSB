@@ -8,6 +8,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @Html.Partial("_Header")
+@section styles{
+    <link href="/Content/Project/Project.css" rel="stylesheet" />
+}
 <div class="main hide" v-bind:class="['show']">
     <div class="el_top">
         <div class="wrapper">
@@ -25,32 +28,40 @@
         <li v-for="item in listData.list">
             <list-component v-bind:item="item" v-if="item"></list-component>
         </li>
+        <li v-if="noneData" class="none-data">
+            抱歉!此地区信息被抢空
+            <br />
+            邀请您成为地区合伙人
+            <br />
+            月入万元
+            <a class="earn-money" href="/User/EarnMoney"><<点击查看</a>
+        </li>
     </ul>
     <div class="clearfix"></div>
-    <city-dialog v-bind:box="'start_box'" 
-                 v-bind:box-title="'出发地'" 
-                 v-bind:ob="searchKey" 
-                 v-bind:province="'start_province'" 
-                 v-bind:city="'start_city'" 
-                 v-bind:district="'start_district'" 
-                 v-bind:show-dialog="'showCityStart'" 
-                 v-bind:show-ob="select" 
+    <city-dialog v-bind:box="'start_box'"
+                 v-bind:box-title="'出发地'"
+                 v-bind:ob="searchKey"
+                 v-bind:province="'start_province'"
+                 v-bind:city="'start_city'"
+                 v-bind:district="'start_district'"
+                 v-bind:show-dialog="'showCityStart'"
+                 v-bind:show-ob="select"
                  v-bind:has-all-district="true"
                  v-bind:has-all-city="true"
-                 v-if="select.showCityStart" 
+                 v-if="select.showCityStart"
                  v-on:end="confirm()">
     </city-dialog>
-    <city-dialog v-bind:box="'stop_box'" 
-                 v-bind:box-title="'到达地'" 
-                 v-bind:ob="searchKey" 
-                 v-bind:province="'stop_province'" 
-                 v-bind:city="'stop_city'" 
-                 v-bind:district="'stop_district'" 
-                 v-bind:show-dialog="'showCityStop'" 
-                 v-bind:show-ob="select" 
+    <city-dialog v-bind:box="'stop_box'"
+                 v-bind:box-title="'到达地'"
+                 v-bind:ob="searchKey"
+                 v-bind:province="'stop_province'"
+                 v-bind:city="'stop_city'"
+                 v-bind:district="'stop_district'"
+                 v-bind:show-dialog="'showCityStop'"
+                 v-bind:show-ob="select"
                  v-bind:has-all-district="true"
                  v-bind:has-all-city="true"
-                 v-if="select.showCityStop" 
+                 v-if="select.showCityStop"
                  v-on:end="confirm()">
     </city-dialog>
     <div class="car_length_box zhj_box hide">
