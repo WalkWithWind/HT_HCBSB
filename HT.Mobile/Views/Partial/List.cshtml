@@ -208,7 +208,9 @@
                     <i class="lab3" v-if="item.car_length" v-text="item.car_length"></i>
                     <i class="lab4" v-if="item.car_style" v-text="item.car_style"></i>
                 </div>
-                {{item.update_time|dateFormart('更新')}}
+                <div class="ind_time">
+                    {{item.update_time|dateFormart('更新')}}
+                </div>
                 <div class="ind_flo">
                     <ol class="clearfix">
                         <li>
@@ -261,7 +263,7 @@
                     <p v-text="item.other_remark"></p>
                 </div>
                 <div class="ind_lab">
-                    <i class="lab1" v-if="item.freight">{{item.freight|moneyFormart}}</i>
+                    <i class="lab1" v-if="item.freight">{{item.freight}}万</i>
                     <i class="lab2" v-if="item.start_city" v-text="item.start_city"></i>
                     <i class="lab3" v-if="item.use_type" v-text="item.use_type"></i>
                     <i class="lab4" v-if="item.car_style" v-text="item.car_style"></i>

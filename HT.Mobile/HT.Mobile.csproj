@@ -170,6 +170,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Partial\Datepicker.css" />
+    <Content Include="Content\Partial\ScorllDatepicker.css" />
     <Content Include="Content\Project\Project.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\weui.css" />
@@ -373,6 +374,8 @@
     <Content Include="Views\Partial\Contact.cshtml" />
     <Content Include="Views\Partial\Shortcut.cshtml" />
     <Content Include="Views\Partial\Datepicker.cshtml" />
+    <Content Include="Views\Partial\ScorllDatepicker.cshtml" />
+    <Content Include="Views\Partial\PartialTest.cshtml" />
     <None Include="Views\WX\PayFail.cshtml" />
   </ItemGroup>
   <ItemGroup>

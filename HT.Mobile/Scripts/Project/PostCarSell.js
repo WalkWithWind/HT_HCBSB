@@ -28,9 +28,6 @@ var vue = new Vue({
             reward_money: 0,//打赏金额
             total: 0//需支付金额
         },
-        use_time: {
-            time: ''
-        },
         use_time_limit: [{
             type: 'fromto',
             from: '2001-00-01',
@@ -241,15 +238,13 @@ var vue = new Vue({
         },
         submit: function () {//提交
             var _this = this;
-            _this.model.use_time = _this.use_time.time;
             //console.log(_this.model.use_time);
             //return false;
             if (!_this.checkInput()) {
                 return false;
             }
             _this.model.imgs = _this.imgsData.join(',');
-
-            console.log('_this.model', _this.model);
+            //console.log('_this.model', _this.model);
             //return;
             //confirm("提示", "确定发布", "发布", "取消", function () {
                 $.ajax({
@@ -271,9 +266,7 @@ var vue = new Vue({
             //})
         },
         upload: function () {
-
             $("#file").click();
-
         },
         fileChange: function () {
             var _this = this;

@@ -1,0 +1,266 @@
+﻿<script type="text/template" id="scorll-datepicker-template">
+    <div class="cov-vue-date">
+        <div class="datepickbox">
+            <input type="text" title="input date" class="cov-datepicker" readonly="readonly" v-bind:placeholder="option.placeholder" v-model="value" v-on:click="showPicker()" />
+        </div>
+        <div class="m-picker" v-show="show">
+            <div class="m-picker-mark"></div>
+            <div class="m-picker-box">
+                <div class="m-picker-header">
+                    <span class="cancel" v-on:click="cancel">取消</span>
+                    <span class="ok" v-on:click="confirm">确定</span>
+                </div>
+                <div class="m-picker-content" style="position:relative;">
+                    <div class="m-picker-item-box">
+                        <div class="m-picker-item year">
+                            <div class="m-scroller-indicator"></div>
+                            <div class="m-scroller-mask" v-on:touchstart="start(event,'year')" v-on:touchend="end" v-on:touchmove="move"></div>
+                            <div class="m-scroller-item-box">
+                                <div v-for="(i,k) in yearArr" class="m-scroller-item" v-text="i+'年'"></div>
+                            </div>
+                        </div>
+                        <div class="m-picker-item month">
+                            <div class="m-scroller-indicator"></div>
+                            <div class="m-scroller-mask" v-on:touchstart="start(event,'month')" v-on:touchend="end" v-on:touchmove="move"></div>
+                            <div class="m-scroller-item-box">
+                                <div v-for="(i,k) in monthArr" class="m-scroller-item" v-text="i+'月'"></div>
+                            </div>
+                        </div>
+                        <div class="m-picker-item date">
+                            <div class="m-scroller-indicator"></div>
+                            <div class="m-scroller-mask" v-on:touchstart="start(event,'date')" v-on:touchend="end" v-on:touchmove="move"></div>
+                            <div class="m-scroller-item-box">
+                                <div v-for="(i,k) in dateArr" class="m-scroller-item" v-text="i+'日'"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<script>
+    Vue.component('scorll-datepicker', {
+        template: '#scorll-datepicker-template',
+        name: 'ScorllDatepicker',
+        data: function () {
+            return {
+                show: false,
+                isfirst: true,
+                year: 2001,
+                month: 1,
+                date: 1,
+                curDate: '',
+                maxDate: '',
+                minDate: '',
+                yearArr: [],
+                monthArr: [],
+                dateArr: [],
+                itemHeight: 0,
+                totalHeight:0
+            }
+        },
+        //呈现前构造数据
+        mounted: function () {
+            this.remHeight = parseInt($('html').css('font-size').replace('px', ''));
+            this.itemHeight = 0.8 * this.remHeight;
+            this.totalHeight = 5 * this.itemHeight;
+        },
+        methods: {
+            init: function () {
+                var _this = this;
+                //禁止动
+                $('.m-picker-mark,.m-picker-header').on('touchmove', function (event) {
+                    if (_this.show) {
+                        // 判断默认行为是否可以被禁用
+                        if (event.cancelable) {
+                            // 判断默认行为是否已经被禁用
+                            if (!event.defaultPrevented) {
+                                event.preventDefault();
+                            }
+                        }
+                    }
+                });
+
+                var curDate = new Date();
+                //初始选择的时间
+                if (this.value) {
+                    curDate = new Date(this.value);
+                } else {
+                    curDate = new Date();
+                }
+                //最大时间
+                if (this.option.max) {
+                    var maxTemp = new Date(this.option.max);
+                    this.maxDate = new Date(maxTemp.getFullYear(), maxTemp.getMonth(), maxTemp.getDate());
+                } else {
+                    this.maxDate = new Date(curDate.getFullYear() + 10, curDate.getMonth(), curDate.getDate());
+                }
+                //最小时间
+                if (this.option.min) {
+                    var minTemp = new Date(this.option.min);
+                    this.minDate = new Date(minTemp.getFullYear(), minTemp.getMonth(), minTemp.getDate());
+                } else {
+                    this.minDate = new Date(curDate.getFullYear() - 10, curDate.getMonth(), curDate.getDate());
+                }
+                //年份数组
+                this.yearArr = [];
+                for (var i = this.minDate.getFullYear(); i <= this.maxDate.getFullYear(); i++) {
+                    this.yearArr.push(i);
+                }
+                this.year = curDate.getFullYear();
+                this.month = curDate.getMonth() + 1;
+                this.date = curDate.getDate();
+                setTimeout(function () {
+                    _this.scrollYear();
+                    _this.initMonth();
+                }, 10);
+
+            },
+            initMonth: function () {
+                var _this = this;
+                this.getMonthArr();
+                if (this.monthArr.indexOf(this.month) < 0) {
+                    if (this.month > this.monthArr[this.monthArr.length - 1]) {
+                        this.month = this.monthArr[this.monthArr.length - 1];
+                    } else {
+                        this.month = this.monthArr[0];
+                    }
+                }
+                setTimeout(function () {
+                    _this.scrollMonth();
+                }, 10);
+                this.initDate();
+            },
+            initDate: function () {
+                var _this = this;
+                this.getDateArr();
+                if (this.dateArr.indexOf(this.date) < 0) {
+                    if (this.date > this.dateArr[this.dateArr.length - 1]) {
+                        this.date = this.dateArr[this.dateArr.length - 1];
+                    } else {
+                        this.date = this.dateArr[0];
+                    }
+                }
+                setTimeout(function () {
+                    _this.scrollDate();
+                },10);
+            },
+            showPicker: function () {
+                this.init();
+                this.show = true;
+            },
+            getMonthArr: function () {
+                //年份数组
+                this.monthArr = [];
+                for (var i = 1; i <= 12; i++) {
+                    if (this.minDate > new Date(this.year, i, 0)) continue;
+                    if (this.maxDate < new Date(this.year, i - 1, 1)) continue;
+                    this.monthArr.push(i);
+                }
+            },
+            getDateArr: function () {
+                //判断所选月最大天数
+                var maxNum = 31;
+                var inNum30 = [4, 6, 9, 11];
+                if (inNum30.indexOf(this.month) >= 0) {
+                    maxNum = 30;
+                } else if (this.month == 2) {
+                    if (((this.year % 4) == 0) && ((this.year % 100) != 0) || ((this.year % 400) == 0)) {
+                        maxNum = 29;
+                    } else {
+                        maxNum = 28;
+                    }
+                }
+                //天数组
+                this.dateArr = [];
+                for (var i = 1; i <= maxNum; i++) {
+                    if (this.minDate > new Date(this.year, this.month - 1, i)) continue;
+                    if (this.maxDate < new Date(this.year, this.month - 1, i)) continue;
+                    this.dateArr.push(i);
+                }
+            },
+            start: function (e, key) {
+                this.startY = e.touches[0].pageY;
+                this.key = key;
+                this.obTop = $('.' + this.key).find('.m-scroller-item-box').scrollTop();
+                this.obHeight = $('.' + this.key).find('.m-scroller-item-box').get(0).scrollHeight;
+            },
+            move: function (e) {
+                e.preventDefault();
+                this.dY = this.startY - e.touches[0].pageY;//差值
+                $('.' + this.key).find('.m-scroller-item-box').scrollTop(this.obTop + this.dY);
+                //缩放
+                var tempTop = this.obTop + this.dY;
+                if (this.obHeight - this.totalHeight < tempTop) tempTop = this.obHeight - this.totalHeight;
+                else if (tempTop<0) tempTop = 0;
+                var num = Math.round(tempTop / this.itemHeight);
+                this.setZoom(this.key, num);
+            },
+            end: function (e) {
+                var tempTop = $('.' + this.key).find('.m-scroller-item-box').scrollTop();
+                var num = Math.round(tempTop / this.itemHeight);
+                if (this.key == 'year') {
+                    this.year = this.yearArr[0] + num;
+                    this.scrollYear();
+                    this.initMonth();
+                }
+                else if (this.key == 'month') {
+                    this.month = this.monthArr[0] + num;
+                    this.scrollMonth();
+                    this.initDate();
+                }
+                else {
+                    this.date = this.dateArr[0] + num;
+                    this.scrollDate();
+                }
+            },
+            setZoom: function (key,num) {
+                $('.' + key).find('.m-scroller-item').css('zoom', '');
+                $($('.' + key).find('.m-scroller-item').get(num - 2)).css('zoom', '.6');
+                $($('.' + key).find('.m-scroller-item').get(num + 2)).css('zoom', '.6');
+                $($('.' + key).find('.m-scroller-item').get(num - 1)).css('zoom', '.8');
+                $($('.' + key).find('.m-scroller-item').get(num + 1)).css('zoom', '.8');
+            },
+            scrollYear: function () {
+                var num = this.year - this.yearArr[0];
+                $('.year').find('.m-scroller-item-box').scrollTop(num * this.itemHeight);
+                this.setZoom('year', num);
+            },
+            scrollMonth: function () {
+                var num = this.month - this.monthArr[0];
+                $('.month').find('.m-scroller-item-box').scrollTop(num * this.itemHeight);
+                this.setZoom('month', num);
+            },
+            scrollDate: function () {
+                var num = this.date - this.dateArr[0];
+                $('.date').find('.m-scroller-item-box').scrollTop(num * this.itemHeight);
+                this.setZoom('date', num);
+            },
+            pl: function (num) {
+                return num < 10 ? '0' + num : num;
+            },
+            confirm: function () {
+                this.value = this.year + '-' + this.pl(this.month) + '-' + this.pl(this.date);
+                this.$emit('ok', this.value);
+                this.show = false;
+            },
+            cancel: function () {
+                this.show = false;
+            }
+        },
+        props: {
+            value: {},
+            option: {
+                type: Object,
+                default: function _default() {
+                    return {
+                        max: {},
+                        min: {},
+                        placeholder: ''
+                    }
+                }
+            }
+        }
+    });
+</script>
