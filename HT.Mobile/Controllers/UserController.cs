@@ -70,6 +70,9 @@ namespace HT.Mobile.Controllers
         [CheckFilter]
         public ActionResult EarnMoney()
         {
+            var authenticationUser = BLLAuthentication.GetAuthenticationUser();
+            string qrUrl = Request.Url.Scheme + "//" + Request.Url.Authority+ "?pid=" + authenticationUser.id;
+            ViewBag.QrUrl = "/Home/GetQrCode?redirect=" + HttpUtility.UrlEncode(qrUrl);
             return View();
         }
         /// <summary>
