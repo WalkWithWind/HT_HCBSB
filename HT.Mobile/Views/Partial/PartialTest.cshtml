@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "PartialTest";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section styles{
+    <link href="/Content/Partial/ScorllDatepicker.css" rel="stylesheet" />
+}
+<div class="main">
+    <div class="form">
+        <div class="pg_sec2 pg_sec5">
+            <dl>
+                <dd>
+                    <span>时间选择</span>
+                    <scorll-datepicker v-bind:value="time" v-bind:option="{min:'2014-01-01',max:'2019-01-01',placeholder:'请选择时间'}"></scorll-datepicker>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+@section scripts{
+    @Html.Action("Template", "Partial", new { id = "ScorllDatepicker" })
+    <script>
+        var listVm = new Vue({
+            el: '.main',
+            data: {
+                time: '2018-06-04',
+                isLoading: false
+            }
+        });
+    </script>
+}
+

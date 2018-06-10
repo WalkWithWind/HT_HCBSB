@@ -5,7 +5,7 @@
 }
 @section styles{
     <link href="/Content/Project/Project.css" rel="stylesheet" />
-    <link href="/Content/Partial/Datepicker.css" rel="stylesheet" />
+    <link href="/Content/Partial/ScorllDatepicker.css" rel="stylesheet" />
 }
 <div class="main hide" v-bind:class="['show']">
     <div class="top">
@@ -66,8 +66,10 @@
             </dd>
             <dd>
                 <span>行驶证登记时间</span>
-                <datepicker v-bind:date="use_time" v-bind:limit="use_time_limit"></datepicker>
-                @*<input type="date" placeholder="请选择行驶证登记时间" required min="2000-01-01" max="2013-09-23" v-model="model.use_time">*@
+                <scorll-datepicker v-bind:value="model.use_time"
+                                   v-bind:option="{min:'2010-01-01',max:new Date().Format('yyyy-MM-dd'),placeholder:'请选择行驶证登记时间'}"
+                                   v-on:ok="model.use_time=$event">
+                </scorll-datepicker>
             </dd>
         </dl>
     </div>
@@ -200,7 +202,7 @@
     @Html.Action("Template", "Partial", new { id = "PinpaiDialog" })
     @Html.Action("Template", "Partial", new { id = "PostHelpDialog" })
     @Html.Action("Template", "Partial", new { id = "Contact" })
-    @Html.Action("Template", "Partial", new { id = "Datepicker" })
+    @Html.Action("Template", "Partial", new { id = "ScorllDatepicker" })
     <script>
         $(function () {
             var $dd = $(".pg_sec3 dd");
