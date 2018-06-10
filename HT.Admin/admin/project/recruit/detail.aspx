@@ -74,12 +74,15 @@
                     {{newsData.validity_num}}{{newsData.validity_unit}}
                 </dd>
             </dl>
-            <dl>
+
+             <dl>
                 <dt>招聘类型</dt>
                 <dd>
                     {{newsData.use_mode}}
                 </dd>
             </dl>
+            
+
 			<dl>
                 <dt>工作地区</dt>
                 <dd>
