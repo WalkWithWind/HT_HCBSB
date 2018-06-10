@@ -19,9 +19,9 @@ Vue.filter('stringRemove', function (value, defvalue) {
     return value;
 })
 Vue.filter('cityFormart', function (city, district, province, defvalue) {
-    if (city == 'null' || city == 'undefined') city = '';
-    if (district == 'null' || district == 'undefined') district = '';
-    if (province == 'null' || province == 'undefined') province = '';
+    if (!city || city == 'null' || city == 'undefined') city = '';
+    if (!district || district == 'null' || district == 'undefined') district = '';
+    if (!province || province == 'null' || province == 'undefined') province = '';
     if (!city && !district && !province) return defvalue;
     if ((city + district)) return city + district;
     return province;

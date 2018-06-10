@@ -3,6 +3,10 @@
     ViewBag.Title = "出售详情";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section styles{
+    <link href="/Scripts/photoswipe/photoswipe.css" rel="stylesheet" />
+    <link href="/Scripts/photoswipe/default-skin.css" rel="stylesheet" />
+}
 @Html.Partial("_Header")
 
 <div class="details hide" v-bind:class="[{'show':newsData.id}]">
@@ -116,6 +120,8 @@
 @Html.Partial("_Footer")
 @section scripts{
     @Html.Action("Template", "Partial", new { id = "Details" })
+    @Scripts.Render("/Scripts/photoswipe/photoswipe.min.js")
+    @Scripts.Render("/Scripts/photoswipe/photoswipe-ui-default.min.js")
     @Scripts.Render("/Scripts/Project/CarSellDetails.js")
 
 }

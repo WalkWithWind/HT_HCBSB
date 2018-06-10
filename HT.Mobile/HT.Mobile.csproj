@@ -112,6 +112,10 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="ThoughtWorks.QRCode, Version=1.0.2774.19990, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\ThoughtWorks.QRCode.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -245,6 +249,7 @@
     <Content Include="images\img\img02.jpg" />
     <Content Include="images\img\img03.jpg" />
     <Content Include="images\img\img04.jpg" />
+    <Content Include="lib\ThoughtWorks.QRCode.dll" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
@@ -272,6 +277,10 @@
     <Content Include="Scripts\layer\theme\default\loading-2.gif" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\photoswipe\default-skin.css" />
+    <Content Include="Scripts\photoswipe\photoswipe-ui-default.min.js" />
+    <Content Include="Scripts\photoswipe\photoswipe.css" />
+    <Content Include="Scripts\photoswipe\photoswipe.min.js" />
     <Content Include="Scripts\Project\CarBuy.js" />
     <Content Include="Scripts\Project\CarBuyDetails.js" />
     <Content Include="Scripts\Project\CarSell.js" />

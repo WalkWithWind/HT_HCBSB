@@ -10,9 +10,9 @@
         <div class="wrapper">
             <div class="infor">
                 <div class="infor_p1">
-                    <span>{{newsData.start_city|cityFormart(newsData.start_district,newsData.start_province,'出发地')}}</span>
+                    <span>{{goodsData.start_city|cityFormart(goodsData.start_district,goodsData.start_province,'出发地')}}</span>
                     <i></i><!-- 中间的箭头符号 -->
-                    <span>{{newsData.stop_city|cityFormart(newsData.stop_district,newsData.stop_province,'到达地')}}</span>
+                    <span>{{goodsData.stop_city|cityFormart(goodsData.stop_district,goodsData.stop_province,'到达地')}}</span>
                     <em v-show="goodsData.set_top>0">置顶</em>
                 </div>
                 <div class="infor_p2">
