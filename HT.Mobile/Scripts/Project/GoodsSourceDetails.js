@@ -173,7 +173,11 @@ var detailVm = new Vue({
                         news.praise_num++;
 
                     } else {
-                        alert(resp.msg);
+                        if (resp.code == 10035) {
+                            window.location.href = "/User/Mobile?url=" + encodeURI(window.location.href);
+                        } else {
+                            alert(resp.msg);
+                        }
                     }
                 }
             });
@@ -198,7 +202,11 @@ var detailVm = new Vue({
                         news.praise_num--;
 
                     } else {
-                        alert(resp.msg);
+                        if (resp.code == 10035) {
+                            window.location.href = "/User/Mobile?url=" + encodeURI(window.location.href);
+                        } else {
+                            alert(resp.msg);
+                        }
                     }
                 }
             });
