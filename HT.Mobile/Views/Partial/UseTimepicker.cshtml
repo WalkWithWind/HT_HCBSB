@@ -1,0 +1,183 @@
+﻿<script type="text/template" id="usetime-picker-template">
+    <div class="cov-vue-date">
+        <div class="datepickbox">
+            <input type="text" title="input date" class="cov-datepicker" readonly="readonly" v-bind:placeholder="option.placeholder" v-model="ob[obkey]" v-on:click="showPicker()" />
+        </div>
+        <div class="m-picker" v-show="show">
+            <div class="m-picker-mark"></div>
+            <div class="m-picker-box">
+                <div class="m-picker-header">
+                    <span class="cancel" v-on:click="cancel">取消</span>
+                    <span class="ok" v-on:click="confirm">确定</span>
+                </div>
+                <div class="m-picker-content" style="position:relative;">
+                    <div class="m-picker-item-box">
+                        <div class="m-picker-item date">
+                            <div class="m-scroller-indicator"></div>
+                            <div class="m-scroller-mask" v-on:touchstart="start(event,'date')" v-on:touchend="end" v-on:touchmove="move"></div>
+                            <div class="m-scroller-item-box">
+                                <div v-for="(i,k) in dateArr" class="m-scroller-item" v-text="i"></div>
+                            </div>
+                        </div>
+                        <div class="m-picker-item time">
+                            <div class="m-scroller-indicator"></div>
+                            <div class="m-scroller-mask" v-on:touchstart="start(event,'time')" v-on:touchend="end" v-on:touchmove="move"></div>
+                            <div class="m-scroller-item-box">
+                                <div v-for="(i,k) in timeArr" class="m-scroller-item" v-text="i"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<script>
+    Vue.component('usetime-picker', {
+        template: '#usetime-picker-template',
+        name: 'UseTimepicker',
+        data: function () {
+            return {
+                show: false,
+                isfirst: true,
+                date: '',
+                time: '',
+                dateArr: ['随意日期'],
+                timeArr: [],
+                timeTempArr: ['全天(00:00-24:00)','凌晨(00:00-06:00)', '上午(06:00-12:00)', '下午(12:00-18:00)', '晚上(18:00-24:00)'],
+                itemHeight: 0,
+                totalHeight: 0,
+                curDate: new Date()
+            }
+        },
+        //呈现前构造数据
+        mounted: function () {
+            this.remHeight = parseInt($('html').css('font-size').replace('px', ''));
+            this.itemHeight = 0.8 * this.remHeight;
+            this.totalHeight = 5 * this.itemHeight;
+            
+            this.dateArr.push(this.curDate.Format('MM月dd日'));
+            for (var i = 1; i < 7; i++) {
+                this.dateArr.push(new Date(this.curDate.getFullYear(), this.curDate.getMonth(), this.curDate.getDate() + i).Format('MM月dd日'));
+            }
+
+        },
+        methods: {
+            init: function () {
+                var _this = this;
+
+                //禁止动
+                $('.m-picker-mark,.m-picker-header').on('touchmove', function (event) {
+                    if (_this.show) {
+                        // 判断默认行为是否可以被禁用
+                        if (event.cancelable) {
+                            // 判断默认行为是否已经被禁用
+                            if (!event.defaultPrevented) {
+                                event.preventDefault();
+                            }
+                        }
+                    }
+                });
+
+                //初始选择的时间
+                if (this.ob && this.obkey && this.ob[this.obkey]) {
+                    var spl = this.ob[this.obkey].split(' ');
+                    this.date = spl[0];
+                    this.time = spl[1];
+                } else {
+                    this.date = this.curDate.Format('MM月dd日');
+                    this.time = '全天(00:00-24:00)';
+                }
+                setTimeout(function () {
+                    _this.scrollDate();
+                    _this.initTime();
+                }, 10);
+
+            },
+            initTime: function () {
+                var _this = this;
+                if (this.curDate.Format('MM月dd日') == this.date) {
+                    var tempArr  = ['全天(00:00-24:00)']
+                    var start = Math.floor(new Date().getHours() / 6);
+                    this.timeArr = tempArr.concat(this.timeTempArr.slice(start + 1));
+                } else {
+                    this.timeArr = this.timeTempArr;
+                }
+                setTimeout(function () {
+                    _this.scrollTime();
+                }, 10);
+            },
+            showPicker: function () {
+                this.init();
+                this.show = true;
+            },
+            start: function (e, key) {
+                this.startY = e.touches[0].pageY;
+                this.key = key;
+                this.obTop = $('.' + this.key).find('.m-scroller-item-box').scrollTop();
+                this.obHeight = $('.' + this.key).find('.m-scroller-item-box').get(0).scrollHeight;
+            },
+            move: function (e) {
+                e.preventDefault();
+                this.dY = this.startY - e.touches[0].pageY;//差值
+                $('.' + this.key).find('.m-scroller-item-box').scrollTop(this.obTop + this.dY);
+                //缩放
+                var tempTop = this.obTop + this.dY;
+                if (this.obHeight - this.totalHeight < tempTop) tempTop = this.obHeight - this.totalHeight;
+                else if (tempTop<0) tempTop = 0;
+                var num = Math.round(tempTop / this.itemHeight);
+                this.setZoom(this.key, num);
+            },
+            end: function (e) {
+                var tempTop = $('.' + this.key).find('.m-scroller-item-box').scrollTop();
+                var num = Math.round(tempTop / this.itemHeight);
+                if (this.key == 'date') {
+                    this.date = this.dateArr[num];
+                    this.scrollDate();
+                    this.initTime();
+                }
+                else {
+                    this.time = this.timeArr[num];
+                    this.scrollTime();
+                }
+            },
+            setZoom: function (key,num) {
+                $('.' + key).find('.m-scroller-item').css('zoom', '');
+                $($('.' + key).find('.m-scroller-item').get(num - 2)).css('zoom', '.6');
+                $($('.' + key).find('.m-scroller-item').get(num + 2)).css('zoom', '.6');
+                $($('.' + key).find('.m-scroller-item').get(num - 1)).css('zoom', '.8');
+                $($('.' + key).find('.m-scroller-item').get(num + 1)).css('zoom', '.8');
+            },
+            scrollDate: function () {
+                var num = this.dateArr.indexOf(this.date);
+                $('.date').find('.m-scroller-item-box').scrollTop(num * this.itemHeight);
+                this.setZoom('date', num);
+            },
+            scrollTime: function () {
+                var num = this.timeArr.indexOf(this.time);
+                $('.time').find('.m-scroller-item-box').scrollTop(num * this.itemHeight);
+                this.setZoom('time', num);
+            },
+            confirm: function () {
+                this.ob[this.obkey] = this.date + ' ' + this.time;
+                //this.$emit('ok', this.value);
+                this.show = false;
+            },
+            cancel: function () {
+                this.show = false;
+            }
+        },
+        props: {
+            ob: {},
+            obkey: {},
+            option: {
+                type: Object,
+                default: function _default() {
+                    return {
+                        placeholder: ''
+                    }
+                }
+            }
+        }
+    });
+</script>
