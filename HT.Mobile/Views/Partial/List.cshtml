@@ -81,7 +81,9 @@
                 </div>
             </div>
             <div class="ind_main_m">
-                <p v-text="item.other_remark"></p>
+                <a v-bind:href="'/Project/CarSourceDetails/'+item.id">
+                    <p v-text="item.other_remark"></p>
+                </a>
             </div>
             <div class="ind_lab">
                 <i class="lab1" v-if="item.use_type" v-text="item.use_type"></i>
@@ -141,7 +143,9 @@
                 </div>
             </div>
             <div class="ind_main_m">
-                @*<p v-text="item.other_remark"></p>*@
+                <a v-bind:href="'/Project/RecruitDetails/'+item.id">
+                    <p v-text="item.other_remark"></p>
+                </a>
             </div>
             <div class="ind_lab">
                 <a v-bind:href="'/Project/RecruitDetails/'+item.id">
@@ -204,7 +208,9 @@
                 </div>
             </div>
             <div class="ind_main_m">
-                <p v-text="item.other_remark"></p>
+                <a v-bind:href="'/Project/JobDetails/'+item.id">
+                    <p v-text="item.other_remark"></p>
+                </a>
             </div>
             <div class="ind_lab">
                 <i class="lab1" v-if="item.use_type" v-text="item.use_type"></i>
@@ -264,7 +270,9 @@
                 </div>
             </div>
             <div class="ind_main_m">
-                <p v-text="item.other_remark"></p>
+                <a v-bind:href="'/Project/CarSellDetails/'+item.id">
+                    <p v-text="item.other_remark"></p>
+                </a>
             </div>
             <div class="ind_lab">
                 <i class="lab1" v-if="item.freight">{{item.freight}}万</i>
@@ -329,7 +337,9 @@
                 </div>
             </div>
             <div class="ind_main_m">
-                <p v-text="item.other_remark"></p>
+                <a v-bind:href="'/Project/CarBuyDetails/'+item.id">
+                    <p v-text="item.other_remark"></p>
+                </a>
             </div>
             <div class="ind_lab">
                 <i class="lab2" v-if="item.start_city" v-text="item.start_city"></i>
@@ -389,7 +399,9 @@
                 </div>
             </div>
             <div class="ind_main_m">
-                <p v-text="item.other_remark"></p>
+                <a v-bind:href="'/Project/TemplateDetails/'+item.id">
+                    <p v-text="item.other_remark"></p>
+                </a>
             </div>
             <div class="ind_lab" v-if="item.tags">
                 <i class="lab1" v-if="tag" v-text="tag" v-for="tag in item.tags.split(',')"></i>

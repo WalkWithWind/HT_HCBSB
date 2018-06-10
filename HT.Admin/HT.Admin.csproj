@@ -98,6 +98,7 @@
     <Content Include="admin\project\driverjob\list.aspx" />
     <Content Include="admin\project\recruit\detail.aspx" />
     <Content Include="admin\project\recruit\list.aspx" />
+    <Content Include="admin\review\list.aspx" />
     <Content Include="admin\users\detail.aspx" />
     <Content Include="admin\users\list.aspx" />
     <Content Include="scripts\laypage\1.2\laypage.js" />
@@ -623,6 +624,15 @@
     <Compile Include="admin\api\project\updatestatus.ashx.cs">
       <DependentUpon>updatestatus.ashx</DependentUpon>
     </Compile>
+    <Compile Include="admin\api\review\delete.ashx.cs">
+      <DependentUpon>delete.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\api\review\list.ashx.cs">
+      <DependentUpon>list.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\api\review\updatestatus.ashx.cs">
+      <DependentUpon>updatestatus.ashx</DependentUpon>
+    </Compile>
     <Compile Include="admin\api\user\detail.ashx.cs">
       <DependentUpon>detail.ashx</DependentUpon>
     </Compile>
@@ -860,6 +870,13 @@
     <Compile Include="admin\region\region_list.aspx.designer.cs">
       <DependentUpon>region_list.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\review\list.aspx.cs">
+      <DependentUpon>list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\review\list.aspx.designer.cs">
+      <DependentUpon>list.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\settings\nav_edit.aspx.cs">
       <DependentUpon>nav_edit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -969,6 +986,9 @@
     <Content Include="admin\api\user\list.ashx" />
     <Content Include="admin\api\user\detail.ashx" />
     <Content Include="admin\api\audit\withdraw\update.ashx" />
+    <Content Include="admin\api\review\list.ashx" />
+    <Content Include="admin\api\review\updatestatus.ashx" />
+    <Content Include="admin\api\review\delete.ashx" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
