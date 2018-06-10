@@ -4,6 +4,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @Html.Partial("_Header")
+@section styles{
+    <link href="/Content/Project/Project.css" rel="stylesheet" />
+}
 <div class="main hide" v-bind:class="['show']">
     <div class="el_top">
         <div class="wrapper">
@@ -17,6 +20,14 @@
     <ul class="ind_sec1_ul">
         <li v-for="item in listData.list">
             <list-component v-bind:item="item" v-if="item"></list-component>
+        </li>
+        <li v-if="noneData" class="none-data">
+            抱歉!此地区信息被抢空
+            <br />
+            邀请您成为地区合伙人
+            <br />
+            月入万元
+            <a class="earn-money" href="/User/EarnMoney"><<点击查看</a>
         </li>
     </ul>
     <div class="clearfix"></div>

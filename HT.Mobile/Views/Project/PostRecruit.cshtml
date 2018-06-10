@@ -21,7 +21,7 @@
         <div class="pg_sec1">
             <ul class="">
                 <li style="height:auto;padding: 10px 0px;color:#777;">
-                    <span>本类信息发布需要支付费用：{{pub_job_amount}}元<br />有效期至：{{validity_to_time_str}}</span>
+                    <span>本类信息发布需要支付费用：<label class="red">{{pub_job_amount}}</label>&nbsp;元<br />有效期至：{{validity_to_time_str}}</span>
                 </li>
             </ul>
         </div>
@@ -47,11 +47,12 @@
             <dl>
                 <dt>驾照等级</dt>
                 <dd>
-                    <a href="javascript:;" v-bind:class="[{ 'cur':model.use_type=='' }]"
-                       v-on:click="model.use_type=''">不限</a>
+
+                    <a href="javascript:;" v-bind:class="[{ 'cur':useTypeSelect.length==0 }]"
+                       v-on:click="useTypeSelect=[]">不限</a>
                     <a href="javascript:;" v-for="item in useTypeData"
-                       v-bind:class="[{ 'cur': item.title==model.use_type }]"
-                       v-text="item.title" v-on:click="model.use_type=item.title"></a>
+                       v-bind:class="[{ 'cur': useTypeSelect.indexOf(item.title)>=0 }]"
+                       v-text="item.title" v-on:click="useTypeClick(item)"></a>
                 </dd>
             </dl>
 
@@ -92,7 +93,7 @@
             <dl>
                 <dt>其他补充</dt>
                 <dd>
-                    <textarea placeholder="内容描述" v-model="model.other_remark"></textarea>
+                    <textarea placeholder="可以在这里补充公司介绍或者其他注意事项" v-model="model.other_remark"></textarea>
                 </dd>
             </dl>
         </div>
@@ -100,7 +101,7 @@
         <div class="pg_sec8 pg_sec9">
             <dl>
                 <dt>增值服务</dt>
-                <dd>
+                <dd class="active">
                     <div class="pt1">
                         <img src="/images/icon/icon27_1.png">
                     </div>

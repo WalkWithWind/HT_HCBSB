@@ -7,6 +7,7 @@ var listVm = new Vue({
             list: []
         },
         isLoading: false,
+        noneData: false,
         //isLoadingLayer: -1,
         //isLoadAll: false,
         searchKey: {
@@ -45,6 +46,7 @@ var listVm = new Vue({
             if (_this.isLoading) return;
             this.searchKey.page++;
             _this.isLoading = true;
+            _this.noneData = false;
             //_this.isLoadingLayer = layer.load(0);
             $.ajax({
                 type: 'post',
@@ -53,6 +55,7 @@ var listVm = new Vue({
                 dataType: 'json',
                 success: function (resp) {
                     _this.isLoading = false;
+                   
                     //layer.close(_this.isLoadingLayer);
                     if (resp.status) {
                         if (resp.result.list.length == 0) {
@@ -61,6 +64,9 @@ var listVm = new Vue({
                             _this.listData.list = _this.listData.list.concat(resp.result.list);
                         }
                         _this.listData.total = resp.result.total;
+                        if (_this.listData.total == 0) {
+                            _this.noneData = true;
+                        }
                         //console.log(_this.listData.list);
                     }
                 }

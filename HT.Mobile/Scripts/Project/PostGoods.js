@@ -131,7 +131,7 @@ var vue = new Vue({
                 dataType: 'json',
                 success: function (resp) {
                     if (resp.status) {
-                        if (configName == 'top_cate_money') { _this.top_cate_money = parseFloat(resp.result) };
+                        if (configName == 'top_cate_money') { _this.top_cate_money = parseFloat(resp.result);_this.topCate(); };                          
                         if (configName == 'top_all_money') { _this.top_all_money = parseFloat(resp.result) };
                         if (configName == 'pub_amount_day') { _this.validity_unit_day_money = parseFloat(resp.result) };
                         if (configName == 'pub_amount_month') { _this.validity_unit_month_money = parseFloat(resp.result) };
@@ -284,10 +284,10 @@ var vue = new Vue({
                     }
                 }
             } else {
-                //if (this.carLenSelect.length >= 5) {
-                //    alert("最多选择5个标签");
-                //    return false;
-                //}
+                if (this.carLenSelect.length >= 3) {
+                    alert("最多选择3个车长");
+                    return false;
+                }
                 this.carLenSelect.push(item.title);
             }
             console.log(["this.carLenSelect", this.carLenSelect]);
@@ -304,10 +304,10 @@ var vue = new Vue({
                     }
                 }
             } else {
-                //if (this.carLenSelect.length >= 5) {
-                //    alert("最多选择5个标签");
-                //    return false;
-                //}
+                if (this.carStyleSelect.length >= 3) {
+                    alert("最多选择3个车型");
+                    return false;
+                }
                 this.carStyleSelect.push(item.title);
             }
         },
