@@ -2,3 +2,18 @@
     color: red;
     font-size: 15px;
 }
+.red {
+    color:red;
+}
+.none-data {
+    background: #ebebeb!important;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    margin-top:20%;
+
+}
+.earn-money {
+    color: #fdcf24;
+    font-size:16px;
+}

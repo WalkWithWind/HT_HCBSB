@@ -7,6 +7,7 @@ var listVm = new Vue({
             list: []
         },
         isLoading: false,
+        noneData: false,
         //isLoadingLayer: -1,
         //isLoadAll: false,
         searchKey: {
@@ -60,6 +61,9 @@ var listVm = new Vue({
                             _this.listData.list = _this.listData.list.concat(resp.result.list);
                         }
                         _this.listData.total = resp.result.total;
+                        if (_this.listData.total == 0) {
+                            _this.noneData = true;
+                        }
                         //console.log(_this.listData.list);
                     }
                 }

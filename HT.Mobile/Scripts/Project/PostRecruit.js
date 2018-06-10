@@ -24,6 +24,7 @@ var vue = new Vue({
 			reward_money: 0,//打赏金额
 			total:0//需支付金额
         },
+        useTypeSelect: [],//选中的驾照等级
         useTypeData: [],//驾照等级列表
         carLengthData: [],//工资待遇列表
         carStyleData: [],//驾驶类型列表
@@ -213,12 +214,33 @@ var vue = new Vue({
 			}
 			return true;
 
-		},
+        },
+        useTypeClick: function (item) {//车长选择
+            if (this.useTypeSelect.indexOf(item.title) >= 0) {
+                // 删除
+                for (var i = 0; i < this.useTypeSelect.length; i++) {
+                    if (this.useTypeSelect[i] == item.title) {
+                        this.useTypeSelect.splice(i, 1);
+                    }
+                }
+            } else {
+                if (this.useTypeSelect.length >= 3) {
+                    alert("最多选择3个驾照等级");
+                    return false;
+                }
+                this.useTypeSelect.push(item.title);
+            }
+          
+
+
+
+        },
 		submit: function () {//提交
 			var _this = this;
 			if (!_this.checkInput()) {
 				return false;
             }
+            _this.model.use_type = _this.useTypeSelect.join(',');
             console.log('_this.model', _this.model);
 			//confirm("提示", "确定发布", "发布", "取消", function () {
 				$.ajax({
