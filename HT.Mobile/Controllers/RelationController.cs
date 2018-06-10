@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using HT.Mobile.Filter;
 
 namespace HT.Mobile.Controllers
 {
@@ -21,6 +22,7 @@ namespace HT.Mobile.Controllers
         /// </summary>
         /// <param name="news_id"></param>
         /// <returns></returns>
+       [CheckFilter]
         public ActionResult AddRelation(ht_comm_relation relation)
         {
             AuthenticationUser loginInfo = BLLUser.GetLoginUserInfo();
@@ -58,6 +60,7 @@ namespace HT.Mobile.Controllers
         /// </summary>
         /// <param name="relation"></param>
         /// <returns></returns>
+        [CheckFilter]
         public ActionResult DeleteRelation(ht_comm_relation relation)
         {
             relation.relation_type = "praise";

@@ -443,6 +443,31 @@ namespace HT.BLL
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="newsId"></param>
+        /// <param name="setTop"></param>
+        /// <param name="money"></param>
+        /// <returns></returns>
+        public static bool UpdateSetTop(int newsId,int setTop,decimal money,out string orderno)
+        {
+            using (Entities db = new Entities())
+            {
+                var news = db.ht_news.Find(newsId);
+                orderno = string.Empty;
+                if (news != null)
+                {
+                    orderno = news.order_no;
+                    news.set_top = setTop;
+                    news.set_top_money += money;
+                    news.total += money;
+                }
+                return db.SaveChanges() > 0 ? true : false;
+
+            }
+
+        }
 
     }
 }
