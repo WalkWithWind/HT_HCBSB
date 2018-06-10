@@ -277,6 +277,10 @@
     <Content Include="Scripts\layer\theme\default\loading-2.gif" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\photoswipe\default-skin.css" />
+    <Content Include="Scripts\photoswipe\photoswipe-ui-default.min.js" />
+    <Content Include="Scripts\photoswipe\photoswipe.css" />
+    <Content Include="Scripts\photoswipe\photoswipe.min.js" />
     <Content Include="Scripts\Project\CarBuy.js" />
     <Content Include="Scripts\Project\CarBuyDetails.js" />
     <Content Include="Scripts\Project\CarSell.js" />
