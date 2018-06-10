@@ -15,7 +15,8 @@ var vue = new Vue({
             car_length: '', //工资待遇
             car_style: '',//驾驶类型
             goods_type: "",//驾驶路线
-			other_remark: "",//其它补充
+            other_remark: "",//其它补充
+            use_mode:'个人',//招聘类型
 			contact_name: "",//联系人
 			contact_phone: "",//联系电话
             set_top: "",//置顶类型  空不置顶 1分类 2全站

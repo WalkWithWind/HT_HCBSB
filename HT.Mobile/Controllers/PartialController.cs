@@ -15,6 +15,10 @@ namespace HT.Mobile.Controllers
         {
             return View();
         }
+        public ActionResult PartialTest()
+        {
+            return View();
+        }
         #region 广告
         /// <summary>
         /// 广告列表

@@ -5,7 +5,7 @@
 }
 @section styles{
     <link href="/Content/Project/Project.css" rel="stylesheet" />
-    <link href="/Content/Partial/Datepicker.css" rel="stylesheet" />
+    <link href="/Content/Partial/ScorllDatepicker.css" rel="stylesheet" />
 }
 <div class="main hide" v-bind:class="['show']">
     <div class="top">
@@ -66,8 +66,10 @@
             </dd>
             <dd>
                 <span>行驶证登记时间</span>
-                <datepicker v-bind:date="use_time" v-bind:limit="use_time_limit"></datepicker>
-                @*<input type="date" placeholder="请选择行驶证登记时间" required min="2000-01-01" max="2013-09-23" v-model="model.use_time">*@
+                <scorll-datepicker v-bind:value="model.use_time"
+                                   v-bind:option="{min:'2010-01-01',max:new Date().Format('yyyy-MM-dd'),placeholder:'请选择行驶证登记时间'}"
+                                   v-on:ok="model.use_time=$event">
+                </scorll-datepicker>
             </dd>
         </dl>
     </div>
@@ -86,8 +88,8 @@
         <ul>
             <li>
                 <span>车辆户型</span>
-                <input type="radio" name="name1" id="c" value="公司户" v-model="model.use_mode"><label for="c">公司户</label>
-                <input type="radio" name="name1" id="p" value="个人户" checked v-model="model.use_mode"><label for="p">个人户</label>
+                <input type="radio" name="name1" id="c" value="公司户" v-bind:checked="model.use_mode=='公司户'" v-on:click="model.use_mode='公司户'"><label for="c">公司户</label>
+                <input type="radio" name="name1" id="p" value="个人户" v-bind:checked="model.use_mode=='个人户'" v-on:click="model.use_mode='个人户'"><label for="p">个人户</label>
             </li>
             <li>
                 <span>能否提档</span>
@@ -188,7 +190,7 @@
                  v-bind:show-ob="select"
                  v-if="select.showCityStart">
     </city-dialog>
-    <input type="file" name="file" id="file" style="display:none;" v-on:change="fileChange" />
+    <input type="file" name="file" id="file" accept="image/png,image/jpg,image/jpeg" style="display:none;" v-on:change="fileChange" />
 </div>
 
 
@@ -200,7 +202,7 @@
     @Html.Action("Template", "Partial", new { id = "PinpaiDialog" })
     @Html.Action("Template", "Partial", new { id = "PostHelpDialog" })
     @Html.Action("Template", "Partial", new { id = "Contact" })
-    @Html.Action("Template", "Partial", new { id = "Datepicker" })
+    @Html.Action("Template", "Partial", new { id = "ScorllDatepicker" })
     <script>
         $(function () {
             var $dd = $(".pg_sec3 dd");
