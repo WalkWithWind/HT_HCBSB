@@ -63,7 +63,7 @@
                 </dd>
                 <dd>
                     <span>车辆所在地</span>
-                    <input type="text" placeholder="请选择车辆所在地" readonly="readonly" v-bind:value="(model.start_city+model.start_district)|stringRemove('')" v-on:click="select.showCityStart=true">
+                    <input type="text" placeholder="请选择车辆所在地" readonly="readonly" v-bind:value="model.start_city|cityFormart(model.start_district,model.start_province,'')" v-on:click="select.showCityStart=true">
                 </dd>
             </dl>
         </div>

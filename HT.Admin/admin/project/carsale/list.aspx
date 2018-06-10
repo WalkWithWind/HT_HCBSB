@@ -98,7 +98,7 @@
                     {{item.reward_money+'元'}}
 				</td>
 				<td align="center">
-                    {{(item.start_city+item.start_district)|stringRemove('')}}
+                    {{item.start_city|cityFormart(item.start_district,item.start_province,'所在地')}}
 				</td>
 
 				<td align="center">

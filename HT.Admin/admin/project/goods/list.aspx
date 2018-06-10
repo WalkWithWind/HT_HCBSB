@@ -100,11 +100,11 @@
                     {{item.reward_money+'元'}}
 				</td>
 				<td align="center">
-                    {{(item.start_city+item.start_district)|stringRemove('')}}
+                    {{item.start_city|cityFormart(item.start_district,item.start_province,'出发地')}}
 				</td>
 
 				<td align="center">
-                    {{(item.stop_city+item.stop_district)|stringRemove('')}}
+                    {{item.stop_city|cityFormart(item.stop_district,item.stop_province,'到达地')}}
 				</td>
 				<td align="center">{{item.use_time}}</td>
 				<td align="center">{{item.freight}}</td>

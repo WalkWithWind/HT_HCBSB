@@ -33,7 +33,7 @@
                     <dl>
                         <dt>籍贯：</dt>
                         <dd>
-                            <span>{{(newsData.stop_city+newsData.stop_city)|stringRemove('')}}</span>
+                            <span>{{newsData.stop_city|cityFormart(newsData.stop_district,newsData.stop_province,'籍贯')}}</span>
                         </dd>
                     </dl>
                     <dl>
@@ -43,7 +43,7 @@
                     <dl>
                         <dt>工作地点：</dt>
                         <dd>
-                            <span>{{(newsData.start_city+newsData.start_district)|stringRemove('')}}</span>
+                            <span>{{newsData.start_city|cityFormart(newsData.start_district,newsData.start_province,'工作地')}}</span>
                         </dd>
                     </dl>
                     <dl>

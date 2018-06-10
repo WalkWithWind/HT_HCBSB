@@ -45,9 +45,9 @@
                     <dl style="width:100%">
                         <dt>行驶路线：</dt>
                         <dd>
-                            <span>{{(newsData.start_city+newsData.start_district)|stringRemove('')}}</span>
+                            <span>{{newsData.start_city|cityFormart(newsData.start_district,newsData.start_province,'出发地')}}</span>
                             —
-                            <span>{{(newsData.stop_city+newsData.stop_district)|stringRemove('')}}</span>
+                            <span>{{newsData.stop_city|cityFormart(newsData.stop_district,newsData.stop_province,'到达地')}}</span>
                         </dd>
                     </dl>
                     <dl style="width:100%;">

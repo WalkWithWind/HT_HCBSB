@@ -102,9 +102,8 @@
                     {{item.reward_money+'元'}}
 				</td>
 				<td align="center">
-                    {{(item.start_city+item.start_district)|stringRemove('')}}
+                    {{item.start_city|cityFormart(item.start_district,item.start_province,'工作地')}}
 				</td>
-
 				<td align="center">{{item.recruit_num}}
 				</td>
 				<td align="center">

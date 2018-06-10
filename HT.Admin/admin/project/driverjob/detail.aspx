@@ -71,13 +71,13 @@
 			<dl>
                 <dt>工作地区</dt>
                 <dd>
-                    {{(newsData.start_city+newsData.start_district)|stringRemove('')}}
+                    {{newsData.start_city|cityFormart(newsData.start_district,newsData.start_province,'工作地')}}
                 </dd>
             </dl>
 		    <dl>
                 <dt>籍贯</dt>
                 <dd>
-                    {{(newsData.stop_city+newsData.stop_district)|stringRemove('')}}
+                    {{newsData.stop_city|cityFormart(newsData.stop_district,newsData.stop_province,'籍贯')}}
                 </dd>
             </dl>
 
