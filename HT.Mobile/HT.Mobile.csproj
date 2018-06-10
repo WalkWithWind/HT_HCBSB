@@ -279,6 +279,8 @@
     <Content Include="Scripts\Project\CarSourceDetails.js" />
     <Content Include="Scripts\Project\Job.js" />
     <Content Include="Scripts\Project\JobDetails.js" />
+    <Content Include="Scripts\Project\EditPostGoods.js" />
+    <Content Include="Scripts\Project\EditPostCarBuy.js" />
     <Content Include="Scripts\Project\PostTemplate.js" />
     <Content Include="Scripts\Project\PostCarBuy.js" />
     <Content Include="Scripts\Project\PostCarSell.js" />
@@ -376,6 +378,13 @@
     <Content Include="Views\Partial\Datepicker.cshtml" />
     <Content Include="Views\Partial\ScorllDatepicker.cshtml" />
     <Content Include="Views\Partial\PartialTest.cshtml" />
+    <Content Include="Views\Project\EditPostCars.cshtml" />
+    <Content Include="Views\Project\EditPostRecruit.cshtml" />
+    <Content Include="Views\Project\EditPostJob.cshtml" />
+    <Content Include="Views\Project\EditPostCarSell.cshtml" />
+    <Content Include="Views\Project\EditPostCarBuy.cshtml" />
+    <Content Include="Views\Project\EditPostTemplate.cshtml" />
+    <Content Include="Views\Project\EditPostGoods.cshtml" />
     <None Include="Views\WX\PayFail.cshtml" />
   </ItemGroup>
   <ItemGroup>
