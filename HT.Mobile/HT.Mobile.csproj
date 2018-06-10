@@ -249,7 +249,6 @@
     <Content Include="images\img\img02.jpg" />
     <Content Include="images\img\img03.jpg" />
     <Content Include="images\img\img04.jpg" />
-    <Content Include="lib\ThoughtWorks.QRCode.dll" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
@@ -277,6 +276,8 @@
     <Content Include="Scripts\layer\theme\default\loading-2.gif" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\photoswipe\bigImg.js" />
+    <Content Include="Scripts\photoswipe\big_img.js" />
     <Content Include="Scripts\photoswipe\default-skin.css" />
     <Content Include="Scripts\photoswipe\photoswipe-ui-default.min.js" />
     <Content Include="Scripts\photoswipe\photoswipe.css" />
