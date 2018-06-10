@@ -104,7 +104,7 @@ var vue = new Vue({
                 dataType: 'json',
                 success: function (resp) {
                     if (resp.status) {
-                        if (configName == 'top_cate_money') { _this.top_cate_money = parseFloat(resp.result) };
+                        if (configName == 'top_cate_money') { _this.top_cate_money = parseFloat(resp.result); _this.topCate(); };                          
                         if (configName == 'top_all_money') { _this.top_all_money = parseFloat(resp.result) };
                         if (configName == 'pub_amount_day') { _this.validity_unit_day_money = parseFloat(resp.result) };
                         if (configName == 'pub_amount_month') { _this.validity_unit_month_money = parseFloat(resp.result) };

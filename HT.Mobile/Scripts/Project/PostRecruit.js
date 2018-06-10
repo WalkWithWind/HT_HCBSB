@@ -95,7 +95,7 @@ var vue = new Vue({
                 dataType: 'json',
                 success: function (resp) {
                     if (resp.status) {
-                        if (configName == 'top_cate_money') { _this.top_cate_money = parseFloat(resp.result); };
+                        if (configName == 'top_cate_money') { _this.top_cate_money = parseFloat(resp.result); _this.topCate(); };                          
                         if (configName == 'top_all_money') { _this.top_all_money = parseFloat(resp.result); };
 
                         if (configName == 'pub_job_amount') { _this.pub_job_amount = parseFloat(resp.result); };
