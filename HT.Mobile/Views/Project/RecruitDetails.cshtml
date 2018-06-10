@@ -41,7 +41,7 @@
                     <dl>
                         <dt>工作地点：</dt>
                         <dd>
-                            <span>{{(newsData.start_city+newsData.start_district)|stringRemove('')}}</span>
+                            <span>{{newsData.start_city|cityFormart(newsData.start_district,newsData.start_province,'工作地')}}</span>
                         </dd>
                     </dl>
                     <dl>

@@ -46,7 +46,7 @@
                     </dl>
                     <dl>
                         <dt>车辆地区：</dt>
-                        <dd>{{(newsData.start_city+newsData.start_district)|stringRemove('')}}</dd>
+                        <dd>{{newsData.start_city|cityFormart(newsData.start_district,newsData.start_province,'车辆地区')}}</dd>
                     </dl>
                     <dl style="width:100%;">
                         <dt class="other-text">其他：</dt>

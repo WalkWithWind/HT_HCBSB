@@ -103,11 +103,11 @@
                     {{item.reward_money+'元'}}
 				</td>
 				<td align="center">
-                    {{(item.start_city+item.start_district)|stringRemove('')}}
+                    {{item.start_city|cityFormart(item.start_district,item.start_province,'工作地')}}
 				</td>
 
 				<td align="center">
-                    {{(item.stop_city+item.stop_district)|stringRemove('')}}
+                    {{item.stop_city|cityFormart(item.stop_district,item.stop_province,'籍贯')}}
 				</td>
 				<td align="center">
                     <span v-if="item.status==0 && item.pay_status==0">待支付</span>

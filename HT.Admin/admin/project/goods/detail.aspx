@@ -71,14 +71,13 @@
 			<dl>
                 <dt>出发地</dt>
                 <dd>
-                  
-                    {{(newsData.start_city+newsData.start_district)|stringRemove('')}}
+                    {{newsData.start_city|cityFormart(newsData.start_district,newsData.start_province,'出发地')}}
                 </dd>
             </dl>
 		    <dl>
                 <dt>到达地</dt>
                 <dd>
-                    {{(newsData.stop_city+newsData.stop_district)|stringRemove('')}}
+                    {{newsData.stop_city|cityFormart(newsData.stop_district,newsData.stop_province,'到达地')}}
                 </dd>
             </dl>
 

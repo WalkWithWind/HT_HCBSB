@@ -4,30 +4,57 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section styles{
-    <link href="/Content/Partial/ScorllDatepicker.css" rel="stylesheet" />
 }
 <div class="main">
     <div class="form">
         <div class="pg_sec2 pg_sec5">
-            <dl>
-                <dd>
-                    <span>时间选择</span>
-                    <scorll-datepicker v-bind:value="time" v-bind:option="{min:'2014-01-01',max:'2019-01-01',placeholder:'请选择时间'}"></scorll-datepicker>
-                </dd>
-            </dl>
+            <input class="getGeoData" type="button" value="整理省市区数据源" />
         </div>
     </div>
 </div>
 @section scripts{
-    @Html.Action("Template", "Partial", new { id = "ScorllDatepicker" })
+    <script src="~/Scripts/geo.js"></script>
     <script>
-        var listVm = new Vue({
-            el: '.main',
-            data: {
-                time: '2018-06-04',
-                isLoading: false
-            }
-        });
+        $(function () {
+            var nations = ["汉族", "蒙古族", "回族", "藏族", "维吾尔族", "苗族", "彝族", "壮族", "布依族", "朝鲜族", "满族", "侗族", "瑶族", "白族", "土家族",
+                "哈尼族", "哈萨克族", "傣族", "黎族", "傈僳族", "佤族", "畲族", "高山族", "拉祜族", "水族", "东乡族", "纳西族", "景颇族", "柯尔克孜族",
+                "土族", "达斡尔族", "仫佬族", "羌族", "布朗族", "撒拉族", "毛南族", "仡佬族", "锡伯族", "阿昌族", "普米族", "塔吉克族", "怒族", "乌孜别克族",
+                "俄罗斯族", "鄂温克族", "德昂族", "保安族", "裕固族", "京族", "塔塔尔族", "独龙族", "鄂伦春族", "赫哲族", "门巴族", "珞巴族", "基诺族"]; 
+            $('.getGeoData').click(function () {
+                var newDsy = { Items: {} };
+                for (key in dsy.Items) {
+                    newDsy.Items[key] = [];
+                    for (var i = 0; i < dsy.Items[key].length; i++) {
+                        var val = dsy.Items[key][i].replace(' ', '');
+                        if (!val) continue;
+                        if (newDsy.Items[key].indexOf(val) >= 0) continue;
+                        if (val.length <= 2) {
+                            newDsy.Items[key].push(val);
+                            continue;
+                        }
+                        val = val.replace('自治区', '');
+                        val = val.replace('自治县', '');
+                        val = val.replace('直辖市', '');
+                        for (var j = 0; j < nations.length; j++) {
+                            val = val.replace(nations[j], '');
+                        }
+                        val = val.replace('省', '');
+                        val = val.replace('市', '');
+                        val = val.replace('区', '');
+                        val = val.replace('县', '');
+                        val = val.replace('镇', '');
+                        if (newDsy.Items[key].indexOf(val) >= 0) continue;
+                        newDsy.Items[key].push(val);
+                    }
+                }
+
+                var txt = '';
+                for (key in newDsy.Items) {
+                    txt += 'dsy.add("' + key + '", ' + JSON.stringify(newDsy.Items[key]) + '); \n';
+                }
+                console.log(txt);
+            })
+        })
     </script>
 }
 
