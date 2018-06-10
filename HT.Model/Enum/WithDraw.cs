@@ -21,7 +21,12 @@ namespace HT.Model.Enum
         /// <summary>
         /// 审核不通过
         /// </summary>
-        NotPassAudit = 2
+        NotPassAudit = 2,
+
+        /// <summary>
+        /// 已打款
+        /// </summary>
+        MadeMoney =3,
 
 
     }

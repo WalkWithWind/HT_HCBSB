@@ -15,7 +15,15 @@ namespace HT.Admin.admin.api.audit.withdraw
         {
             int page = !string.IsNullOrEmpty(context.Request["pageindex"]) ? int.Parse(context.Request["pageindex"]) : 1;
             int rows = !string.IsNullOrEmpty(context.Request["pagesize"]) ? int.Parse(context.Request["pagesize"]) : 10;
-            var pageResult = HT.BLL.Admin.BLLUser.GetUserMoneyLogList(page, rows,(int)Model.Enum.UserMoneyDetails.WithDraw);
+            string status = context.Request["status"];
+
+            int? auditStatus = null;
+
+            if (!string.IsNullOrEmpty(status))
+            {
+                auditStatus = int.Parse(status);
+            }
+            var pageResult = HT.BLL.Admin.BLLUser.GetUserMoneyLogList(page, rows,(int)Model.Enum.UserMoneyDetails.WithDraw, auditStatus);
             foreach (var item in pageResult.list)
             {
                 HT.Model.ht_user user = BLL.BLLUser.GetUserById((int)item.userid);

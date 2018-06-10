@@ -51,6 +51,19 @@
 							    <li><a class="save" v-on:click="updateStatus(2)" ><i></i><span>审核不通过</span></a></li>
 							    <li><a class="save" v-on:click="MakeMoney()" ><i></i><span>打款</span></a></li>
 						    </ul>
+
+                            <div class="menu-list">
+                                <div class="rule-single-select">
+                                     <select onchange="onSelectVal(this)">
+                                         <option value="">请选择审核状态</option>
+                                         <option value="0">待审核</option>
+                                         <option value="1">审核通过</option>
+                                         <option value="2">审核不通过</option>
+                                         <option value="3">已罚款</option>
+                                    </select>						
+                                </div>
+                                </div>
+
 					    </div>
 					<%--    <div class="r-list">
 						    <input name="txtKeywords" type="text" v-model="keyword" v-on:keyup.13="search()" id="txtKeywords" class="keyword" />
@@ -124,7 +137,10 @@
     <script type="text/javascript">
 
         var url = "/admin/api/audit/withdraw/list.ashx";
-
+        function onSelectVal(obj) {
+            commVm._data.status = $(obj).val();
+            commVm.selectVal();
+        }
         var commVm = new Vue({
             el: '.maindiv',
             data: {
@@ -132,6 +148,7 @@
                 selectAllText: "全选",
                 dataList: [],
                 total: 0,
+                status: "",
                 keyword:'',
                 pageindex: 1,
                 pagesize: 10,
@@ -148,7 +165,8 @@
 
                     var reqData = {
                         pageindex: _this.pageindex,
-                        pagesize: _this.pagesize
+                        pagesize: _this.pagesize,
+                        status: _this.status
                     };
 
                     $.ajax({
@@ -197,6 +215,12 @@
                 //    _this.pageindex = 1;
                 //    _this.loadData();
                 //},
+
+                selectVal: function () {
+                    var _this = this;
+                    //console.log('this.status', this.status);
+                    _this.loadData();
+                },
                 selectAllChange: function () {
                     this.selectAll = !this.selectAll;
                     if (this.selectAll) {
