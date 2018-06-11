@@ -4,160 +4,179 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section styles{
-    <link href="/Scripts/photoswipe/photoswipe.css" rel="stylesheet" />
-    <link href="/Scripts/photoswipe/default-skin.css" rel="stylesheet" />
+    @Styles.Render("/Scripts/photoswipe/photoswipe.css", 
+    "/Scripts/photoswipe/default-skin/default-skin.css")
+    <style type="text/css">
+    .swiper-slide img {
+        max-width: 100%;
+        max-height: 100%;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+    .pswp__button--zoom {
+        display: block;
+    }
+
+    .pswp__button--share {
+        display: none;
+    }
+    </style>
 }
 @Html.Partial("_Header")
 
-<div class="details hide" v-bind:class="[{'show':newsData.id}]">
-    <ul class="ind_sec1_ul car_item">
-        <li>
-            <div class="wrapper padding0">
-                <div class="ind_main_t padding3">
-                    <div class="use">
-                        <a href="car-source-details.asp">
-                            <div class="img">
-                                <img v-bind:src="newsData.add_avatar">
-                            </div>
-                            <div class="txt">
-                                <span v-text="newsData.add_nickname"></span>
-                                <p>
-                                    <i class="lab1" v-show="newsData.set_top>0">置顶</i>
-                                    <i class="lab2">二手车出售</i>
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="ind_main_m padding3">
-                    <p v-text="newsData.other_remark"></p>
-                </div>
-                <div class="zhc_container swiper-container" v-if="imgs && imgs.length>0">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide" v-for="img in imgs">
-                            <img v-bind:src="img" style="min-height: 2rem;display:block;">
+    <div class="details hide" v-bind:class="[{'show':newsData.id}]">
+        <ul class="ind_sec1_ul car_item">
+            <li>
+                <div class="wrapper padding0">
+                    <div class="ind_main_t padding3">
+                        <div class="use">
+                            <a href="car-source-details.asp">
+                                <div class="img">
+                                    <img v-bind:src="newsData.add_avatar">
+                                </div>
+                                <div class="txt">
+                                    <span v-text="newsData.add_nickname"></span>
+                                    <p>
+                                        <i class="lab1" v-show="newsData.set_top>0">置顶</i>
+                                        <i class="lab2">二手车出售</i>
+                                    </p>
+                                </div>
+                            </a>
                         </div>
                     </div>
-                    <div class="swiper-button-prev swiper-button-white" v-if="imgs.length>1"></div>
-                    <div class="swiper-button-next swiper-button-white" v-if="imgs.length>1"></div>
-                    <div class="swiper-pagination"></div>
-                </div>
-                <div class="details_main padding3">
-                    <dl>
-                        <dt>价格：</dt>
-                        <dd v-text="newsData.freight+'万'"></dd>
-                    </dl>
-                    <dl>
-                        <dt>品牌：</dt>
-                        <dd v-text="newsData.use_type"></dd>
-                    </dl>
-                    <dl>
-                        <dt>车型：</dt>
-                        <dd v-text="newsData.car_style"></dd>
-                    </dl>
-                    <dl>
-                        <dt>马力：</dt>
-                        <dd v-text="newsData.goods_weight+'马力'"></dd>
-                    </dl>
-                    <dl>
-                        <dt>排放标准：</dt>
-                        <dd v-text="newsData.car_length"></dd>
-                    </dl>
-                    <dl>
-                        <dt>车辆所在地：</dt>
-                        <dd>{{newsData.start_city|cityFormart(newsData.start_district,newsData.start_province,'车辆所在地')}}</dd>
-                    </dl>
-                    <dl>
-                        <dt>车辆户型：</dt>
-                        <dd v-text="newsData.use_mode"></dd>
-                    </dl>
-                    <dl>
-                        <dt>能否提档：</dt>
-                        <dd v-text="newsData.goods_type"></dd>
-                    </dl>
-                    <dl>
-                        <dt>行驶证登记时间：</dt>
-                        <dd>
-                            {{newsData.use_time}}
-                        </dd>
-                    </dl>
-                    <dl style="width:100%;">
-                        <dt class="other-text">其他：</dt>
-                        <dd class="other-remark" v-text="newsData.other_remark"></dd>
-                    </dl>
-                </div>
-                <div class="ind_time">
-                    {{newsData.update_time|dateFormart('更新')}}
-                </div>
-                <div class="ind_flo">
+                    <div class="ind_main_m padding3">
+                        <p v-text="newsData.other_remark"></p>
+                    </div>
+                    <div class="zhc_container swiper-container" v-bind:style="{height:wWidth+'px'}" v-if="imgs && imgs.length>0">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide" v-for="img in imgs">
+                                <img v-bind:src="img" style="min-height: 2rem;display:block;">
+                            </div>
+                        </div>
+                        <div class="swiper-button-prev swiper-button-white" v-if="imgs.length>1"></div>
+                        <div class="swiper-button-next swiper-button-white" v-if="imgs.length>1"></div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <div class="details_main padding3">
+                        <dl>
+                            <dt>价格：</dt>
+                            <dd v-text="newsData.freight+'万'"></dd>
+                        </dl>
+                        <dl>
+                            <dt>品牌：</dt>
+                            <dd v-text="newsData.use_type"></dd>
+                        </dl>
+                        <dl>
+                            <dt>车型：</dt>
+                            <dd v-text="newsData.car_style"></dd>
+                        </dl>
+                        <dl>
+                            <dt>马力：</dt>
+                            <dd v-text="newsData.goods_weight+'马力'"></dd>
+                        </dl>
+                        <dl>
+                            <dt>排放标准：</dt>
+                            <dd v-text="newsData.car_length"></dd>
+                        </dl>
+                        <dl>
+                            <dt>车辆所在地：</dt>
+                            <dd>{{newsData.start_city|cityFormart(newsData.start_district,newsData.start_province,'车辆所在地')}}</dd>
+                        </dl>
+                        <dl>
+                            <dt>车辆户型：</dt>
+                            <dd v-text="newsData.use_mode"></dd>
+                        </dl>
+                        <dl>
+                            <dt>能否提档：</dt>
+                            <dd v-text="newsData.goods_type"></dd>
+                        </dl>
+                        <dl>
+                            <dt>行驶证登记时间：</dt>
+                            <dd>
+                                {{newsData.use_time}}
+                            </dd>
+                        </dl>
+                        <dl style="width:100%;">
+                            <dt class="other-text">其他：</dt>
+                            <dd class="other-remark" v-text="newsData.other_remark"></dd>
+                        </dl>
+                    </div>
+                    <div class="ind_time">
+                        {{newsData.update_time|dateFormart('更新')}}
+                    </div>
+                    <div class="ind_flo">
 
+                    </div>
                 </div>
+            </li>
+        </ul>
+        <!--联系人-->
+        <div class="eld_item2">
+            <div class="wrapper">
+                <dl>
+                    <dt>联系电话</dt>
+                    <dd>
+                        <span v-text="newsData.contact_phone"></span>
+                        <a class="btn" v-bind:href="'tel://'+newsData.contact_phone"><img src="/images/icon/icon12.png">打电话</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>联系人</dt>
+                    <dd>
+                        <span v-text="newsData.contact_name"></span>
+                    </dd>
+                </dl>
             </div>
-        </li>
-    </ul>
-    <!--联系人-->
-    <div class="eld_item2">
-        <div class="wrapper">
-            <dl>
-                <dt>联系电话</dt>
-                <dd>
-                    <span v-text="newsData.contact_phone"></span>
-                    <a class="btn" v-bind:href="'tel://'+newsData.contact_phone"><img src="/images/icon/icon12.png">打电话</a>
-                </dd>
-            </dl>
-            <dl>
-                <dt>联系人</dt>
-                <dd>
-                    <span v-text="newsData.contact_name"></span>
-                </dd>
-            </dl>
         </div>
-    </div>
-    <!-- 广告 -->
-    @Html.Action("AdList", "Partial", new { code = "details_carsell_banner" })
-    <details-component v-bind:id="id" v-bind:news-data="newsData"></details-component>
-
-    <!-- 大图 -->
-    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="pswp__bg"></div>
-        <div class="pswp__scroll-wrap">
-            <div class="pswp__container">
-                <div class="pswp__item"></div>
-                <div class="pswp__item"></div>
-                <div class="pswp__item"></div>
-            </div>
-            <div class="pswp__ui pswp__ui--hidden">
-                <div class="pswp__top-bar">
-                    <div class="pswp__counter"></div>
-                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-                    <button class="pswp__button pswp__button--share" title="Share"></button>
-                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-                    <div class="pswp__preloader">
-                        <div class="pswp__preloader__icn">
-                            <div class="pswp__preloader__cut">
-                                <div class="pswp__preloader__donut"></div>
+        <!-- 广告 -->
+        @Html.Action("AdList", "Partial", new { code = "details_carsell_banner" })
+        <details-component v-bind:id="id" v-bind:news-data="newsData"></details-component>
+        <!--大图-->
+        <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="pswp__bg"></div>
+            <div class="pswp__scroll-wrap">
+                <div class="pswp__container">
+                    <div class="pswp__item"></div>
+                    <div class="pswp__item"></div>
+                    <div class="pswp__item"></div>
+                </div>
+                <div class="pswp__ui pswp__ui--hidden">
+                    <div class="pswp__top-bar">
+                        <div class="pswp__counter"></div>
+                        <button class="pswp__button pswp__button--close" title="关闭"></button>
+                        <button class="pswp__button pswp__button--share" title="分享"></button>
+                        <button class="pswp__button pswp__button--fs" title="全屏"></button>
+                        <button class="pswp__button pswp__button--zoom" title="缩放"></button>
+                        <div class="pswp__preloader">
+                            <div class="pswp__preloader__icn">
+                                <div class="pswp__preloader__cut">
+                                    <div class="pswp__preloader__donut"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                    <div class="pswp__share-tooltip"></div>
-                </div>
-                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"> </button>
-                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"> </button>
-                <div class="pswp__caption">
-                    <div class="pswp__caption__center"></div>
+                    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                        <div class="pswp__share-tooltip"></div>
+                    </div>
+                    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+                    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+                    <div class="pswp__caption">
+                        <div class="pswp__caption__center"></div>
+                    </div>
                 </div>
             </div>
         </div>
 
     </div>
-
-</div>
 @Html.Partial("_Footer")
 @section scripts{
     @Html.Action("Template", "Partial", new { id = "Details" })
-    @Scripts.Render("/Scripts/Project/CarSellDetails.js")
+    @Scripts.Render("/Scripts/photoswipe/photoswipe.min.js", 
+    "/Scripts/photoswipe/photoswipe-ui-default.min.js", 
+    "/Scripts/Project/CarSellDetails.js")
 
 }

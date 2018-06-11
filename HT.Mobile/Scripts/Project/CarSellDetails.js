@@ -4,14 +4,25 @@ var mainDetails = new Vue({
     data: {
         newsData: {},
         id: GetUrlParam('CarSellDetails', 0),
-        imgs:[],
+        imgs: [],
         newsSearchKey: {
             id: 0
         },
         relationSearchKey: {
             main_id: ''
         },
-        layerIndex: 0
+        layerIndex:0,
+        items: [],
+        imgobs: [],
+        gallery: 0,
+        loadItr: -1,
+        wWidth:0,
+        PhotoSwipeUI_Default: PhotoSwipeUI_Default
+    },
+    //呈现前构造数据
+    mounted: function () {
+        this.wWidth = $(window).width();
+        this.init();
     },
     methods: {
         init: function () {
@@ -33,16 +44,50 @@ var mainDetails = new Vue({
                         _this.newsData = resp.result;
                         if (_this.newsData.imgs) {
                             _this.imgs = _this.newsData.imgs.split(',');
+                            _this.imgs = [
+                                'http://www.17sucai.com/preview/4363/2017-09-05/%E8%BD%AE%E6%92%AD%E5%A4%A7%E5%9B%BE/images/a.jpg',
+                                'http://www.17sucai.com/preview/4363/2017-09-05/%E8%BD%AE%E6%92%AD%E5%A4%A7%E5%9B%BE/images/b.jpg',                                'http://www.17sucai.com/preview/4363/2017-09-05/%E8%BD%AE%E6%92%AD%E5%A4%A7%E5%9B%BE/images/c.jpg',                                'http://www.17sucai.com/preview/4363/2017-09-05/%E8%BD%AE%E6%92%AD%E5%A4%A7%E5%9B%BE/images/d.jpg'                            ];
+                            _this.initPhotoData();
                             _this.showSwiper();
                         }
-                        //console.log('_this.newsData', _this.newsData);
                     }
                 }
             });
         },
+        checkImgLoad: function () {
+            var _this = this;
+            var num = 0;
+            for (var i = 0; i < _this.imgobs.length; i++) {
+                if (_this.imgobs[i].width > 0 || _this.imgobs[i].height > 0) {
+                    _this.items[i].w = _this.imgobs[i].width;
+                    _this.items[i].h = _this.imgobs[i].height;
+                    num++;
+                }
+            }
+            if (num >= _this.imgobs.length) clearInterval(_this.loadItr);
+        },
+        initPhotoData: function () {
+            var _this = this;
+            if (_this.imgs.length > 0) {
+                for (var i = 0; i < _this.imgs.length; i++) {
+                    var _src = _this.imgs[i];
+                    _this.items[i] = { src: _src };
+                    // 创建对象
+                    _this.imgobs[i] = new Image();
+                    // 改变图片的src
+                    _this.imgobs[i].src = _src;
+                }
+                _this.loadItr = setInterval(_this.checkImgLoad);
+            }
+        },
+        openPhotoSwipe:function () {
+            var pswpElement = $('.pswp').get(0);
+            this.gallery = new PhotoSwipe(pswpElement, this.PhotoSwipeUI_Default, this.items, {});
+            this.gallery.init();
+        },
         showSwiper: function () {
             var _this = this;
-            //if (_this.imgs && _this.imgs.length > 1) {
+            if (_this.imgs && _this.imgs.length > 1) {
                 setTimeout(function () {
                     var mySwiper = new Swiper('.zhc_container.swiper-container', {
                         autoplay: 5000,
@@ -55,27 +100,17 @@ var mainDetails = new Vue({
                             type: 'fraction'
                         },
                         spaceBetween: 6,
-                        preventClicks: false,
-                        loop: true,
+                        loop: true
                     });
-                    //$('.zhc_container.swiper-container .swiper-slide img').click(function () {
-                    //    var ob = $(this).clone();
-                    //    $(ob).css('max-width', 'none');
-                    //    $(ob).css('display', 'block');
-                    //    var html = $(ob).prop("outerHTML")
-                    //    layer.open({
-                    //        type: 1,
-                    //        title: '图片',
-                    //        content: html,
-                    //        offset: 'lb',
-                    //        area: ['100%', '100%'],
-                    //        shade: 0.5,
-                    //        scrollbar: true,
-                    //        anim: 2
-                    //    });
-                    //});
+                    $('.zhc_container.swiper-container .swiper-slide img').click(function () {
+                        _this.openPhotoSwipe();
+                    });
                 }, 10);
-            //}
+            } else {
+                $('.zhc_container.swiper-container .swiper-slide img').click(function () {
+                    _this.openPhotoSwipe();
+                });
+            }
         },
         //点赞
         clickPraise: function (news) {
@@ -137,4 +172,3 @@ var mainDetails = new Vue({
 
     }
 });
-mainDetails.init();
