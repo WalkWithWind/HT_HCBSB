@@ -44,9 +44,6 @@ var mainDetails = new Vue({
                         _this.newsData = resp.result;
                         if (_this.newsData.imgs) {
                             _this.imgs = _this.newsData.imgs.split(',');
-                            _this.imgs = [
-                                'http://www.17sucai.com/preview/4363/2017-09-05/%E8%BD%AE%E6%92%AD%E5%A4%A7%E5%9B%BE/images/a.jpg',
-                                'http://www.17sucai.com/preview/4363/2017-09-05/%E8%BD%AE%E6%92%AD%E5%A4%A7%E5%9B%BE/images/b.jpg',                                'http://www.17sucai.com/preview/4363/2017-09-05/%E8%BD%AE%E6%92%AD%E5%A4%A7%E5%9B%BE/images/c.jpg',                                'http://www.17sucai.com/preview/4363/2017-09-05/%E8%BD%AE%E6%92%AD%E5%A4%A7%E5%9B%BE/images/d.jpg'                            ];
                             _this.initPhotoData();
                             _this.showSwiper();
                         }
