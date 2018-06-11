@@ -223,3 +223,6 @@ G:\工作\文档\货车百事帮\HT_HCBSB\HT.Admin\bin\MicroMessenger.dll
 G:\工作\文档\货车百事帮\HT_HCBSB\HT.Admin\bin\MicroMessenger.pdb
 C:\我走路带风\Project\HT_HCBSB\HT.Admin\bin\MicroMessenger.dll
 C:\我走路带风\Project\HT_HCBSB\HT.Admin\bin\MicroMessenger.pdb
+D:\Project\HCBSB\HT.Admin\bin\EntityFramework.Extended.dll
+D:\Project\HCBSB\HT.Admin\bin\EntityFramework.Extended.xml
+D:\Project\HCBSB\HT.Admin\bin\EntityFramework.Extended.dll.config

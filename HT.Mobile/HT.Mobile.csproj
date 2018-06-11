@@ -117,7 +117,7 @@
     </Reference>
     <Reference Include="ThoughtWorks.QRCode, Version=1.0.2774.19990, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\ThoughtWorks.QRCode.dll</HintPath>
+      <HintPath>DLL\ThoughtWorks.QRCode.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -406,6 +406,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="DLL\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Config\" />
