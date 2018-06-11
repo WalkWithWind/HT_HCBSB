@@ -69,14 +69,15 @@
 			<tr>
 				<th align="center" width="5%">选择</th>
 				<%--<th align="center" width="12%">标题</th>--%>
-				<th align="center" width="10%">联系人</th>
-				<th align="center" width="10%">联系电话</th>
+				<th align="center" width="8%">联系人</th>
+				<th align="center" width="8%">联系电话</th>
 				<th align="center" width="15%">发布时间</th>
 				<th align="center" width="15%">置顶金额</th>
 				<th align="center" width="10%">打赏金额</th>
 				<th align="center" width="10%">工作地区</th>
-				<th align="center" width="10%">招聘人数</th>
+				<th align="center" width="8%">招聘人数</th>
 				<th align="center" width="5%">状态</th>
+				<th align="center" width="6%">留言</th>
 				<th align="center">操作</th>
 			</tr>
 
@@ -111,6 +112,10 @@
                     <span v-if="item.status==0 && item.pay_status==1">待审核</span>
                     <span v-if="item.status==1">审核通过</span> 
                     <span v-if="item.status==2">审核不通过</span>
+				</td>
+				<td align="center">
+					<a v-if="item.review_s0" style="color:red;" v-bind:href="'/admin/review/list.aspx?type=comment&nid='+ item.id">留言({{item.review_s0}})</a>
+					<a v-if="!item.review_s0" v-bind:href="'/admin/review/list.aspx?type=comment&nid='+ item.id">留言</a>
 				</td>
 				<td align="center">
 					<a v-bind:href="'detail.aspx?id='+ item.id">详情</a>

@@ -13,6 +13,9 @@ var mainDetails = new Vue({
         },
         layerIndex: 0
     },
+    created: function () {
+        this.init();
+    },
     methods: {
         init: function () {
 
@@ -80,7 +83,6 @@ var mainDetails = new Vue({
                 }
             });
         },
-
         //取消点赞
         cancelClickPraise: function (news) {
             console.log('news', news);
@@ -110,7 +112,5 @@ var mainDetails = new Vue({
             });
 
         }
-
     }
 });
-mainDetails.init();

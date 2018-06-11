@@ -25,5 +25,10 @@ namespace HT.Model
         /// 是否我发布
         /// </summary>
         public bool? isme { get; set; }
+
+        /// <summary>
+        /// 待审核数
+        /// </summary>
+        public int? review_s0 { get; set; }
     }
 }

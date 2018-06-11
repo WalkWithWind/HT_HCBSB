@@ -1,5 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="list.aspx.cs" Inherits="HT.Admin.admin.project.carsale.list" %>
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="list.aspx.cs" Inherits="HT.Admin.admin.review.list" %>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -7,7 +6,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<title>车辆出售管理</title>
+	<title>留言管理</title>
 	<link href="/scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
 	<link href="/admin/skin/default/style.css" rel="stylesheet" type="text/css" />
     <link href="/css/pagination.css" rel="stylesheet" type="text/css" />
@@ -20,24 +19,20 @@
 			<a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
 			<a href="/admin/center.aspx" class="home"><i></i><span>首页</span></a>
 			<i class="arrow"></i>
-			<span>车辆出售管理</span>
+			<span>留言管理</span>
 		</div>
 		<!--/导航栏-->
-
 		<!--工具栏-->
 		<div class="toolbar-wrap">
 			<div id="floatHead" class="toolbar">
 				<div class="box-wrap">
 
 					<div class="l-list">
-
 						<ul class="icon-list">
 							<li><a class="all" v-on:click="selectAllChange()" ><i></i><span>{{selectAllText}}</span></a></li>
 							<li><a class="del" v-on:click="del()" ><i></i><span>删除</span></a></li>
 							<li><a class="del" v-on:click="updateStatus()" ><i></i><span>审核</span></a></li>
-							
 						</ul>
-
                         <div class="menu-list">
                             <div class="rule-single-select">
                                  <select onchange="onSelectVal(this)">
@@ -47,10 +42,7 @@
                                      <option value="2">审核不通过</option>
                                 </select>						
                             </div>
-							<input id="txtFromDate" class="input-date" onclick="WdatePicker()" /><span class="float-right">&nbsp;至&nbsp;</span><input id="txtToDate" class="input-date" onclick="WdatePicker()"  />
                         </div>
-
-						   
 					</div>
 					<div class="r-list">
 						<input name="txtKeywords" type="text" v-model="keyword" v-on:keyup.13="search()" id="txtKeywords" class="keyword" />
@@ -60,72 +52,42 @@
 			</div>
 		</div>
 		<!--/工具栏-->
-
-
-
 		<!--文字列表-->
 		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
-
 			<tr>
 				<th align="center" width="5%">选择</th>
-				<th align="center" width="8%">联系人</th>
-				<th align="center" width="8%">联系电话</th>
+				<th align="center" width="10%">留言人</th>
+				<th align="center">留言内容</th>
 				<th align="center" width="15%">发布时间</th>
-				<th align="center" width="10%">置顶金额</th>
-				<th align="center" width="10%">打赏金额</th>
-				<th align="center" width="15%">车辆所在地</th>
-				<th align="center" width="10%">品牌</th>
-				<th align="center" width="8%">状态</th>
-				<th align="center" width="6%">留言</th>
-				<th align="center">操作</th>
+				<th align="center" width="10%">状态</th>
+                <%if (type == "comment")
+                    {%>
+				<th align="center" width="10%">回复</th>
+                <%} %>
 			</tr>
-
 			<tr v-for="item in dataList">
-
 				<td align="center">
 					<span class="checkall" style="vertical-align: middle;">
 						<input id="rptList_chkId_0" type="checkbox" v-model="item.checked" /></span>
 				</td>
-				<td align="center">{{item.contact_name}}</td>
-				<td align="center">{{item.contact_phone}}</td>
+				<td align="center">{{item.nickname}}</td>
+				<td align="left" style="text-align:left;">{{item.review_content}}</td>
 				<td align="center">{{item.add_time|date}}</td>
 				<td align="center">
-                    {{item.set_top_money+'元'}}
-                    <span v-show="item.set_top==0">没有置顶</span>
-                    <span v-show="item.set_top==1">（分类置顶）</span>
-                    <span v-show="item.set_top==2">（全站置顶）</span>
-				</td>
-				<td align="center">
-                    {{item.reward_money+'元'}}
-				</td>
-				<td align="center">
-                    {{item.start_city|cityFormart(item.start_district,item.start_province,'所在地')}}
-				</td>
-
-				<td align="center">
-                    {{item.use_type}}
-				</td>
-				<td align="center">
-                    <span v-if="item.status==0 && item.pay_status==0">待支付</span>
-                    <span v-if="item.status==0 && item.pay_status==1">待审核</span>
+                    <span v-if="item.status==0">待审核</span>
                     <span v-if="item.status==1">审核通过</span> 
                     <span v-if="item.status==2">审核不通过</span>
 				</td>
+                <%if (type == "comment")
+                    {%>
 				<td align="center">
-					<a v-if="item.review_s0" style="color:red;" v-bind:href="'/admin/review/list.aspx?type=comment&nid='+ item.id">留言({{item.review_s0}})</a>
-					<a v-if="!item.review_s0" v-bind:href="'/admin/review/list.aspx?type=comment&nid='+ item.id">留言</a>
+					<a v-bind:href="'list.aspx?nid='+item.news_id+'&type=reply&pid='+ item.id">回复</a>
 				</td>
-				<td align="center">
-					<a v-bind:href="'detail.aspx?id='+ item.id">详情</a>
-				</td>
+                <%} %>
 			</tr>
-
-
 			<tr v-if="dataList.length==0">
 				<td align="center" colspan="11">暂无记录</td>
 			</tr>
-
-
 		</table>
 		<!--/文字列表-->
 
@@ -148,17 +110,14 @@
 	<script type="text/javascript" src="/scripts/laypage/1.2/laypage.js?v=1012"></script>
 	<script type="text/javascript" charset="utf-8" src="/admin/js/common.js"></script>
     <script type="text/javascript" charset="utf-8" src="/admin/js/vueFilter.js"></script>
-	<script src="/scripts/datepicker/WdatePicker.js"></script>
 	<script type="text/javascript">
 
-	var url = "/admin/api/project/list.ashx";
-        var delUrl = "/admin/api/project/delete.ashx";
-        function onSelectVal(obj) {
-            commVm._data.status = $(obj).val();
-            commVm.selectVal();
-        }
-
-
+	var url = "/admin/api/review/list.ashx";
+	var delUrl = "/admin/api/review/delete.ashx";
+    function onSelectVal(obj) {
+        commVm._data.status = $(obj).val();
+        commVm.selectVal();
+    }
 
 	var commVm = new Vue({
 		el: '.maindiv',
@@ -171,9 +130,9 @@
 			pagesize: 10,
 			keyword: "",
 			status: "",
-			fromDate: "",
-			toDate:"",
-            cateId: GetParm('id'),
+            type: "<%=type%>",
+            pid: GetParm('pid'),
+            nid: GetParm('nid'),
             totalPage: 0
 		},
 		methods: {
@@ -188,12 +147,11 @@
 					pageindex: _this.pageindex,
 					pagesize: _this.pagesize,
 					keyword: _this.keyword,
-					cate_id: _this.cateId,
+					news_id: _this.nid,
+					type: _this.type,
 					status: _this.status,
-					fromdate: $("#txtFromDate").val(),
-					todate: $("#txtToDate").val()
+					review_id: _this.pid
                 };
-                //console.log('reqData', reqData);
 				$.ajax({
 					type: 'post',
 					url: url,
@@ -260,7 +218,6 @@
             },
             selectVal: function () {
                 var _this = this;
-                //console.log('this.status', this.status);
                 _this.loadData();
             },
 			del: function () {
@@ -343,7 +300,7 @@
                         var ddsttaus = $(this.node).find('.ddstatus').val()
                         $.ajax({
                             type: 'post',
-                            url: '/admin/api/project/updatestatus.ashx',
+                            url: '/admin/api/review/updatestatus.ashx',
                             data: { ids: ids, status: ddsttaus },
                             dataType: 'json',
                             success: function (resp) {

@@ -49,6 +49,9 @@
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework.Extended, Version=6.0.0.0, Culture=neutral, PublicKeyToken=05b7e29bdd433584, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.Extended.6.1.0.168\lib\net45\EntityFramework.Extended.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
@@ -249,7 +252,6 @@
     <Content Include="images\img\img02.jpg" />
     <Content Include="images\img\img03.jpg" />
     <Content Include="images\img\img04.jpg" />
-    <Content Include="lib\ThoughtWorks.QRCode.dll" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
@@ -277,6 +279,8 @@
     <Content Include="Scripts\layer\theme\default\loading-2.gif" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\photoswipe\bigImg.js" />
+    <Content Include="Scripts\photoswipe\big_img.js" />
     <Content Include="Scripts\photoswipe\default-skin.css" />
     <Content Include="Scripts\photoswipe\photoswipe-ui-default.min.js" />
     <Content Include="Scripts\photoswipe\photoswipe.css" />
@@ -304,6 +308,8 @@
     <Content Include="Scripts\Project\TemplateDetails.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\swiper-4.3.2\swiper-4.3.2.min.css" />
+    <Content Include="Scripts\swiper-4.3.2\swiper-4.3.2.min.js" />
     <Content Include="Scripts\swiper\swiper.min.css" />
     <Content Include="Scripts\swiper\swiper.min.js" />
     <Content Include="Scripts\User\Issue.js" />

@@ -36,9 +36,7 @@ namespace HT.BLL
             using (Entities db = new Entities())
             {
                 db.Configuration.ProxyCreationEnabled = false;
-                var data = db.ht_review.Where(p => true);
-
-                var alldata = data;
+                var data = db.ht_review.Where(p => p.status == 1); //审核才出现
 
                 if (!string.IsNullOrWhiteSpace(searchKey.review_type)) data = data.Where(p => p.review_type == searchKey.review_type);
                 if (searchKey.news_id != 0) data = data.Where(p => p.news_id == searchKey.news_id);
@@ -46,7 +44,9 @@ namespace HT.BLL
                 pageModel.list =  data.Skip((page - 1) * rows).Take(rows).ToList();
                 foreach (var item in pageModel.list)
                 {
-                    item.reply_list = alldata.Where(p => p.review_id == item.id && p.review_type == "reply").ToList();
+                    item.reply_list = db.ht_review
+                        .Where(p => p.review_id == item.id && p.status == 1 && p.review_type == "reply")
+                        .OrderByDescending(p=>p.id).ToList();
                 }
                 pageModel.total = data.Count();
             }

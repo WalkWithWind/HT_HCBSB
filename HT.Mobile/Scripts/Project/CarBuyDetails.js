@@ -13,9 +13,11 @@ var mainDetails = new Vue({
         },
         layerIndex: 0
     },
+    created: function () {
+        this.init();
+    },
     methods: {
         init: function () {
-
             this.loadData();
         },
         //详情数据
@@ -98,4 +100,3 @@ var mainDetails = new Vue({
 
     }
 });
-mainDetails.init();
