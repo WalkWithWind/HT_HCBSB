@@ -114,7 +114,7 @@ namespace HT.Mobile.Controllers
                 XmlDocument xmlDoc = new XmlDocument();
                 xmlDoc.Load(Request.InputStream);
                 //全部参数
-                Dictionary<string, string> parametersAll = new Dictionary<string, string>();
+                SortedDictionary<string, string> parametersAll = new SortedDictionary<string, string>();
                 foreach (XmlElement item in xmlDoc.DocumentElement.ChildNodes)
                 {
                     string key = item.Name;
@@ -126,10 +126,6 @@ namespace HT.Mobile.Controllers
                     }
 
                 }
-                parametersAll = (from entry in parametersAll
-                                 orderby entry.Key ascending
-                                 select entry).ToDictionary(pair => pair.Key, pair => pair.Value);//全部参数排序
-
                 xmlDoc.Save(string.Format("E:\\WXPay\\{0}_Notify.xml", parametersAll["out_trade_no"]));//写入日志
                 if (MicroMessenger.CommonUtil.VerifySign(parametersAll, BLLConfig.Get("wx_mchsecret")))
                 {

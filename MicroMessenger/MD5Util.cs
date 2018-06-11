@@ -15,7 +15,12 @@ namespace MicroMessenger
     {
 
 
-        /** 获取大写的MD5签名结果 */
+        /// <summary>
+        /// 获取大写的MD5签名结果 
+        /// </summary>
+        /// <param name="encypStr">要加密的内容</param>
+        /// <param name="charset">编码</param>
+        /// <returns></returns>
         public static string GetMD5(string encypStr, string charset)
         {
             string retStr;

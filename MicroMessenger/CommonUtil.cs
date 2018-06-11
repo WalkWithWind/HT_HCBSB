@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
-using System.Runtime.CompilerServices;
 using System.Linq;
 
 namespace MicroMessenger
@@ -11,7 +7,11 @@ namespace MicroMessenger
 
     public class CommonUtil
     {
-
+        /// <summary>
+        /// 生成随机字符串
+        /// </summary>
+        /// <param name="length">长度</param>
+        /// <returns></returns>
         public static String CreateNoncestr(int length)
         {
             String chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -23,7 +23,10 @@ namespace MicroMessenger
             }
             return res;
         }
-
+        /// <summary>
+        /// 生成随机字符串
+        /// </summary>
+        /// <returns></returns>
         public static String CreateNoncestr()
         {
             String chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -35,8 +38,12 @@ namespace MicroMessenger
             }
             return res;
         }
-
-        public static string FormatQueryParaMap(Dictionary<string, string> parameters)
+        /// <summary>
+        /// 将参数拼接成key=value&key=value形式
+        /// </summary>
+        /// <param name="parameters">参数键值对</param>
+        /// <returns></returns>
+        public static string FormatQueryParaMap(SortedDictionary<string, string> parameters)
         {
 
             string buff = "";
@@ -64,9 +71,14 @@ namespace MicroMessenger
 
             return buff;
         }
-
-        public static string FormatBizQueryParaMap(Dictionary<string, string> paraMap,
-                bool urlencode)
+        /// <summary>
+        /// 将参数拼接成key=value&key=value形式
+        /// </summary>
+        /// <param name="paraMap">参数键值对</param>
+        /// <param name="urlEncode">编码</param>
+        /// <returns></returns>
+        public static string FormatBizQueryParaMap(SortedDictionary<string, string> paraMap,
+                bool urlEncode)
         {
 
             string buff = "";
@@ -80,7 +92,7 @@ namespace MicroMessenger
 
                         string key = pair.Key;
                         string val = pair.Value;
-                        if (urlencode)
+                        if (urlEncode)
                         {
                             val = System.Web.HttpUtility.UrlEncode(val);
                         }
@@ -100,7 +112,11 @@ namespace MicroMessenger
             }
             return buff;
         }
-
+        /// <summary>
+        /// 是否是数字
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
         public static bool IsNumeric(String str)
         {
             try
@@ -113,8 +129,12 @@ namespace MicroMessenger
                 return false;
             }
         }
-
-        public static string ArrayToXml(Dictionary<string, string> arr)
+        /// <summary>
+        /// 键值对转成xml
+        /// </summary>
+        /// <param name="arr"></param>
+        /// <returns></returns>
+        public static string ArrayToXml(SortedDictionary<string, string> arr)
         {
             String xml = "<xml>";
 
@@ -139,16 +159,14 @@ namespace MicroMessenger
         /// <summary>
         /// 微信支付验证签名
         /// </summary>
-        /// <param name="dicAll">接收到的所有参数</param>
+        /// <param name="dic">接收到的所有参数</param>
         /// <param name="key">商户 key</param>
         /// <returns></returns>
-        public static bool VerifySign(Dictionary<string, string> dicAll, string key)
+        public static bool VerifySign(SortedDictionary<string, string> dic, string key)
         {
-            //所有参数排序
-            dicAll = dicAll.OrderBy(p => p.Key).ToDictionary(pair => pair.Key, pair => pair.Value);
-            //验签参数
-            Dictionary<string, string> dicSign = dicAll.Where(p => !p.Key.Equals("sign")).ToDictionary(pair => pair.Key, pair => pair.Value);//sign 参数不参与签名
-            if (MD5SignUtil.VerifySignature(CommonUtil.FormatBizQueryParaMap(dicSign, false), dicAll["sign"], key))//验证签名
+            string sign = dic["sign"];
+            dic.Remove("sign");
+            if (MD5SignUtil.VerifySignature(FormatBizQueryParaMap(dic, false),sign, key))//验证签名
             {
                 return true;
             }
