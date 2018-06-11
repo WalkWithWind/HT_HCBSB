@@ -32,7 +32,7 @@ namespace MicroMessenger
                 string nonStr = CommonUtil.CreateNoncestr();//随机串
                 #region 获取微信支付预支付ID
                 //第一次签名
-                Dictionary<string, string> dicStep1 = new Dictionary<string, string>();
+                SortedDictionary<string, string> dicStep1 = new SortedDictionary<string, string>();
                 dicStep1.Add("appid", appId);
                 dicStep1.Add("body", !string.IsNullOrEmpty(body) ? body : string.Format("订单号:{0}", orderId));
                 dicStep1.Add("mch_id", mchId);
@@ -52,9 +52,9 @@ namespace MicroMessenger
                 }
                 string strTemp1 = CommonUtil.FormatBizQueryParaMap(dicStep1, false);
                 string sign = MD5SignUtil.Sign(strTemp1, key);
-                dicStep1 = (from entry in dicStep1
-                            orderby entry.Key ascending
-                            select entry).ToDictionary(pair => pair.Key, pair => pair.Value);
+                //dicStep1 = (from entry in dicStep1
+                //            orderby entry.Key ascending
+                //            select entry).ToDictionary(pair => pair.Key, pair => pair.Value);
                 dicStep1.Add("sign", sign);
                 string postData = CommonUtil.ArrayToXml(dicStep1);
                 string url = "https://api.mch.weixin.qq.com/pay/unifiedorder";
@@ -94,7 +94,7 @@ namespace MicroMessenger
                 wxPayReq.signType = "MD5";
                 wxPayReq.timeStamp = timesStamp;
                 //第二次签名
-                Dictionary<string, string> dicStep2 = new Dictionary<string, string>();
+                SortedDictionary<string, string> dicStep2 = new SortedDictionary<string, string>();
                 dicStep2.Add("appId", wxPayReq.appId);
                 dicStep2.Add("timeStamp", wxPayReq.timeStamp);
                 dicStep2.Add("nonceStr", wxPayReq.nonceStr);

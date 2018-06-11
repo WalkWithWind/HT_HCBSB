@@ -125,13 +125,23 @@ namespace HT.Mobile.Controllers
         {
             return View();
         }
+        /// <summary>
+        /// 修改发布货源信息
+        /// </summary>
+        /// <returns></returns>
+        [CheckFilter]
+        public ActionResult EditPostGoods(int id)
+        {
+            ViewBag.Id = id;
+            return View();
+        }
 
-		/// <summary>
-		/// 发布项目 货源信息
-		/// </summary>
-		/// <param name="model"></param>
-		/// <returns></returns>
-		[HttpPost]
+        /// <summary>
+        /// 发布项目 货源信息
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost]
 		[Authorize]
         [CheckFilter]
         public ActionResult PostSubmit(ht_news model)
@@ -154,6 +164,25 @@ namespace HT.Mobile.Controllers
 
 		}
         /// <summary>
+        /// 详情
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Authorize]
+        [CheckFilter]
+        public ActionResult Detail(int id)
+        {
+            var detail = BLLNews.Get(id);
+            var authenticationUser = BLLAuthentication.GetAuthenticationUser();
+            if (authenticationUser.id!=detail.add_userid)
+            {
+                return JsonResult(APIErrCode.OperateFail, "无权操作");
+            }
+            return JsonResult(APIErrCode.Success, "OK",detail );
+
+        }
+        
+        /// <summary>
         /// 删除
         /// </summary>
         /// <param name="id"></param>
@@ -170,6 +199,26 @@ namespace HT.Mobile.Controllers
                 return JsonResult(APIErrCode.OperateFail, "删除失败");
             }
         }
+
+        /// <summary>
+        /// 编辑
+        /// </summary>
+        /// <param name="ht_news"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult Edit(ht_news model)
+        {
+            if (BLLNews.Edit(model))
+            {
+                return JsonResult(APIErrCode.Success, "编辑成功");
+            }
+            else
+            {
+                return JsonResult(APIErrCode.OperateFail, "编辑失败");
+            }
+        }
+
+
         /// <summary>
         /// 我要置顶
         /// </summary>
@@ -202,12 +251,32 @@ namespace HT.Mobile.Controllers
             return View();
         }
         /// <summary>
+        /// 修改发布车源信息
+        /// </summary>
+        /// <returns></returns>
+        [CheckFilter]
+        public ActionResult EditPostCars(int id)
+        {
+            ViewBag.Id = id;
+            return View();
+        }
+        /// <summary>
         /// 发布招聘司机
         /// </summary>
         /// <returns></returns>
         [CheckFilter]
         public ActionResult PostRecruit()
         {
+            return View();
+        }
+        /// <summary>
+        /// 修改发布招聘司机
+        /// </summary>
+        /// <returns></returns>
+        [CheckFilter]
+        public ActionResult EditPostRecruit(int id)
+        {
+            ViewBag.Id = id;
             return View();
         }
         /// <summary>
@@ -220,6 +289,16 @@ namespace HT.Mobile.Controllers
             return View();
         }
         /// <summary>
+        ///  修改发布司机求职
+        /// </summary>
+        /// <returns></returns>
+        [CheckFilter]
+        public ActionResult EditPostJob(int id)
+        {
+            ViewBag.Id = id;
+            return View();
+        }
+        /// <summary>
         /// 发布车辆出售
         /// </summary>
         /// <returns></returns>
@@ -228,6 +307,17 @@ namespace HT.Mobile.Controllers
         {
             return View();
         }
+        /// <summary>
+        /// 修改发布车辆出售
+        /// </summary>
+        /// <returns></returns>
+        [CheckFilter]
+        public ActionResult EditPostCarSell(int id)
+        {
+            ViewBag.Id = id;
+            return View();
+        }
+
         /// <summary>
         /// 发布车辆求购
         /// </summary>
@@ -238,12 +328,32 @@ namespace HT.Mobile.Controllers
             return View();
         }
         /// <summary>
+        /// 修改发布车辆求购
+        /// </summary>
+        /// <returns></returns>
+        [CheckFilter]
+        public ActionResult EditPostCarBuy(int id)
+        {
+            ViewBag.Id = id;
+            return View();
+        }
+        /// <summary>
         /// 发布通用模板
         /// </summary>
         /// <returns></returns>
         [CheckFilter]
         public ActionResult PostTemplate()
         {
+            return View();
+        }
+        /// <summary>
+        /// 修改发布通用模板
+        /// </summary>
+        /// <returns></returns>
+        [CheckFilter]
+        public ActionResult EditPostTemplate(int id)
+        {
+            ViewBag.Id = id;
             return View();
         }
         #endregion 发布中心

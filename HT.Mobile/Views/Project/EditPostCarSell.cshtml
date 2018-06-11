@@ -1,0 +1,245 @@
+﻿
+@{
+    ViewBag.Title = "编辑-发布-卖车";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section styles{
+    <link href="/Content/Project/Project.css" rel="stylesheet" />
+    <link href="/Content/Partial/ScorllDatepicker.css" rel="stylesheet" />
+}
+<div class="main hide" v-bind:class="['show']">
+    <div class="top">
+        <div class="wrapper">
+            <a href="javascript:history.go(-1);" class="back_btn">返回</a>
+            @*<a href="javascript:void(0);" class="wdd">发布须知</a>*@
+            <post-help-dialog></post-help-dialog>
+        </div>
+    </div>
+    <div class="banner">
+        @Html.Action("AdList", "Partial", new { code = "push_carsell_banner" })
+    </div>
+    <div class="pg_sec1">
+        <ul class="">
+            <li class="li1">
+                <span>有效期</span>
+                <input type="text" placeholder="请输入有效期" v-model="model.validity_num">
+                <div class="ro_box">
+                    <input type="radio" value="天" id="day" checked v-model="model.validity_unit"><label for="day">天</label>
+                    <input type="radio" value="月" id="mounth" v-model="model.validity_unit"><label for="mounth">月</label>
+                </div>
+            </li>
+            <li>
+                <p>本类信息支付费用说明：{{validity_unit_day_money}}元/天，{{validity_unit_month_money}}元/月</p>
+            </li>
+        </ul>
+    </div>
+    <pinpai-dialog v-bind:ob="model"
+                   v-bind:pinpai="'use_type'"
+                   v-bind:box="'pinpai_box'"
+                   v-bind:box-title="'选择品牌'">
+    </pinpai-dialog>
+    <div class="pg_sec3 MB10">
+        <dl>
+            <dt>车型</dt>
+            <dd>
+
+                <a href="javascript:;" v-for="item in carStyleData"
+                   v-bind:class="[{ 'cur': item.title==model.car_style }]"
+                   v-text="item.title" v-on:click="model.car_style=item.title"></a>
+            </dd>
+        </dl>
+    </div>
+
+    <div class="pg_sec2">
+        <dl>
+            <dd>
+                <span>输入马力</span>
+                <input type="number" placeholder="请输入马力" v-model="model.goods_weight">
+            </dd>
+            <dd>
+                <span>出售价格</span>
+                <input type="text" placeholder="请输入价格（万元）" v-model="model.freight">
+            </dd>
+            <dd>
+                <span>车辆所在地</span>
+                <input type="text" placeholder="请选择车辆所在地" readonly="readonly" v-bind:value="model.start_city|cityFormart(model.start_district,model.start_province,'')" v-on:click="select.showCityStart=true">
+            </dd>
+            <dd>
+                <span>行驶证登记时间</span>
+                <scorll-datepicker v-bind:value="model.use_time"
+                                   v-bind:option="{min:'2010-01-01',max:new Date().Format('yyyy-MM-dd'),placeholder:'请选择行驶证登记时间'}"
+                                   v-on:ok="model.use_time=$event">
+                </scorll-datepicker>
+            </dd>
+        </dl>
+    </div>
+    <div class="pg_sec3 MB10">
+        <dl>
+            <dt>排放标准</dt>
+            <dd>
+                <a href="javascript:;" v-for="item in carLengthData"
+                   v-bind:class="[{ 'cur': item.title==model.car_length }]"
+                   v-text="item.title" v-on:click="model.car_length=item.title"></a>
+            </dd>
+        </dl>
+    </div>
+
+    <div class="pcs_sec2 MB10">
+        <ul>
+            <li>
+                <span>车辆户型</span>
+                <input type="radio" name="name1" id="c" value="公司户" v-bind:checked="model.use_mode=='公司户'" v-on:click="model.use_mode='公司户'"><label for="c">公司户</label>
+                <input type="radio" name="name1" id="p" value="个人户" v-bind:checked="model.use_mode=='个人户'" v-on:click="model.use_mode='个人户'"><label for="p">个人户</label>
+            </li>
+            <li>
+                <span>能否提档</span>
+                <input type="radio" name="name2" id="y" value="能" v-bind:checked="model.goods_type=='能'" v-on:click="model.goods_type='能'"><label for="y">能</label>
+                <input type="radio" name="name2" id="n" value="不能" v-bind:checked="model.goods_type=='不能'" v-on:click="model.goods_type='不能'"><label for="n">不能</label>
+            </li>
+        </ul>
+    </div>
+
+    <div class="pcs_sec3">
+        <span>图片上传</span>
+        <a href="javascript:void(0);">
+            <img class="upimg" v-for="item in imgsData" v-bind:src="item">
+            <img class="upimg" src="/images/icon/icon30.png" v-on:click="upload">
+        </a>
+        <em>最多上传5张图片</em>
+    </div>
+
+    <div class="pg_sec3 pg_sec6">
+        <dl>
+            <dt>其他补充</dt>
+            <dd>
+                <textarea placeholder="请填写其他补充信息" v-model="model.other_remark"></textarea>
+            </dd>
+        </dl>
+    </div>
+    <contact v-bind:ob="model" v-bind:name="'contact_name'" v-bind:phone="'contact_phone'"></contact>
+    <div class="pg_sec8 pg_sec9">
+        <dl>
+            <dt>增值服务</dt>
+            <dd v-bind:class="[{ 'active': model.set_top==1 }]">
+                <div class="pt1">
+                    <img src="/images/icon/icon27_1.png">
+                </div>
+                <div class="pt2">
+                    <span>分类置顶</span>
+                    <p>将在此分类也置顶显示，更能多人看到</p>
+                </div>
+                <div class="pt3">
+                    <span>{{top_cate_money}}元</span>
+                    <i v-on:click="topCate"></i>
+                </div>
+            </dd>
+            <dd v-bind:class="[{ 'active': model.set_top==2 }]">
+                <div class="pt1">
+                    <img src="/images/icon/icon27_2.png">
+                </div>
+                <div class="pt2">
+                    <span>全站置顶</span>
+                    <p>全站所有分类置顶显示，效果更好</p>
+                </div>
+                <div class="pt3">
+                    <span>{{top_all_money}}元</span>
+                    <i v-on:click="topAll"></i>
+                </div>
+            </dd>
+        </dl>
+    </div>
+
+    <div class="pg_sec8 pg_sec10">
+        <dl>
+            <dd>
+                <div class="pt1">
+                    <img src="/images/icon/icon27_3.png">
+                </div>
+                <div class="pt2">
+                    <span>打赏福利</span>
+                    <p>客服将优先多渠道推送</p>
+                </div>
+                <div class="pt3">
+                    <span>{{model.reward_money}}元</span>
+                    <i v-on:click="rewardClick"></i>
+                </div>
+                <div class="clear"></div>
+                <div class="pt4">
+                    <div class="txt_n">
+                        <a href="javascript:;" v-for="item in rewardMoneyData"
+                           v-bind:class="[{ 'cur': item.title==model.reward_money }]"
+                           v-text="item.title" v-on:click="model.reward_money=item.title"></a>
+                    </div>
+                    <p>
+                        <span>手动输入打赏金额</span>
+                        <input type="text" placeholder="请输入打赏金额" v-model="model.reward_money">
+                    </p>
+                </div>
+
+            </dd>
+        </dl>
+        <a v-on:click="submit" class="btn">确认发布（共支付<label class="total">{{model.total}}</label>元）</a>
+    </div>
+    <city-dialog v-bind:box="'start_box'"
+                 v-bind:box-title="'车辆所在地'"
+                 v-bind:ob="model"
+                 v-bind:province="'start_province'"
+                 v-bind:city="'start_city'"
+                 v-bind:district="'start_district'"
+                 v-bind:show-dialog="'showCityStart'"
+                 v-bind:show-ob="select"
+                 v-if="select.showCityStart">
+    </city-dialog>
+    <input type="file" name="file" id="file" accept="image/png,image/jpg,image/jpeg" style="display:none;" v-on:change="fileChange" />
+</div>
+
+
+@section scripts{
+    <script>
+     var id=@ViewBag.Id;
+    </script>
+    @Html.Partial("_CityJs")
+    @Scripts.Render("/Scripts/jquery.linq.min.js")
+    @Scripts.Render("/Scripts/Project/EditPostCarSell.js")
+    @Html.Action("Template", "Partial", new { id = "CityDialog" })
+    @Html.Action("Template", "Partial", new { id = "PinpaiDialog" })
+    @Html.Action("Template", "Partial", new { id = "PostHelpDialog" })
+    @Html.Action("Template", "Partial", new { id = "Contact" })
+    @Html.Action("Template", "Partial", new { id = "ScorllDatepicker" })
+    <script>
+        $(function () {
+            var $dd = $(".pg_sec3 dd");
+            $dd.each(function () {
+                $(this).find("a:not('.m_btn')").click(function () {
+                    $(this).addClass("cur").siblings("a:not('.m_btn')").removeClass("cur");
+                })
+            })
+        })
+
+        $(function () {
+            var $a = $(".pg_sec8 .pt4 .txt_n a");
+
+            $a.click(function () {
+                $(this).addClass("cur").siblings().removeClass("cur");
+            })
+
+        })
+
+        $(function () {
+            var $dd = $(".pg_sec8 dl dd");
+            var $dd_t = $(".pg_sec10 dl dd")
+            $dd.each(function () {
+                $(this).find("i").click(function () {
+                    $(this).parents("dd").toggleClass("active").siblings().removeClass("active");
+                    (function () {
+                        if ($dd_t.hasClass("active")) {
+                            $(".pg_sec10 dl dd .pt4").show();
+                        } else {
+                            $(".pg_sec10 dl dd .pt4").hide();
+                        }
+                    }())
+                })
+            })
+        })
+    </script>
+}

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
 
 namespace MicroMessenger
 {
@@ -14,8 +11,8 @@ namespace MicroMessenger
         /// <summary>
         /// 生成签名
         /// </summary>
-        /// <param name="content"></param>
-        /// <param name="key"></param>
+        /// <param name="content">要加密的内容</param>
+        /// <param name="key">密钥</param>
         /// <returns></returns>
         public static String Sign(String content, String key)
         {
@@ -29,9 +26,9 @@ namespace MicroMessenger
         /// <summary>
         /// 通知验签
         /// </summary>
-        /// <param name="content"></param>
-        /// <param name="sign"></param>
-        /// <param name="parnerKey"></param>
+        /// <param name="content">内容</param>
+        /// <param name="sign">签名</param>
+        /// <param name="parnerKey">密钥</param>
         /// <returns></returns>
         public static bool VerifySignature(String content, String sign,
                 String parnerKey)

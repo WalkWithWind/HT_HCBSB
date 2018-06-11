@@ -362,6 +362,84 @@ namespace HT.BLL
             }
         }
         /// <summary>
+        /// 编辑
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public static bool Edit(ht_news model)
+        {
+            using (Entities db = new Entities())
+            {
+                var detailSource = new ht_news();
+                var detail = db.ht_news.Single(p=>p.id==model.id);
+                detailSource = detail;
+               
+                detail.add_time = detailSource.add_time;
+                detail.update_time = DateTime.Now;
+                //model.id: 178
+                //model.cateid: 1
+                //model.cate: 有货找车
+                // model.title: 
+                //model.description:
+                detail.contact_name = model.contact_name;
+                detail.contact_phone = model.contact_phone;
+                detail.validity_num = model.validity_num;
+                detail.validity_unit = model.validity_unit;
+                detail.start_province = model.start_province;
+                detail.start_city = model.start_city;
+                detail.start_district = model.start_district;
+                detail.start_address = model.start_address;
+                detail.stop_province = model.stop_province;
+                detail.stop_city = model.stop_city;
+                detail.stop_district = model.stop_district;
+                detail.stop_address = model.stop_address;
+                detail.tags = model.tags;
+                detail.use_type = model.use_type;
+                detail.use_img = model.use_img;
+                detail.car_length = model.car_length;
+                detail.car_style = model.car_style;
+                detail.goods_type = model.goods_type;
+                detail.goods_weight = model.goods_weight;
+                detail.goods_weight_unit = model.goods_weight_unit;
+                detail.freight = model.freight;
+                detail.use_time = model.use_time;
+                detail.use_mode = model.use_mode;
+                detail.other_remark = model.other_remark;
+                detail.set_top = model.set_top;
+                detail.set_top_money = model.set_top_money;
+                detail.reward_money = model.reward_money;
+                detail.recruit_num = model.recruit_num;
+                detail.imgs = model.imgs;
+                detail.total = model.total;
+                detail.update_time = DateTime.Now;
+                // detail.pay_method = model.
+                //detail.add_userid = model.
+                //detail.add_nickname = model.
+                //detail.add_avatar = model.
+                //detail.add_time = model.
+                //detail.update_userid = model.
+                //detail.update_nickname = model.
+                //detail.audit_userid = model.
+                //detail.audit_nickname = model.
+                //detail.audit_time = model.
+                //detail.status: 0
+                //detail.pay:
+                //detail.pay_status: 0
+                //detail.pay_time:
+                //detail.pay_trade_no:
+                //detail.order_no: B20180610175715607351974764
+                //detail.view_num: 0
+                //detail.praise_num: 0
+                //detail.share_num: 0
+                //detail.is_delete: 0
+                //detail.is_praise: false
+                //detail.expire:
+                //detail.recommend:
+                //detail.isme:
+                return db.SaveChanges() > 0;
+            }
+        }
+        /// <summary>
         /// 余额支付
         /// </summary>
         /// <param name="order_no">订单号</param>
@@ -442,7 +520,20 @@ namespace HT.BLL
 
             }
         }
+        /// <summary>
+        /// 详情
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static ht_news Get(int id)
+        {
+            using (Entities db = new Entities())
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                return db.ht_news.Find(id);
 
+            }
+        }
         /// <summary>
         /// 
         /// </summary>

@@ -117,7 +117,7 @@
     </Reference>
     <Reference Include="ThoughtWorks.QRCode, Version=1.0.2774.19990, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\ThoughtWorks.QRCode.dll</HintPath>
+      <HintPath>DLL\ThoughtWorks.QRCode.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -296,6 +296,13 @@
     <Content Include="Scripts\Project\CarSourceDetails.js" />
     <Content Include="Scripts\Project\Job.js" />
     <Content Include="Scripts\Project\JobDetails.js" />
+    <Content Include="Scripts\Project\EditPostGoods.js" />
+    <Content Include="Scripts\Project\EditPostCarBuy.js" />
+    <Content Include="Scripts\Project\EditPostCars.js" />
+    <Content Include="Scripts\Project\EditPostCarSell.js" />
+    <Content Include="Scripts\Project\EditPostJob.js" />
+    <Content Include="Scripts\Project\EditPostRecruit.js" />
+    <Content Include="Scripts\Project\EditPostTemplate.js" />
     <Content Include="Scripts\Project\PostTemplate.js" />
     <Content Include="Scripts\Project\PostCarBuy.js" />
     <Content Include="Scripts\Project\PostCarSell.js" />
@@ -395,11 +402,19 @@
     <Content Include="Views\Partial\Datepicker.cshtml" />
     <Content Include="Views\Partial\ScorllDatepicker.cshtml" />
     <Content Include="Views\Partial\PartialTest.cshtml" />
+    <Content Include="Views\Project\EditPostCars.cshtml" />
     <Content Include="Views\Partial\UseTimepicker.cshtml" />
+    <Content Include="Views\Project\EditPostRecruit.cshtml" />
+    <Content Include="Views\Project\EditPostJob.cshtml" />
+    <Content Include="Views\Project\EditPostCarSell.cshtml" />
+    <Content Include="Views\Project\EditPostCarBuy.cshtml" />
+    <Content Include="Views\Project\EditPostTemplate.cshtml" />
+    <Content Include="Views\Project\EditPostGoods.cshtml" />
     <None Include="Views\WX\PayFail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="DLL\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Config\" />

@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MicroMessenger
+﻿namespace MicroMessenger
 {
     /// <summary>
     /// 微信支付请求对象
     /// </summary>
-   public class WXPayRequest
+    public class WXPayRequest
     {
         /// <summary>
         /// 公众号 appid
