@@ -65,7 +65,7 @@
 			<dl>
                 <dt>车辆所在地</dt>
                 <dd>
-                    {{(newsData.start_city+newsData.start_district)|stringRemove('')}}
+                    {{newsData.start_city|cityFormart(newsData.start_district,newsData.start_province,'所在地')}}
                 </dd>
             </dl>
 

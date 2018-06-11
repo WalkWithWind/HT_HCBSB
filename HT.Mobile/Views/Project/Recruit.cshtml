@@ -11,7 +11,7 @@
     <div class="el_top">
         <div class="wrapper">
             <ul class="el_top_ul">
-                <li style="width: 40%;"><a class="start_city" v-on:click="select.showCity=true"><span>{{(searchKey.start_city+searchKey.start_district)|stringRemove('工作地区')}}</span><i></i></a></li>
+                <li style="width: 40%;"><a class="start_city" v-on:click="select.showCity=true"><span>{{searchKey.start_city|cityFormart(searchKey.start_district,searchKey.start_province,'工作地区')}}</span><i></i></a></li>
                 <li style="width: 30%;"><a class="use_type" v-on:click="showUseType()"><span v-text="(searchKey.use_type==''?'驾照':searchKey.use_type)">驾照</span><i></i></a></li>
                 <li style="width: 30%;"><a class="more" v-on:click="showCarStyle()"><span>更多</span><i></i></a></li>
             </ul>
@@ -39,7 +39,8 @@
                  v-bind:district="'start_district'"
                  v-bind:show-dialog="'showCity'"
                  v-bind:show-ob="select"
-                 v-bind:has-all-district="true"
+                 v-bind:has-all-district="true" 
+                 v-bind:has-all-city="true"  
                  v-if="select.showCity"
                  v-on:end="confirm()">
     </city-dialog>

@@ -93,6 +93,11 @@
         height: .8rem;
         line-height: .8rem;
     }
+        .m-picker-item .m-scroller-item.sel {
+            color: #62a2dd;
+            font-weight: 600;
+        }
+
 
     .m-picker-item .m-scroller-mask {
         position: absolute;

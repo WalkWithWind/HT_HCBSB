@@ -37,11 +37,11 @@
                 <dt> 车源路线</dt>
                 <dd>
                     <span>出发地</span>
-                    <input type="text" placeholder="请选择出发地" readonly="readonly" v-bind:value="(model.start_city+model.start_district)|stringRemove('')" v-on:click="select.showCityStart=true">
+                    <input type="text" placeholder="请选择出发地" readonly="readonly" v-bind:value="model.start_city|cityFormart(model.start_district,model.start_province,'')" v-on:click="select.showCityStart=true">
                 </dd>
                 <dd>
                     <span>到达地</span>
-                    <input type="text" placeholder="请选择到达地" readonly="readonly" v-bind:value="(model.stop_city+model.stop_district)|stringRemove('')" v-on:click="select.showCityStop=true">
+                    <input type="text" placeholder="请选择到达地" readonly="readonly" v-bind:value="model.stop_city|cityFormart(model.stop_district,model.stop_province,'')" v-on:click="select.showCityStop=true">
                 </dd>
             </dl>
         </div>

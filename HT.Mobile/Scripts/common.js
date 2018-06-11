@@ -3,7 +3,9 @@ $(function () {
     if ($('.banner .swiper-container').get(0) != null) {
         var mySwiper = new Swiper('.banner .swiper-container', {
             autoplay: 5000,
-            pagination: '.banner .swiper-pagination',
+            pagination: {
+                el: '.banner .swiper-pagination'
+            },
             loop: true,
         })
     }

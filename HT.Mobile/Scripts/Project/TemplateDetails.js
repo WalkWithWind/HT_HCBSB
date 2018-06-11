@@ -13,6 +13,9 @@ var mainDetails = new Vue({
         },
         layerIndex: 0
     },
+    created: function () {
+        this.init();
+    },
     methods: {
         init: function () {
 
@@ -71,12 +74,15 @@ var mainDetails = new Vue({
                         news.praise_num++;
 
                     } else {
-                        alert(resp.msg);
+                        if (resp.code == 10035) {
+                            window.location.href = "/User/Mobile?url=" + encodeURI(window.location.href);
+                        } else {
+                            alert(resp.msg);
+                        }
                     }
                 }
             });
         },
-
         //取消点赞
         cancelClickPraise: function (news) {
             console.log('news', news);
@@ -96,13 +102,15 @@ var mainDetails = new Vue({
                         news.praise_num--;
 
                     } else {
-                        alert(resp.msg);
+                        if (resp.code == 10035) {
+                            window.location.href = "/User/Mobile?url=" + encodeURI(window.location.href);
+                        } else {
+                            alert(resp.msg);
+                        }
                     }
                 }
             });
 
         }
-
     }
 });
-mainDetails.init();

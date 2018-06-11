@@ -11,21 +11,29 @@
         <div class="pg_sec2 pg_sec5">
             <dl>
                 <dd>
-                    <span>时间选择</span>
-                    <scorll-datepicker v-bind:value="time" v-bind:option="{min:'2014-01-01',max:'2019-01-01',placeholder:'请选择时间'}"></scorll-datepicker>
+                    <span>装车时间</span>
+                    <usetime-picker v-bind:ob="model" v-bind:obkey="'use_time'" v-bind:option="{placeholder:'点击选择装车时间'}"></usetime-picker>
                 </dd>
             </dl>
         </div>
+        <input type="button" value="test" v-on:click="test" />
     </div>
 </div>
 @section scripts{
-    @Html.Action("Template", "Partial", new { id = "ScorllDatepicker" })
+    @Html.Action("Template", "Partial", new { id = "UseTimepicker" })
     <script>
         var listVm = new Vue({
             el: '.main',
             data: {
-                time: '2018-06-04',
-                isLoading: false
+                model: {
+                    use_time: ''
+                }
+            },
+            methods: {
+                test: function () {
+                    console.log(this.model);
+                    console.log(this.model.use_time);
+                }
             }
         });
     </script>

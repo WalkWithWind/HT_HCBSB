@@ -3,11 +3,13 @@
         <ul class="zhx_box_title tab-title">
             <li v-bind:class="[{'active':selectTab==0}]"
                 v-on:click="selectTabProvince()">
-                <a href="javascript:;">省</a>
+                <a href="javascript:;" v-if="!ob[province]">省</a>
+                <a href="javascript:;" v-if="ob[province]" v-text="ob[province]"></a>
             </li>
             <li v-bind:class="[{'active':selectTab==1}]"
                 v-on:click="selectTabCity()">
-                <a href="javascript:;">市</a>
+                <a href="javascript:;" v-if="!ob[city]">市</a>
+                <a href="javascript:;" v-if="ob[city]" v-text="ob[city]"></a>
             </li>
             <li v-bind:class="[{'active':selectTab==2}]"
                 v-on:click="selectTabDistrict()">
@@ -26,7 +28,7 @@
         <div v-bind:class="['city','clearfix','tab-content',{'hide':selectTab!=1}]"
              v-if="ob[province]!=''">
             <a href="javascript:;" v-bind:class="[{ 'active':''==ob[city] }]" v-if="hasAllCity" v-on:click="selectCity('')">
-                {{('全'+ob[province])|stringRemove('全市')}}
+                {{('全'+ob[province])|stringRemove('全省')}}
             </a>
             <a href="javascript:;" v-for="item in cityData.getCitysByProvince(ob[province])"
                v-bind:class="[{ 'active':item==ob[city] }]"

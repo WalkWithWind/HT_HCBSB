@@ -26,7 +26,7 @@
                     </div>
                 </li>
             </ul>
-            <a href="javascript:void(0);" v-on:click="loadMoreReview()" class="more_btn">加载更多</a>
+            <a href="javascript:void(0);" v-on:click="loadMoreReview()" v-if="reviewData.list<reviewData.total" class="more_btn">加载更多</a>
         </div>
 
         <!-- 打电话 -->
@@ -62,7 +62,7 @@
             id: {},
             newsData: {}
         },
-        data() {
+        data: function () {
             return {
                 reviewData: {
                     total: 0,
@@ -93,7 +93,7 @@
                 isLoading: false
             };
         },
-        created() {
+        created: function () {
             this.init();
         },
         methods: {
@@ -117,8 +117,13 @@
                         _this.isLoading = false;
                         if (resp.status) {
                             for (var i = 0; i < resp.result.list.length; i++) {
-                                resp.result.list[i].classOpen = false;
-                                resp.result.list[i].classText = '全文';
+                                if (resp.result.list[i].review_content && resp.result.list[i].review_content.length > 50) {
+                                    resp.result.list[i].classOpen = false;
+                                    resp.result.list[i].classText = '全文';
+                                } else {
+                                    resp.result.list[i].classOpen = true;
+                                    resp.result.list[i].classText = '';
+                                }
                             }
                             _this.reviewData.list = _this.reviewData.list.concat(resp.result.list);
                             _this.reviewData.total = resp.result.total;
@@ -173,8 +178,13 @@
                             layer.close(_this.layerIndex);
                             alert(resp.msg);
                             if (resp.result) {
-                                resp.result.classOpen = false;
-                                resp.result.classText = '全文';
+                                if (resp.result.review_content && resp.result.review_content.length > 50) {
+                                    resp.result.classOpen = false;
+                                    resp.result.classText = '全文';
+                                } else {
+                                    resp.result.classOpen = true;
+                                    resp.result.classText = '';
+                                }
                                 _this.reviewInfo.review_content = '';
                                 if (_this.reviewInfo.review_type == 'comment') {
                                     _this.reviewData.list.insert(0, resp.result);

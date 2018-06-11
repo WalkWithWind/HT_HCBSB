@@ -15,15 +15,7 @@ var mainDetails = new Vue({
     },
     methods: {
         init: function () {
-
             this.loadData();
-
-
-           
-
-           
-
-
         },
         //详情数据
         loadData: function () {
@@ -49,17 +41,41 @@ var mainDetails = new Vue({
             });
         },
         showSwiper: function () {
-            setTimeout(function () {
-                var mySwiper = new Swiper('.zhc_container.swiper-container', {
-                    autoplay: 5000,
-                    prevButton: '.swiper-button-next',
-                    nextButton:'.swiper-button-prev',
-                    pagination: '.zhc_container .swiper-pagination',
-                    paginationType: 'fraction',
-                    spaceBetween: 6,
-                    loop: true,
-                })
-            }, 10);
+            var _this = this;
+            //if (_this.imgs && _this.imgs.length > 1) {
+                setTimeout(function () {
+                    var mySwiper = new Swiper('.zhc_container.swiper-container', {
+                        autoplay: 5000,
+                        navigation: {
+                            nextEl: '.zhc_container .swiper-button-next',
+                            prevEl: '.zhc_container .swiper-button-prev',
+                        },
+                        pagination: {
+                            el: '.zhc_container .swiper-pagination',
+                            type: 'fraction'
+                        },
+                        spaceBetween: 6,
+                        preventClicks: false,
+                        loop: true,
+                    });
+                    //$('.zhc_container.swiper-container .swiper-slide img').click(function () {
+                    //    var ob = $(this).clone();
+                    //    $(ob).css('max-width', 'none');
+                    //    $(ob).css('display', 'block');
+                    //    var html = $(ob).prop("outerHTML")
+                    //    layer.open({
+                    //        type: 1,
+                    //        title: '图片',
+                    //        content: html,
+                    //        offset: 'lb',
+                    //        area: ['100%', '100%'],
+                    //        shade: 0.5,
+                    //        scrollbar: true,
+                    //        anim: 2
+                    //    });
+                    //});
+                }, 10);
+            //}
         },
         //点赞
         clickPraise: function (news) {
@@ -79,7 +95,11 @@ var mainDetails = new Vue({
                         news.praise_num++;
 
                     } else {
-                        alert(resp.msg);
+                        if (resp.code == 10035) {
+                            window.location.href = "/User/Mobile?url=" + encodeURI(window.location.href);
+                        } else {
+                            alert(resp.msg);
+                        }
                     }
                 }
             });
@@ -104,7 +124,11 @@ var mainDetails = new Vue({
                         news.praise_num--;
 
                     } else {
-                        alert(resp.msg);
+                        if (resp.code == 10035) {
+                            window.location.href = "/User/Mobile?url=" + encodeURI(window.location.href);
+                        } else {
+                            alert(resp.msg);
+                        }
                     }
                 }
             });

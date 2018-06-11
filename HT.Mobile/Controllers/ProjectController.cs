@@ -220,6 +220,28 @@ namespace HT.Mobile.Controllers
 
 
         /// <summary>
+        /// 我要置顶
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult UpdteSetTop(int id,int set_top,decimal money)
+        {
+            string orderno = string.Empty;
+            if (BLLNews.UpdateSetTop(id, set_top, money,out orderno))
+            {
+                apiResp.msg = "置顶成功";
+                apiResp.result = orderno;
+                apiResp.status = true;
+            }
+            else
+            {
+                apiResp.msg = "置顶失败";
+                apiResp.status = true;
+            }
+            return Json(apiResp);
+        }
+
+        /// <summary>
         /// 发布车源信息
         /// </summary>
         /// <returns></returns>

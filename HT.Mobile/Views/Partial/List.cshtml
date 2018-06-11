@@ -6,9 +6,9 @@
                 <div class="infor">
                     <a v-bind:href="'/Project/GoodsSourceDetails/'+item.id">
                         <div class="infor_p1 bold">
-                            <span>{{(item.start_city+item.start_district)|stringRemove('出发地')}}</span>
+                                <span>{{item.start_city|cityFormart(item.start_district,item.start_province,'出发地')}}</span>
                             <i></i><!-- 中间的箭头符号 -->
-                            <span>{{(item.stop_city+item.stop_district)|stringRemove('到达地')}}</span>
+                                <span>{{item.stop_city|cityFormart(item.stop_district,item.stop_province,'到达地')}}</span>
                             <em v-if="item.set_top>0">置顶</em>
                         </div>
                         <div class="infor_p2">
@@ -81,7 +81,9 @@
                 </div>
             </div>
             <div class="ind_main_m">
-                <p v-text="item.other_remark"></p>
+                <a v-bind:href="'/Project/CarSourceDetails/'+item.id">
+                    <p v-text="item.other_remark"></p>
+                </a>
             </div>
             <div class="ind_lab">
                 <i class="lab1" v-if="item.use_type" v-text="item.use_type"></i>
@@ -141,12 +143,14 @@
                 </div>
             </div>
             <div class="ind_main_m">
-                @*<p v-text="item.other_remark"></p>*@
+                <a v-bind:href="'/Project/RecruitDetails/'+item.id">
+                    <p v-text="item.other_remark"></p>
+                </a>
             </div>
             <div class="ind_lab">
                 <a v-bind:href="'/Project/RecruitDetails/'+item.id">
                     <i class="lab1" v-if="item.use_type" v-text="item.use_type"></i>
-                    <i class="lab2" v-if="item.start_city">{{(item.start_city+item.start_district)|stringRemove('')}}</i>
+                    <i class="lab2" v-if="item.start_city">{{item.start_city|cityFormart(item.start_district,item.start_province,'工作地')}}</i>
                     <i class="lab3" v-if="item.goods_type" v-text="item.goods_type"></i>
                     <i class="lab4" v-if="item.car_style" v-text="item.car_style"></i>
                     <i class="lab3" v-if="item.car_length" v-text="item.car_length"></i>
@@ -204,7 +208,9 @@
                 </div>
             </div>
             <div class="ind_main_m">
-                <p v-text="item.other_remark"></p>
+                <a v-bind:href="'/Project/JobDetails/'+item.id">
+                    <p v-text="item.other_remark"></p>
+                </a>
             </div>
             <div class="ind_lab">
                 <i class="lab1" v-if="item.use_type" v-text="item.use_type"></i>
@@ -264,7 +270,9 @@
                 </div>
             </div>
             <div class="ind_main_m">
-                <p v-text="item.other_remark"></p>
+                <a v-bind:href="'/Project/CarSellDetails/'+item.id">
+                    <p v-text="item.other_remark"></p>
+                </a>
             </div>
             <div class="ind_lab">
                 <i class="lab1" v-if="item.freight">{{item.freight}}万</i>
@@ -329,7 +337,9 @@
                 </div>
             </div>
             <div class="ind_main_m">
-                <p v-text="item.other_remark"></p>
+                <a v-bind:href="'/Project/CarBuyDetails/'+item.id">
+                    <p v-text="item.other_remark"></p>
+                </a>
             </div>
             <div class="ind_lab">
                 <i class="lab2" v-if="item.start_city" v-text="item.start_city"></i>
@@ -389,7 +399,9 @@
                 </div>
             </div>
             <div class="ind_main_m">
-                <p v-text="item.other_remark"></p>
+                <a v-bind:href="'/Project/TemplateDetails/'+item.id">
+                    <p v-text="item.other_remark"></p>
+                </a>
             </div>
             <div class="ind_lab" v-if="item.tags">
                 <i class="lab1" v-if="tag" v-text="tag" v-for="tag in item.tags.split(',')"></i>
@@ -453,7 +465,11 @@
                             item.praise_num++;
 
                         } else {
-                            alert(resp.msg);
+                            if (resp.code == 10035) {
+                                window.location.href = "/User/Mobile?url=" + encodeURI(window.location.href);
+                            } else {
+                                alert(resp.msg);
+                            }
                         }
                     }
                 });
@@ -479,7 +495,11 @@
                             item.praise_num--;
 
                         } else {
-                            alert(resp.msg);
+                            if (resp.code == 10035) {
+                                window.location.href = "/User/Mobile?url=" + encodeURI(window.location.href);
+                            } else {
+                                alert(resp.msg);
+                            }
                         }
                     }
                 });

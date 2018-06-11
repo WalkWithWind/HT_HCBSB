@@ -3,6 +3,10 @@
     ViewBag.Title = "出售详情";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section styles{
+    <link href="/Scripts/photoswipe/photoswipe.css" rel="stylesheet" />
+    <link href="/Scripts/photoswipe/default-skin.css" rel="stylesheet" />
+}
 @Html.Partial("_Header")
 
 <div class="details hide" v-bind:class="[{'show':newsData.id}]">
@@ -28,14 +32,14 @@
                 <div class="ind_main_m padding3">
                     <p v-text="newsData.other_remark"></p>
                 </div>
-                <div class="zhc_container swiper-container">
+                <div class="zhc_container swiper-container" v-if="imgs && imgs.length>0">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide" v-for="img in imgs">
-                            <img v-bind:src="img">
+                            <img v-bind:src="img" style="min-height: 2rem;display:block;">
                         </div>
                     </div>
-                    <div class="swiper-button-prev swiper-button-white"></div>
-                    <div class="swiper-button-next swiper-button-white"></div>
+                    <div class="swiper-button-prev swiper-button-white" v-if="imgs.length>1"></div>
+                    <div class="swiper-button-next swiper-button-white" v-if="imgs.length>1"></div>
                     <div class="swiper-pagination"></div>
                 </div>
                 <div class="details_main padding3">
@@ -61,7 +65,7 @@
                     </dl>
                     <dl>
                         <dt>车辆所在地：</dt>
-                        <dd>{{(newsData.start_city+newsData.start_district)|stringRemove('')}}</dd>
+                        <dd>{{newsData.start_city|cityFormart(newsData.start_district,newsData.start_province,'车辆所在地')}}</dd>
                     </dl>
                     <dl>
                         <dt>车辆户型：</dt>
@@ -112,6 +116,44 @@
     <!-- 广告 -->
     @Html.Action("AdList", "Partial", new { code = "details_carsell_banner" })
     <details-component v-bind:id="id" v-bind:news-data="newsData"></details-component>
+
+    <!-- 大图 -->
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="pswp__bg"></div>
+        <div class="pswp__scroll-wrap">
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+            <div class="pswp__ui pswp__ui--hidden">
+                <div class="pswp__top-bar">
+                    <div class="pswp__counter"></div>
+                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                    <button class="pswp__button pswp__button--share" title="Share"></button>
+                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div>
+                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"> </button>
+                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"> </button>
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
 </div>
 @Html.Partial("_Footer")
 @section scripts{

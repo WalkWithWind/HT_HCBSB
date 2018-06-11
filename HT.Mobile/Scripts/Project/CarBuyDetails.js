@@ -13,9 +13,11 @@ var mainDetails = new Vue({
         },
         layerIndex: 0
     },
+    created: function () {
+        this.init();
+    },
     methods: {
         init: function () {
-
             this.loadData();
         },
         //详情数据
@@ -56,7 +58,11 @@ var mainDetails = new Vue({
                         news.praise_num++;
 
                     } else {
-                        alert(resp.msg);
+                        if (resp.code == 10035) {
+                            window.location.href = "/User/Mobile?url=" + encodeURI(window.location.href);
+                        } else {
+                            alert(resp.msg);
+                        }
                     }
                 }
             });
@@ -81,7 +87,11 @@ var mainDetails = new Vue({
                         news.praise_num--;
 
                     } else {
-                        alert(resp.msg);
+                        if (resp.code == 10035) {
+                            window.location.href = "/User/Mobile?url=" + encodeURI(window.location.href);
+                        } else {
+                            alert(resp.msg);
+                        }
                     }
                 }
             });
@@ -90,4 +100,3 @@ var mainDetails = new Vue({
 
     }
 });
-mainDetails.init();

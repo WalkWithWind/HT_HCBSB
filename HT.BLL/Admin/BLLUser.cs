@@ -58,7 +58,7 @@ namespace HT.BLL.Admin
         /// <param name="type"></param>
         /// <returns></returns>
 
-        public static HT.Model.Model.PageResult<ht_user_money_log> GetUserMoneyLogList(int pageIndex,int pageSize,int type)
+        public static HT.Model.Model.PageResult<ht_user_money_log> GetUserMoneyLogList(int pageIndex,int pageSize,int type,int? status =null)
         {
             HT.Model.Model.PageResult<ht_user_money_log> pageModel = new HT.Model.Model.PageResult<ht_user_money_log>();
             using (Entities db = new Entities())
@@ -69,6 +69,11 @@ namespace HT.BLL.Admin
                 if (type>0)
                 {
                     userMoneyList = userMoneyList.Where(r => r.type == type);
+                }
+
+                if (status.HasValue)
+                {
+                    userMoneyList = userMoneyList.Where(r => r.status == status);
                 }
                 int total = userMoneyList.Count();
 
@@ -92,7 +97,22 @@ namespace HT.BLL.Admin
             {
                 db.ht_user_money_log.Where(p => ids.Contains(p.id)).ToList().ForEach(item => {
                     item.status = status;
+
+                    if (status == (int)Model.Enum.WithDraw.NotPassAudit)
+                    {
+                        db.ht_user.Find(item.userid).money -= item.money;
+
+                        ht_user_money_log model = new ht_user_money_log();
+                        model.addtime = DateTime.Now;
+                        model.userid = item.userid;
+                        model.remark = "余额提现审核未通过" ;
+                        model.money = item.money * -1;
+                        model.type = (int)Model.Enum.UserMoneyDetails.RefundMoney;
+                        model.status = 0;
+                        db.ht_user_money_log.Add(model);
+                    }
                 });
+
                 if (db.SaveChanges() > 0)
                 {
                     return true;
@@ -101,6 +121,8 @@ namespace HT.BLL.Admin
                 {
                     return false;
                 }
+
+
             }
         }
     }

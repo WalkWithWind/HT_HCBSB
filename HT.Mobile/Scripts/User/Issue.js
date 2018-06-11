@@ -172,9 +172,8 @@
             var _this = this;
             _this.setTop.idx = idx;
             _this.setTop.id = id;
-            _this.setTop.set_top = 0;
-            _this.setTop.money = 0;
-
+            _this.setTop.set_top = 1;
+            _this.setTop.money = _this.top_cate_money;
             layer.open({
                 type: 1,
                 title: '请选择置顶',
@@ -198,6 +197,8 @@
         },
         confirmSetTop: function () {
             layer.closeAll();
+
+
             if (this.listData.list[this.setTop.idx].pay_status == 0) {
                 this.payUpdateSetTop();
             } else {
@@ -206,9 +207,32 @@
         },
         postUpdateSetTop: function () {
             layer.msg('还未支付修改置顶类型去支付页支付');
+
         },
         payUpdateSetTop: function () {
-            layer.msg('支付成功后置顶');
+            console.log('未支付 跳入支付页  /User/Pay/B20180610162542918471765854');
+
+            var _this = this;
+            var reqData = {
+                id: _this.setTop.id,
+                set_top: _this.setTop.set_top,
+                money: _this.setTop.money
+            };
+            _this.isLoading = true;
+            $.ajax({
+                type: 'post',
+                url: '/Project/UpdteSetTop',
+                data: reqData,
+                dataType: 'json',
+                success: function (resp) {
+                    _this.isLoading = false;
+                    if (resp.status) {
+                        window.location.href = '/User/Pay/' + resp.result;
+                    } else {
+                        alert(resp.msg);
+                    }
+                }
+            });
         }
     }
 });

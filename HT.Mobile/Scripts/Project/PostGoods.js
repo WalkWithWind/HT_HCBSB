@@ -50,14 +50,8 @@ var vue = new Vue({
         validity_unit_month_money: 0,// 发布费用 元/月
         select: {
             showCityStart: false,
-            showCityStop: false,
-            useTimeTab: 0
-        },
-        selectDay: '',
-        selectTime: '',
-        useDayData: ['随意日期'],
-        useTimeData: [],
-        useTimeTempData: ['( 00:00 - 06:00 )', '( 06:00 - 12:00 )', '( 12:00 - 18:00 )', '( 18:00 - 24:00 )']
+            showCityStop: false
+        }
     },
     watch: {
         'model.validity_num': function (val, oldval) {
@@ -77,12 +71,6 @@ var vue = new Vue({
         }
     },
     created: function() {
-        var curDate = new Date();
-        this.useDayData.push(curDate.Format('MM月dd日'));
-        for (var i = 1; i < 7; i++) {
-            curDate.setDate(curDate.getDate() + 1);
-            this.useDayData.push(curDate.Format('MM月dd日'));
-        }
         this.init();
     },
     methods: {
@@ -255,6 +243,8 @@ var vue = new Vue({
             _this.model.car_length = _this.carLenSelect.join(',');
             _this.model.car_style = _this.carStyleSelect.join(',');
             //confirm("提示", "确定发布", "发布", "取消", function () {
+            //console.log('_this.model', _this.model);
+            //return;
                 $.ajax({
                     type: 'post',
                     url: '/Project/PostSubmit',
@@ -308,40 +298,6 @@ var vue = new Vue({
                 }
                 this.carStyleSelect.push(item.title);
             }
-        },
-        showUseTime: function () {
-            layer.open({
-                type: 1,
-                title: '装车时间',
-                content: $('.use_time_box'),
-                offset: 'lb',
-                area: ['100%', '340px'],
-                shade: 0.5,
-                scrollbar: false,
-                anim: 2
-            });
-        },
-        selectUseTimeTab: function (num) {
-            if (num == 1 && this.selectDay == '') return;
-            this.select.useTimeTab = num;
-        },
-        selectUseDay: function (item,index) {
-            this.selectDay = item;
-            this.selectTime = '';
-            if (index == 1) {
-                var start = Math.floor(new Date().getHours() / 6);
-                this.useTimeData = this.useTimeTempData.slice(start);
-            } else {
-                this.useTimeData = this.useTimeTempData;
-            }
-            this.select.useTimeTab = 1;
-        },
-        selectUseTime: function (item) {
-            this.selectTime = item;
-        },
-        confirmUseTime: function () {
-            this.model.use_time = this.selectDay + ' ' + this.selectTime;
-            layer.closeAll();
         }
     }
 });
