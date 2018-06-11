@@ -295,6 +295,11 @@
     <Content Include="Scripts\Project\JobDetails.js" />
     <Content Include="Scripts\Project\EditPostGoods.js" />
     <Content Include="Scripts\Project\EditPostCarBuy.js" />
+    <Content Include="Scripts\Project\EditPostCars.js" />
+    <Content Include="Scripts\Project\EditPostCarSell.js" />
+    <Content Include="Scripts\Project\EditPostJob.js" />
+    <Content Include="Scripts\Project\EditPostRecruit.js" />
+    <Content Include="Scripts\Project\EditPostTemplate.js" />
     <Content Include="Scripts\Project\PostTemplate.js" />
     <Content Include="Scripts\Project\PostCarBuy.js" />
     <Content Include="Scripts\Project\PostCarSell.js" />

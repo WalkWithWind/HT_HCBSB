@@ -1,8 +1,220 @@
 ﻿
 @{
-    ViewBag.Title = "EditPostRecruit";
+    ViewBag.Title = "编辑-发布-招聘";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section styles{
+    <link href="/Content/Project/Project.css" rel="stylesheet" />
+}
 
-<h2>EditPostRecruit</h2>
+<div class="main hide" v-bind:class="['show']">
+    <div class="top">
+        <div class="wrapper">
+            <a href="javascript:history.go(-1);" class="back_btn">返回</a>
+            @*<a href="javascript:void(0);" class="wdd">发布须知</a>*@
+            <post-help-dialog></post-help-dialog>
+        </div>
+    </div>
+    <div class="banner">
+        @Html.Action("AdList", "Partial", new { code = "push_recruit_banner" })
+    </div>
+    <div class="pg_sec1">
+        <ul class="">
+            <li style="height:auto;padding: 10px 0px;color:#777;">
+                <span>本类信息发布需要支付费用：<label class="red">{{pub_job_amount}}</label>&nbsp;元<br />有效期至：{{validity_to_time_str}}</span>
+            </li>
+        </ul>
+    </div>
 
+    <div class="pg_sec2">
+        <dl>
+            <dd>
+                <span>招聘类型</span>
+                <input type="radio" name="name1" id="c" class="rdo-company" value="公司" v-bind:checked="model.use_mode=='公司'" v-on:click="model.use_mode='公司'"><label class="label-text" for="c">公司</label>
+                <input type="radio" name="name1" id="p" class="rdo-company" value="个人" v-bind:checked="model.use_mode=='个人'" v-on:click="model.use_mode='个人'"><label class="label-text" for="p">个人</label>
+            </dd>
+            <dd>
+                <span>招聘人数</span>
+                <input type="number" placeholder="请手动输入招聘人数" v-model="model.recruit_num">
+            </dd>
+            <dd>
+                <span>工作地区</span>
+                <input type="text" placeholder="请选择工作地区" readonly="readonly" v-bind:value="model.start_city|cityFormart(model.start_district,model.start_province,'')" v-on:click="select.showCityStart=true">
+            </dd>
+        </dl>
+    </div>
+    <div class="pg_sec3">
+        <dl>
+            <dt>驾照等级</dt>
+            <dd>
+
+                <a href="javascript:;" v-bind:class="[{ 'cur':useTypeSelect.length==0 }]"
+                   v-on:click="useTypeSelect=[]">不限</a>
+                <a href="javascript:;" v-for="item in useTypeData"
+                   v-bind:class="[{ 'cur': useTypeSelect.indexOf(item.title)>=0 }]"
+                   v-text="item.title" v-on:click="useTypeClick(item)"></a>
+            </dd>
+        </dl>
+
+        <dl>
+            <dt>工资待遇</dt>
+            <dd>
+                <a href="javascript:;" v-bind:class="[{ 'cur':model.car_length=='' }]"
+                   v-on:click="model.car_length=''">不限</a>
+                <a href="javascript:;" v-for="item in carLengthData"
+                   v-bind:class="[{ 'cur': item.title==model.car_length }]"
+                   v-text="item.title" v-on:click="model.car_length=item.title"></a>
+            </dd>
+        </dl>
+        <dl>
+            <dt>驾驶类型</dt>
+            <dd>
+                <a href="javascript:;" v-bind:class="[{ 'cur':model.car_style=='' }]"
+                   v-on:click="model.car_style=''">不限</a>
+                <a href="javascript:;" v-for="item in carStyleData"
+                   v-bind:class="[{ 'cur': item.title==model.car_style }]"
+                   v-text="item.title" v-on:click="model.car_style=item.title"></a>
+            </dd>
+        </dl>
+
+        <dl>
+            <dt>驾驶路线</dt>
+            <dd>
+                <a href="javascript:;" v-bind:class="[{ 'cur':model.goods_type=='' }]"
+                   v-on:click="model.goods_type=''">不限</a>
+                <a href="javascript:;" v-for="item in goodsTypeData"
+                   v-bind:class="[{ 'cur': item.title==model.goods_type }]"
+                   v-text="item.title" v-on:click="model.goods_type=item.title"></a>
+            </dd>
+        </dl>
+
+    </div>
+    <div class="pg_sec3 pg_sec6">
+        <dl>
+            <dt>其他补充</dt>
+            <dd>
+                <textarea placeholder="可以在这里补充公司介绍或者其他注意事项" v-model="model.other_remark"></textarea>
+            </dd>
+        </dl>
+    </div>
+    <contact v-bind:ob="model" v-bind:name="'contact_name'" v-bind:phone="'contact_phone'"></contact>
+    <div class="pg_sec8 pg_sec9">
+        <dl>
+            <dt>增值服务</dt>
+            <dd v-bind:class="[{ 'active': model.set_top==1 }]">
+                <div class="pt1">
+                    <img src="/images/icon/icon27_1.png">
+                </div>
+                <div class="pt2">
+                    <span>分类置顶</span>
+                    <p>将在此分类也置顶显示，更能多人看到</p>
+                </div>
+                <div class="pt3">
+                    <span>{{top_cate_money}}元</span>
+                    <i v-on:click="topCate"></i>
+                </div>
+            </dd>
+            <dd v-bind:class="[{ 'active': model.set_top==2 }]">
+                <div class="pt1">
+                    <img src="/images/icon/icon27_2.png">
+                </div>
+                <div class="pt2">
+                    <span>全站置顶</span>
+                    <p>全站所有分类置顶显示，效果更好</p>
+                </div>
+                <div class="pt3">
+                    <span>{{top_all_money}}元</span>
+                    <i v-on:click="topAll"></i>
+                </div>
+            </dd>
+        </dl>
+    </div>
+
+    <div class="pg_sec8 pg_sec10">
+        <dl>
+            <dd>
+                <div class="pt1">
+                    <img src="/images/icon/icon27_3.png">
+                </div>
+                <div class="pt2">
+                    <span>打赏福利</span>
+                    <p>客服将优先多渠道推送</p>
+                </div>
+                <div class="pt3">
+                    <span>{{model.reward_money}}元</span>
+                    <i v-on:click="rewardClick"></i>
+                </div>
+                <div class="clear"></div>
+                <div class="pt4">
+                    <div class="txt_n">
+                        <a href="javascript:;" v-for="item in rewardMoneyData"
+                           v-bind:class="[{ 'cur': item.title==model.reward_money }]"
+                           v-text="item.title" v-on:click="model.reward_money=item.title"></a>
+                    </div>
+                    <p>
+                        <span>手动输入打赏金额</span>
+                        <input type="text" placeholder="请输入打赏金额" v-model="model.reward_money">
+                    </p>
+                </div>
+
+            </dd>
+        </dl>
+        <a v-on:click="submit" class="btn">确认发布（共支付<label class="total">{{model.total}}</label>元）</a>
+    </div>
+    <city-dialog v-bind:box="'start_box'"
+                 v-bind:box-title="'工作地区'"
+                 v-bind:ob="model"
+                 v-bind:province="'start_province'"
+                 v-bind:city="'start_city'"
+                 v-bind:district="'start_district'"
+                 v-bind:show-dialog="'showCityStart'"
+                 v-bind:show-ob="select"
+                 v-if="select.showCityStart">
+    </city-dialog>
+</div>
+@section scripts{
+    <script>
+     var id=@ViewBag.Id;
+    </script>
+    @Html.Partial("_CityJs")
+    @Scripts.Render("/Scripts/Project/EditPostRecruit.js")
+    @Html.Action("Template", "Partial", new { id = "CityDialog" })
+    @Html.Action("Template", "Partial", new { id = "PostHelpDialog" })
+    @Html.Action("Template", "Partial", new { id = "Contact" })
+    <script>
+        $(function () {
+            var $dd = $(".pg_sec3 dd");
+            $dd.each(function () {
+                $(this).find("a:not('.m_btn')").click(function () {
+                    $(this).addClass("cur").siblings("a:not('.m_btn')").removeClass("cur");
+                })
+            })
+        })
+
+        $(function () {
+            var $a = $(".pg_sec8 .pt4 .txt_n a");
+
+            $a.click(function () {
+                $(this).addClass("cur").siblings().removeClass("cur");
+            })
+
+        })
+
+        $(function () {
+            var $dd = $(".pg_sec8 dl dd");
+            var $dd_t = $(".pg_sec10 dl dd")
+            $dd.each(function () {
+                $(this).find("i").click(function () {
+                    $(this).parents("dd").toggleClass("active").siblings().removeClass("active");
+                    (function () {
+                        if ($dd_t.hasClass("active")) {
+                            $(".pg_sec10 dl dd .pt4").show();
+                        } else {
+                            $(".pg_sec10 dl dd .pt4").hide();
+                        }
+                    }())
+                })
+            })
+        })
+    </script>
+}
