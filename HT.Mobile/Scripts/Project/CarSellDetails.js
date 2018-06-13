@@ -84,8 +84,8 @@ var mainDetails = new Vue({
         },
         showSwiper: function () {
             var _this = this;
-            if (_this.imgs && _this.imgs.length > 1) {
-                setTimeout(function () {
+            setTimeout(function () {
+                if (_this.imgs && _this.imgs.length > 1) {
                     var mySwiper = new Swiper('.zhc_container.swiper-container', {
                         autoplay: 5000,
                         navigation: {
@@ -99,15 +99,11 @@ var mainDetails = new Vue({
                         spaceBetween: 6,
                         loop: true
                     });
-                    $('.zhc_container.swiper-container .swiper-slide img').click(function () {
-                        _this.openPhotoSwipe();
-                    });
-                }, 10);
-            } else {
+                }
                 $('.zhc_container.swiper-container .swiper-slide img').click(function () {
                     _this.openPhotoSwipe();
                 });
-            }
+            }, 40);
         },
         //点赞
         clickPraise: function (news) {
