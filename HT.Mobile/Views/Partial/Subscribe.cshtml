@@ -1,0 +1,62 @@
+﻿<script type="text/template" id="subscribe-template">
+    <div class="subscribe" v-if="issubscribe==0">
+        <!-- 未关注 -->
+        <div class="zhx_div" v-if="issubscribe==0">
+            <div class="main">
+                <img src="/images/icon/icon07.png" class="zhx_logo">
+                <p>请关注货车百事帮，100万货车司机加入...</p>
+                <a class="btn" href="javascript:;" v-on:click="setShow()">关注</a>
+            </div>
+        </div>
+        <!-- 弹出二维码关注 -->
+        <div class="zhx_code hide">
+            <p class="tt">长按下方二维码识别+关注</p>
+            <img src="/images/icon/icon08.png">
+        </div>
+    </div>
+</script>
+<script>
+    Vue.component('subscribe', {
+        template: '#subscribe-template',
+        data: function () {
+            return {
+                issubscribe:1
+            }
+        },
+        created: function () {
+            this.init();
+        },
+        methods: {
+            init: function () {
+                this.getUserIsSubscribe();
+            },
+            getUserIsSubscribe: function () {
+                var _this = this;
+                $.ajax({
+                    type: 'post',
+                    url: '/User/GetUserIsSubscribe',
+                    dataType: 'json',
+                    success: function (resp) {
+                        if (resp.status) {
+                            _this.issubscribe = resp.result;
+                        }
+                    }
+                });
+            },
+            setShow: function () {
+                layer.open({
+                    type: 1,
+                    title: false,
+                    skin: 'layui-layer-zhx',
+                    content: $('.zhx_code'),
+                    area: ['260px', 'auto'],
+                    closeBtn: 1,
+                    shade: 0.3,
+                    shadeClose: false,
+                    scrollbar: false,
+                    anim: 2
+                });
+            }
+        }
+    })
+</script>

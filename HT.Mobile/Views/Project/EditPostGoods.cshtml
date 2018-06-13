@@ -5,6 +5,7 @@
 }
 @section styles{
     <link href="/Content/Project/Project.css" rel="stylesheet" />
+    <link href="/Content/Partial/UseTimepicker.css" rel="stylesheet" />
 }
 
 <div class="main hide" v-bind:class="['show']">
@@ -112,7 +113,7 @@
             </dd>
             <dd>
                 <span>装车时间</span>
-                <input type="text" readonly="readonly" placeholder="点击选择装车时间" v-model="model.use_time" v-on:click="showUseTime()">
+                <usetime-picker v-bind:ob="model" v-bind:obkey="'use_time'" v-bind:option="{placeholder:'点击选择装车时间'}"></usetime-picker>
             </dd>
         </dl>
     </div>
@@ -262,12 +263,13 @@
     <script>
      var id=@ViewBag.Id;
     </script>
-   
+
     @Html.Partial("_CityJs")
-    @Scripts.Render("/Scripts/Project/EditPostGoods.js")
     @Html.Action("Template", "Partial", new { id = "CityDialog" })
+    @Html.Action("Template", "Partial", new { id = "UseTimepicker" })
     @Html.Action("Template", "Partial", new { id = "PostHelpDialog" })
     @Html.Action("Template", "Partial", new { id = "Contact" })
+    @Scripts.Render("/Scripts/Project/EditPostGoods.js")
     <script>
         $(function () {
             var $a = $(".pg_sec8 .pt4 .txt_n a");

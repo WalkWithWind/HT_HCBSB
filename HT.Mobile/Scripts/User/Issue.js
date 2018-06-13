@@ -26,7 +26,10 @@
             idx:-1,
             id: 0,
             set_top: 0,
-            money: 0
+            money: 0,
+            isPay0: false,
+            userMoney: 0,
+            pay:'微信'
         },
         top_cate_money: 0,
         top_all_money: 0
@@ -168,24 +171,56 @@
                 }
             });
         },
-        showSetTop: function (id, idx) {
+        showSetTop: function (id, idx, item) {
             var _this = this;
             _this.setTop.idx = idx;
             _this.setTop.id = id;
             _this.setTop.set_top = 1;
             _this.setTop.money = _this.top_cate_money;
-            layer.open({
-                type: 1,
-                title: '请选择置顶',
-                content: $('.set_top_box'),
-                offset: 'lb',
-                area: ['100%', 'auto'],
-                shade: 0.5,
-                scrollbar: false,
-                anim: 2,
-                end: function () {
-                }
-            });
+            _this.setTop.isPay0 = item.pay_status == 0;
+            _this.setTop.pay = '余额';
+            if (!_this.setTop.isPay0) {
+                $.ajax({
+                    type: 'post',
+                    url: '/User/GetUserMoney',
+                    dataType: 'json',
+                    success: function (resp) {
+                        _this.isLoading = false;
+                        if (resp.status) {
+                            _this.setTop.userMoney = resp.result;
+                            if (_this.setTop.userMoney < _this.setTop.money) _this.setTop.pay = '微信';
+                            _this.showSetTopDialog();
+                        } else {
+                            _this.setTop.userMoney = 0;
+                            _this.setTop.pay = '微信';
+                            _this.showSetTopDialog();
+                        }
+                    },
+                    error: function () {
+                        _this.setTop.userMoney = 0;
+                        _this.setTop.pay = '微信';
+                        _this.showSetTopDialog();
+                    }
+                });
+            } else {
+                _this.showSetTopDialog();
+            }
+        },
+        showSetTopDialog: function () {
+            setTimeout(function () {
+                layer.open({
+                    type: 1,
+                    title: '请选择置顶',
+                    content: $('.set_top_box'),
+                    offset: 'lb',
+                    area: ['100%', 'auto'],
+                    shade: 0.5,
+                    scrollbar: false,
+                    anim: 2,
+                    end: function () {
+                    }
+                });
+            }, 50);
         },
         selectSetTop: function (num) {
             this.setTop.set_top = num;
@@ -197,21 +232,79 @@
         },
         confirmSetTop: function () {
             layer.closeAll();
-
-
             if (this.listData.list[this.setTop.idx].pay_status == 0) {
-                this.payUpdateSetTop();
+                this.postUpdateSetTop();
             } else {
                 this.postUpdateSetTop();
             }
         },
-        postUpdateSetTop: function () {
-            layer.msg('还未支付修改置顶类型去支付页支付');
-
-        },
         payUpdateSetTop: function () {
-            console.log('未支付 跳入支付页  /User/Pay/B20180610162542918471765854');
+            var _this = this;
+            if (_this.setTop.pay == '余额') {
+                var reqData = {
+                    id: _this.setTop.id,
+                    set_top: _this.setTop.set_top,
+                    money: _this.setTop.money,
+                    pay: _this.setTop.pay
+                };
+                _this.isLoading = true;
+                $.ajax({
+                    type: 'post',
+                    url: '/Project/UpdteSetTop',
+                    data: reqData,
+                    dataType: 'json',
+                    success: function (resp) {
+                        _this.isLoading = false;
+                        alert(resp.msg);
+                        if (resp.status) {
+                            _this.listData.list[_this.setTop.idx].set_top = _this.setTop.set_top;
+                            layer.closeAll();
+                        }
+                    }
+                });
+            } else {
+                if (!window.isOnBridgeReady) {
+                    alert('请在微信中打开');
+                    return;
+                }
+                $.ajax({
+                    type: 'post',
+                    url: "/WX/SetTopPay",
+                    data: {
+                        id: _this.setTop.id,
+                        set_top: _this.setTop.set_top,
+                        money: _this.setTop.money
+                    },
+                    dataType: "json",
+                    success: function (resp) {
+                        if (resp.code == 0) {
+                            // 当微信内置浏览器完成内部初始化后会触发WeixinJSBridgeReady事件。
+                            WeixinJSBridge.invoke('getBrandWCPayRequest', resp.result, function (res) {
+                                // 返回res.err_msg,取值 
+                                // get_brand_wcpay_request:cancel 用户取消 
+                                // get_brand_wcpay_request:fail 发送失败 
+                                // get_brand_wcpay_request:ok 发送成功 
+                                if (res.err_msg == "get_brand_wcpay_request:ok") {
+                                    _this.listData.list[_this.setTop.idx].set_top = _this.setTop.set_top;
+                                    layer.closeAll();
+                                    alert('支付成功');
+                                   // window.location.href = "/WX/PaySuccess/" + "@ViewBag.OrderNo";
 
+                                }
+                                else {
+                                    alert('支付失败');
+                                }
+                            });
+                        }
+                        else {
+                            alert(resp.msg);
+                        }
+                    }
+                });
+            }
+        },
+        postUpdateSetTop: function () {
+            //console.log('未支付 跳入支付页  /User/Pay/B20180610162542918471765854');
             var _this = this;
             var reqData = {
                 id: _this.setTop.id,

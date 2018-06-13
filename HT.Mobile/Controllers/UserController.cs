@@ -176,6 +176,17 @@ namespace HT.Mobile.Controllers
             return JsonResult(APIErrCode.Success,"获取成功",authenticationUser);
         }
         /// <summary>
+        /// 获取用户是否关注
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult GetUserIsSubscribe()
+        {
+            var authenticationUser = BLLAuthentication.GetAuthenticationUser();
+            var user = BLLUser.GetUserById(authenticationUser.id);
+            if (user == null) return JsonResult(APIErrCode.Success, "获取成功", 0);
+            return JsonResult(APIErrCode.Success, "获取成功", user.issubscribe);
+        }
+        /// <summary>
         /// 获取验证码
         /// </summary>
         /// <returns></returns>
@@ -389,6 +400,15 @@ namespace HT.Mobile.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 获取登录人余额
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult GetUserMoney()
+        {
+            var authenticationUser = BLLAuthentication.GetAuthenticationUser();
+            return JsonResult(APIErrCode.Success, "获取成功", BLLUser.GetUserById(authenticationUser.id).money);
+        }
         #endregion 接口
     }
 }

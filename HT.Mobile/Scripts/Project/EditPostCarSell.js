@@ -107,7 +107,8 @@ var vue = new Vue({
                         if (configName == 'top_all_money') { _this.top_all_money = parseFloat(resp.result) };
                         if (configName == 'pub_amount_day') { _this.validity_unit_day_money = parseFloat(resp.result) };
                         if (configName == 'pub_amount_month') { _this.validity_unit_month_money = parseFloat(resp.result) };
-                        _this.getDetail();
+                        _this.calcTotal();
+                        //_this.getDetail();
 
                     }
                 }
@@ -256,7 +257,7 @@ var vue = new Vue({
                     dataType: 'json',
                     success: function (resp) {
                         if (resp.status) {
-                            window.location.href = "/User/Pay/" + resp.result.order_no;
+                            window.location.href = "/User/Pay/" + _this.model.order_no;
                         } else {
                             alert(resp.msg);
                         }

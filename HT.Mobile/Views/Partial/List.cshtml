@@ -6,18 +6,18 @@
                 <div class="infor">
                     <a v-bind:href="'/Project/GoodsSourceDetails/'+item.id">
                         <div class="infor_p1 bold">
-                                <span>{{item.start_city|cityFormart(item.start_district,item.start_province,'出发地')}}</span>
+                            <span>{{item.start_city|cityFormart(item.start_district,item.start_province,'出发地')}}</span>
                             <i></i><!-- 中间的箭头符号 -->
-                                <span>{{item.stop_city|cityFormart(item.stop_district,item.stop_province,'到达地')}}</span>
+                            <span>{{item.stop_city|cityFormart(item.stop_district,item.stop_province,'到达地')}}</span>
                             <em v-if="item.set_top>0">置顶</em>
                         </div>
                         <div class="infor_p2">
-                            
-                                <i class="lab3 none-boder black" v-if="item.car_length" v-text="item.car_length+'米'"></i>
-                                <i class="lab2 none-boder black" v-if="item.car_style" v-text="item.car_style"></i>
-                                <i class="lab1 none-boder black" v-if="item.use_type" v-text="item.use_type"></i>
-                                <i class="lab4 none-boder black" v-if="item.goods_type" v-text="item.goods_type"></i>
-                          
+
+                            <i class="lab3 none-boder black" v-if="item.car_length" v-text="item.car_length+'米'"></i>
+                            <i class="lab2 none-boder black" v-if="item.car_style" v-text="item.car_style"></i>
+                            <i class="lab1 none-boder black" v-if="item.use_type" v-text="item.use_type"></i>
+                            <i class="lab4 none-boder black" v-if="item.goods_type" v-text="item.goods_type"></i>
+
                         </div>
                         <div class="infor_p3">
                             <div class="img">
@@ -57,7 +57,60 @@
             </div>
         </div>
         <!--车源信息 -->
-        <div class="wrapper" v-if="item.cateid==2">
+        <div class="el_item" v-if="item.cateid==2">
+            <div class="wrapper">
+                <div class="infor">
+                    <a v-bind:href="'/Project/CarSourceDetails/'+item.id">
+                        <div class="infor_p1 bold">
+                            <span>{{item.start_city|cityFormart(item.start_district,item.start_province,'出发地')}}</span>
+                            <i></i><!-- 中间的箭头符号 -->
+                            <span>{{item.stop_city|cityFormart(item.stop_district,item.stop_province,'到达地')}}</span>
+                            <em v-if="item.set_top>0">置顶</em>
+                        </div>
+                        <div class="infor_p2">
+                            <i class="lab1" v-if="item.use_type" v-text="item.use_type"></i>
+                            <i class="lab2" v-if="item.car_style" v-text="item.car_style"></i>
+                            <i class="lab3" v-if="item.car_length" v-text="item.car_length+'米'"></i>
+                            <i class="lab4" v-if="item.goods_type" v-text="item.goods_type"></i>
+                        </div>
+                        <div class="infor_p3">
+                            <div class="img">
+                                <img v-bind:src="item.add_avatar" />
+                            </div>
+                            <div class="txt" v-text="item.add_nickname">
+                            </div>
+                            <div class="date">
+                                {{item.update_time|dateFormart('更新')}}
+                            </div>
+                        </div>
+                    </a>
+                    <div class="infor_p4">
+                        <a v-bind:href="'tel://'+item.contact_phone">
+                            <img src="/images/icon/icon02.png">
+                            <span>打电话</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="flo">
+                    <ol class="clearfix">
+                        <li>
+                            <img src="/images/icon/icon03_1.png">
+                            <span v-text="item.view_num"></span>
+                        </li>
+                        <li>
+                            <img src="/images/icon/icon03_2.png" v-show="!item.is_praise" v-on:click="clickPraise(item)">
+                            <img src="/images/icon/icon03_4.png" v-show="item.is_praise" v-on:click="cancelClickPraise(item)">
+                            <span v-text="item.praise_num"></span>
+                        </li>
+                        <li>
+                            <img src="/images/icon/icon03_3.png">
+                            <span v-text="item.share_num"></span>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        @*<div class="wrapper" v-if="item.cateid==2">
             <div class="ind_main_t">
                 <div class="use">
                     <a v-bind:href="'/Project/CarSourceDetails/'+item.id">
@@ -117,7 +170,7 @@
                     </li>
                 </ol>
             </div>
-        </div>
+        </div>*@
         <!--招聘司机 -->
         <div class="wrapper" v-if="item.cateid==3">
             <div class="ind_main_t">

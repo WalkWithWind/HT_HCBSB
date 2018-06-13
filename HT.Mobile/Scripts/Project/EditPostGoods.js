@@ -140,7 +140,8 @@ var vue = new Vue({
                         if (configName == 'top_all_money') { _this.top_all_money = parseFloat(resp.result) };
                         if (configName == 'pub_amount_day') { _this.validity_unit_day_money = parseFloat(resp.result) };
                         if (configName == 'pub_amount_month') { _this.validity_unit_month_money = parseFloat(resp.result) };
-                        _this.getDetail();
+                        _this.calcTotal();
+                        //_this.getDetail();
 
                     }
                 }
@@ -267,7 +268,8 @@ var vue = new Vue({
                     dataType: 'json',
                     success: function (resp) {
                         if (resp.status) {
-                            alert( "编辑成功");
+                            window.location.href = "/User/Pay/" + _this.model.order_no;
+                            //alert( "编辑成功");
                         } else {
                             alert(resp.msg);
                         }

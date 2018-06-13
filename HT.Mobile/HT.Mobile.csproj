@@ -410,6 +410,7 @@
     <Content Include="Views\Project\EditPostCarBuy.cshtml" />
     <Content Include="Views\Project\EditPostTemplate.cshtml" />
     <Content Include="Views\Project\EditPostGoods.cshtml" />
+    <Content Include="Views\Partial\Subscribe.cshtml" />
     <None Include="Views\WX\PayFail.cshtml" />
   </ItemGroup>
   <ItemGroup>

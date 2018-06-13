@@ -27,7 +27,7 @@
         </div>
         <div v-bind:class="['city','clearfix','tab-content',{'hide':selectTab!=1}]"
              v-if="ob[province]!=''">
-            <a href="javascript:;" v-bind:class="[{ 'active':''==ob[city] }]" v-if="hasAllCity" v-on:click="selectCity('')">
+            <a href="javascript:;" v-bind:class="[{ 'active':''==ob[city] }]" v-if="hasAllCity && cityData.getCitysByProvince(ob[province]).length>1" v-on:click="selectCity('')">
                 {{('全'+ob[province])|stringRemove('全省')}}
             </a>
             <a href="javascript:;" v-for="item in cityData.getCitysByProvince(ob[province])"
@@ -109,9 +109,17 @@
                 _this.ob[_this.province] = item;
                 if (!item) {
                     layer.closeAll();
-                } else {
-                    _this.selectTab = 1;
+                    return;
                 }
+
+                var citys = _this.cityData.getCitysByProvince(_this.ob[_this.province]);
+                if (citys.length == 1) {
+                    _this.ob[_this.city] = citys[0];
+                    _this.selectTab = 2;
+                    return;
+                }
+                _this.selectTab = 1;
+                
             },
             selectCity: function (item) {
                 var _this = this;

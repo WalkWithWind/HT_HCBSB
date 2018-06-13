@@ -41,6 +41,7 @@ namespace HT.Model
         public virtual DbSet<ht_news> ht_news { get; set; }
         public virtual DbSet<ht_news_cate> ht_news_cate { get; set; }
         public virtual DbSet<ht_news_del> ht_news_del { get; set; }
+        public virtual DbSet<ht_news_order> ht_news_order { get; set; }
         public virtual DbSet<ht_order> ht_order { get; set; }
         public virtual DbSet<ht_order_appraise> ht_order_appraise { get; set; }
         public virtual DbSet<ht_payment> ht_payment { get; set; }

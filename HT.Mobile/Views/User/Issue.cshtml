@@ -38,7 +38,7 @@
                         </div>
                     </div>
                     <div class="btn_box">
-                        <a href="javascript:void(0);" class="btn1" v-if="item.set_top==0 && (item.status_text.indexOf('显示中')==0 || item.status_text.indexOf('待付款')==0)" v-on:click="showSetTop(item.id,index)">我要置顶</a>
+                        <a href="javascript:void(0);" class="btn1" v-if="item.set_top==0 && (item.status_text.indexOf('显示中')==0 || item.status_text.indexOf('待付款')==0)" v-on:click="showSetTop(item.id,index,item)">我要置顶</a>
                         <a href="javascript:void(0);" class="btn2" v-if="item.status_text.indexOf('显示中')==0">分享</a>
                         <a v-bind:href="'/User/Pay/'+item.order_no" class="btn3" v-if="item.status_text.indexOf('待付款')==0">立即付款</a>
                         <a href="javascript:void(0);" class="btn2" v-if="item.status_text.indexOf('待付款')==0" v-on:click="toEdit(item)">重新编辑</a>
@@ -54,9 +54,22 @@
             <li><input type="radio" name="name1" id="one" v-bind:checked="setTop.set_top==1" v-on:click="selectSetTop(1)"><label for="one">分类置顶（{{top_cate_money}}元）</label></li>
             <li><input type="radio" name="name1" id="all" v-bind:checked="setTop.set_top==2" v-on:click="selectSetTop(2)"><label for="all">全站置顶（{{top_all_money}}元）</label></li>
         </ul>
+        <div class="pay_m" v-if="!setTop.isPay0">
+            <p class="title">支付方式</p>
+            <ul>
+                <li v-if="setTop.userMoney >= setTop.money" style="text-align: left;"><input type="radio" name="name2" id="pay1" v-bind:checked="setTop.pay=='余额'" v-on:click="setTop.pay='余额'"><img src="/images/icon/icon20_1.png"> <label for="pay1">余额支付</label> <span>可用余额 {{setTop.userMoney}} 元</span></li>
+                <li style="text-align: left;"><input type="radio" name="name2" id="pay2" v-bind:checked="setTop.pay=='微信'" v-on:click="setTop.pay='微信'"> <img src="/images/icon/icon20_2.png"> <label for="pay2">微信支付</label> <span>使用微信支付，简单方便</span></li>
+            </ul>
+        </div>
         <a href="javascript:void(0);" class="btn" v-on:click="confirmSetTop()">确认置顶（共支付{{setTop.money}}元）</a>
     </div>
 </div>
 @section scripts{
+    <script>
+        window.isOnBridgeReady = false;
+        document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+            window.isOnBridgeReady = true;
+        })
+    </script>
     @Scripts.Render("/Scripts/User/Issue.js")
 }

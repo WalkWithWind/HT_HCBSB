@@ -4,13 +4,13 @@
 <script>
     Vue.component('post-help-dialog', {
         template: '#post-help-dialog-template',
-        data() {
+        data: function ()  {
             return {
                 id:1,
                 contents: ''
             };
         },
-        created() {
+        created: function ()  {
             this.init();
         },
         methods: {

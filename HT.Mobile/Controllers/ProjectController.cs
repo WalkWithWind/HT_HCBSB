@@ -224,10 +224,10 @@ namespace HT.Mobile.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult UpdteSetTop(int id,int set_top,decimal money)
+        public ActionResult UpdteSetTop(int id,int set_top,decimal money, string pay)
         {
             string orderno = string.Empty;
-            if (BLLNews.UpdateSetTop(id, set_top, money,out orderno))
+            if (BLLNews.UpdateSetTop(id, set_top, money, pay, out orderno))
             {
                 apiResp.msg = "置顶成功";
                 apiResp.result = orderno;
@@ -240,7 +240,7 @@ namespace HT.Mobile.Controllers
             }
             return Json(apiResp);
         }
-
+        
         /// <summary>
         /// 发布车源信息
         /// </summary>

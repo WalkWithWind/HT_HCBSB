@@ -81,7 +81,7 @@
     <div class="pay_m">
         <p class="title">支付方式</p>
         <ul>
-            <li><input type="radio" name="name1" id="pay1" v-if="money>total" v-bind:checked="pay=='余额'" v-on:click="pay='余额'"><img src="/images/icon/icon20_1.png"> <label for="pay1">余额支付</label> <span>可用余额 @(ViewBag.RespUser.money) 元</span></li>
+            <li v-if="money>total"><input type="radio" name="name1" id="pay1" v-bind:checked="pay=='余额'" v-on:click="pay='余额'"><img src="/images/icon/icon20_1.png"> <label for="pay1">余额支付</label> <span>可用余额 @(ViewBag.RespUser.money) 元</span></li>
             <li><input type="radio" name="name1" id="pay2" v-bind:checked="pay=='微信'" v-on:click="pay='微信'"> <img src="/images/icon/icon20_2.png"> <label for="pay2">微信支付</label> <span>使用微信支付，简单方便</span></li>
         </ul>
         <a href="javascript:void(0);" class="btn" v-on:click="postPay()">立即支付</a>

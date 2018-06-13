@@ -375,7 +375,7 @@ namespace HT.BLL
                 detailSource = detail;
                
                 detail.add_time = detailSource.add_time;
-                detail.update_time = DateTime.Now;
+                //detail.update_time = DateTime.Now;
                 //model.id: 178
                 //model.cateid: 1
                 //model.cate: 有货找车
@@ -497,7 +497,7 @@ namespace HT.BLL
                     }
                     ht_user_money_log log = new ht_user_money_log();
                     log.userid = details.add_userid;
-                    log.type = 0;
+                    log.type = (int)Model.Enum.UserMoneyDetails.PayNews;
                     log.money = details.total;
                     log.remark =string.Format( "微信支付充值{0}元",details.total);
                     log.addtime = DateTime.Now;
@@ -505,9 +505,9 @@ namespace HT.BLL
 
                     ht_user_money_log log2 = new ht_user_money_log();
                     log2.userid = details.add_userid;
-                    log2.type = 0;
+                    log2.type = (int)Model.Enum.UserMoneyDetails.PayNews;
                     log2.money = -details.total;
-                    log2.remark = string.Format("微信支付支出{0}元", details.total);
+                    log2.remark = string.Format("发布{1}支出{0}元", details.total,details.cate);
                     log2.addtime = DateTime.Now;
                     db.ht_user_money_log.Add(log2);
 
@@ -535,13 +535,13 @@ namespace HT.BLL
             }
         }
         /// <summary>
-        /// 
+        /// 未支付时仅修改内容表
         /// </summary>
         /// <param name="newsId"></param>
         /// <param name="setTop"></param>
         /// <param name="money"></param>
         /// <returns></returns>
-        public static bool UpdateSetTop(int newsId,int setTop,decimal money,out string orderno)
+        public static bool UpdateSetTop(int newsId,int setTop,decimal money,string pay, out string orderno)
         {
             using (Entities db = new Entities())
             {
@@ -553,6 +553,22 @@ namespace HT.BLL
                     news.set_top = setTop;
                     news.set_top_money += money;
                     news.total += money;
+                }
+                if (!string.IsNullOrWhiteSpace(pay))
+                {
+                    if (pay == "余额")
+                    {
+                        ht_user_money_log log = new ht_user_money_log();
+                        log.userid = news.add_userid;
+                        log.type = (int)Model.Enum.UserMoneyDetails.SetTop;
+                        log.money = -money;
+                        log.remark = string.Format("余额支出{0}元", money);
+                        log.addtime = DateTime.Now;
+                        db.ht_user_money_log.Add(log);
+
+                        ht_user user = db.ht_user.Find(news.add_userid);
+                        user.money = user.money - money;
+                    }
                 }
                 return db.SaveChanges() > 0 ? true : false;
 

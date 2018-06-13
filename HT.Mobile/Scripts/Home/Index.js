@@ -13,6 +13,9 @@
             rows: 5
         }
     },
+    created: function () {
+        this.init();
+    },
     methods: {
         init: function () {
             this.bindScroll();
@@ -62,4 +65,3 @@
         }
     }
 });
-listVm.init();

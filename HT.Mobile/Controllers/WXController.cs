@@ -97,9 +97,36 @@ namespace HT.Mobile.Controllers
             {
                 return View();
             }
-            
-
         }
+        /// <summary>
+        /// 微信支付
+        /// </summary>
+        /// <param name="id">订单号</param>
+        /// <returns></returns>
+        public ActionResult SetTopPay(int id, int set_top, decimal money)
+        {
+            string msg = "";
+            string orderNo = "";
+            string type = set_top == 1 ? "分类置顶" : "全站置顶";
+            var authenticationUser = BLLAuthentication.GetAuthenticationUser();
+            bool result = BLLNewsOrder.Add(new ht_news_order() { news_id = id, type = type, value = set_top.ToString(), money = money, pay = "微信" ,add_userid= authenticationUser.id }, out msg, out orderNo);
+            if (!result) return JsonResult(Model.Enum.APIErrCode.OperateFail, msg);
+            string Ip = Request.UserHostAddress;
+            string openId = BLLUser.GetLoginUserInfo().openid;
+            string notiUrl = Request.Url.Scheme + "://" + Request.Url.Authority + "/WX/PayNotify";//通知地址
+
+            bool isRequestSuccess = false;
+            var payRequest = BLLWeixin.WXPay(orderNo, money, openId, Ip, notiUrl, out isRequestSuccess, string.Format("{1}订单号:{0}", orderNo, type));
+            if (isRequestSuccess)
+            {
+                return JsonResult(Model.Enum.APIErrCode.Success, "OK", payRequest);
+            }
+            else
+            {
+                return JsonResult(Model.Enum.APIErrCode.OperateFail);
+            }
+        }
+
         /// <summary>
         /// 微信支付通知
         /// </summary>
@@ -129,7 +156,15 @@ namespace HT.Mobile.Controllers
                 xmlDoc.Save(string.Format("E:\\WXPay\\{0}_Notify.xml", parametersAll["out_trade_no"]));//写入日志
                 if (MicroMessenger.CommonUtil.VerifySign(parametersAll, BLLConfig.Get("wx_mchsecret")))
                 {
-                    if (BLLNews.WXPaySuccess(parametersAll["out_trade_no"], parametersAll["transaction_id"]))
+                    string orderNo = parametersAll["out_trade_no"].ToString();
+                    if (orderNo.StartsWith("T"))
+                    {
+                        if (BLLNewsOrder.WXPaySuccess(orderNo, parametersAll["transaction_id"]))
+                        {
+                            return Content(successXml);
+                        }
+                    }
+                    else if (BLLNews.WXPaySuccess(orderNo, parametersAll["transaction_id"]))
                     {
                         return Content(successXml);
                     }

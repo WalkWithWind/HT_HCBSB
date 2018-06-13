@@ -15,35 +15,55 @@ namespace HT.Model
     ///<summary>
     ///
     ///</summary>
-    public partial class ht_user_money_log
+    public partial class ht_news_order
     {
     ///<summary>
     ///
     ///</summary>
         public int id { get; set; }
     ///<summary>
-    ///
+    ///项目Id
     ///</summary>
-        public Nullable<int> userid { get; set; }
+        public Nullable<int> news_id { get; set; }
     ///<summary>
-    ///1提现
+    ///订单类型
     ///</summary>
-        public Nullable<int> type { get; set; }
+        public string type { get; set; }
     ///<summary>
-    ///
+    ///金额
     ///</summary>
         public Nullable<decimal> money { get; set; }
     ///<summary>
-    ///
+    ///支付方式
     ///</summary>
-        public string remark { get; set; }
+        public string pay { get; set; }
+    ///<summary>
+    ///支付状态
+    ///</summary>
+        public Nullable<int> pay_status { get; set; }
+    ///<summary>
+    ///支付时间
+    ///</summary>
+        public Nullable<System.DateTime> pay_time { get; set; }
+    ///<summary>
+    ///交易号
+    ///</summary>
+        public string pay_trade_no { get; set; }
+    ///<summary>
+    ///订单号
+    ///</summary>
+        public string order_no { get; set; }
     ///<summary>
     ///
     ///</summary>
-        public Nullable<System.DateTime> addtime { get; set; }
+        public string value { get; set; }
     ///<summary>
     ///
     ///</summary>
-        public Nullable<int> status { get; set; }
+        public Nullable<System.DateTime> add_time { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
+        public Nullable<int> add_userid { get; set; }
     }
 }

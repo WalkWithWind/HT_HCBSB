@@ -103,7 +103,8 @@ var vue = new Vue({
                         if (configName == 'pub_job_amount') { _this.pub_job_amount = parseFloat(resp.result); };
                         if (configName == 'pub_job_value') { _this.model.validity_num = parseFloat(resp.result); _this.getInterval(); };
                         if (configName == 'pub_job_unit') { _this.model.validity_unit = resp.result; _this.getInterval(); };
-                        _this.getDetail();
+                        _this.calcTotal();
+                        //_this.getDetail();
                     }
                 }
             });
@@ -227,8 +228,8 @@ var vue = new Vue({
 					data: _this.model,
 					dataType: 'json',
 					success: function (resp) {
-						if (resp.status) {
-							window.location.href = "/User/Pay/"+resp.result.order_no;
+                        if (resp.status) {
+                            window.location.href = "/User/Pay/" + _this.model.order_no;
 						} else {
 							alert(resp.msg);
 						}

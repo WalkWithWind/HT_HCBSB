@@ -16,11 +16,14 @@ namespace HT.Model.Enum
         /// 提现
         /// </summary>
         WithDraw = 2,
-
         /// <summary>
         /// 提现审核未通过 退回余额
         /// </summary>
-        RefundMoney
+        RefundMoney= 3,
+        /// <summary>
+        /// 项目置顶支付
+        /// </summary>
+        SetTop = 4
 
     }
 }

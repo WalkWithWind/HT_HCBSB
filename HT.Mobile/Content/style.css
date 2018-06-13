@@ -39,15 +39,16 @@
 /* s-底部导航 */
 footer {
 	width: 100%;
-	height: 1.4rem;
-	background: url('/images/icon/bg001.png') center no-repeat;
+	height: 1rem;
+	/*background: url('/images/icon/bg001.png') center no-repeat;*/
+    background-color:#ffffff;
 	-webkit-background-size: 100% auto;
 	background-size: 100% auto;
 	position: fixed;
 	left: 0;
 	bottom: 0;
 	z-index: 100;
-	padding: .4rem 0 0;
+	padding: 0;
 }
 .footer_ul {
 	width: 100%;
@@ -63,7 +64,17 @@ footer {
 	position: relative;
 }
 .footer_ul .item a {
-	display: block;
+    display: block;
+}
+.footer_ul .item_s {
+    height: 1.4rem;
+    margin-top: -0.4rem;
+    background-color: #ffffff;
+    border-radius: 50%;
+}
+
+.footer_ul .item_s a {
+    margin-top: 0.4rem;
 }
 .footer_ul .item img {
 	display: none;

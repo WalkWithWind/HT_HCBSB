@@ -26,7 +26,8 @@
                     </div>
                 </li>
             </ul>
-            <a href="javascript:void(0);" v-on:click="loadMoreReview()" v-if="reviewData.list<reviewData.total" class="more_btn">加载更多</a>
+            <div></div>
+            <a href="javascript:void(0);" v-on:click="loadMoreReview()" v-if="reviewData.list.length < reviewData.total" class="more_btn">加载更多</a>
         </div>
 
         <!-- 打电话 -->
@@ -176,31 +177,32 @@
                         _this.isLoading = false;
                         if (resp.status) {
                             layer.close(_this.layerIndex);
-                            alert(resp.msg);
-                            if (resp.result) {
-                                if (resp.result.review_content && resp.result.review_content.length > 50) {
-                                    resp.result.classOpen = false;
-                                    resp.result.classText = '全文';
-                                } else {
-                                    resp.result.classOpen = true;
-                                    resp.result.classText = '';
-                                }
-                                _this.reviewInfo.review_content = '';
-                                if (_this.reviewInfo.review_type == 'comment') {
-                                    _this.reviewData.list.insert(0, resp.result);
-                                } else if (_this.reviewInfo.review_type == 'reply') {
-                                    for (var i = 0; i < _this.reviewData.list.length; i++) {
-                                        if (_this.reviewData.list[i].id == resp.result.review_id) {
-                                            if (_this.reviewData.list[i].reply_list != null) {
-                                                _this.reviewData.list[i].reply_list.insert(0, resp.result);
-                                            } else {
-                                                _this.reviewData.list[i].reply_list = [];
-                                                _this.reviewData.list[i].reply_list.push(resp.result);
-                                            }
-                                        }
-                                    }
-                                }
-                            }
+                            alert('发布成功，请等待审核');
+                            //alert(resp.msg);
+                            //if (resp.result) {
+                            //    if (resp.result.review_content && resp.result.review_content.length > 50) {
+                            //        resp.result.classOpen = false;
+                            //        resp.result.classText = '全文';
+                            //    } else {
+                            //        resp.result.classOpen = true;
+                            //        resp.result.classText = '';
+                            //    }
+                            //    _this.reviewInfo.review_content = '';
+                            //    if (_this.reviewInfo.review_type == 'comment') {
+                            //        _this.reviewData.list.insert(0, resp.result);
+                            //    } else if (_this.reviewInfo.review_type == 'reply') {
+                            //        for (var i = 0; i < _this.reviewData.list.length; i++) {
+                            //            if (_this.reviewData.list[i].id == resp.result.review_id) {
+                            //                if (_this.reviewData.list[i].reply_list != null) {
+                            //                    _this.reviewData.list[i].reply_list.insert(0, resp.result);
+                            //                } else {
+                            //                    _this.reviewData.list[i].reply_list = [];
+                            //                    _this.reviewData.list[i].reply_list.push(resp.result);
+                            //                }
+                            //            }
+                            //        }
+                            //    }
+                            //}
                         } else {
                             alert(resp.msg);
                         }

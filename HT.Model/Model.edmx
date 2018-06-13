@@ -301,6 +301,23 @@
           <Property Name="is_delete" Type="int" />
           <Property Name="total" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
+        <EntityType Name="ht_news_order">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="news_id" Type="int" />
+          <Property Name="type" Type="nvarchar" MaxLength="10" />
+          <Property Name="value" Type="nvarchar" MaxLength="10" />
+          <Property Name="money" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="pay" Type="nvarchar" MaxLength="10" />
+          <Property Name="pay_status" Type="int" />
+          <Property Name="pay_time" Type="datetime" />
+          <Property Name="pay_trade_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="order_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="add_time" Type="datetime" />
+          <Property Name="add_userid" Type="int" />
+        </EntityType>
         <EntityType Name="ht_order">
           <Key>
             <PropertyRef Name="id" />
@@ -603,6 +620,7 @@
           <EntitySet Name="ht_news" EntityType="Self.ht_news" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ht_news_cate" EntityType="Self.ht_news_cate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ht_news_del" EntityType="Self.ht_news_del" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ht_news_order" EntityType="Self.ht_news_order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ht_order" EntityType="Self.ht_order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ht_order_appraise" EntityType="Self.ht_order_appraise" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ht_payment" EntityType="Self.ht_payment" Schema="dbo" store:Type="Tables" />
@@ -654,6 +672,7 @@
           <EntitySet Name="ht_news" EntityType="Model.ht_news" />
           <EntitySet Name="ht_news_cate" EntityType="Model.ht_news_cate" />
           <EntitySet Name="ht_news_del" EntityType="Model.ht_news_del" />
+          <EntitySet Name="ht_news_order" EntityType="Model.ht_news_order" />
           <EntitySet Name="ht_order" EntityType="Model.ht_order" />
           <EntitySet Name="ht_order_appraise" EntityType="Model.ht_order_appraise" />
           <EntitySet Name="ht_payment" EntityType="Model.ht_payment" />
@@ -985,6 +1004,23 @@
           <Property Name="share_num" Type="Int32" Nullable="false" />
           <Property Name="is_delete" Type="Int32" />
           <Property Name="total" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="ht_news_order">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="news_id" Type="Int32" />
+          <Property Name="type" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="money" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="pay" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="pay_status" Type="Int32" />
+          <Property Name="pay_time" Type="DateTime" Precision="3" />
+          <Property Name="pay_trade_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="order_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="value" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="add_time" Type="DateTime" Precision="3" />
+          <Property Name="add_userid" Type="Int32" />
         </EntityType>
         <EntityType Name="ht_order">
           <Key>
@@ -1584,6 +1620,24 @@
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="cate" ColumnName="cate" />
                 <ScalarProperty Name="cateid" ColumnName="cateid" />
+                <ScalarProperty Name="news_id" ColumnName="news_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ht_news_order">
+            <EntityTypeMapping TypeName="Model.ht_news_order">
+              <MappingFragment StoreEntitySet="ht_news_order">
+                <ScalarProperty Name="add_userid" ColumnName="add_userid" />
+                <ScalarProperty Name="add_time" ColumnName="add_time" />
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="order_no" ColumnName="order_no" />
+                <ScalarProperty Name="pay_trade_no" ColumnName="pay_trade_no" />
+                <ScalarProperty Name="pay_time" ColumnName="pay_time" />
+                <ScalarProperty Name="pay_status" ColumnName="pay_status" />
+                <ScalarProperty Name="pay" ColumnName="pay" />
+                <ScalarProperty Name="money" ColumnName="money" />
+                <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="news_id" ColumnName="news_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
