@@ -2447,3 +2447,9 @@ footer {
 .black {
     color: black !important;
 }
+.floatL{
+    float:left!important;
+}
+.floatR{
+    float:right!important;
+}

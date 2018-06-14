@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -39,7 +40,22 @@ namespace HT.BLL.Admin
 				if (!string.IsNullOrWhiteSpace(status))
 				{
 					int statusInt = int.Parse(status);
-                    unDelList = unDelList.Where(r => r.status == statusInt);
+                    if (statusInt > 0)
+                    {
+                        unDelList = unDelList.Where(r => r.status == statusInt);
+                    }
+                    else
+                    {
+                        if (statusInt == 0)
+                        {
+                            unDelList = unDelList.Where(r => r.status == 0 && r.pay_status == 1);
+                        }
+                        else
+                        {
+                            unDelList = unDelList.Where(r => r.status == 0 && r.pay_status == 0);
+                        }
+                    }
+                    
 				}
 				if (!string.IsNullOrWhiteSpace(fromDate))
 				{
@@ -168,7 +184,7 @@ namespace HT.BLL.Admin
 		/// 批量更新审核状态
 		/// </summary>
 		/// <param name="id">id</param>
-		/// <param name="status">0待审核1审核通过2审核不通过</param>
+		/// <param name="status">0待审核1审核通过2审核不通过3.已过期</param>
 		/// <returns></returns>
 		public static bool UpdateStatus(List<int> ids,int status)
 		{
@@ -187,6 +203,27 @@ namespace HT.BLL.Admin
 				}
 			}
 		}
+
+        /// <summary>
+        /// 查询所有项目
+        /// </summary>
+        /// <returns></returns>
+        public static int CheckExpire()
+        {
+            using (Entities db = new Entities())
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                var data = db.ht_news.Where(r => true);
+                data = data.Where(p => (p.validity_unit == "月" && DbFunctions.AddMonths(p.add_time, p.validity_num.Value) < DateTime.Now) || (p.validity_unit == "天" && DbFunctions.AddDays(p.add_time, p.validity_num.Value) < DateTime.Now));
+
+                foreach (var item in data)
+                {
+                    item.status = 3;
+                }
+                return db.SaveChanges();
+            }
+
+        }
 
 	}
 }

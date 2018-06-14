@@ -23,7 +23,7 @@ namespace HT.Model.Enum
         /// <summary>
         /// 项目置顶支付
         /// </summary>
-        SetTop = 4
+        SetTopPay = 4
 
     }
 }

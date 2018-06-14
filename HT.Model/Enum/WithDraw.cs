@@ -26,7 +26,7 @@ namespace HT.Model.Enum
         /// <summary>
         /// 已打款
         /// </summary>
-        MadeMoney =3,
+        MadeMoney = 3
 
 
     }

@@ -612,6 +612,9 @@
     <Compile Include="admin\api\help\update.ashx.cs">
       <DependentUpon>update.ashx</DependentUpon>
     </Compile>
+    <Compile Include="admin\api\project\check.ashx.cs">
+      <DependentUpon>check.ashx</DependentUpon>
+    </Compile>
     <Compile Include="admin\api\project\delete.ashx.cs">
       <DependentUpon>delete.ashx</DependentUpon>
     </Compile>
@@ -989,6 +992,7 @@
     <Content Include="admin\api\review\list.ashx" />
     <Content Include="admin\api\review\updatestatus.ashx" />
     <Content Include="admin\api\review\delete.ashx" />
+    <Content Include="admin\api\project\check.ashx" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

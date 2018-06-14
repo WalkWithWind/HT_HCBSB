@@ -179,7 +179,7 @@ namespace HT.Admin.admin.configuration
 
         protected void ddlGroup_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Response.Redirect(Utils.CombUrlTxt("ht_ads_list.aspx", "keyword={0}&group={1}&code={2}", txtKeywords.Text, ddlGroup.SelectedValue, code));
+            Response.Redirect(Utils.CombUrlTxt("ht_ads_list.aspx", "keyword={0}&group={1}&code={2}", txtKeywords.Text, ddlGroup.SelectedValue, ""));
         }
     }
 }

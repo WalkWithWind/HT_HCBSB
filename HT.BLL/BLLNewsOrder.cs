@@ -63,7 +63,7 @@ namespace HT.BLL
 
                 ht_user_money_log log = new ht_user_money_log();
                 log.userid = order.add_userid;
-                log.type = (int)Model.Enum.UserMoneyDetails.SetTop;
+                log.type = (int)Model.Enum.UserMoneyDetails.SetTopPay;
                 log.money = order.money;
                 log.remark = string.Format("微信支付充值{0}元", order.money);
                 log.addtime = DateTime.Now;
@@ -71,7 +71,7 @@ namespace HT.BLL
 
                 ht_user_money_log log2 = new ht_user_money_log();
                 log2.userid = order.add_userid;
-                log.type = (int)Model.Enum.UserMoneyDetails.SetTop;
+                log.type = (int)Model.Enum.UserMoneyDetails.SetTopPay;
                 log2.money = -order.money;
                 log2.remark = string.Format("{0}支出{1}元", order.type, order.money);
                 log2.addtime = DateTime.Now;

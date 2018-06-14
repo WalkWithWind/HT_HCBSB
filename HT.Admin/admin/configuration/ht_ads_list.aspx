@@ -94,7 +94,7 @@
             </ItemTemplate>
             <FooterTemplate>
                 <%#rptList.Items.Count == 0 ? "<tr><td align=\"center\" colspan=\"8\">暂无记录</td></tr>" : ""%>
-</table>
+            </table>
             </FooterTemplate>
         </asp:Repeater>
         <!--/文字列表-->
