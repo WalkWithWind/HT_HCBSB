@@ -296,6 +296,37 @@
     <Property Name="is_delete" Type="int" />
     <Property Name="total" Type="decimal" Precision="18" Scale="2" />
   </EntityType>
+  <EntityType Name="ht_news_order">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="news_id" Type="int" />
+    <Property Name="type" Type="nvarchar" MaxLength="10" />
+    <Property Name="value" Type="nvarchar" MaxLength="10" />
+    <Property Name="money" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="pay" Type="nvarchar" MaxLength="10" />
+    <Property Name="pay_status" Type="int" />
+    <Property Name="pay_time" Type="datetime" />
+    <Property Name="pay_trade_no" Type="nvarchar" MaxLength="50" />
+    <Property Name="order_no" Type="nvarchar" MaxLength="50" />
+    <Property Name="add_time" Type="datetime" />
+    <Property Name="add_userid" Type="int" />
+  </EntityType>
+  <EntityType Name="ht_news_subscribe">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="start_province" Type="nvarchar" MaxLength="50" />
+    <Property Name="start_city" Type="nvarchar" MaxLength="50" />
+    <Property Name="start_district" Type="nvarchar" MaxLength="50" />
+    <Property Name="stop_province" Type="nvarchar" MaxLength="50" />
+    <Property Name="stop_city" Type="nvarchar" MaxLength="50" />
+    <Property Name="stop_district" Type="nvarchar" MaxLength="50" />
+    <Property Name="add_userid" Type="int" />
+    <Property Name="add_time" Type="datetime" />
+  </EntityType>
   <EntityType Name="ht_order">
     <Key>
       <PropertyRef Name="id" />
@@ -598,6 +629,8 @@
     <EntitySet Name="ht_news" EntityType="Self.ht_news" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ht_news_cate" EntityType="Self.ht_news_cate" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ht_news_del" EntityType="Self.ht_news_del" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_news_order" EntityType="Self.ht_news_order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ht_news_subscribe" EntityType="Self.ht_news_subscribe" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ht_order" EntityType="Self.ht_order" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ht_order_appraise" EntityType="Self.ht_order_appraise" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ht_payment" EntityType="Self.ht_payment" Schema="dbo" store:Type="Tables" />

@@ -69,6 +69,7 @@
     <Compile Include="BLLHelp.cs" />
     <Compile Include="BLLNews.cs" />
     <Compile Include="BLLNewsOrder.cs" />
+    <Compile Include="BLLNewsSubscribe.cs" />
     <Compile Include="BLLPinpai.cs" />
     <Compile Include="BLLRelation.cs" />
     <Compile Include="BLLConfig.cs" />

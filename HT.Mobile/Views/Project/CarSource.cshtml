@@ -12,7 +12,7 @@
         <div class="wrapper">
             <ul class="el_top_ul">
                 <li style="width: 40%;"><a class="start_city" v-on:click="select.showCityStart=true"><span>{{searchKey.start_city|cityFormart(searchKey.start_district,searchKey.start_province,'出发地')}}</span><i></i></a></li>
-                <li style="width: 40%;">
+                <li style="width: 40%; position:relative;">
                     <span class="jt"></span>
                     <a class="stop_city" v-on:click="select.showCityStop=true"><span>{{searchKey.stop_city|cityFormart(searchKey.stop_district,searchKey.stop_province,'到达地')}}</span><i></i></a>
                 </li>

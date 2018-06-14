@@ -25,6 +25,7 @@ namespace HT.Model
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<ht_news_order> ht_news_order { get; set; }
         public virtual DbSet<ht_account> ht_account { get; set; }
         public virtual DbSet<ht_ad> ht_ad { get; set; }
         public virtual DbSet<ht_ad_category> ht_ad_category { get; set; }
@@ -41,7 +42,7 @@ namespace HT.Model
         public virtual DbSet<ht_news> ht_news { get; set; }
         public virtual DbSet<ht_news_cate> ht_news_cate { get; set; }
         public virtual DbSet<ht_news_del> ht_news_del { get; set; }
-        public virtual DbSet<ht_news_order> ht_news_order { get; set; }
+        public virtual DbSet<ht_news_subscribe> ht_news_subscribe { get; set; }
         public virtual DbSet<ht_order> ht_order { get; set; }
         public virtual DbSet<ht_order_appraise> ht_order_appraise { get; set; }
         public virtual DbSet<ht_payment> ht_payment { get; set; }

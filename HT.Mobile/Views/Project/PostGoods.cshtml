@@ -232,11 +232,11 @@
 </div>
 @section scripts{
     @Html.Partial("_CityJs")
-    @Scripts.Render("/Scripts/Project/PostGoods.js")
     @Html.Action("Template", "Partial", new { id = "CityDialog" })
     @Html.Action("Template", "Partial", new { id = "UseTimepicker" })
     @Html.Action("Template", "Partial", new { id = "PostHelpDialog" })
     @Html.Action("Template", "Partial", new { id = "Contact" })
+    @Scripts.Render("/Scripts/Project/PostGoods.js")
     <script>
         $(function () {
             var $a = $(".pg_sec8 .pt4 .txt_n a");

@@ -53,8 +53,6 @@ namespace HT.BLL
 
             }
             return wxAccessToken.access_token;
-
-
         }
         #endregion
 

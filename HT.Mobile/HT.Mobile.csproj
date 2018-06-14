@@ -294,6 +294,7 @@
     <Content Include="Scripts\Project\CarSellDetails.js" />
     <Content Include="Scripts\Project\CarSource.js" />
     <Content Include="Scripts\Project\CarSourceDetails.js" />
+    <Content Include="Scripts\Project\GoodsSourceSubscribe.js" />
     <Content Include="Scripts\Project\Job.js" />
     <Content Include="Scripts\Project\JobDetails.js" />
     <Content Include="Scripts\Project\EditPostGoods.js" />
@@ -314,6 +315,7 @@
     <Content Include="Scripts\Project\GoodsSourceDetails.js" />
     <Content Include="Scripts\Project\Recruit.js" />
     <Content Include="Scripts\Project\RecruitDetails.js" />
+    <Content Include="Scripts\Project\SourceSubscribe.js" />
     <Content Include="Scripts\Project\Template.js" />
     <Content Include="Scripts\Project\TemplateDetails.js" />
     <Content Include="Scripts\respond.js" />
@@ -411,6 +413,8 @@
     <Content Include="Views\Project\EditPostTemplate.cshtml" />
     <Content Include="Views\Project\EditPostGoods.cshtml" />
     <Content Include="Views\Partial\Subscribe.cshtml" />
+    <Content Include="Views\Project\GoodsSourceSubscribe.cshtml" />
+    <Content Include="Views\Project\SourceSubscribe.cshtml" />
     <None Include="Views\WX\PayFail.cshtml" />
   </ItemGroup>
   <ItemGroup>

@@ -108,7 +108,7 @@
                 }
                 _this.ob[_this.province] = item;
                 if (!item) {
-                    layer.closeAll();
+                    layer.close(_this.layerIndex);
                     return;
                 }
 
@@ -128,7 +128,7 @@
                 }
                 _this.ob[_this.city] = item;
                 if (!item) {
-                    layer.closeAll();
+                    layer.close(_this.layerIndex);
                 } else {
                     _this.selectTab = 2;
                 }
@@ -136,7 +136,7 @@
             selectDistrict: function (item) {
                 var _this = this;
                 _this.ob[_this.district] = item;
-                layer.closeAll();
+                layer.close(_this.layerIndex);
             },
             selectTabProvince: function (code) {
                 var _this = this;

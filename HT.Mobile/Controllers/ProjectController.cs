@@ -29,12 +29,9 @@ namespace HT.Mobile.Controllers
         /// <returns></returns>
         public ActionResult BaseNewsList(ht_news searchKey, int page = 1, int rows = 5)
         {
-            if (searchKey.isme.HasValue && searchKey.isme.Value) searchKey.add_userid = BLLAuthentication.GetAuthenticationUser().id; //我的发布
-            Model.Model.PageResult<ht_news> pageModel = BLLNews.GetNewsListPageResult(page, rows, searchKey);
-            foreach (var item in pageModel.list)
-            {
-                item.is_praise = BLLRelation.IsExistRelation(item.id.ToString(),BLLUser.GetUserId().ToString(), "praise");
-            }
+            var curUserid = BLLAuthentication.GetAuthenticationUser().id;
+            if (searchKey.isme.HasValue && searchKey.isme.Value) searchKey.add_userid = curUserid; //我的发布
+            Model.Model.PageResult<ht_news> pageModel = BLLNews.GetNewsListPageResult(page, rows, searchKey, curUserid);
             if (Request.IsAjaxRequest())
             {
                 apiResp.status = true;
@@ -87,6 +84,80 @@ namespace HT.Mobile.Controllers
             }
 
             return View(list);
+        }
+
+        /// <summary>
+        /// 订阅线路
+        /// </summary>
+        /// <param name="searchKey"></param>
+        /// <param name="page"></param>
+        /// <param name="rows"></param>
+        /// <returns></returns>
+        [CheckFilter]
+        public ActionResult SubscribeNewsList(ht_news searchKey, int page = 1, int rows = 5)
+        {
+            int curUserid = BLLAuthentication.GetAuthenticationUser().id; 
+            Model.Model.PageResult<ht_news> pageModel = BLLNews.GetSubscribeNewsListPageResult(page, rows, searchKey, curUserid);
+            if (Request.IsAjaxRequest())
+            {
+                apiResp.status = true;
+                apiResp.result = pageModel;
+                return Json(apiResp);
+            }
+            return View(pageModel);
+        }
+        /// <summary>
+        /// 订阅列表
+        /// </summary>
+        /// <returns></returns>
+        [CheckFilter]
+        public ActionResult SubscribeList()
+        {
+            int curUserid = BLLAuthentication.GetAuthenticationUser().id;
+            Model.Model.PageResult<ht_news_subscribe> pageModel = BLLNewsSubscribe.GetSubscribeListPageResult(curUserid);
+            if (Request.IsAjaxRequest())
+            {
+                apiResp.status = true;
+                apiResp.result = pageModel;
+                return Json(apiResp);
+            }
+            return View(pageModel);
+        }
+
+        /// <summary>
+        /// 提交订阅线路
+        /// </summary>
+        /// <returns></returns>
+        [CheckFilter]
+        public ActionResult PostSubscribe(ht_news_subscribe model)
+        {
+            int curUserid = BLLAuthentication.GetAuthenticationUser().id;
+            model.add_userid = curUserid;
+            string msg;
+            if (BLLNewsSubscribe.AddSubscribe(model,out msg))
+            {
+                return JsonResult(APIErrCode.Success, "订阅成功", model);
+            }
+            else
+            {
+                return JsonResult(APIErrCode.OperateFail, msg);
+            }
+        }
+        /// <summary>
+        /// 删除订阅线路
+        /// </summary>
+        /// <returns></returns>
+        [CheckFilter]
+        public ActionResult DelSubscribe(string ids)
+        {
+            if (BLLNewsSubscribe.DelSubscribe(ids))
+            {
+                return JsonResult(APIErrCode.Success, "删除成功");
+            }
+            else
+            {
+                return JsonResult(APIErrCode.OperateFail, "删除失败");
+            }
         }
         /// <summary>
         /// 获取发布须知内容
@@ -366,6 +437,25 @@ namespace HT.Mobile.Controllers
         public ActionResult GoodsSource()
         {
             ViewBag.FootActive = 1;
+            return View();
+        }
+        /// <summary>
+        /// 订阅货源列表
+        /// </summary>
+        /// <returns></returns>
+        [CheckFilter]
+        public ActionResult GoodsSourceSubscribe()
+        {
+            //ViewBag.FootActive = 1;
+            return View();
+        }
+        /// <summary>
+        /// 订阅列表
+        /// </summary>
+        /// <returns></returns>
+        [CheckFilter]
+        public ActionResult SourceSubscribe()
+        {
             return View();
         }
         /// <summary>

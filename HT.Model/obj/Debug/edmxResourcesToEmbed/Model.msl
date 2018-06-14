@@ -1,6 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="ht_news_order">
+      <EntityTypeMapping TypeName="Model.ht_news_order">
+        <MappingFragment StoreEntitySet="ht_news_order">
+          <ScalarProperty Name="add_userid" ColumnName="add_userid" />
+          <ScalarProperty Name="add_time" ColumnName="add_time" />
+          <ScalarProperty Name="value" ColumnName="value" />
+          <ScalarProperty Name="order_no" ColumnName="order_no" />
+          <ScalarProperty Name="pay_trade_no" ColumnName="pay_trade_no" />
+          <ScalarProperty Name="pay_time" ColumnName="pay_time" />
+          <ScalarProperty Name="pay_status" ColumnName="pay_status" />
+          <ScalarProperty Name="pay" ColumnName="pay" />
+          <ScalarProperty Name="money" ColumnName="money" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="news_id" ColumnName="news_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="ht_account">
       <EntityTypeMapping TypeName="Model.ht_account">
         <MappingFragment StoreEntitySet="ht_account">
@@ -309,6 +327,21 @@
           <ScalarProperty Name="cate" ColumnName="cate" />
           <ScalarProperty Name="cateid" ColumnName="cateid" />
           <ScalarProperty Name="news_id" ColumnName="news_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ht_news_subscribe">
+      <EntityTypeMapping TypeName="Model.ht_news_subscribe">
+        <MappingFragment StoreEntitySet="ht_news_subscribe">
+          <ScalarProperty Name="add_time" ColumnName="add_time" />
+          <ScalarProperty Name="add_userid" ColumnName="add_userid" />
+          <ScalarProperty Name="stop_district" ColumnName="stop_district" />
+          <ScalarProperty Name="stop_city" ColumnName="stop_city" />
+          <ScalarProperty Name="stop_province" ColumnName="stop_province" />
+          <ScalarProperty Name="start_district" ColumnName="start_district" />
+          <ScalarProperty Name="start_city" ColumnName="start_city" />
+          <ScalarProperty Name="start_province" ColumnName="start_province" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>

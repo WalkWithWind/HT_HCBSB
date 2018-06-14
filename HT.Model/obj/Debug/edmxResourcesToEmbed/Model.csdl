@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ht_news_order" EntityType="Model.ht_news_order" />
     <EntitySet Name="ht_account" EntityType="Model.ht_account" />
     <EntitySet Name="ht_ad" EntityType="Model.ht_ad" />
     <EntitySet Name="ht_ad_category" EntityType="Model.ht_ad_category" />
@@ -17,6 +18,7 @@
     <EntitySet Name="ht_news" EntityType="Model.ht_news" />
     <EntitySet Name="ht_news_cate" EntityType="Model.ht_news_cate" />
     <EntitySet Name="ht_news_del" EntityType="Model.ht_news_del" />
+    <EntitySet Name="ht_news_subscribe" EntityType="Model.ht_news_subscribe" />
     <EntitySet Name="ht_order" EntityType="Model.ht_order" />
     <EntitySet Name="ht_order_appraise" EntityType="Model.ht_order_appraise" />
     <EntitySet Name="ht_payment" EntityType="Model.ht_payment" />
@@ -47,6 +49,23 @@
       <End Role="ht_news" EntitySet="ht_news" />
     </AssociationSet>
   </EntityContainer>
+  <EntityType Name="ht_news_order">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="news_id" Type="Int32" />
+    <Property Name="type" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="money" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="pay" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="pay_status" Type="Int32" />
+    <Property Name="pay_time" Type="DateTime" Precision="3" />
+    <Property Name="pay_trade_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="order_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="value" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="add_time" Type="DateTime" Precision="3" />
+    <Property Name="add_userid" Type="Int32" />
+  </EntityType>
   <EntityType Name="ht_account">
     <Key>
       <PropertyRef Name="id" />
@@ -348,6 +367,20 @@
     <Property Name="share_num" Type="Int32" Nullable="false" />
     <Property Name="is_delete" Type="Int32" />
     <Property Name="total" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="ht_news_subscribe">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="start_province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="start_city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="start_district" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="stop_province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="stop_city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="stop_district" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="add_userid" Type="Int32" />
+    <Property Name="add_time" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="ht_order">
     <Key>

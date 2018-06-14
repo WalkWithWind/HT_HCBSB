@@ -4,7 +4,7 @@
 @{
     /**/
 
-    ViewBag.Title = "货源信息";
+    ViewBag.Title = "订阅线路";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @Html.Partial("_Header")
@@ -14,13 +14,14 @@
 <div class="main hide" v-bind:class="['show']">
     <div class="headTab">
         <div class="tab-title">
-            <div class="item" v-on:click="location.href='/Project/GoodsSourceSubscribe'">
+            <div class="item active">
                 订阅线路
             </div>
-            <div class="item active">
+            <div class="item" v-on:click="location.href='/Project/GoodsSource'">
                 货源信息
             </div>
         </div>
+        <a href="javascript:void(0);" v-on:click="location.href='/Project/SourceSubscribe'" class="Sub">订阅</a>
     </div>
     <div class="top-search">
     </div>
@@ -114,5 +115,5 @@
     @Html.Partial("_CityJs")
     @Html.Action("Template", "Partial", new { id = "List" })
     @Html.Action("Template", "Partial", new { id = "CityDialog" })
-    @Scripts.Render("/Scripts/Project/GoodsSource.js")
+    @Scripts.Render("/Scripts/Project/GoodsSourceSubscribe.js")
 }

@@ -6,11 +6,13 @@
 	padding: 0 3%;
 }
 
+
+
 /* s-顶部搜索 */
 .head {
-	width: 100%;
-	background: #fdcf24;
-	padding: .24rem 0;
+    width: 100%;
+    background: #fdcf24;
+    padding: .24rem 0;
 }
 .head form {
 	overflow: hidden;
@@ -531,7 +533,7 @@ footer {
     vertical-align: middle;
     position: absolute;
     top: .2rem;
-    left: 38%;
+    left:-5%;
 }
 .el_top_ul li a {
 	display: block;
@@ -2446,4 +2448,47 @@ footer {
 }
 .black {
     color: black !important;
+}
+
+/* s-顶部切换 */
+.headTab {
+    background: #fdcf24;
+    padding: .1rem 0;
+    text-align: center;
+}
+.headTab .tab-title {
+    display: inline-block;
+    border: solid 1px #000;
+    border-radius: .1rem;
+}
+
+.headTab .tab-title .item {
+    display: inline-block;
+    line-height: .6rem;
+    padding: 0 .4rem;
+}
+.headTab .tab-title .item.active{
+    background-color: #333333;
+    color: #fdcf24;
+}
+.headTab .Sub{
+    position: absolute;
+    right: .3rem;
+    line-height: .65rem;
+}
+.subscribe_li .subscribe_title {
+    display: inline-block;
+}
+.subscribe_li .subscribe_title.edit {
+    width: 92%;
+}
+.subscribe_li .subscribe_del {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    width: 8%;
+    text-align: center;
+}
+.subscribe_li .subscribe_del img {
+    width: .5rem;
 }

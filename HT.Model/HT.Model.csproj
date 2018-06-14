@@ -105,6 +105,9 @@
     <Compile Include="ht_news_order.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="ht_news_subscribe.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="ht_order.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
