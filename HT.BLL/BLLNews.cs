@@ -644,7 +644,7 @@ namespace HT.BLL
                     {
                         ht_user_money_log log = new ht_user_money_log();
                         log.userid = news.add_userid;
-                        log.type = (int)Model.Enum.UserMoneyDetails.SetTop;
+                        log.type = (int)Model.Enum.UserMoneyDetails.SetTopPay;
                         log.money = -money;
                         log.remark = string.Format("余额支出{0}元", money);
                         log.addtime = DateTime.Now;

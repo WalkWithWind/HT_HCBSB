@@ -26,11 +26,30 @@
         <ul>
 
             <li v-for="item in walletChildData.list">
-                <span v-text="item.money>0?'收入':'支出'"></span>
+                @*<span v-if="item.type==1" v-text="item.money>0?'收入':'支出'"></span>*@
+                <span v-if="item.type==1">发布支付</span>
+                <span v-if="item.type==2">
+                    余额提现
+                    <label class="draw-status-0" v-if="item.status==0">（待审核）</label>
+                    <label class="draw-status-1" v-if="item.status==1">（审核通过）</label>
+                    <label class="draw-status-2" v-if="item.status==2">（审核不通过）</label>
+                    <label class="draw-status-3" v-if="item.status==3">（已打款）</label>
+                </span>
+
+                <span v-if="item.type==3">
+                    余额提现未通过<label class="draw-status-3">（退回）</label>
+                </span>
+
+                <span v-if="item.type==4">
+                    置顶支付
+                </span>
+
                 <p>
                     <em>{{item.addtime|jsonFormart}}</em>
                     <i v-bind:class="{'expend':item.money<0,'income':item.money>0}" v-text="item.money>0?'+'+item.money:item.money"></i>
                 </p>
+
+                <div style="clear:both;"></div>
             </li>
         </ul>
         <a href="javascript:void(0);" v-on:click="loadMore" class="more_btn">查看更多</a>

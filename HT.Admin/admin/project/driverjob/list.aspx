@@ -42,12 +42,14 @@
                             <div class="rule-single-select">
                                  <select onchange="onSelectVal(this)">
                                      <option value="">请选择审核状态</option>
+                                     <option value="-1">待支付</option>
                                      <option value="0">待审核</option>
                                      <option value="1">审核通过</option>
                                      <option value="2">审核不通过</option>
+                                     <option value="3">已过期</option>
                                 </select>						
                             </div>
-							<input id="txtFromDate" class="input-date" onclick="WdatePicker()" /><span class="float-right">&nbsp;至&nbsp;</span><input id="txtToDate" class="input-date" onclick="WdatePicker()"  />
+							<input id="txtFromDate" class="input-date" onclick="WdatePicker()"  @keyup.enter="search"/><span class="float-right">&nbsp;至&nbsp;</span><input id="txtToDate" class="input-date" @keyup.enter="search" onclick="WdatePicker()"  />
                         </div>
 
 						   
@@ -115,6 +117,7 @@
                     <span v-if="item.status==0 && item.pay_status==1">待审核</span>
                     <span v-if="item.status==1">审核通过</span> 
                     <span v-if="item.status==2">审核不通过</span>
+                    <span v-if="item.status==3" style="color:#d8d4d4">已过期</span>
 				</td>
 				<td align="center">
 					<a v-if="item.review_s0" style="color:red;" v-bind:href="'/admin/review/list.aspx?type=comment&nid='+ item.id">留言({{item.review_s0}})</a>

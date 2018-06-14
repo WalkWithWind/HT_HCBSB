@@ -2492,3 +2492,9 @@ footer {
 .subscribe_li .subscribe_del img {
     width: .5rem;
 }
+.floatL{
+    float:left!important;
+}
+.floatR{
+    float:right!important;
+}

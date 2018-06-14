@@ -59,7 +59,7 @@
                                          <option value="0">待审核</option>
                                          <option value="1">审核通过</option>
                                          <option value="2">审核不通过</option>
-                                         <option value="3">已罚款</option>
+                                         <option value="3">已打款</option>
                                     </select>						
                                 </div>
                                 </div>
