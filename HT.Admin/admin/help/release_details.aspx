@@ -10,10 +10,11 @@
     <title>发布须知</title>
 	<link href="/scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
 	<link href="/admin/skin/default/style.css" rel="stylesheet" type="text/css" />
-    <link href="/scripts/wangEditor-3.1.1/wangEditor.min.css" rel="stylesheet" type="text/css" />
+    <%--<link href="/scripts/wangEditor-3.1.1/wangEditor.min.css" rel="stylesheet" type="text/css" />--%>
+    <link href="/editor/themes/default/default.css" rel="stylesheet" />
     <style>
         .areaDiv {
-            max-width:700px;
+            max-width:1000px;
             margin:20px 10px;
         }
 
@@ -39,8 +40,10 @@
         <div class="areaDiv">
 
 
-            <div id="txtdiv" style="border:1px solid gray;min-height:240px">
-            </div>
+<%--            <div id="txtdiv" style="border:1px solid gray;min-height:240px">
+            </div>--%>
+
+            <textarea id="txtdiv" name="content" style="width:100%;min-height:500px;"></textarea> 
 
         </div>
 
@@ -60,7 +63,9 @@
 	<script type="text/javascript" src="/scripts/artdialog/dialog-plus-min.js"></script>
 	<script type="text/javascript" charset="utf-8" src="/admin/js/laymain.js"></script>
 	<script type="text/javascript" charset="utf-8" src="/admin/js/common.js"></script>
-    <script type="text/javascript" charset="utf-8" src="/scripts/wangEditor-3.1.1/wangEditor.min.js"></script>
+    <%--<script type="text/javascript" charset="utf-8" src="/scripts/wangEditor-3.1.1/wangEditor.min.js"></script>--%>
+    <script type="text/javascript" src="/editor/kindeditor-min.js"></script>
+    <script type="text/javascript" src="/editor/lang/zh-CN.js"></script>
 
 
     <script type="text/javascript">
@@ -81,32 +86,24 @@
                     _this.loadData();
 
 
-
-                    var E = window.wangEditor
-                    _this.editor = new E('#txtdiv')
-                    _this.editor.customConfig.menus = [
-                        'head',  // 标题
-                        'bold',  // 粗体
-                        'fontSize',  // 字号
-                        'fontName',  // 字体
-                        'italic',  // 斜体
-                        'underline',  // 下划线
-                        'strikeThrough',  // 删除线
-                        'foreColor',  // 文字颜色
-                        'backColor',  // 背景颜色
-                        'link',  // 插入链接
-                        'list',  // 列表
-                        'justify',  // 对齐方式
-                        'quote',  // 引用
-                        'emoticon',  // 表情
-                        //'image',  // 插入图片
-                        'table',  // 表格
-                        //'video',  // 插入视频
-                        'code',  // 插入代码
-                        'undo',  // 撤销
-                        //'redo'  // 重复
-                    ];
-                    _this.editor.create()
+                    KindEditor.ready(function (K) {
+                        _this.editor = K.create('#txtdiv', {
+                            //uploadJson: '/tools/upload_ajax.ashx',
+                            //extraFileUploadParams: { action: 'UpLoadFile' },   
+                            //allowFileManager: true,
+                            //
+                            items: [
+                                'source', '|', 'undo', 'redo', '|', 'preview',  'template', 'code', 'cut', 'copy', 'paste',
+                                'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+                                'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+                                'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/',
+                                'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 
+                                'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|',
+                                'flash', 'media', 'insertfile', 'table', 'hr', 'emoticons', 'baidumap', 'pagebreak',
+                                'anchor', 'link', 'unlink', '|', 'about']
+                        });
+                    });
+                   
 
                 },
 
@@ -122,7 +119,7 @@
                         dataType: 'json',
                         success: function (resp) {
                             if (resp.status && resp.result) {
-                                _this.editor.txt.html(resp.result.contents);
+                                _this.editor.html(resp.result.contents);
                                 
                             }
                         }
@@ -143,7 +140,7 @@
                     var _this = this;
 
 
-                    var desc = _this.editor.txt.html()
+                    var desc = _this.editor.html()
 
                     if (!desc) {
                         _this.showMsg('请输入内容');
