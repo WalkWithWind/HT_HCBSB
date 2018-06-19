@@ -33,7 +33,8 @@
 			<span>发布须知</span>
 		</div>
 		<!--/导航栏-->
-
+
+
 
 		<!--文字列表-->
         <div class="areaDiv">
@@ -50,7 +51,8 @@
                 <input type="submit" @click="updateStatus()" name="btnSubmit" value="提交保存" id="btnSubmit" class="btn" />
                 <input name="btnReturn" type="button" value="返回上一页" class="btn yellow" onclick="javascript: history.back(-1);" />
             </div>
-        </div>
+        </div>
+
 
 	
     </div>
@@ -64,7 +66,16 @@
 
 
     <script type="text/javascript">
-
+        
+            //初始化编辑器
+            //var editor = KindEditor.create('.editor', {
+            //    width: '100%',
+            //    height: '350px',
+            //    resizeType: 1,
+            //    uploadJson: '/tools/upload_ajax.ashx?action=EditorFile&IsWater=1',
+            //    fileManagerJson: '/tools/upload_ajax.ashx?action=ManagerFile',
+            //    allowFileManager: true
+            //});
         var url = '/admin/api/help/get.ashx';
         var upateurl = '/admin/api/help/update.ashx';
 

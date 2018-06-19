@@ -57,6 +57,16 @@ namespace HT.Admin.Models
         }
 
         /// <summary>
+        /// 检查管理员权限
+        /// </summary>
+        /// <param name="navname">菜单名称</param>
+        /// <param name="actiontype">操作类型</param>
+        public bool ChkAdminLevelBool(string navname, string actiontype)
+        {
+            ht_manager model = Manager;
+            return Exist(Convert.ToInt32(model.roleid), navname, actiontype);
+        }
+        /// <summary>
         /// 检查是否有权限
         /// </summary>
         /// <param name="roleid">角色id</param>
@@ -77,7 +87,6 @@ namespace HT.Admin.Models
             ht_manager_role_value model = role.ht_manager_role_value.FirstOrDefault(x => x.navname == navname && x.actiontype == actiontype);
             return model != null;
         }
-
         /// <summary>
         /// 写管理员日志
         /// </summary>

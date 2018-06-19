@@ -33,9 +33,14 @@
 
 						<ul class="icon-list">
 							<li><a class="all" v-on:click="selectAllChange()" ><i></i><span>{{selectAllText}}</span></a></li>
+                            <% if (ChkAdminLevelBool("common_list", HT.Utility.HTEnums.ActionEnum.Delete.ToString()))
+                                { %>
 							<li><a class="del" v-on:click="del()" ><i></i><span>删除</span></a></li>
+                            <%} %>
+                            <% if (ChkAdminLevelBool("common_list", HT.Utility.HTEnums.ActionEnum.Audit.ToString()))
+                                { %>
 							<li><a class="del" v-on:click="updateStatus()" ><i></i><span>审核</span></a></li>
-							
+                            <%} %>
 						</ul>
 
                         <div class="menu-list">
@@ -78,7 +83,11 @@
 				<th align="center" width="15%">标签</th>
 				<th align="center" width="10%">有效期</th>
 				<th align="center" width="8%">状态</th>
+				
+                <% if (ChkAdminLevelBool("review_list", HT.Utility.HTEnums.ActionEnum.View.ToString()))
+                    { %>
 				<th align="center" width="6%">留言</th>
+                <%} %>
 				<th align="center">操作</th>
 			</tr>
 
@@ -110,10 +119,14 @@
                     <span v-if="item.status==2">审核不通过</span>
                     <span v-if="item.status==3" style="color:#d8d4d4">已过期</span>
 				</td>
+				
+                <% if (ChkAdminLevelBool("review_list", HT.Utility.HTEnums.ActionEnum.View.ToString()))
+                    { %>
 				<td align="center">
 					<a v-if="item.review_s0" style="color:red;" v-bind:href="'/admin/review/list.aspx?type=comment&nid='+ item.id">留言({{item.review_s0}})</a>
 					<a v-if="!item.review_s0" v-bind:href="'/admin/review/list.aspx?type=comment&nid='+ item.id">留言</a>
 				</td>
+                <%} %>
 				<td align="center">
 					<a v-bind:href="'detail.aspx?id='+ item.id">详情</a>
 				</td>

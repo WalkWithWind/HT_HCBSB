@@ -30,8 +30,14 @@
 					<div class="l-list">
 						<ul class="icon-list">
 							<li><a class="all" v-on:click="selectAllChange()" ><i></i><span>{{selectAllText}}</span></a></li>
+                            <% if (ChkAdminLevelBool("review_list", HT.Utility.HTEnums.ActionEnum.Delete.ToString()))
+                                { %>
 							<li><a class="del" v-on:click="del()" ><i></i><span>删除</span></a></li>
+                            <%} %>
+                            <% if (ChkAdminLevelBool("review_list", HT.Utility.HTEnums.ActionEnum.Audit.ToString()))
+                                { %>
 							<li><a class="del" v-on:click="updateStatus()" ><i></i><span>审核</span></a></li>
+                            <%} %>
 						</ul>
                         <div class="menu-list">
                             <div class="rule-single-select">

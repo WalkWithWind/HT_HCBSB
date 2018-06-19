@@ -51,6 +51,10 @@
             /// 取消
             /// </summary>
             Cancel,
+            /// <summary>
+            /// 审核
+            /// </summary>
+            Audit
         }
     }
 }

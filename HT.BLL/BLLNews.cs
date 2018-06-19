@@ -49,7 +49,7 @@ namespace HT.BLL
             if (searchKey.add_userid != 0) data = data.Where(p => p.add_userid == searchKey.add_userid);
 
             if (isOrder == false) return data;
-            var orderData = data.OrderByDescending(p => p.set_top);
+            var orderData = searchKey.add_userid != 0? data.OrderByDescending(p => p.id) : data.OrderByDescending(p => p.set_top);
             if(searchKey.recommend.HasValue && searchKey.recommend.Value) orderData = orderData.ThenByDescending(p => p.praise_num);
             orderData = orderData.ThenByDescending(p => p.update_time);
             return orderData;
@@ -553,6 +553,7 @@ namespace HT.BLL
                 ht_user user = db.ht_user.Find(details.add_userid);
                 user.money = user.money - details.total;
                 details.pay_status = 1;
+                details.status = 1;//自动审核通过
                 details.pay_time = DateTime.Now;
                 details.pay = pay;
                 details.pay_trade_no = pay_trade_no;
@@ -596,6 +597,7 @@ namespace HT.BLL
                     db.ht_user_money_log.Add(log2);
 
                     details.pay_status = 1;
+                    details.status = 1;//自动审核通过
                     details.pay_time = DateTime.Now;
                     details.pay = "微信";
                     details.pay_trade_no = tradeNo;

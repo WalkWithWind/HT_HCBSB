@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Web.UI.WebControls;
+using EntityFramework.Extensions;
 using HT.Admin.Models;
 using HT.Model;
 using HT.Utility;
@@ -77,8 +78,8 @@ namespace HT.Admin.admin.manager
                     }
                 }
             }
-            AddAdminLog(HTEnums.ActionEnum.Delete.ToString(), "删除管理员" + sucCount + "条"); //记录日志
-            JscriptMsg("删除成功" + sucCount + "条", Utils.CombUrlTxt("role_list.aspx", "keywords={0}", this.keywords));
+            AddAdminLog(HTEnums.ActionEnum.Delete.ToString(), "删除角色" + sucCount + "条，及相关管理员"); //记录日志
+            JscriptMsg("删除成功" + sucCount + "条，及相关管理员", Utils.CombUrlTxt("role_list.aspx", "keywords={0}", this.keywords));
         }
     }
 }

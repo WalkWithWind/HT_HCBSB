@@ -235,7 +235,7 @@
             if (this.listData.list[this.setTop.idx].pay_status == 0) {
                 this.postUpdateSetTop();
             } else {
-                this.postUpdateSetTop();
+                this.payUpdateSetTop();
             }
         },
         payUpdateSetTop: function () {
@@ -255,11 +255,11 @@
                     dataType: 'json',
                     success: function (resp) {
                         _this.isLoading = false;
-                        alert(resp.msg);
                         if (resp.status) {
                             _this.listData.list[_this.setTop.idx].set_top = _this.setTop.set_top;
                             layer.closeAll();
                         }
+                        alert(resp.msg);
                     }
                 });
             } else {
