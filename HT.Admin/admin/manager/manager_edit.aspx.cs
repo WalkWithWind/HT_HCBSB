@@ -77,7 +77,7 @@ namespace HT.Admin.admin.manager
                 ht_manager model = new ht_manager
                 {
                     roleid = Convert.ToInt32(ddlRoleId.SelectedValue),
-                    islock = cbIsLock.Checked ? 1 : 0,
+                    islock = cbIsLock.Checked ? 0 : 1,
                     username = txtUserName.Text,
                     salt = Utils.GetCheckCode(10),
                     roletype = role.roletype,

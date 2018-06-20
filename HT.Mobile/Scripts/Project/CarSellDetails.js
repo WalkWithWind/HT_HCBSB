@@ -87,7 +87,11 @@ var mainDetails = new Vue({
             setTimeout(function () {
                 if (_this.imgs && _this.imgs.length > 1) {
                     var mySwiper = new Swiper('.zhc_container.swiper-container', {
-                        autoplay: 5000,
+                        autoplay: {
+                            delay: 5000,
+                            stopOnLastSlide: false,
+                            disableOnInteraction: true
+                        },
                         navigation: {
                             nextEl: '.zhc_container .swiper-button-next',
                             prevEl: '.zhc_container .swiper-button-prev',

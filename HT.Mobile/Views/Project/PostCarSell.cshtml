@@ -188,6 +188,8 @@
                      v-bind:district="'start_district'"
                      v-bind:show-dialog="'showCityStart'"
                      v-bind:show-ob="select"
+                     v-bind:has-all-district="true"
+                    v-bind:has-all-city="true"
                      v-if="select.showCityStart">
         </city-dialog>
         <input type="file" name="file" id="file" accept="image/png,image/jpg,image/jpeg" style="display:none;" v-on:change="fileChange" />

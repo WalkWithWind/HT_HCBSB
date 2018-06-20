@@ -31,7 +31,7 @@ namespace HT.BLL.Admin
                     int newsid = int.Parse(news_id);
                     unDelList = unDelList.Where(r => r.news_id == newsid);
                 }
-                if (!string.IsNullOrWhiteSpace(type))
+                if (!string.IsNullOrWhiteSpace(type) && type!="all")
                 {
                     unDelList = unDelList.Where(r => r.review_type == type);
                 }
@@ -53,7 +53,31 @@ namespace HT.BLL.Admin
 
                 pageModel.totalpage = (int)Math.Ceiling((decimal)total / (decimal)pageSize);//总页数
                 pageModel.total = total;
-                pageModel.list = unDelList.OrderByDescending(p => p.id).Skip(pageSize * (pageIndex - 1)).Take(pageSize).ToList();
+                pageModel.list = unDelList.OrderBy(p => p.status).Skip(pageSize * (pageIndex - 1)).Take(pageSize).ToList();
+                if(type == "all")
+                {
+                    foreach (var item in pageModel.list)
+                    {
+                        if(item.review_type== "reply")
+                        {
+                            var pr = db.ht_review.Find(item.review_id);
+                           if(pr!=null)  item.parent_content = pr.review_content;
+                        }
+                        else if(item.review_type == "comment")
+                        {
+                            var pn = db.ht_news.Find(item.news_id);
+                            if (pn == null) continue;
+                            if(pn.cateid ==1 || pn.cateid == 2)
+                            {
+                                item.parent_content = BLLNews.GetCity(pn.start_city, pn.start_district, pn.start_province) + "→"+ BLLNews.GetCity(pn.stop_city, pn.stop_district, pn.stop_province);
+                            }
+                            else
+                            {
+                                item.parent_content =pn.add_nickname +" " +pn.cate;
+                            }
+                        }
+                    }
+                }
                 return pageModel;
             }
 

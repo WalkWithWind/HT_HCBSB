@@ -14,7 +14,7 @@
 	<link href="/scripts/datepicker/skin/whyGreen/datepicker.css" rel="stylesheet" />
 </head>
 <body class="mainbody">
-	<div class="maindiv">
+    <div class="maindiv" v-bind:class="['show']">
 		<!--导航栏-->
 		<div class="location">
 			<a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
@@ -177,7 +177,8 @@
 		el: '.maindiv',
 		data: {
 			selectAll: false,
-			selectAllText:"全选",
+            selectAllText: "全选",
+            inited: false,
 			dataList: [],
 			total: 0,
 			pageindex: 1,
@@ -194,7 +195,6 @@
                 var _this = this;
                 _this.loadData();
 			},
-
 			loadData: function () {
 				var _this = this;
 				var reqData = {
@@ -216,7 +216,7 @@
 						if (resp.status) {
 							_this.total = resp.result.total;
 							_this.dataList = resp.result.list
-							_this.totalPage = resp.result.totalpage;
+                            _this.totalPage = resp.result.totalpage;
 							_this.selectAll = false,
 							_this.selectAllText = "全选";
 					        laypage({

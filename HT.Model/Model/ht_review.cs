@@ -12,5 +12,9 @@ namespace HT.Model
         /// 回复列表
         /// </summary>
         public List<ht_review> reply_list { get; set; }
+        /// <summary>
+        /// 上级源内容
+        /// </summary>
+        public string parent_content { get; set; }
     }
 }

@@ -13,7 +13,7 @@
 	<link href="/scripts/datepicker/skin/whyGreen/datepicker.css" rel="stylesheet" />
 </head>
 <body class="mainbody">
-	<div class="maindiv">
+    <div class="maindiv" v-bind:class="['show']">
 		<!--导航栏-->
 		<div class="location">
 			<a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
@@ -63,6 +63,10 @@
 			<tr>
 				<th align="center" width="5%">选择</th>
 				<th align="center" width="10%">留言人</th>
+                <%if (type == "all")
+                    {%>
+				<th align="center" width="25%">被留信息</th>
+                <%} %>
 				<th align="center">留言内容</th>
 				<th align="center" width="15%">发布时间</th>
 				<th align="center" width="10%">状态</th>
@@ -77,10 +81,14 @@
 						<input id="rptList_chkId_0" type="checkbox" v-model="item.checked" /></span>
 				</td>
 				<td align="center">{{item.nickname}}</td>
+                <%if (type == "all")
+                    {%>
+				<td align="left" style="text-align:left;" v-text="item.parent_content">被留信息</td>
+                <%} %>
 				<td align="left" style="text-align:left;">{{item.review_content}}</td>
 				<td align="center">{{item.add_time|date}}</td>
 				<td align="center">
-                    <span v-if="item.status==0">待审核</span>
+                    <span v-if="item.status==0" style="color:red;">待审核</span>
                     <span v-if="item.status==1">审核通过</span> 
                     <span v-if="item.status==2">审核不通过</span>
 				</td>

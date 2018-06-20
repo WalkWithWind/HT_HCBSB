@@ -17,8 +17,8 @@
 
     
 <body class="mainbody">
-
-	<div class="maindiv">
+    
+    <div class="maindiv" v-bind:class="['show']">
 
 		 <!--导航栏-->
         <div class="location">

@@ -659,7 +659,20 @@ namespace HT.BLL
                 return db.SaveChanges() > 0 ? true : false;
 
             }
-
+        }
+        /// <summary>
+        /// 获取显示城市
+        /// </summary>
+        /// <param name="city"></param>
+        /// <param name="district"></param>
+        /// <param name="province"></param>
+        /// <param name="defvalue"></param>
+        /// <returns></returns>
+        public static string GetCity(string city, string district, string province, string defvalue="")
+        {
+            if (string.IsNullOrWhiteSpace(city) && string.IsNullOrWhiteSpace(district) && string.IsNullOrWhiteSpace(province)) return defvalue;
+            if (!string.IsNullOrWhiteSpace(city+ district)) return city + district;
+            return province;
         }
 
     }

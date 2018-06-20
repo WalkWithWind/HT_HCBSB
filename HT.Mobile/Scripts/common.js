@@ -2,7 +2,11 @@
 $(function () {
     if ($('.banner .swiper-container').get(0) != null) {
         var mySwiper = new Swiper('.banner .swiper-container', {
-            autoplay: 5000,
+            autoplay: {
+                delay: 5000,
+                stopOnLastSlide: false,
+                disableOnInteraction: true
+            },
             pagination: {
                 el: '.banner .swiper-pagination'
             },

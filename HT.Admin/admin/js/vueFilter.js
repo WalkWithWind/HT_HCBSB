@@ -1,6 +1,7 @@
-﻿Vue.filter('Date', function (date) {
+﻿Vue.filter('date', function (date) {
     if (date == undefined || !date) return;
-    date = new Date(date.replace('T', ' '));
+    var dpl = date.substr(0, date.indexOf('.')).replace('T', '-').replace(':', '-').replace(':', '-').split('-');
+    date = new Date(parseInt(dpl[0]), parseInt(dpl[1])-1, parseInt(dpl[2]), parseInt(dpl[3]), parseInt(dpl[4]), parseInt(dpl[5]));
     var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
     var day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
     var hour = date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
