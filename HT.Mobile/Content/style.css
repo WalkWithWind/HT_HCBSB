@@ -2536,9 +2536,18 @@ footer {
     right: 0;
     top: .35rem;
 }
+.errorInfo {
+    font-size: 0.5rem;
+    text-align: center;
+    padding-top: 3rem;
+    color: #ff5609;
+    font-weight: bold;
+}
+
 .floatL {
     float: left !important;
 }
-.floatR{
-    float:right!important;
+
+.floatR {
+    float: right !important;
 }

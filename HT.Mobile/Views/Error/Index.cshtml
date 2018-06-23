@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "错误页";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="main">
+    <div class="top">
+        <div class="wrapper">
+            <a href="javascript:history.go(-1);" class="back_btn">返回</a>
+        </div>
+    </div>
+    <div class="errorInfo">
+        @ViewBag.msg
+    </div>
+</div>

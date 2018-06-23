@@ -40,14 +40,18 @@ namespace HT.Mobile.Filter
                     var json = JsonConvert.SerializeObject(new ApiResponse
                     {
                         code = (int)APIErrCode.OperateFail,
-                        msg = "已禁用",
+                        msg = "您的帐号已被禁用",
                         status = false
                     });
                     filterContext.HttpContext.Response.Write(json);
                     filterContext.HttpContext.Response.End();
                 }
+                else
+                {
+                    //访问授权链接
+                    filterContext.HttpContext.Response.Redirect("/Error/Index?msg=您的帐号已被禁用");
+                }
             }
-
         }
     }
 }
