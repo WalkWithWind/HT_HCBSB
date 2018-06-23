@@ -20,7 +20,9 @@ namespace HT.BLL
                 openid = user.openid,
                 nickname = user.nickname,
                 mobile = user.mobile,
-                avatar = user.avatar
+                avatar = user.avatar,
+                parent_id = user.parent_id,
+                isdisable = user.isdisable
             });
             var expires = DateTime.Now.AddHours(2);
             var ticket = new FormsAuthenticationTicket(1, user.openid, DateTime.Now, expires, true, userData);

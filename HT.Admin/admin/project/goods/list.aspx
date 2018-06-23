@@ -295,25 +295,23 @@
 					content: "确认删除?",
 					okValue: '确定',
 					ok: function () {
-						
 					    $.ajax({
-						type: 'post',
-							url: delUrl,
-							data: { ids: _this.getSelectIds() },
-							dataType: 'json',
-							success: function (resp) {
-							if (resp.status) {
-								_this.showMsg("删除成功");
-								_this.pageindex = 1;
-								_this.loadData();
+						    type: 'post',
+							    url: delUrl,
+							    data: { ids: _this.getSelectIds() },
+							    dataType: 'json',
+							    success: function (resp) {
+							    if (resp.status) {
+								    _this.showMsg("删除成功");
+								    _this.pageindex = 1;
+								    _this.loadData();
 
-							}
-						else {
-							_this.showMsg(resp.msg);
-						}
-					}
-				});
-						
+							    }
+						        else {
+							        _this.showMsg(resp.msg);
+						        }
+					        }   
+				        });
 					},
 					cancelValue: '取消',
 					cancel: function () { }
