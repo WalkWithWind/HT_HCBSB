@@ -108,6 +108,9 @@
     <Compile Include="ht_news_subscribe.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="ht_news_subscribe_relation.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="ht_order.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -184,9 +187,6 @@
     <Compile Include="Model\WXApiResult.cs" />
     <Compile Include="Model\WXOAuthAccessToken.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config">

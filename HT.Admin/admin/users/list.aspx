@@ -31,6 +31,11 @@
 					<div class="l-list">
 						<ul class="icon-list">
 							<li><a class="all" v-on:click="selectAllChange()" ><i></i><span>{{selectAllText}}</span></a></li>
+                            
+                            <%--<li><a class="del" v-on:click="edit()" ><i></i><span>编辑</span></a></li>--%>
+                            <li><a class="del" v-on:click="disable(1)" ><i></i><span>禁用</span></a></li>
+                            <li><a class="del" v-on:click="disable(0)" ><i></i><span>启用</span></a></li>
+                            <li><a class="del" v-on:click="del()" ><i></i><span>删除</span></a></li>
 						</ul>
 					</div>
 					<div class="r-list">
@@ -49,13 +54,14 @@
 
 			<tr>
 				<th align="center" width="5%">选择</th>
-				<th align="center" width="20%">头像</th>
-				<th align="center" width="20%">昵称</th>
+				<th align="center" width="15%">头像</th>
+				<th align="center" width="15%">昵称</th>
 				<th align="center" width="15%">手机</th>
 				<th align="center" width="10%">余额</th>
 				<th align="center" width="15%">加入时间</th>
-				<th align="center">是否关注</th>
-				<%--<th align="center">操作</th>--%>
+				<th align="center" width="10%">是否关注</th>
+				<th align="center" width="10%">是否禁用</th>
+				<th align="center" width="5%">操作</th>
 			</tr>
 
 			<tr v-for="item in dataList">
@@ -72,9 +78,14 @@
                     <span v-show="item.issubscribe==0" style="color:red;">未关注</span>
                     <span v-show="item.issubscribe==1">已关注</span>
 				</td>
-				<%--<td align="center">
-					<a v-bind:href="'detail.aspx?id='+ item.id">详情</a>
-				</td>--%>
+				<td align="center">
+                    <span v-show="item.isdisable==0" style="color:green;">正常</span>
+                    <span v-show="item.isdisable==1" style="color:red;">禁用</span>
+				</td>
+                <td>
+                    <a href="javascript:;" v-on:click="edit(item)">编辑</a>
+                </td>
+
 			</tr>
 			<tr v-if="dataList.length==0">
 				<td align="center" colspan="11">暂无记录</td>
@@ -92,6 +103,45 @@
 			
 		</div>
 		<!--/内容底部-->
+
+
+        <%--弹出层--%>
+
+        <div class="layerMove" v-show="showLayer">
+          <div class="layerBody">
+            <div class="layerTitle">编辑用户信息</div>
+            <div class="layerContent">
+                  <table>
+                      <tr style="height:40px;line-height:40px;">
+                          <td style="width:30%">昵称</td>
+                          <td style="width:70%">
+                              {{userinfo.nickname}}
+                          </td>
+                      </tr>
+                      <tr style="height:40px;line-height:40px;">
+                          <td style="width:30%">手机</td>
+                          <td style="width:70%">
+                              <input type="text" v-model="tempinfo.mobile"/>
+                          </td>
+                      </tr>
+                      <tr style="height:40px;line-height:40px;">
+                          <td style="width:30%">余额</td>
+                          <td style="width:70%">
+                              <input type="number" v-model="tempinfo.money"/>
+                          </td>
+                      </tr>
+                  </table> 
+<%--                <div class="productItem">
+                </div>--%>
+            </div>
+            <div class="layerBottom">
+              <a class="btn  btn-primary" v-on:click="cencaledit()">取消</a>
+              <a class="btn  btn-primary" v-on:click="confirmedit()">确定</a>
+            </div>
+        
+          </div>
+      </div>
+
     </div>
 </body>
      <script type="text/javascript" src="/scripts/jquery/jquery-1.11.2.min.js"></script>
@@ -112,6 +162,7 @@
         var commVm = new Vue({
             el: '.maindiv',
             data: {
+                showLayer:false,
                 selectAll: false,
                 selectAllText: "全选",
                 dataList: [],
@@ -119,7 +170,9 @@
                 pageindex: 1,
                 pagesize: 10,
                 keyword: "",
-                totalPage: 0
+                totalPage: 0,
+                userinfo: {},
+                tempinfo: {}
             },
             mounted: function () {
                 this.init();
@@ -202,9 +255,139 @@
                 },
                 selectVal: function () {
                     var _this = this;
-                    //console.log('this.status', this.status);
                     _this.loadData();
                 },
+
+
+                edit: function (item) {
+                    var _this = this;
+                    _this.tempinfo = {
+                        mobile: item.mobile,
+                        money: item.money
+                    };
+                    _this.userinfo = item;
+                    console.log(' _this.userinfo', _this.userinfo);
+                    _this.showLayer = true;
+                },
+
+                confirmedit: function () {
+                    var _this = this;
+                    var reqData = {
+                        id: _this.userinfo.id,
+                        mobile: _this.tempinfo.mobile,
+                        money: _this.tempinfo.money
+                    };
+                    $.ajax({
+                        type: 'post',
+                        url: '/admin/api/user/update.ashx',
+                        data: reqData,
+                        dataType: 'json',
+                        success: function (resp) {
+                            _this.showLayer = false;
+                            if (resp.status) {
+                                _this.showMsg("编辑成功");
+                                _this.userinfo.mobile = _this.tempinfo.mobile;
+                                _this.userinfo.money = _this.tempinfo.money;
+                            }
+                            else {
+                                _this.showMsg(resp.msg);
+                            }
+                        }
+                    });
+                },
+
+                cencaledit: function () {
+                    this.showLayer = false;
+                },
+
+                del: function () {
+                    var _this = this;
+                    var ids = _this.getSelectIds();
+                    if (!ids) {
+                        this.showMsg("请选择需要删除的记录");
+                        return false;
+                    }
+                    parent.dialog({
+                        title: '提示',
+                        content: "确认删除",
+                        okValue: '确定',
+                        ok: function () {
+                            var reqData = {
+                                ids: ids
+                            };
+                            $.ajax({
+                                type: 'post',
+                                url: '/admin/api/user/delete.ashx',
+                                data: reqData,
+                                dataType: 'json',
+                                success: function (resp) {
+                                    if (resp.status) {
+                                        _this.showMsg("删除成功");
+                                        //_this.pageindex = 1;
+                                        _this.loadData();
+                                    }
+                                    else {
+                                        _this.showMsg(resp.msg);
+                                    }
+                                }
+                            });
+                        },
+                        cancelValue: '取消',
+                        cancel: function () { }
+                    }).showModal();
+                },
+                
+
+                disable: function (value) {
+
+                    var _this = this;
+
+                    var ids = _this.getSelectIds();
+
+
+                    var text = "禁用";
+
+                    if (value == 0) text = "启用";
+
+                    if (!ids) {
+                        this.showMsg("请选择需要" + text + "的记录");
+                        return false;
+                    }
+
+                    parent.dialog({
+                        title: '提示',
+                        content: "确认" + text + "?",
+                        okValue: '确定',
+                        ok: function () {
+                            var reqData = {
+                                ids: ids,
+                                disable: value
+                            };
+                            $.ajax({
+                                type: 'post',
+                                url: '/admin/api/user/disable.ashx',
+                                data: reqData,
+                                dataType: 'json',
+                                success: function (resp) {
+                                    if (resp.status) {
+                                        _this.showMsg(text + "成功");
+                                        _this.pageindex = 1;
+                                        _this.loadData();
+                                    }
+                                    else {
+                                        _this.showMsg(resp.msg);
+                                    }
+                                }
+                            });
+                        },
+                        cancelValue: '取消',
+                        cancel: function () { }
+                    }).showModal();
+                },
+
+
+
+
                 showMsg: function (msg) {
 
                     parent.dialog({

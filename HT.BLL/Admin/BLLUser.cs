@@ -23,6 +23,7 @@ namespace HT.BLL.Admin
             {
                 db.Configuration.ProxyCreationEnabled = false;
                 var unDelList = db.ht_user.Where(r => true);
+                unDelList = unDelList.Where(p => p.isdelete == 0);
                 if (!string.IsNullOrWhiteSpace(keyword))
                 {
                     unDelList = unDelList.Where(r => r.mobile.Contains(keyword.Trim()) || r.nickname.Contains(keyword.Trim()));
@@ -123,6 +124,61 @@ namespace HT.BLL.Admin
                 }
 
 
+            }
+        }
+
+        /// <summary>
+        /// 删除用户
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static int DeleteUser(List<int> ids)
+        {
+            using (Entities db = new Entities())
+            {
+                foreach (var item in ids)
+                {
+                    var user = db.ht_user.Find(item);
+                    if (user != null) db.ht_user.Remove(user);
+                }
+                return db.SaveChanges();
+            }
+        }
+        /// <summary>
+        /// 禁用用户
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static int DisableUser(List<int> ids,int disable)
+        {
+            using (Entities db = new Entities())
+            {
+                db.ht_user.Where(p => ids.Contains(p.id)).ToList().ForEach(item =>
+                {
+                    item.isdisable = disable;
+                });
+                return db.SaveChanges();
+            }
+        }
+        /// <summary>
+        /// 编辑用户信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="mobile"></param>
+        /// <param name="money"></param>
+        /// <returns></returns>
+        public static int UpdateUser(int id,string mobile, decimal money)
+        {
+            using (Entities db = new Entities())
+            {
+                db.Configuration.ProxyCreationEnabled = false;
+                var user = db.ht_user.Find(id);
+                if (user != null)
+                {
+                    user.mobile = mobile;
+                    user.money = money;
+                }
+                return db.SaveChanges();
             }
         }
     }

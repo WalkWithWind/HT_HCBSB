@@ -19,5 +19,6 @@ namespace HT.Model.Model
         public string mobile { get; set; }
         public string avatar { get; set; }
         public int? parent_id { get; set; }
+        public int isdisable { get; set; }
     }
 }

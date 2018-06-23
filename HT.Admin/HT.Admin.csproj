@@ -639,11 +639,20 @@
     <Compile Include="admin\api\review\updatestatus.ashx.cs">
       <DependentUpon>updatestatus.ashx</DependentUpon>
     </Compile>
+    <Compile Include="admin\api\user\delete.ashx.cs">
+      <DependentUpon>delete.ashx</DependentUpon>
+    </Compile>
     <Compile Include="admin\api\user\detail.ashx.cs">
       <DependentUpon>detail.ashx</DependentUpon>
     </Compile>
+    <Compile Include="admin\api\user\disable.ashx.cs">
+      <DependentUpon>disable.ashx</DependentUpon>
+    </Compile>
     <Compile Include="admin\api\user\list.ashx.cs">
       <DependentUpon>list.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\api\user\update.ashx.cs">
+      <DependentUpon>update.ashx</DependentUpon>
     </Compile>
     <Compile Include="admin\audit\audit_withdraw.aspx.cs">
       <DependentUpon>audit_withdraw.aspx</DependentUpon>
@@ -996,6 +1005,9 @@
     <Content Include="admin\api\review\updatestatus.ashx" />
     <Content Include="admin\api\review\delete.ashx" />
     <Content Include="admin\api\project\check.ashx" />
+    <Content Include="admin\api\user\update.ashx" />
+    <Content Include="admin\api\user\delete.ashx" />
+    <Content Include="admin\api\user\disable.ashx" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

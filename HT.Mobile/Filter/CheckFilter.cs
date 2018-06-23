@@ -32,6 +32,22 @@ namespace HT.Mobile.Filter
                     filterContext.HttpContext.Response.Redirect("/User/Mobile?url=" + HttpUtility.UrlEncode(currentUrl));
                 }
             }
+
+            if (curUser.isdisable == 1)
+            {
+                if (filterContext.HttpContext.Request.IsAjaxRequest())
+                {
+                    var json = JsonConvert.SerializeObject(new ApiResponse
+                    {
+                        code = (int)APIErrCode.OperateFail,
+                        msg = "已禁用",
+                        status = false
+                    });
+                    filterContext.HttpContext.Response.Write(json);
+                    filterContext.HttpContext.Response.End();
+                }
+            }
+
         }
     }
 }
