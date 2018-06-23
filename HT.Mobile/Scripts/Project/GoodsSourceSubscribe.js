@@ -2,133 +2,125 @@
 var listVm = new Vue({
     el: '.main',
     data: {
-        listData: {
-            total: 0,
-            list: []
-        },
-        isLoading: false,
-        noneData: false,
-        //isLoadingLayer: -1,
-        //isLoadAll: false,
-        searchKey: {
-            cateid: 1,
-            status: 1,
-            expire: 0,
-            start_province: '',
-            start_city: '',
-            start_district:'',
-            stop_province: '',
-            stop_city: '',
-            stop_district: '',
-            use_type: '',
-            car_length: '',
-            car_style: '',
-            page: 0,
-            rows: 5
+        model: {
+            start_province: "",//出发地省份
+            start_city: '', //出发地城市
+            start_district: '', //出发地区域
+            stop_province: '',//目的地省份
+            stop_city: '',//目的地城市
+            stop_district: ''//目的地区域
         },
         select: {
             showCityStart: false,
             showCityStop: false
         },
-        useTypeData: [],
-        carLengthData: [],
-        carStyleData: []
+        listData: {
+            total: 0,
+            list: []
+        },
+        isedit: false,
+        isLoading: false
     },
-    created() {
+    created: function () {
         this.init();
     },
+
     methods: {
         init: function () {
-            this.bindScroll();
             this.loadData();
-            this.loadCateData('use_type', 1);
-            this.loadCateData('car_length', 4);
-            this.loadCateData('car_style', 16);
         },
         loadData: function () {
             var _this = this;
             if (_this.isLoading) return;
-            this.searchKey.page++;
             _this.isLoading = true;
-            //_this.isLoadingLayer = layer.load(0);
             $.ajax({
                 type: 'post',
-                url: '/Project/SubscribeNewsList',
-                data: _this.searchKey,
+                url: '/Project/SubscribeList',
                 dataType: 'json',
                 success: function (resp) {
                     _this.isLoading = false;
-                    //layer.close(_this.isLoadingLayer);
                     if (resp.status) {
-                        if (resp.result.list.length == 0) {
-                            _this.isLoadAll = true;
-                        } else {
+                        if (resp.result.list.length > 0) {
+                            for (var i = 0; i < resp.result.list.length; i++) {
+                                resp.result.list[i].del = false;
+                            }
                             _this.listData.list = _this.listData.list.concat(resp.result.list);
                         }
                         _this.listData.total = resp.result.total;
-                        if (_this.listData.total == 0) {
-                            _this.noneData = true;
-                        }
-                        //console.log(_this.listData.list);
                     }
                 }
             });
         },
-        bindScroll: function () {
-            //console.log($(window).scrollTop());
-            var _this = this;
-            $(window).bind('scroll', function (e) {
-                var _wh = $(window).height();
-                var _st = $(document).scrollTop();
-                var _sh = $(document).height();
-                if (_sh - _st - _wh < 10) {
-                    _this.loadMore();
-                }
-            });
+        clickItem: function (item) {
+            if (!this.isedit) return;
+            if (item.del) {
+                item.del = false;
+            } else {
+                item.del = true;
+            }
         },
-        loadMore: function () {
-            if (this.listData.list.length >= this.listData.total) return;
-            this.loadData();
+        viewItem: function (item) {
+            if (this.isedit) return;
+            location = '/Project/SourceSubscribe/' + item.id;
         },
-        searchData: function () {
-            var _this = this;
-            _this.listData.total = 0;
-            _this.listData.list = [];
-            _this.searchKey.page = 0;
-            _this.loadData();
-        },
-        loadCateData: function (code, cid) {
-            var _this = this;
-            $.ajax({
-                type: 'post',
-                url: '/Home/CateList',
-                data: { cid: cid },
-                dataType: 'json',
-                success: function (resp) {
-                    if (resp.status) {
-                        if (code == 'use_type') _this.useTypeData = resp.result;
-                        if (code == 'car_length') _this.carLengthData = resp.result;
-                        if (code == 'car_style') _this.carStyleData = resp.result;
-                    }
-                }
-            });
-        },
-        showCarLength: function () {
+        add: function () {
             layer.open({
                 type: 1,
-                title: '货源筛选',
-                content: $('.car_length_box'),
+                title: '货源路线',
+                content: $('.add_box'),
                 offset: 'lb',
                 area: ['100%', 'auto'],
                 shade: 0.5,
                 scrollbar: false,
-                anim: 2
+                anim: 2,
+                end: function () {
+                }
+            });
+        },
+        del: function () {
+            var _this = this;
+            var ids = $.Enumerable.From(_this.listData.list)
+                .Where(function (x) { return x.del })
+                .Select(function (x) { return x.id })
+                .ToArray();
+            if (ids.length == 0) {
+                _this.isedit = false;
+                return;
+            }
+            $.ajax({
+                type: 'post',
+                url: '/Project/DelSubscribe',
+                data: { ids: ids.join(',') },
+                dataType: 'json',
+                success: function (resp) {
+                    alert(resp.msg);
+                    if (resp.status) {
+                        _this.isedit = false;
+                        for (var i = _this.listData.list.length - 1; i >= 0; i--) {
+                            if (ids.indexOf(_this.listData.list[i].id) >= 0) {
+                                _this.listData.list.splice(i, 1);
+                            }
+                        }
+                    }
+                }
             });
         },
         confirm: function (code) {
             var _this = this;
-            layer.closeAll();
-            _this.searchData();
+            $.ajax({
+                type: 'post',
+                url: '/Project/PostSubscribe',
+                data: _this.model,
+                dataType: 'json',
+                success: function (resp) {
+                    alert(resp.msg);
+                    if (resp.status) {
+                        resp.result.del = false;
+                        _this.listData.list = _this.listData.list.concat(resp.result);
+                        layer.closeAll();
+                    }
+                }
+            });
         }
     }
 });

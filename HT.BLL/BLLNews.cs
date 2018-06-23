@@ -1,10 +1,12 @@
-﻿using HT.Model;
+﻿using EntityFramework.Extensions;
+using HT.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace HT.BLL
@@ -139,76 +141,47 @@ namespace HT.BLL
 
         #region 订阅线路
         /// <summary>
-        /// 构造查询 订阅线路 IQueryable
-        /// </summary>
-        /// <param name="db">查询条件</param>
-        /// <param name="searchKey">查询条件</param>
-        /// <param name="subscribe_starts">查询条件</param>
-        /// <param name="subscribe_ends">订阅目的地列表</param>
-        /// <returns></returns>
-        private static IQueryable<ht_news> GetSubscribeNewsData(Entities db, ht_news searchKey,int curUserid, bool isOrder = false)
-        {
-            db.Configuration.ProxyCreationEnabled = false;
-            var data = db.ht_news.Where(p => true);
-            data = data.Where(p => p.is_delete == 0);
-            if (searchKey.cateid != 0) data = data.Where(p => p.cateid == searchKey.cateid);
-            if (!string.IsNullOrWhiteSpace(searchKey.start_province)) data = data.Where(p => p.start_province == searchKey.start_province);
-            if (!string.IsNullOrWhiteSpace(searchKey.start_city)) data = data.Where(p => p.start_city == searchKey.start_city);
-            if (!string.IsNullOrWhiteSpace(searchKey.start_district)) data = data.Where(p => p.start_district == searchKey.start_district);
-            if (!string.IsNullOrWhiteSpace(searchKey.stop_province)) data = data.Where(p => p.stop_province == searchKey.stop_province);
-            if (!string.IsNullOrWhiteSpace(searchKey.stop_city)) data = data.Where(p => p.stop_city == searchKey.stop_city);
-            if (!string.IsNullOrWhiteSpace(searchKey.stop_district)) data = data.Where(p => p.stop_district == searchKey.stop_district);
-            if (!string.IsNullOrWhiteSpace(searchKey.use_type)) data = data.Where(p => p.use_type == searchKey.use_type);
-            if (!string.IsNullOrWhiteSpace(searchKey.car_length)) data = data.Where(p => p.car_length == searchKey.car_length);
-            if (!string.IsNullOrWhiteSpace(searchKey.car_style)) data = data.Where(p => p.car_style == searchKey.car_style);
-            if (!string.IsNullOrWhiteSpace(searchKey.goods_type)) data = data.Where(p => p.goods_type == searchKey.goods_type);
-            if (searchKey.expire.HasValue && searchKey.expire == 1)
-            {
-                data = data.Where(p => (p.validity_unit == "月" && DbFunctions.AddMonths(p.add_time, p.validity_num.Value) < DateTime.Now) || (p.validity_unit == "天" && DbFunctions.AddDays(p.add_time, p.validity_num.Value) < DateTime.Now));
-            }
-            else if (searchKey.expire.HasValue && searchKey.expire == 0)
-            {
-                data = data.Where(p => (p.validity_unit == "月" && DbFunctions.AddMonths(p.add_time, p.validity_num.Value) > DateTime.Now) || (p.validity_unit == "天" && DbFunctions.AddDays(p.add_time, p.validity_num.Value) > DateTime.Now));
-            }
-            if (searchKey.status.HasValue) data = data.Where(p => p.status == searchKey.status);
-            if (searchKey.pay_status.HasValue) data = data.Where(p => p.pay_status == searchKey.pay_status);
-
-            List<ht_news_subscribe> subs = db.ht_news_subscribe.Where(p => p.add_userid == curUserid).ToList();
-            if (subs.Count == 0)
-            {
-                data = data.Where(p => false);
-            }
-            else
-            {
-                Expression<Func<ht_news, bool>> where = p => subs.Exists(s => (p.start_province + p.start_city + p.start_district).StartsWith(s.start_province + s.start_city + s.start_district) && (p.stop_province + p.stop_city + p.stop_district).StartsWith(s.stop_province + s.stop_city + s.stop_district));
-                data = data.Where(where.Compile()).AsQueryable();
-            }
-
-            if (isOrder == false) return data;
-            var orderData = data.OrderByDescending(p => p.set_top);
-            if (searchKey.recommend.HasValue && searchKey.recommend.Value) orderData = orderData.ThenByDescending(p => p.praise_num);
-            orderData = orderData.ThenByDescending(p => p.update_time);
-            return orderData;
-        }
-        /// <summary>
         /// 获取订阅信息列表返回数据
         /// </summary>
         /// <returns></returns>
-        public static Model.Model.PageResult<ht_news> GetSubscribeNewsListPageResult(int page, int rows, ht_news searchKey, int curUserid)
+        public static Model.Model.PageResult<ht_news> GetSubscribeNewsListPageResult(int page, int rows, int subscribe_id)
         {
             Model.Model.PageResult<ht_news> pageModel = new Model.Model.PageResult<ht_news>();
             using (Entities db = new Entities())
             {
-                pageModel.total = GetSubscribeNewsData(db, searchKey, curUserid).Count();
-                pageModel.list = GetSubscribeNewsData(db, searchKey, curUserid, true).Skip((page - 1) * rows).Take(rows).ToList();
-
-                if (curUserid > 0)
-                {
-                    foreach (var item in pageModel.list)
+                db.Configuration.ProxyCreationEnabled = false;
+                var data = db.ht_news.Where(p => p.cateid == 1 && p.status == 1).Join(
+                    db.ht_news_subscribe_relation.Where(p => p.subscribe_id == subscribe_id),
+                    x => x.id,
+                    y => y.news_id,
+                    (x, y) => new
                     {
-                        item.is_praise = db.ht_comm_relation.FirstOrDefault(p => p.main_id == item.id.ToString() && p.relation_id == curUserid.ToString() && p.relation_type == "praise") != null;
-                    }
+                        rel_id = y.id,
+                        islook = y.is_look,
+                        set_top = x.set_top.Value,
+                        news_id = x.id,
+                        news = x
+                    });
+
+                pageModel.total = data.Count();
+
+
+                var list = data.OrderBy(p => p.islook)
+                    .ThenByDescending(p => p.set_top)
+                    .Skip((page - 1) * rows).Take(rows).ToList();
+
+                if (list.Count > 0)
+                {
+                    var idList = list.Select(p => p.rel_id).ToList();
+                    //变阅读状态
+                    db.ht_news_subscribe_relation.Where(p => p.is_look == 0 && idList.Contains(p.id)).Update(p => new ht_news_subscribe_relation { is_look = 1 });
+                    pageModel.list = list.Select(p => p.news).ToList();
                 }
+                else
+                {
+                    pageModel.list = new List<ht_news>();
+                }
+
             }
             pageModel.totalpage = (int)Math.Ceiling((decimal)pageModel.total / (decimal)rows);//总页数
 
@@ -322,7 +295,38 @@ namespace HT.BLL
                     db.ht_news.Add(model);
 					if (db.SaveChanges() > 0)
 					{
-						return true;
+                        if (model.cateid != 1) return true;
+
+                        //线程插入线路关系
+                        new Thread(p => {
+                            using (Entities dbt = new Entities())
+                            {
+                                Expression<Func<ht_news_subscribe, bool>> rcountWhere = s =>
+                                        (s.start_province + s.start_city + s.start_district)
+                                        .StartsWith(model.start_province + model.start_city + model.start_district)
+                                        &&
+                                        (s.stop_province + s.stop_city + s.stop_district)
+                                        .StartsWith(model.stop_province + model.stop_city + model.stop_district);
+
+                                List<ht_news_subscribe_relation> relList = dbt.ht_news_subscribe
+                                    .Where(rcountWhere.Compile())
+                                    .Select(x => new ht_news_subscribe_relation
+                                    {
+                                        news_id = model.id,
+                                        subscribe_id = x.id,
+                                        is_look = 0
+                                    }).ToList();
+
+                                dbt.ht_news_subscribe_relation.AddRange(relList);
+                                dbt.SaveChanges();
+
+                                dbt.ht_news_subscribe
+                                    .Where(rcountWhere.Compile()).AsQueryable()
+                                    .Update(x => new ht_news_subscribe { ncount = x.ncount + 1, rcount = x.rcount + 1 });
+                            }
+                        }).Start();
+                        
+                        return true;
 					}
 				}
 				catch (Exception ex)

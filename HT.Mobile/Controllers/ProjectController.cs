@@ -94,10 +94,9 @@ namespace HT.Mobile.Controllers
         /// <param name="rows"></param>
         /// <returns></returns>
         [CheckFilter]
-        public ActionResult SubscribeNewsList(ht_news searchKey, int page = 1, int rows = 5)
+        public ActionResult SubscribeNewsList(int subscribe_id, int page = 1, int rows = 5)
         {
-            int curUserid = BLLAuthentication.GetAuthenticationUser().id; 
-            Model.Model.PageResult<ht_news> pageModel = BLLNews.GetSubscribeNewsListPageResult(page, rows, searchKey, curUserid);
+            Model.Model.PageResult<ht_news> pageModel = BLLNews.GetSubscribeNewsListPageResult(page, rows, subscribe_id);
             if (Request.IsAjaxRequest())
             {
                 apiResp.status = true;

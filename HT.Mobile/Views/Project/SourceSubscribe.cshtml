@@ -11,77 +11,15 @@
     <div class="top">
         <div class="wrapper">
             <a href="javascript:history.go(-1);" class="back_btn">返回</a>
-            <a href="javascript:void(0);" v-if="!isedit" v-on:click="isedit=true" class="wdd">编辑</a>
-            <a href="javascript:void(0);" v-if="isedit" v-on:click="del()" class="wdd">删除</a>
         </div>
     </div>
     <ul class="ind_sec1_ul">
-        <li v-for="(item,index) in listData.list" style="margin-bottom: .02rem;">
-            <div class="el_item" style="padding: .3rem 0;margin-bottom:0;">
-                <div class="wrapper">
-                    <div class="subscribe_li">
-                        <div class="infor_p1 bold subscribe_title" v-bind:class="{'subscribe_title':isedit}" v-on:click="clickItem(item)">
-                            <span>{{item.start_city|cityFormart(item.start_district,item.start_province,'')}}</span>
-                            <i></i><!-- 中间的箭头符号 -->
-                            <span>{{item.stop_city|cityFormart(item.stop_district,item.stop_province,'')}}</span>
-                        </div>
-                        <div class="subscribe_del" v-if="isedit" v-on:click="clickItem(item)">
-                            <img v-if="item.del" src="/images/icon/icon19_2.png" />
-                            <img v-if="!item.del" src="/images/icon/icon19_1.png" />
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <li v-for="item in listData.list">
+            <list-component v-bind:item="item" v-if="item"></list-component>
         </li>
     </ul>
-    <div class="pay_m" style="padding:.1rem;position: fixed; bottom: 0px;">
-        <a href="javascript:void(0);" class="btn" style="width: 100%;" v-on:click="add()">添加</a>
-    </div>
-
-    <city-dialog v-bind:box="'start_box'"
-                 v-bind:box-title="'出发地'"
-                 v-bind:ob="model"
-                 v-bind:province="'start_province'"
-                 v-bind:city="'start_city'"
-                 v-bind:district="'start_district'"
-                 v-bind:show-dialog="'showCityStart'"
-                 v-bind:show-ob="select"
-                 v-bind:has-all-district="true"
-                 v-bind:has-all-city="true"
-                 v-if="select.showCityStart">
-    </city-dialog>
-    <city-dialog v-bind:box="'stop_box'"
-                 v-bind:box-title="'到达地'"
-                 v-bind:ob="model"
-                 v-bind:province="'stop_province'"
-                 v-bind:city="'stop_city'"
-                 v-bind:district="'stop_district'"
-                 v-bind:show-dialog="'showCityStop'"
-                 v-bind:show-ob="select"
-                 v-bind:has-all-district="true"
-                 v-bind:has-all-city="true"
-                 v-if="select.showCityStop">
-    </city-dialog>
-    <div class="add_box zhp_box hide">
-        <div class="pay_m">
-            <div class="pg_sec2">
-                <dl>
-                    <dd>
-                        <span>出发地</span>
-                        <input type="text" placeholder="请选择出发地" readonly="readonly" v-bind:value="model.start_city|cityFormart(model.start_district,model.start_province,'')" v-on:click="select.showCityStart=true">
-                    </dd>
-                    <dd>
-                        <span>到达地</span>
-                        <input type="text" placeholder="请选择到达地" readonly="readonly" v-bind:value="model.stop_city|cityFormart(model.stop_district,model.stop_province,'')" v-on:click="select.showCityStop=true">
-                    </dd>
-                </dl>
-            </div>
-            <a href="javascript:void(0);" class="btn" style="width: 99%;" v-on:click="confirm()">确认提交</a>
-        </div>
-    </div>
 </div>
 @section scripts{
-    @Html.Partial("_CityJs")
-    @Html.Action("Template", "Partial", new { id = "CityDialog" })
-    @Scripts.Render("/Scripts/jquery.linq.min.js", "/Scripts/Project/SourceSubscribe.js")
+    @Html.Action("Template", "Partial", new { id = "List" })
+    @Scripts.Render("/Scripts/Project/SourceSubscribe.js")
 }

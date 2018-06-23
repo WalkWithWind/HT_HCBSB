@@ -11,109 +11,94 @@
 @section styles{
     <link href="/Content/Project/Project.css" rel="stylesheet" />
 }
-<div class="main hide" v-bind:class="['show']">
-    <div class="headTab">
-        <div class="tab-title">
-            <div class="item active">
-                订阅线路
+    <div class="main hide" v-bind:class="['show']">
+        <div class="headTab">
+            <div class="tab-title">
+                <div class="item active">
+                    订阅线路
+                </div>
+                <div class="item" v-on:click="location.href='/Project/GoodsSource'">
+                    货源信息
+                </div>
             </div>
-            <div class="item" v-on:click="location.href='/Project/GoodsSource'">
-                货源信息
+            <a href="javascript:void(0);" v-if="!isedit" v-on:click="isedit=true" class="subscribeHeadRigth">编辑</a>
+            <a href="javascript:void(0);" v-if="isedit" v-on:click="del()" class="subscribeHeadRigth">删除</a>
+        </div>
+        <ul class="ind_sec1_ul">
+            <li v-for="item in listData.list" class="subscribe_item">
+                <div class="el_item">
+                    <div class="wrapper">
+                        <div class="subscribe_li">
+                            <div class="infor_p1 bold subscribe_title" v-bind:class="{'subscribe_title':isedit}" v-on:click="clickItem(item)">
+                                <span>{{item.start_city|cityFormart(item.start_district,item.start_province,'')}}</span>
+                                <i></i><!-- 中间的箭头符号 -->
+                                <span>{{item.stop_city|cityFormart(item.stop_district,item.stop_province,'')}}</span>
+                            </div>
+                            <div class="subscribe_ncount">
+                                货源数<span v-text="item.ncount">0</span>
+                            </div>
+                            <div class="subscribe_del" v-if="isedit" v-on:click="clickItem(item)">
+                                <img v-if="item.del" src="/images/icon/icon19_2.png" />
+                                <img v-if="!item.del" src="/images/icon/icon19_1.png" />
+                            </div>
+                            <div class="subscribe_view" v-if="!isedit" v-on:click="viewItem(item)">
+                                <span class="badge" v-if="item.rcount>0" v-text="item.rcount">0</span>
+                                <img src="/images/icon/icon17.png" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="pay_m" style="padding:0.1rem 0.1rem .8rem;">
+            <a href="javascript:void(0);" class="btn" style="width: 100%;" v-on:click="add()">添加订阅线路</a>
+        </div>
+        <div class="clearfix"></div>
+        <city-dialog v-bind:box="'start_box'"
+                     v-bind:box-title="'出发地'"
+                     v-bind:ob="model"
+                     v-bind:province="'start_province'"
+                     v-bind:city="'start_city'"
+                     v-bind:district="'start_district'"
+                     v-bind:show-dialog="'showCityStart'"
+                     v-bind:show-ob="select"
+                     v-bind:has-all-district="true"
+                     v-bind:has-all-city="true"
+                     v-if="select.showCityStart">
+        </city-dialog>
+        <city-dialog v-bind:box="'stop_box'"
+                     v-bind:box-title="'到达地'"
+                     v-bind:ob="model"
+                     v-bind:province="'stop_province'"
+                     v-bind:city="'stop_city'"
+                     v-bind:district="'stop_district'"
+                     v-bind:show-dialog="'showCityStop'"
+                     v-bind:show-ob="select"
+                     v-bind:has-all-district="true"
+                     v-bind:has-all-city="true"
+                     v-if="select.showCityStop">
+        </city-dialog>
+        <div class="add_box zhp_box hide">
+            <div class="pay_m">
+                <div class="pg_sec2">
+                    <dl>
+                        <dd>
+                            <span>出发地</span>
+                            <input type="text" placeholder="请选择出发地" readonly="readonly" v-bind:value="model.start_city|cityFormart(model.start_district,model.start_province,'')" v-on:click="select.showCityStart=true">
+                        </dd>
+                        <dd>
+                            <span>到达地</span>
+                            <input type="text" placeholder="请选择到达地" readonly="readonly" v-bind:value="model.stop_city|cityFormart(model.stop_district,model.stop_province,'')" v-on:click="select.showCityStop=true">
+                        </dd>
+                    </dl>
+                </div>
+                <a href="javascript:void(0);" class="btn" style="width: 99%;" v-on:click="confirm()">确认提交</a>
             </div>
         </div>
-        <a href="javascript:void(0);" v-on:click="location.href='/Project/SourceSubscribe'" class="Sub">订阅</a>
     </div>
-    <div class="top-search">
-    </div>
-    <div class="el_top">
-        <div class="wrapper">
-            <ul class="el_top_ul">
-                <li style="width: 40%;"><a class="start_city" v-on:click="select.showCityStart=true"><span>{{searchKey.start_city|cityFormart(searchKey.start_district,searchKey.start_province,'出发地')}}</span><i></i></a></li>
-                <li style="width: 40%; position:relative;">
-                    <span class="jt"></span>
-                    <a class="stop_city" v-on:click="select.showCityStop=true"><span>{{searchKey.stop_city|cityFormart(searchKey.stop_district,searchKey.stop_province,'到达地')}}</span><i></i></a>
-                </li>
-                <li style="width: 20%;"><a class="more" v-on:click="showCarLength()">更多<i></i></a></li>
-            </ul>
-        </div>
-    </div>
-    <ul class="ind_sec1_ul">
-        <li v-for="item in listData.list">
-            <list-component v-bind:item="item" v-if="item"></list-component>
-        </li>
-        <li v-if="noneData" class="none-data">
-            抱歉!此地区信息被抢空
-            <br />
-            邀请您成为地区合伙人
-            <br />
-            月入万元
-            <a class="earn-money" href="/User/EarnMoney"><<点击查看</a>
-        </li>
-    </ul>
-    <div class="clearfix"></div>
-    <city-dialog v-bind:box="'start_box'"
-                 v-bind:box-title="'出发地'"
-                 v-bind:ob="searchKey"
-                 v-bind:province="'start_province'"
-                 v-bind:city="'start_city'"
-                 v-bind:district="'start_district'"
-                 v-bind:show-dialog="'showCityStart'"
-                 v-bind:show-ob="select"
-                 v-bind:has-all-district="true"
-                 v-bind:has-all-city="true"
-                 v-if="select.showCityStart"
-                 v-on:end="confirm()">
-    </city-dialog>
-    <city-dialog v-bind:box="'stop_box'"
-                 v-bind:box-title="'到达地'"
-                 v-bind:ob="searchKey"
-                 v-bind:province="'stop_province'"
-                 v-bind:city="'stop_city'"
-                 v-bind:district="'stop_district'"
-                 v-bind:show-dialog="'showCityStop'"
-                 v-bind:show-ob="select"
-                 v-bind:has-all-district="true"
-                 v-bind:has-all-city="true"
-                 v-if="select.showCityStop"
-                 v-on:end="confirm()">
-    </city-dialog>
-    <div class="car_length_box zhj_box hide">
-        <div class="cty_box">
-            <p>用车车型</p>
-            <a href="javascript:;" v-bind:class="[{ 'cur':searchKey.use_type=='' }]"
-               v-on:click="searchKey.use_type=''">不限</a>
-            <a href="javascript:;" v-for="item in useTypeData"
-               v-bind:class="[{ 'cur': item.title==searchKey.use_type }]"
-               v-text="item.title" v-on:click="searchKey.use_type=item.title"></a>
-        </div>
-        <div class="cty_box">
-            <p>车长<span>（米）</span></p>
-            <a href="javascript:;" v-bind:class="[{ 'cur':searchKey.car_length=='' }]"
-               v-on:click="searchKey.car_length=''">不限</a>
-            <a href="javascript:;" v-for="item in carLengthData"
-               v-bind:class="[{ 'cur': item.title==searchKey.car_length }]"
-               v-text="item.title" v-on:click="searchKey.car_length=item.title"></a>
-        </div>
-
-        <div class="cty_box">
-            <p>车型</p>
-            <a href="javascript:;" v-bind:class="[{ 'cur':searchKey.car_style=='' }]"
-               v-on:click="searchKey.car_style=''">不限</a>
-            <a href="javascript:;" v-for="item in carStyleData"
-               v-bind:class="[{ 'cur': item.title==searchKey.car_style }]"
-               v-text="item.title" v-on:click="searchKey.car_style=item.title"></a>
-        </div>
-        <div class="sub_btn_box">
-            <a href="javascript:void(0);" class="cancle"
-               v-on:click="searchKey.use_type='';searchKey.car_length='';searchKey.car_style='';">重置</a>
-            <a href="javascript:void(0);" class="confirm" v-on:click="confirm()">确定</a>
-        </div>
-    </div>
-</div>
 @Html.Partial("_Footer")
 @section scripts{
     @Html.Partial("_CityJs")
-    @Html.Action("Template", "Partial", new { id = "List" })
     @Html.Action("Template", "Partial", new { id = "CityDialog" })
-    @Scripts.Render("/Scripts/Project/GoodsSourceSubscribe.js")
+    @Scripts.Render("/Scripts/jquery.linq.min.js", "/Scripts/Project/GoodsSourceSubscribe.js")
 }

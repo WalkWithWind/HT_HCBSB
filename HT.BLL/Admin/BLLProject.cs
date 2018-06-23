@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using EntityFramework.Extensions;
 using HT.Model;
@@ -203,26 +204,53 @@ namespace HT.BLL.Admin
 				}
 			}
 		}
-
         /// <summary>
-        /// 查询所有项目
+        /// 定时检查任务
+        /// </summary>
+        public static void CheckExpireThread()
+        {
+            new Thread(p => {
+                while (true)
+                {
+                    BLLProject.CheckExpire();
+                    Thread.CurrentThread.Join(TimeSpan.FromMinutes(30));
+                }
+            }).Start();
+        }
+        /// <summary>
+        /// 检查所有项目
         /// </summary>
         /// <returns></returns>
-        public static int CheckExpire()
+        public static void CheckExpire()
         {
             using (Entities db = new Entities())
             {
-                db.Configuration.ProxyCreationEnabled = false;
-                var data = db.ht_news.Where(r => true);
-                data = data.Where(p => (p.validity_unit == "月" && DbFunctions.AddMonths(p.add_time, p.validity_num.Value) < DateTime.Now) || (p.validity_unit == "天" && DbFunctions.AddDays(p.add_time, p.validity_num.Value) < DateTime.Now));
-
-                foreach (var item in data)
+                List<int> nidList = new List<int>();
+                List<int> sidList = new List<int>();
+                nidList = db.ht_news.Where(p => 
+                (p.status==0 || p.status==1)
+                &&
+                ((p.validity_unit == "月" && DbFunctions.AddMonths(p.add_time, p.validity_num.Value) < DateTime.Now)
+                || (p.validity_unit == "天" && DbFunctions.AddDays(p.add_time, p.validity_num.Value) < DateTime.Now))
+                ).Select(p=> p.id).ToList();
+                db.ht_news.Where(p => nidList.Contains(p.id)).Update(p => new ht_news { status = 3 });
+                
+                //筛选出货源
+                nidList = db.ht_news.Where(p => nidList.Contains(p.id) && p.cateid == 1).Select(p => p.id).ToList(); ;
+                if (nidList.Count > 0)
                 {
-                    item.status = 3;
+                    sidList = db.ht_news_subscribe_relation.Where(p => nidList.Contains(p.news_id))
+                        .Select(p => p.subscribe_id).ToList();
                 }
-                return db.SaveChanges();
+                if (sidList.Count > 0)
+                {
+                    db.ht_news_subscribe.Where(p => sidList.Contains(p.id)).Update(p => new ht_news_subscribe
+                    {
+                        ncount = p.ncount - 1
+                    });
+                    db.ht_news_subscribe_relation.Where(p => nidList.Contains(p.news_id)).Delete();
+                }
             }
-
         }
 
 	}

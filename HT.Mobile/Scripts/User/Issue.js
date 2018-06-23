@@ -12,7 +12,7 @@
             { pay_status: '1', status: '1', expire: '0', text: '显示中' },
             { pay_status: '0', status: '0', expire: '0', text: '待付款' },
             { pay_status: '1', status: '0', expire: '0', text: '待审核' },
-            { pay_status: '', status: '', expire: '1', text: '已过期' }
+            { pay_status: '', status: '3', expire: '1', text: '已过期' }
         ],
         searchKey: {
             pay_status: '',

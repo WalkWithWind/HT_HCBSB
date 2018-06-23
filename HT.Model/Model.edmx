@@ -331,6 +331,17 @@
           <Property Name="stop_district" Type="nvarchar" MaxLength="50" />
           <Property Name="add_userid" Type="int" />
           <Property Name="add_time" Type="datetime" />
+          <Property Name="ncount" Type="int" />
+          <Property Name="rcount" Type="int" />
+        </EntityType>
+        <EntityType Name="ht_news_subscribe_relation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="subscribe_id" Type="int" Nullable="false" />
+          <Property Name="news_id" Type="int" Nullable="false" />
+          <Property Name="is_look" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ht_order">
           <Key>
@@ -534,6 +545,8 @@
           <Property Name="parent_id" Type="int" />
           <Property Name="pparent_id" Type="int" />
           <Property Name="addtime" Type="datetime" />
+          <Property Name="isdelete" Type="int" Nullable="false" />
+          <Property Name="isdisable" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ht_user_message">
           <Key>
@@ -582,7 +595,9 @@
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <Association Name="FK__ht_manage__rolei__3B0BC30C">
-          <End Role="ht_manager_role" Type="Self.ht_manager_role" Multiplicity="0..1" />
+          <End Role="ht_manager_role" Type="Self.ht_manager_role" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="ht_manager" Type="Self.ht_manager" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ht_manager_role">
@@ -594,7 +609,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__ht_manage__rolei__3BFFE745">
-          <End Role="ht_manager_role" Type="Self.ht_manager_role" Multiplicity="0..1" />
+          <End Role="ht_manager_role" Type="Self.ht_manager_role" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="ht_manager_role_value" Type="Self.ht_manager_role_value" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ht_manager_role">
@@ -636,6 +653,7 @@
           <EntitySet Name="ht_news_del" EntityType="Self.ht_news_del" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ht_news_order" EntityType="Self.ht_news_order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ht_news_subscribe" EntityType="Self.ht_news_subscribe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ht_news_subscribe_relation" EntityType="Self.ht_news_subscribe_relation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ht_order" EntityType="Self.ht_order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ht_order_appraise" EntityType="Self.ht_order_appraise" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ht_payment" EntityType="Self.ht_payment" Schema="dbo" store:Type="Tables" />
@@ -689,6 +707,7 @@
           <EntitySet Name="ht_news_cate" EntityType="Model.ht_news_cate" />
           <EntitySet Name="ht_news_del" EntityType="Model.ht_news_del" />
           <EntitySet Name="ht_news_subscribe" EntityType="Model.ht_news_subscribe" />
+          <EntitySet Name="ht_news_subscribe_relation" EntityType="Model.ht_news_subscribe_relation" />
           <EntitySet Name="ht_order" EntityType="Model.ht_order" />
           <EntitySet Name="ht_order_appraise" EntityType="Model.ht_order_appraise" />
           <EntitySet Name="ht_payment" EntityType="Model.ht_payment" />
@@ -1051,6 +1070,17 @@
           <Property Name="stop_district" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="add_userid" Type="Int32" />
           <Property Name="add_time" Type="DateTime" Precision="3" />
+          <Property Name="ncount" Type="Int32" />
+          <Property Name="rcount" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ht_news_subscribe_relation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="subscribe_id" Type="Int32" Nullable="false" />
+          <Property Name="news_id" Type="Int32" Nullable="false" />
+          <Property Name="is_look" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="ht_order">
           <Key>
@@ -1254,6 +1284,8 @@
           <Property Name="parent_id" Type="Int32" />
           <Property Name="pparent_id" Type="Int32" />
           <Property Name="addtime" Type="DateTime" Precision="3" />
+          <Property Name="isdelete" Type="Int32" Nullable="false" />
+          <Property Name="isdisable" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="ht_user_message">
           <Key>
@@ -1302,7 +1334,9 @@
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <Association Name="FK__ht_manage__rolei__3B0BC30C">
-          <End Type="Model.ht_manager_role" Role="ht_manager_role" Multiplicity="0..1" />
+          <End Type="Model.ht_manager_role" Role="ht_manager_role" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="Model.ht_manager" Role="ht_manager" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ht_manager_role">
@@ -1314,7 +1348,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__ht_manage__rolei__3BFFE745">
-          <End Type="Model.ht_manager_role" Role="ht_manager_role" Multiplicity="0..1" />
+          <End Type="Model.ht_manager_role" Role="ht_manager_role" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="Model.ht_manager_role_value" Role="ht_manager_role_value" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ht_manager_role">
@@ -1676,6 +1712,8 @@
           <EntitySetMapping Name="ht_news_subscribe">
             <EntityTypeMapping TypeName="Model.ht_news_subscribe">
               <MappingFragment StoreEntitySet="ht_news_subscribe">
+                <ScalarProperty Name="rcount" ColumnName="rcount" />
+                <ScalarProperty Name="ncount" ColumnName="ncount" />
                 <ScalarProperty Name="add_time" ColumnName="add_time" />
                 <ScalarProperty Name="add_userid" ColumnName="add_userid" />
                 <ScalarProperty Name="stop_district" ColumnName="stop_district" />
@@ -1684,6 +1722,16 @@
                 <ScalarProperty Name="start_district" ColumnName="start_district" />
                 <ScalarProperty Name="start_city" ColumnName="start_city" />
                 <ScalarProperty Name="start_province" ColumnName="start_province" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ht_news_subscribe_relation">
+            <EntityTypeMapping TypeName="Model.ht_news_subscribe_relation">
+              <MappingFragment StoreEntitySet="ht_news_subscribe_relation">
+                <ScalarProperty Name="is_look" ColumnName="is_look" />
+                <ScalarProperty Name="news_id" ColumnName="news_id" />
+                <ScalarProperty Name="subscribe_id" ColumnName="subscribe_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1885,6 +1933,8 @@
           <EntitySetMapping Name="ht_user">
             <EntityTypeMapping TypeName="Model.ht_user">
               <MappingFragment StoreEntitySet="ht_user">
+                <ScalarProperty Name="isdisable" ColumnName="isdisable" />
+                <ScalarProperty Name="isdelete" ColumnName="isdelete" />
                 <ScalarProperty Name="addtime" ColumnName="addtime" />
                 <ScalarProperty Name="pparent_id" ColumnName="pparent_id" />
                 <ScalarProperty Name="parent_id" ColumnName="parent_id" />

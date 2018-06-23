@@ -22,22 +22,6 @@
             if ('undefined' == typeof (document.body.style.maxHeight)) {
                 window.location.href = 'ie6update.html';
             }
-            //检查
-            $.ajax({
-                type: 'post',
-                url: '/admin/api/project/check.ashx',
-                data: { },
-                dataType: 'json',
-                success: function (resp) {
-                    if (resp.status) {
-                        console.log(resp.result);
-                    }
-                }
-            });
-
-
-
-
         });
     </script>
 </head>

@@ -81,5 +81,13 @@ namespace HT.Model
     ///
     ///</summary>
         public Nullable<System.DateTime> addtime { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
+        public int isdelete { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
+        public int isdisable { get; set; }
     }
 }

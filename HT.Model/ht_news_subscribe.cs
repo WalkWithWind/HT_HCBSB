@@ -22,36 +22,44 @@ namespace HT.Model
     ///</summary>
         public int id { get; set; }
     ///<summary>
-    ///
+    ///出发省
     ///</summary>
         public string start_province { get; set; }
     ///<summary>
-    ///
+    ///出发市
     ///</summary>
         public string start_city { get; set; }
     ///<summary>
-    ///
+    ///出发区
     ///</summary>
         public string start_district { get; set; }
     ///<summary>
-    ///
+    ///目的省
     ///</summary>
         public string stop_province { get; set; }
     ///<summary>
-    ///
+    ///目的市
     ///</summary>
         public string stop_city { get; set; }
     ///<summary>
-    ///
+    ///目的区
     ///</summary>
         public string stop_district { get; set; }
     ///<summary>
-    ///
+    ///订阅人id
     ///</summary>
         public Nullable<int> add_userid { get; set; }
     ///<summary>
-    ///
+    ///订阅时间
     ///</summary>
         public Nullable<System.DateTime> add_time { get; set; }
+    ///<summary>
+    ///消息数
+    ///</summary>
+        public Nullable<int> ncount { get; set; }
+    ///<summary>
+    ///
+    ///</summary>
+        public Nullable<int> rcount { get; set; }
     }
 }
